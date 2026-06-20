@@ -1,0 +1,386 @@
+
+
+===== PAGE 1 =====
+Modifications
+March 19, 2026
+1 Semi-Automated Voxel-to-Point Transformation
+1.1 Motivation
+Traditional neuron reconstruction pipelines often convert voxel-based 3D images into point clouds
+using a fixed intensity threshold. This approach produces a dense, noisy set of points that typi-
+cally fails to capture the neuron’s continuous structural skeleton—particularly the medial axis and
+critical branch junctions. Preserving these features is essential for accurate downstream processing
+(e.g., skeleton proposal and connectivity prediction). A semi-automated approach, which combines
+classical methods with automated refinement, offers both reliability and efficiency.
+1.2 Proposed Approach
+Our approach consists of two main components:
+1. Skeleton Extraction (Manual/Predefined Step):
+• Apply a classical skeletonization algorithm (e.g., TEASAR or Kimimaro) on the seg-
+mented 3D neuron volume.
+• Extract the medial axis, which serves as a ground truth representation of the neuron’s
+core structure and branch junctions.
+• Allow for manual verification or parameter adjustment to ensure the reliability of the
+extracted skeleton.
+2. Automated Adaptive Sampling:
+• For each candidate point (obtained from initial thresholding), compute the Euclidean
+distance to the nearest skeleton point.
+• Transform these distances into sampling weights using an appropriate mapping (e.g.,
+an exponential decay function), so that points closer to the medial axis receive higher
+weights.
+• Employ a differentiable sampling mechanism (such as one based on Gumbel-softmax) to
+automatically select a refined subset of points.
+• Integrate a geometric loss (e.g., Chamfer distance) that compares the refined point cloud
+to the extracted skeleton, thus supervising the adaptive sampling.
+1.3 Implementation Details
+Preprocessing:
+1
+
+===== PAGE 2 =====
+• Start with the segmented 3D neuron image, obtained via intensity thresholding and normal-
+ization.
+• Convert high-intensity voxels to an initial, dense point cloud.
+Skeleton Extraction:
+• Run the TEASAR or Kimimaro algorithm on the voxel volume to extract the medial axis.
+• Optionally, allow for manual inspection and adjustment of parameters (e.g., threshold levels)
+to ensure the extracted skeleton accurately reflects the neuron’s structure.
+Adaptive Sampling:
+• For each point in the initial point cloud, compute its distance to the nearest skeleton point.
+• Use these distances to calculate sampling weights (e.g., via an exponential decay function:
+w = e−αd, where d is the distance and α is a scaling parameter).
+• Apply a differentiable sampling technique (e.g., Gumbel-softmax) to select a subset of points
+based on the computed weights.
+Loss Integration:
+• Introduce a geometric loss function, such as the Chamfer distance between the refined point
+cloud and the extracted skeleton.
+• Optimize the parameters of the adaptive sampling module by minimizing this loss, ensuring
+that the output point cloud aligns well with the desired structural features.
+1.4 Expected Benefits
+This semi-automated approach offers several key advantages:
+• Reliability: The classical skeleton extraction provides a dependable baseline that captures
+the neuron’s medial axis and branch junctions.
+• Automation with Oversight: While the skeleton extraction step can be manually verified
+or tuned, the adaptive sampling module operates automatically and in a differentiable manner.
+• Structural Fidelity: The refined point cloud is concentrated along the neuron’s true struc-
+ture, reducing noise and redundant points.
+• Enhanced Downstream Performance: A more informative point cloud leads to improved
+performance in subsequent modules such as feature encoding, skeleton proposal, and connec-
+tivity prediction.
+• Computational Efficiency: By reducing non-informative points, the approach minimizes
+computational overhead in later stages.
+1.5 Discussion
+The semi-automated voxel-to-point transformation effectively bridges classical and modern tech-
+niques. The manual or predefined skeleton extraction ensures that the critical structural features are
+reliably identified, while the automated adaptive sampling refines the point cloud in a data-driven
+and differentiable manner. This balance allows for both expert oversight and efficient, scalable
+processing, setting a robust foundation for the overall neuron reconstruction pipeline.
+2
+
+===== PAGE 3 =====
+2 Enhanced Point Cloud Encoder
+2.1 Motivation and Overview
+The original PointNeuron framework employs a DGCNN/EdgeConv encoder for extracting geomet-
+ric features from the point cloud. However, recent advancements have produced architectures that
+achieve higher accuracy with improved efficiency. In this work, we propose replacing the original
+encoder with a state-of-the-art backbone— PointNeXt—and optionally integrating a lightweight
+transformer fusion module in later layers. This combination is designed to extract robust, multi-
+scale representations that capture both fine local geometry and long-range global context, thereby
+enhancing the performance of subsequent modules such as the skeleton proposal and connectivity
+predictor.
+2.2 PointNeXt Backbone in Detail
+• Architecture Improvements: PointNeXt revisits the classical PointNet++ design by intro-
+ducing an inverted residual bottleneck structure and separable MLPs. This design minimizes
+parameter redundancy while preserving expressive power.
+• Local Feature Extraction: The backbone employs farthest point sampling (FPS) and k-
+nearest neighbor (k-NN) grouping to define local neighborhoods. In each neighborhood, inverted
+residual bottleneck modules aggregate features, effectively capturing the fine details of neuronal
+branches as well as the overall morphology.
+• Advanced Training Strategies: Extensive data augmentation, label smoothing, and state-of-
+the-art optimization techniques are utilized to enhance performance. These improvements not
+only boost accuracy but also reduce inference time compared to older methods like DGCNN.
+2.3 Optional Transformer Fusion Module
+• Global Context Integration: In deeper layers of the encoder, a lightweight transformer block
+can be integrated to capture long-range dependencies via self-attention. This module augments
+the local features extracted by PointNeXt with global contextual information.
+• Computational Efficiency: The transformer is designed to be computationally lightweight,
+ensuring that it provides additional context without imposing significant overhead.
+2.4 Integration and End-to-End Differentiability
+The enhanced encoder takes as input the refined point cloud produced by the semi-automated
+voxel-to-point transformation module. The PointNeXt backbone (with the optional transformer
+module) outputs high-dimensional features for each point, which are then passed to the downstream
+skeleton proposal and connectivity prediction modules. The entire encoder remains end-to-end
+differentiable, ensuring that the network can be optimized jointly during training.
+2.5 Expected Benefits
+• Enhanced Feature Quality: Combining PointNeXt’s robust local feature extraction with the
+transformer’s global context results in multi-scale representations that accurately capture the
+complex geometry of neuron structures.
+3
+
+===== PAGE 4 =====
+• Improved Downstream Performance: Richer features lead to more accurate detection of
+skeleton nodes and improved connectivity prediction, ultimately enhancing the overall neuron
+reconstruction.
+• Computational Efficiency and Scalability: The efficient architecture and training strate-
+gies of PointNeXt offer significant speedup and reduced computational cost compared to older
+methods.
+• Flexibility: The optional transformer module provides an additional performance boost in
+scenarios where global context is critical, while still maintaining a lean computational profile.
+2.6 Discussion
+Upgrading the encoder with PointNeXt, together with an optional transformer fusion module, con-
+stitutes a substantial improvement over previous approaches. The advanced design—characterized
+by inverted residual bottlenecks, separable MLPs, and robust training strategies—ensures effective
+capture of both local and global geometric features. This enhanced encoder is expected to drive
+superior performance in the subsequent stages of the neuron reconstruction pipeline, making it a
+vital component of the proposed PointNeuron2.0 system.
+3 Advanced Skeleton Proposal Module
+3.1 Motivation and Overview
+The original PointNeuron framework employs an MLP-based regression combined with non-maximum
+suppression (NMS) to generate candidate skeleton nodes. This approach, however, may produce
+overlapping proposals or miss critical nodes in regions with sparse signals. To address these lim-
+itations, we reframe the skeleton proposal task as an object detection problem. In our proposed
+method, each skeleton node is treated as an object with associated properties (e.g., spatial coordi-
+nates, objectness confidence, and radius), enabling a more robust and precise detection process.
+3.2 Proposed Approach
+• Detection Reformulation: Instead of relying solely on regression, we treat the prediction
+of skeleton node coordinates as an object detection task. Each candidate is associated with
+properties such as spatial coordinates, an objectness score, and a radius.
+• Transformer Decoder Framework: We employ a transformer decoder, inspired by the DETR
+framework, with a fixed set of learnable query embeddings. These queries attend to the high-
+dimensional features produced by the enhanced encoder and output candidate skeleton nodes.
+For each query, the decoder predicts:
+– The spatial coordinates (potentially with learned offsets),
+– An objectness score indicating whether the proposal represents a true skeleton node, and
+– A radius representing the local structural thickness.
+This detection-style approach naturally handles overlapping proposals and removes the need for
+separate NMS post-processing.
+4
+
+===== PAGE 5 =====
+• Multi-Scale Detection: To capture both coarse (trunk-level) and fine (branch-level) features,
+the transformer decoder integrates multi-scale queries. This design ensures reliable detection of
+nodes in both thick and thin regions.
+• Loss Functions and Matching: The network is supervised with a composite loss comprising:
+– A classification loss (e.g., cross-entropy) for the objectness scores,
+– A regression loss (e.g., L2 loss) for the predicted coordinate offsets, and
+– A regression loss (e.g., Mean Absolute Error) for the predicted radii.
+A set-based matching algorithm (e.g., the Hungarian algorithm) is employed during training
+to establish a one-to-one correspondence between the predicted proposals and the ground-truth
+skeleton nodes.
+3.3 Implementation Details
+• Input: The refined point cloud features, as obtained from the enhanced encoder, serve as input
+to the transformer decoder.
+• Transformer Decoder Architecture: A fixed number of learnable query embeddings is ini-
+tialized and passed through successive layers of multi-head self-attention and cross-attention.
+This enables the queries to aggregate both local and global contextual information, resulting in
+a set of candidate skeleton node proposals.
+• Loss Supervision: The decoder is optimized by minimizing a composite loss that combines
+the classification, coordinate regression, and radius regression terms. This loss ensures that the
+decoder produces high-quality, non-redundant proposals that closely match the ground-truth
+skeleton.
+3.4 Expected Outcomes and Benefits
+• Higher Precision in Skeleton Detection: The transformer-based detection framework yields
+more accurate and distinct skeleton proposals, reducing overlap and enhancing localization ac-
+curacy.
+• Robustness Across Scales: The integration of multi-scale queries enables the network to
+capture both large-scale (trunk) and fine-scale (branch) features, ensuring robust detection across
+varied neuron structures.
+• Streamlined Pipeline: By reframing skeleton proposal as a detection problem, the need for
+post-hoc clustering or NMS is eliminated, simplifying the overall pipeline.
+• Enhanced Downstream Performance: More reliable and precise skeleton proposals provide
+a strong foundation for the connectivity prediction module, ultimately improving the overall
+neuron reconstruction accuracy.
+3.5 Discussion
+The proposed advanced skeleton proposal module transforms the original regression-based approach
+into a detection framework, leveraging a transformer decoder to generate high-quality candidate
+nodes. By incorporating multi-scale detection and a composite loss that enforces both classification
+and regression accuracy, this module is expected to significantly improve skeleton localization. In
+5
+
+===== PAGE 6 =====
+turn, the improved proposals will facilitate better connectivity prediction, thereby enhancing the
+fidelity of the final neuron reconstruction.
+4 Improved Connectivity Prediction
+4.1 Motivation and Overview
+Accurate neuron reconstruction requires not only the detection of key skeleton nodes but also the
+correct prediction of their connectivity. In the original framework, a graph autoencoder was used to
+predict connectivity; however, this approach may fail to capture subtle geometric cues and enforce
+a proper tree structure. Our approach explicitly constructs a graph from the detected skeleton
+nodes and employs a graph neural network module to predict edge probabilities. By integrating
+both learned features and geometric information—and by incorporating topology-aware losses—we
+aim to produce connectivity predictions that conform to a biologically plausible tree structure.
+4.2 Proposed Approach
+• Graph Construction:
+– Construct a graph where each node corresponds to a detected skeleton point.
+– Establish initial candidate edges based on spatial proximity (e.g., via k-nearest neighbors
+or a distance threshold).
+• GATv2-based Connectivity Module:
+– Employ a Graph Attention Network v2 (GATv2) to predict the likelihood of connections
+between nodes.
+– Utilize the dynamic, query-conditioned attention mechanism of GATv2 to weigh candidate
+edges by considering both the differences in learned features and explicit geometric cues
+(such as Euclidean distance, relative orientation, and radius differences).
+• Incorporation of Geometric and Topological Features:
+– For each potential edge, combine local feature differences with geometric relations to com-
+pute a robust edge score.
+• Topology-Aware Losses:
+– Apply a standard cross-entropy loss over the predicted edge probabilities against the ground-
+truth connectivity (extracted from SWC files).
+– Introduce regularization terms that penalize cyclic connections, multiple parent assignments,
+or disconnected nodes to enforce a tree-like topology.
+4.3 Implementation Details
+• Input Features: The connectivity module receives refined node features from the advanced
+skeleton proposal module. These features are augmented with each node’s spatial coordinates
+and predicted radius.
+• GATv2 Architecture: A stack of GATv2 layers is used, where each layer updates node repre-
+sentations by computing attention weights over neighboring nodes based on both feature differ-
+ences and geometric relationships.
+6
+
+===== PAGE 7 =====
+• Loss Integration: The module is optimized with a composite loss function:
+– A cross-entropy loss on the predicted edge probabilities.
+– Topology-aware regularizers that penalize deviations from the expected tree structure.
+4.4 Expected Outcomes and Benefits
+• Accurate Connectivity Prediction: The GATv2-based module dynamically weighs candidate
+edges, yielding precise and robust edge predictions.
+• Biologically Plausible Graphs: The incorporation of topology-aware losses ensures that the
+predicted graph adheres to the expected tree structure of neurons.
+• Enhanced Reconstruction Fidelity: Reliable connectivity predictions improve the final SWC
+output, leading to an overall higher-fidelity neuron reconstruction.
+4.5 Discussion
+By explicitly modeling edge relationships using a GATv2 architecture and integrating both learned
+features and geometric cues, the proposed connectivity prediction module addresses the limitations
+of prior autoencoder-based methods. The use of topology-aware loss functions further enforces the
+tree structure, resulting in more accurate and biologically meaningful neuron reconstructions.
+5 End-to-End Integration and Training Strategy
+5.1 Overview and Motivation
+Our goal is to integrate the modified modules into a unified, end-to-end trainable pipeline. This
+pipeline comprises:
+1. The semi-automated voxel-to-point transformation module.
+2. The enhanced point cloud encoder (using the PointNeXt backbone with an optional lightweight
+transformer fusion module).
+3. The advanced skeleton proposal module based on a DETR-inspired transformer decoder.
+4. The improved connectivity prediction module employing a GATv2-based graph module with
+topology-aware losses.
+Joint training of these modules allows for simultaneous optimization, ensuring that the final neuron
+reconstruction is both geometrically accurate and topologically consistent.
+5.2 Pipeline Integration
+• The refined point cloud from the semi-automated voxel-to-point transformation serves as the
+input.
+• The enhanced encoder extracts robust, multi-scale features from each point.
+• The skeleton proposal module uses these features to generate candidate skeleton nodes.
+7
+
+===== PAGE 8 =====
+• The detected nodes are then organized into a graph, which the connectivity prediction module
+processes to infer the correct connections.
+• Finally, the predicted node parameters and connectivity are interpreted to generate an SWC file
+representing the reconstructed neuron.
+5.3 Loss Functions and Optimization
+The network is trained with a composite loss that includes:
+• Sampling Loss: A geometric loss (e.g., Chamfer distance) to ensure the refined point cloud
+aligns with the extracted ground-truth skeleton.
+• Detection Loss: A combination of:
+– A cross-entropy loss for the objectness scores,
+– An L2 regression loss for coordinate offsets, and
+– A regression loss (e.g., Mean Absolute Error) for the predicted radii.
+• Connectivity Loss: A cross-entropy loss on the predicted edge probabilities, supplemented
+with topology-aware regularization terms to penalize cycles, multiple parent assignments, or
+disconnected components.
+The overall loss is a weighted sum of these components, ensuring balanced optimization across the
+pipeline.
+5.4 Training Strategy
+• End-to-End Training: The entire network is trained jointly via backpropagation.
+• Data Augmentation: Employ robust augmentation techniques such as random rotations, scal-
+ing, and jittering to improve generalization.
+• Optimization: Use modern optimizers such as AdamW with cosine learning rate decay and
+label smoothing to enhance convergence.
+• Hyperparameter Tuning: Key parameters (learning rate, weight decay, loss weights, etc.) are
+tuned on a validation set to achieve optimal performance.
+5.5 Expected Outcomes and Benefits
+• Joint Optimization: End-to-end training enables the model to learn optimal representations
+and inter-module interactions, leading to improved overall reconstruction fidelity.
+• Improved Reconstruction: The composite loss drives each module to perform optimally,
+yielding an SWC output that closely reflects the true neuron structure.
+• Efficiency and Scalability: By leveraging efficient components (PointNeXt, lightweight trans-
+formers, GATv2) alongside modern training strategies, the pipeline reduces computational over-
+head and scales effectively to large datasets.
+8
+
+===== PAGE 9 =====
+5.6 Discussion
+Integrating all components into a single trainable framework allows the model to exploit synergis-
+tic effects between geometric and topological losses. This unified approach removes the need for
+separate post-processing steps (such as clustering or NMS), thereby simplifying the architecture
+while enhancing both speed and accuracy in neuron reconstruction.
+6 Evaluation and Future Work
+6.1 Evaluation Metrics
+We plan to evaluate the overall neuron reconstruction using a combination of quantitative metrics
+that assess both geometric fidelity and topological correctness. These metrics include:
+• F1-score: To evaluate the precision and recall of detected skeleton nodes.
+• Path Distance Score (PDS): To measure the accuracy of reconstructed paths relative to the
+ground truth.
+• Euclidean Score (ESA): To assess the spatial accuracy of the predicted skeleton.
+• Chamfer Distance: To measure the similarity between the predicted and ground-truth skeleton
+point sets.
+6.2 Datasets
+The primary evaluation will be conducted on the Janelia-Fly dataset from the BigNeuron project,
+which features diverse neuron morphologies. This dataset will be split into training, validation,
+and testing subsets. Additionally, we plan to explore the pipeline’s performance on other neuron
+datasets or related 3D reconstruction tasks to validate its generalizability.
+6.3 Experimental Setup
+• Training Protocols: End-to-end training will be performed using cross-validation to ensure
+robustness.
+• Hyperparameter Tuning: Key hyperparameters such as the learning rate, weight decay, and
+loss weight factors will be tuned on a validation set.
+• Hardware and Runtime: Experiments will be conducted on high-performance computing
+resources to ensure scalability.
+• Ablation Studies: Detailed ablation studies will be carried out to isolate the contributions of
+each module (adaptive sampling, enhanced encoder, advanced skeleton proposal, and connectivity
+prediction) and to assess the impact of the optional transformer fusion module.
+6.4 Results
+• Quantitative Analysis: We expect improvements in reconstruction metrics (higher F1-scores,
+lower PDS/ESA errors) compared to baseline methods.
+• Qualitative Analysis: Visualizations of the reconstructed neuron skeletons will demonstrate
+improved continuity and connectivity.
+9
+
+===== PAGE 10 =====
+• Ablation Results: Experimental results will detail how each modification contributes to overall
+performance and help identify optimal configurations.
+6.5 Future Work
+• Enhanced Transformer Integration: Explore deeper or multi-stage transformer fusion to
+further enhance global context understanding.
+• Semi-/Self-Supervised Training: Investigate methods to reduce reliance on annotated data
+by leveraging semi-supervised or self-supervised learning techniques.
+• Multi-Modal Data Fusion: Integrate additional modalities (e.g., image intensities, radius
+gradients) to further enrich feature representations.
+• Advanced Topological Methods: Explore extended persistence or multifiltration techniques
+to capture more complex topological features, potentially improving connectivity predictions.
+• Scalability and Applications: Adapt the pipeline for larger datasets and extend the approach
+to related domains such as cardiac surface reconstruction or other 3D medical image analyses.
+6.6 Discussion
+This evaluation framework is designed to rigorously test the proposed pipeline. By employing a
+diverse set of metrics and performing thorough ablation studies, we aim to validate that the im-
+provements in voxel-to-point transformation, feature encoding, skeleton proposal, and connectivity
+prediction collectively yield a higher-fidelity neuron reconstruction. The insights gained from this
+evaluation will guide future enhancements, addressing any limitations and further improving model
+performance.
+7 Conclusion
+In this work, we have presented PointNeuron2.0—a comprehensive, end-to-end pipeline for 3D
+neuron reconstruction that integrates several key modifications to enhance both geometric and
+topological accuracy. Our semi-automated voxel-to-point transformation module leverages classical
+skeleton extraction in combination with a learnable adaptive sampling process, ensuring that the
+resulting point cloud faithfully represents the neuron’s medial axis and critical branch junctions.
+Building on this foundation, our enhanced point cloud encoder replaces the original DGCNN/EdgeConv
+backbone with the state-of-the-artPointNeXt architecture, augmented with an optional lightweight
+transformer module. This design enables robust multi-scale feature extraction, capturing both fine
+local geometric details and long-range contextual information.
+Furthermore, we reformulated the skeleton proposal stage by adopting a DETR-inspired trans-
+former decoder. This approach recasts the detection of skeleton nodes as an object detection task,
+yielding high-quality, non-redundant candidate proposals that are essential for accurate neuron re-
+construction. Finally, our improved connectivity prediction module utilizes a GATv2-based graph
+neural network to predict edge probabilities, integrating both learned features and explicit geo-
+metric cues, and employing topology-aware loss functions to enforce a biologically plausible tree
+structure.
+Overall, PointNeuron2.0 represents a significant advancement in automated 3D neuron re-
+construction, providing a robust, efficient, and scalable solution for large-scale neuron analysis.
+10
