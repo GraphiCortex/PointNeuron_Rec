@@ -10,7 +10,9 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from pointneuron.data.gold166 import manifest_summary, scan_gold166, write_manifest
+from pointneuron.data.alignment import check_swc_in_volume
 from pointneuron.data.swc import parse_swc
+from pointneuron.data.vaa3d_raw import read_header
 
 
 def main() -> int:
@@ -19,6 +21,7 @@ def main() -> int:
     parser.add_argument("--output", default="tmp/gold166_manifest.json", help="Manifest JSON output path.")
     parser.add_argument("--include-without-volume", action="store_true", help="Include SWC-only folders in the manifest.")
     parser.add_argument("--include-invalid-swc", action="store_true", help="Include samples even when every SWC is structurally invalid.")
+    parser.add_argument("--require-aligned", action="store_true", help="Exclude samples whose selected SWC has nodes outside the raw volume bounds.")
     parser.add_argument("--validate-swc", action="store_true", help="Parse selected SWCs and report structural errors.")
     args = parser.parse_args()
 
@@ -31,6 +34,17 @@ def main() -> int:
         include_without_volume=args.include_without_volume,
         include_invalid_swc=args.include_invalid_swc,
     )
+    if args.require_aligned:
+        aligned_samples = []
+        for sample in samples:
+            if sample.volume_path is None:
+                continue
+            header = read_header(sample.volume_path)
+            swc = parse_swc(sample.swc_path)
+            if check_swc_in_volume(swc, header).is_aligned:
+                aligned_samples.append(sample)
+        samples = aligned_samples
+
     write_manifest(samples, root, output)
 
     print("Gold166 manifest written:", output)

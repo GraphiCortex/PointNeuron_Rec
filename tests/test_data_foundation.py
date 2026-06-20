@@ -9,7 +9,9 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from pointneuron.data.gold166 import scan_gold166
+from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
+from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
 from pointneuron.data.vaa3d_raw import decode_pbd8
 
 
@@ -89,6 +91,42 @@ class Vaa3dRawTests(unittest.TestCase):
         decoded = decode_pbd8(encoded, expected_voxels=9)
 
         self.assertEqual(decoded, bytes([0, 0, 0, 5, 6, 7, 7, 8, 10]))
+
+
+class PointCloudTests(unittest.TestCase):
+    def test_volume_to_point_cloud_uses_xyz_order(self) -> None:
+        header = Vaa3dHeader(
+            key="raw_image_stack_by_hpeng",
+            endian="L",
+            datatype=1,
+            dimensions=(2, 2, 2, 1),
+        )
+        volume = Vaa3dVolume(
+            path=Path("fake.v3draw"),
+            header=header,
+            data=bytes([0, 1, 2, 0, 3, 0, 4, 5]),
+        )
+
+        point_cloud = volume_to_point_cloud(volume, threshold=1)
+
+        self.assertEqual(
+            [(point.x, point.y, point.z, point.intensity) for point in point_cloud.points],
+            [(0, 1, 0, 2), (0, 0, 1, 3), (0, 1, 1, 4), (1, 1, 1, 5)],
+        )
+
+    def test_volume_to_point_cloud_samples_deterministically(self) -> None:
+        header = Vaa3dHeader(
+            key="raw_image_stack_by_hpeng",
+            endian="L",
+            datatype=1,
+            dimensions=(4, 1, 1, 1),
+        )
+        volume = Vaa3dVolume(path=Path("fake.v3draw"), header=header, data=bytes([1, 2, 3, 4]))
+
+        first = volume_to_point_cloud(volume, max_points=2, seed=7)
+        second = volume_to_point_cloud(volume, max_points=2, seed=7)
+
+        self.assertEqual(first.points, second.points)
 
 
 if __name__ == "__main__":

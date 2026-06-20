@@ -10,6 +10,7 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from pointneuron.data.gold166 import scan_gold166
+from pointneuron.data.alignment import check_swc_in_volume
 from pointneuron.data.swc import parse_swc
 from pointneuron.data.vaa3d_raw import read_header, read_volume, volume_stats
 
@@ -46,16 +47,13 @@ def check_sample(sample, index: int, decode_volume: bool, verbose: bool) -> bool
     zs = [node.z for node in swc.nodes]
     width, height, depth, channels = header.dimensions
 
-    out_of_bounds = [
-        node.node_id
-        for node in swc.nodes
-        if not (0 <= node.x < width and 0 <= node.y < height and 0 <= node.z < depth)
-    ]
+    report = check_swc_in_volume(swc, header)
+    out_of_bounds = report.out_of_bounds_node_ids
 
     if not verbose:
         if out_of_bounds:
             print(f"alignment_failed: index={index} sample_id={sample.sample_id} out_of_bounds_nodes={len(out_of_bounds)}")
-        return not out_of_bounds
+        return report.is_aligned
 
     print(f"sample_id: {sample.sample_id}")
     print(f"volume_path: {sample.volume_path}")
@@ -78,7 +76,8 @@ def check_sample(sample, index: int, decode_volume: bool, verbose: bool) -> bool
         for key, value in stats.items():
             print(f"volume_{key}: {value}")
 
-    return not out_of_bounds
+    return report.is_aligned
+
 
 
 if __name__ == "__main__":

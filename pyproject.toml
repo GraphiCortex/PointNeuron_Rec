@@ -3,9 +3,10 @@ name = "pointneuron"
 version = "0.1.0"
 description = "PointNeuron pipeline reimplementation on Gold166 data."
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+  "numpy>=1.26",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-
