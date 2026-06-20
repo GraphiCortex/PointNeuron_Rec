@@ -13,6 +13,7 @@ py scripts\build_gold166_manifest.py --root data\gold166 --output tmp\gold166_ma
 py scripts\inspect_volume.py --sample-index 0 --decode
 py scripts\check_sample_alignment.py --sample-index 0 --decode-volume
 py scripts\build_point_cloud.py --sample-index 0 --threshold 0 --max-points 4096 --output tmp\sample0_points.csv
+py scripts\visualize_sample.py --sample-index 0 --threshold 0 --max-points 8192 --output tmp\visualizations\sample0.html
 ```
 
 Create `configs/local.json` from `configs/local.example.json` and set the local
@@ -29,3 +30,6 @@ volume bounds.
 The point-cloud builder follows the initial PointNeuron transformation: voxels
 with intensity greater than the threshold become `(x, y, z, intensity)` point
 records, optionally downsampled for inspection or patch construction.
+
+The visualization script writes a local HTML viewer with sampled foreground
+points and the selected SWC skeleton overlay.
