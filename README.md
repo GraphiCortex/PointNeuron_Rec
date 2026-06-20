@@ -14,6 +14,7 @@ py scripts\inspect_volume.py --sample-index 0 --decode
 py scripts\check_sample_alignment.py --sample-index 0 --decode-volume
 py scripts\build_point_cloud.py --sample-index 0 --threshold 0 --max-points 4096 --output tmp\sample0_points.csv
 py scripts\visualize_sample.py --sample-index 0 --threshold 0 --max-points 8192 --output tmp\visualizations\sample0.html
+py scripts\build_training_cache.py --sample-index 0 --threshold 0 --max-points 4096 --output-dir tmp\training_cache
 ```
 
 Create `configs/local.json` from `configs/local.example.json` and set the local
@@ -33,3 +34,7 @@ records, optionally downsampled for inspection or patch construction.
 
 The visualization script writes a local HTML viewer with sampled foreground
 points and the selected SWC skeleton overlay.
+
+The training-cache builder writes `.npz` records containing sampled input
+points, SWC skeleton nodes, edge indices, and metadata for downstream model
+training.

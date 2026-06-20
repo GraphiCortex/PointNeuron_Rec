@@ -11,6 +11,8 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
+from pointneuron.data.training_cache import skeleton_edge_index, skeleton_to_array
+from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
 from pointneuron.data.vaa3d_raw import decode_pbd8
 
@@ -127,6 +129,21 @@ class PointCloudTests(unittest.TestCase):
         second = volume_to_point_cloud(volume, max_points=2, seed=7)
 
         self.assertEqual(first.points, second.points)
+
+
+class TrainingCacheTests(unittest.TestCase):
+    def test_skeleton_arrays_and_edges_use_node_indices(self) -> None:
+        skeleton = (
+            SkeletonRecord(node_id=10, x=0, y=0, z=0, radius=1, parent_id=-1),
+            SkeletonRecord(node_id=20, x=1, y=0, z=0, radius=1, parent_id=10),
+            SkeletonRecord(node_id=30, x=2, y=0, z=0, radius=1, parent_id=20),
+        )
+
+        nodes = skeleton_to_array(skeleton)
+        edges = skeleton_edge_index(skeleton)
+
+        self.assertEqual(nodes.shape, (3, 6))
+        self.assertEqual(edges.tolist(), [[0, 1], [1, 2]])
 
 
 if __name__ == "__main__":
