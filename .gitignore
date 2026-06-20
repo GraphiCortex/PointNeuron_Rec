@@ -1,8 +1,8 @@
-data/
+/data/
 AGENTS.md
 PROJECT_BRIEF.md
 docs/pointneuron_notes.md
-tmp/
+/tmp/
 __pycache__/
 *.py[cod]
 .pytest_cache/

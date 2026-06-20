@@ -10,6 +10,7 @@ if str(SRC_ROOT) not in sys.path:
 
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.swc import parse_swc
+from pointneuron.data.vaa3d_raw import decode_pbd8
 
 
 class SwcParsingTests(unittest.TestCase):
@@ -68,6 +69,26 @@ class Gold166ScanTests(unittest.TestCase):
 
             self.assertEqual(len(samples), 1)
             self.assertEqual(samples[0].swc_selection, "base")
+
+
+class Vaa3dRawTests(unittest.TestCase):
+    def test_decode_pbd8_repeat_literal_and_difference_runs(self) -> None:
+        encoded = bytes(
+            [
+                130,
+                0,
+                2,
+                5,
+                6,
+                7,
+                35,
+                0b00011011,
+            ]
+        )
+
+        decoded = decode_pbd8(encoded, expected_voxels=9)
+
+        self.assertEqual(decoded, bytes([0, 0, 0, 5, 6, 7, 7, 8, 10]))
 
 
 if __name__ == "__main__":
