@@ -13,6 +13,7 @@ from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
 from pointneuron.data.training_cache import skeleton_edge_index, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
+from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
 from pointneuron.data.vaa3d_raw import decode_pbd8
 
@@ -144,6 +145,21 @@ class TrainingCacheTests(unittest.TestCase):
 
         self.assertEqual(nodes.shape, (3, 6))
         self.assertEqual(edges.tolist(), [[0, 1], [1, 2]])
+
+
+class SplitTests(unittest.TestCase):
+    def test_split_records_is_deterministic(self) -> None:
+        records = [f"sample_{index}.npz" for index in range(10)]
+
+        first = split_records(records, seed=11)
+        second = split_records(records, seed=11)
+
+        self.assertEqual(first, second)
+        self.assertEqual({key: len(value) for key, value in first.items()}, {"train": 7, "val": 1, "test": 2})
+
+    def test_split_ratios_must_sum_to_one(self) -> None:
+        with self.assertRaises(ValueError):
+            split_records(["a", "b", "c"], ratios=SplitRatios(train=0.5, val=0.3, test=0.3))
 
 
 if __name__ == "__main__":
