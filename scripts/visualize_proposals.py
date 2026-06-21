@@ -23,6 +23,8 @@ def main() -> int:
     parser.add_argument("--output", default="tmp/visualizations/proposals.html", help="Output HTML file.")
     parser.add_argument("--k", type=int, help="Override kNN neighbors. Defaults to checkpoint value or 20.")
     parser.add_argument("--score-threshold", type=float, default=0.5, help="Minimum objectness probability to consider.")
+    parser.add_argument("--min-candidates", type=int, default=0, help="Lower the score threshold per sample to include at least this many candidates before NMS.")
+    parser.add_argument("--candidate-score-floor", type=float, default=0.0, help="Minimum score allowed when --min-candidates lowers the threshold.")
     parser.add_argument("--top-proposals", type=int, default=256, help="Maximum proposals to render after NMS.")
     parser.add_argument("--nms-mode", default="sphere", choices=["sphere", "distance"], help="Proposal downsampling mode.")
     parser.add_argument("--nms-radius", type=float, default=8.0, help="Distance NMS radius in voxels.")
@@ -91,6 +93,8 @@ def main() -> int:
         radii=radii,
         scores=probabilities,
         score_threshold=args.score_threshold,
+        min_candidates=args.min_candidates,
+        candidate_score_floor=args.candidate_score_floor,
         top_proposals=args.top_proposals,
         nms_mode=args.nms_mode,
         nms_radius=args.nms_radius,
@@ -167,10 +171,19 @@ def select_proposals(
     radii=None,
     nms_mode: str = "sphere",
     iou_threshold: float = 0.1,
+    min_candidates: int = 0,
+    candidate_score_floor: float = 0.0,
 ) -> list[int]:
     import torch
 
     candidate_indices = torch.nonzero(scores >= score_threshold, as_tuple=False).flatten()
+    if min_candidates > 0 and candidate_indices.numel() < min_candidates:
+        floor_indices = torch.nonzero(scores >= candidate_score_floor, as_tuple=False).flatten()
+        if floor_indices.numel() > candidate_indices.numel():
+            floor_scores = scores[floor_indices]
+            count = min(int(min_candidates), int(floor_indices.numel()))
+            top_order = floor_scores.argsort(descending=True)[:count]
+            candidate_indices = floor_indices[top_order]
     if candidate_indices.numel() == 0:
         return []
 
