@@ -72,6 +72,7 @@ def main() -> int:
     total_covered = 0
     distance_means = []
     coverage_rates = []
+    score_quantile_rows = []
 
     with torch.no_grad():
         for record_index, path in enumerate(paths):
@@ -87,6 +88,7 @@ def main() -> int:
             scores = output.objectness_logits.softmax(dim=-1)[0, :, 1]
             centers = output.center_proposals[0]
             valid_skeleton = skeleton_nodes[0, skeleton_mask[0]][:, 1:4]
+            score_quantile_rows.append(scores.detach().float())
 
             selected_indices = select_proposals(
                 centers=centers,
@@ -137,6 +139,16 @@ def main() -> int:
         print(f"mean_selected_distance: {statistics.fmean(distance_means):.4f}")
     if coverage_rates:
         print(f"mean_sample_coverage: {statistics.fmean(coverage_rates):.4f}")
+    if score_quantile_rows:
+        all_scores = torch.cat(score_quantile_rows)
+        quantiles = all_scores.quantile(torch.tensor([0.5, 0.9, 0.99, 1.0], device=all_scores.device))
+        print(
+            "score_quantiles: "
+            f"p50={float(quantiles[0].item()):.4f} "
+            f"p90={float(quantiles[1].item()):.4f} "
+            f"p99={float(quantiles[2].item()):.4f} "
+            f"max={float(quantiles[3].item()):.4f}"
+        )
     print("lowest_coverage_samples:")
     for coverage, precision, record_index, sample_id, selected_count, mean_distance, median_distance in rows[:5]:
         print(

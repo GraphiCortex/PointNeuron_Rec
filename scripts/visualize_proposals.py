@@ -79,6 +79,7 @@ def main() -> int:
         valid_skeleton = skeleton_nodes[0, skeleton_mask[0]]
         distances = torch.cdist(centers, valid_skeleton[:, 1:4]).min(dim=1).values
 
+    score_quantiles = probability_quantiles(probabilities)
     selected_indices = select_proposals(
         centers=centers,
         scores=probabilities,
@@ -107,10 +108,11 @@ def main() -> int:
         covered_nodes = 0
 
     metadata = batch["metadata"][0]
+    foreground_count = int(metadata.get("total_foreground_count", metadata.get("patch_foreground_count", points.shape[1])))
     html = render_html(
         sample_id=str(metadata.get("sample_id", paths[args.record_index])),
         volume_dimensions=tuple(metadata["volume_dimensions"]),
-        total_foreground_count=int(metadata["total_foreground_count"]),
+        total_foreground_count=foreground_count,
         points=batch["points"][0].cpu().tolist(),
         skeleton=batch["skeleton_nodes"][0, batch["skeleton_mask"][0]].cpu().tolist(),
         proposals=selected,
@@ -127,6 +129,15 @@ def main() -> int:
     print(f"sample_id: {metadata.get('sample_id', paths[args.record_index])}")
     print(f"record_path: {paths[args.record_index]}")
     print(f"candidate_points: {points.shape[1]}")
+    print(
+        "score_quantiles: "
+        f"min={score_quantiles['min']:.4f} "
+        f"p50={score_quantiles['p50']:.4f} "
+        f"p90={score_quantiles['p90']:.4f} "
+        f"p99={score_quantiles['p99']:.4f} "
+        f"max={score_quantiles['max']:.4f}"
+    )
+    print(f"above_score_threshold: {int((probabilities >= args.score_threshold).sum().item())}/{probabilities.numel()}")
     print(f"selected_proposals: {len(selected)}")
     if selected:
         print(f"mean_score: {statistics.fmean(selected_scores):.4f}")
@@ -143,7 +154,7 @@ def select_proposals(centers, scores, score_threshold: float, top_proposals: int
 
     candidate_indices = torch.nonzero(scores >= score_threshold, as_tuple=False).flatten()
     if candidate_indices.numel() == 0:
-        candidate_indices = torch.arange(scores.shape[0], device=scores.device)
+        return []
 
     candidate_scores = scores[candidate_indices]
     order = candidate_scores.argsort(descending=True)
@@ -165,6 +176,19 @@ def select_proposals(centers, scores, score_threshold: float, top_proposals: int
         if keep:
             selected.append(index)
     return selected
+
+
+def probability_quantiles(probabilities) -> dict[str, float]:
+    quantiles = probabilities.detach().float().quantile(
+        probabilities.new_tensor([0.0, 0.5, 0.9, 0.99, 1.0], dtype=probabilities.dtype).float()
+    )
+    return {
+        "min": float(quantiles[0].item()),
+        "p50": float(quantiles[1].item()),
+        "p90": float(quantiles[2].item()),
+        "p99": float(quantiles[3].item()),
+        "max": float(quantiles[4].item()),
+    }
 
 
 def render_html(
