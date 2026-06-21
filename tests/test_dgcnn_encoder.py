@@ -14,6 +14,8 @@ class TrainProposalCliTests(unittest.TestCase):
         self.assertIsNone(args.target_radius_floor)
         self.assertEqual(args.objectness_radius_floor, 3.0)
         self.assertEqual(args.radius_target_floor, 1.0)
+        self.assertEqual(args.endpoint_loss_weight, 1.0)
+        self.assertEqual(args.branch_loss_weight, 1.0)
 
 
 @unittest.skipIf(importlib.util.find_spec("torch") is None, "PyTorch is not installed")
@@ -215,6 +217,24 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         expected = loss.offsets + 10.0 * loss.objectness + loss.radius
         self.assertTrue(torch.allclose(loss.total, expected))
+
+    def test_skeleton_role_weights_emphasize_local_endpoints_and_branches(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal_loss import skeleton_role_weights
+
+        skeleton_nodes = torch.tensor(
+            [
+                [1.0, 0.0, 0.0, 0.0, 1.0, -1.0],
+                [2.0, 1.0, 0.0, 0.0, 1.0, 1.0],
+                [3.0, 2.0, 0.0, 0.0, 1.0, 2.0],
+                [4.0, 1.0, 1.0, 0.0, 1.0, 1.0],
+            ]
+        )
+
+        weights = skeleton_role_weights(skeleton_nodes, endpoint_weight=5.0, branch_weight=2.0)
+
+        self.assertEqual(weights.tolist(), [2.0, 1.0, 5.0, 5.0])
 
     def test_sphere_iou_detects_overlap(self) -> None:
         import torch

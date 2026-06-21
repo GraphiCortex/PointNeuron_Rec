@@ -33,6 +33,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--offset-weight", type=float, default=1.0, help="Weight for paper-style Chamfer offset loss.")
     parser.add_argument("--objectness-weight", type=float, default=10.0, help="Weight for paper-style objectness loss.")
     parser.add_argument("--radius-weight", type=float, default=1.0, help="Weight for paper-style radius loss.")
+    parser.add_argument("--endpoint-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC endpoint nodes.")
+    parser.add_argument("--branch-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC branch nodes.")
     parser.add_argument("--num-workers", type=int, default=0, help="DataLoader worker count. Keep 0 on Windows at first.")
     parser.add_argument("--drop-last", action="store_true", help="Drop the final incomplete batch.")
     parser.add_argument("--limit-batches", type=int, help="Optional maximum batches per epoch for quick checks.")
@@ -118,6 +120,8 @@ def main() -> int:
     radius_target_floor = args.target_radius_floor if args.target_radius_floor is not None else args.radius_target_floor
     print(f"objectness_radius_floor: {objectness_radius_floor}")
     print(f"radius_target_floor: {radius_target_floor}")
+    print(f"endpoint_loss_weight: {args.endpoint_loss_weight}")
+    print(f"branch_loss_weight: {args.branch_loss_weight}")
 
     checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
     if checkpoint_path is not None:
@@ -167,6 +171,8 @@ def main() -> int:
                         positive_class_weight=args.positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        endpoint_weight=args.endpoint_loss_weight,
+                        branch_weight=args.branch_loss_weight,
                     )
                     offset_value = float(loss.offsets.item())
                 else:
@@ -206,6 +212,8 @@ def main() -> int:
                 offset_weight=args.offset_weight,
                 objectness_weight=args.objectness_weight,
                 radius_weight=args.radius_weight,
+                endpoint_loss_weight=args.endpoint_loss_weight,
+                branch_loss_weight=args.branch_loss_weight,
                 use_amp=use_amp,
                 torch=torch,
                 build_skeleton_proposal_targets=build_skeleton_proposal_targets,
@@ -314,6 +322,8 @@ def evaluate(
     offset_weight: float,
     objectness_weight: float,
     radius_weight: float,
+    endpoint_loss_weight: float,
+    branch_loss_weight: float,
     use_amp: bool,
     torch,
     build_skeleton_proposal_targets,
@@ -354,6 +364,8 @@ def evaluate(
                         positive_class_weight=positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        endpoint_weight=endpoint_loss_weight,
+                        branch_weight=branch_loss_weight,
                     )
                     offset_value = float(loss.offsets.item())
                 else:

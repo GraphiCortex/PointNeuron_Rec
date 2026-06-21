@@ -125,6 +125,8 @@ def paper_skeleton_proposal_loss(
     target_radius_floor: float = 0.0,
     objectness_radius_floor: float | None = None,
     radius_target_floor: float | None = None,
+    endpoint_weight: float = 1.0,
+    branch_weight: float = 1.0,
     chunk_size: int = 512,
 ) -> PaperSkeletonProposalLoss:
     if skeleton_nodes.ndim != 3 or skeleton_nodes.shape[-1] < 5:
@@ -152,6 +154,10 @@ def paper_skeleton_proposal_loss(
         radius_floor = target_radius_floor if radius_target_floor is None else radius_target_floor
         objectness_radius = raw_radius.clamp_min(float(objectness_floor))
         gt_radius = raw_radius.clamp_min(float(radius_floor))
+        gt_weights = skeleton_role_weights(valid_nodes, endpoint_weight=endpoint_weight, branch_weight=branch_weight).to(
+            dtype=points.dtype,
+            device=points.device,
+        )
         proposals = output.center_proposals[batch_index]
         predicted_radius = output.radius[batch_index]
         logits = output.objectness_logits[batch_index]
@@ -160,7 +166,11 @@ def paper_skeleton_proposal_loss(
         gt_to_proposal_distance, _ = nearest_distances(gt_centers, proposals, chunk_size=chunk_size)
 
         scale = coordinate_scale(points[batch_index : batch_index + 1]).to(dtype=points.dtype, device=points.device)
-        offset_loss = (proposal_to_gt_distance.square().mean() + gt_to_proposal_distance.square().mean()) / scale.square()
+        proposal_weights = gt_weights[nearest_indices]
+        offset_loss = (
+            weighted_mean(proposal_to_gt_distance.square(), proposal_weights)
+            + weighted_mean(gt_to_proposal_distance.square(), gt_weights)
+        ) / scale.square()
         offset_losses.append(offset_loss)
 
         nearest_radius = gt_radius[nearest_indices].squeeze(-1)
@@ -172,10 +182,13 @@ def paper_skeleton_proposal_loss(
             dtype=logits.dtype,
             device=logits.device,
         )
-        objectness_losses.append(F.cross_entropy(logits, labels, weight=class_weight))
+        objectness = F.cross_entropy(logits, labels, weight=class_weight, reduction="none")
+        objectness_losses.append(weighted_mean(objectness, proposal_weights))
 
         if bool(labels.any()):
-            radius_losses.append(F.l1_loss(predicted_radius[labels.bool()], nearest_radius[labels.bool()].unsqueeze(-1)))
+            positive_mask = labels.bool()
+            radius_error = F.l1_loss(predicted_radius[positive_mask], nearest_radius[positive_mask].unsqueeze(-1), reduction="none").squeeze(-1)
+            radius_losses.append(weighted_mean(radius_error, proposal_weights[positive_mask]))
         else:
             radius_losses.append(predicted_radius.sum() * 0.0)
 
@@ -214,6 +227,29 @@ def nearest_distances(query: torch.Tensor, reference: torch.Tensor, chunk_size: 
         distances.append(chunk_distance)
         indices.append(chunk_index)
     return torch.cat(distances, dim=0), torch.cat(indices, dim=0)
+
+
+def weighted_mean(values: torch.Tensor, weights: torch.Tensor) -> torch.Tensor:
+    weights = weights.to(dtype=values.dtype, device=values.device)
+    return (values * weights).sum() / weights.sum().clamp_min(1.0)
+
+
+def skeleton_role_weights(skeleton_nodes: torch.Tensor, endpoint_weight: float = 1.0, branch_weight: float = 1.0) -> torch.Tensor:
+    weights = torch.ones((skeleton_nodes.shape[0],), dtype=skeleton_nodes.dtype, device=skeleton_nodes.device)
+    if skeleton_nodes.shape[0] == 0 or (float(endpoint_weight) == 1.0 and float(branch_weight) == 1.0):
+        return weights
+
+    node_ids = skeleton_nodes[:, 0].to(dtype=torch.long)
+    parent_ids = skeleton_nodes[:, 5].to(dtype=torch.long)
+    child_counts = torch.zeros((skeleton_nodes.shape[0],), dtype=torch.long, device=skeleton_nodes.device)
+    for index, node_id in enumerate(node_ids.tolist()):
+        child_counts[index] = (parent_ids == int(node_id)).sum()
+
+    endpoint_mask = (child_counts == 0) & (parent_ids >= 0)
+    branch_mask = child_counts > 1
+    weights = torch.where(endpoint_mask, weights.new_full(weights.shape, float(endpoint_weight)), weights)
+    weights = torch.where(branch_mask, weights.new_full(weights.shape, float(branch_weight)), weights)
+    return weights
 
 
 def coordinate_scale(points: torch.Tensor) -> torch.Tensor:
