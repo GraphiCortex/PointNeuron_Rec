@@ -18,7 +18,12 @@ def main() -> int:
     parser.add_argument("--record", required=True, help="Connectivity record .npz.")
     parser.add_argument("--checkpoint", required=True, help="Connectivity checkpoint from scripts/train_connectivity.py.")
     parser.add_argument("--threshold", type=float, default=0.5, help="Minimum edge probability.")
-    parser.add_argument("--selection", default="top", choices=["top", "maxst"], help="How to select predicted edges.")
+    parser.add_argument(
+        "--selection",
+        default="top",
+        choices=["top", "maxst", "threshold_mst"],
+        help="How to select predicted edges.",
+    )
     parser.add_argument("--max-edges", type=int, default=0, help="Maximum edges to keep. 0 defaults to N - 1.")
     parser.add_argument("--min-edges", type=int, default=0, help="Keep this many top edges even below threshold. 0 disables.")
     parser.add_argument("--output", default="tmp/graphs/connectivity_predicted_graph.npz", help="Output graph .npz.")
@@ -65,9 +70,21 @@ def main() -> int:
         probabilities = torch.sigmoid(output.adjacency_logits).detach().cpu().numpy()
 
     node_count = probabilities.shape[0]
-    max_edges = args.max_edges if args.max_edges > 0 else max(0, node_count - 1)
+    if args.max_edges > 0:
+        max_edges = args.max_edges
+    elif args.selection == "threshold_mst":
+        max_edges = 0
+    else:
+        max_edges = max(0, node_count - 1)
     if args.selection == "maxst":
         edges, edge_probabilities = maximum_spanning_tree(probabilities)
+    elif args.selection == "threshold_mst":
+        edges, edge_probabilities = threshold_then_connect(
+            probabilities=probabilities,
+            threshold=args.threshold,
+            max_edges=max_edges,
+            min_edges=args.min_edges,
+        )
     else:
         edges, edge_probabilities = select_edges(
             probabilities=probabilities,
@@ -176,6 +193,75 @@ def maximum_spanning_tree(probabilities: np.ndarray) -> tuple[np.ndarray, np.nda
             if len(selected) == max(0, node_count - 1):
                 break
 
+    if not selected:
+        return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
+    edges = np.array([[left, right] for _probability, left, right in selected], dtype=np.int64)
+    edge_probabilities = np.array([probability for probability, _left, _right in selected], dtype=np.float32)
+    return edges, edge_probabilities
+
+
+def threshold_then_connect(
+    probabilities: np.ndarray,
+    threshold: float,
+    max_edges: int,
+    min_edges: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    node_count = probabilities.shape[0]
+    selected_edges, selected_probabilities = select_edges(
+        probabilities=probabilities,
+        threshold=threshold,
+        max_edges=0,
+        min_edges=min_edges,
+    )
+    selected = [
+        (float(probability), int(edge[0]), int(edge[1]))
+        for edge, probability in zip(selected_edges.tolist(), selected_probabilities.tolist())
+    ]
+    selected_pairs = {(min(left, right), max(left, right)) for _probability, left, right in selected}
+
+    parent = list(range(node_count))
+    rank = [0] * node_count
+
+    def find(node: int) -> int:
+        while parent[node] != node:
+            parent[node] = parent[parent[node]]
+            node = parent[node]
+        return node
+
+    def union(left: int, right: int) -> bool:
+        left_root = find(left)
+        right_root = find(right)
+        if left_root == right_root:
+            return False
+        if rank[left_root] < rank[right_root]:
+            parent[left_root] = right_root
+        elif rank[left_root] > rank[right_root]:
+            parent[right_root] = left_root
+        else:
+            parent[right_root] = left_root
+            rank[left_root] += 1
+        return True
+
+    for _probability, left, right in selected:
+        union(left, right)
+
+    candidates = [
+        (float(probabilities[left, right]), left, right)
+        for left in range(node_count)
+        for right in range(left + 1, node_count)
+        if (left, right) not in selected_pairs
+    ]
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    for probability, left, right in candidates:
+        if union(left, right):
+            selected.append((probability, left, right))
+            selected_pairs.add((left, right))
+            if connected_component_count(node_count, np.array([[edge_left, edge_right] for _p, edge_left, edge_right in selected], dtype=np.int64)) == 1:
+                break
+
+    selected.sort(reverse=True, key=lambda item: item[0])
+    if max_edges > 0 and len(selected) > max_edges:
+        selected = selected[:max_edges]
     if not selected:
         return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
     edges = np.array([[left, right] for _probability, left, right in selected], dtype=np.int64)
