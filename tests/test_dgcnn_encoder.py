@@ -2,6 +2,17 @@ import importlib.util
 import unittest
 
 
+class TrainProposalCliTests(unittest.TestCase):
+    def test_train_proposal_defaults_match_paper_loss_weights(self) -> None:
+        from scripts.train_proposal import build_arg_parser
+
+        args = build_arg_parser().parse_args(["--split-file", "split.json"])
+
+        self.assertEqual(args.offset_weight, 1.0)
+        self.assertEqual(args.objectness_weight, 10.0)
+        self.assertEqual(args.radius_weight, 1.0)
+
+
 @unittest.skipIf(importlib.util.find_spec("torch") is None, "PyTorch is not installed")
 class DGCNNEncoderTests(unittest.TestCase):
     def test_encoder_output_shape(self) -> None:
@@ -109,6 +120,28 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         self.assertEqual(loss.positive_count, 1)
         self.assertTrue(torch.isfinite(loss.total))
+
+    def test_paper_skeleton_proposal_loss_defaults_match_paper_weights(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import paper_skeleton_proposal_loss
+
+        points = torch.tensor([[[0.0, 0.0, 0.0, 10.0], [10.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.5, 0.0, 0.0, 2.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        output = SkeletonProposalOutput(
+            offsets=torch.zeros(1, 2, 3),
+            objectness_logits=torch.zeros(1, 2, 2),
+            radius=torch.ones(1, 2, 1),
+            center_proposals=points[..., :3],
+            raw=torch.zeros(1, 2, 6),
+        )
+
+        loss = paper_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points)
+
+        expected = loss.offsets + 10.0 * loss.objectness + loss.radius
+        self.assertTrue(torch.allclose(loss.total, expected))
 
     def test_sphere_iou_detects_overlap(self) -> None:
         import torch

@@ -12,7 +12,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.torch_dataset import TrainingCacheDataset, collate_training_records, load_split_paths
 
 
-def main() -> int:
+def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Train the PointNeuron skeleton proposal module.")
     parser.add_argument("--split-file", required=True, help="Path to split JSON.")
     parser.add_argument("--split", default="train", choices=["train", "val", "test"], help="Split to train on.")
@@ -27,15 +27,20 @@ def main() -> int:
     parser.add_argument("--radius-scale", type=float, default=1.5, help="Also mark positives inside radius * this value.")
     parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
     parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest"], help="Skeleton proposal loss to train with.")
-    parser.add_argument("--offset-weight", type=float, default=10.0, help="Weight for paper-style Chamfer offset loss.")
-    parser.add_argument("--objectness-weight", type=float, default=1.0, help="Weight for paper-style objectness loss.")
+    parser.add_argument("--offset-weight", type=float, default=1.0, help="Weight for paper-style Chamfer offset loss.")
+    parser.add_argument("--objectness-weight", type=float, default=10.0, help="Weight for paper-style objectness loss.")
     parser.add_argument("--radius-weight", type=float, default=1.0, help="Weight for paper-style radius loss.")
     parser.add_argument("--num-workers", type=int, default=0, help="DataLoader worker count. Keep 0 on Windows at first.")
     parser.add_argument("--drop-last", action="store_true", help="Drop the final incomplete batch.")
     parser.add_argument("--limit-batches", type=int, help="Optional maximum batches per epoch for quick checks.")
     parser.add_argument("--amp", action="store_true", help="Use CUDA automatic mixed precision.")
-    parser.add_argument("--checkpoint", help="Optional path to save a checkpoint after training.")
+    parser.add_argument("--checkpoint", help="Optional path to save a checkpoint. With validation, the best validation epoch is saved.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
+    return parser
+
+
+def main() -> int:
+    parser = build_arg_parser()
     args = parser.parse_args()
 
     try:
@@ -106,6 +111,12 @@ def main() -> int:
     print(f"k: {args.k}")
     print(f"loss_mode: {args.loss_mode}")
     print(f"geometric_feature_dim: {encoder.geometric_feature_dim}")
+
+    checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
+    if checkpoint_path is not None:
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    best_val_loss: float | None = None
+    best_epoch: int | None = None
 
     for epoch in range(1, args.epochs + 1):
         encoder.train()
@@ -189,24 +200,61 @@ def main() -> int:
                 skeleton_proposal_loss=skeleton_proposal_loss,
             )
             message += f" {format_metrics('val', validation)}"
+            val_loss = validation.mean("total")
+            if checkpoint_path is not None and (best_val_loss is None or val_loss < best_val_loss):
+                best_val_loss = val_loss
+                best_epoch = epoch
+                save_checkpoint(
+                    torch=torch,
+                    path=checkpoint_path,
+                    encoder=encoder,
+                    proposal=proposal,
+                    args=args,
+                    epoch=epoch,
+                    val_loss=val_loss,
+                )
+                message += " checkpoint=best"
         if device == "cuda":
             message += f" cuda_reserved_mb={torch.cuda.memory_reserved() / 1024 / 1024:.2f}"
         print(message)
 
-    if args.checkpoint:
-        checkpoint_path = Path(args.checkpoint)
-        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
-        torch.save(
-            {
-                "encoder": encoder.state_dict(),
-                "proposal": proposal.state_dict(),
-                "args": vars(args),
-            },
-            checkpoint_path,
-        )
-        print(f"checkpoint: {checkpoint_path}")
+    if checkpoint_path is not None:
+        if best_val_loss is None:
+            save_checkpoint(
+                torch=torch,
+                path=checkpoint_path,
+                encoder=encoder,
+                proposal=proposal,
+                args=args,
+                epoch=args.epochs,
+                val_loss=None,
+            )
+            print(f"checkpoint: {checkpoint_path}")
+        else:
+            print(f"checkpoint: {checkpoint_path} best_epoch={best_epoch} best_val_loss={best_val_loss:.4f}")
 
     return 0
+
+
+def save_checkpoint(
+    torch,
+    path: Path,
+    encoder,
+    proposal,
+    args: argparse.Namespace,
+    epoch: int,
+    val_loss: float | None,
+) -> None:
+    torch.save(
+        {
+            "encoder": encoder.state_dict(),
+            "proposal": proposal.state_dict(),
+            "args": vars(args),
+            "epoch": epoch,
+            "val_loss": val_loss,
+        },
+        path,
+    )
 
 
 class RunningAverages:
