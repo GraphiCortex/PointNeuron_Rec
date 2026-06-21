@@ -173,34 +173,67 @@ def select_proposals(
     candidate_scores = scores[candidate_indices]
     order = candidate_scores.argsort(descending=True)
     ordered_indices = candidate_indices[order[: max(top_proposals * 4, top_proposals)]]
+    ordered_indices_cpu = ordered_indices.detach().cpu()
+    ordered_centers = centers[ordered_indices].detach().float().cpu()
+    ordered_radii = None
+    if radii is not None:
+        ordered_radii = radii[ordered_indices].detach().float().clamp_min(0.0).cpu()
 
     selected: list[int] = []
+    selected_positions: list[int] = []
     radius_squared = float(nms_radius) ** 2
-    for tensor_index in ordered_indices:
-        index = int(tensor_index.item())
+    for position, tensor_index in enumerate(ordered_indices_cpu):
+        index = int(tensor_index)
         if len(selected) >= top_proposals:
             break
-        center = centers[index]
         keep = True
-        for selected_index in selected:
-            if nms_mode == "sphere" and radii is not None:
-                iou = sphere_iou(
-                    center,
-                    float(radii[index].clamp_min(0.0).item()),
-                    centers[selected_index],
-                    float(radii[selected_index].clamp_min(0.0).item()),
-                )
-                if iou > iou_threshold:
-                    keep = False
-                    break
+        if selected_positions:
+            center = ordered_centers[position]
+            selected_centers = ordered_centers[selected_positions]
+            if nms_mode == "sphere" and ordered_radii is not None:
+                ious = sphere_iou_many(center, ordered_radii[position], selected_centers, ordered_radii[selected_positions])
+                keep = bool((ious <= iou_threshold).all().item())
             else:
-                distance_squared = torch.sum((center - centers[selected_index]) ** 2).item()
-                if distance_squared <= radius_squared:
-                    keep = False
-                    break
+                distance_squared = ((selected_centers - center) ** 2).sum(dim=1)
+                keep = bool((distance_squared > radius_squared).all().item())
         if keep:
             selected.append(index)
+            selected_positions.append(position)
     return selected
+
+
+def sphere_iou_many(center_a, radius_a, centers_b, radii_b):
+    import math
+    import torch
+
+    radius_a = radius_a.clamp_min(0.0)
+    radii_b = radii_b.clamp_min(0.0)
+    distances = torch.linalg.norm(centers_b - center_a, dim=1)
+    volume_a = 4.0 * math.pi * radius_a**3 / 3.0
+    volumes_b = 4.0 * math.pi * radii_b**3 / 3.0
+    valid = (radius_a > 0.0) & (radii_b > 0.0)
+
+    intersections = torch.zeros_like(distances)
+    contained = valid & (distances <= torch.abs(radius_a - radii_b))
+    separated = valid & (distances >= radius_a + radii_b)
+    partial = valid & ~contained & ~separated
+    intersections[contained] = torch.minimum(volume_a.expand_as(volumes_b)[contained], volumes_b[contained])
+    if bool(partial.any()):
+        partial_distances = distances[partial].clamp_min(1e-6)
+        partial_radii = radii_b[partial]
+        term = radius_a + partial_radii - partial_distances
+        intersections[partial] = (
+            math.pi
+            * term**2
+            * (
+                partial_distances**2
+                + 2.0 * partial_distances * (radius_a + partial_radii)
+                - 3.0 * (radius_a - partial_radii) ** 2
+            )
+            / (12.0 * partial_distances)
+        )
+    unions = volume_a + volumes_b - intersections
+    return torch.where(unions > 0.0, intersections / unions, torch.zeros_like(unions))
 
 
 def sphere_iou(center_a, radius_a: float, center_b, radius_b: float) -> float:

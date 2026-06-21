@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 from pathlib import Path
 import statistics
 import sys
@@ -30,6 +31,7 @@ def main() -> int:
     parser.add_argument("--match-distance", type=float, default=6.0, help="Proposal-to-SWC distance counted as a hit.")
     parser.add_argument("--coverage-distance", type=float, default=8.0, help="SWC node distance counted as covered.")
     parser.add_argument("--max-records", type=int, help="Optional limit for a quick check.")
+    parser.add_argument("--progress-every", type=int, default=1, help="Print progress every N records. Set 0 to disable.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
     args = parser.parse_args()
 
@@ -92,6 +94,10 @@ def main() -> int:
             radii = output.radius[0, :, 0]
             valid_skeleton = skeleton_nodes[0, skeleton_mask[0]][:, 1:4]
             score_quantile_rows.append(scores.detach().float())
+            score_quantiles = scores.detach().float().quantile(
+                torch.tensor([0.5, 0.9, 0.99, 1.0], device=scores.device)
+            )
+            above_threshold = int((scores >= args.score_threshold).sum().item())
 
             selected_indices = select_proposals(
                 centers=centers,
@@ -131,7 +137,29 @@ def main() -> int:
                 distance_means.append(mean_distance)
             coverage_rates.append(coverage)
 
-            rows.append((coverage, precision, record_index, metadata.get("sample_id", path), selected_count, mean_distance, median_distance))
+            rows.append(
+                (
+                    coverage,
+                    precision,
+                    record_index,
+                    metadata.get("sample_id", path),
+                    selected_count,
+                    mean_distance,
+                    median_distance,
+                    above_threshold,
+                    tuple(float(value.item()) for value in score_quantiles),
+                    node_count,
+                )
+            )
+            if args.progress_every > 0 and (record_index + 1) % args.progress_every == 0:
+                print(
+                    f"evaluated {record_index + 1}/{len(paths)} "
+                    f"candidates={above_threshold} selected={selected_count} "
+                    f"precision={precision:.4f} coverage={coverage:.4f} "
+                    f"score_p99={float(score_quantiles[2].item()):.4f} "
+                    f"score_max={float(score_quantiles[3].item()):.4f}",
+                    flush=True,
+                )
 
     rows.sort(key=lambda row: row[0])
     print(f"device: {device}")
@@ -157,11 +185,32 @@ def main() -> int:
             f"p99={float(quantiles[2].item()):.4f} "
             f"max={float(quantiles[3].item()):.4f}"
         )
+    nonzero_coverages = [coverage for coverage in coverage_rates if coverage > 0.0]
+    zero_selected = sum(1 for row in rows if row[4] == 0)
+    print(f"zero_selected_samples: {zero_selected}/{len(rows)}")
+    if nonzero_coverages:
+        print(f"mean_nonzero_sample_coverage: {statistics.fmean(nonzero_coverages):.4f}")
     print("lowest_coverage_samples:")
-    for coverage, precision, record_index, sample_id, selected_count, mean_distance, median_distance in rows[:5]:
+    for (
+        coverage,
+        precision,
+        record_index,
+        sample_id,
+        selected_count,
+        mean_distance,
+        median_distance,
+        above_threshold,
+        quantiles,
+        node_count,
+    ) in rows[:5]:
+        mean_text = "inf" if math.isinf(mean_distance) else f"{mean_distance:.3f}"
+        median_text = "inf" if math.isinf(median_distance) else f"{median_distance:.3f}"
         print(
             f"  index={record_index} coverage={coverage:.4f} precision={precision:.4f} "
-            f"selected={selected_count} mean_distance={mean_distance:.3f} median_distance={median_distance:.3f} sample_id={sample_id}"
+            f"candidates={above_threshold} selected={selected_count} "
+            f"score_p50={quantiles[0]:.4f} score_p90={quantiles[1]:.4f} "
+            f"score_p99={quantiles[2]:.4f} score_max={quantiles[3]:.4f} "
+            f"nodes={node_count} mean_distance={mean_text} median_distance={median_text} sample_id={sample_id}"
         )
     return 0
 
