@@ -18,6 +18,7 @@ py scripts\build_training_cache.py --sample-index 0 --threshold 0 --max-points 4
 py scripts\build_split.py --cache-manifest tmp\training_cache\cache_manifest.json --output tmp\splits\gold166_clean_seed0.json --seed 0
 py scripts\inspect_dataset.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2
 py scripts\inspect_encoder.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2 --k 20 --proposal
+py scripts\train_proposal.py --split-file tmp\splits\gold166_clean_seed0.json --split train --epochs 5 --batch-size 2 --k 20 --checkpoint tmp\checkpoints\proposal_sanity.pt
 ```
 
 Create `configs/local.json` from `configs/local.example.json` and set the local
@@ -48,3 +49,7 @@ will feed the model.
 The encoder inspector runs a PointNeuron-style DGCNN/EdgeConv forward pass. By
 default it emits `1216`-channel geometric features (`64 + 64 + 64 + 1024`) and
 can also run the proposal head that predicts objectness, radius, and XYZ offsets.
+
+The proposal trainer supervises the first skeleton-prediction stage by matching
+sampled foreground points to nearby SWC nodes, then optimizing objectness,
+center-offset, and radius losses.

@@ -1,0 +1,184 @@
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import sys
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+from pointneuron.data.torch_dataset import TrainingCacheDataset, collate_training_records, load_split_paths
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Train the PointNeuron skeleton proposal module.")
+    parser.add_argument("--split-file", required=True, help="Path to split JSON.")
+    parser.add_argument("--split", default="train", choices=["train", "val", "test"], help="Split to train on.")
+    parser.add_argument("--epochs", type=int, default=5, help="Number of epochs.")
+    parser.add_argument("--batch-size", type=int, default=2, help="Training batch size.")
+    parser.add_argument("--k", type=int, default=20, help="kNN neighbors for EdgeConv.")
+    parser.add_argument("--lr", type=float, default=1e-3, help="AdamW learning rate.")
+    parser.add_argument("--weight-decay", type=float, default=1e-4, help="AdamW weight decay.")
+    parser.add_argument("--positive-distance", type=float, default=6.0, help="Voxel distance for positive proposals.")
+    parser.add_argument("--radius-scale", type=float, default=1.5, help="Also mark positives inside radius * this value.")
+    parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
+    parser.add_argument("--num-workers", type=int, default=0, help="DataLoader worker count. Keep 0 on Windows at first.")
+    parser.add_argument("--drop-last", action="store_true", help="Drop the final incomplete batch.")
+    parser.add_argument("--limit-batches", type=int, help="Optional maximum batches per epoch for quick checks.")
+    parser.add_argument("--checkpoint", help="Optional path to save a checkpoint after training.")
+    parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
+    args = parser.parse_args()
+
+    try:
+        import torch
+        from torch.utils.data import DataLoader
+    except ModuleNotFoundError:
+        print("PyTorch is required. Install a CUDA-compatible torch build before training.")
+        return 2
+
+    from pointneuron.models.dgcnn import DGCNNEncoder
+    from pointneuron.models.proposal import SkeletonProposalHead
+    from pointneuron.models.proposal_loss import build_skeleton_proposal_targets, skeleton_proposal_loss
+
+    if args.device == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    else:
+        device = args.device
+    if device == "cuda" and not torch.cuda.is_available():
+        print("CUDA was requested but torch.cuda.is_available() is false.")
+        return 2
+
+    paths = load_split_paths(args.split_file, args.split)
+    dataset = TrainingCacheDataset(paths)
+    if len(dataset) == 0:
+        print(f"No records found for split {args.split!r}.")
+        return 2
+
+    drop_last = args.drop_last or (args.batch_size > 1 and len(dataset) % args.batch_size == 1)
+    loader = DataLoader(
+        dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        num_workers=args.num_workers,
+        collate_fn=collate_training_records,
+        pin_memory=(device == "cuda"),
+        drop_last=drop_last,
+    )
+
+    encoder = DGCNNEncoder(k=args.k).to(device)
+    proposal = SkeletonProposalHead(in_channels=encoder.output_dim).to(device)
+    parameters = list(encoder.parameters()) + list(proposal.parameters())
+    optimizer = torch.optim.AdamW(parameters, lr=args.lr, weight_decay=args.weight_decay)
+
+    print(f"device: {device}")
+    print(f"records: {len(dataset)}")
+    print(f"batch_size: {args.batch_size}")
+    print(f"drop_last: {drop_last}")
+    print(f"k: {args.k}")
+    print(f"geometric_feature_dim: {encoder.geometric_feature_dim}")
+
+    for epoch in range(1, args.epochs + 1):
+        encoder.train()
+        proposal.train()
+        running = RunningAverages()
+
+        for batch_index, batch in enumerate(loader, start=1):
+            if args.limit_batches is not None and batch_index > args.limit_batches:
+                break
+
+            points = batch["points"].to(device, non_blocking=True)
+            skeleton_nodes = batch["skeleton_nodes"].to(device, non_blocking=True)
+            skeleton_mask = batch["skeleton_mask"].to(device, non_blocking=True)
+
+            with torch.no_grad():
+                targets = build_skeleton_proposal_targets(
+                    points=points,
+                    skeleton_nodes=skeleton_nodes,
+                    skeleton_mask=skeleton_mask,
+                    positive_distance=args.positive_distance,
+                    radius_scale=args.radius_scale,
+                )
+
+            optimizer.zero_grad(set_to_none=True)
+            features = encoder(points)
+            output = proposal(points, features)
+            loss = skeleton_proposal_loss(
+                output=output,
+                targets=targets,
+                points=points,
+                positive_class_weight=args.positive_class_weight,
+            )
+            loss.total.backward()
+            optimizer.step()
+
+            running.update(
+                total=float(loss.total.detach().item()),
+                objectness=float(loss.objectness.item()),
+                center=float(loss.center.item()),
+                radius=float(loss.radius.item()),
+                positive_count=loss.positive_count,
+                total_count=loss.total_count,
+            )
+
+        message = (
+            f"epoch={epoch} "
+            f"loss={running.mean('total'):.4f} "
+            f"objectness={running.mean('objectness'):.4f} "
+            f"center={running.mean('center'):.4f} "
+            f"radius={running.mean('radius'):.4f} "
+            f"positives={running.positive_count}/{running.total_count}"
+        )
+        if device == "cuda":
+            message += f" cuda_reserved_mb={torch.cuda.memory_reserved() / 1024 / 1024:.2f}"
+        print(message)
+
+    if args.checkpoint:
+        checkpoint_path = Path(args.checkpoint)
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+        torch.save(
+            {
+                "encoder": encoder.state_dict(),
+                "proposal": proposal.state_dict(),
+                "args": vars(args),
+            },
+            checkpoint_path,
+        )
+        print(f"checkpoint: {checkpoint_path}")
+
+    return 0
+
+
+class RunningAverages:
+    def __init__(self) -> None:
+        self.sums: dict[str, float] = {}
+        self.count = 0
+        self.positive_count = 0
+        self.total_count = 0
+
+    def update(
+        self,
+        total: float,
+        objectness: float,
+        center: float,
+        radius: float,
+        positive_count: int,
+        total_count: int,
+    ) -> None:
+        self.count += 1
+        self.sums["total"] = self.sums.get("total", 0.0) + total
+        self.sums["objectness"] = self.sums.get("objectness", 0.0) + objectness
+        self.sums["center"] = self.sums.get("center", 0.0) + center
+        self.sums["radius"] = self.sums.get("radius", 0.0) + radius
+        self.positive_count += positive_count
+        self.total_count += total_count
+
+    def mean(self, name: str) -> float:
+        if self.count == 0:
+            return 0.0
+        return self.sums.get(name, 0.0) / self.count
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -76,7 +76,7 @@ class DGCNNEncoder(nn.Module):
         features = normalize_point_features(points)
         block_outputs: list[torch.Tensor] = []
         for block in self.edge_blocks:
-            knn_indices = knn(features[..., :3], block.k)
+            knn_indices = knn(features[..., :3].detach(), block.k)
             features = block(features, knn_indices)
             block_outputs.append(features)
 
