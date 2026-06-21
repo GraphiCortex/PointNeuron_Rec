@@ -1,0 +1,158 @@
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import sys
+
+import numpy as np
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Predict a refined proposal adjacency with a trained connectivity GAE.")
+    parser.add_argument("--record", required=True, help="Connectivity record .npz.")
+    parser.add_argument("--checkpoint", required=True, help="Connectivity checkpoint from scripts/train_connectivity.py.")
+    parser.add_argument("--threshold", type=float, default=0.5, help="Minimum edge probability.")
+    parser.add_argument("--max-edges", type=int, default=0, help="Maximum edges to keep. 0 defaults to N - 1.")
+    parser.add_argument("--min-edges", type=int, default=0, help="Keep this many top edges even below threshold. 0 disables.")
+    parser.add_argument("--output", default="tmp/graphs/connectivity_predicted_graph.npz", help="Output graph .npz.")
+    parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
+    args = parser.parse_args()
+
+    try:
+        import torch
+    except ModuleNotFoundError:
+        print("PyTorch is required. Install a CUDA-compatible torch build before prediction.")
+        return 2
+
+    from pointneuron.models.connectivity import ConnectivityGAE
+
+    if args.device == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    else:
+        device = args.device
+    if device == "cuda" and not torch.cuda.is_available():
+        print("CUDA was requested but torch.cuda.is_available() is false.")
+        return 2
+
+    record_path = Path(args.record)
+    record = np.load(record_path, allow_pickle=False)
+    record_metadata = json.loads(str(record["metadata"])) if "metadata" in record else {}
+    checkpoint = torch.load(args.checkpoint, map_location=device, weights_only=False)
+    train_args = checkpoint.get("args", {})
+
+    node_features = record["node_features"].astype(np.float32, copy=True)
+    if train_args.get("normalize_node_features", False):
+        mean = node_features.mean(axis=0, keepdims=True)
+        std = node_features.std(axis=0, keepdims=True)
+        node_features = (node_features - mean) / np.maximum(std, 1e-6)
+
+    model = ConnectivityGAE(in_channels=int(checkpoint.get("input_dim", node_features.shape[1]))).to(device)
+    model.load_state_dict(checkpoint["model"])
+    model.eval()
+
+    with torch.no_grad():
+        output = model(
+            torch.from_numpy(node_features).to(device),
+            torch.from_numpy(record["init_adjacency"].astype(np.float32, copy=False)).to(device),
+        )
+        probabilities = torch.sigmoid(output.adjacency_logits).detach().cpu().numpy()
+
+    node_count = probabilities.shape[0]
+    max_edges = args.max_edges if args.max_edges > 0 else max(0, node_count - 1)
+    edges, edge_probabilities = select_edges(
+        probabilities=probabilities,
+        threshold=args.threshold,
+        max_edges=max_edges,
+        min_edges=args.min_edges,
+    )
+    adjacency = np.zeros((node_count, node_count), dtype=np.uint8)
+    if edges.size:
+        adjacency[edges[:, 0], edges[:, 1]] = 1
+        adjacency[edges[:, 1], edges[:, 0]] = 1
+
+    init_graph_metadata = record_metadata.get("init_graph_metadata", {})
+    metadata = {
+        "record": str(record_path),
+        "checkpoint": str(args.checkpoint),
+        "threshold": args.threshold,
+        "max_edges": max_edges,
+        "min_edges": args.min_edges,
+        "nodes": int(node_count),
+        "edges": int(edges.shape[0]),
+        "components": connected_component_count(node_count, edges),
+        "init_swc": init_graph_metadata.get("init_swc"),
+        "proposal_metadata": init_graph_metadata.get("proposal_metadata", {}),
+        "source_record_metadata": record_metadata,
+    }
+
+    output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(
+        output_path,
+        centers=record["centers"],
+        radii=record["radii"],
+        scores=record["scores"],
+        features=record["proposal_features"],
+        adjacency=adjacency,
+        edges=edges,
+        edge_probabilities=edge_probabilities,
+        original_indices=record["original_indices"] if "original_indices" in record else np.arange(node_count, dtype=np.int64),
+        metadata=np.array(json.dumps(metadata), dtype=np.str_),
+    )
+
+    print(f"nodes: {node_count}")
+    print(f"edges: {edges.shape[0]}")
+    print(f"components: {metadata['components']}")
+    print(f"threshold: {args.threshold}")
+    print(f"output: {output_path}")
+    return 0
+
+
+def select_edges(probabilities: np.ndarray, threshold: float, max_edges: int, min_edges: int) -> tuple[np.ndarray, np.ndarray]:
+    candidates: list[tuple[float, int, int]] = []
+    for left in range(probabilities.shape[0]):
+        for right in range(left + 1, probabilities.shape[1]):
+            candidates.append((float(probabilities[left, right]), left, right))
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    selected = [(probability, left, right) for probability, left, right in candidates if probability >= threshold]
+    if min_edges > 0 and len(selected) < min_edges:
+        selected = candidates[:min_edges]
+    if max_edges > 0:
+        selected = selected[:max_edges]
+    if not selected:
+        return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
+    edges = np.array([[left, right] for _probability, left, right in selected], dtype=np.int64)
+    edge_probabilities = np.array([probability for probability, _left, _right in selected], dtype=np.float32)
+    return edges, edge_probabilities
+
+
+def connected_component_count(node_count: int, edges: np.ndarray) -> int:
+    if node_count == 0:
+        return 0
+    parent = list(range(node_count))
+
+    def find(node: int) -> int:
+        while parent[node] != node:
+            parent[node] = parent[parent[node]]
+            node = parent[node]
+        return node
+
+    def union(left: int, right: int) -> None:
+        left_root = find(left)
+        right_root = find(right)
+        if left_root != right_root:
+            parent[right_root] = left_root
+
+    for left, right in edges.tolist():
+        union(int(left), int(right))
+    return len({find(index) for index in range(node_count)})
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

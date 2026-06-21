@@ -15,7 +15,7 @@ if str(SRC_ROOT) not in sys.path:
 
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.swc import parse_swc
-from pointneuron.graph.initialization import initialize_proposal_graph
+from pointneuron.graph.initialization import initialize_proposal_graph, nearest_swc_nodes, swc_arrays
 
 
 def main() -> int:
@@ -28,6 +28,8 @@ def main() -> int:
     parser.add_argument("--mode", default="mst", choices=["mst", "knn", "mst_knn"], help="Graph initialization strategy.")
     parser.add_argument("--knn", type=int, default=2, help="Tree-distance nearest neighbors per proposal for knn modes.")
     parser.add_argument("--max-tree-distance", type=float, default=0.0, help="Optional max tree distance for knn edges. 0 disables.")
+    parser.add_argument("--max-proposal-init-distance", type=float, default=0.0, help="Drop proposal nodes farther than this distance from the initialization SWC. 0 disables.")
+    parser.add_argument("--min-proposal-score", type=float, default=0.0, help="Drop proposal nodes below this objectness score. 0 disables.")
     parser.add_argument("--output", default="tmp/graphs/initialized_graph.npz", help="Output graph .npz.")
     parser.add_argument("--edge-csv", help="Optional CSV edge report.")
     args = parser.parse_args()
@@ -61,6 +63,19 @@ def main() -> int:
             print(f"  {error}")
         return 2
 
+    original_indices = np.arange(centers.shape[0], dtype=np.int64)
+    prefilter_distance = np.zeros((centers.shape[0],), dtype=np.float32)
+    if args.max_proposal_init_distance > 0.0 or args.min_proposal_score > 0.0:
+        centers, radii, scores, features, original_indices, prefilter_distance = filter_proposals(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            features=features,
+            swc=swc,
+            max_init_distance=args.max_proposal_init_distance,
+            min_score=args.min_proposal_score,
+        )
+
     result = initialize_proposal_graph(
         centers=centers,
         swc=swc,
@@ -78,6 +93,11 @@ def main() -> int:
         "mode": args.mode,
         "knn": args.knn,
         "max_tree_distance": args.max_tree_distance,
+        "max_proposal_init_distance": args.max_proposal_init_distance,
+        "min_proposal_score": args.min_proposal_score,
+        "original_nodes": int(proposal_payload["centers"].shape[0]),
+        "kept_nodes": int(centers.shape[0]),
+        "dropped_nodes": int(proposal_payload["centers"].shape[0] - centers.shape[0]),
         "nodes": int(centers.shape[0]),
         "edges": int(result.edges.shape[0]),
         "components": connected_component_count(centers.shape[0], result.edges),
@@ -96,6 +116,8 @@ def main() -> int:
         assigned_swc_indices=result.assigned_swc_indices,
         assigned_swc_ids=result.assigned_swc_ids,
         nearest_swc_distance=result.nearest_swc_distance,
+        prefilter_nearest_swc_distance=prefilter_distance,
+        original_indices=original_indices,
         edge_tree_distance=result.edge_tree_distance,
         edge_euclidean_distance=result.edge_euclidean_distance,
         metadata=np.array(json.dumps(metadata), dtype=np.str_),
@@ -105,6 +127,8 @@ def main() -> int:
         write_edge_csv(Path(args.edge_csv), result)
 
     print(f"proposal_nodes: {centers.shape[0]}")
+    print(f"original_nodes: {metadata['original_nodes']}")
+    print(f"dropped_nodes: {metadata['dropped_nodes']}")
     print(f"init_swc: {init_swc_path}")
     print(f"mode: {args.mode}")
     print(f"edges: {result.edges.shape[0]}")
@@ -123,6 +147,33 @@ def finite_mean(values: np.ndarray) -> float:
         return 0.0
     finite = values[np.isfinite(values)]
     return float(finite.mean()) if finite.size else float("inf")
+
+
+def filter_proposals(
+    centers: np.ndarray,
+    radii: np.ndarray,
+    scores: np.ndarray,
+    features: np.ndarray,
+    swc,
+    max_init_distance: float,
+    min_score: float,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    swc_xyz, _swc_ids, _swc_edges = swc_arrays(swc)
+    _nearest_indices, nearest_distances = nearest_swc_nodes(centers, swc_xyz)
+    keep = np.ones((centers.shape[0],), dtype=bool)
+    if max_init_distance > 0.0:
+        keep &= nearest_distances <= float(max_init_distance)
+    if min_score > 0.0:
+        keep &= scores >= float(min_score)
+    original_indices = np.flatnonzero(keep).astype(np.int64, copy=False)
+    return (
+        centers[keep],
+        radii[keep],
+        scores[keep],
+        features[keep],
+        original_indices,
+        nearest_distances[keep].astype(np.float32, copy=False),
+    )
 
 
 def write_edge_csv(path: Path, result) -> None:

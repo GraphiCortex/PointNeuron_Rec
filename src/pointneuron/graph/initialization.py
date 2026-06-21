@@ -104,22 +104,25 @@ def weighted_swc_adjacency(swc_xyz: np.ndarray, swc_edges: np.ndarray) -> list[l
 
 
 def dijkstra_many(graph: list[list[tuple[int, float]]], sources: np.ndarray) -> np.ndarray:
-    distances = np.zeros((sources.shape[0], len(graph)), dtype=np.float32)
+    distances = np.zeros((sources.shape[0], len(graph)), dtype=np.float64)
     for index, source in enumerate(sources.tolist()):
         distances[index] = dijkstra(graph, int(source))
     return distances
 
 
 def dijkstra(graph: list[list[tuple[int, float]]], source: int) -> np.ndarray:
-    distances = np.full((len(graph),), np.inf, dtype=np.float32)
+    distances = np.full((len(graph),), np.inf, dtype=np.float64)
     distances[source] = 0.0
     heap: list[tuple[float, int]] = [(0.0, source)]
     while heap:
         distance, node = heapq.heappop(heap)
+        node = int(node)
+        distance = float(distance)
         if distance > float(distances[node]):
             continue
         for neighbor, weight in graph[node]:
-            candidate = distance + weight
+            neighbor = int(neighbor)
+            candidate = distance + float(weight)
             if candidate < float(distances[neighbor]):
                 distances[neighbor] = candidate
                 heapq.heappush(heap, (candidate, neighbor))
