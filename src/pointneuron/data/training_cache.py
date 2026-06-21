@@ -29,6 +29,7 @@ class PatchCacheConfig:
     patch_radius: int = 96
     max_points: int = 2048
     min_points: int = 256
+    min_unique_fraction: float = 0.0
 
 
 def build_training_record(
@@ -137,6 +138,8 @@ def build_patch_training_records(
         if selected_indices.shape[0] < config.min_points:
             continue
         patch_foreground_count = int(selected_indices.shape[0])
+        if patch_foreground_count < int(config.max_points * config.min_unique_fraction):
+            continue
         selected_indices = sample_indices_fixed(selected_indices, config.max_points, rng)
         points_array = indices_to_point_array(selected_indices, data, width, height)
         patch_skeleton_array = skeleton_nodes_in_patch(skeleton_array, center, config.patch_radius)
@@ -157,6 +160,7 @@ def build_patch_training_records(
             "max_points": config.max_points,
             "seed": seed,
             "patch_radius": config.patch_radius,
+            "min_unique_fraction": config.min_unique_fraction,
             "patch_center": [float(value) for value in center],
             "patch_foreground_count": patch_foreground_count,
         }

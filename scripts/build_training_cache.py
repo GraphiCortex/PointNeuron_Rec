@@ -31,6 +31,7 @@ def main() -> int:
     parser.add_argument("--patches-per-sample", type=int, default=0, help="Build this many local SWC-centered patch records per sample.")
     parser.add_argument("--patch-radius", type=int, default=96, help="Patch radius in voxels when --patches-per-sample is set.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
+    parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
@@ -55,6 +56,7 @@ def main() -> int:
                     max_points=args.max_points,
                     patch_radius=args.patch_radius,
                     threshold_fraction=args.threshold_fraction,
+                    min_unique_fraction=args.min_unique_fraction,
                 )
             if reused:
                 records.extend(reused)
@@ -71,6 +73,7 @@ def main() -> int:
                         patch_radius=args.patch_radius,
                         max_points=args.max_points,
                         min_points=args.min_points,
+                        min_unique_fraction=args.min_unique_fraction,
                     ),
                     threshold=threshold,
                     seed=args.seed + ordinal,
@@ -150,6 +153,7 @@ def main() -> int:
                 "max_points": args.max_points,
                 "patches_per_sample": args.patches_per_sample,
                 "patch_radius": args.patch_radius if args.patches_per_sample > 0 else None,
+                "min_unique_fraction": args.min_unique_fraction if args.patches_per_sample > 0 else None,
                 "records": records,
             },
             indent=2,
@@ -211,6 +215,7 @@ def cached_patch_summaries(
     max_points: int,
     patch_radius: int,
     threshold_fraction: float | None = None,
+    min_unique_fraction: float = 0.0,
 ) -> list[dict[str, object]]:
     paths = sorted(output_dir.glob(f"sample_{sample_index:04d}_patch_*.npz"))
     records = []
@@ -232,6 +237,8 @@ def cached_patch_summaries(
         except (OSError, KeyError, ValueError, json.JSONDecodeError):
             return []
         if metadata.get("patch_radius") != patch_radius:
+            return []
+        if metadata.get("min_unique_fraction", 0.0) != min_unique_fraction:
             return []
         records.append(summary)
     return records
