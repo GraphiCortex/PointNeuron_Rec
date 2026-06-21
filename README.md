@@ -14,7 +14,7 @@ py scripts\inspect_volume.py --sample-index 0 --decode
 py scripts\check_sample_alignment.py --sample-index 0 --decode-volume
 py scripts\build_point_cloud.py --sample-index 0 --threshold 0 --max-points 4096 --output tmp\sample0_points.csv
 py scripts\visualize_sample.py --sample-index 0 --threshold 0 --max-points 8192 --output tmp\visualizations\sample0.html
-py scripts\build_training_cache.py --sample-index 0 --threshold 0 --max-points 4096 --output-dir tmp\training_cache
+py scripts\build_training_cache.py --sample-index 0 --threshold 0 --max-points 4096 --output-dir tmp\training_cache --resume
 py scripts\build_split.py --cache-manifest tmp\training_cache\cache_manifest.json --output tmp\splits\gold166_clean_seed0.json --seed 0
 py scripts\inspect_dataset.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2
 py scripts\inspect_encoder.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2 --k 20 --proposal

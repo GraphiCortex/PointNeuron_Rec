@@ -48,13 +48,14 @@ def volume_to_point_cloud(
     width, height, depth, channels = volume.dimensions
     if channels != 1:
         raise NotImplementedError(f"Expected a single-channel volume, got {channels} channels")
-    if threshold < 0 or threshold > 255:
-        raise ValueError(f"Threshold must be in [0, 255], got {threshold}")
+    max_intensity = np.iinfo(_volume_dtype(volume)).max
+    if threshold < 0 or threshold > max_intensity:
+        raise ValueError(f"Threshold must be in [0, {max_intensity}], got {threshold}")
 
     if max_points is not None and max_points <= 0:
         raise ValueError(f"max_points must be positive, got {max_points}")
 
-    data = np.frombuffer(volume.data, dtype=np.uint8)
+    data = np.frombuffer(volume.data, dtype=_volume_dtype(volume))
     foreground_mask = data > threshold
     total_foreground = int(np.count_nonzero(foreground_mask))
 
@@ -141,3 +142,14 @@ def _indices_to_points(indices: np.ndarray, data: np.ndarray, width: int, height
         x = offset - y * width
         points.append(PointRecord(x=x, y=y, z=z, intensity=int(data[index])))
     return tuple(points)
+
+
+def _volume_dtype(volume: Vaa3dVolume) -> np.dtype:
+    if volume.header.datatype == 1:
+        return np.dtype(np.uint8)
+    if volume.header.datatype == 2:
+        if volume.header.endian == "L":
+            return np.dtype("<u2")
+        if volume.header.endian == "B":
+            return np.dtype(">u2")
+    raise NotImplementedError(f"Vaa3D datatype {volume.header.datatype} is not supported yet")

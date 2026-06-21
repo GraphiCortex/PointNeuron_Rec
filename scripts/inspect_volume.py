@@ -42,7 +42,7 @@ def main() -> int:
 
     if args.decode:
         volume = read_volume(volume_path)
-        stats = volume_stats(volume.data)
+        stats = volume_stats(volume.data, datatype=volume.header.datatype, endian=volume.header.endian)
         for key, value in stats.items():
             print(f"{key}: {value}")
 
@@ -51,4 +51,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+import numpy as np
+
 
 RAW_HEADER_KEY = "raw_image_stack_by_hpeng"
 PBD_HEADER_KEY = "v3d_volume_pkbitdf_encod"
@@ -21,6 +23,12 @@ class Vaa3dHeader:
     def voxel_count(self) -> int:
         x, y, z, channels = self.dimensions
         return x * y * z * channels
+
+    @property
+    def bytes_per_voxel(self) -> int:
+        if self.datatype not in {1, 2}:
+            raise NotImplementedError(f"Vaa3D datatype {self.datatype} is not supported yet")
+        return self.datatype
 
 
 @dataclass(frozen=True)
@@ -52,14 +60,18 @@ def read_volume(path: str | Path) -> Vaa3dVolume:
     if header.key == RAW_HEADER_KEY:
         data = encoded
     elif header.key == PBD_HEADER_KEY:
-        if header.datatype != 1:
+        if header.datatype == 1:
+            data = decode_pbd8(encoded, header.voxel_count)
+        elif header.datatype == 2:
+            data = decode_pbd16(encoded, header.voxel_count, byteorder=_byteorder(header.endian))
+        else:
             raise NotImplementedError(f"{volume_path}: PBD datatype {header.datatype} is not supported yet")
-        data = decode_pbd8(encoded, header.voxel_count)
     else:
         raise ValueError(f"{volume_path}: unsupported Vaa3D header key: {header.key!r}")
 
-    if len(data) != header.voxel_count:
-        raise ValueError(f"{volume_path}: decoded {len(data)} voxels, expected {header.voxel_count}")
+    expected_bytes = header.voxel_count * header.bytes_per_voxel
+    if len(data) != expected_bytes:
+        raise ValueError(f"{volume_path}: decoded {len(data)} bytes, expected {expected_bytes}")
 
     return Vaa3dVolume(path=volume_path, header=header, data=data)
 
@@ -75,12 +87,11 @@ def parse_header(header: bytes, path: Path | None = None) -> Vaa3dHeader:
         raise ValueError(f"{label}unsupported Vaa3D header key: {key!r}")
 
     endian = chr(header[24])
-    if endian == "L":
-        byteorder = "little"
-    elif endian == "B":
-        byteorder = "big"
-    else:
+    try:
+        byteorder = _byteorder(endian)
+    except ValueError as exc:
         raise ValueError(f"{label}unsupported endian marker: {endian!r}")
+    byteorder = byteorder
 
     datatype = int.from_bytes(header[25:27], byteorder)
     dimensions = tuple(
@@ -146,15 +157,110 @@ def decode_pbd8(encoded: bytes, expected_voxels: int) -> bytes:
     return bytes(output)
 
 
-def volume_stats(data: bytes) -> dict[str, float | int]:
+def decode_pbd16(encoded: bytes, expected_voxels: int, byteorder: str = "little") -> bytes:
+    output = bytearray(expected_voxels * 2)
+    input_index = 0
+    output_index = 0
+    previous = 0
+
+    def write_value(value: int) -> None:
+        nonlocal output_index
+        output[output_index * 2 : output_index * 2 + 2] = value.to_bytes(2, byteorder)
+        output_index += 1
+
+    while input_index < len(encoded) and output_index < expected_voxels:
+        control = encoded[input_index]
+        input_index += 1
+
+        if control < 32:
+            length = control + 1
+            byte_length = length * 2
+            if output_index + length > expected_voxels or input_index + byte_length > len(encoded):
+                raise ValueError("PBD16 literal run exceeds stream bounds")
+            for _ in range(length):
+                previous = int.from_bytes(encoded[input_index : input_index + 2], byteorder)
+                input_index += 2
+                write_value(previous)
+        elif control < 80:
+            length = control - 31
+            packed_length = (length * 3 + 7) // 8
+            if output_index + length > expected_voxels or input_index + packed_length > len(encoded):
+                raise ValueError("PBD16 3-bit difference run exceeds stream bounds")
+            bit_buffer = 0
+            available_bits = 0
+            decoded = 0
+            for packed in encoded[input_index : input_index + packed_length]:
+                bit_buffer = (bit_buffer << 8) | packed
+                available_bits += 8
+                while available_bits >= 3 and decoded < length:
+                    available_bits -= 3
+                    diff_code = (bit_buffer >> available_bits) & 0x07
+                    previous = (previous + _signed_difference(diff_code, 3)) & 0xFFFF
+                    write_value(previous)
+                    decoded += 1
+                bit_buffer &= (1 << available_bits) - 1 if available_bits else 0
+            if decoded != length:
+                raise ValueError("PBD16 3-bit difference run ended early")
+            input_index += packed_length
+        elif control < 223:
+            length = control - 79
+            packed_length = (length + 1) // 2
+            if output_index + length > expected_voxels or input_index + packed_length > len(encoded):
+                raise ValueError("PBD16 4-bit difference run exceeds stream bounds")
+            decoded = 0
+            for packed in encoded[input_index : input_index + packed_length]:
+                for shift in (4, 0):
+                    if decoded == length:
+                        break
+                    diff_code = (packed >> shift) & 0x0F
+                    previous = (previous + _signed_difference(diff_code, 4)) & 0xFFFF
+                    write_value(previous)
+                    decoded += 1
+            input_index += packed_length
+        else:
+            length = control - 222
+            if input_index + 2 > len(encoded) or output_index + length > expected_voxels:
+                raise ValueError("PBD16 repeat run exceeds stream bounds")
+            previous = int.from_bytes(encoded[input_index : input_index + 2], byteorder)
+            input_index += 2
+            for _ in range(length):
+                write_value(previous)
+
+    if output_index != expected_voxels:
+        raise ValueError(f"PBD16 decoded {output_index} voxels, expected {expected_voxels}")
+    if input_index != len(encoded):
+        raise ValueError(f"PBD16 stream has {len(encoded) - input_index} trailing bytes")
+
+    return bytes(output)
+
+
+def _signed_difference(code: int, bits: int) -> int:
+    sign_threshold = 1 << (bits - 1)
+    if code < sign_threshold:
+        return code
+    return code - (1 << bits)
+
+
+def _byteorder(endian: str) -> str:
+    if endian == "L":
+        return "little"
+    if endian == "B":
+        return "big"
+    raise ValueError(endian)
+
+
+def volume_stats(data: bytes, datatype: int = 1, endian: str = "L") -> dict[str, float | int]:
     if not data:
         return {"min": 0, "max": 0, "mean": 0.0, "nonzero": 0}
-    total = sum(data)
-    nonzero = sum(1 for value in data if value)
+    if datatype == 1:
+        values = np.frombuffer(data, dtype=np.uint8)
+    elif datatype == 2:
+        values = np.frombuffer(data, dtype=np.dtype("<u2" if endian == "L" else ">u2"))
+    else:
+        raise NotImplementedError(f"Vaa3D datatype {datatype} is not supported yet")
     return {
-        "min": min(data),
-        "max": max(data),
-        "mean": total / len(data),
-        "nonzero": nonzero,
+        "min": int(values.min()),
+        "max": int(values.max()),
+        "mean": float(values.mean()),
+        "nonzero": int(np.count_nonzero(values)),
     }
-

@@ -15,7 +15,7 @@ from pointneuron.data.training_cache import skeleton_edge_index, skeleton_to_arr
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
-from pointneuron.data.vaa3d_raw import decode_pbd8
+from pointneuron.data.vaa3d_raw import decode_pbd8, decode_pbd16
 
 
 class SwcParsingTests(unittest.TestCase):
@@ -95,6 +95,28 @@ class Vaa3dRawTests(unittest.TestCase):
 
         self.assertEqual(decoded, bytes([0, 0, 0, 5, 6, 7, 7, 8, 10]))
 
+    def test_decode_pbd16_literal_difference_and_repeat_runs(self) -> None:
+        encoded = bytes(
+            [
+                0,
+                0xE8,
+                0x03,
+                33,
+                0b00111100,
+                224,
+                0x05,
+                0x00,
+            ]
+        )
+
+        decoded = decode_pbd16(encoded, expected_voxels=5)
+        values = [
+            int.from_bytes(decoded[index : index + 2], "little")
+            for index in range(0, len(decoded), 2)
+        ]
+
+        self.assertEqual(values, [1000, 1001, 1000, 5, 5])
+
 
 class PointCloudTests(unittest.TestCase):
     def test_volume_to_point_cloud_uses_xyz_order(self) -> None:
@@ -130,6 +152,26 @@ class PointCloudTests(unittest.TestCase):
         second = volume_to_point_cloud(volume, max_points=2, seed=7)
 
         self.assertEqual(first.points, second.points)
+
+    def test_volume_to_point_cloud_reads_uint16_data(self) -> None:
+        header = Vaa3dHeader(
+            key="raw_image_stack_by_hpeng",
+            endian="L",
+            datatype=2,
+            dimensions=(3, 1, 1, 1),
+        )
+        volume = Vaa3dVolume(
+            path=Path("fake.v3draw"),
+            header=header,
+            data=b"\x00\x00\x2c\x01\x10\x27",
+        )
+
+        point_cloud = volume_to_point_cloud(volume, threshold=300)
+
+        self.assertEqual(
+            [(point.x, point.y, point.z, point.intensity) for point in point_cloud.points],
+            [(2, 0, 0, 10000)],
+        )
 
 
 class TrainingCacheTests(unittest.TestCase):

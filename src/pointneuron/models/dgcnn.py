@@ -95,7 +95,9 @@ class DGCNNEncoder(nn.Module):
 
 def normalize_point_features(points: torch.Tensor) -> torch.Tensor:
     coords = points[..., :3]
-    intensity = points[..., 3:4] / 255.0
+    raw_intensity = points[..., 3:4]
+    intensity_scale = raw_intensity.amax(dim=1, keepdim=True).clamp_min(255.0)
+    intensity = raw_intensity / intensity_scale
 
     center = coords.mean(dim=1, keepdim=True)
     centered = coords - center

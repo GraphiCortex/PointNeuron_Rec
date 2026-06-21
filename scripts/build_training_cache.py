@@ -26,6 +26,7 @@ def main() -> int:
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
     parser.add_argument("--max-points", type=int, default=4096, help="Maximum sampled foreground points per record.")
     parser.add_argument("--seed", type=int, default=0, help="Base random seed.")
+    parser.add_argument("--resume", action="store_true", help="Reuse existing cache records with matching metadata.")
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
@@ -40,6 +41,21 @@ def main() -> int:
     records = []
     for ordinal, (sample_index, sample) in enumerate(selected):
         output_path = output_dir / f"sample_{sample_index:04d}.npz"
+        if args.resume and output_path.exists():
+            cached = cached_record_summary(
+                output_path,
+                sample_index=sample_index,
+                threshold=args.threshold,
+                max_points=args.max_points,
+            )
+            if cached is not None:
+                records.append(cached)
+                print(
+                    f"reused index={sample_index} points={cached['points']} "
+                    f"skeleton_nodes={cached['skeleton_nodes']} edges={cached['edges']} path={output_path}"
+                )
+                continue
+
         try:
             record = build_training_record(
                 sample,
@@ -96,6 +112,34 @@ def clean_indexed_samples(samples):
         if check_swc_in_volume(swc, header).is_aligned:
             clean.append((index, sample))
     return clean
+
+
+def cached_record_summary(
+    path: Path,
+    sample_index: int,
+    threshold: int,
+    max_points: int,
+) -> dict[str, object] | None:
+    try:
+        import numpy as np
+
+        record = np.load(path, allow_pickle=False)
+        metadata = json.loads(str(record["metadata"]))
+    except (OSError, KeyError, ValueError, json.JSONDecodeError):
+        return None
+
+    if metadata.get("threshold") != threshold or metadata.get("max_points") != max_points:
+        return None
+
+    return {
+        "sample_index": sample_index,
+        "sample_id": metadata.get("sample_id", ""),
+        "path": str(path),
+        "points": int(record["points"].shape[0]),
+        "skeleton_nodes": int(record["skeleton_nodes"].shape[0]),
+        "edges": int(record["edge_index"].shape[0]),
+        "total_foreground_points": int(metadata.get("total_foreground_count", 0)),
+    }
 
 
 if __name__ == "__main__":
