@@ -32,6 +32,9 @@ def main() -> int:
     parser.add_argument("--patch-radius", type=int, default=96, help="Patch radius in voxels when --patches-per-sample is set.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
+    parser.add_argument("--center-strategy", default="random", choices=["random", "topology"], help="Patch center sampling strategy for patch records.")
+    parser.add_argument("--endpoint-fraction", type=float, default=0.25, help="Fraction of patch centers reserved for SWC endpoints when --center-strategy topology.")
+    parser.add_argument("--branch-fraction", type=float, default=0.10, help="Fraction of patch centers reserved for SWC branch nodes when --center-strategy topology.")
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
@@ -57,6 +60,9 @@ def main() -> int:
                     patch_radius=args.patch_radius,
                     threshold_fraction=args.threshold_fraction,
                     min_unique_fraction=args.min_unique_fraction,
+                    center_strategy=args.center_strategy,
+                    endpoint_fraction=args.endpoint_fraction,
+                    branch_fraction=args.branch_fraction,
                 )
             if reused:
                 records.extend(reused)
@@ -74,6 +80,9 @@ def main() -> int:
                         max_points=args.max_points,
                         min_points=args.min_points,
                         min_unique_fraction=args.min_unique_fraction,
+                        center_strategy=args.center_strategy,
+                        endpoint_fraction=args.endpoint_fraction,
+                        branch_fraction=args.branch_fraction,
                     ),
                     threshold=threshold,
                     seed=args.seed + ordinal,
@@ -154,6 +163,9 @@ def main() -> int:
                 "patches_per_sample": args.patches_per_sample,
                 "patch_radius": args.patch_radius if args.patches_per_sample > 0 else None,
                 "min_unique_fraction": args.min_unique_fraction if args.patches_per_sample > 0 else None,
+                "center_strategy": args.center_strategy if args.patches_per_sample > 0 else None,
+                "endpoint_fraction": args.endpoint_fraction if args.patches_per_sample > 0 else None,
+                "branch_fraction": args.branch_fraction if args.patches_per_sample > 0 else None,
                 "records": records,
             },
             indent=2,
@@ -216,6 +228,9 @@ def cached_patch_summaries(
     patch_radius: int,
     threshold_fraction: float | None = None,
     min_unique_fraction: float = 0.0,
+    center_strategy: str = "random",
+    endpoint_fraction: float = 0.25,
+    branch_fraction: float = 0.10,
 ) -> list[dict[str, object]]:
     paths = sorted(output_dir.glob(f"sample_{sample_index:04d}_patch_*.npz"))
     records = []
@@ -239,6 +254,12 @@ def cached_patch_summaries(
         if metadata.get("patch_radius") != patch_radius:
             return []
         if metadata.get("min_unique_fraction", 0.0) != min_unique_fraction:
+            return []
+        if metadata.get("center_strategy", "random") != center_strategy:
+            return []
+        if metadata.get("endpoint_fraction", 0.25) != endpoint_fraction:
+            return []
+        if metadata.get("branch_fraction", 0.10) != branch_fraction:
             return []
         records.append(summary)
     return records

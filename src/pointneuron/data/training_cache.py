@@ -30,6 +30,9 @@ class PatchCacheConfig:
     max_points: int = 2048
     min_points: int = 256
     min_unique_fraction: float = 0.0
+    center_strategy: str = "random"
+    endpoint_fraction: float = 0.25
+    branch_fraction: float = 0.10
 
 
 def build_training_record(
@@ -120,7 +123,14 @@ def build_patch_training_records(
         raise NotImplementedError(f"Expected a single-channel volume, got {channels} channels")
 
     rng = np.random.default_rng(seed)
-    centers = choose_patch_centers(skeleton_array, config.patches_per_sample, rng)
+    centers = choose_patch_centers(
+        skeleton_array,
+        config.patches_per_sample,
+        rng,
+        strategy=config.center_strategy,
+        endpoint_fraction=config.endpoint_fraction,
+        branch_fraction=config.branch_fraction,
+    )
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
     records: list[CachedTrainingRecord] = []
@@ -161,6 +171,9 @@ def build_patch_training_records(
             "seed": seed,
             "patch_radius": config.patch_radius,
             "min_unique_fraction": config.min_unique_fraction,
+            "center_strategy": config.center_strategy,
+            "endpoint_fraction": config.endpoint_fraction,
+            "branch_fraction": config.branch_fraction,
             "patch_center": [float(value) for value in center],
             "patch_foreground_count": patch_foreground_count,
         }
@@ -225,12 +238,54 @@ def volume_data_array(volume) -> np.ndarray:
     return np.frombuffer(volume.data, dtype=_volume_dtype(volume))
 
 
-def choose_patch_centers(skeleton_array: np.ndarray, patches_per_sample: int, rng: np.random.Generator) -> np.ndarray:
+def choose_patch_centers(
+    skeleton_array: np.ndarray,
+    patches_per_sample: int,
+    rng: np.random.Generator,
+    strategy: str = "random",
+    endpoint_fraction: float = 0.25,
+    branch_fraction: float = 0.10,
+) -> np.ndarray:
     node_xyz = skeleton_array[:, 1:4]
     if node_xyz.shape[0] <= patches_per_sample:
         return node_xyz
+    if strategy == "topology":
+        endpoint_indices, branch_indices = skeleton_role_indices(skeleton_array)
+        selected: list[int] = []
+        endpoint_count = min(len(endpoint_indices), int(round(patches_per_sample * endpoint_fraction)))
+        branch_count = min(len(branch_indices), int(round(patches_per_sample * branch_fraction)))
+        if endpoint_count > 0:
+            selected.extend(rng.choice(endpoint_indices, size=endpoint_count, replace=False).tolist())
+        if branch_count > 0:
+            available_branches = np.array([index for index in branch_indices if index not in set(selected)], dtype=np.int64)
+            if available_branches.size > 0:
+                selected.extend(rng.choice(available_branches, size=min(branch_count, available_branches.size), replace=False).tolist())
+        remaining_count = patches_per_sample - len(selected)
+        if remaining_count > 0:
+            selected_set = set(selected)
+            available = np.array([index for index in range(node_xyz.shape[0]) if index not in selected_set], dtype=np.int64)
+            selected.extend(rng.choice(available, size=remaining_count, replace=False).tolist())
+        return node_xyz[np.sort(np.array(selected[:patches_per_sample], dtype=np.int64))]
+    if strategy != "random":
+        raise ValueError(f"Unknown patch center strategy {strategy!r}; expected 'random' or 'topology'")
     indices = rng.choice(np.arange(node_xyz.shape[0]), size=patches_per_sample, replace=False)
     return node_xyz[np.sort(indices)]
+
+
+def skeleton_role_indices(skeleton_array: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    node_ids = skeleton_array[:, 0].astype(np.int64, copy=False)
+    parent_ids = skeleton_array[:, 5].astype(np.int64, copy=False)
+    child_counts = {int(node_id): 0 for node_id in node_ids}
+    for parent_id in parent_ids:
+        if int(parent_id) in child_counts:
+            child_counts[int(parent_id)] += 1
+    endpoints = [
+        index
+        for index, (node_id, parent_id) in enumerate(zip(node_ids, parent_ids))
+        if child_counts[int(node_id)] == 0 and int(parent_id) >= 0
+    ]
+    branches = [index for index, node_id in enumerate(node_ids) if child_counts[int(node_id)] > 1]
+    return np.array(endpoints, dtype=np.int64), np.array(branches, dtype=np.int64)
 
 
 def patch_foreground_indices(

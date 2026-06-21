@@ -11,7 +11,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
-from pointneuron.data.training_cache import skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
+from pointneuron.data.training_cache import choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
@@ -199,6 +199,31 @@ class TrainingCacheTests(unittest.TestCase):
         edges = skeleton_edge_index_from_array(patch_nodes)
 
         self.assertEqual(edges.tolist(), [[0, 1]])
+
+    def test_topology_patch_centers_include_endpoints_and_branches(self) -> None:
+        import numpy as np
+
+        skeleton = (
+            SkeletonRecord(node_id=1, x=0, y=0, z=0, radius=1, parent_id=-1),
+            SkeletonRecord(node_id=2, x=1, y=0, z=0, radius=1, parent_id=1),
+            SkeletonRecord(node_id=3, x=2, y=1, z=0, radius=1, parent_id=2),
+            SkeletonRecord(node_id=4, x=2, y=-1, z=0, radius=1, parent_id=2),
+            SkeletonRecord(node_id=5, x=3, y=1, z=0, radius=1, parent_id=3),
+            SkeletonRecord(node_id=6, x=3, y=-1, z=0, radius=1, parent_id=4),
+        )
+        nodes = skeleton_to_array(skeleton)
+
+        centers = choose_patch_centers(
+            nodes,
+            patches_per_sample=4,
+            rng=np.random.default_rng(1),
+            strategy="topology",
+            endpoint_fraction=0.5,
+            branch_fraction=0.25,
+        )
+
+        self.assertTrue(any(np.array_equal(center, [3, 1, 0]) or np.array_equal(center, [3, -1, 0]) for center in centers))
+        self.assertTrue(any(np.array_equal(center, [1, 0, 0]) for center in centers))
 
 
 class SplitTests(unittest.TestCase):
