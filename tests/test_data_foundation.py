@@ -11,7 +11,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
-from pointneuron.data.training_cache import skeleton_edge_index, skeleton_to_array
+from pointneuron.data.training_cache import skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
@@ -187,6 +187,18 @@ class TrainingCacheTests(unittest.TestCase):
 
         self.assertEqual(nodes.shape, (3, 6))
         self.assertEqual(edges.tolist(), [[0, 1], [1, 2]])
+
+    def test_patch_skeleton_edges_are_reindexed_locally(self) -> None:
+        skeleton = (
+            SkeletonRecord(node_id=10, x=0, y=0, z=0, radius=1, parent_id=-1),
+            SkeletonRecord(node_id=20, x=1, y=0, z=0, radius=1, parent_id=10),
+            SkeletonRecord(node_id=30, x=2, y=0, z=0, radius=1, parent_id=20),
+        )
+        patch_nodes = skeleton_to_array(skeleton)[1:]
+
+        edges = skeleton_edge_index_from_array(patch_nodes)
+
+        self.assertEqual(edges.tolist(), [[0, 1]])
 
 
 class SplitTests(unittest.TestCase):

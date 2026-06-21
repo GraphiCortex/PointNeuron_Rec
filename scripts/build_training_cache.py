@@ -13,7 +13,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.alignment import check_swc_in_volume
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.swc import parse_swc
-from pointneuron.data.training_cache import build_training_record
+from pointneuron.data.training_cache import PatchCacheConfig, build_patch_training_records, build_training_record
 from pointneuron.data.vaa3d_raw import read_header
 
 
@@ -27,6 +27,9 @@ def main() -> int:
     parser.add_argument("--max-points", type=int, default=4096, help="Maximum sampled foreground points per record.")
     parser.add_argument("--seed", type=int, default=0, help="Base random seed.")
     parser.add_argument("--resume", action="store_true", help="Reuse existing cache records with matching metadata.")
+    parser.add_argument("--patches-per-sample", type=int, default=0, help="Build this many local SWC-centered patch records per sample.")
+    parser.add_argument("--patch-radius", type=int, default=96, help="Patch radius in voxels when --patches-per-sample is set.")
+    parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
@@ -40,6 +43,53 @@ def main() -> int:
     output_dir = Path(args.output_dir)
     records = []
     for ordinal, (sample_index, sample) in enumerate(selected):
+        if args.patches_per_sample > 0:
+            reused = []
+            if args.resume:
+                reused = cached_patch_summaries(
+                    output_dir=output_dir,
+                    sample_index=sample_index,
+                    threshold=args.threshold,
+                    max_points=args.max_points,
+                    patch_radius=args.patch_radius,
+                )
+            if reused:
+                records.extend(reused)
+                print(f"reused_patches index={sample_index} count={len(reused)}")
+                continue
+
+            try:
+                patch_records = build_patch_training_records(
+                    sample,
+                    output_dir=output_dir,
+                    sample_index=sample_index,
+                    config=PatchCacheConfig(
+                        patches_per_sample=args.patches_per_sample,
+                        patch_radius=args.patch_radius,
+                        max_points=args.max_points,
+                        min_points=args.min_points,
+                    ),
+                    threshold=args.threshold,
+                    seed=args.seed + ordinal,
+                )
+            except ValueError as exc:
+                print(f"skipped index={sample_index}: {exc}")
+                continue
+            for record in patch_records:
+                records.append(
+                    {
+                        "sample_index": sample_index,
+                        "sample_id": record.sample_id,
+                        "path": str(record.output_path),
+                        "points": record.point_count,
+                        "skeleton_nodes": record.skeleton_node_count,
+                        "edges": record.edge_count,
+                        "total_foreground_points": record.total_foreground_count,
+                    }
+                )
+            print(f"cached_patches index={sample_index} count={len(patch_records)}")
+            continue
+
         output_path = output_dir / f"sample_{sample_index:04d}.npz"
         if args.resume and output_path.exists():
             cached = cached_record_summary(
@@ -91,6 +141,8 @@ def main() -> int:
                 "root": args.root,
                 "threshold": args.threshold,
                 "max_points": args.max_points,
+                "patches_per_sample": args.patches_per_sample,
+                "patch_radius": args.patch_radius if args.patches_per_sample > 0 else None,
                 "records": records,
             },
             indent=2,
@@ -140,6 +192,32 @@ def cached_record_summary(
         "edges": int(record["edge_index"].shape[0]),
         "total_foreground_points": int(metadata.get("total_foreground_count", 0)),
     }
+
+
+def cached_patch_summaries(
+    output_dir: Path,
+    sample_index: int,
+    threshold: int,
+    max_points: int,
+    patch_radius: int,
+) -> list[dict[str, object]]:
+    paths = sorted(output_dir.glob(f"sample_{sample_index:04d}_patch_*.npz"))
+    records = []
+    for path in paths:
+        summary = cached_record_summary(path, sample_index=sample_index, threshold=threshold, max_points=max_points)
+        if summary is None:
+            return []
+        try:
+            import numpy as np
+
+            record = np.load(path, allow_pickle=False)
+            metadata = json.loads(str(record["metadata"]))
+        except (OSError, KeyError, ValueError, json.JSONDecodeError):
+            return []
+        if metadata.get("patch_radius") != patch_radius:
+            return []
+        records.append(summary)
+    return records
 
 
 if __name__ == "__main__":
