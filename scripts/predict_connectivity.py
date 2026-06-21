@@ -21,7 +21,7 @@ def main() -> int:
     parser.add_argument(
         "--selection",
         default="top",
-        choices=["top", "maxst", "threshold_mst"],
+        choices=["top", "maxst", "threshold_mst", "init_top", "threshold_init_mst"],
         help="How to select predicted edges.",
     )
     parser.add_argument("--max-edges", type=int, default=0, help="Maximum edges to keep. 0 defaults to N - 1.")
@@ -70,20 +70,38 @@ def main() -> int:
         probabilities = torch.sigmoid(output.adjacency_logits).detach().cpu().numpy()
 
     node_count = probabilities.shape[0]
+    init_edges = record["init_edges"].astype(np.int64, copy=False) if "init_edges" in record else np.zeros((0, 2), dtype=np.int64)
     if args.max_edges > 0:
         max_edges = args.max_edges
-    elif args.selection == "threshold_mst":
+    elif args.selection in {"threshold_mst", "threshold_init_mst"}:
         max_edges = 0
     else:
         max_edges = max(0, node_count - 1)
     if args.selection == "maxst":
         edges, edge_probabilities = maximum_spanning_tree(probabilities)
+    elif args.selection == "init_top":
+        edges, edge_probabilities = select_from_candidates(
+            probabilities=probabilities,
+            candidate_edges=init_edges,
+            threshold=args.threshold,
+            max_edges=max_edges,
+            min_edges=args.min_edges,
+        )
     elif args.selection == "threshold_mst":
         edges, edge_probabilities = threshold_then_connect(
             probabilities=probabilities,
             threshold=args.threshold,
             max_edges=max_edges,
             min_edges=args.min_edges,
+            bridge_edges=None,
+        )
+    elif args.selection == "threshold_init_mst":
+        edges, edge_probabilities = threshold_then_connect(
+            probabilities=probabilities,
+            threshold=args.threshold,
+            max_edges=max_edges,
+            min_edges=args.min_edges,
+            bridge_edges=init_edges,
         )
     else:
         edges, edge_probabilities = select_edges(
@@ -155,6 +173,40 @@ def select_edges(probabilities: np.ndarray, threshold: float, max_edges: int, mi
     return edges, edge_probabilities
 
 
+def select_from_candidates(
+    probabilities: np.ndarray,
+    candidate_edges: np.ndarray,
+    threshold: float,
+    max_edges: int,
+    min_edges: int,
+) -> tuple[np.ndarray, np.ndarray]:
+    candidates = candidate_edge_scores(probabilities, candidate_edges)
+    selected = [(probability, left, right) for probability, left, right in candidates if probability >= threshold]
+    if min_edges > 0 and len(selected) < min_edges:
+        selected = candidates[:min_edges]
+    if max_edges > 0:
+        selected = selected[:max_edges]
+    if not selected:
+        return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
+    edges = np.array([[left, right] for probability, left, right in selected], dtype=np.int64)
+    edge_probabilities = np.array([probability for probability, _left, _right in selected], dtype=np.float32)
+    return edges, edge_probabilities
+
+
+def candidate_edge_scores(probabilities: np.ndarray, candidate_edges: np.ndarray) -> list[tuple[float, int, int]]:
+    candidates: list[tuple[float, int, int]] = []
+    for left, right in candidate_edges.tolist():
+        left = int(left)
+        right = int(right)
+        if left == right:
+            continue
+        if left > right:
+            left, right = right, left
+        candidates.append((float(probabilities[left, right]), left, right))
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    return candidates
+
+
 def maximum_spanning_tree(probabilities: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     node_count = probabilities.shape[0]
     candidates = [
@@ -205,6 +257,7 @@ def threshold_then_connect(
     threshold: float,
     max_edges: int,
     min_edges: int,
+    bridge_edges: np.ndarray | None,
 ) -> tuple[np.ndarray, np.ndarray]:
     node_count = probabilities.shape[0]
     selected_edges, selected_probabilities = select_edges(
@@ -245,13 +298,20 @@ def threshold_then_connect(
     for _probability, left, right in selected:
         union(left, right)
 
-    candidates = [
-        (float(probabilities[left, right]), left, right)
-        for left in range(node_count)
-        for right in range(left + 1, node_count)
-        if (left, right) not in selected_pairs
-    ]
-    candidates.sort(reverse=True, key=lambda item: item[0])
+    if bridge_edges is None:
+        candidates = [
+            (float(probabilities[left, right]), left, right)
+            for left in range(node_count)
+            for right in range(left + 1, node_count)
+            if (left, right) not in selected_pairs
+        ]
+        candidates.sort(reverse=True, key=lambda item: item[0])
+    else:
+        candidates = [
+            (probability, left, right)
+            for probability, left, right in candidate_edge_scores(probabilities, bridge_edges)
+            if (left, right) not in selected_pairs
+        ]
     for probability, left, right in candidates:
         if union(left, right):
             selected.append((probability, left, right))
