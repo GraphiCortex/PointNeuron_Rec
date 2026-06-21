@@ -18,6 +18,7 @@ def main() -> int:
     parser.add_argument("--record", required=True, help="Connectivity record .npz.")
     parser.add_argument("--checkpoint", required=True, help="Connectivity checkpoint from scripts/train_connectivity.py.")
     parser.add_argument("--threshold", type=float, default=0.5, help="Minimum edge probability.")
+    parser.add_argument("--selection", default="top", choices=["top", "maxst"], help="How to select predicted edges.")
     parser.add_argument("--max-edges", type=int, default=0, help="Maximum edges to keep. 0 defaults to N - 1.")
     parser.add_argument("--min-edges", type=int, default=0, help="Keep this many top edges even below threshold. 0 disables.")
     parser.add_argument("--output", default="tmp/graphs/connectivity_predicted_graph.npz", help="Output graph .npz.")
@@ -65,12 +66,15 @@ def main() -> int:
 
     node_count = probabilities.shape[0]
     max_edges = args.max_edges if args.max_edges > 0 else max(0, node_count - 1)
-    edges, edge_probabilities = select_edges(
-        probabilities=probabilities,
-        threshold=args.threshold,
-        max_edges=max_edges,
-        min_edges=args.min_edges,
-    )
+    if args.selection == "maxst":
+        edges, edge_probabilities = maximum_spanning_tree(probabilities)
+    else:
+        edges, edge_probabilities = select_edges(
+            probabilities=probabilities,
+            threshold=args.threshold,
+            max_edges=max_edges,
+            min_edges=args.min_edges,
+        )
     adjacency = np.zeros((node_count, node_count), dtype=np.uint8)
     if edges.size:
         adjacency[edges[:, 0], edges[:, 1]] = 1
@@ -81,6 +85,7 @@ def main() -> int:
         "record": str(record_path),
         "checkpoint": str(args.checkpoint),
         "threshold": args.threshold,
+        "selection": args.selection,
         "max_edges": max_edges,
         "min_edges": args.min_edges,
         "nodes": int(node_count),
@@ -110,6 +115,7 @@ def main() -> int:
     print(f"edges: {edges.shape[0]}")
     print(f"components: {metadata['components']}")
     print(f"threshold: {args.threshold}")
+    print(f"selection: {args.selection}")
     print(f"output: {output_path}")
     return 0
 
@@ -125,6 +131,51 @@ def select_edges(probabilities: np.ndarray, threshold: float, max_edges: int, mi
         selected = candidates[:min_edges]
     if max_edges > 0:
         selected = selected[:max_edges]
+    if not selected:
+        return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
+    edges = np.array([[left, right] for _probability, left, right in selected], dtype=np.int64)
+    edge_probabilities = np.array([probability for probability, _left, _right in selected], dtype=np.float32)
+    return edges, edge_probabilities
+
+
+def maximum_spanning_tree(probabilities: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    node_count = probabilities.shape[0]
+    candidates = [
+        (float(probabilities[left, right]), left, right)
+        for left in range(node_count)
+        for right in range(left + 1, node_count)
+    ]
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    parent = list(range(node_count))
+    rank = [0] * node_count
+    selected: list[tuple[float, int, int]] = []
+
+    def find(node: int) -> int:
+        while parent[node] != node:
+            parent[node] = parent[parent[node]]
+            node = parent[node]
+        return node
+
+    def union(left: int, right: int) -> bool:
+        left_root = find(left)
+        right_root = find(right)
+        if left_root == right_root:
+            return False
+        if rank[left_root] < rank[right_root]:
+            parent[left_root] = right_root
+        elif rank[left_root] > rank[right_root]:
+            parent[right_root] = left_root
+        else:
+            parent[right_root] = left_root
+            rank[left_root] += 1
+        return True
+
+    for probability, left, right in candidates:
+        if union(left, right):
+            selected.append((probability, left, right))
+            if len(selected) == max(0, node_count - 1):
+                break
+
     if not selected:
         return np.zeros((0, 2), dtype=np.int64), np.zeros((0,), dtype=np.float32)
     edges = np.array([[left, right] for _probability, left, right in selected], dtype=np.int64)

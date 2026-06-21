@@ -20,6 +20,7 @@ def main() -> int:
     parser.add_argument("--weight-decay", type=float, default=1e-4, help="AdamW weight decay.")
     parser.add_argument("--positive-weight", type=float, help="Optional positive class weight. Defaults to per-graph imbalance.")
     parser.add_argument("--normalize-node-features", action="store_true", help="Standardize node features per graph before training.")
+    parser.add_argument("--init-decoder-bias", action="store_true", help="Initialize decoder bias from target edge sparsity.")
     parser.add_argument("--checkpoint", default="tmp/checkpoints/connectivity_gae.pt", help="Checkpoint path.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
     args = parser.parse_args()
@@ -51,6 +52,9 @@ def main() -> int:
             raise ValueError("All connectivity records must have the same node feature dimension")
 
     model = ConnectivityGAE(in_channels=input_dim).to(device)
+    if args.init_decoder_bias:
+        with torch.no_grad():
+            model.decoder_bias.fill_(target_edge_prior_logit(records, torch=torch))
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     checkpoint_path = Path(args.checkpoint)
     checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
@@ -59,6 +63,7 @@ def main() -> int:
     print(f"records: {len(records)}")
     print(f"node_feature_dim: {input_dim}")
     print(f"normalize_node_features: {args.normalize_node_features}")
+    print(f"decoder_bias: {float(model.decoder_bias.detach().cpu().item()):.4f}")
 
     best_loss: float | None = None
     best_epoch = 0
@@ -100,7 +105,10 @@ def main() -> int:
                 f"epoch={epoch} loss={mean_loss:.6f} "
                 f"edge_precision={epoch_metrics.mean('precision'):.4f} "
                 f"edge_recall={epoch_metrics.mean('recall'):.4f} "
-                f"edge_f1={epoch_metrics.mean('f1'):.4f}"
+                f"edge_f1={epoch_metrics.mean('f1'):.4f} "
+                f"topk_precision={epoch_metrics.mean('topk_precision'):.4f} "
+                f"topk_recall={epoch_metrics.mean('topk_recall'):.4f} "
+                f"topk_f1={epoch_metrics.mean('topk_f1'):.4f}"
             )
 
     print(f"best_epoch: {best_epoch}")
@@ -127,7 +135,8 @@ def load_record(path: Path, normalize: bool, torch, device: str) -> dict:
 def edge_metrics(logits, target_adjacency, torch) -> dict[str, float]:
     target = target_adjacency.bool()
     mask = torch.triu(torch.ones_like(target, dtype=torch.bool), diagonal=1)
-    predicted = (torch.sigmoid(logits) >= 0.5) & mask
+    probabilities = torch.sigmoid(logits)
+    predicted = (probabilities >= 0.5) & mask
     target = target & mask
     true_positive = int((predicted & target).sum().item())
     false_positive = int((predicted & ~target).sum().item())
@@ -135,12 +144,55 @@ def edge_metrics(logits, target_adjacency, torch) -> dict[str, float]:
     precision = true_positive / (true_positive + false_positive) if true_positive + false_positive else 0.0
     recall = true_positive / (true_positive + false_negative) if true_positive + false_negative else 0.0
     f1 = 2.0 * precision * recall / (precision + recall) if precision + recall > 0.0 else 0.0
-    return {"precision": precision, "recall": recall, "f1": f1}
+    topk_precision, topk_recall, topk_f1 = topk_edge_metrics(probabilities, target, mask, torch=torch)
+    return {
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "topk_precision": topk_precision,
+        "topk_recall": topk_recall,
+        "topk_f1": topk_f1,
+    }
+
+
+def topk_edge_metrics(probabilities, target, mask, torch) -> tuple[float, float, float]:
+    target_count = int(target.sum().item())
+    if target_count == 0:
+        return 0.0, 0.0, 0.0
+    flat_probabilities = probabilities[mask]
+    flat_target = target[mask]
+    k = min(target_count, flat_probabilities.numel())
+    top_indices = torch.topk(flat_probabilities, k=k, largest=True).indices
+    selected_target = flat_target[top_indices]
+    true_positive = int(selected_target.sum().item())
+    precision = true_positive / k if k else 0.0
+    recall = true_positive / target_count
+    f1 = 2.0 * precision * recall / (precision + recall) if precision + recall > 0.0 else 0.0
+    return precision, recall, f1
+
+
+def target_edge_prior_logit(records: list[dict], torch) -> float:
+    positives = 0.0
+    total = 0.0
+    for record in records:
+        target = record["target_adjacency"].float()
+        mask = torch.triu(torch.ones_like(target, dtype=torch.bool), diagonal=1)
+        positives += float(target[mask].sum().item())
+        total += float(mask.sum().item())
+    prior = min(max(positives / max(total, 1.0), 1e-6), 1.0 - 1e-6)
+    return float(np.log(prior / (1.0 - prior)))
 
 
 class RunningMetrics:
     def __init__(self) -> None:
-        self.values: dict[str, list[float]] = {"precision": [], "recall": [], "f1": []}
+        self.values: dict[str, list[float]] = {
+            "precision": [],
+            "recall": [],
+            "f1": [],
+            "topk_precision": [],
+            "topk_recall": [],
+            "topk_f1": [],
+        }
 
     def update(self, metrics: dict[str, float]) -> None:
         for key, value in metrics.items():

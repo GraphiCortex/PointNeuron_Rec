@@ -46,6 +46,7 @@ class ConnectivityGAE(nn.Module):
             layers.append(GraphConvolution(current_channels, channels))
             current_channels = channels
         self.graph_layers = nn.ModuleList(layers)
+        self.decoder_bias = nn.Parameter(torch.tensor(-4.0))
         self.output_dim = current_channels
 
     def forward(self, node_features: torch.Tensor, adjacency: torch.Tensor) -> ConnectivityOutput:
@@ -59,7 +60,8 @@ class ConnectivityGAE(nn.Module):
         latent = self.stem(node_features)
         for layer in self.graph_layers:
             latent = layer(latent, adjacency)
-        adjacency_logits = latent @ latent.transpose(0, 1)
+        scale = float(latent.shape[-1]) ** 0.5
+        adjacency_logits = (latent @ latent.transpose(0, 1)) / scale + self.decoder_bias
         return ConnectivityOutput(latent=latent, adjacency_logits=adjacency_logits)
 
 
