@@ -114,6 +114,7 @@ def paper_skeleton_proposal_loss(
     offset_weight: float = 10.0,
     objectness_weight: float = 1.0,
     radius_weight: float = 1.0,
+    positive_class_weight: float = 8.0,
     chunk_size: int = 512,
 ) -> PaperSkeletonProposalLoss:
     if skeleton_nodes.ndim != 3 or skeleton_nodes.shape[-1] < 5:
@@ -151,7 +152,12 @@ def paper_skeleton_proposal_loss(
         nearest_radius = gt_radius[nearest_indices].squeeze(-1)
         labels = (proposal_to_gt_distance <= nearest_radius).to(dtype=torch.long)
         positive_count += int(labels.sum().item())
-        objectness_losses.append(F.cross_entropy(logits, labels))
+        class_weight = torch.tensor(
+            [1.0, float(positive_class_weight)],
+            dtype=logits.dtype,
+            device=logits.device,
+        )
+        objectness_losses.append(F.cross_entropy(logits, labels, weight=class_weight))
 
         if bool(labels.any()):
             radius_losses.append(F.l1_loss(predicted_radius[labels.bool()], nearest_radius[labels.bool()].unsqueeze(-1)))

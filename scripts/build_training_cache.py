@@ -24,6 +24,7 @@ def main() -> int:
     parser.add_argument("--sample-index", type=int, help="Build one scanned sample by index.")
     parser.add_argument("--max-samples", type=int, help="Build at most this many clean samples.")
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
+    parser.add_argument("--threshold-fraction", type=float, help="Normalized foreground threshold in [0, 1], e.g. 0.2 from the paper.")
     parser.add_argument("--max-points", type=int, default=4096, help="Maximum sampled foreground points per record.")
     parser.add_argument("--seed", type=int, default=0, help="Base random seed.")
     parser.add_argument("--resume", action="store_true", help="Reuse existing cache records with matching metadata.")
@@ -43,15 +44,17 @@ def main() -> int:
     output_dir = Path(args.output_dir)
     records = []
     for ordinal, (sample_index, sample) in enumerate(selected):
+        threshold = effective_threshold(sample, args.threshold, args.threshold_fraction)
         if args.patches_per_sample > 0:
             reused = []
             if args.resume:
                 reused = cached_patch_summaries(
                     output_dir=output_dir,
                     sample_index=sample_index,
-                    threshold=args.threshold,
+                    threshold=threshold,
                     max_points=args.max_points,
                     patch_radius=args.patch_radius,
+                    threshold_fraction=args.threshold_fraction,
                 )
             if reused:
                 records.extend(reused)
@@ -69,8 +72,9 @@ def main() -> int:
                         max_points=args.max_points,
                         min_points=args.min_points,
                     ),
-                    threshold=args.threshold,
+                    threshold=threshold,
                     seed=args.seed + ordinal,
+                    threshold_fraction=args.threshold_fraction,
                 )
             except ValueError as exc:
                 print(f"skipped index={sample_index}: {exc}")
@@ -95,8 +99,9 @@ def main() -> int:
             cached = cached_record_summary(
                 output_path,
                 sample_index=sample_index,
-                threshold=args.threshold,
+                threshold=threshold,
                 max_points=args.max_points,
+                threshold_fraction=args.threshold_fraction,
             )
             if cached is not None:
                 records.append(cached)
@@ -110,9 +115,10 @@ def main() -> int:
             record = build_training_record(
                 sample,
                 output_path=output_path,
-                threshold=args.threshold,
+                threshold=threshold,
                 max_points=args.max_points,
                 seed=args.seed + ordinal,
+                threshold_fraction=args.threshold_fraction,
             )
         except ValueError as exc:
             print(f"skipped index={sample_index}: {exc}")
@@ -139,7 +145,8 @@ def main() -> int:
         json.dumps(
             {
                 "root": args.root,
-                "threshold": args.threshold,
+                "threshold": args.threshold if args.threshold_fraction is None else None,
+                "threshold_fraction": args.threshold_fraction,
                 "max_points": args.max_points,
                 "patches_per_sample": args.patches_per_sample,
                 "patch_radius": args.patch_radius if args.patches_per_sample > 0 else None,
@@ -171,6 +178,7 @@ def cached_record_summary(
     sample_index: int,
     threshold: int,
     max_points: int,
+    threshold_fraction: float | None = None,
 ) -> dict[str, object] | None:
     try:
         import numpy as np
@@ -181,6 +189,8 @@ def cached_record_summary(
         return None
 
     if metadata.get("threshold") != threshold or metadata.get("max_points") != max_points:
+        return None
+    if metadata.get("threshold_fraction") != threshold_fraction:
         return None
 
     return {
@@ -200,11 +210,18 @@ def cached_patch_summaries(
     threshold: int,
     max_points: int,
     patch_radius: int,
+    threshold_fraction: float | None = None,
 ) -> list[dict[str, object]]:
     paths = sorted(output_dir.glob(f"sample_{sample_index:04d}_patch_*.npz"))
     records = []
     for path in paths:
-        summary = cached_record_summary(path, sample_index=sample_index, threshold=threshold, max_points=max_points)
+        summary = cached_record_summary(
+            path,
+            sample_index=sample_index,
+            threshold=threshold,
+            max_points=max_points,
+            threshold_fraction=threshold_fraction,
+        )
         if summary is None:
             return []
         try:
@@ -218,6 +235,23 @@ def cached_patch_summaries(
             return []
         records.append(summary)
     return records
+
+
+def effective_threshold(sample, threshold: int, threshold_fraction: float | None) -> int:
+    if threshold_fraction is None:
+        return threshold
+    if threshold_fraction < 0.0 or threshold_fraction > 1.0:
+        raise ValueError(f"--threshold-fraction must be in [0, 1], got {threshold_fraction}")
+    if sample.volume_path is None:
+        return threshold
+    header = read_header(sample.volume_path)
+    if header.datatype == 1:
+        max_value = 255
+    elif header.datatype == 2:
+        max_value = 65535
+    else:
+        raise NotImplementedError(f"Vaa3D datatype {header.datatype} is not supported yet")
+    return int(round(max_value * threshold_fraction))
 
 
 if __name__ == "__main__":

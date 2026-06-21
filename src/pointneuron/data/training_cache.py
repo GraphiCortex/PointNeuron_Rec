@@ -37,6 +37,7 @@ def build_training_record(
     threshold: int = 0,
     max_points: int = 4096,
     seed: int = 0,
+    threshold_fraction: float | None = None,
 ) -> CachedTrainingRecord:
     if sample.volume_path is None:
         raise ValueError(f"Sample has no volume: {sample.sample_id}")
@@ -63,6 +64,7 @@ def build_training_record(
         "swc_selection": sample.swc_selection,
         "volume_dimensions": point_cloud.volume_dimensions,
         "threshold": threshold,
+        "threshold_fraction": threshold_fraction,
         "max_points": max_points,
         "seed": seed,
         "total_foreground_count": point_cloud.total_foreground_count,
@@ -95,6 +97,7 @@ def build_patch_training_records(
     config: PatchCacheConfig,
     threshold: int = 0,
     seed: int = 0,
+    threshold_fraction: float | None = None,
 ) -> list[CachedTrainingRecord]:
     if sample.volume_path is None:
         raise ValueError(f"Sample has no volume: {sample.sample_id}")
@@ -133,6 +136,7 @@ def build_patch_training_records(
         )
         if selected_indices.shape[0] < config.min_points:
             continue
+        patch_foreground_count = int(selected_indices.shape[0])
         selected_indices = sample_indices_fixed(selected_indices, config.max_points, rng)
         points_array = indices_to_point_array(selected_indices, data, width, height)
         patch_skeleton_array = skeleton_nodes_in_patch(skeleton_array, center, config.patch_radius)
@@ -149,11 +153,12 @@ def build_patch_training_records(
             "swc_selection": sample.swc_selection,
             "volume_dimensions": volume.dimensions,
             "threshold": threshold,
+            "threshold_fraction": threshold_fraction,
             "max_points": config.max_points,
             "seed": seed,
             "patch_radius": config.patch_radius,
             "patch_center": [float(value) for value in center],
-            "patch_foreground_count": int(selected_indices.shape[0]),
+            "patch_foreground_count": patch_foreground_count,
         }
         path = output_path / f"sample_{sample_index:04d}_patch_{patch_index:03d}.npz"
         np.savez_compressed(
@@ -170,7 +175,7 @@ def build_patch_training_records(
                 point_count=int(points_array.shape[0]),
                 skeleton_node_count=int(patch_skeleton_array.shape[0]),
                 edge_count=int(patch_edge_index.shape[0]),
-                total_foreground_count=int(selected_indices.shape[0]),
+                total_foreground_count=patch_foreground_count,
             )
         )
 

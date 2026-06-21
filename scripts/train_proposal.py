@@ -144,6 +144,7 @@ def main() -> int:
                         offset_weight=args.offset_weight,
                         objectness_weight=args.objectness_weight,
                         radius_weight=args.radius_weight,
+                        positive_class_weight=args.positive_class_weight,
                     )
                     offset_value = float(loss.offsets.item())
                 else:
@@ -285,6 +286,7 @@ def evaluate(
                         offset_weight=offset_weight,
                         objectness_weight=objectness_weight,
                         radius_weight=radius_weight,
+                        positive_class_weight=positive_class_weight,
                     )
                     offset_value = float(loss.offsets.item())
                 else:
