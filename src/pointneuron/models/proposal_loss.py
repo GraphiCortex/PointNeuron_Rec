@@ -44,6 +44,8 @@ def build_skeleton_proposal_targets(
     positive_distance: float = 6.0,
     radius_scale: float = 1.5,
     target_radius_floor: float = 0.0,
+    objectness_radius_floor: float | None = None,
+    radius_target_floor: float | None = None,
     chunk_size: int = 1024,
 ) -> SkeletonProposalTargets:
     if points.ndim != 3 or points.shape[-1] != 4:
@@ -71,7 +73,11 @@ def build_skeleton_proposal_targets(
             continue
 
         node_xyz = valid_nodes[:, 1:4].to(dtype=points.dtype, device=device)
-        node_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=device).clamp_min(float(target_radius_floor))
+        raw_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=device).clamp_min(0.0)
+        objectness_floor = target_radius_floor if objectness_radius_floor is None else objectness_radius_floor
+        radius_floor = target_radius_floor if radius_target_floor is None else radius_target_floor
+        objectness_radius = raw_radius.clamp_min(float(objectness_floor))
+        node_radius = raw_radius.clamp_min(float(radius_floor))
 
         nearest_indices = []
         nearest_distances = []
@@ -88,7 +94,7 @@ def build_skeleton_proposal_targets(
         sample_radius = node_radius[sample_indices]
         positive_threshold = torch.maximum(
             torch.full_like(sample_radius, float(positive_distance)),
-            sample_radius * float(radius_scale),
+            objectness_radius[sample_indices] * float(radius_scale),
         ).squeeze(-1)
         sample_positive = sample_distances <= positive_threshold
 
@@ -117,6 +123,8 @@ def paper_skeleton_proposal_loss(
     radius_weight: float = 1.0,
     positive_class_weight: float = 8.0,
     target_radius_floor: float = 0.0,
+    objectness_radius_floor: float | None = None,
+    radius_target_floor: float | None = None,
     chunk_size: int = 512,
 ) -> PaperSkeletonProposalLoss:
     if skeleton_nodes.ndim != 3 or skeleton_nodes.shape[-1] < 5:
@@ -139,7 +147,11 @@ def paper_skeleton_proposal_loss(
             continue
 
         gt_centers = valid_nodes[:, 1:4].to(dtype=points.dtype, device=points.device)
-        gt_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=points.device).clamp_min(float(target_radius_floor))
+        raw_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=points.device).clamp_min(0.0)
+        objectness_floor = target_radius_floor if objectness_radius_floor is None else objectness_radius_floor
+        radius_floor = target_radius_floor if radius_target_floor is None else radius_target_floor
+        objectness_radius = raw_radius.clamp_min(float(objectness_floor))
+        gt_radius = raw_radius.clamp_min(float(radius_floor))
         proposals = output.center_proposals[batch_index]
         predicted_radius = output.radius[batch_index]
         logits = output.objectness_logits[batch_index]
@@ -152,7 +164,8 @@ def paper_skeleton_proposal_loss(
         offset_losses.append(offset_loss)
 
         nearest_radius = gt_radius[nearest_indices].squeeze(-1)
-        labels = (proposal_to_gt_distance <= nearest_radius).to(dtype=torch.long)
+        nearest_objectness_radius = objectness_radius[nearest_indices].squeeze(-1)
+        labels = (proposal_to_gt_distance <= nearest_objectness_radius).to(dtype=torch.long)
         positive_count += int(labels.sum().item())
         class_weight = torch.tensor(
             [1.0, float(positive_class_weight)],

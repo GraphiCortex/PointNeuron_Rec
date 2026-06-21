@@ -25,7 +25,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--weight-decay", type=float, default=1e-4, help="AdamW weight decay.")
     parser.add_argument("--positive-distance", type=float, default=6.0, help="Voxel distance for positive proposals.")
     parser.add_argument("--radius-scale", type=float, default=1.5, help="Also mark positives inside radius * this value.")
-    parser.add_argument("--target-radius-floor", type=float, default=6.0, help="Minimum SWC radius used for objectness/radius targets; set 0 to use raw radii.")
+    parser.add_argument("--target-radius-floor", type=float, help="Legacy override: minimum SWC radius used for both objectness and radius targets.")
+    parser.add_argument("--objectness-radius-floor", type=float, default=3.0, help="Minimum SWC radius used only for objectness labels.")
+    parser.add_argument("--radius-target-floor", type=float, default=1.0, help="Minimum SWC radius used only for radius regression targets.")
     parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
     parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest"], help="Skeleton proposal loss to train with.")
     parser.add_argument("--offset-weight", type=float, default=1.0, help="Weight for paper-style Chamfer offset loss.")
@@ -112,6 +114,10 @@ def main() -> int:
     print(f"k: {args.k}")
     print(f"loss_mode: {args.loss_mode}")
     print(f"geometric_feature_dim: {encoder.geometric_feature_dim}")
+    objectness_radius_floor = args.target_radius_floor if args.target_radius_floor is not None else args.objectness_radius_floor
+    radius_target_floor = args.target_radius_floor if args.target_radius_floor is not None else args.radius_target_floor
+    print(f"objectness_radius_floor: {objectness_radius_floor}")
+    print(f"radius_target_floor: {radius_target_floor}")
 
     checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
     if checkpoint_path is not None:
@@ -141,7 +147,8 @@ def main() -> int:
                         skeleton_mask=skeleton_mask,
                         positive_distance=args.positive_distance,
                         radius_scale=args.radius_scale,
-                        target_radius_floor=args.target_radius_floor,
+                        objectness_radius_floor=objectness_radius_floor,
+                        radius_target_floor=radius_target_floor,
                     )
 
             optimizer.zero_grad(set_to_none=True)
@@ -158,7 +165,8 @@ def main() -> int:
                         objectness_weight=args.objectness_weight,
                         radius_weight=args.radius_weight,
                         positive_class_weight=args.positive_class_weight,
-                        target_radius_floor=args.target_radius_floor,
+                        objectness_radius_floor=objectness_radius_floor,
+                        radius_target_floor=radius_target_floor,
                     )
                     offset_value = float(loss.offsets.item())
                 else:
@@ -191,7 +199,8 @@ def main() -> int:
                 device=device,
                 positive_distance=args.positive_distance,
                 radius_scale=args.radius_scale,
-                target_radius_floor=args.target_radius_floor,
+                objectness_radius_floor=objectness_radius_floor,
+                radius_target_floor=radius_target_floor,
                 positive_class_weight=args.positive_class_weight,
                 loss_mode=args.loss_mode,
                 offset_weight=args.offset_weight,
@@ -298,7 +307,8 @@ def evaluate(
     device: str,
     positive_distance: float,
     radius_scale: float,
-    target_radius_floor: float,
+    objectness_radius_floor: float,
+    radius_target_floor: float,
     positive_class_weight: float,
     loss_mode: str,
     offset_weight: float,
@@ -326,7 +336,8 @@ def evaluate(
                     skeleton_mask=skeleton_mask,
                     positive_distance=positive_distance,
                     radius_scale=radius_scale,
-                    target_radius_floor=target_radius_floor,
+                    objectness_radius_floor=objectness_radius_floor,
+                    radius_target_floor=radius_target_floor,
                 )
             with torch.amp.autocast(device_type="cuda", enabled=use_amp):
                 features = encoder(points)
@@ -341,7 +352,8 @@ def evaluate(
                         objectness_weight=objectness_weight,
                         radius_weight=radius_weight,
                         positive_class_weight=positive_class_weight,
-                        target_radius_floor=target_radius_floor,
+                        objectness_radius_floor=objectness_radius_floor,
+                        radius_target_floor=radius_target_floor,
                     )
                     offset_value = float(loss.offsets.item())
                 else:
