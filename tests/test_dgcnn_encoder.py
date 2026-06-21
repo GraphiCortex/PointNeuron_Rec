@@ -11,6 +11,7 @@ class TrainProposalCliTests(unittest.TestCase):
         self.assertEqual(args.offset_weight, 1.0)
         self.assertEqual(args.objectness_weight, 10.0)
         self.assertEqual(args.radius_weight, 1.0)
+        self.assertEqual(args.target_radius_floor, 6.0)
 
 
 @unittest.skipIf(importlib.util.find_spec("torch") is None, "PyTorch is not installed")
@@ -120,6 +121,38 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         self.assertEqual(loss.positive_count, 1)
         self.assertTrue(torch.isfinite(loss.total))
+
+    def test_target_radius_floor_relaxes_tiny_swc_radius(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import build_skeleton_proposal_targets, paper_skeleton_proposal_loss
+
+        points = torch.tensor([[[0.5, 0.0, 0.0, 10.0], [5.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 0.01, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        output = SkeletonProposalOutput(
+            offsets=torch.zeros(1, 2, 3),
+            objectness_logits=torch.zeros(1, 2, 2),
+            radius=torch.ones(1, 2, 1),
+            center_proposals=points[..., :3],
+            raw=torch.zeros(1, 2, 6),
+        )
+
+        strict_loss = paper_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points)
+        relaxed_loss = paper_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points, target_radius_floor=1.0)
+        targets = build_skeleton_proposal_targets(
+            points,
+            skeleton_nodes,
+            skeleton_mask,
+            positive_distance=0.0,
+            target_radius_floor=1.0,
+        )
+
+        self.assertEqual(strict_loss.positive_count, 0)
+        self.assertEqual(relaxed_loss.positive_count, 1)
+        self.assertEqual(targets.positive_mask.tolist(), [[True, False]])
+        self.assertEqual(targets.matched_radius.tolist(), [[[1.0], [1.0]]])
 
     def test_paper_skeleton_proposal_loss_defaults_match_paper_weights(self) -> None:
         import torch

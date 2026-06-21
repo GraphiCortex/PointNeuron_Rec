@@ -43,6 +43,7 @@ def build_skeleton_proposal_targets(
     skeleton_mask: torch.Tensor,
     positive_distance: float = 6.0,
     radius_scale: float = 1.5,
+    target_radius_floor: float = 0.0,
     chunk_size: int = 1024,
 ) -> SkeletonProposalTargets:
     if points.ndim != 3 or points.shape[-1] != 4:
@@ -70,7 +71,7 @@ def build_skeleton_proposal_targets(
             continue
 
         node_xyz = valid_nodes[:, 1:4].to(dtype=points.dtype, device=device)
-        node_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=device).clamp_min(0.0)
+        node_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=device).clamp_min(float(target_radius_floor))
 
         nearest_indices = []
         nearest_distances = []
@@ -115,6 +116,7 @@ def paper_skeleton_proposal_loss(
     objectness_weight: float = 10.0,
     radius_weight: float = 1.0,
     positive_class_weight: float = 8.0,
+    target_radius_floor: float = 0.0,
     chunk_size: int = 512,
 ) -> PaperSkeletonProposalLoss:
     if skeleton_nodes.ndim != 3 or skeleton_nodes.shape[-1] < 5:
@@ -137,7 +139,7 @@ def paper_skeleton_proposal_loss(
             continue
 
         gt_centers = valid_nodes[:, 1:4].to(dtype=points.dtype, device=points.device)
-        gt_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=points.device).clamp_min(0.0)
+        gt_radius = valid_nodes[:, 4:5].to(dtype=points.dtype, device=points.device).clamp_min(float(target_radius_floor))
         proposals = output.center_proposals[batch_index]
         predicted_radius = output.radius[batch_index]
         logits = output.objectness_logits[batch_index]
