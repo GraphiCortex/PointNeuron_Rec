@@ -11,6 +11,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
+from pointneuron.graph.initialization import initialize_proposal_graph
 from pointneuron.data.training_cache import choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
@@ -239,6 +240,34 @@ class SplitTests(unittest.TestCase):
     def test_split_ratios_must_sum_to_one(self) -> None:
         with self.assertRaises(ValueError):
             split_records(["a", "b", "c"], ratios=SplitRatios(train=0.5, val=0.3, test=0.3))
+
+
+class GraphInitializationTests(unittest.TestCase):
+    def test_mst_initialization_follows_swc_tree_distance(self) -> None:
+        import numpy as np
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "trace.swc"
+            path.write_text(
+                "\n".join(
+                    [
+                        "1 1 0 0 0 1 -1",
+                        "2 3 10 0 0 1 1",
+                        "3 3 20 0 0 1 2",
+                        "4 3 30 0 0 1 3",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            swc = parse_swc(path)
+
+        centers = np.array([[0, 0, 0], [30, 0, 0], [10, 0, 0]], dtype=np.float32)
+        result = initialize_proposal_graph(centers, swc, mode="mst")
+
+        self.assertEqual(result.edges.tolist(), [[0, 2], [1, 2]])
+        self.assertEqual(result.adjacency.tolist(), [[0, 0, 1], [0, 0, 1], [1, 1, 0]])
+        self.assertEqual(result.assigned_swc_ids.tolist(), [1, 4, 2])
 
 
 if __name__ == "__main__":
