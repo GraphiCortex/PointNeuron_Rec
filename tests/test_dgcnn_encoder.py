@@ -88,6 +88,39 @@ class DGCNNEncoderTests(unittest.TestCase):
         self.assertEqual(loss.positive_count, 0)
         self.assertTrue(torch.isfinite(loss.total))
 
+    def test_paper_skeleton_proposal_loss_runs(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import paper_skeleton_proposal_loss
+
+        points = torch.tensor([[[0.0, 0.0, 0.0, 10.0], [10.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.5, 0.0, 0.0, 2.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        output = SkeletonProposalOutput(
+            offsets=torch.zeros(1, 2, 3),
+            objectness_logits=torch.zeros(1, 2, 2),
+            radius=torch.ones(1, 2, 1),
+            center_proposals=points[..., :3],
+            raw=torch.zeros(1, 2, 6),
+        )
+
+        loss = paper_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points)
+
+        self.assertEqual(loss.positive_count, 1)
+        self.assertTrue(torch.isfinite(loss.total))
+
+    def test_sphere_iou_detects_overlap(self) -> None:
+        import torch
+
+        from scripts.visualize_proposals import sphere_iou
+
+        overlap = sphere_iou(torch.tensor([0.0, 0.0, 0.0]), 2.0, torch.tensor([1.0, 0.0, 0.0]), 2.0)
+        separate = sphere_iou(torch.tensor([0.0, 0.0, 0.0]), 2.0, torch.tensor([8.0, 0.0, 0.0]), 2.0)
+
+        self.assertGreater(overlap, 0.0)
+        self.assertEqual(separate, 0.0)
+
     def test_knn_excludes_self_for_distinct_points(self) -> None:
         import torch
 

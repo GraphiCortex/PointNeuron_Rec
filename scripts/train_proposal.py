@@ -26,6 +26,10 @@ def main() -> int:
     parser.add_argument("--positive-distance", type=float, default=6.0, help="Voxel distance for positive proposals.")
     parser.add_argument("--radius-scale", type=float, default=1.5, help="Also mark positives inside radius * this value.")
     parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
+    parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest"], help="Skeleton proposal loss to train with.")
+    parser.add_argument("--offset-weight", type=float, default=10.0, help="Weight for paper-style Chamfer offset loss.")
+    parser.add_argument("--objectness-weight", type=float, default=1.0, help="Weight for paper-style objectness loss.")
+    parser.add_argument("--radius-weight", type=float, default=1.0, help="Weight for paper-style radius loss.")
     parser.add_argument("--num-workers", type=int, default=0, help="DataLoader worker count. Keep 0 on Windows at first.")
     parser.add_argument("--drop-last", action="store_true", help="Drop the final incomplete batch.")
     parser.add_argument("--limit-batches", type=int, help="Optional maximum batches per epoch for quick checks.")
@@ -43,7 +47,7 @@ def main() -> int:
 
     from pointneuron.models.dgcnn import DGCNNEncoder
     from pointneuron.models.proposal import SkeletonProposalHead
-    from pointneuron.models.proposal_loss import build_skeleton_proposal_targets, skeleton_proposal_loss
+    from pointneuron.models.proposal_loss import build_skeleton_proposal_targets, paper_skeleton_proposal_loss, skeleton_proposal_loss
 
     if args.device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -100,6 +104,7 @@ def main() -> int:
     print(f"drop_last: {drop_last}")
     print(f"amp: {use_amp}")
     print(f"k: {args.k}")
+    print(f"loss_mode: {args.loss_mode}")
     print(f"geometric_feature_dim: {encoder.geometric_feature_dim}")
 
     for epoch in range(1, args.epochs + 1):
@@ -115,25 +120,40 @@ def main() -> int:
             skeleton_nodes = batch["skeleton_nodes"].to(device, non_blocking=True)
             skeleton_mask = batch["skeleton_mask"].to(device, non_blocking=True)
 
-            with torch.no_grad():
-                targets = build_skeleton_proposal_targets(
-                    points=points,
-                    skeleton_nodes=skeleton_nodes,
-                    skeleton_mask=skeleton_mask,
-                    positive_distance=args.positive_distance,
-                    radius_scale=args.radius_scale,
-                )
+            targets = None
+            if args.loss_mode == "nearest":
+                with torch.no_grad():
+                    targets = build_skeleton_proposal_targets(
+                        points=points,
+                        skeleton_nodes=skeleton_nodes,
+                        skeleton_mask=skeleton_mask,
+                        positive_distance=args.positive_distance,
+                        radius_scale=args.radius_scale,
+                    )
 
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast(device_type="cuda", enabled=use_amp):
                 features = encoder(points)
                 output = proposal(points, features)
-                loss = skeleton_proposal_loss(
-                    output=output,
-                    targets=targets,
-                    points=points,
-                    positive_class_weight=args.positive_class_weight,
-                )
+                if args.loss_mode == "paper":
+                    loss = paper_skeleton_proposal_loss(
+                        output=output,
+                        skeleton_nodes=skeleton_nodes,
+                        skeleton_mask=skeleton_mask,
+                        points=points,
+                        offset_weight=args.offset_weight,
+                        objectness_weight=args.objectness_weight,
+                        radius_weight=args.radius_weight,
+                    )
+                    offset_value = float(loss.offsets.item())
+                else:
+                    loss = skeleton_proposal_loss(
+                        output=output,
+                        targets=targets,
+                        points=points,
+                        positive_class_weight=args.positive_class_weight,
+                    )
+                    offset_value = float(loss.center.item())
             scaler.scale(loss.total).backward()
             scaler.step(optimizer)
             scaler.update()
@@ -141,7 +161,7 @@ def main() -> int:
             running.update(
                 total=float(loss.total.detach().item()),
                 objectness=float(loss.objectness.item()),
-                center=float(loss.center.item()),
+                offsets=offset_value,
                 radius=float(loss.radius.item()),
                 positive_count=loss.positive_count,
                 total_count=loss.total_count,
@@ -157,9 +177,14 @@ def main() -> int:
                 positive_distance=args.positive_distance,
                 radius_scale=args.radius_scale,
                 positive_class_weight=args.positive_class_weight,
+                loss_mode=args.loss_mode,
+                offset_weight=args.offset_weight,
+                objectness_weight=args.objectness_weight,
+                radius_weight=args.radius_weight,
                 use_amp=use_amp,
                 torch=torch,
                 build_skeleton_proposal_targets=build_skeleton_proposal_targets,
+                paper_skeleton_proposal_loss=paper_skeleton_proposal_loss,
                 skeleton_proposal_loss=skeleton_proposal_loss,
             )
             message += f" {format_metrics('val', validation)}"
@@ -194,7 +219,7 @@ class RunningAverages:
         self,
         total: float,
         objectness: float,
-        center: float,
+        offsets: float,
         radius: float,
         positive_count: int,
         total_count: int,
@@ -202,7 +227,7 @@ class RunningAverages:
         self.count += 1
         self.sums["total"] = self.sums.get("total", 0.0) + total
         self.sums["objectness"] = self.sums.get("objectness", 0.0) + objectness
-        self.sums["center"] = self.sums.get("center", 0.0) + center
+        self.sums["offsets"] = self.sums.get("offsets", 0.0) + offsets
         self.sums["radius"] = self.sums.get("radius", 0.0) + radius
         self.positive_count += positive_count
         self.total_count += total_count
@@ -221,9 +246,14 @@ def evaluate(
     positive_distance: float,
     radius_scale: float,
     positive_class_weight: float,
+    loss_mode: str,
+    offset_weight: float,
+    objectness_weight: float,
+    radius_weight: float,
     use_amp: bool,
     torch,
     build_skeleton_proposal_targets,
+    paper_skeleton_proposal_loss,
     skeleton_proposal_loss,
 ) -> RunningAverages:
     encoder.eval()
@@ -234,26 +264,41 @@ def evaluate(
             points = batch["points"].to(device, non_blocking=True)
             skeleton_nodes = batch["skeleton_nodes"].to(device, non_blocking=True)
             skeleton_mask = batch["skeleton_mask"].to(device, non_blocking=True)
-            targets = build_skeleton_proposal_targets(
-                points=points,
-                skeleton_nodes=skeleton_nodes,
-                skeleton_mask=skeleton_mask,
-                positive_distance=positive_distance,
-                radius_scale=radius_scale,
-            )
+            targets = None
+            if loss_mode == "nearest":
+                targets = build_skeleton_proposal_targets(
+                    points=points,
+                    skeleton_nodes=skeleton_nodes,
+                    skeleton_mask=skeleton_mask,
+                    positive_distance=positive_distance,
+                    radius_scale=radius_scale,
+                )
             with torch.amp.autocast(device_type="cuda", enabled=use_amp):
                 features = encoder(points)
                 output = proposal(points, features)
-                loss = skeleton_proposal_loss(
-                    output=output,
-                    targets=targets,
-                    points=points,
-                    positive_class_weight=positive_class_weight,
-                )
+                if loss_mode == "paper":
+                    loss = paper_skeleton_proposal_loss(
+                        output=output,
+                        skeleton_nodes=skeleton_nodes,
+                        skeleton_mask=skeleton_mask,
+                        points=points,
+                        offset_weight=offset_weight,
+                        objectness_weight=objectness_weight,
+                        radius_weight=radius_weight,
+                    )
+                    offset_value = float(loss.offsets.item())
+                else:
+                    loss = skeleton_proposal_loss(
+                        output=output,
+                        targets=targets,
+                        points=points,
+                        positive_class_weight=positive_class_weight,
+                    )
+                    offset_value = float(loss.center.item())
             running.update(
                 total=float(loss.total.detach().item()),
                 objectness=float(loss.objectness.item()),
-                center=float(loss.center.item()),
+                offsets=offset_value,
                 radius=float(loss.radius.item()),
                 positive_count=loss.positive_count,
                 total_count=loss.total_count,
@@ -265,7 +310,7 @@ def format_metrics(prefix: str, running: RunningAverages) -> str:
     return (
         f"{prefix}_loss={running.mean('total'):.4f} "
         f"{prefix}_objectness={running.mean('objectness'):.4f} "
-        f"{prefix}_center={running.mean('center'):.6f} "
+        f"{prefix}_offsets={running.mean('offsets'):.6f} "
         f"{prefix}_radius={running.mean('radius'):.4f} "
         f"{prefix}_positives={running.positive_count}/{running.total_count}"
     )

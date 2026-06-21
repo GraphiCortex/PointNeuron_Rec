@@ -24,7 +24,9 @@ def main() -> int:
     parser.add_argument("--k", type=int, help="Override kNN neighbors. Defaults to checkpoint value or 20.")
     parser.add_argument("--score-threshold", type=float, default=0.5, help="Minimum objectness probability before NMS.")
     parser.add_argument("--top-proposals", type=int, default=512, help="Maximum selected proposals per sample.")
+    parser.add_argument("--nms-mode", default="sphere", choices=["sphere", "distance"], help="Proposal downsampling mode.")
     parser.add_argument("--nms-radius", type=float, default=8.0, help="Spherical NMS radius in voxels.")
+    parser.add_argument("--iou-threshold", type=float, default=0.1, help="Sphere IoU threshold for spherical NMS.")
     parser.add_argument("--match-distance", type=float, default=6.0, help="Proposal-to-SWC distance counted as a hit.")
     parser.add_argument("--coverage-distance", type=float, default=8.0, help="SWC node distance counted as covered.")
     parser.add_argument("--max-records", type=int, help="Optional limit for a quick check.")
@@ -87,15 +89,19 @@ def main() -> int:
             output = proposal(points, features)
             scores = output.objectness_logits.softmax(dim=-1)[0, :, 1]
             centers = output.center_proposals[0]
+            radii = output.radius[0, :, 0]
             valid_skeleton = skeleton_nodes[0, skeleton_mask[0]][:, 1:4]
             score_quantile_rows.append(scores.detach().float())
 
             selected_indices = select_proposals(
                 centers=centers,
+                radii=radii,
                 scores=scores,
                 score_threshold=args.score_threshold,
                 top_proposals=args.top_proposals,
+                nms_mode=args.nms_mode,
                 nms_radius=args.nms_radius,
+                iou_threshold=args.iou_threshold,
             )
 
             selected_centers = centers[selected_indices] if selected_indices else centers.new_zeros((0, 3))
@@ -132,7 +138,9 @@ def main() -> int:
     print(f"records: {len(paths)}")
     print(f"score_threshold: {args.score_threshold}")
     print(f"top_proposals: {args.top_proposals}")
+    print(f"nms_mode: {args.nms_mode}")
     print(f"nms_radius: {args.nms_radius}")
+    print(f"iou_threshold: {args.iou_threshold}")
     print(f"proposal_precision@{args.match_distance:g}: {total_hits / total_selected if total_selected else 0.0:.4f} ({total_hits}/{total_selected})")
     print(f"skeleton_coverage@{args.coverage_distance:g}: {total_covered / total_nodes if total_nodes else 0.0:.4f} ({total_covered}/{total_nodes})")
     if distance_means:

@@ -24,7 +24,9 @@ def main() -> int:
     parser.add_argument("--k", type=int, help="Override kNN neighbors. Defaults to checkpoint value or 20.")
     parser.add_argument("--score-threshold", type=float, default=0.5, help="Minimum objectness probability to consider.")
     parser.add_argument("--top-proposals", type=int, default=256, help="Maximum proposals to render after NMS.")
-    parser.add_argument("--nms-radius", type=float, default=8.0, help="Spherical NMS radius in voxels.")
+    parser.add_argument("--nms-mode", default="sphere", choices=["sphere", "distance"], help="Proposal downsampling mode.")
+    parser.add_argument("--nms-radius", type=float, default=8.0, help="Distance NMS radius in voxels.")
+    parser.add_argument("--iou-threshold", type=float, default=0.1, help="Sphere IoU threshold for spherical NMS.")
     parser.add_argument("--positive-distance", type=float, default=6.0, help="Distance used only for reporting close proposal rate.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
     args = parser.parse_args()
@@ -82,10 +84,13 @@ def main() -> int:
     score_quantiles = probability_quantiles(probabilities)
     selected_indices = select_proposals(
         centers=centers,
+        radii=radii,
         scores=probabilities,
         score_threshold=args.score_threshold,
         top_proposals=args.top_proposals,
+        nms_mode=args.nms_mode,
         nms_radius=args.nms_radius,
+        iou_threshold=args.iou_threshold,
     )
     selected = [
         [
@@ -149,7 +154,16 @@ def main() -> int:
     return 0
 
 
-def select_proposals(centers, scores, score_threshold: float, top_proposals: int, nms_radius: float) -> list[int]:
+def select_proposals(
+    centers,
+    scores,
+    score_threshold: float,
+    top_proposals: int,
+    nms_radius: float,
+    radii=None,
+    nms_mode: str = "sphere",
+    iou_threshold: float = 0.1,
+) -> list[int]:
     import torch
 
     candidate_indices = torch.nonzero(scores >= score_threshold, as_tuple=False).flatten()
@@ -169,13 +183,51 @@ def select_proposals(centers, scores, score_threshold: float, top_proposals: int
         center = centers[index]
         keep = True
         for selected_index in selected:
-            distance_squared = torch.sum((center - centers[selected_index]) ** 2).item()
-            if distance_squared <= radius_squared:
-                keep = False
-                break
+            if nms_mode == "sphere" and radii is not None:
+                iou = sphere_iou(
+                    center,
+                    float(radii[index].clamp_min(0.0).item()),
+                    centers[selected_index],
+                    float(radii[selected_index].clamp_min(0.0).item()),
+                )
+                if iou > iou_threshold:
+                    keep = False
+                    break
+            else:
+                distance_squared = torch.sum((center - centers[selected_index]) ** 2).item()
+                if distance_squared <= radius_squared:
+                    keep = False
+                    break
         if keep:
             selected.append(index)
     return selected
+
+
+def sphere_iou(center_a, radius_a: float, center_b, radius_b: float) -> float:
+    import math
+    import torch
+
+    if radius_a <= 0.0 or radius_b <= 0.0:
+        return 0.0
+    distance = float(torch.linalg.norm(center_a - center_b).item())
+    volume_a = 4.0 * math.pi * radius_a**3 / 3.0
+    volume_b = 4.0 * math.pi * radius_b**3 / 3.0
+    if distance >= radius_a + radius_b:
+        intersection = 0.0
+    elif distance <= abs(radius_a - radius_b):
+        intersection = min(volume_a, volume_b)
+    else:
+        term = radius_a + radius_b - distance
+        intersection = (
+            math.pi
+            * term**2
+            * (distance**2 + 2.0 * distance * (radius_a + radius_b) - 3.0 * (radius_a - radius_b) ** 2)
+            / (12.0 * distance)
+        )
+    union = volume_a + volume_b - intersection
+    if union <= 0.0:
+        return 0.0
+    return intersection / union
 
 
 def probability_quantiles(probabilities) -> dict[str, float]:
