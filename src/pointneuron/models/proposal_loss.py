@@ -111,10 +111,9 @@ def skeleton_proposal_loss(
     objectness = F.cross_entropy(output.objectness_logits.reshape(-1, 2), labels.reshape(-1), weight=class_weight)
 
     if bool(positive_mask.any()):
-        coord_scale = coordinate_loss_scale(points)
         center = F.smooth_l1_loss(
-            output.center_proposals[positive_mask] / coord_scale,
-            targets.matched_centers[positive_mask] / coord_scale,
+            output.center_proposals[positive_mask],
+            targets.matched_centers[positive_mask],
         )
         radius = F.smooth_l1_loss(output.radius[positive_mask], targets.matched_radius[positive_mask])
     else:
@@ -130,9 +129,3 @@ def skeleton_proposal_loss(
         positive_count=int(positive_mask.sum().item()),
         total_count=int(positive_mask.numel()),
     )
-
-
-def coordinate_loss_scale(points: torch.Tensor) -> torch.Tensor:
-    xyz = points[..., :3]
-    extent = xyz.amax(dim=(0, 1)) - xyz.amin(dim=(0, 1))
-    return extent.max().clamp_min(1.0)

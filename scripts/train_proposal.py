@@ -126,7 +126,7 @@ def main() -> int:
             f"epoch={epoch} "
             f"loss={running.mean('total'):.4f} "
             f"objectness={running.mean('objectness'):.4f} "
-            f"center={running.mean('center'):.4f} "
+            f"center={running.mean('center'):.6f} "
             f"radius={running.mean('radius'):.4f} "
             f"positives={running.positive_count}/{running.total_count}"
         )
