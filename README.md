@@ -17,6 +17,7 @@ py scripts\visualize_sample.py --sample-index 0 --threshold 0 --max-points 8192 
 py scripts\build_training_cache.py --sample-index 0 --threshold 0 --max-points 4096 --output-dir tmp\training_cache
 py scripts\build_split.py --cache-manifest tmp\training_cache\cache_manifest.json --output tmp\splits\gold166_clean_seed0.json --seed 0
 py scripts\inspect_dataset.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2
+py scripts\inspect_encoder.py --split-file tmp\splits\gold166_clean_seed0.json --split train --batch-size 2 --k 20 --proposal
 ```
 
 Create `configs/local.json` from `configs/local.example.json` and set the local
@@ -43,3 +44,7 @@ training.
 
 The dataset inspector requires PyTorch and checks the tensor batch shape that
 will feed the model.
+
+The encoder inspector runs a PointNeuron-style DGCNN/EdgeConv forward pass. By
+default it emits `1216`-channel geometric features (`64 + 64 + 64 + 1024`) and
+can also run the proposal head that predicts objectness, radius, and XYZ offsets.
