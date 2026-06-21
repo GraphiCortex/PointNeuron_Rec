@@ -95,7 +95,7 @@ def main() -> int:
             )
 
     encoder = DGCNNEncoder(k=args.k).to(device)
-    proposal = SkeletonProposalHead(in_channels=encoder.output_dim).to(device)
+    proposal = SkeletonProposalHead(in_channels=encoder.output_dim + 3).to(device)
     parameters = list(encoder.parameters()) + list(proposal.parameters())
     optimizer = torch.optim.AdamW(parameters, lr=args.lr, weight_decay=args.weight_decay)
     use_amp = bool(args.amp and device == "cuda")

@@ -52,7 +52,7 @@ def main() -> int:
     print(f"geometric_feature_dim: {model.geometric_feature_dim}")
     print(f"encoded_features: {tuple(features.shape)} {features.dtype}")
     if args.proposal:
-        proposal = SkeletonProposalHead(in_channels=features.shape[-1]).to(device)
+        proposal = SkeletonProposalHead(in_channels=features.shape[-1] + 3).to(device)
         proposal.eval()
         with torch.no_grad():
             output = proposal(points, features)

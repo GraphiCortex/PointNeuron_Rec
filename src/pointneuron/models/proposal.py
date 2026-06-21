@@ -17,8 +17,14 @@ class SkeletonProposalOutput:
 
 
 class SkeletonProposalHead(nn.Module):
-    def __init__(self, in_channels: int = 1216, hidden_channels: tuple[int, ...] = (512, 256, 128)):
+    def __init__(
+        self,
+        in_channels: int = 1219,
+        hidden_channels: tuple[int, ...] = (512, 256, 128),
+        include_xyz: bool = True,
+    ):
         super().__init__()
+        self.include_xyz = include_xyz
         layers: list[nn.Module] = []
         current_channels = in_channels
         for hidden in hidden_channels:
@@ -41,8 +47,13 @@ class SkeletonProposalHead(nn.Module):
         if points.shape[:2] != geometric_features.shape[:2]:
             raise ValueError("Point and feature tensors must have matching batch and point dimensions")
 
-        batch_size, point_count, channels = geometric_features.shape
-        flat_features = geometric_features.reshape(batch_size * point_count, channels)
+        if self.include_xyz:
+            proposal_features = torch.cat([points[..., :3], geometric_features], dim=-1)
+        else:
+            proposal_features = geometric_features
+
+        batch_size, point_count, channels = proposal_features.shape
+        flat_features = proposal_features.reshape(batch_size * point_count, channels)
         raw = self.mlp(flat_features).reshape(batch_size, point_count, 6)
         objectness_logits = raw[..., :2]
         radius = F.softplus(raw[..., 2:3])

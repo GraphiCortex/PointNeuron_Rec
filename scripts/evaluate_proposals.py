@@ -63,7 +63,11 @@ def main() -> int:
     k = args.k if args.k is not None else int(checkpoint_args.get("k", 20))
 
     encoder = DGCNNEncoder(k=k).to(device)
-    proposal = SkeletonProposalHead(in_channels=encoder.output_dim).to(device)
+    proposal_in_channels = int(checkpoint["proposal"]["mlp.0.weight"].shape[1])
+    proposal = SkeletonProposalHead(
+        in_channels=proposal_in_channels,
+        include_xyz=(proposal_in_channels == encoder.output_dim + 3),
+    ).to(device)
     encoder.load_state_dict(checkpoint["encoder"])
     proposal.load_state_dict(checkpoint["proposal"])
     encoder.eval()

@@ -46,7 +46,7 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         points = torch.rand(2, 32, 4)
         features = torch.rand(2, 32, 16)
-        proposal = SkeletonProposalHead(in_channels=16, hidden_channels=(8,))
+        proposal = SkeletonProposalHead(in_channels=19, hidden_channels=(8,))
 
         output = proposal(points, features)
 
