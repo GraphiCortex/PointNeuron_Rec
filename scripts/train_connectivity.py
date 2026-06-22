@@ -14,7 +14,8 @@ if str(SRC_ROOT) not in sys.path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Train the PointNeuron connectivity graph auto-encoder.")
-    parser.add_argument("--records", nargs="+", required=True, help="Connectivity record .npz files.")
+    parser.add_argument("--records", nargs="+", help="Connectivity record .npz files.")
+    parser.add_argument("--record-manifest", help="Connectivity manifest from scripts/build_connectivity_dataset.py.")
     parser.add_argument("--epochs", type=int, default=200, help="Number of epochs.")
     parser.add_argument("--lr", type=float, default=1e-3, help="AdamW learning rate.")
     parser.add_argument("--weight-decay", type=float, default=1e-4, help="AdamW weight decay.")
@@ -41,7 +42,8 @@ def main() -> int:
         print("CUDA was requested but torch.cuda.is_available() is false.")
         return 2
 
-    records = [load_record(Path(path), normalize=args.normalize_node_features, torch=torch, device=device) for path in args.records]
+    record_paths = collect_record_paths(args)
+    records = [load_record(Path(path), normalize=args.normalize_node_features, torch=torch, device=device) for path in record_paths]
     if not records:
         print("No connectivity records were provided.")
         return 2
@@ -130,6 +132,18 @@ def load_record(path: Path, normalize: bool, torch, device: str) -> dict:
         "init_adjacency": torch.from_numpy(payload["init_adjacency"].astype(np.float32, copy=False)).to(device),
         "target_adjacency": torch.from_numpy(payload["target_adjacency"].astype(np.float32, copy=False)).to(device),
     }
+
+
+def collect_record_paths(args: argparse.Namespace) -> list[str]:
+    paths = list(args.records or [])
+    if args.record_manifest:
+        import json
+
+        payload = json.loads(Path(args.record_manifest).read_text(encoding="utf-8"))
+        paths.extend(record["record"] for record in payload.get("records", []))
+    if not paths:
+        raise ValueError("Provide --records or --record-manifest")
+    return paths
 
 
 def edge_metrics(logits, target_adjacency, torch) -> dict[str, float]:
