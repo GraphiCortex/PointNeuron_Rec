@@ -32,6 +32,11 @@ def main() -> int:
     parser.add_argument("--target-mode", default="mst", choices=["mst", "knn", "mst_knn"], help="Target adjacency strategy.")
     parser.add_argument("--target-knn", type=int, default=2, help="Tree-distance nearest neighbors for target knn modes.")
     parser.add_argument("--target-max-tree-distance", type=float, default=0.0, help="Optional max tree distance for target knn edges. 0 disables.")
+    parser.add_argument(
+        "--init-from-target",
+        action="store_true",
+        help="Use the GT-induced target adjacency as the GAE input adjacency. This matches the paper's training-time graph initialization.",
+    )
     parser.add_argument("--include-score", action="store_true", help="Append proposal objectness score to node features.")
     parser.add_argument("--output", default="tmp/connectivity/connectivity_record.npz", help="Output connectivity .npz.")
     args = parser.parse_args()
@@ -48,10 +53,10 @@ def main() -> int:
     radii = graph_payload["radii"].astype(np.float32, copy=False)
     scores = graph_payload["scores"].astype(np.float32, copy=False)
     proposal_features = graph_payload["features"].astype(np.float32, copy=False)
-    init_adjacency = graph_payload["adjacency"].astype(np.uint8, copy=False)
-    init_edges = graph_payload["edges"].astype(np.int64, copy=False)
+    source_init_adjacency = graph_payload["adjacency"].astype(np.uint8, copy=False)
+    source_init_edges = graph_payload["edges"].astype(np.int64, copy=False)
 
-    if centers.shape[0] != init_adjacency.shape[0] or init_adjacency.shape[0] != init_adjacency.shape[1]:
+    if centers.shape[0] != source_init_adjacency.shape[0] or source_init_adjacency.shape[0] != source_init_adjacency.shape[1]:
         raise ValueError("Initialized graph has inconsistent center and adjacency shapes")
 
     if args.use_ground_truth:
@@ -80,15 +85,26 @@ def main() -> int:
         max_tree_distance=args.target_max_tree_distance,
     )
 
+    if args.init_from_target:
+        init_adjacency = target.adjacency
+        init_edges = target.edges
+        init_source = "target_swc"
+    else:
+        init_adjacency = source_init_adjacency
+        init_edges = source_init_edges
+        init_source = "init_graph"
+
     node_feature_parts = [proposal_features, centers, radii.reshape(-1, 1)]
     if args.include_score:
         node_feature_parts.append(scores.reshape(-1, 1))
     node_features = np.concatenate(node_feature_parts, axis=1).astype(np.float32, copy=False)
 
     metrics = compare_edges(init_edges, target.edges)
+    source_metrics = compare_edges(source_init_edges, target.edges)
     metadata = {
         "init_graph": str(graph_path),
         "init_graph_metadata": graph_metadata,
+        "init_adjacency_source": init_source,
         "target_swc": str(target_swc_path),
         "target_mode": args.target_mode,
         "target_knn": args.target_knn,
@@ -104,6 +120,11 @@ def main() -> int:
         "edge_recall": metrics["edge_recall"],
         "edge_f1": metrics["edge_f1"],
         "adjacency_hamming_fraction": metrics["adjacency_hamming_fraction"],
+        "source_init_edges": int(source_init_edges.shape[0]),
+        "source_init_shared_edges": int(source_metrics["shared_edges"]),
+        "source_init_edge_precision": source_metrics["edge_precision"],
+        "source_init_edge_recall": source_metrics["edge_recall"],
+        "source_init_edge_f1": source_metrics["edge_f1"],
         "mean_target_nearest_swc_distance": finite_mean(target.nearest_swc_distance),
         "mean_target_edge_tree_distance": finite_mean(target.edge_tree_distance),
         "mean_target_edge_euclidean_distance": finite_mean(target.edge_euclidean_distance),
@@ -134,12 +155,14 @@ def main() -> int:
     print(f"nodes: {metadata['nodes']}")
     print(f"proposal_feature_dim: {metadata['proposal_feature_dim']}")
     print(f"node_feature_dim: {metadata['node_feature_dim']}")
+    print(f"init_adjacency_source: {metadata['init_adjacency_source']}")
     print(f"init_edges: {metadata['init_edges']}")
     print(f"target_edges: {metadata['target_edges']}")
     print(f"shared_edges: {metadata['shared_edges']}")
     print(f"edge_precision: {metadata['edge_precision']:.4f}")
     print(f"edge_recall: {metadata['edge_recall']:.4f}")
     print(f"edge_f1: {metadata['edge_f1']:.4f}")
+    print(f"source_init_edge_f1: {metadata['source_init_edge_f1']:.4f}")
     print(f"adjacency_hamming_fraction: {metadata['adjacency_hamming_fraction']:.4f}")
     print(f"mean_target_nearest_swc_distance: {metadata['mean_target_nearest_swc_distance']:.4f}")
     print(f"output: {output_path}")
