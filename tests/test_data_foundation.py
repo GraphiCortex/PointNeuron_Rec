@@ -11,7 +11,7 @@ if str(SRC_ROOT) not in sys.path:
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
-from pointneuron.graph.initialization import initialize_proposal_graph
+from pointneuron.graph.initialization import initialize_geometric_graph, initialize_proposal_graph
 from pointneuron.data.training_cache import choose_foreground_patch_centers, choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
@@ -286,6 +286,24 @@ class GraphInitializationTests(unittest.TestCase):
         self.assertEqual(result.edges.tolist(), [[0, 2], [1, 2]])
         self.assertEqual(result.adjacency.tolist(), [[0, 0, 1], [0, 0, 1], [1, 1, 0]])
         self.assertEqual(result.assigned_swc_ids.tolist(), [1, 4, 2])
+
+    def test_geometric_mst_initialization_uses_euclidean_distance(self) -> None:
+        import numpy as np
+
+        centers = np.array([[0, 0, 0], [30, 0, 0], [10, 0, 0]], dtype=np.float32)
+        result = initialize_geometric_graph(centers, mode="mst")
+
+        self.assertEqual(result.edges.tolist(), [[0, 2], [1, 2]])
+        self.assertEqual(result.adjacency.tolist(), [[0, 0, 1], [0, 0, 1], [1, 1, 0]])
+        self.assertEqual(result.assigned_swc_ids.tolist(), [-1, -1, -1])
+
+    def test_geometric_knn_respects_max_distance(self) -> None:
+        import numpy as np
+
+        centers = np.array([[0, 0, 0], [5, 0, 0], [50, 0, 0]], dtype=np.float32)
+        result = initialize_geometric_graph(centers, mode="knn", knn=1, max_distance=10.0)
+
+        self.assertEqual(result.edges.tolist(), [[0, 1]])
 
 
 if __name__ == "__main__":

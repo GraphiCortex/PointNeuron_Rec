@@ -70,6 +70,51 @@ def initialize_proposal_graph(
     )
 
 
+def initialize_geometric_graph(
+    centers: np.ndarray,
+    mode: str = "mst",
+    knn: int = 2,
+    max_distance: float = 0.0,
+) -> GraphInitializationResult:
+    centers = np.asarray(centers, dtype=np.float32)
+    if centers.ndim != 2 or centers.shape[1] != 3:
+        raise ValueError(f"Expected centers with shape [N, 3], got {centers.shape}")
+    if mode not in {"mst", "knn", "mst_knn"}:
+        raise ValueError("mode must be one of: mst, knn, mst_knn")
+    if centers.shape[0] == 0:
+        return empty_result()
+
+    distances = euclidean_distance_matrix(centers)
+    edge_set: set[tuple[int, int]] = set()
+    if mode in {"mst", "mst_knn"}:
+        edge_set.update(minimum_spanning_tree(distances))
+    if mode in {"knn", "mst_knn"}:
+        edge_set.update(knn_tree_edges(distances, knn=knn, max_tree_distance=max_distance))
+
+    edges = np.array(sorted(edge_set), dtype=np.int64).reshape(-1, 2) if edge_set else np.zeros((0, 2), dtype=np.int64)
+    adjacency = np.zeros((centers.shape[0], centers.shape[0]), dtype=np.uint8)
+    if edges.size:
+        adjacency[edges[:, 0], edges[:, 1]] = 1
+        adjacency[edges[:, 1], edges[:, 0]] = 1
+
+    edge_distances = edge_distances_from_matrix(distances, edges).astype(np.float32, copy=False)
+    return GraphInitializationResult(
+        adjacency=adjacency,
+        edges=edges,
+        assigned_swc_indices=np.full((centers.shape[0],), -1, dtype=np.int64),
+        assigned_swc_ids=np.full((centers.shape[0],), -1, dtype=np.int64),
+        nearest_swc_distance=np.zeros((centers.shape[0],), dtype=np.float32),
+        edge_tree_distance=edge_distances,
+        edge_euclidean_distance=edge_distances,
+    )
+
+
+def euclidean_distance_matrix(centers: np.ndarray) -> np.ndarray:
+    centers = np.asarray(centers, dtype=np.float32)
+    deltas = centers[:, None, :] - centers[None, :, :]
+    return np.linalg.norm(deltas, axis=2).astype(np.float32, copy=False)
+
+
 def swc_arrays(swc: SwcTree) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     ids = np.array([node.node_id for node in swc.nodes], dtype=np.int64)
     xyz = np.array([[node.x, node.y, node.z] for node in swc.nodes], dtype=np.float32)

@@ -17,13 +17,13 @@ class GraphConvolution(nn.Module):
     def __init__(self, in_channels: int, out_channels: int):
         super().__init__()
         self.linear = nn.Linear(in_channels, out_channels, bias=False)
-        self.batch_norm = nn.BatchNorm1d(out_channels)
+        self.norm = nn.LayerNorm(out_channels)
 
     def forward(self, features: torch.Tensor, adjacency: torch.Tensor) -> torch.Tensor:
         normalized = normalize_adjacency(adjacency)
         aggregated = normalized @ features
         output = self.linear(aggregated)
-        output = self.batch_norm(output)
+        output = self.norm(output)
         return F.relu(output, inplace=True)
 
 
@@ -37,7 +37,7 @@ class ConnectivityGAE(nn.Module):
         super().__init__()
         self.stem = nn.Sequential(
             nn.Linear(in_channels, stem_channels, bias=False),
-            nn.BatchNorm1d(stem_channels),
+            nn.LayerNorm(stem_channels),
             nn.ReLU(inplace=True),
         )
         layers: list[nn.Module] = []
