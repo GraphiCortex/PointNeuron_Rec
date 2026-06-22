@@ -109,6 +109,53 @@ def initialize_geometric_graph(
     )
 
 
+def initialize_weighted_geometric_graph(
+    centers: np.ndarray,
+    weights: np.ndarray,
+    mode: str = "mst",
+    knn: int = 2,
+    max_distance: float = 0.0,
+) -> GraphInitializationResult:
+    centers = np.asarray(centers, dtype=np.float32)
+    weights = np.asarray(weights, dtype=np.float32)
+    if centers.ndim != 2 or centers.shape[1] != 3:
+        raise ValueError(f"Expected centers with shape [N, 3], got {centers.shape}")
+    if weights.shape != (centers.shape[0], centers.shape[0]):
+        raise ValueError(f"Expected weights with shape [N, N], got {weights.shape}")
+    if mode not in {"mst", "knn", "mst_knn"}:
+        raise ValueError("mode must be one of: mst, knn, mst_knn")
+    if centers.shape[0] == 0:
+        return empty_result()
+
+    weights = weights.copy()
+    np.fill_diagonal(weights, np.inf)
+    weights = np.minimum(weights, weights.T)
+
+    edge_set: set[tuple[int, int]] = set()
+    if mode in {"mst", "mst_knn"}:
+        edge_set.update(minimum_spanning_tree(weights))
+    if mode in {"knn", "mst_knn"}:
+        edge_set.update(knn_tree_edges(weights, knn=knn, max_tree_distance=max_distance))
+
+    edges = np.array(sorted(edge_set), dtype=np.int64).reshape(-1, 2) if edge_set else np.zeros((0, 2), dtype=np.int64)
+    adjacency = np.zeros((centers.shape[0], centers.shape[0]), dtype=np.uint8)
+    if edges.size:
+        adjacency[edges[:, 0], edges[:, 1]] = 1
+        adjacency[edges[:, 1], edges[:, 0]] = 1
+
+    edge_weights = edge_distances_from_matrix(weights, edges).astype(np.float32, copy=False)
+    edge_distances = edge_euclidean_distances(centers, edges).astype(np.float32, copy=False)
+    return GraphInitializationResult(
+        adjacency=adjacency,
+        edges=edges,
+        assigned_swc_indices=np.full((centers.shape[0],), -1, dtype=np.int64),
+        assigned_swc_ids=np.full((centers.shape[0],), -1, dtype=np.int64),
+        nearest_swc_distance=np.zeros((centers.shape[0],), dtype=np.float32),
+        edge_tree_distance=edge_weights,
+        edge_euclidean_distance=edge_distances,
+    )
+
+
 def euclidean_distance_matrix(centers: np.ndarray) -> np.ndarray:
     centers = np.asarray(centers, dtype=np.float32)
     deltas = centers[:, None, :] - centers[None, :, :]
