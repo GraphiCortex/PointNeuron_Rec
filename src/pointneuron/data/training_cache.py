@@ -123,14 +123,24 @@ def build_patch_training_records(
         raise NotImplementedError(f"Expected a single-channel volume, got {channels} channels")
 
     rng = np.random.default_rng(seed)
-    centers = choose_patch_centers(
-        skeleton_array,
-        config.patches_per_sample,
-        rng,
-        strategy=config.center_strategy,
-        endpoint_fraction=config.endpoint_fraction,
-        branch_fraction=config.branch_fraction,
-    )
+    if config.center_strategy == "foreground":
+        centers = choose_foreground_patch_centers(
+            data=data,
+            width=width,
+            height=height,
+            patches_per_sample=config.patches_per_sample,
+            rng=rng,
+            threshold=threshold,
+        )
+    else:
+        centers = choose_patch_centers(
+            skeleton_array,
+            config.patches_per_sample,
+            rng,
+            strategy=config.center_strategy,
+            endpoint_fraction=config.endpoint_fraction,
+            branch_fraction=config.branch_fraction,
+        )
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
     records: list[CachedTrainingRecord] = []
@@ -267,9 +277,30 @@ def choose_patch_centers(
             selected.extend(rng.choice(available, size=remaining_count, replace=False).tolist())
         return node_xyz[np.sort(np.array(selected[:patches_per_sample], dtype=np.int64))]
     if strategy != "random":
-        raise ValueError(f"Unknown patch center strategy {strategy!r}; expected 'random' or 'topology'")
+        raise ValueError(f"Unknown patch center strategy {strategy!r}; expected 'random', 'topology', or 'foreground'")
     indices = rng.choice(np.arange(node_xyz.shape[0]), size=patches_per_sample, replace=False)
     return node_xyz[np.sort(indices)]
+
+
+def choose_foreground_patch_centers(
+    data: np.ndarray,
+    width: int,
+    height: int,
+    patches_per_sample: int,
+    rng: np.random.Generator,
+    threshold: int,
+) -> np.ndarray:
+    foreground_indices = np.flatnonzero(data > threshold)
+    if foreground_indices.size == 0:
+        return np.zeros((0, 3), dtype=np.float32)
+    replace = foreground_indices.size < patches_per_sample
+    selected = rng.choice(foreground_indices, size=patches_per_sample, replace=replace)
+    plane_size = width * height
+    z = selected // plane_size
+    offset = selected - z * plane_size
+    y = offset // width
+    x = offset - y * width
+    return np.stack([x.astype(np.float32), y.astype(np.float32), z.astype(np.float32)], axis=1)
 
 
 def skeleton_role_indices(skeleton_array: np.ndarray) -> tuple[np.ndarray, np.ndarray]:

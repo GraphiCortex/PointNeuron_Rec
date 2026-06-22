@@ -258,6 +258,30 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         self.assertEqual(indices.tolist(), [[[1], [0], [1]]])
 
+    def test_training_augmentation_preserves_point_skeleton_distances(self) -> None:
+        import torch
+
+        from scripts.train_proposal import augment_point_skeleton_batch
+
+        torch.manual_seed(0)
+        points = torch.tensor([[[0.0, 0.0, 0.0, 10.0], [2.0, 0.0, 0.0, 20.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 1.0, 0.0, 0.0, 1.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+
+        before = torch.linalg.norm(points[0, 0, :3] - skeleton_nodes[0, 0, 1:4])
+        aug_points, aug_skeleton = augment_point_skeleton_batch(
+            points,
+            skeleton_nodes,
+            skeleton_mask,
+            rotate_xy=True,
+            flip_axes=True,
+            torch=torch,
+        )
+        after = torch.linalg.norm(aug_points[0, 0, :3] - aug_skeleton[0, 0, 1:4])
+
+        self.assertTrue(torch.allclose(before, after))
+        self.assertTrue(torch.equal(aug_points[..., 3], points[..., 3]))
+
 
 if __name__ == "__main__":
     unittest.main()

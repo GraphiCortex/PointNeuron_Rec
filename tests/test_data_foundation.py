@@ -12,7 +12,7 @@ from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import parse_swc
 from pointneuron.graph.initialization import initialize_proposal_graph
-from pointneuron.data.training_cache import choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
+from pointneuron.data.training_cache import choose_foreground_patch_centers, choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
@@ -225,6 +225,24 @@ class TrainingCacheTests(unittest.TestCase):
 
         self.assertTrue(any(np.array_equal(center, [3, 1, 0]) or np.array_equal(center, [3, -1, 0]) for center in centers))
         self.assertTrue(any(np.array_equal(center, [1, 0, 0]) for center in centers))
+
+    def test_foreground_patch_centers_are_sampled_from_thresholded_voxels(self) -> None:
+        import numpy as np
+
+        data = np.array([0, 5, 0, 9, 0, 0, 7, 0], dtype=np.uint8)
+
+        centers = choose_foreground_patch_centers(
+            data=data,
+            width=2,
+            height=2,
+            patches_per_sample=3,
+            rng=np.random.default_rng(0),
+            threshold=1,
+        )
+
+        self.assertEqual(centers.shape, (3, 3))
+        foreground = {(1.0, 0.0, 0.0), (1.0, 1.0, 0.0), (0.0, 1.0, 1.0)}
+        self.assertTrue(all(tuple(center.tolist()) in foreground for center in centers))
 
 
 class SplitTests(unittest.TestCase):

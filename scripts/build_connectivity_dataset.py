@@ -27,6 +27,7 @@ def main() -> int:
     parser.add_argument("--checkpoint", required=True, help="Trained proposal checkpoint.")
     parser.add_argument("--app2-exe", help="Path to Vaa3D-x.exe. Required when APP2 output is missing unless --skip-app2 is set.")
     parser.add_argument("--skip-app2", action="store_true", help="Do not run APP2; require existing APP2 SWCs.")
+    parser.add_argument("--app2-timeout-seconds", type=float, default=600.0, help="Maximum seconds to wait for APP2 per sample before marking it failed. 0 disables.")
     parser.add_argument("--output-root", default="tmp/connectivity_dataset", help="Root for generated aggregations, APP2 SWCs, graphs, records, and manifest.")
     parser.add_argument("--threshold-fraction", type=float, default=0.2)
     parser.add_argument("--patch-radius", type=int, default=96)
@@ -75,7 +76,8 @@ def main() -> int:
     graphs_dir = output_root / "graphs"
     records_dir = output_root / "records"
     visualizations_dir = output_root / "visualizations"
-    for directory in (aggregations_dir, app2_dir, graphs_dir, records_dir, visualizations_dir):
+    logs_dir = output_root / "logs"
+    for directory in (aggregations_dir, app2_dir, graphs_dir, records_dir, visualizations_dir, logs_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
     records = []
@@ -88,6 +90,8 @@ def main() -> int:
         graph_path = graphs_dir / f"{prefix}_adaptive_mstknn_graph.npz"
         record_path = records_dir / f"{prefix}_connectivity.npz"
         html_path = visualizations_dir / f"{prefix}_proposals.html"
+        sample_logs_dir = logs_dir / prefix
+        sample_logs_dir.mkdir(parents=True, exist_ok=True)
 
         print(f"[{ordinal}/{len(sample_indices)}] sample_index={sample_index} sample_id={sample.sample_id}", flush=True)
         try:
@@ -95,6 +99,7 @@ def main() -> int:
                 output=aggregation_path,
                 skip_existing=args.skip_existing,
                 dry_run=args.dry_run,
+                log_path=sample_logs_dir / "aggregate_proposals.log",
                 command=[
                     sys.executable,
                     str(REPO_ROOT / "scripts" / "aggregate_proposals.py"),
@@ -159,12 +164,17 @@ def main() -> int:
                     volume_path=sample.volume_path,
                     output_path=app2_path,
                     dry_run=args.dry_run,
+                    log_path=sample_logs_dir / "app2.log",
+                    timeout_seconds=args.app2_timeout_seconds,
                 )
+            if not args.dry_run:
+                require_output(app2_path, "APP2 SWC")
 
             run_step(
                 output=graph_path,
                 skip_existing=args.skip_existing,
                 dry_run=args.dry_run,
+                log_path=sample_logs_dir / "initialize_proposal_graph.log",
                 command=[
                     sys.executable,
                     str(REPO_ROOT / "scripts" / "initialize_proposal_graph.py"),
@@ -198,6 +208,7 @@ def main() -> int:
                 output=record_path,
                 skip_existing=args.skip_existing,
                 dry_run=args.dry_run,
+                log_path=sample_logs_dir / "build_connectivity_record.log",
                 command=[
                     sys.executable,
                     str(REPO_ROOT / "scripts" / "build_connectivity_record.py"),
@@ -229,10 +240,18 @@ def main() -> int:
                         "init_edges": metadata.get("init_edges"),
                         "target_edges": metadata.get("target_edges"),
                         "candidate_recall": metadata.get("edge_recall"),
+                        "logs": str(sample_logs_dir),
                     }
                 )
         except Exception as exc:
-            failures.append({"sample_index": sample_index, "sample_id": sample.sample_id, "error": str(exc)})
+            failures.append(
+                {
+                    "sample_index": sample_index,
+                    "sample_id": sample.sample_id,
+                    "error": str(exc),
+                    "logs": str(sample_logs_dir),
+                }
+            )
             print(f"FAILED sample_index={sample_index}: {exc}", flush=True)
 
     manifest = {
@@ -273,17 +292,26 @@ def selected_sample_indices(args: argparse.Namespace) -> list[int]:
     return indices
 
 
-def run_step(output: Path, skip_existing: bool, dry_run: bool, command: list[str]) -> None:
+def run_step(output: Path, skip_existing: bool, dry_run: bool, log_path: Path, command: list[str]) -> None:
     if skip_existing and output.exists():
+        require_output(output, "existing step output")
         print(f"skip existing: {output}", flush=True)
         return
     print("run:", command_preview(command), flush=True)
     if dry_run:
         return
-    subprocess.run(command, cwd=REPO_ROOT, check=True)
+    run_logged(command=command, cwd=REPO_ROOT, log_path=log_path)
+    require_output(output, "step output")
 
 
-def run_app2(app2_exe: Path, volume_path: Path | None, output_path: Path, dry_run: bool) -> None:
+def run_app2(
+    app2_exe: Path,
+    volume_path: Path | None,
+    output_path: Path,
+    dry_run: bool,
+    log_path: Path,
+    timeout_seconds: float,
+) -> None:
     if volume_path is None:
         raise ValueError("Sample has no volume path for APP2")
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -315,7 +343,60 @@ def run_app2(app2_exe: Path, volume_path: Path | None, output_path: Path, dry_ru
     print("run:", command_preview(command), flush=True)
     if dry_run:
         return
-    subprocess.run(command, cwd=app2_exe.parent, check=True)
+    timeout = float(timeout_seconds) if timeout_seconds and timeout_seconds > 0.0 else None
+    run_logged(command=command, cwd=app2_exe.parent, log_path=log_path, timeout=timeout)
+    require_output(output_path, "APP2 SWC")
+
+
+def run_logged(command: list[str], cwd: Path, log_path: Path, timeout: float | None = None) -> None:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=cwd,
+            check=False,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as exc:
+        log_payload = {
+            "command": command,
+            "cwd": str(cwd),
+            "timeout_seconds": timeout,
+            "timed_out": True,
+            "stdout": normalize_timeout_stream(exc.stdout),
+            "stderr": normalize_timeout_stream(exc.stderr),
+        }
+        log_path.write_text(json.dumps(log_payload, indent=2), encoding="utf-8")
+        raise TimeoutError(f"Command timed out after {timeout:.1f} seconds; see {log_path}") from exc
+    log_payload = {
+        "command": command,
+        "cwd": str(cwd),
+        "returncode": completed.returncode,
+        "timed_out": False,
+        "stdout": completed.stdout,
+        "stderr": completed.stderr,
+    }
+    log_path.write_text(json.dumps(log_payload, indent=2), encoding="utf-8")
+    if completed.returncode != 0:
+        raise RuntimeError(f"Command failed with exit code {completed.returncode}; see {log_path}")
+
+
+def normalize_timeout_stream(value: str | bytes | None) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bytes):
+        return value.decode(errors="replace")
+    return value
+
+
+def require_output(path: Path, label: str) -> None:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing {label}: {path}")
+    if path.is_file() and path.stat().st_size == 0:
+        raise ValueError(f"Empty {label}: {path}")
 
 
 def npz_metadata(path: Path) -> dict:

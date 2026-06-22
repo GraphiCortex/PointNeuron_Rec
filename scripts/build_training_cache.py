@@ -21,7 +21,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build cached PointNeuron training records from Gold166 samples.")
     parser.add_argument("--root", default="data/gold166", help="Path to Gold166 root.")
     parser.add_argument("--output-dir", default="tmp/training_cache", help="Directory for .npz cache files.")
-    parser.add_argument("--sample-index", type=int, help="Build one scanned sample by index.")
+    parser.add_argument("--sample-index", type=int, action="append", help="Build one scanned sample by index. May be repeated.")
     parser.add_argument("--max-samples", type=int, help="Build at most this many clean samples.")
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
     parser.add_argument("--threshold-fraction", type=float, help="Normalized foreground threshold in [0, 1], e.g. 0.2 from the paper.")
@@ -32,14 +32,14 @@ def main() -> int:
     parser.add_argument("--patch-radius", type=int, default=96, help="Patch radius in voxels when --patches-per-sample is set.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
-    parser.add_argument("--center-strategy", default="random", choices=["random", "topology"], help="Patch center sampling strategy for patch records.")
+    parser.add_argument("--center-strategy", default="random", choices=["random", "topology", "foreground"], help="Patch center sampling strategy for patch records.")
     parser.add_argument("--endpoint-fraction", type=float, default=0.25, help="Fraction of patch centers reserved for SWC endpoints when --center-strategy topology.")
     parser.add_argument("--branch-fraction", type=float, default=0.10, help="Fraction of patch centers reserved for SWC branch nodes when --center-strategy topology.")
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
     if args.sample_index is not None:
-        selected = [(args.sample_index, samples[args.sample_index])]
+        selected = [(index, samples[index]) for index in dict.fromkeys(args.sample_index)]
     else:
         selected = clean_indexed_samples(samples)
         if args.max_samples is not None:

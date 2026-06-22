@@ -35,6 +35,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--radius-weight", type=float, default=1.0, help="Weight for paper-style radius loss.")
     parser.add_argument("--endpoint-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC endpoint nodes.")
     parser.add_argument("--branch-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC branch nodes.")
+    parser.add_argument("--augment", action="store_true", help="Apply paper-style random rotations and flips during proposal training.")
+    parser.add_argument("--rotation-augment", action="store_true", help="Apply random XY-plane rotations during proposal training.")
+    parser.add_argument("--flip-augment", action="store_true", help="Apply random coordinate-axis flips during proposal training.")
     parser.add_argument("--num-workers", type=int, default=0, help="DataLoader worker count. Keep 0 on Windows at first.")
     parser.add_argument("--drop-last", action="store_true", help="Drop the final incomplete batch.")
     parser.add_argument("--limit-batches", type=int, help="Optional maximum batches per epoch for quick checks.")
@@ -141,6 +144,15 @@ def main() -> int:
             points = batch["points"].to(device, non_blocking=True)
             skeleton_nodes = batch["skeleton_nodes"].to(device, non_blocking=True)
             skeleton_mask = batch["skeleton_mask"].to(device, non_blocking=True)
+            if args.augment or args.rotation_augment or args.flip_augment:
+                points, skeleton_nodes = augment_point_skeleton_batch(
+                    points=points,
+                    skeleton_nodes=skeleton_nodes,
+                    skeleton_mask=skeleton_mask,
+                    rotate_xy=bool(args.augment or args.rotation_augment),
+                    flip_axes=bool(args.augment or args.flip_augment),
+                    torch=torch,
+                )
 
             targets = None
             if args.loss_mode == "nearest":
@@ -276,6 +288,48 @@ def save_checkpoint(
         },
         path,
     )
+
+
+def augment_point_skeleton_batch(
+    points,
+    skeleton_nodes,
+    skeleton_mask,
+    rotate_xy: bool,
+    flip_axes: bool,
+    torch,
+):
+    augmented_points = points.clone()
+    augmented_skeleton = skeleton_nodes.clone()
+    batch_size = points.shape[0]
+    for batch_index in range(batch_size):
+        pivot = augmented_points[batch_index, :, :3].mean(dim=0)
+        matrix = torch.eye(3, dtype=points.dtype, device=points.device)
+        if rotate_xy:
+            angle = torch.rand((), dtype=points.dtype, device=points.device) * (2.0 * torch.pi)
+            cos_angle = torch.cos(angle)
+            sin_angle = torch.sin(angle)
+            matrix = torch.stack(
+                [
+                    torch.stack([cos_angle, -sin_angle, torch.zeros_like(angle)]),
+                    torch.stack([sin_angle, cos_angle, torch.zeros_like(angle)]),
+                    torch.stack([torch.zeros_like(angle), torch.zeros_like(angle), torch.ones_like(angle)]),
+                ]
+            ) @ matrix
+        if flip_axes:
+            signs = torch.where(
+                torch.rand((3,), dtype=points.dtype, device=points.device) < 0.5,
+                torch.full((3,), -1.0, dtype=points.dtype, device=points.device),
+                torch.ones((3,), dtype=points.dtype, device=points.device),
+            )
+            matrix = torch.diag(signs) @ matrix
+
+        augmented_points[batch_index, :, :3] = (augmented_points[batch_index, :, :3] - pivot) @ matrix.T + pivot
+        valid = skeleton_mask[batch_index]
+        if bool(valid.any()):
+            augmented_skeleton[batch_index, valid, 1:4] = (
+                (augmented_skeleton[batch_index, valid, 1:4] - pivot) @ matrix.T + pivot
+            )
+    return augmented_points, augmented_skeleton
 
 
 class RunningAverages:
