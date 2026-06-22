@@ -29,6 +29,7 @@ def main() -> int:
     radii = graph["radii"].astype(np.float32, copy=False) if "radii" in graph else np.ones((centers.shape[0],), dtype=np.float32)
     scores = graph["scores"].astype(np.float32, copy=False) if "scores" in graph else np.ones((centers.shape[0],), dtype=np.float32)
     edges = graph["edges"].astype(np.int64, copy=False) if "edges" in graph else np.zeros((0, 2), dtype=np.int64)
+    edge_paths = load_edge_paths(graph, edges)
     metadata = json.loads(str(graph["metadata"])) if "metadata" in graph else {}
 
     if centers.shape[0] == 0:
@@ -36,7 +37,7 @@ def main() -> int:
         return 2
 
     roots = choose_component_roots(centers, radii, scores, edges, args.root_mode)
-    nodes = graph_to_swc_nodes(centers, radii, scores, edges, roots)
+    nodes = graph_to_swc_nodes(centers, radii, scores, edges, roots, edge_paths=edge_paths)
     write_swc(
         args.output,
         nodes,
@@ -102,44 +103,89 @@ def graph_to_swc_nodes(
     scores: np.ndarray,
     edges: np.ndarray,
     roots: list[int],
+    edge_paths: dict[tuple[int, int], np.ndarray] | None = None,
 ) -> list[SwcNode]:
     adjacency = adjacency_lists(centers.shape[0], edges)
     original_to_swc_id: dict[int, int] = {}
-    swc_rows: list[tuple[int, int]] = []
+    nodes: list[SwcNode] = []
     next_id = 1
     for root in roots:
         if root in original_to_swc_id:
             continue
         original_to_swc_id[root] = next_id
+        x, y, z = centers[root].tolist()
+        nodes.append(
+            SwcNode(
+                node_id=next_id,
+                node_type=3,
+                x=float(x),
+                y=float(y),
+                z=float(z),
+                radius=float(max(radii[root], 1.0e-3)),
+                parent_id=-1,
+            )
+        )
         next_id += 1
-        swc_rows.append((root, -1))
         queue = [root]
         while queue:
             parent = queue.pop(0)
             neighbors = [neighbor for neighbor in adjacency[parent] if neighbor not in original_to_swc_id]
             neighbors.sort(key=lambda neighbor: (-float(scores[neighbor]), float(np.linalg.norm(centers[parent] - centers[neighbor]))))
             for neighbor in neighbors:
-                original_to_swc_id[neighbor] = next_id
-                next_id += 1
-                swc_rows.append((neighbor, original_to_swc_id[parent]))
+                parent_swc_id = original_to_swc_id[parent]
+                path = oriented_edge_path(edge_paths, parent, neighbor)
+                if path is None:
+                    path = np.stack([centers[parent], centers[neighbor]], axis=0)
+                if path.shape[0] <= 1:
+                    path = np.stack([centers[parent], centers[neighbor]], axis=0)
+                previous_id = parent_swc_id
+                for point_index, point in enumerate(path[1:], 1):
+                    fraction = point_index / max(path.shape[0] - 1, 1)
+                    radius = float((1.0 - fraction) * radii[parent] + fraction * radii[neighbor])
+                    nodes.append(
+                        SwcNode(
+                            node_id=next_id,
+                            node_type=3,
+                            x=float(point[0]),
+                            y=float(point[1]),
+                            z=float(point[2]),
+                            radius=float(max(radius, 1.0e-3)),
+                            parent_id=int(previous_id),
+                        )
+                    )
+                    previous_id = next_id
+                    next_id += 1
+                original_to_swc_id[neighbor] = previous_id
                 queue.append(neighbor)
 
-    nodes = []
-    for original_index, parent_id in swc_rows:
-        node_id = original_to_swc_id[original_index]
-        x, y, z = centers[original_index].tolist()
-        nodes.append(
-            SwcNode(
-                node_id=node_id,
-                node_type=3,
-                x=float(x),
-                y=float(y),
-                z=float(z),
-                radius=float(max(radii[original_index], 1.0e-3)),
-                parent_id=int(parent_id),
-            )
-        )
     return nodes
+
+
+def load_edge_paths(graph, edges: np.ndarray) -> dict[tuple[int, int], np.ndarray] | None:
+    if "edge_path_points" not in graph or "edge_path_offsets" not in graph:
+        return None
+    points = graph["edge_path_points"].astype(np.float32, copy=False)
+    offsets = graph["edge_path_offsets"].astype(np.int64, copy=False)
+    if offsets.shape[0] != edges.shape[0] + 1:
+        raise ValueError("edge_path_offsets must have one more entry than edges")
+    paths: dict[tuple[int, int], np.ndarray] = {}
+    for edge_index, (left, right) in enumerate(edges.tolist()):
+        start = int(offsets[edge_index])
+        end = int(offsets[edge_index + 1])
+        paths[tuple(sorted((int(left), int(right))))] = points[start:end]
+    return paths
+
+
+def oriented_edge_path(edge_paths: dict[tuple[int, int], np.ndarray] | None, parent: int, neighbor: int) -> np.ndarray | None:
+    if edge_paths is None:
+        return None
+    key = tuple(sorted((int(parent), int(neighbor))))
+    path = edge_paths.get(key)
+    if path is None:
+        return None
+    if parent <= neighbor:
+        return path
+    return path[::-1]
 
 
 def adjacency_lists(node_count: int, edges: np.ndarray) -> list[list[int]]:
