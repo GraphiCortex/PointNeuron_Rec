@@ -37,6 +37,13 @@ def main() -> int:
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
     parser.add_argument("--intensity-penalty", type=float, default=2.0, help="Extra cost for dim foreground voxels.")
     parser.add_argument("--disconnected-multiplier", type=float, default=100.0, help="Euclidean fallback multiplier for disconnected pairs.")
+    parser.add_argument("--candidate-k", type=int, default=0, help="Only allow each node's K nearest Euclidean proposal candidates. 0 disables.")
+    parser.add_argument("--max-euclidean-distance", type=float, default=0.0, help="Drop proposal candidate pairs farther than this Euclidean distance. 0 disables.")
+    parser.add_argument("--max-geodesic-ratio", type=float, default=0.0, help="Drop reachable pairs whose geodesic/euclidean ratio exceeds this value. 0 disables.")
+    parser.add_argument("--allow-unreachable-fallback", action="store_true", help="Allow disconnected pairs with fallback Euclidean cost.")
+    parser.add_argument("--bridge-components", action="store_true", help="After constrained MST, add minimum-cost reachable edges to connect components.")
+    parser.add_argument("--bridge-max-geodesic-ratio", type=float, default=0.0, help="Max geodesic/euclidean ratio for bridge edges. 0 disables.")
+    parser.add_argument("--bridge-allow-unreachable-fallback", action="store_true", help="Allow fallback straight bridge edges only during component bridging.")
     parser.add_argument("--output", default="tmp/graphs/geodesic_graph.npz", help="Output graph .npz.")
     args = parser.parse_args()
 
@@ -103,6 +110,17 @@ def main() -> int:
     weights = proposal_geodesic.copy()
     weights[~reachable] = euclidean[~reachable] * float(args.disconnected_multiplier)
     np.fill_diagonal(weights, np.inf)
+    base_weights = weights.copy()
+    candidate_mask = proposal_candidate_mask(
+        euclidean=euclidean,
+        weights=weights,
+        reachable=reachable,
+        candidate_k=args.candidate_k,
+        max_euclidean_distance=args.max_euclidean_distance,
+        max_geodesic_ratio=args.max_geodesic_ratio,
+        allow_unreachable_fallback=args.allow_unreachable_fallback,
+    )
+    weights = np.where(candidate_mask, weights, np.inf)
 
     result = initialize_weighted_geometric_graph(
         centers=centers,
@@ -111,15 +129,30 @@ def main() -> int:
         knn=args.knn,
         max_distance=args.max_distance,
     )
+    final_edges = result.edges
+    bridge_edges = np.zeros((0, 2), dtype=np.int64)
+    if args.bridge_components:
+        bridge_edges = component_bridge_edges(
+            node_count=centers.shape[0],
+            existing_edges=final_edges,
+            weights=base_weights,
+            euclidean=euclidean,
+            reachable=reachable,
+            max_geodesic_ratio=args.bridge_max_geodesic_ratio,
+            allow_unreachable_fallback=args.bridge_allow_unreachable_fallback,
+        )
+        final_edges = merge_edges(final_edges, bridge_edges)
+    final_adjacency = edges_to_adjacency(centers.shape[0], final_edges)
+    final_edge_euclidean = edge_euclidean_distances(centers, final_edges)
 
     path_points, path_offsets, edge_reachable = reconstruct_edge_paths(
-        edges=result.edges,
+        edges=final_edges,
         centers=centers,
         foreground_coords=foreground_coords,
         snapped_local=snapped_local,
         predecessors=predecessors,
     )
-    edge_geodesic = edge_values(weights, result.edges)
+    edge_geodesic = edge_values(base_weights, final_edges)
 
     metadata = {
         "proposals": str(proposals_path),
@@ -138,14 +171,23 @@ def main() -> int:
         "foreground_voxels": int(foreground_flats.size),
         "intensity_penalty": args.intensity_penalty,
         "disconnected_multiplier": args.disconnected_multiplier,
+        "candidate_k": args.candidate_k,
+        "max_euclidean_distance": args.max_euclidean_distance,
+        "max_geodesic_ratio": args.max_geodesic_ratio,
+        "allow_unreachable_fallback": args.allow_unreachable_fallback,
+        "bridge_components": args.bridge_components,
+        "bridge_max_geodesic_ratio": args.bridge_max_geodesic_ratio,
+        "bridge_allow_unreachable_fallback": args.bridge_allow_unreachable_fallback,
+        "bridge_edges": int(bridge_edges.shape[0]),
+        "eligible_candidate_pairs": int(np.count_nonzero(np.triu(candidate_mask, k=1))),
         "original_nodes": int(payload["centers"].shape[0]),
         "kept_nodes": int(centers.shape[0]),
         "dropped_nodes": int(payload["centers"].shape[0] - centers.shape[0]),
         "nodes": int(centers.shape[0]),
-        "edges": int(result.edges.shape[0]),
-        "components": connected_component_count(centers.shape[0], result.edges),
+        "edges": int(final_edges.shape[0]),
+        "components": connected_component_count(centers.shape[0], final_edges),
         "mean_snap_distance": finite_mean(snap_distances),
-        "mean_edge_euclidean_distance": finite_mean(result.edge_euclidean_distance),
+        "mean_edge_euclidean_distance": finite_mean(final_edge_euclidean),
         "mean_edge_geodesic_distance": finite_mean(edge_geodesic),
         "reachable_edge_fraction": float(np.count_nonzero(edge_reachable) / max(edge_reachable.size, 1)),
     }
@@ -158,16 +200,17 @@ def main() -> int:
         radii=radii,
         scores=scores,
         features=features,
-        adjacency=result.adjacency,
-        edges=result.edges,
+        adjacency=final_adjacency,
+        edges=final_edges,
         assigned_swc_indices=result.assigned_swc_indices,
         assigned_swc_ids=result.assigned_swc_ids,
         nearest_swc_distance=snap_distances.astype(np.float32, copy=False),
         prefilter_nearest_swc_distance=np.zeros((centers.shape[0],), dtype=np.float32),
         original_indices=original_indices,
         edge_tree_distance=edge_geodesic.astype(np.float32, copy=False),
-        edge_euclidean_distance=result.edge_euclidean_distance,
+        edge_euclidean_distance=final_edge_euclidean.astype(np.float32, copy=False),
         edge_geodesic_reachable=edge_reachable.astype(np.uint8, copy=False),
+        bridge_edges=bridge_edges.astype(np.int64, copy=False),
         edge_path_points=path_points.astype(np.float32, copy=False),
         edge_path_offsets=path_offsets.astype(np.int64, copy=False),
         metadata=np.array(json.dumps(metadata), dtype=np.str_),
@@ -179,12 +222,14 @@ def main() -> int:
     print(f"foreground_voxels: {foreground_flats.size}")
     print("initializer: foreground_geodesic")
     print(f"mode: {args.mode}")
-    print(f"edges: {result.edges.shape[0]}")
+    print(f"edges: {final_edges.shape[0]}")
+    print(f"bridge_edges: {bridge_edges.shape[0]}")
     print(f"components: {metadata['components']}")
     print(f"mean_snap_distance: {metadata['mean_snap_distance']:.4f}")
     print(f"mean_edge_euclidean_distance: {metadata['mean_edge_euclidean_distance']:.4f}")
     print(f"mean_edge_geodesic_distance: {metadata['mean_edge_geodesic_distance']:.4f}")
     print(f"reachable_edge_fraction: {metadata['reachable_edge_fraction']:.4f}")
+    print(f"eligible_candidate_pairs: {metadata['eligible_candidate_pairs']}")
     print(f"output: {output_path}")
     return 0
 
@@ -281,6 +326,126 @@ def reconstruct_edge_paths(
     else:
         path_points = np.zeros((0, 3), dtype=np.float32)
     return path_points, np.array(offsets, dtype=np.int64), np.array(reachable, dtype=bool)
+
+
+def proposal_candidate_mask(
+    euclidean: np.ndarray,
+    weights: np.ndarray,
+    reachable: np.ndarray,
+    candidate_k: int,
+    max_euclidean_distance: float,
+    max_geodesic_ratio: float,
+    allow_unreachable_fallback: bool,
+) -> np.ndarray:
+    count = euclidean.shape[0]
+    mask = np.ones((count, count), dtype=bool)
+    np.fill_diagonal(mask, False)
+
+    if candidate_k > 0:
+        local = np.zeros((count, count), dtype=bool)
+        for index in range(count):
+            distances = euclidean[index].copy()
+            distances[index] = np.inf
+            order = np.argsort(distances)[:candidate_k]
+            local[index, order] = True
+        mask &= local | local.T
+
+    if max_euclidean_distance > 0.0:
+        mask &= euclidean <= float(max_euclidean_distance)
+
+    if max_geodesic_ratio > 0.0:
+        denominator = np.maximum(euclidean, 1.0e-3)
+        ratio = weights / denominator
+        mask &= (~reachable) | (ratio <= float(max_geodesic_ratio))
+
+    if not allow_unreachable_fallback:
+        mask &= reachable
+
+    return mask | mask.T
+
+
+def component_bridge_edges(
+    node_count: int,
+    existing_edges: np.ndarray,
+    weights: np.ndarray,
+    euclidean: np.ndarray,
+    reachable: np.ndarray,
+    max_geodesic_ratio: float,
+    allow_unreachable_fallback: bool,
+) -> np.ndarray:
+    parent = list(range(node_count))
+    rank = [0] * node_count
+
+    def find(node: int) -> int:
+        while parent[node] != node:
+            parent[node] = parent[parent[node]]
+            node = parent[node]
+        return node
+
+    def union(left: int, right: int) -> bool:
+        left_root = find(left)
+        right_root = find(right)
+        if left_root == right_root:
+            return False
+        if rank[left_root] < rank[right_root]:
+            parent[left_root] = right_root
+        elif rank[left_root] > rank[right_root]:
+            parent[right_root] = left_root
+        else:
+            parent[right_root] = left_root
+            rank[left_root] += 1
+        return True
+
+    for left, right in existing_edges.tolist():
+        union(int(left), int(right))
+
+    candidates: list[tuple[float, int, int]] = []
+    for left in range(node_count):
+        for right in range(left + 1, node_count):
+            if find(left) == find(right):
+                continue
+            if not allow_unreachable_fallback and not bool(reachable[left, right]):
+                continue
+            weight = float(weights[left, right])
+            if not np.isfinite(weight):
+                continue
+            if max_geodesic_ratio > 0.0 and bool(reachable[left, right]):
+                ratio = weight / max(float(euclidean[left, right]), 1.0e-3)
+                if ratio > float(max_geodesic_ratio):
+                    continue
+            candidates.append((weight, left, right))
+    candidates.sort(key=lambda item: item[0])
+
+    bridges: list[tuple[int, int]] = []
+    for _weight, left, right in candidates:
+        if union(left, right):
+            bridges.append((left, right))
+            if len({find(index) for index in range(node_count)}) == 1:
+                break
+    return np.array(bridges, dtype=np.int64).reshape(-1, 2) if bridges else np.zeros((0, 2), dtype=np.int64)
+
+
+def merge_edges(left_edges: np.ndarray, right_edges: np.ndarray) -> np.ndarray:
+    edge_set: set[tuple[int, int]] = set()
+    for left, right in left_edges.tolist() + right_edges.tolist():
+        if int(left) == int(right):
+            continue
+        edge_set.add(tuple(sorted((int(left), int(right)))))
+    return np.array(sorted(edge_set), dtype=np.int64).reshape(-1, 2) if edge_set else np.zeros((0, 2), dtype=np.int64)
+
+
+def edges_to_adjacency(node_count: int, edges: np.ndarray) -> np.ndarray:
+    adjacency = np.zeros((node_count, node_count), dtype=np.uint8)
+    if edges.size:
+        adjacency[edges[:, 0], edges[:, 1]] = 1
+        adjacency[edges[:, 1], edges[:, 0]] = 1
+    return adjacency
+
+
+def edge_euclidean_distances(centers: np.ndarray, edges: np.ndarray) -> np.ndarray:
+    if edges.size == 0:
+        return np.zeros((0,), dtype=np.float32)
+    return np.linalg.norm(centers[edges[:, 0]] - centers[edges[:, 1]], axis=1).astype(np.float32, copy=False)
 
 
 def predecessor_path(predecessors: np.ndarray, source: int, target: int) -> list[int] | None:
