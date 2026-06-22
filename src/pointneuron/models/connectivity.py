@@ -18,12 +18,14 @@ class GraphConvolution(nn.Module):
         super().__init__()
         self.linear = nn.Linear(in_channels, out_channels, bias=False)
         self.norm = nn.LayerNorm(out_channels)
+        self.residual = nn.Identity() if in_channels == out_channels else nn.Linear(in_channels, out_channels, bias=False)
 
     def forward(self, features: torch.Tensor, adjacency: torch.Tensor) -> torch.Tensor:
         normalized = normalize_adjacency(adjacency)
         aggregated = normalized @ features
         output = self.linear(aggregated)
         output = self.norm(output)
+        output = output + self.residual(features)
         return F.relu(output, inplace=True)
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from collections.abc import Iterable
 
 
 @dataclass(frozen=True)
@@ -94,3 +95,19 @@ def parse_swc(path: str | Path) -> SwcTree:
 
     return SwcTree(path=swc_path, nodes=tuple(nodes))
 
+
+def write_swc(path: str | Path, nodes: Iterable[SwcNode], comments: Iterable[str] | None = None) -> None:
+    swc_path = Path(path)
+    swc_path.parent.mkdir(parents=True, exist_ok=True)
+    lines = []
+    for comment in comments or []:
+        comment = str(comment).strip()
+        if comment:
+            lines.append(f"# {comment}")
+    for node in nodes:
+        lines.append(
+            f"{int(node.node_id)} {int(node.node_type)} "
+            f"{float(node.x):.6f} {float(node.y):.6f} {float(node.z):.6f} "
+            f"{max(float(node.radius), 1.0e-3):.6f} {int(node.parent_id)}"
+        )
+    swc_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -10,7 +10,7 @@ if str(SRC_ROOT) not in sys.path:
 
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
-from pointneuron.data.swc import parse_swc
+from pointneuron.data.swc import SwcNode, parse_swc, write_swc
 from pointneuron.graph.initialization import initialize_geometric_graph, initialize_proposal_graph
 from pointneuron.data.training_cache import choose_foreground_patch_centers, choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
 from pointneuron.data.point_cloud import SkeletonRecord
@@ -40,6 +40,24 @@ class SwcParsingTests(unittest.TestCase):
             tree = parse_swc(path)
 
             self.assertIn("missing parent ids", tree.validate()[0])
+
+    def test_write_swc_round_trips_valid_nodes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "generated.swc"
+            write_swc(
+                path,
+                [
+                    SwcNode(1, 3, 0.0, 0.0, 0.0, 1.0, -1),
+                    SwcNode(2, 3, 1.0, 0.0, 0.0, 0.5, 1),
+                ],
+                comments=["generated test"],
+            )
+
+            tree = parse_swc(path)
+
+        self.assertEqual(tree.root_count, 1)
+        self.assertEqual(tree.edge_count, 1)
+        self.assertEqual(tree.validate(), [])
 
 
 class Gold166ScanTests(unittest.TestCase):
