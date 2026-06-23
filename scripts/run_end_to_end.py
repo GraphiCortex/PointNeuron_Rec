@@ -62,12 +62,14 @@ def main() -> int:
             failure = sample_failure(sample_index, exc)
             failures.append(failure)
             append_jsonl(output_root / "summary.jsonl", failure)
+            write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
             print(f"FAILED {failure['sample_tag']}: {failure['error_type']}: {failure['error']}")
             if args.fail_fast:
                 raise
             continue
         rows.append(row)
         append_jsonl(output_root / "summary.jsonl", row)
+        write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
 
     write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
     print(f"requested_samples: {len(sample_indices)}")
