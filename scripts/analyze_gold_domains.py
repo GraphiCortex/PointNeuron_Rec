@@ -234,8 +234,12 @@ def domain_family(sample_id: str) -> str:
         return "janelia_fly"
     if "utokyo_fly" in text:
         return "utokyo_fly"
+    if "taiwan_flycirciut" in text or "taiwan_flycircuit" in text:
+        return "taiwan_fly"
     if "fruitfly_larvae" in text:
         return "fruitfly_larvae"
+    if "silkmoth" in text:
+        return "silkmoth"
     if "zebrafish" in text:
         return "zebrafish"
     if "chick" in text:

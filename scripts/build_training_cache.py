@@ -22,6 +22,7 @@ def main() -> int:
     parser.add_argument("--root", default="data/gold166", help="Path to Gold166 root.")
     parser.add_argument("--output-dir", default="tmp/training_cache", help="Directory for .npz cache files.")
     parser.add_argument("--sample-index", type=int, action="append", help="Build one scanned sample by index. May be repeated.")
+    parser.add_argument("--sample-list", help="JSON file with a selected list of sample_index values, e.g. from select_gold_stratified_subset.py.")
     parser.add_argument("--max-samples", type=int, help="Build at most this many clean samples.")
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
     parser.add_argument("--threshold-fraction", type=float, help="Normalized foreground threshold in [0, 1], e.g. 0.2 from the paper.")
@@ -38,8 +39,9 @@ def main() -> int:
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
-    if args.sample_index is not None:
-        selected = [(index, samples[index]) for index in dict.fromkeys(args.sample_index)]
+    requested_indices = requested_sample_indices(args.sample_index, args.sample_list)
+    if requested_indices is not None:
+        selected = [(index, samples[index]) for index in requested_indices]
     else:
         selected = clean_indexed_samples(samples)
         if args.max_samples is not None:
@@ -175,6 +177,20 @@ def main() -> int:
     print(f"cache_manifest: {manifest_path}")
     print(f"records_built: {len(records)}")
     return 0
+
+
+def requested_sample_indices(sample_indices: list[int] | None, sample_list: str | None) -> list[int] | None:
+    values = []
+    if sample_indices:
+        values.extend(sample_indices)
+    if sample_list:
+        payload = json.loads(Path(sample_list).read_text(encoding="utf-8"))
+        if "selected" not in payload:
+            raise ValueError(f"--sample-list must contain a 'selected' array: {sample_list}")
+        values.extend(int(row["sample_index"]) for row in payload["selected"])
+    if not values:
+        return None
+    return list(dict.fromkeys(values))
 
 
 def clean_indexed_samples(samples):
