@@ -86,6 +86,8 @@ def main() -> int:
     )
 
     edge_support = edge_values(support, result.edges)
+    edge_reachable = np.ones((result.edges.shape[0],), dtype=np.uint8)
+    bridge_edges = np.zeros((0, 2), dtype=np.int64)
     metadata = {
         "proposals": str(proposals_path),
         "proposal_metadata": proposal_metadata,
@@ -109,6 +111,8 @@ def main() -> int:
         "nodes": int(centers.shape[0]),
         "edges": int(result.edges.shape[0]),
         "components": connected_component_count(centers.shape[0], result.edges),
+        "bridge_edges": 0,
+        "reachable_edge_fraction": 1.0,
         "mean_edge_euclidean_distance": finite_mean(result.edge_euclidean_distance),
         "mean_edge_weight": finite_mean(result.edge_tree_distance),
         "mean_edge_support": finite_mean(edge_support),
@@ -131,6 +135,8 @@ def main() -> int:
         original_indices=original_indices,
         edge_tree_distance=result.edge_tree_distance,
         edge_euclidean_distance=result.edge_euclidean_distance,
+        edge_geodesic_reachable=edge_reachable,
+        bridge_edges=bridge_edges,
         edge_foreground_support=edge_support,
         metadata=np.array(json.dumps(metadata), dtype=np.str_),
     )

@@ -20,6 +20,7 @@ def main() -> int:
     parser.add_argument("--k", type=int, default=20, help="kNN neighbors for EdgeConv.")
     parser.add_argument("--feature-dim", type=int, help="Optional projected output feature dimension.")
     parser.add_argument("--proposal", action="store_true", help="Also run the skeleton proposal head.")
+    parser.add_argument("--proposal-coordinate-mode", default="raw", choices=["raw", "normalized"], help="Coordinate convention for the optional proposal head.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
     args = parser.parse_args()
 
@@ -52,7 +53,7 @@ def main() -> int:
     print(f"geometric_feature_dim: {model.geometric_feature_dim}")
     print(f"encoded_features: {tuple(features.shape)} {features.dtype}")
     if args.proposal:
-        proposal = SkeletonProposalHead(in_channels=features.shape[-1] + 3).to(device)
+        proposal = SkeletonProposalHead(in_channels=features.shape[-1] + 3, coordinate_mode=args.proposal_coordinate_mode).to(device)
         proposal.eval()
         with torch.no_grad():
             output = proposal(points, features)

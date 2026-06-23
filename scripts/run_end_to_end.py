@@ -34,6 +34,7 @@ def main() -> int:
     parser.add_argument("--existing-proposal-dir", default="tmp/paper_skeleton_eval_50e_heldout")
     parser.add_argument("--force-proposals", action="store_true", help="Regenerate proposals even if an existing proposal file is present.")
     parser.add_argument("--fail-fast", action="store_true", help="Stop on the first sample failure instead of recording it and continuing.")
+    parser.add_argument("--initializer", default="geodesic", choices=["geodesic", "image_supported"], help="Connectivity graph initializer.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--render-points", type=int, default=12000)
     args = parser.parse_args()
@@ -44,6 +45,8 @@ def main() -> int:
 
     output_root = Path(args.output_root)
     output_root.mkdir(parents=True, exist_ok=True)
+    summary_path = output_root / ("summary.json" if args.initializer == "geodesic" else f"summary_{args.initializer}.json")
+    summary_jsonl_path = output_root / ("summary.jsonl" if args.initializer == "geodesic" else f"summary_{args.initializer}.jsonl")
     rows = []
     failures = []
     for sample_index in sample_indices:
@@ -55,30 +58,31 @@ def main() -> int:
                 output_root=output_root,
                 existing_proposal_dir=Path(args.existing_proposal_dir),
                 force_proposals=args.force_proposals,
+                initializer=args.initializer,
                 device=args.device,
                 render_points=args.render_points,
             )
         except Exception as exc:
             failure = sample_failure(sample_index, exc)
             failures.append(failure)
-            append_jsonl(output_root / "summary.jsonl", failure)
-            write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
+            append_jsonl(summary_jsonl_path, failure)
+            write_summary(summary_path, rows, failures, requested_count=len(sample_indices))
             print(f"FAILED {failure['sample_tag']}: {failure['error_type']}: {failure['error']}")
             if args.fail_fast:
                 raise
             continue
         rows.append(row)
-        append_jsonl(output_root / "summary.jsonl", row)
-        write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
+        append_jsonl(summary_jsonl_path, row)
+        write_summary(summary_path, rows, failures, requested_count=len(sample_indices))
 
-    write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
+    write_summary(summary_path, rows, failures, requested_count=len(sample_indices))
     print(f"requested_samples: {len(sample_indices)}")
     print(f"succeeded_samples: {len(rows)}")
     print(f"failed_samples: {len(failures)}")
     print(f"mean_reachable_edge_fraction: {mean([row['reachable_edge_fraction'] for row in rows]):.4f}")
     print(f"mean_bridge_edges: {mean([row['bridge_edges'] for row in rows]):.4f}")
     print(f"mean_reconstruction_nodes: {mean([row['reconstruction_nodes'] for row in rows]):.1f}")
-    print(f"summary: {output_root / 'summary.json'}")
+    print(f"summary: {summary_path}")
     return 1 if failures else 0
 
 
@@ -103,6 +107,7 @@ def run_sample(
     output_root: Path,
     existing_proposal_dir: Path,
     force_proposals: bool,
+    initializer: str,
     device: str,
     render_points: int,
 ) -> dict:
@@ -162,42 +167,72 @@ def run_sample(
             ]
         )
 
-    graph_path = sample_dir / f"{sample_tag}_geodesic_graph.npz"
-    swc_path = sample_dir / f"{sample_tag}.swc"
-    compare_html = sample_dir / f"{sample_tag}_compare.html"
+    graph_path = sample_dir / f"{sample_tag}_{initializer}_graph.npz"
+    swc_path = sample_dir / f"{sample_tag}_{initializer}.swc"
+    compare_html = sample_dir / f"{sample_tag}_{initializer}_compare.html"
     if graph_path.exists():
         print(f"reuse graph: {graph_path}")
     else:
-        run_command(
-            [
-                sys.executable,
-                "scripts/initialize_geodesic_graph.py",
-                "--root",
-                root,
-                "--sample-index",
-                str(sample_index),
-                "--proposals",
-                str(proposal_path),
-                "--mode",
-                "mst",
-                "--nms-distance",
-                "12",
-                "--max-nodes",
-                "256",
-                "--foreground-threshold",
-                str(BASELINE_CONNECTIVITY["foreground_threshold"]),
-                "--max-foreground-voxels",
-                str(BASELINE_CONNECTIVITY["max_foreground_voxels"]),
-                "--candidate-k",
-                str(BASELINE_CONNECTIVITY["candidate_k"]),
-                "--max-geodesic-ratio",
-                str(BASELINE_CONNECTIVITY["max_geodesic_ratio"]),
-                "--bridge-components",
-                "--bridge-allow-unreachable-fallback",
-                "--output",
-                str(graph_path),
-            ]
-        )
+        if initializer == "geodesic":
+            run_command(
+                [
+                    sys.executable,
+                    "scripts/initialize_geodesic_graph.py",
+                    "--root",
+                    root,
+                    "--sample-index",
+                    str(sample_index),
+                    "--proposals",
+                    str(proposal_path),
+                    "--mode",
+                    "mst",
+                    "--nms-distance",
+                    "12",
+                    "--max-nodes",
+                    "256",
+                    "--foreground-threshold",
+                    str(BASELINE_CONNECTIVITY["foreground_threshold"]),
+                    "--max-foreground-voxels",
+                    str(BASELINE_CONNECTIVITY["max_foreground_voxels"]),
+                    "--candidate-k",
+                    str(BASELINE_CONNECTIVITY["candidate_k"]),
+                    "--max-geodesic-ratio",
+                    str(BASELINE_CONNECTIVITY["max_geodesic_ratio"]),
+                    "--bridge-components",
+                    "--bridge-allow-unreachable-fallback",
+                    "--output",
+                    str(graph_path),
+                ]
+            )
+        elif initializer == "image_supported":
+            run_command(
+                [
+                    sys.executable,
+                    "scripts/initialize_image_supported_graph.py",
+                    "--root",
+                    root,
+                    "--sample-index",
+                    str(sample_index),
+                    "--proposals",
+                    str(proposal_path),
+                    "--mode",
+                    "mst",
+                    "--nms-distance",
+                    "12",
+                    "--max-nodes",
+                    "256",
+                    "--foreground-threshold",
+                    str(BASELINE_CONNECTIVITY["foreground_threshold"]),
+                    "--sample-step",
+                    "2",
+                    "--empty-penalty",
+                    "8",
+                    "--output",
+                    str(graph_path),
+                ]
+            )
+        else:
+            raise ValueError(f"Unknown initializer: {initializer}")
     if swc_path.exists():
         print(f"reuse swc: {swc_path}")
     else:
@@ -227,6 +262,7 @@ def run_sample(
     row = {
         "sample_index": sample_index,
         "sample_tag": sample_tag,
+        "initializer": initializer,
         "proposal_path": str(proposal_path),
         "graph_path": str(graph_path),
         "swc_path": str(swc_path),
@@ -240,13 +276,13 @@ def run_sample(
         "foreground_threshold_was_adapted": graph_metadata.get("foreground_threshold_was_adapted", False),
         "max_foreground_voxels": graph_metadata.get("max_foreground_voxels", 0),
         "foreground_cap_satisfied": graph_metadata.get("foreground_cap_satisfied", True),
-        "candidate_k": graph_metadata["candidate_k"],
-        "max_geodesic_ratio": graph_metadata["max_geodesic_ratio"],
-        "bridge_edges": graph_metadata["bridge_edges"],
-        "reachable_edge_fraction": graph_metadata["reachable_edge_fraction"],
+        "candidate_k": graph_metadata.get("candidate_k", 0),
+        "max_geodesic_ratio": graph_metadata.get("max_geodesic_ratio", 0.0),
+        "bridge_edges": graph_metadata.get("bridge_edges", 0),
+        "reachable_edge_fraction": graph_metadata.get("reachable_edge_fraction", 1.0),
         "components": graph_metadata["components"],
-        "mean_edge_geodesic_distance": graph_metadata["mean_edge_geodesic_distance"],
-        "mean_snap_distance": graph_metadata["mean_snap_distance"],
+        "mean_edge_geodesic_distance": graph_metadata.get("mean_edge_geodesic_distance", graph_metadata.get("mean_edge_weight", 0.0)),
+        "mean_snap_distance": graph_metadata.get("mean_snap_distance", 0.0),
     }
     print(
         f"{sample_tag}: roots={row['reconstruction_roots']} nodes={row['reconstruction_nodes']} "

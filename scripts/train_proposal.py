@@ -29,6 +29,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--objectness-radius-floor", type=float, default=3.0, help="Minimum SWC radius used only for objectness labels.")
     parser.add_argument("--radius-target-floor", type=float, default=1.0, help="Minimum SWC radius used only for radius regression targets.")
     parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
+    parser.add_argument(
+        "--proposal-coordinate-mode",
+        default="raw",
+        choices=["raw", "normalized"],
+        help="Coordinate convention used by the proposal head. Use normalized for scale-local training; raw preserves legacy checkpoints.",
+    )
     parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest"], help="Skeleton proposal loss to train with.")
     parser.add_argument("--offset-weight", type=float, default=1.0, help="Weight for paper-style Chamfer offset loss.")
     parser.add_argument("--objectness-weight", type=float, default=10.0, help="Weight for paper-style objectness loss.")
@@ -103,7 +109,7 @@ def main() -> int:
             )
 
     encoder = DGCNNEncoder(k=args.k).to(device)
-    proposal = SkeletonProposalHead(in_channels=encoder.output_dim + 3).to(device)
+    proposal = SkeletonProposalHead(in_channels=encoder.output_dim + 3, coordinate_mode=args.proposal_coordinate_mode).to(device)
     parameters = list(encoder.parameters()) + list(proposal.parameters())
     optimizer = torch.optim.AdamW(parameters, lr=args.lr, weight_decay=args.weight_decay)
     use_amp = bool(args.amp and device == "cuda")
@@ -118,6 +124,7 @@ def main() -> int:
     print(f"amp: {use_amp}")
     print(f"k: {args.k}")
     print(f"loss_mode: {args.loss_mode}")
+    print(f"proposal_coordinate_mode: {args.proposal_coordinate_mode}")
     print(f"geometric_feature_dim: {encoder.geometric_feature_dim}")
     objectness_radius_floor = args.target_radius_floor if args.target_radius_floor is not None else args.objectness_radius_floor
     radius_target_floor = args.target_radius_floor if args.target_radius_floor is not None else args.radius_target_floor

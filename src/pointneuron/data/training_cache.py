@@ -27,6 +27,7 @@ class CachedTrainingRecord:
 class PatchCacheConfig:
     patches_per_sample: int = 8
     patch_radius: int = 96
+    patch_stride: int | None = None
     max_points: int = 2048
     min_points: int = 256
     min_unique_fraction: float = 0.0
@@ -132,6 +133,18 @@ def build_patch_training_records(
             rng=rng,
             threshold=threshold,
         )
+    elif config.center_strategy == "coverage":
+        centers = choose_coverage_patch_centers(
+            data=data,
+            width=width,
+            height=height,
+            depth=depth,
+            patches_per_sample=config.patches_per_sample,
+            patch_radius=config.patch_radius,
+            stride=config.patch_stride or config.patch_radius,
+            min_points=config.min_points,
+            threshold=threshold,
+        )
     else:
         centers = choose_patch_centers(
             skeleton_array,
@@ -180,6 +193,7 @@ def build_patch_training_records(
             "max_points": config.max_points,
             "seed": seed,
             "patch_radius": config.patch_radius,
+            "patch_stride": config.patch_stride or config.patch_radius,
             "min_unique_fraction": config.min_unique_fraction,
             "center_strategy": config.center_strategy,
             "endpoint_fraction": config.endpoint_fraction,
@@ -277,7 +291,7 @@ def choose_patch_centers(
             selected.extend(rng.choice(available, size=remaining_count, replace=False).tolist())
         return node_xyz[np.sort(np.array(selected[:patches_per_sample], dtype=np.int64))]
     if strategy != "random":
-        raise ValueError(f"Unknown patch center strategy {strategy!r}; expected 'random', 'topology', or 'foreground'")
+        raise ValueError(f"Unknown patch center strategy {strategy!r}; expected 'random', 'topology', 'foreground', or 'coverage'")
     indices = rng.choice(np.arange(node_xyz.shape[0]), size=patches_per_sample, replace=False)
     return node_xyz[np.sort(indices)]
 
@@ -301,6 +315,85 @@ def choose_foreground_patch_centers(
     y = offset // width
     x = offset - y * width
     return np.stack([x.astype(np.float32), y.astype(np.float32), z.astype(np.float32)], axis=1)
+
+
+def choose_coverage_patch_centers(
+    data: np.ndarray,
+    width: int,
+    height: int,
+    depth: int,
+    patches_per_sample: int,
+    patch_radius: int,
+    stride: int,
+    min_points: int,
+    threshold: int,
+) -> np.ndarray:
+    foreground_indices = np.flatnonzero(data > threshold)
+    if foreground_indices.size == 0:
+        return np.zeros((0, 3), dtype=np.float32)
+
+    plane_size = width * height
+    z = foreground_indices // plane_size
+    offset = foreground_indices - z * plane_size
+    y = offset // width
+    x = offset - y * width
+    mins = np.array([x.min(), y.min(), z.min()], dtype=np.float32)
+    maxs = np.array([x.max(), y.max(), z.max()], dtype=np.float32)
+    axes = [np.arange(mins[axis], maxs[axis] + 1, stride, dtype=np.float32) for axis in range(3)]
+    if any(axis.size == 0 for axis in axes):
+        return np.zeros((0, 3), dtype=np.float32)
+
+    candidates: list[tuple[np.ndarray, int]] = []
+    for cx in axes[0]:
+        for cy in axes[1]:
+            for cz in axes[2]:
+                center = np.array([cx, cy, cz], dtype=np.float32)
+                indices = patch_foreground_indices(
+                    data=data,
+                    width=width,
+                    height=height,
+                    depth=depth,
+                    center_xyz=center,
+                    radius=patch_radius,
+                    threshold=threshold,
+                )
+                if indices.shape[0] >= min_points:
+                    candidates.append((center, int(indices.shape[0])))
+
+    if not candidates:
+        return np.zeros((0, 3), dtype=np.float32)
+    if len(candidates) <= patches_per_sample:
+        return np.stack([center for center, _count in candidates], axis=0).astype(np.float32, copy=False)
+    return select_spatially_diverse_centers(candidates, patches_per_sample, np.array([width, height, depth], dtype=np.float32))
+
+
+def select_spatially_diverse_centers(
+    candidates: list[tuple[np.ndarray, int]],
+    count: int,
+    volume_shape: np.ndarray,
+) -> np.ndarray:
+    centers = np.stack([center for center, _foreground_count in candidates], axis=0).astype(np.float32, copy=False)
+    foreground_counts = np.array([foreground_count for _center, foreground_count in candidates], dtype=np.float32)
+    normalized = centers / np.maximum(volume_shape.reshape(1, 3), 1.0)
+
+    selected = [int(np.argmax(foreground_counts))]
+    remaining = np.ones(len(candidates), dtype=bool)
+    remaining[selected[0]] = False
+    min_distances = np.linalg.norm(normalized - normalized[selected[0]], axis=1)
+
+    while len(selected) < count and bool(remaining.any()):
+        density = foreground_counts / max(float(foreground_counts.max()), 1.0)
+        score = min_distances + 0.05 * density
+        score[~remaining] = -1.0
+        next_index = int(np.argmax(score))
+        selected.append(next_index)
+        remaining[next_index] = False
+        distances = np.linalg.norm(normalized - normalized[next_index], axis=1)
+        min_distances = np.minimum(min_distances, distances)
+
+    selected_centers = centers[selected]
+    order = np.lexsort((selected_centers[:, 2], selected_centers[:, 1], selected_centers[:, 0]))
+    return selected_centers[order].astype(np.float32, copy=False)
 
 
 def skeleton_role_indices(skeleton_array: np.ndarray) -> tuple[np.ndarray, np.ndarray]:

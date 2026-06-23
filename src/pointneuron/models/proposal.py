@@ -22,9 +22,13 @@ class SkeletonProposalHead(nn.Module):
         in_channels: int = 1219,
         hidden_channels: tuple[int, ...] = (512, 256, 128),
         include_xyz: bool = True,
+        coordinate_mode: str = "raw",
     ):
         super().__init__()
+        if coordinate_mode not in {"raw", "normalized"}:
+            raise ValueError(f"Unknown coordinate_mode {coordinate_mode!r}; expected 'raw' or 'normalized'")
         self.include_xyz = include_xyz
+        self.coordinate_mode = coordinate_mode
         layers: list[nn.Module] = []
         current_channels = in_channels
         for hidden in hidden_channels:
@@ -47,8 +51,12 @@ class SkeletonProposalHead(nn.Module):
         if points.shape[:2] != geometric_features.shape[:2]:
             raise ValueError("Point and feature tensors must have matching batch and point dimensions")
 
+        xyz = points[..., :3]
+        normalized_xyz, coordinate_scale = normalize_proposal_coordinates(xyz)
+        feature_xyz = xyz if self.coordinate_mode == "raw" else normalized_xyz
+
         if self.include_xyz:
-            proposal_features = torch.cat([points[..., :3], geometric_features], dim=-1)
+            proposal_features = torch.cat([feature_xyz, geometric_features], dim=-1)
         else:
             proposal_features = geometric_features
 
@@ -56,9 +64,14 @@ class SkeletonProposalHead(nn.Module):
         flat_features = proposal_features.reshape(batch_size * point_count, channels)
         raw = self.mlp(flat_features).reshape(batch_size, point_count, 6)
         objectness_logits = raw[..., :2]
-        radius = F.softplus(raw[..., 2:3])
-        offsets = raw[..., 3:6]
-        center_proposals = points[..., :3] + offsets
+        raw_radius = F.softplus(raw[..., 2:3])
+        raw_offsets = raw[..., 3:6]
+        radius = raw_radius
+        if self.coordinate_mode == "normalized":
+            offsets = raw_offsets * coordinate_scale
+        else:
+            offsets = raw_offsets
+        center_proposals = xyz + offsets
         return SkeletonProposalOutput(
             offsets=offsets,
             objectness_logits=objectness_logits,
@@ -66,3 +79,10 @@ class SkeletonProposalHead(nn.Module):
             center_proposals=center_proposals,
             raw=raw,
         )
+
+
+def normalize_proposal_coordinates(coords: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    center = coords.mean(dim=1, keepdim=True)
+    centered = coords - center
+    scale = centered.abs().amax(dim=(1, 2), keepdim=True).clamp_min(1.0)
+    return centered / scale, scale

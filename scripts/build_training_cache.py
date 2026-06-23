@@ -31,9 +31,10 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true", help="Reuse existing cache records with matching metadata.")
     parser.add_argument("--patches-per-sample", type=int, default=0, help="Build this many local SWC-centered patch records per sample.")
     parser.add_argument("--patch-radius", type=int, default=96, help="Patch radius in voxels when --patches-per-sample is set.")
+    parser.add_argument("--patch-stride", type=int, help="Patch-center stride for --center-strategy coverage. Defaults to --patch-radius.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
-    parser.add_argument("--center-strategy", default="random", choices=["random", "topology", "foreground"], help="Patch center sampling strategy for patch records.")
+    parser.add_argument("--center-strategy", default="random", choices=["random", "topology", "foreground", "coverage"], help="Patch center sampling strategy for patch records.")
     parser.add_argument("--endpoint-fraction", type=float, default=0.25, help="Fraction of patch centers reserved for SWC endpoints when --center-strategy topology.")
     parser.add_argument("--branch-fraction", type=float, default=0.10, help="Fraction of patch centers reserved for SWC branch nodes when --center-strategy topology.")
     args = parser.parse_args()
@@ -60,6 +61,7 @@ def main() -> int:
                     threshold=threshold,
                     max_points=args.max_points,
                     patch_radius=args.patch_radius,
+                    patch_stride=args.patch_stride,
                     threshold_fraction=args.threshold_fraction,
                     min_unique_fraction=args.min_unique_fraction,
                     center_strategy=args.center_strategy,
@@ -79,6 +81,7 @@ def main() -> int:
                     config=PatchCacheConfig(
                         patches_per_sample=args.patches_per_sample,
                         patch_radius=args.patch_radius,
+                        patch_stride=args.patch_stride,
                         max_points=args.max_points,
                         min_points=args.min_points,
                         min_unique_fraction=args.min_unique_fraction,
@@ -164,6 +167,7 @@ def main() -> int:
                 "max_points": args.max_points,
                 "patches_per_sample": args.patches_per_sample,
                 "patch_radius": args.patch_radius if args.patches_per_sample > 0 else None,
+                "patch_stride": (args.patch_stride or args.patch_radius) if args.patches_per_sample > 0 else None,
                 "min_unique_fraction": args.min_unique_fraction if args.patches_per_sample > 0 else None,
                 "center_strategy": args.center_strategy if args.patches_per_sample > 0 else None,
                 "endpoint_fraction": args.endpoint_fraction if args.patches_per_sample > 0 else None,
@@ -242,6 +246,7 @@ def cached_patch_summaries(
     threshold: int,
     max_points: int,
     patch_radius: int,
+    patch_stride: int | None = None,
     threshold_fraction: float | None = None,
     min_unique_fraction: float = 0.0,
     center_strategy: str = "random",
@@ -268,6 +273,8 @@ def cached_patch_summaries(
         except (OSError, KeyError, ValueError, json.JSONDecodeError):
             return []
         if metadata.get("patch_radius") != patch_radius:
+            return []
+        if metadata.get("patch_stride", metadata.get("patch_radius")) != (patch_stride or patch_radius):
             return []
         if metadata.get("min_unique_fraction", 0.0) != min_unique_fraction:
             return []

@@ -60,6 +60,7 @@ def main() -> int:
     checkpoint = torch.load(args.checkpoint, map_location=device, weights_only=False)
     checkpoint_args = checkpoint.get("args", {})
     k = args.k if args.k is not None else int(checkpoint_args.get("k", 20))
+    proposal_coordinate_mode = checkpoint_args.get("proposal_coordinate_mode", "raw")
 
     dataset = TrainingCacheDataset([paths[args.record_index]])
     batch = collate_training_records([dataset[0]])
@@ -72,6 +73,7 @@ def main() -> int:
     proposal = SkeletonProposalHead(
         in_channels=proposal_in_channels,
         include_xyz=(proposal_in_channels == encoder.output_dim + 3),
+        coordinate_mode=proposal_coordinate_mode,
     ).to(device)
     encoder.load_state_dict(checkpoint["encoder"])
     proposal.load_state_dict(checkpoint["proposal"])

@@ -16,6 +16,7 @@ class TrainProposalCliTests(unittest.TestCase):
         self.assertEqual(args.radius_target_floor, 1.0)
         self.assertEqual(args.endpoint_loss_weight, 1.0)
         self.assertEqual(args.branch_loss_weight, 1.0)
+        self.assertEqual(args.proposal_coordinate_mode, "raw")
 
 
 @unittest.skipIf(importlib.util.find_spec("torch") is None, "PyTorch is not installed")
@@ -59,6 +60,23 @@ class DGCNNEncoderTests(unittest.TestCase):
         self.assertEqual(tuple(output.objectness_logits.shape), (2, 32, 2))
         self.assertEqual(tuple(output.radius.shape), (2, 32, 1))
         self.assertEqual(tuple(output.center_proposals.shape), (2, 32, 3))
+
+    def test_normalized_proposal_head_scales_offsets_back_to_voxels(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalHead
+
+        points = torch.tensor([[[0.0, 0.0, 0.0, 1.0], [10.0, 0.0, 0.0, 1.0]]])
+        features = torch.zeros((1, 2, 16))
+        proposal = SkeletonProposalHead(in_channels=19, hidden_channels=(), coordinate_mode="normalized")
+        linear = proposal.mlp[0]
+        torch.nn.init.zeros_(linear.weight)
+        torch.nn.init.zeros_(linear.bias)
+        linear.bias.data[3] = 1.0
+
+        output = proposal(points, features)
+
+        self.assertTrue(torch.allclose(output.offsets[0, :, 0], torch.full((2,), 5.0)))
 
     def test_proposal_targets_mark_near_skeleton_points_positive(self) -> None:
         import torch
