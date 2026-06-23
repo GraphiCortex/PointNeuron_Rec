@@ -33,6 +33,7 @@ def main() -> int:
     parser.add_argument("--output-root", default="tmp/e2e_baseline_janelia")
     parser.add_argument("--existing-proposal-dir", default="tmp/paper_skeleton_eval_50e_heldout")
     parser.add_argument("--force-proposals", action="store_true", help="Regenerate proposals even if an existing proposal file is present.")
+    parser.add_argument("--fail-fast", action="store_true", help="Stop on the first sample failure instead of recording it and continuing.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--render-points", type=int, default=12000)
     args = parser.parse_args()
@@ -44,27 +45,39 @@ def main() -> int:
     output_root = Path(args.output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     rows = []
+    failures = []
     for sample_index in sample_indices:
-        row = run_sample(
-            sample_index=sample_index,
-            root=args.root,
-            checkpoint=Path(args.checkpoint),
-            output_root=output_root,
-            existing_proposal_dir=Path(args.existing_proposal_dir),
-            force_proposals=args.force_proposals,
-            device=args.device,
-            render_points=args.render_points,
-        )
+        try:
+            row = run_sample(
+                sample_index=sample_index,
+                root=args.root,
+                checkpoint=Path(args.checkpoint),
+                output_root=output_root,
+                existing_proposal_dir=Path(args.existing_proposal_dir),
+                force_proposals=args.force_proposals,
+                device=args.device,
+                render_points=args.render_points,
+            )
+        except Exception as exc:
+            failure = sample_failure(sample_index, exc)
+            failures.append(failure)
+            append_jsonl(output_root / "summary.jsonl", failure)
+            print(f"FAILED {failure['sample_tag']}: {failure['error_type']}: {failure['error']}")
+            if args.fail_fast:
+                raise
+            continue
         rows.append(row)
         append_jsonl(output_root / "summary.jsonl", row)
 
-    write_summary(output_root / "summary.json", rows)
-    print(f"samples: {len(rows)}")
+    write_summary(output_root / "summary.json", rows, failures, requested_count=len(sample_indices))
+    print(f"requested_samples: {len(sample_indices)}")
+    print(f"succeeded_samples: {len(rows)}")
+    print(f"failed_samples: {len(failures)}")
     print(f"mean_reachable_edge_fraction: {mean([row['reachable_edge_fraction'] for row in rows]):.4f}")
     print(f"mean_bridge_edges: {mean([row['bridge_edges'] for row in rows]):.4f}")
     print(f"mean_reconstruction_nodes: {mean([row['reconstruction_nodes'] for row in rows]):.1f}")
     print(f"summary: {output_root / 'summary.json'}")
-    return 0
+    return 1 if failures else 0
 
 
 def requested_sample_indices(sample_indices: list[int] | None, sample_range: str | None) -> list[int]:
@@ -224,6 +237,7 @@ def run_sample(
         "requested_foreground_threshold": graph_metadata.get("requested_foreground_threshold", graph_metadata["foreground_threshold"]),
         "foreground_threshold_was_adapted": graph_metadata.get("foreground_threshold_was_adapted", False),
         "max_foreground_voxels": graph_metadata.get("max_foreground_voxels", 0),
+        "foreground_cap_satisfied": graph_metadata.get("foreground_cap_satisfied", True),
         "candidate_k": graph_metadata["candidate_k"],
         "max_geodesic_ratio": graph_metadata["max_geodesic_ratio"],
         "bridge_edges": graph_metadata["bridge_edges"],
@@ -244,6 +258,20 @@ def run_command(command: list[str]) -> None:
     subprocess.run(command, cwd=REPO_ROOT, check=True)
 
 
+def sample_failure(sample_index: int, exc: Exception) -> dict:
+    failure = {
+        "status": "failed",
+        "sample_index": int(sample_index),
+        "sample_tag": f"sample_{sample_index:04d}",
+        "error_type": type(exc).__name__,
+        "error": str(exc),
+    }
+    if isinstance(exc, subprocess.CalledProcessError):
+        failure["returncode"] = int(exc.returncode)
+        failure["command"] = " ".join(str(part) for part in exc.cmd)
+    return failure
+
+
 def load_graph_metadata(path: Path) -> dict:
     import numpy as np
 
@@ -256,12 +284,16 @@ def append_jsonl(path: Path, row: dict) -> None:
         file.write(json.dumps(row, sort_keys=True) + "\n")
 
 
-def write_summary(path: Path, rows: list[dict]) -> None:
+def write_summary(path: Path, rows: list[dict], failures: list[dict], requested_count: int) -> None:
     payload = {
         "baseline_connectivity": BASELINE_CONNECTIVITY,
         "samples": rows,
+        "failures": failures,
         "summary": {
+            "requested_sample_count": int(requested_count),
             "sample_count": len(rows),
+            "success_count": len(rows),
+            "failure_count": len(failures),
             "mean_reachable_edge_fraction": mean([row["reachable_edge_fraction"] for row in rows]),
             "mean_bridge_edges": mean([row["bridge_edges"] for row in rows]),
             "mean_reconstruction_nodes": mean([row["reconstruction_nodes"] for row in rows]),

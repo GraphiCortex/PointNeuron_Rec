@@ -183,6 +183,7 @@ def main() -> int:
         "foreground_threshold_was_adapted": bool(threshold_was_adapted),
         "max_foreground_voxels": int(args.max_foreground_voxels),
         "foreground_voxels": int(foreground_flats.size),
+        "foreground_cap_satisfied": bool(args.max_foreground_voxels <= 0 or foreground_flats.size <= int(args.max_foreground_voxels)),
         "intensity_penalty": args.intensity_penalty,
         "disconnected_multiplier": args.disconnected_multiplier,
         "candidate_k": args.candidate_k,
@@ -237,6 +238,7 @@ def main() -> int:
     print(f"foreground_threshold_was_adapted: {threshold_was_adapted}")
     print(f"max_foreground_voxels: {args.max_foreground_voxels}")
     print(f"foreground_voxels: {foreground_flats.size}")
+    print(f"foreground_cap_satisfied: {metadata['foreground_cap_satisfied']}")
     print("initializer: foreground_geodesic")
     print(f"mode: {args.mode}")
     print(f"edges: {final_edges.shape[0]}")
