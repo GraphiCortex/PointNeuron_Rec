@@ -35,6 +35,12 @@ def main() -> int:
     parser.add_argument("--nms-distance", type=float, default=12.0, help="Greedy Euclidean NMS spacing.")
     parser.add_argument("--max-nodes", type=int, default=256, help="Maximum proposal nodes after filtering. 0 disables.")
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
+    parser.add_argument(
+        "--max-foreground-voxels",
+        type=int,
+        default=0,
+        help="If >0, raise the foreground threshold until the geodesic graph has at most this many voxels.",
+    )
     parser.add_argument("--intensity-penalty", type=float, default=2.0, help="Extra cost for dim foreground voxels.")
     parser.add_argument("--disconnected-multiplier", type=float, default=100.0, help="Euclidean fallback multiplier for disconnected pairs.")
     parser.add_argument("--candidate-k", type=int, default=0, help="Only allow each node's K nearest Euclidean proposal candidates. 0 disables.")
@@ -62,9 +68,9 @@ def main() -> int:
     if sample.volume_path is None:
         raise ValueError(f"Sample has no volume: {sample.sample_id}")
 
-    threshold = args.foreground_threshold
-    if threshold is None:
-        threshold = int(proposal_metadata.get("threshold", 0))
+    requested_threshold = args.foreground_threshold
+    if requested_threshold is None:
+        requested_threshold = int(proposal_metadata.get("threshold", 0))
 
     centers, radii, scores, features, original_indices = filter_proposals(
         centers=centers,
@@ -85,6 +91,11 @@ def main() -> int:
     if channels != 1:
         raise NotImplementedError(f"Expected single-channel volume, got {channels}")
 
+    threshold, threshold_was_adapted = choose_foreground_threshold(
+        data=data,
+        requested_threshold=int(requested_threshold),
+        max_foreground_voxels=int(args.max_foreground_voxels),
+    )
     foreground_flats = np.flatnonzero(data > int(threshold)).astype(np.int64, copy=False)
     if foreground_flats.size == 0:
         raise ValueError(f"No foreground voxels above threshold {threshold}")
@@ -168,6 +179,9 @@ def main() -> int:
         "nms_distance": args.nms_distance,
         "max_nodes": args.max_nodes,
         "foreground_threshold": int(threshold),
+        "requested_foreground_threshold": int(requested_threshold),
+        "foreground_threshold_was_adapted": bool(threshold_was_adapted),
+        "max_foreground_voxels": int(args.max_foreground_voxels),
         "foreground_voxels": int(foreground_flats.size),
         "intensity_penalty": args.intensity_penalty,
         "disconnected_multiplier": args.disconnected_multiplier,
@@ -219,6 +233,9 @@ def main() -> int:
     print(f"sample_id: {sample.sample_id}")
     print(f"proposal_nodes: {centers.shape[0]}")
     print(f"foreground_threshold: {threshold}")
+    print(f"requested_foreground_threshold: {requested_threshold}")
+    print(f"foreground_threshold_was_adapted: {threshold_was_adapted}")
+    print(f"max_foreground_voxels: {args.max_foreground_voxels}")
     print(f"foreground_voxels: {foreground_flats.size}")
     print("initializer: foreground_geodesic")
     print(f"mode: {args.mode}")
@@ -232,6 +249,34 @@ def main() -> int:
     print(f"eligible_candidate_pairs: {metadata['eligible_candidate_pairs']}")
     print(f"output: {output_path}")
     return 0
+
+
+def choose_foreground_threshold(data: np.ndarray, requested_threshold: int, max_foreground_voxels: int) -> tuple[int, bool]:
+    requested_threshold = int(requested_threshold)
+    if max_foreground_voxels <= 0:
+        return requested_threshold, False
+
+    requested_count = int(np.count_nonzero(data > requested_threshold))
+    if requested_count <= int(max_foreground_voxels):
+        return requested_threshold, False
+
+    max_value = int(data.max()) if data.size else requested_threshold
+    if max_value <= requested_threshold:
+        return requested_threshold, False
+
+    histogram = np.bincount(data, minlength=max_value + 1)
+    greater_than = np.cumsum(histogram[::-1])[::-1] - histogram
+    for threshold in range(requested_threshold + 1, max_value + 1):
+        count = int(greater_than[threshold])
+        if 0 < count <= int(max_foreground_voxels):
+            return threshold, True
+
+    # Keep at least the brightest non-empty foreground instead of returning an empty graph.
+    nonzero_values = np.flatnonzero(histogram)
+    brighter = nonzero_values[nonzero_values > requested_threshold]
+    if brighter.size:
+        return max(int(brighter[-1]) - 1, requested_threshold), True
+    return requested_threshold, False
 
 
 def build_foreground_graph(

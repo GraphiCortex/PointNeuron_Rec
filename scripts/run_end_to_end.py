@@ -16,6 +16,7 @@ from pointneuron.data.swc import parse_swc
 
 BASELINE_CONNECTIVITY = {
     "foreground_threshold": 5,
+    "max_foreground_voxels": 350000,
     "candidate_k": 6,
     "max_geodesic_ratio": 12.0,
     "bridge_components": True,
@@ -97,6 +98,8 @@ def run_sample(
     existing_proposal = existing_proposal_dir / f"{sample_tag}_proposals.npz"
     if existing_proposal.exists() and not force_proposals:
         proposal_path = existing_proposal
+    elif proposal_path.exists() and not force_proposals:
+        print(f"reuse proposal: {proposal_path}")
     else:
         proposal_html = sample_dir / f"{sample_tag}_proposals.html"
         run_command(
@@ -147,51 +150,62 @@ def run_sample(
     graph_path = sample_dir / f"{sample_tag}_geodesic_graph.npz"
     swc_path = sample_dir / f"{sample_tag}.swc"
     compare_html = sample_dir / f"{sample_tag}_compare.html"
-    run_command(
-        [
-            sys.executable,
-            "scripts/initialize_geodesic_graph.py",
-            "--root",
-            root,
-            "--sample-index",
-            str(sample_index),
-            "--proposals",
-            str(proposal_path),
-            "--mode",
-            "mst",
-            "--nms-distance",
-            "12",
-            "--max-nodes",
-            "256",
-            "--foreground-threshold",
-            str(BASELINE_CONNECTIVITY["foreground_threshold"]),
-            "--candidate-k",
-            str(BASELINE_CONNECTIVITY["candidate_k"]),
-            "--max-geodesic-ratio",
-            str(BASELINE_CONNECTIVITY["max_geodesic_ratio"]),
-            "--bridge-components",
-            "--bridge-allow-unreachable-fallback",
-            "--output",
-            str(graph_path),
-        ]
-    )
-    run_command([sys.executable, "scripts/generate_swc_from_graph.py", "--graph", str(graph_path), "--output", str(swc_path)])
-    run_command(
-        [
-            sys.executable,
-            "scripts/visualize_reconstruction.py",
-            "--root",
-            root,
-            "--sample-index",
-            str(sample_index),
-            "--reconstruction-swc",
-            str(swc_path),
-            "--render-points",
-            str(render_points),
-            "--output",
-            str(compare_html),
-        ]
-    )
+    if graph_path.exists():
+        print(f"reuse graph: {graph_path}")
+    else:
+        run_command(
+            [
+                sys.executable,
+                "scripts/initialize_geodesic_graph.py",
+                "--root",
+                root,
+                "--sample-index",
+                str(sample_index),
+                "--proposals",
+                str(proposal_path),
+                "--mode",
+                "mst",
+                "--nms-distance",
+                "12",
+                "--max-nodes",
+                "256",
+                "--foreground-threshold",
+                str(BASELINE_CONNECTIVITY["foreground_threshold"]),
+                "--max-foreground-voxels",
+                str(BASELINE_CONNECTIVITY["max_foreground_voxels"]),
+                "--candidate-k",
+                str(BASELINE_CONNECTIVITY["candidate_k"]),
+                "--max-geodesic-ratio",
+                str(BASELINE_CONNECTIVITY["max_geodesic_ratio"]),
+                "--bridge-components",
+                "--bridge-allow-unreachable-fallback",
+                "--output",
+                str(graph_path),
+            ]
+        )
+    if swc_path.exists():
+        print(f"reuse swc: {swc_path}")
+    else:
+        run_command([sys.executable, "scripts/generate_swc_from_graph.py", "--graph", str(graph_path), "--output", str(swc_path)])
+    if compare_html.exists():
+        print(f"reuse html: {compare_html}")
+    else:
+        run_command(
+            [
+                sys.executable,
+                "scripts/visualize_reconstruction.py",
+                "--root",
+                root,
+                "--sample-index",
+                str(sample_index),
+                "--reconstruction-swc",
+                str(swc_path),
+                "--render-points",
+                str(render_points),
+                "--output",
+                str(compare_html),
+            ]
+        )
 
     graph_metadata = load_graph_metadata(graph_path)
     reconstruction = parse_swc(swc_path)
@@ -207,6 +221,9 @@ def run_sample(
         "reconstruction_edges": reconstruction.edge_count,
         "swc_valid": not reconstruction.validate(),
         "foreground_threshold": graph_metadata["foreground_threshold"],
+        "requested_foreground_threshold": graph_metadata.get("requested_foreground_threshold", graph_metadata["foreground_threshold"]),
+        "foreground_threshold_was_adapted": graph_metadata.get("foreground_threshold_was_adapted", False),
+        "max_foreground_voxels": graph_metadata.get("max_foreground_voxels", 0),
         "candidate_k": graph_metadata["candidate_k"],
         "max_geodesic_ratio": graph_metadata["max_geodesic_ratio"],
         "bridge_edges": graph_metadata["bridge_edges"],
