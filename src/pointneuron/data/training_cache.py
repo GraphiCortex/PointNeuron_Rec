@@ -32,6 +32,8 @@ class PatchCacheConfig:
     min_points: int = 256
     min_unique_fraction: float = 0.0
     center_strategy: str = "random"
+    point_sample_strategy: str = "random"
+    point_sample_cell_size: int = 8
     endpoint_fraction: float = 0.25
     branch_fraction: float = 0.10
 
@@ -159,6 +161,8 @@ def build_patch_training_records(
     records: list[CachedTrainingRecord] = []
 
     for patch_index, center in enumerate(centers):
+        if len(records) >= config.patches_per_sample:
+            break
         selected_indices = patch_foreground_indices(
             data=data,
             width=width,
@@ -173,7 +177,16 @@ def build_patch_training_records(
         patch_foreground_count = int(selected_indices.shape[0])
         if patch_foreground_count < int(config.max_points * config.min_unique_fraction):
             continue
-        selected_indices = sample_indices_fixed(selected_indices, config.max_points, rng)
+        selected_indices = sample_indices_fixed(
+            selected_indices,
+            config.max_points,
+            rng,
+            strategy=config.point_sample_strategy,
+            data=data,
+            width=width,
+            height=height,
+            cell_size=config.point_sample_cell_size,
+        )
         points_array = indices_to_point_array(selected_indices, data, width, height)
         patch_skeleton_array = skeleton_nodes_in_patch(skeleton_array, center, config.patch_radius)
         if patch_skeleton_array.shape[0] == 0:
@@ -196,6 +209,8 @@ def build_patch_training_records(
             "patch_stride": config.patch_stride or config.patch_radius,
             "min_unique_fraction": config.min_unique_fraction,
             "center_strategy": config.center_strategy,
+            "point_sample_strategy": config.point_sample_strategy,
+            "point_sample_cell_size": config.point_sample_cell_size,
             "endpoint_fraction": config.endpoint_fraction,
             "branch_fraction": config.branch_fraction,
             "patch_center": [float(value) for value in center],
@@ -253,7 +268,7 @@ def skeleton_edge_index(skeleton: tuple[SkeletonRecord, ...]) -> np.ndarray:
         if parent_index is None:
             raise ValueError(f"Missing parent id {node.parent_id} for node {node.node_id}")
         edges.append((parent_index, child_index))
-    return np.array(edges, dtype=np.int64)
+    return np.array(edges, dtype=np.int64).reshape(-1, 2)
 
 
 def volume_data_array(volume) -> np.ndarray:
@@ -304,7 +319,7 @@ def choose_foreground_patch_centers(
     rng: np.random.Generator,
     threshold: int,
 ) -> np.ndarray:
-    foreground_indices = np.flatnonzero(data > threshold)
+    foreground_indices = flat_foreground_indices(data, threshold)
     if foreground_indices.size == 0:
         return np.zeros((0, 3), dtype=np.float32)
     replace = foreground_indices.size < patches_per_sample
@@ -328,17 +343,16 @@ def choose_coverage_patch_centers(
     min_points: int,
     threshold: int,
 ) -> np.ndarray:
-    foreground_indices = np.flatnonzero(data > threshold)
-    if foreground_indices.size == 0:
+    bounds = foreground_bounds(
+        data=data,
+        width=width,
+        height=height,
+        depth=depth,
+        threshold=threshold,
+    )
+    if bounds is None:
         return np.zeros((0, 3), dtype=np.float32)
-
-    plane_size = width * height
-    z = foreground_indices // plane_size
-    offset = foreground_indices - z * plane_size
-    y = offset // width
-    x = offset - y * width
-    mins = np.array([x.min(), y.min(), z.min()], dtype=np.float32)
-    maxs = np.array([x.max(), y.max(), z.max()], dtype=np.float32)
+    mins, maxs = bounds
     axes = [np.arange(mins[axis], maxs[axis] + 1, stride, dtype=np.float32) for axis in range(3)]
     if any(axis.size == 0 for axis in axes):
         return np.zeros((0, 3), dtype=np.float32)
@@ -348,23 +362,14 @@ def choose_coverage_patch_centers(
         for cy in axes[1]:
             for cz in axes[2]:
                 center = np.array([cx, cy, cz], dtype=np.float32)
-                indices = patch_foreground_indices(
-                    data=data,
-                    width=width,
-                    height=height,
-                    depth=depth,
-                    center_xyz=center,
-                    radius=patch_radius,
-                    threshold=threshold,
-                )
-                if indices.shape[0] >= min_points:
-                    candidates.append((center, int(indices.shape[0])))
+                candidates.append((center, 1))
 
     if not candidates:
         return np.zeros((0, 3), dtype=np.float32)
-    if len(candidates) <= patches_per_sample:
+    candidate_count = max(patches_per_sample, patches_per_sample * 4)
+    if len(candidates) <= candidate_count:
         return np.stack([center for center, _count in candidates], axis=0).astype(np.float32, copy=False)
-    return select_spatially_diverse_centers(candidates, patches_per_sample, np.array([width, height, depth], dtype=np.float32))
+    return select_spatially_diverse_centers(candidates, candidate_count, np.array([width, height, depth], dtype=np.float32))
 
 
 def select_spatially_diverse_centers(
@@ -394,6 +399,71 @@ def select_spatially_diverse_centers(
     selected_centers = centers[selected]
     order = np.lexsort((selected_centers[:, 2], selected_centers[:, 1], selected_centers[:, 0]))
     return selected_centers[order].astype(np.float32, copy=False)
+
+
+def flat_foreground_indices(data: np.ndarray, threshold: int, max_exact_indices: int = 50_000_000) -> np.ndarray:
+    chunks: list[np.ndarray] = []
+    foreground_count = 0
+    chunk_size = 16_000_000
+    for start in range(0, data.shape[0], chunk_size):
+        stop = min(data.shape[0], start + chunk_size)
+        local = np.flatnonzero(data[start:stop] > threshold)
+        if local.size == 0:
+            continue
+        foreground_count += int(local.size)
+        if foreground_count > max_exact_indices:
+            raise ValueError(
+                f"Foreground index materialization would require more than {max_exact_indices} int64 entries; "
+                "use --center-strategy coverage for large volumes."
+            )
+        chunks.append(local.astype(np.int64, copy=False) + start)
+    if not chunks:
+        return np.empty((0,), dtype=np.int64)
+    return np.concatenate(chunks)
+
+
+def foreground_bounds(
+    data: np.ndarray,
+    width: int,
+    height: int,
+    depth: int,
+    threshold: int,
+    chunk_depth: int = 1,
+) -> tuple[np.ndarray, np.ndarray] | None:
+    volume = data.reshape((depth, height, width))
+    min_x = width
+    min_y = height
+    min_z = depth
+    max_x = -1
+    max_y = -1
+    max_z = -1
+
+    for z0 in range(0, depth, chunk_depth):
+        z1 = min(depth, z0 + chunk_depth)
+        mask = volume[z0:z1] > threshold
+        if not bool(mask.any()):
+            continue
+
+        z_any = mask.reshape((z1 - z0), -1).any(axis=1)
+        y_any = mask.any(axis=(0, 2))
+        x_any = mask.any(axis=(0, 1))
+        z_values = np.flatnonzero(z_any) + z0
+        y_values = np.flatnonzero(y_any)
+        x_values = np.flatnonzero(x_any)
+
+        min_z = min(min_z, int(z_values[0]))
+        max_z = max(max_z, int(z_values[-1]))
+        min_y = min(min_y, int(y_values[0]))
+        max_y = max(max_y, int(y_values[-1]))
+        min_x = min(min_x, int(x_values[0]))
+        max_x = max(max_x, int(x_values[-1]))
+
+    if max_x < 0:
+        return None
+    return (
+        np.array([min_x, min_y, min_z], dtype=np.float32),
+        np.array([max_x, max_y, max_z], dtype=np.float32),
+    )
 
 
 def skeleton_role_indices(skeleton_array: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -449,10 +519,136 @@ def patch_foreground_indices(
     return (global_z * width * height + global_y * width + global_x).astype(np.int64)
 
 
-def sample_indices_fixed(indices: np.ndarray, max_points: int, rng: np.random.Generator) -> np.ndarray:
-    replace = indices.shape[0] < max_points
-    selected = rng.choice(indices, size=max_points, replace=replace)
-    return np.sort(selected.astype(np.int64))
+def sample_indices_fixed(
+    indices: np.ndarray,
+    max_points: int,
+    rng: np.random.Generator,
+    strategy: str = "random",
+    data: np.ndarray | None = None,
+    width: int | None = None,
+    height: int | None = None,
+    cell_size: int = 8,
+) -> np.ndarray:
+    if strategy == "random":
+        replace = indices.shape[0] < max_points
+        selected = rng.choice(indices, size=max_points, replace=replace)
+        return np.sort(selected.astype(np.int64))
+    if strategy == "spatial":
+        if data is None or width is None or height is None:
+            raise ValueError("spatial point sampling requires data, width, and height")
+        return spatially_balanced_sample_indices(
+            indices=indices,
+            data=data,
+            width=width,
+            height=height,
+            max_points=max_points,
+            rng=rng,
+            cell_size=cell_size,
+        )
+    raise ValueError(f"Unknown point sample strategy {strategy!r}; expected 'random' or 'spatial'")
+
+
+def spatially_balanced_sample_indices(
+    indices: np.ndarray,
+    data: np.ndarray,
+    width: int,
+    height: int,
+    max_points: int,
+    rng: np.random.Generator,
+    cell_size: int = 8,
+) -> np.ndarray:
+    if max_points <= 0:
+        raise ValueError(f"max_points must be positive, got {max_points}")
+    if indices.shape[0] == 0:
+        return np.empty((0,), dtype=np.int64)
+    if cell_size <= 0:
+        raise ValueError(f"cell_size must be positive, got {cell_size}")
+
+    representative_indices = brightest_cell_representatives(
+        indices=indices.astype(np.int64, copy=False),
+        data=data,
+        width=width,
+        height=height,
+        cell_size=cell_size,
+    )
+    if representative_indices.shape[0] >= max_points:
+        selected = spatially_diverse_indices(
+            candidate_indices=representative_indices,
+            data=data,
+            width=width,
+            height=height,
+            count=max_points,
+        )
+        return np.sort(selected.astype(np.int64, copy=False))
+
+    selected = representative_indices.astype(np.int64, copy=False).tolist()
+    selected_set = set(int(index) for index in selected)
+    remaining = np.array([int(index) for index in indices if int(index) not in selected_set], dtype=np.int64)
+    needed = max_points - len(selected)
+    if needed > 0:
+        pool = remaining if remaining.shape[0] > 0 else indices.astype(np.int64, copy=False)
+        fill = rng.choice(pool, size=needed, replace=pool.shape[0] < needed)
+        selected.extend(int(index) for index in fill.tolist())
+    return np.sort(np.array(selected, dtype=np.int64))
+
+
+def brightest_cell_representatives(
+    indices: np.ndarray,
+    data: np.ndarray,
+    width: int,
+    height: int,
+    cell_size: int,
+) -> np.ndarray:
+    coords = flat_indices_to_xyz(indices, width=width, height=height)
+    cells = np.floor_divide(coords, int(cell_size)).astype(np.int64, copy=False)
+    cells_per_x = max(1, (int(width) + cell_size - 1) // cell_size)
+    cells_per_y = max(1, (int(height) + cell_size - 1) // cell_size)
+    cell_codes = cells[:, 0] + cells[:, 1] * cells_per_x + cells[:, 2] * cells_per_x * cells_per_y
+    intensities = data[indices]
+    order = np.lexsort((-intensities.astype(np.float64, copy=False), cell_codes))
+    ordered_codes = cell_codes[order]
+    first_in_cell = np.empty((ordered_codes.shape[0],), dtype=bool)
+    first_in_cell[0] = True
+    first_in_cell[1:] = ordered_codes[1:] != ordered_codes[:-1]
+    return indices[order[first_in_cell]]
+
+
+def spatially_diverse_indices(
+    candidate_indices: np.ndarray,
+    data: np.ndarray,
+    width: int,
+    height: int,
+    count: int,
+) -> np.ndarray:
+    coords = flat_indices_to_xyz(candidate_indices, width=width, height=height).astype(np.float32, copy=False)
+    span = np.maximum(coords.max(axis=0) - coords.min(axis=0), 1.0)
+    normalized = (coords - coords.min(axis=0)) / span
+    intensities = data[candidate_indices].astype(np.float32, copy=False)
+    intensity_score = intensities / max(float(intensities.max()), 1.0)
+
+    selected = [int(np.argmax(intensity_score))]
+    remaining = np.ones(candidate_indices.shape[0], dtype=bool)
+    remaining[selected[0]] = False
+    min_distances = np.linalg.norm(normalized - normalized[selected[0]], axis=1)
+
+    while len(selected) < count and bool(remaining.any()):
+        score = min_distances + 0.05 * intensity_score
+        score[~remaining] = -1.0
+        next_index = int(np.argmax(score))
+        selected.append(next_index)
+        remaining[next_index] = False
+        distances = np.linalg.norm(normalized - normalized[next_index], axis=1)
+        min_distances = np.minimum(min_distances, distances)
+    return candidate_indices[np.array(selected, dtype=np.int64)]
+
+
+def flat_indices_to_xyz(indices: np.ndarray, width: int, height: int) -> np.ndarray:
+    plane_size = width * height
+    z = indices // plane_size
+    offset = indices - z * plane_size
+    y = offset // width
+    x = offset - y * width
+    return np.stack([x, y, z], axis=1)
 
 
 def indices_to_point_array(indices: np.ndarray, data: np.ndarray, width: int, height: int) -> np.ndarray:
@@ -480,4 +676,4 @@ def skeleton_edge_index_from_array(skeleton_array: np.ndarray) -> np.ndarray:
         parent_index = node_id_to_index.get(parent_id)
         if parent_index is not None:
             edges.append((parent_index, child_index))
-    return np.array(edges, dtype=np.int64)
+    return np.array(edges, dtype=np.int64).reshape(-1, 2)

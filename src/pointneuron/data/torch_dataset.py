@@ -18,10 +18,13 @@ class TrainingCacheDataset:
         torch = _torch()
         path = self.record_paths[index]
         record = np.load(path, allow_pickle=False)
+        edge_index = record["edge_index"].astype(np.int64, copy=False)
+        if edge_index.ndim == 1 and edge_index.shape[0] == 0:
+            edge_index = edge_index.reshape(0, 2)
         return {
             "points": torch.from_numpy(record["points"].astype(np.float32, copy=False)),
             "skeleton_nodes": torch.from_numpy(record["skeleton_nodes"].astype(np.float32, copy=False)),
-            "edge_index": torch.from_numpy(record["edge_index"].astype(np.int64, copy=False)),
+            "edge_index": torch.from_numpy(edge_index),
             "metadata": json.loads(str(record["metadata"])),
             "path": str(path),
         }
@@ -78,4 +81,3 @@ def _torch():
             "Install a CUDA-compatible torch build before training."
         ) from exc
     return torch
-

@@ -27,6 +27,7 @@ def main() -> int:
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
     parser.add_argument("--threshold-fraction", type=float, help="Normalized foreground threshold in [0, 1], e.g. 0.2 from the paper.")
     parser.add_argument("--max-points", type=int, default=4096, help="Maximum sampled foreground points per record.")
+    parser.add_argument("--max-volume-voxels", type=int, help="Skip samples whose raw volume has more voxels than this safety cap.")
     parser.add_argument("--seed", type=int, default=0, help="Base random seed.")
     parser.add_argument("--resume", action="store_true", help="Reuse existing cache records with matching metadata.")
     parser.add_argument("--patches-per-sample", type=int, default=0, help="Build this many local SWC-centered patch records per sample.")
@@ -35,6 +36,8 @@ def main() -> int:
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
     parser.add_argument("--center-strategy", default="random", choices=["random", "topology", "foreground", "coverage"], help="Patch center sampling strategy for patch records.")
+    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each patch.")
+    parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--endpoint-fraction", type=float, default=0.25, help="Fraction of patch centers reserved for SWC endpoints when --center-strategy topology.")
     parser.add_argument("--branch-fraction", type=float, default=0.10, help="Fraction of patch centers reserved for SWC branch nodes when --center-strategy topology.")
     args = parser.parse_args()
@@ -51,6 +54,15 @@ def main() -> int:
     output_dir = Path(args.output_dir)
     records = []
     for ordinal, (sample_index, sample) in enumerate(selected):
+        if args.max_volume_voxels is not None and sample.volume_path is not None:
+            header = read_header(sample.volume_path)
+            voxel_count = volume_voxel_count(header.dimensions)
+            if voxel_count > args.max_volume_voxels:
+                print(
+                    f"skipped index={sample_index}: volume has {voxel_count} voxels, "
+                    f"above --max-volume-voxels {args.max_volume_voxels}"
+                )
+                continue
         threshold = effective_threshold(sample, args.threshold, args.threshold_fraction)
         if args.patches_per_sample > 0:
             reused = []
@@ -303,6 +315,13 @@ def effective_threshold(sample, threshold: int, threshold_fraction: float | None
     else:
         raise NotImplementedError(f"Vaa3D datatype {header.datatype} is not supported yet")
     return int(round(max_value * threshold_fraction))
+
+
+def volume_voxel_count(dimensions: tuple[int, int, int, int]) -> int:
+    count = 1
+    for value in dimensions:
+        count *= int(value)
+    return count
 
 
 if __name__ == "__main__":

@@ -35,6 +35,11 @@ def main() -> int:
     parser.add_argument("--force-proposals", action="store_true", help="Regenerate proposals even if an existing proposal file is present.")
     parser.add_argument("--fail-fast", action="store_true", help="Stop on the first sample failure instead of recording it and continuing.")
     parser.add_argument("--initializer", default="geodesic", choices=["geodesic", "image_supported"], help="Connectivity graph initializer.")
+    parser.add_argument("--proposal-score-threshold", type=float, default=0.5, help="Objectness threshold for local proposal selection.")
+    parser.add_argument("--proposal-top-per-patch", type=int, default=512, help="Maximum local proposals retained per patch before global NMS.")
+    parser.add_argument("--proposal-global-top", type=int, default=4096, help="Maximum aggregated proposals after global NMS.")
+    parser.add_argument("--proposal-local-nms-radius", type=float, default=8.0, help="Local proposal NMS radius.")
+    parser.add_argument("--proposal-global-nms-radius", type=float, default=12.0, help="Global proposal NMS radius.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--render-points", type=int, default=12000)
     args = parser.parse_args()
@@ -59,6 +64,11 @@ def main() -> int:
                 existing_proposal_dir=Path(args.existing_proposal_dir),
                 force_proposals=args.force_proposals,
                 initializer=args.initializer,
+                proposal_score_threshold=args.proposal_score_threshold,
+                proposal_top_per_patch=args.proposal_top_per_patch,
+                proposal_global_top=args.proposal_global_top,
+                proposal_local_nms_radius=args.proposal_local_nms_radius,
+                proposal_global_nms_radius=args.proposal_global_nms_radius,
                 device=args.device,
                 render_points=args.render_points,
             )
@@ -108,6 +118,11 @@ def run_sample(
     existing_proposal_dir: Path,
     force_proposals: bool,
     initializer: str,
+    proposal_score_threshold: float,
+    proposal_top_per_patch: int,
+    proposal_global_top: int,
+    proposal_local_nms_radius: float,
+    proposal_global_nms_radius: float,
     device: str,
     render_points: int,
 ) -> dict:
@@ -143,19 +158,19 @@ def run_sample(
                 "--patch-selection",
                 "coverage",
                 "--score-threshold",
-                "0.5",
+                str(proposal_score_threshold),
                 "--top-proposals-per-patch",
-                "512",
+                str(proposal_top_per_patch),
                 "--local-nms-mode",
                 "sphere",
                 "--global-nms-mode",
                 "sphere",
                 "--local-nms-radius",
-                "8",
+                str(proposal_local_nms_radius),
                 "--global-nms-radius",
-                "12",
+                str(proposal_global_nms_radius),
                 "--global-top-proposals",
-                "4096",
+                str(proposal_global_top),
                 "--render-points",
                 str(render_points),
                 "--device",
