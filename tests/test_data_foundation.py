@@ -12,7 +12,14 @@ from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.point_cloud import volume_to_point_cloud
 from pointneuron.data.swc import SwcNode, parse_swc, write_swc
 from pointneuron.graph.initialization import initialize_geometric_graph, initialize_proposal_graph
-from pointneuron.data.training_cache import choose_foreground_patch_centers, choose_patch_centers, skeleton_edge_index, skeleton_edge_index_from_array, skeleton_to_array
+from pointneuron.data.training_cache import (
+    choose_foreground_patch_centers,
+    choose_patch_centers,
+    sample_indices_fixed,
+    skeleton_edge_index,
+    skeleton_edge_index_from_array,
+    skeleton_to_array,
+)
 from pointneuron.data.point_cloud import SkeletonRecord
 from pointneuron.data.splits import SplitRatios, split_records
 from pointneuron.data.vaa3d_raw import Vaa3dHeader, Vaa3dVolume
@@ -261,6 +268,26 @@ class TrainingCacheTests(unittest.TestCase):
         self.assertEqual(centers.shape, (3, 3))
         foreground = {(1.0, 0.0, 0.0), (1.0, 1.0, 0.0), (0.0, 1.0, 1.0)}
         self.assertTrue(all(tuple(center.tolist()) in foreground for center in centers))
+
+    def test_spatial_point_sampling_keeps_cell_representatives(self) -> None:
+        import numpy as np
+
+        data = np.zeros((8 * 8,), dtype=np.uint8)
+        foreground = np.array([0, 1, 8, 9, 6, 7, 14, 15], dtype=np.int64)
+        data[foreground] = np.array([1, 2, 3, 50, 4, 5, 6, 60], dtype=np.uint8)
+
+        selected = sample_indices_fixed(
+            foreground,
+            max_points=2,
+            rng=np.random.default_rng(0),
+            strategy="spatial",
+            data=data,
+            width=8,
+            height=8,
+            cell_size=4,
+        )
+
+        self.assertEqual(selected.tolist(), [9, 15])
 
 
 class SplitTests(unittest.TestCase):

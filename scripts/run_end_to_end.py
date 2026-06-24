@@ -35,11 +35,14 @@ def main() -> int:
     parser.add_argument("--force-proposals", action="store_true", help="Regenerate proposals even if an existing proposal file is present.")
     parser.add_argument("--fail-fast", action="store_true", help="Stop on the first sample failure instead of recording it and continuing.")
     parser.add_argument("--initializer", default="geodesic", choices=["geodesic", "image_supported"], help="Connectivity graph initializer.")
+    parser.add_argument("--proposal-threshold-fraction", type=float, default=0.2, help="Normalized foreground threshold used by proposal aggregation.")
     parser.add_argument("--proposal-score-threshold", type=float, default=0.5, help="Objectness threshold for local proposal selection.")
     parser.add_argument("--proposal-top-per-patch", type=int, default=512, help="Maximum local proposals retained per patch before global NMS.")
     parser.add_argument("--proposal-global-top", type=int, default=4096, help="Maximum aggregated proposals after global NMS.")
     parser.add_argument("--proposal-local-nms-radius", type=float, default=8.0, help="Local proposal NMS radius.")
     parser.add_argument("--proposal-global-nms-radius", type=float, default=12.0, help="Global proposal NMS radius.")
+    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each proposal patch.")
+    parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--render-points", type=int, default=12000)
     args = parser.parse_args()
@@ -64,11 +67,14 @@ def main() -> int:
                 existing_proposal_dir=Path(args.existing_proposal_dir),
                 force_proposals=args.force_proposals,
                 initializer=args.initializer,
+                proposal_threshold_fraction=args.proposal_threshold_fraction,
                 proposal_score_threshold=args.proposal_score_threshold,
                 proposal_top_per_patch=args.proposal_top_per_patch,
                 proposal_global_top=args.proposal_global_top,
                 proposal_local_nms_radius=args.proposal_local_nms_radius,
                 proposal_global_nms_radius=args.proposal_global_nms_radius,
+                point_sample_strategy=args.point_sample_strategy,
+                point_sample_cell_size=args.point_sample_cell_size,
                 device=args.device,
                 render_points=args.render_points,
             )
@@ -118,11 +124,14 @@ def run_sample(
     existing_proposal_dir: Path,
     force_proposals: bool,
     initializer: str,
+    proposal_threshold_fraction: float,
     proposal_score_threshold: float,
     proposal_top_per_patch: int,
     proposal_global_top: int,
     proposal_local_nms_radius: float,
     proposal_global_nms_radius: float,
+    point_sample_strategy: str,
+    point_sample_cell_size: int,
     device: str,
     render_points: int,
 ) -> dict:
@@ -148,7 +157,7 @@ def run_sample(
                 "--checkpoint",
                 str(checkpoint),
                 "--threshold-fraction",
-                "0.2",
+                str(proposal_threshold_fraction),
                 "--patch-radius",
                 "96",
                 "--stride",
@@ -161,6 +170,10 @@ def run_sample(
                 str(proposal_score_threshold),
                 "--top-proposals-per-patch",
                 str(proposal_top_per_patch),
+                "--point-sample-strategy",
+                point_sample_strategy,
+                "--point-sample-cell-size",
+                str(point_sample_cell_size),
                 "--local-nms-mode",
                 "sphere",
                 "--global-nms-mode",

@@ -36,6 +36,8 @@ def main() -> int:
     parser.add_argument("--patch-selection", default="coverage", choices=["coverage", "density"], help="How to choose patches when --max-patches truncates the sliding grid.")
     parser.add_argument("--max-points", type=int, default=2048, help="Maximum foreground points per patch.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to evaluate a patch.")
+    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each patch.")
+    parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--batch-size", type=int, default=4, help="Patch inference batch size.")
     parser.add_argument("--score-threshold", type=float, default=0.5, help="Per-patch objectness threshold before local NMS.")
     parser.add_argument("--top-proposals-per-patch", type=int, default=512, help="Maximum proposals retained from each patch.")
@@ -152,7 +154,16 @@ def main() -> int:
             batch_specs = patch_specs[batch_start : batch_start + args.batch_size]
             patch_points = []
             for patch_index, spec in batch_specs:
-                selected_indices = sample_indices_fixed(spec["indices"], args.max_points, rng)
+                selected_indices = sample_indices_fixed(
+                    spec["indices"],
+                    args.max_points,
+                    rng,
+                    strategy=args.point_sample_strategy,
+                    data=data,
+                    width=width,
+                    height=height,
+                    cell_size=args.point_sample_cell_size,
+                )
                 patch_points.append(indices_to_point_array(selected_indices, data, width, height))
 
             points = torch.from_numpy(np.stack(patch_points).astype(np.float32, copy=False)).to(device)
@@ -263,6 +274,8 @@ def main() -> int:
                     "stride": args.stride,
                     "patches": len(patch_specs),
                     "patch_selection": args.patch_selection,
+                    "point_sample_strategy": args.point_sample_strategy,
+                    "point_sample_cell_size": args.point_sample_cell_size,
                     "local_score_threshold": args.score_threshold,
                     "local_top_proposals": args.top_proposals_per_patch,
                     "global_top_proposals": args.global_top_proposals,

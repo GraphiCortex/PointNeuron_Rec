@@ -77,6 +77,8 @@ def main() -> int:
                     threshold_fraction=args.threshold_fraction,
                     min_unique_fraction=args.min_unique_fraction,
                     center_strategy=args.center_strategy,
+                    point_sample_strategy=args.point_sample_strategy,
+                    point_sample_cell_size=args.point_sample_cell_size,
                     endpoint_fraction=args.endpoint_fraction,
                     branch_fraction=args.branch_fraction,
                 )
@@ -98,6 +100,8 @@ def main() -> int:
                         min_points=args.min_points,
                         min_unique_fraction=args.min_unique_fraction,
                         center_strategy=args.center_strategy,
+                        point_sample_strategy=args.point_sample_strategy,
+                        point_sample_cell_size=args.point_sample_cell_size,
                         endpoint_fraction=args.endpoint_fraction,
                         branch_fraction=args.branch_fraction,
                     ),
@@ -182,6 +186,8 @@ def main() -> int:
                 "patch_stride": (args.patch_stride or args.patch_radius) if args.patches_per_sample > 0 else None,
                 "min_unique_fraction": args.min_unique_fraction if args.patches_per_sample > 0 else None,
                 "center_strategy": args.center_strategy if args.patches_per_sample > 0 else None,
+                "point_sample_strategy": args.point_sample_strategy if args.patches_per_sample > 0 else None,
+                "point_sample_cell_size": args.point_sample_cell_size if args.patches_per_sample > 0 else None,
                 "endpoint_fraction": args.endpoint_fraction if args.patches_per_sample > 0 else None,
                 "branch_fraction": args.branch_fraction if args.patches_per_sample > 0 else None,
                 "records": records,
@@ -262,6 +268,8 @@ def cached_patch_summaries(
     threshold_fraction: float | None = None,
     min_unique_fraction: float = 0.0,
     center_strategy: str = "random",
+    point_sample_strategy: str = "random",
+    point_sample_cell_size: int = 8,
     endpoint_fraction: float = 0.25,
     branch_fraction: float = 0.10,
 ) -> list[dict[str, object]]:
@@ -291,6 +299,10 @@ def cached_patch_summaries(
         if metadata.get("min_unique_fraction", 0.0) != min_unique_fraction:
             return []
         if metadata.get("center_strategy", "random") != center_strategy:
+            return []
+        if metadata.get("point_sample_strategy", "random") != point_sample_strategy:
+            return []
+        if metadata.get("point_sample_cell_size", 8) != point_sample_cell_size:
             return []
         if metadata.get("endpoint_fraction", 0.25) != endpoint_fraction:
             return []
