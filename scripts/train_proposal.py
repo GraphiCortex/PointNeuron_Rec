@@ -35,10 +35,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         choices=["raw", "normalized"],
         help="Coordinate convention used by the proposal head. Use normalized for scale-local training; raw preserves legacy checkpoints.",
     )
-    parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest"], help="Skeleton proposal loss to train with.")
+    parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest", "conservative"], help="Skeleton proposal loss to train with.")
     parser.add_argument("--offset-weight", type=float, default=1.0, help="Weight for paper-style Chamfer offset loss.")
     parser.add_argument("--objectness-weight", type=float, default=10.0, help="Weight for paper-style objectness loss.")
     parser.add_argument("--radius-weight", type=float, default=1.0, help="Weight for paper-style radius loss.")
+    parser.add_argument("--conservative-objectness-weight", type=float, default=2.0, help="Objectness weight for conservative proposal loss.")
+    parser.add_argument("--conservative-center-weight", type=float, default=1.0, help="Center regression weight for conservative proposal loss.")
+    parser.add_argument("--conservative-radius-weight", type=float, default=0.2, help="Radius regression weight for conservative proposal loss.")
+    parser.add_argument("--offset-regularization-weight", type=float, default=0.05, help="Offset regularization weight for conservative proposal loss.")
+    parser.add_argument("--non-worsen-weight", type=float, default=1.0, help="Penalty weight for proposals farther from SWC than their source input point.")
+    parser.add_argument("--non-worsen-margin", type=float, default=0.0, help="Allowed proposal distance worsening margin in voxels.")
+    parser.add_argument("--conservative-init", action="store_true", help="Initialize proposal head close to identity before training.")
     parser.add_argument("--endpoint-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC endpoint nodes.")
     parser.add_argument("--branch-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC branch nodes.")
     parser.add_argument("--augment", action="store_true", help="Apply paper-style random rotations and flips during proposal training.")
@@ -66,7 +73,12 @@ def main() -> int:
 
     from pointneuron.models.dgcnn import DGCNNEncoder
     from pointneuron.models.proposal import SkeletonProposalHead
-    from pointneuron.models.proposal_loss import build_skeleton_proposal_targets, paper_skeleton_proposal_loss, skeleton_proposal_loss
+    from pointneuron.models.proposal_loss import (
+        build_skeleton_proposal_targets,
+        conservative_skeleton_proposal_loss,
+        paper_skeleton_proposal_loss,
+        skeleton_proposal_loss,
+    )
 
     if args.device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -110,6 +122,8 @@ def main() -> int:
 
     encoder = DGCNNEncoder(k=args.k).to(device)
     proposal = SkeletonProposalHead(in_channels=encoder.output_dim + 3, coordinate_mode=args.proposal_coordinate_mode).to(device)
+    if args.conservative_init:
+        proposal.initialize_conservative()
     parameters = list(encoder.parameters()) + list(proposal.parameters())
     optimizer = torch.optim.AdamW(parameters, lr=args.lr, weight_decay=args.weight_decay)
     use_amp = bool(args.amp and device == "cuda")
@@ -132,6 +146,14 @@ def main() -> int:
     print(f"radius_target_floor: {radius_target_floor}")
     print(f"endpoint_loss_weight: {args.endpoint_loss_weight}")
     print(f"branch_loss_weight: {args.branch_loss_weight}")
+    if args.loss_mode == "conservative":
+        print(f"conservative_objectness_weight: {args.conservative_objectness_weight}")
+        print(f"conservative_center_weight: {args.conservative_center_weight}")
+        print(f"conservative_radius_weight: {args.conservative_radius_weight}")
+        print(f"offset_regularization_weight: {args.offset_regularization_weight}")
+        print(f"non_worsen_weight: {args.non_worsen_weight}")
+        print(f"non_worsen_margin: {args.non_worsen_margin}")
+        print(f"conservative_init: {args.conservative_init}")
 
     checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
     if checkpoint_path is not None:
@@ -194,6 +216,30 @@ def main() -> int:
                         branch_weight=args.branch_loss_weight,
                     )
                     offset_value = float(loss.offsets.item())
+                    extra_metrics = None
+                elif args.loss_mode == "conservative":
+                    loss = conservative_skeleton_proposal_loss(
+                        output=output,
+                        skeleton_nodes=skeleton_nodes,
+                        skeleton_mask=skeleton_mask,
+                        points=points,
+                        positive_distance=args.positive_distance,
+                        radius_scale=args.radius_scale,
+                        objectness_weight=args.conservative_objectness_weight,
+                        center_weight=args.conservative_center_weight,
+                        radius_weight=args.conservative_radius_weight,
+                        offset_regularization_weight=args.offset_regularization_weight,
+                        non_worsen_weight=args.non_worsen_weight,
+                        non_worsen_margin=args.non_worsen_margin,
+                        positive_class_weight=args.positive_class_weight,
+                        objectness_radius_floor=objectness_radius_floor,
+                        radius_target_floor=radius_target_floor,
+                    )
+                    offset_value = float(loss.center.item())
+                    extra_metrics = {
+                        "offset_reg": float(loss.offset_regularization.item()),
+                        "non_worsen": float(loss.non_worsen.item()),
+                    }
                 else:
                     loss = skeleton_proposal_loss(
                         output=output,
@@ -202,6 +248,7 @@ def main() -> int:
                         positive_class_weight=args.positive_class_weight,
                     )
                     offset_value = float(loss.center.item())
+                    extra_metrics = None
             scaler.scale(loss.total).backward()
             scaler.step(optimizer)
             scaler.update()
@@ -213,6 +260,7 @@ def main() -> int:
                 radius=float(loss.radius.item()),
                 positive_count=loss.positive_count,
                 total_count=loss.total_count,
+                extra=extra_metrics,
             )
 
         message = f"epoch={epoch} {format_metrics('train', running)}"
@@ -231,12 +279,19 @@ def main() -> int:
                 offset_weight=args.offset_weight,
                 objectness_weight=args.objectness_weight,
                 radius_weight=args.radius_weight,
+                conservative_objectness_weight=args.conservative_objectness_weight,
+                conservative_center_weight=args.conservative_center_weight,
+                conservative_radius_weight=args.conservative_radius_weight,
+                offset_regularization_weight=args.offset_regularization_weight,
+                non_worsen_weight=args.non_worsen_weight,
+                non_worsen_margin=args.non_worsen_margin,
                 endpoint_loss_weight=args.endpoint_loss_weight,
                 branch_loss_weight=args.branch_loss_weight,
                 use_amp=use_amp,
                 torch=torch,
                 build_skeleton_proposal_targets=build_skeleton_proposal_targets,
                 paper_skeleton_proposal_loss=paper_skeleton_proposal_loss,
+                conservative_skeleton_proposal_loss=conservative_skeleton_proposal_loss,
                 skeleton_proposal_loss=skeleton_proposal_loss,
             )
             message += f" {format_metrics('val', validation)}"
@@ -354,12 +409,16 @@ class RunningAverages:
         radius: float,
         positive_count: int,
         total_count: int,
+        extra: dict[str, float] | None = None,
     ) -> None:
         self.count += 1
         self.sums["total"] = self.sums.get("total", 0.0) + total
         self.sums["objectness"] = self.sums.get("objectness", 0.0) + objectness
         self.sums["offsets"] = self.sums.get("offsets", 0.0) + offsets
         self.sums["radius"] = self.sums.get("radius", 0.0) + radius
+        if extra is not None:
+            for name, value in extra.items():
+                self.sums[name] = self.sums.get(name, 0.0) + value
         self.positive_count += positive_count
         self.total_count += total_count
 
@@ -383,12 +442,19 @@ def evaluate(
     offset_weight: float,
     objectness_weight: float,
     radius_weight: float,
+    conservative_objectness_weight: float,
+    conservative_center_weight: float,
+    conservative_radius_weight: float,
+    offset_regularization_weight: float,
+    non_worsen_weight: float,
+    non_worsen_margin: float,
     endpoint_loss_weight: float,
     branch_loss_weight: float,
     use_amp: bool,
     torch,
     build_skeleton_proposal_targets,
     paper_skeleton_proposal_loss,
+    conservative_skeleton_proposal_loss,
     skeleton_proposal_loss,
 ) -> RunningAverages:
     encoder.eval()
@@ -429,6 +495,30 @@ def evaluate(
                         branch_weight=branch_loss_weight,
                     )
                     offset_value = float(loss.offsets.item())
+                    extra_metrics = None
+                elif loss_mode == "conservative":
+                    loss = conservative_skeleton_proposal_loss(
+                        output=output,
+                        skeleton_nodes=skeleton_nodes,
+                        skeleton_mask=skeleton_mask,
+                        points=points,
+                        positive_distance=positive_distance,
+                        radius_scale=radius_scale,
+                        objectness_weight=conservative_objectness_weight,
+                        center_weight=conservative_center_weight,
+                        radius_weight=conservative_radius_weight,
+                        offset_regularization_weight=offset_regularization_weight,
+                        non_worsen_weight=non_worsen_weight,
+                        non_worsen_margin=non_worsen_margin,
+                        positive_class_weight=positive_class_weight,
+                        objectness_radius_floor=objectness_radius_floor,
+                        radius_target_floor=radius_target_floor,
+                    )
+                    offset_value = float(loss.center.item())
+                    extra_metrics = {
+                        "offset_reg": float(loss.offset_regularization.item()),
+                        "non_worsen": float(loss.non_worsen.item()),
+                    }
                 else:
                     loss = skeleton_proposal_loss(
                         output=output,
@@ -437,6 +527,7 @@ def evaluate(
                         positive_class_weight=positive_class_weight,
                     )
                     offset_value = float(loss.center.item())
+                    extra_metrics = None
             running.update(
                 total=float(loss.total.detach().item()),
                 objectness=float(loss.objectness.item()),
@@ -444,18 +535,24 @@ def evaluate(
                 radius=float(loss.radius.item()),
                 positive_count=loss.positive_count,
                 total_count=loss.total_count,
+                extra=extra_metrics,
             )
     return running
 
 
 def format_metrics(prefix: str, running: RunningAverages) -> str:
-    return (
+    message = (
         f"{prefix}_loss={running.mean('total'):.4f} "
         f"{prefix}_objectness={running.mean('objectness'):.4f} "
         f"{prefix}_offsets={running.mean('offsets'):.6f} "
         f"{prefix}_radius={running.mean('radius'):.4f} "
         f"{prefix}_positives={running.positive_count}/{running.total_count}"
     )
+    if "offset_reg" in running.sums:
+        message += f" {prefix}_offset_reg={running.mean('offset_reg'):.6f}"
+    if "non_worsen" in running.sums:
+        message += f" {prefix}_non_worsen={running.mean('non_worsen'):.6f}"
+    return message
 
 
 if __name__ == "__main__":

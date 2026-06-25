@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 
 import torch
 from torch import nn
@@ -80,9 +81,27 @@ class SkeletonProposalHead(nn.Module):
             raw=raw,
         )
 
+    def initialize_conservative(self, radius: float = 1.0, background_logit: float = 0.5) -> None:
+        """Initialize the proposal head close to identity: q ~= xyz."""
+        final = self.mlp[-1]
+        if not isinstance(final, nn.Linear):
+            raise TypeError("Expected the final proposal layer to be nn.Linear")
+        nn.init.zeros_(final.weight)
+        nn.init.zeros_(final.bias)
+        final.bias.data[0] = float(background_logit)
+        final.bias.data[1] = -float(background_logit)
+        final.bias.data[2] = inverse_softplus(float(radius))
+        final.bias.data[3:6].zero_()
+
 
 def normalize_proposal_coordinates(coords: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
     center = coords.mean(dim=1, keepdim=True)
     centered = coords - center
     scale = centered.abs().amax(dim=(1, 2), keepdim=True).clamp_min(1.0)
     return centered / scale, scale
+
+
+def inverse_softplus(value: float) -> float:
+    if value <= 0.0:
+        raise ValueError("Softplus inverse requires a positive value")
+    return math.log(math.expm1(value))

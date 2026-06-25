@@ -61,6 +61,21 @@ class DGCNNEncoderTests(unittest.TestCase):
         self.assertEqual(tuple(output.radius.shape), (2, 32, 1))
         self.assertEqual(tuple(output.center_proposals.shape), (2, 32, 3))
 
+    def test_conservative_proposal_initialization_starts_near_identity(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalHead
+
+        points = torch.rand(2, 32, 4)
+        features = torch.rand(2, 32, 16)
+        proposal = SkeletonProposalHead(in_channels=19, hidden_channels=(8,))
+        proposal.initialize_conservative()
+
+        output = proposal(points, features)
+
+        self.assertLess(float(output.offsets.norm(dim=-1).mean().detach()), 1e-6)
+        self.assertTrue(torch.allclose(output.center_proposals, points[..., :3], atol=1e-6))
+
     def test_normalized_proposal_head_scales_offsets_back_to_voxels(self) -> None:
         import torch
 
@@ -142,6 +157,83 @@ class DGCNNEncoderTests(unittest.TestCase):
         loss = paper_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points)
 
         self.assertEqual(loss.positive_count, 1)
+        self.assertTrue(torch.isfinite(loss.total))
+
+    def test_conservative_loss_zero_offset_does_not_worsen_input_distance(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import conservative_skeleton_proposal_loss
+
+        points = torch.tensor([[[0.5, 0.0, 0.0, 10.0], [10.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 2.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        output = SkeletonProposalOutput(
+            offsets=torch.zeros(1, 2, 3),
+            objectness_logits=torch.zeros(1, 2, 2),
+            radius=torch.ones(1, 2, 1),
+            center_proposals=points[..., :3],
+            raw=torch.zeros(1, 2, 6),
+        )
+
+        loss = conservative_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points, positive_distance=1.0)
+
+        self.assertEqual(loss.positive_count, 1)
+        self.assertTrue(torch.isfinite(loss.total))
+        self.assertLess(float(loss.non_worsen), 1e-8)
+
+    def test_conservative_loss_penalizes_harmful_offsets(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import conservative_skeleton_proposal_loss
+
+        points = torch.tensor([[[0.5, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 2.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        zero_output = SkeletonProposalOutput(
+            offsets=torch.zeros(1, 1, 3),
+            objectness_logits=torch.zeros(1, 1, 2),
+            radius=torch.ones(1, 1, 1),
+            center_proposals=points[..., :3],
+            raw=torch.zeros(1, 1, 6),
+        )
+        harmful_offset = torch.tensor([[[-5.0, 0.0, 0.0]]])
+        harmful_output = SkeletonProposalOutput(
+            offsets=harmful_offset,
+            objectness_logits=torch.zeros(1, 1, 2),
+            radius=torch.ones(1, 1, 1),
+            center_proposals=points[..., :3] + harmful_offset,
+            raw=torch.zeros(1, 1, 6),
+        )
+
+        zero_loss = conservative_skeleton_proposal_loss(zero_output, skeleton_nodes, skeleton_mask, points)
+        harmful_loss = conservative_skeleton_proposal_loss(harmful_output, skeleton_nodes, skeleton_mask, points)
+
+        self.assertGreater(float(harmful_loss.non_worsen), float(zero_loss.non_worsen))
+        self.assertGreater(float(harmful_loss.total), float(zero_loss.total))
+
+    def test_conservative_objectness_labels_are_input_based(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import conservative_skeleton_proposal_loss
+
+        points = torch.tensor([[[10.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 2.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        offset_to_swc = torch.tensor([[[-10.0, 0.0, 0.0]]])
+        output = SkeletonProposalOutput(
+            offsets=offset_to_swc,
+            objectness_logits=torch.zeros(1, 1, 2),
+            radius=torch.ones(1, 1, 1),
+            center_proposals=points[..., :3] + offset_to_swc,
+            raw=torch.zeros(1, 1, 6),
+        )
+
+        loss = conservative_skeleton_proposal_loss(output, skeleton_nodes, skeleton_mask, points, positive_distance=1.0)
+
+        self.assertEqual(loss.positive_count, 0)
         self.assertTrue(torch.isfinite(loss.total))
 
     def test_target_radius_floor_relaxes_tiny_swc_radius(self) -> None:

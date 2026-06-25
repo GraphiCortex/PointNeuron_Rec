@@ -37,6 +37,18 @@ class PaperSkeletonProposalLoss:
     total_count: int
 
 
+@dataclass(frozen=True)
+class ConservativeSkeletonProposalLoss:
+    total: torch.Tensor
+    objectness: torch.Tensor
+    center: torch.Tensor
+    radius: torch.Tensor
+    offset_regularization: torch.Tensor
+    non_worsen: torch.Tensor
+    positive_count: int
+    total_count: int
+
+
 def build_skeleton_proposal_targets(
     points: torch.Tensor,
     skeleton_nodes: torch.Tensor,
@@ -110,6 +122,79 @@ def build_skeleton_proposal_targets(
         matched_radius=matched_radius,
         matched_distance=matched_distance,
         positive_mask=positive_mask,
+    )
+
+
+def conservative_skeleton_proposal_loss(
+    output: SkeletonProposalOutput,
+    skeleton_nodes: torch.Tensor,
+    skeleton_mask: torch.Tensor,
+    points: torch.Tensor,
+    positive_distance: float = 6.0,
+    radius_scale: float = 1.5,
+    objectness_weight: float = 2.0,
+    center_weight: float = 1.0,
+    radius_weight: float = 0.2,
+    offset_regularization_weight: float = 0.05,
+    non_worsen_weight: float = 1.0,
+    non_worsen_margin: float = 0.0,
+    positive_class_weight: float = 8.0,
+    target_radius_floor: float = 0.0,
+    objectness_radius_floor: float | None = None,
+    radius_target_floor: float | None = None,
+    chunk_size: int = 1024,
+) -> ConservativeSkeletonProposalLoss:
+    targets = build_skeleton_proposal_targets(
+        points=points,
+        skeleton_nodes=skeleton_nodes,
+        skeleton_mask=skeleton_mask,
+        positive_distance=positive_distance,
+        radius_scale=radius_scale,
+        target_radius_floor=target_radius_floor,
+        objectness_radius_floor=objectness_radius_floor,
+        radius_target_floor=radius_target_floor,
+        chunk_size=chunk_size,
+    )
+    labels = targets.objectness_labels
+    positive_mask = targets.positive_mask
+    class_weight = torch.tensor(
+        [1.0, float(positive_class_weight)],
+        dtype=output.objectness_logits.dtype,
+        device=output.objectness_logits.device,
+    )
+    objectness = F.cross_entropy(output.objectness_logits.reshape(-1, 2), labels.reshape(-1), weight=class_weight)
+
+    scale = coordinate_scale(points).to(dtype=points.dtype, device=points.device)
+    if bool(positive_mask.any()):
+        center = F.smooth_l1_loss(
+            output.center_proposals[positive_mask] / scale,
+            targets.matched_centers[positive_mask] / scale,
+        )
+        radius = F.smooth_l1_loss(output.radius[positive_mask], targets.matched_radius[positive_mask])
+    else:
+        center = output.center_proposals.sum() * 0.0
+        radius = output.radius.sum() * 0.0
+
+    offset_regularization = output.offsets.square().sum(dim=-1).mean() / scale.square()
+    input_distance = targets.matched_distance
+    output_distance = torch.linalg.norm(output.center_proposals - targets.matched_centers, dim=-1)
+    non_worsen = F.relu(output_distance - input_distance - float(non_worsen_margin)).square().mean() / scale.square()
+    total = (
+        objectness_weight * objectness
+        + center_weight * center
+        + radius_weight * radius
+        + offset_regularization_weight * offset_regularization
+        + non_worsen_weight * non_worsen
+    )
+    return ConservativeSkeletonProposalLoss(
+        total=total,
+        objectness=objectness.detach(),
+        center=center.detach(),
+        radius=radius.detach(),
+        offset_regularization=offset_regularization.detach(),
+        non_worsen=non_worsen.detach(),
+        positive_count=int(positive_mask.sum().item()),
+        total_count=int(positive_mask.numel()),
     )
 
 
