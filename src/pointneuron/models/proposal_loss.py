@@ -138,6 +138,8 @@ def conservative_skeleton_proposal_loss(
     offset_regularization_weight: float = 0.05,
     non_worsen_weight: float = 1.0,
     non_worsen_margin: float = 0.0,
+    center_beta: float = 4.0,
+    non_worsen_beta: float = 4.0,
     positive_class_weight: float = 8.0,
     target_radius_floor: float = 0.0,
     objectness_radius_floor: float | None = None,
@@ -164,21 +166,31 @@ def conservative_skeleton_proposal_loss(
     )
     objectness = F.cross_entropy(output.objectness_logits.reshape(-1, 2), labels.reshape(-1), weight=class_weight)
 
-    scale = coordinate_scale(points).to(dtype=points.dtype, device=points.device)
     if bool(positive_mask.any()):
+        center_distance = torch.linalg.norm(
+            output.center_proposals[positive_mask] - targets.matched_centers[positive_mask],
+            dim=-1,
+        )
         center = F.smooth_l1_loss(
-            output.center_proposals[positive_mask] / scale,
-            targets.matched_centers[positive_mask] / scale,
+            center_distance,
+            torch.zeros_like(center_distance),
+            beta=float(center_beta),
         )
         radius = F.smooth_l1_loss(output.radius[positive_mask], targets.matched_radius[positive_mask])
     else:
         center = output.center_proposals.sum() * 0.0
         radius = output.radius.sum() * 0.0
 
-    offset_regularization = output.offsets.square().sum(dim=-1).mean() / scale.square()
+    offset_norm = output.offsets.norm(dim=-1)
+    offset_regularization = offset_norm.square().mean()
     input_distance = targets.matched_distance
     output_distance = torch.linalg.norm(output.center_proposals - targets.matched_centers, dim=-1)
-    non_worsen = F.relu(output_distance - input_distance - float(non_worsen_margin)).square().mean() / scale.square()
+    worsening = F.relu(output_distance - input_distance - float(non_worsen_margin))
+    non_worsen = F.smooth_l1_loss(
+        worsening,
+        torch.zeros_like(worsening),
+        beta=float(non_worsen_beta),
+    )
     total = (
         objectness_weight * objectness
         + center_weight * center

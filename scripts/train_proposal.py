@@ -42,9 +42,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--conservative-objectness-weight", type=float, default=2.0, help="Objectness weight for conservative proposal loss.")
     parser.add_argument("--conservative-center-weight", type=float, default=1.0, help="Center regression weight for conservative proposal loss.")
     parser.add_argument("--conservative-radius-weight", type=float, default=0.2, help="Radius regression weight for conservative proposal loss.")
-    parser.add_argument("--offset-regularization-weight", type=float, default=0.05, help="Offset regularization weight for conservative proposal loss.")
+    parser.add_argument("--offset-regularization-weight", type=float, default=0.001, help="Offset regularization weight for conservative proposal loss.")
     parser.add_argument("--non-worsen-weight", type=float, default=1.0, help="Penalty weight for proposals farther from SWC than their source input point.")
     parser.add_argument("--non-worsen-margin", type=float, default=0.0, help="Allowed proposal distance worsening margin in voxels.")
+    parser.add_argument("--conservative-center-beta", type=float, default=4.0, help="SmoothL1 beta in voxels for conservative center distance.")
+    parser.add_argument("--non-worsen-beta", type=float, default=4.0, help="SmoothL1 beta in voxels for conservative non-worsening penalty.")
     parser.add_argument("--conservative-init", action="store_true", help="Initialize proposal head close to identity before training.")
     parser.add_argument("--endpoint-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC endpoint nodes.")
     parser.add_argument("--branch-loss-weight", type=float, default=1.0, help="Extra paper-loss weight for local SWC branch nodes.")
@@ -153,6 +155,8 @@ def main() -> int:
         print(f"offset_regularization_weight: {args.offset_regularization_weight}")
         print(f"non_worsen_weight: {args.non_worsen_weight}")
         print(f"non_worsen_margin: {args.non_worsen_margin}")
+        print(f"conservative_center_beta: {args.conservative_center_beta}")
+        print(f"non_worsen_beta: {args.non_worsen_beta}")
         print(f"conservative_init: {args.conservative_init}")
 
     checkpoint_path = Path(args.checkpoint) if args.checkpoint else None
@@ -231,6 +235,8 @@ def main() -> int:
                         offset_regularization_weight=args.offset_regularization_weight,
                         non_worsen_weight=args.non_worsen_weight,
                         non_worsen_margin=args.non_worsen_margin,
+                        center_beta=args.conservative_center_beta,
+                        non_worsen_beta=args.non_worsen_beta,
                         positive_class_weight=args.positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
@@ -285,6 +291,8 @@ def main() -> int:
                 offset_regularization_weight=args.offset_regularization_weight,
                 non_worsen_weight=args.non_worsen_weight,
                 non_worsen_margin=args.non_worsen_margin,
+                conservative_center_beta=args.conservative_center_beta,
+                non_worsen_beta=args.non_worsen_beta,
                 endpoint_loss_weight=args.endpoint_loss_weight,
                 branch_loss_weight=args.branch_loss_weight,
                 use_amp=use_amp,
@@ -448,6 +456,8 @@ def evaluate(
     offset_regularization_weight: float,
     non_worsen_weight: float,
     non_worsen_margin: float,
+    conservative_center_beta: float,
+    non_worsen_beta: float,
     endpoint_loss_weight: float,
     branch_loss_weight: float,
     use_amp: bool,
@@ -510,6 +520,8 @@ def evaluate(
                         offset_regularization_weight=offset_regularization_weight,
                         non_worsen_weight=non_worsen_weight,
                         non_worsen_margin=non_worsen_margin,
+                        center_beta=conservative_center_beta,
+                        non_worsen_beta=non_worsen_beta,
                         positive_class_weight=positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
