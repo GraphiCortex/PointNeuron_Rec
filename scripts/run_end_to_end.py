@@ -31,7 +31,11 @@ def main() -> int:
     parser.add_argument("--sample-range", help="Inclusive range like 100-109.")
     parser.add_argument("--checkpoint", default="tmp/checkpoints/proposal_paper_skeleton_aug_50e.pt")
     parser.add_argument("--output-root", default="tmp/e2e_baseline_janelia")
-    parser.add_argument("--existing-proposal-dir", default="tmp/paper_skeleton_eval_50e_heldout")
+    parser.add_argument(
+        "--existing-proposal-dir",
+        default=None,
+        help="Optional directory of precomputed proposals to reuse. Omit to generate proposals from --checkpoint.",
+    )
     parser.add_argument("--force-proposals", action="store_true", help="Regenerate proposals even if an existing proposal file is present.")
     parser.add_argument("--fail-fast", action="store_true", help="Stop on the first sample failure instead of recording it and continuing.")
     parser.add_argument("--initializer", default="geodesic", choices=["geodesic", "image_supported"], help="Connectivity graph initializer.")
@@ -64,7 +68,7 @@ def main() -> int:
                 root=args.root,
                 checkpoint=Path(args.checkpoint),
                 output_root=output_root,
-                existing_proposal_dir=Path(args.existing_proposal_dir),
+                existing_proposal_dir=Path(args.existing_proposal_dir) if args.existing_proposal_dir else None,
                 force_proposals=args.force_proposals,
                 initializer=args.initializer,
                 proposal_threshold_fraction=args.proposal_threshold_fraction,
@@ -121,7 +125,7 @@ def run_sample(
     root: str,
     checkpoint: Path,
     output_root: Path,
-    existing_proposal_dir: Path,
+    existing_proposal_dir: Path | None,
     force_proposals: bool,
     initializer: str,
     proposal_threshold_fraction: float,
@@ -139,8 +143,9 @@ def run_sample(
     sample_dir = output_root / sample_tag
     sample_dir.mkdir(parents=True, exist_ok=True)
     proposal_path = sample_dir / f"{sample_tag}_proposals.npz"
-    existing_proposal = existing_proposal_dir / f"{sample_tag}_proposals.npz"
-    if existing_proposal.exists() and not force_proposals:
+    existing_proposal = existing_proposal_dir / f"{sample_tag}_proposals.npz" if existing_proposal_dir else None
+    if existing_proposal is not None and existing_proposal.exists() and not force_proposals:
+        print(f"reuse external proposal: {existing_proposal}")
         proposal_path = existing_proposal
     elif proposal_path.exists() and not force_proposals:
         print(f"reuse proposal: {proposal_path}")
@@ -198,7 +203,7 @@ def run_sample(
     graph_path = sample_dir / f"{sample_tag}_{initializer}_graph.npz"
     swc_path = sample_dir / f"{sample_tag}_{initializer}.swc"
     compare_html = sample_dir / f"{sample_tag}_{initializer}_compare.html"
-    if graph_path.exists():
+    if graph_path.exists() and not force_proposals:
         print(f"reuse graph: {graph_path}")
     else:
         if initializer == "geodesic":
@@ -261,11 +266,11 @@ def run_sample(
             )
         else:
             raise ValueError(f"Unknown initializer: {initializer}")
-    if swc_path.exists():
+    if swc_path.exists() and not force_proposals:
         print(f"reuse swc: {swc_path}")
     else:
         run_command([sys.executable, "scripts/generate_swc_from_graph.py", "--graph", str(graph_path), "--output", str(swc_path)])
-    if compare_html.exists():
+    if compare_html.exists() and not force_proposals:
         print(f"reuse html: {compare_html}")
     else:
         run_command(
