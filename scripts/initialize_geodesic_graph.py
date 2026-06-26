@@ -22,6 +22,8 @@ from pointneuron.graph.initialization import (
     initialize_weighted_geometric_graph,
 )
 
+HYBRID_COVERAGE_FILL_FLOOR = 40
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Initialize proposal adjacency from foreground geodesic paths.")
@@ -37,7 +39,7 @@ def main() -> int:
     parser.add_argument(
         "--selection-mode",
         default="score_nms",
-        choices=["score_nms", "coverage_nms"],
+        choices=["score_nms", "coverage_nms", "hybrid_nms"],
         help="How to truncate NMS survivors when --max-nodes is reached.",
     )
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
@@ -565,6 +567,26 @@ def filter_proposals(
     if selection_mode == "coverage_nms":
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
+    elif selection_mode == "hybrid_nms":
+        if nms_distance > 0.0:
+            score_indices = euclidean_nms(centers[candidate_indices], scores[candidate_indices], float(nms_distance), candidate_indices)
+        else:
+            order = np.argsort(-scores[candidate_indices])
+            score_indices = candidate_indices[order]
+
+        fill_floor = min(int(HYBRID_COVERAGE_FILL_FLOOR), int(max_nodes)) if max_nodes > 0 else 0
+        if max_nodes > 0 and score_indices.size > max_nodes:
+            candidate_indices = score_indices[:max_nodes]
+        elif max_nodes > 0 and score_indices.size < fill_floor and candidate_indices.size > score_indices.size:
+            candidate_indices = coverage_truncate(
+                centers=centers,
+                scores=scores,
+                candidate_indices=candidate_indices,
+                max_nodes=max_nodes,
+                seed_indices=score_indices,
+            )
+        else:
+            candidate_indices = score_indices
     elif nms_distance > 0.0:
         candidate_indices = euclidean_nms(centers[candidate_indices], scores[candidate_indices], float(nms_distance), candidate_indices)
     else:
@@ -590,25 +612,51 @@ def coverage_truncate(
     scores: np.ndarray,
     candidate_indices: np.ndarray,
     max_nodes: int,
+    seed_indices: np.ndarray | None = None,
 ) -> np.ndarray:
-    if max_nodes <= 0 or candidate_indices.size <= max_nodes:
+    if max_nodes <= 0:
+        return candidate_indices
+    if seed_indices is None and candidate_indices.size <= max_nodes:
+        return candidate_indices
+    if candidate_indices.size == 0:
         return candidate_indices
 
     local_centers = centers[candidate_indices].astype(np.float32, copy=False)
     local_scores = scores[candidate_indices].astype(np.float32, copy=False)
-    first = int(np.argmax(local_scores))
-    selected = [first]
-    min_distance2 = np.sum((local_centers - local_centers[first].reshape(1, 3)) ** 2, axis=1)
-    min_distance2[first] = -np.inf
+    selected: list[int] = []
+    selected_mask = np.zeros((candidate_indices.size,), dtype=bool)
+    if seed_indices is not None and seed_indices.size > 0:
+        local_by_global = {int(global_index): local_index for local_index, global_index in enumerate(candidate_indices.tolist())}
+        for global_index in seed_indices.tolist():
+            local_index = local_by_global.get(int(global_index))
+            if local_index is None or selected_mask[local_index]:
+                continue
+            selected.append(local_index)
+            selected_mask[local_index] = True
+            if len(selected) >= int(max_nodes):
+                return candidate_indices[np.array(selected[: int(max_nodes)], dtype=np.int64)]
+
+    if selected:
+        selected_centers = local_centers[np.array(selected, dtype=np.int64)]
+        diff = local_centers[:, None, :] - selected_centers[None, :, :]
+        min_distance2 = np.sum(diff * diff, axis=2).min(axis=1)
+        min_distance2[selected_mask] = -np.inf
+    else:
+        first = int(np.argmax(local_scores))
+        selected.append(first)
+        selected_mask[first] = True
+        min_distance2 = np.sum((local_centers - local_centers[first].reshape(1, 3)) ** 2, axis=1)
+        min_distance2[first] = -np.inf
 
     while len(selected) < int(max_nodes):
         next_index = int(np.argmax(min_distance2))
         if not np.isfinite(min_distance2[next_index]) or min_distance2[next_index] < 0.0:
             break
         selected.append(next_index)
+        selected_mask[next_index] = True
         distance2 = np.sum((local_centers - local_centers[next_index].reshape(1, 3)) ** 2, axis=1)
         min_distance2 = np.minimum(min_distance2, distance2)
-        min_distance2[np.array(selected, dtype=np.int64)] = -np.inf
+        min_distance2[selected_mask] = -np.inf
 
     return candidate_indices[np.array(selected, dtype=np.int64)]
 
