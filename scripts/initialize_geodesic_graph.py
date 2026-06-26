@@ -34,6 +34,12 @@ def main() -> int:
     parser.add_argument("--min-proposal-score", type=float, default=0.0, help="Drop proposal nodes below this score.")
     parser.add_argument("--nms-distance", type=float, default=12.0, help="Greedy Euclidean NMS spacing.")
     parser.add_argument("--max-nodes", type=int, default=256, help="Maximum proposal nodes after filtering. 0 disables.")
+    parser.add_argument(
+        "--selection-mode",
+        default="score_nms",
+        choices=["score_nms", "coverage_nms"],
+        help="How to truncate NMS survivors when --max-nodes is reached.",
+    )
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
     parser.add_argument(
         "--max-foreground-voxels",
@@ -80,6 +86,7 @@ def main() -> int:
         min_score=args.min_proposal_score,
         nms_distance=args.nms_distance,
         max_nodes=args.max_nodes,
+        selection_mode=args.selection_mode,
     )
     if centers.shape[0] == 0:
         raise ValueError("No proposal nodes remain after filtering")
@@ -178,6 +185,7 @@ def main() -> int:
         "min_proposal_score": args.min_proposal_score,
         "nms_distance": args.nms_distance,
         "max_nodes": args.max_nodes,
+        "selection_mode": args.selection_mode,
         "foreground_threshold": int(threshold),
         "requested_foreground_threshold": int(requested_threshold),
         "foreground_threshold_was_adapted": bool(threshold_was_adapted),
@@ -241,6 +249,7 @@ def main() -> int:
     print(f"foreground_cap_satisfied: {metadata['foreground_cap_satisfied']}")
     print("initializer: foreground_geodesic")
     print(f"mode: {args.mode}")
+    print(f"selection_mode: {args.selection_mode}")
     print(f"edges: {final_edges.shape[0]}")
     print(f"bridge_edges: {bridge_edges.shape[0]}")
     print(f"components: {metadata['components']}")
@@ -543,6 +552,7 @@ def filter_proposals(
     min_score: float,
     nms_distance: float,
     max_nodes: int,
+    selection_mode: str,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     keep = np.ones((centers.shape[0],), dtype=bool)
     if min_score > 0.0:
@@ -552,16 +562,55 @@ def filter_proposals(
         empty_indices = np.zeros((0,), dtype=np.int64)
         return centers[:0], radii[:0], scores[:0], features[:0], empty_indices
 
-    if nms_distance > 0.0:
+    if selection_mode == "coverage_nms":
+        order = np.argsort(-scores[candidate_indices])
+        candidate_indices = candidate_indices[order]
+    elif nms_distance > 0.0:
         candidate_indices = euclidean_nms(centers[candidate_indices], scores[candidate_indices], float(nms_distance), candidate_indices)
     else:
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
 
     if max_nodes > 0 and candidate_indices.size > max_nodes:
-        candidate_indices = candidate_indices[:max_nodes]
+        if selection_mode == "coverage_nms":
+            candidate_indices = coverage_truncate(
+                centers=centers,
+                scores=scores,
+                candidate_indices=candidate_indices,
+                max_nodes=max_nodes,
+            )
+        else:
+            candidate_indices = candidate_indices[:max_nodes]
     candidate_indices = np.sort(candidate_indices).astype(np.int64, copy=False)
     return centers[candidate_indices], radii[candidate_indices], scores[candidate_indices], features[candidate_indices], candidate_indices
+
+
+def coverage_truncate(
+    centers: np.ndarray,
+    scores: np.ndarray,
+    candidate_indices: np.ndarray,
+    max_nodes: int,
+) -> np.ndarray:
+    if max_nodes <= 0 or candidate_indices.size <= max_nodes:
+        return candidate_indices
+
+    local_centers = centers[candidate_indices].astype(np.float32, copy=False)
+    local_scores = scores[candidate_indices].astype(np.float32, copy=False)
+    first = int(np.argmax(local_scores))
+    selected = [first]
+    min_distance2 = np.sum((local_centers - local_centers[first].reshape(1, 3)) ** 2, axis=1)
+    min_distance2[first] = -np.inf
+
+    while len(selected) < int(max_nodes):
+        next_index = int(np.argmax(min_distance2))
+        if not np.isfinite(min_distance2[next_index]) or min_distance2[next_index] < 0.0:
+            break
+        selected.append(next_index)
+        distance2 = np.sum((local_centers - local_centers[next_index].reshape(1, 3)) ** 2, axis=1)
+        min_distance2 = np.minimum(min_distance2, distance2)
+        min_distance2[np.array(selected, dtype=np.int64)] = -np.inf
+
+    return candidate_indices[np.array(selected, dtype=np.int64)]
 
 
 def euclidean_nms(centers: np.ndarray, scores: np.ndarray, min_distance: float, original_indices: np.ndarray) -> np.ndarray:

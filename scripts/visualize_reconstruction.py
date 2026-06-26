@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 import sys
 
+import numpy as np
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
@@ -24,6 +26,10 @@ def main() -> int:
     parser.add_argument("--threshold", type=int, default=0, help="Foreground threshold; voxels > threshold become points.")
     parser.add_argument("--render-points", type=int, default=12000, help="Maximum foreground points to render.")
     parser.add_argument("--seed", type=int, default=0, help="Random seed used for point sampling.")
+    parser.add_argument("--proposals", help="Optional aggregated proposal .npz to overlay before graph selection.")
+    parser.add_argument("--graph", help="Optional initialized graph .npz to overlay selected graph nodes.")
+    parser.add_argument("--proposal-score-threshold", type=float, default=0.85, help="Minimum proposal score to render in the diagnostic overlay.")
+    parser.add_argument("--proposal-render-limit", type=int, default=4096, help="Maximum pre-selection proposals to render.")
     parser.add_argument("--output", default="tmp/reconstructions/reconstruction_compare.html", help="Output HTML file.")
     args = parser.parse_args()
 
@@ -43,17 +49,27 @@ def main() -> int:
         max_points=args.render_points,
         seed=args.seed,
     )
+    proposals = proposal_payload(
+        Path(args.proposals),
+        score_threshold=args.proposal_score_threshold,
+        render_limit=args.proposal_render_limit,
+    ) if args.proposals else []
+    graph_nodes = graph_node_payload(Path(args.graph)) if args.graph else []
 
     html = render_html(
         {
             "sampleId": sample.sample_id,
             "gtSwc": str(sample.swc_path),
             "reconstructionSwc": str(reconstruction_path),
+            "proposals": str(args.proposals) if args.proposals else "",
+            "graph": str(args.graph) if args.graph else "",
             "volumeDimensions": point_cloud.volume_dimensions,
             "totalForegroundCount": point_cloud.total_foreground_count,
             "points": [[point.x, point.y, point.z, point.intensity] for point in point_cloud.points],
             "gtSkeleton": skeleton_payload(gt_swc),
             "reconstructionSkeleton": skeleton_payload(reconstruction_swc),
+            "proposalCenters": proposals,
+            "graphNodes": graph_nodes,
         }
     )
 
@@ -65,8 +81,36 @@ def main() -> int:
     print(f"gt_nodes: {len(gt_swc.nodes)}")
     print(f"reconstruction_nodes: {len(reconstruction_swc.nodes)}")
     print(f"reconstruction_roots: {reconstruction_swc.root_count}")
+    if proposals:
+        print(f"proposal_overlay_nodes: {len(proposals)}")
+    if graph_nodes:
+        print(f"graph_overlay_nodes: {len(graph_nodes)}")
     print(f"output: {output}")
     return 0
+
+
+def proposal_payload(path: Path, score_threshold: float, render_limit: int) -> list[list[float]]:
+    data = np.load(path, allow_pickle=False)
+    centers = data["centers"].astype(float, copy=False)
+    scores = data["scores"].astype(float, copy=False) if "scores" in data else np.ones((centers.shape[0],), dtype=float)
+    indices = np.flatnonzero(scores >= score_threshold)
+    if indices.size > render_limit:
+        order = np.argsort(scores[indices])[::-1][:render_limit]
+        indices = indices[order]
+    return [
+        [float(centers[index, 0]), float(centers[index, 1]), float(centers[index, 2]), float(scores[index])]
+        for index in indices.tolist()
+    ]
+
+
+def graph_node_payload(path: Path) -> list[list[float]]:
+    data = np.load(path, allow_pickle=False)
+    centers = data["centers"].astype(float, copy=False)
+    scores = data["scores"].astype(float, copy=False) if "scores" in data else np.ones((centers.shape[0],), dtype=float)
+    return [
+        [float(centers[index, 0]), float(centers[index, 1]), float(centers[index, 2]), float(scores[index])]
+        for index in range(centers.shape[0])
+    ]
 
 
 def skeleton_payload(swc):
@@ -129,7 +173,7 @@ def render_html(payload: dict) -> str:
 <div id="hud">
   <strong id="title"></strong>
   <div id="meta"></div>
-  <div id="legend">Drag to rotate. Wheel to zoom. Gray: foreground. Red: GT SWC. Cyan: reconstructed SWC.</div>
+  <div id="legend">Drag to rotate. Wheel to zoom. Gray: foreground. Red: GT SWC. Faint cyan: high-score proposals. White/cyan dots: selected graph nodes. Bright cyan: reconstructed SWC.</div>
 </div>
 <script>
 const DATA = {payload_json};
@@ -139,7 +183,7 @@ const title = document.getElementById("title");
 const meta = document.getElementById("meta");
 
 title.textContent = DATA.sampleId;
-meta.textContent = `GT nodes ${{DATA.gtSkeleton.length.toLocaleString()}}, reconstructed nodes ${{DATA.reconstructionSkeleton.length.toLocaleString()}}, foreground ${{DATA.totalForegroundCount.toLocaleString()}}`;
+meta.textContent = `GT nodes ${{DATA.gtSkeleton.length.toLocaleString()}}, reconstructed nodes ${{DATA.reconstructionSkeleton.length.toLocaleString()}}, proposal overlay ${{DATA.proposalCenters.length.toLocaleString()}}, graph nodes ${{DATA.graphNodes.length.toLocaleString()}}, foreground ${{DATA.totalForegroundCount.toLocaleString()}}`;
 
 let width = 0;
 let height = 0;
@@ -225,6 +269,33 @@ function draw() {{
   }}
 
   drawSkeleton(DATA.gtSkeleton, gtById, "rgba(255, 82, 82, 0.70)", "rgba(255, 116, 116, 0.90)", 1.05, 1.8);
+
+  const projectedProposals = DATA.proposalCenters.map(point => {{
+    const screen = project(point);
+    return [screen[0], screen[1], screen[2], point[3]];
+  }}).sort((a, b) => a[2] - b[2]);
+  for (const proposal of projectedProposals) {{
+    const score = proposal[3];
+    ctx.fillStyle = `rgba(76, 218, 255, ${{Math.max(0.10, Math.min(0.34, score * 0.30))}})`;
+    ctx.beginPath();
+    ctx.arc(proposal[0], proposal[1], 2.1, 0, Math.PI * 2);
+    ctx.fill();
+  }}
+
+  const projectedGraphNodes = DATA.graphNodes.map(point => {{
+    const screen = project(point);
+    return [screen[0], screen[1], screen[2], point[3]];
+  }}).sort((a, b) => a[2] - b[2]);
+  for (const node of projectedGraphNodes) {{
+    ctx.fillStyle = "rgba(230, 252, 255, 0.82)";
+    ctx.beginPath();
+    ctx.arc(node[0], node[1], 3.8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(48, 212, 255, 0.90)";
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+  }}
+
   drawSkeleton(DATA.reconstructionSkeleton, reconstructionById, "rgba(66, 220, 255, 0.92)", "rgba(66, 220, 255, 0.78)", 1.35, 2.4);
 }}
 

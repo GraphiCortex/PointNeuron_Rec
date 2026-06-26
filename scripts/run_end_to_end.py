@@ -42,6 +42,12 @@ def main() -> int:
     parser.add_argument("--graph-min-proposal-score", type=float, default=0.0, help="Drop proposal nodes below this objectness score before graph initialization.")
     parser.add_argument("--graph-nms-distance", type=float, default=12.0, help="Euclidean proposal-node NMS spacing before graph initialization.")
     parser.add_argument("--graph-max-nodes", type=int, default=256, help="Maximum proposal nodes retained for graph initialization. 0 disables.")
+    parser.add_argument(
+        "--graph-selection-mode",
+        default="score_nms",
+        choices=["score_nms", "coverage_nms"],
+        help="How graph proposal nodes are selected when --graph-max-nodes is reached.",
+    )
     parser.add_argument("--proposal-threshold-fraction", type=float, default=0.2, help="Normalized foreground threshold used by proposal aggregation.")
     parser.add_argument("--proposal-score-threshold", type=float, default=0.5, help="Objectness threshold for local proposal selection.")
     parser.add_argument("--proposal-top-per-patch", type=int, default=512, help="Maximum local proposals retained per patch before global NMS.")
@@ -77,6 +83,7 @@ def main() -> int:
                 graph_min_proposal_score=args.graph_min_proposal_score,
                 graph_nms_distance=args.graph_nms_distance,
                 graph_max_nodes=args.graph_max_nodes,
+                graph_selection_mode=args.graph_selection_mode,
                 proposal_threshold_fraction=args.proposal_threshold_fraction,
                 proposal_score_threshold=args.proposal_score_threshold,
                 proposal_top_per_patch=args.proposal_top_per_patch,
@@ -137,6 +144,7 @@ def run_sample(
     graph_min_proposal_score: float,
     graph_nms_distance: float,
     graph_max_nodes: int,
+    graph_selection_mode: str,
     proposal_threshold_fraction: float,
     proposal_score_threshold: float,
     proposal_top_per_patch: int,
@@ -232,6 +240,8 @@ def run_sample(
                     str(graph_nms_distance),
                     "--max-nodes",
                     str(graph_max_nodes),
+                    "--selection-mode",
+                    graph_selection_mode,
                     "--min-proposal-score",
                     str(graph_min_proposal_score),
                     "--foreground-threshold",
@@ -296,6 +306,10 @@ def run_sample(
                 str(sample_index),
                 "--reconstruction-swc",
                 str(swc_path),
+                "--proposals",
+                str(proposal_path),
+                "--graph",
+                str(graph_path),
                 "--render-points",
                 str(render_points),
                 "--output",
@@ -324,6 +338,7 @@ def run_sample(
         "foreground_cap_satisfied": graph_metadata.get("foreground_cap_satisfied", True),
         "candidate_k": graph_metadata.get("candidate_k", 0),
         "graph_min_proposal_score": graph_metadata.get("min_proposal_score", graph_min_proposal_score),
+        "graph_selection_mode": graph_metadata.get("selection_mode", graph_selection_mode),
         "max_geodesic_ratio": graph_metadata.get("max_geodesic_ratio", 0.0),
         "bridge_edges": graph_metadata.get("bridge_edges", 0),
         "reachable_edge_fraction": graph_metadata.get("reachable_edge_fraction", 1.0),
