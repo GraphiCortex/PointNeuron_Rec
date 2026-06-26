@@ -58,6 +58,9 @@ def build_skeleton_proposal_targets(
     target_radius_floor: float = 0.0,
     objectness_radius_floor: float | None = None,
     radius_target_floor: float | None = None,
+    radius_target_mode: str = "physical",
+    selection_radius_floor: float = 8.0,
+    selection_radius_ceiling: float = 0.0,
     chunk_size: int = 1024,
 ) -> SkeletonProposalTargets:
     if points.ndim != 3 or points.shape[-1] != 4:
@@ -103,7 +106,14 @@ def build_skeleton_proposal_targets(
         sample_distances = torch.cat(nearest_distances, dim=0)
         sample_indices = torch.cat(nearest_indices, dim=0)
         sample_centers = node_xyz[sample_indices]
-        sample_radius = node_radius[sample_indices]
+        sample_radius = proposal_radius_targets(
+            physical_radius=node_radius,
+            matched_indices=sample_indices,
+            input_distance=sample_distances,
+            radius_target_mode=radius_target_mode,
+            selection_radius_floor=selection_radius_floor,
+            selection_radius_ceiling=selection_radius_ceiling,
+        )
         positive_threshold = torch.maximum(
             torch.full_like(sample_radius, float(positive_distance)),
             objectness_radius[sample_indices] * float(radius_scale),
@@ -144,6 +154,9 @@ def conservative_skeleton_proposal_loss(
     target_radius_floor: float = 0.0,
     objectness_radius_floor: float | None = None,
     radius_target_floor: float | None = None,
+    radius_target_mode: str = "physical",
+    selection_radius_floor: float = 8.0,
+    selection_radius_ceiling: float = 0.0,
     chunk_size: int = 1024,
 ) -> ConservativeSkeletonProposalLoss:
     targets = build_skeleton_proposal_targets(
@@ -155,6 +168,9 @@ def conservative_skeleton_proposal_loss(
         target_radius_floor=target_radius_floor,
         objectness_radius_floor=objectness_radius_floor,
         radius_target_floor=radius_target_floor,
+        radius_target_mode=radius_target_mode,
+        selection_radius_floor=selection_radius_floor,
+        selection_radius_ceiling=selection_radius_ceiling,
         chunk_size=chunk_size,
     )
     labels = targets.objectness_labels
@@ -222,6 +238,9 @@ def paper_skeleton_proposal_loss(
     target_radius_floor: float = 0.0,
     objectness_radius_floor: float | None = None,
     radius_target_floor: float | None = None,
+    radius_target_mode: str = "physical",
+    selection_radius_floor: float = 8.0,
+    selection_radius_ceiling: float = 0.0,
     endpoint_weight: float = 1.0,
     branch_weight: float = 1.0,
     chunk_size: int = 512,
@@ -261,6 +280,11 @@ def paper_skeleton_proposal_loss(
 
         proposal_to_gt_distance, nearest_indices = nearest_distances(proposals, gt_centers, chunk_size=chunk_size)
         gt_to_proposal_distance, _ = nearest_distances(gt_centers, proposals, chunk_size=chunk_size)
+        input_to_gt_distance, input_nearest_indices = nearest_distances(
+            points[batch_index, :, :3],
+            gt_centers,
+            chunk_size=chunk_size,
+        )
 
         scale = coordinate_scale(points[batch_index : batch_index + 1]).to(dtype=points.dtype, device=points.device)
         proposal_weights = gt_weights[nearest_indices]
@@ -270,7 +294,14 @@ def paper_skeleton_proposal_loss(
         ) / scale.square()
         offset_losses.append(offset_loss)
 
-        nearest_radius = gt_radius[nearest_indices].squeeze(-1)
+        nearest_radius = proposal_radius_targets(
+            physical_radius=gt_radius,
+            matched_indices=input_nearest_indices,
+            input_distance=input_to_gt_distance,
+            radius_target_mode=radius_target_mode,
+            selection_radius_floor=selection_radius_floor,
+            selection_radius_ceiling=selection_radius_ceiling,
+        ).squeeze(-1)
         nearest_objectness_radius = objectness_radius[nearest_indices].squeeze(-1)
         labels = (proposal_to_gt_distance <= nearest_objectness_radius).to(dtype=torch.long)
         positive_count += int(labels.sum().item())
@@ -324,6 +355,40 @@ def nearest_distances(query: torch.Tensor, reference: torch.Tensor, chunk_size: 
         distances.append(chunk_distance)
         indices.append(chunk_index)
     return torch.cat(distances, dim=0), torch.cat(indices, dim=0)
+
+
+def proposal_radius_targets(
+    physical_radius: torch.Tensor,
+    matched_indices: torch.Tensor,
+    input_distance: torch.Tensor,
+    radius_target_mode: str = "physical",
+    selection_radius_floor: float = 8.0,
+    selection_radius_ceiling: float = 0.0,
+) -> torch.Tensor:
+    """Return the radius target for each source point/proposal.
+
+    ``physical`` preserves the SWC node radius target. ``input_distance`` and
+    ``selection`` train the proposal radius as a support sphere for NMS: the
+    radius must at least cover the source point's distance to its matched
+    skeleton center, and ``selection`` additionally applies a floor so nearby
+    redundant proposals can suppress each other.
+    """
+    if radius_target_mode not in {"physical", "input_distance", "selection"}:
+        raise ValueError(
+            f"Unknown radius_target_mode {radius_target_mode!r}; "
+            "expected 'physical', 'input_distance', or 'selection'"
+        )
+
+    matched_physical_radius = physical_radius[matched_indices]
+    if radius_target_mode == "physical":
+        return matched_physical_radius
+
+    target = torch.maximum(input_distance.unsqueeze(-1), matched_physical_radius)
+    if radius_target_mode == "selection":
+        target = target.clamp_min(float(selection_radius_floor))
+    if selection_radius_ceiling and selection_radius_ceiling > 0.0:
+        target = target.clamp_max(float(selection_radius_ceiling))
+    return target
 
 
 def weighted_mean(values: torch.Tensor, weights: torch.Tensor) -> torch.Tensor:

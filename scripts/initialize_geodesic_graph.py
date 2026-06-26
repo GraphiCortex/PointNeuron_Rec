@@ -23,6 +23,7 @@ from pointneuron.graph.initialization import (
 )
 
 HYBRID_COVERAGE_FILL_FLOOR = 40
+CONNECTED_COVERAGE_POOL_LIMIT = 512
 
 
 def main() -> int:
@@ -35,11 +36,13 @@ def main() -> int:
     parser.add_argument("--max-distance", type=float, default=0.0, help="Optional max geodesic distance for knn edges.")
     parser.add_argument("--min-proposal-score", type=float, default=0.0, help="Drop proposal nodes below this score.")
     parser.add_argument("--nms-distance", type=float, default=12.0, help="Greedy Euclidean NMS spacing.")
+    parser.add_argument("--nms-mode", default="distance", choices=["distance", "sphere"], help="Proposal-node NMS mode.")
+    parser.add_argument("--iou-threshold", type=float, default=0.1, help="Sphere IoU threshold for --nms-mode sphere.")
     parser.add_argument("--max-nodes", type=int, default=256, help="Maximum proposal nodes after filtering. 0 disables.")
     parser.add_argument(
         "--selection-mode",
         default="score_nms",
-        choices=["score_nms", "coverage_nms", "hybrid_nms"],
+        choices=["score_nms", "coverage_nms", "hybrid_nms", "structural_nms", "connected_coverage_nms"],
         help="How to truncate NMS survivors when --max-nodes is reached.",
     )
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
@@ -87,6 +90,8 @@ def main() -> int:
         features=features,
         min_score=args.min_proposal_score,
         nms_distance=args.nms_distance,
+        nms_mode=args.nms_mode,
+        iou_threshold=args.iou_threshold,
         max_nodes=args.max_nodes,
         selection_mode=args.selection_mode,
     )
@@ -127,6 +132,27 @@ def main() -> int:
     proposal_geodesic = distances[:, snapped_local].astype(np.float32, copy=False)
     reachable = np.isfinite(proposal_geodesic)
     euclidean = euclidean_distance_matrix(centers)
+    if args.selection_mode == "connected_coverage_nms" and args.max_nodes > 0 and centers.shape[0] > args.max_nodes:
+        local_keep = connected_coverage_selection(
+            centers=centers,
+            scores=scores,
+            geodesic=proposal_geodesic,
+            euclidean=euclidean,
+            max_nodes=int(args.max_nodes),
+            max_geodesic_ratio=float(args.max_geodesic_ratio),
+        )
+        centers = centers[local_keep]
+        radii = radii[local_keep]
+        scores = scores[local_keep]
+        features = features[local_keep]
+        original_indices = original_indices[local_keep]
+        snapped_local = snapped_local[local_keep]
+        snap_distances = snap_distances[local_keep]
+        distances = distances[local_keep]
+        predecessors = predecessors[local_keep]
+        proposal_geodesic = distances[:, snapped_local].astype(np.float32, copy=False)
+        reachable = np.isfinite(proposal_geodesic)
+        euclidean = euclidean_distance_matrix(centers)
     weights = proposal_geodesic.copy()
     weights[~reachable] = euclidean[~reachable] * float(args.disconnected_multiplier)
     np.fill_diagonal(weights, np.inf)
@@ -186,6 +212,8 @@ def main() -> int:
         "max_distance": args.max_distance,
         "min_proposal_score": args.min_proposal_score,
         "nms_distance": args.nms_distance,
+        "nms_mode": args.nms_mode,
+        "iou_threshold": args.iou_threshold,
         "max_nodes": args.max_nodes,
         "selection_mode": args.selection_mode,
         "foreground_threshold": int(threshold),
@@ -553,6 +581,8 @@ def filter_proposals(
     features: np.ndarray,
     min_score: float,
     nms_distance: float,
+    nms_mode: str,
+    iou_threshold: float,
     max_nodes: int,
     selection_mode: str,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -567,9 +597,32 @@ def filter_proposals(
     if selection_mode == "coverage_nms":
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
+    elif selection_mode == "structural_nms":
+        structural_scores = structural_selection_scores(centers[candidate_indices], scores[candidate_indices])
+        if nms_distance > 0.0 or nms_mode == "sphere":
+            candidate_indices = nms_proposals(
+                centers=centers[candidate_indices],
+                radii=radii[candidate_indices],
+                scores=structural_scores,
+                nms_mode=nms_mode,
+                nms_distance=float(nms_distance),
+                iou_threshold=float(iou_threshold),
+                original_indices=candidate_indices,
+            )
+        else:
+            order = np.argsort(-structural_scores)
+            candidate_indices = candidate_indices[order]
     elif selection_mode == "hybrid_nms":
-        if nms_distance > 0.0:
-            score_indices = euclidean_nms(centers[candidate_indices], scores[candidate_indices], float(nms_distance), candidate_indices)
+        if nms_distance > 0.0 or nms_mode == "sphere":
+            score_indices = nms_proposals(
+                centers=centers[candidate_indices],
+                radii=radii[candidate_indices],
+                scores=scores[candidate_indices],
+                nms_mode=nms_mode,
+                nms_distance=float(nms_distance),
+                iou_threshold=float(iou_threshold),
+                original_indices=candidate_indices,
+            )
         else:
             order = np.argsort(-scores[candidate_indices])
             score_indices = candidate_indices[order]
@@ -587,14 +640,33 @@ def filter_proposals(
             )
         else:
             candidate_indices = score_indices
-    elif nms_distance > 0.0:
-        candidate_indices = euclidean_nms(centers[candidate_indices], scores[candidate_indices], float(nms_distance), candidate_indices)
+    elif selection_mode == "connected_coverage_nms":
+        order = np.argsort(-scores[candidate_indices])
+        candidate_indices = candidate_indices[order]
+    elif nms_distance > 0.0 or nms_mode == "sphere":
+        candidate_indices = nms_proposals(
+            centers=centers[candidate_indices],
+            radii=radii[candidate_indices],
+            scores=scores[candidate_indices],
+            nms_mode=nms_mode,
+            nms_distance=float(nms_distance),
+            iou_threshold=float(iou_threshold),
+            original_indices=candidate_indices,
+        )
     else:
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
 
-    if max_nodes > 0 and candidate_indices.size > max_nodes:
-        if selection_mode == "coverage_nms":
+    if max_nodes > 0 and candidate_indices.size > max_nodes and selection_mode == "connected_coverage_nms":
+        pool_limit = min(candidate_indices.size, max(int(max_nodes), min(CONNECTED_COVERAGE_POOL_LIMIT, int(max_nodes) * 4)))
+        candidate_indices = coverage_truncate(
+            centers=centers,
+            scores=scores,
+            candidate_indices=candidate_indices,
+            max_nodes=pool_limit,
+        )
+    elif max_nodes > 0 and candidate_indices.size > max_nodes:
+        if selection_mode in {"coverage_nms", "structural_nms"}:
             candidate_indices = coverage_truncate(
                 centers=centers,
                 scores=scores,
@@ -605,6 +677,139 @@ def filter_proposals(
             candidate_indices = candidate_indices[:max_nodes]
     candidate_indices = np.sort(candidate_indices).astype(np.int64, copy=False)
     return centers[candidate_indices], radii[candidate_indices], scores[candidate_indices], features[candidate_indices], candidate_indices
+
+
+def connected_coverage_selection(
+    centers: np.ndarray,
+    scores: np.ndarray,
+    geodesic: np.ndarray,
+    euclidean: np.ndarray,
+    max_nodes: int,
+    max_geodesic_ratio: float,
+) -> np.ndarray:
+    if centers.shape[0] <= max_nodes:
+        return np.arange(centers.shape[0], dtype=np.int64)
+
+    connectivity = np.isfinite(geodesic)
+    np.fill_diagonal(connectivity, False)
+    if max_geodesic_ratio > 0.0:
+        ratio = geodesic / np.maximum(euclidean, 1.0e-3)
+        connectivity &= ratio <= float(max_geodesic_ratio)
+    connectivity |= connectivity.T
+
+    components = connected_components_from_mask(connectivity)
+    components.sort(key=lambda component: (-component.size, -float(scores[component].mean()) if component.size else 0.0))
+    eligible = [component for component in components if component.size >= 3]
+    if not eligible:
+        eligible = components
+
+    selected: list[int] = []
+    selected_set: set[int] = set()
+    remaining = int(max_nodes)
+    remaining_source = int(sum(component.size for component in eligible))
+    for component in eligible:
+        if remaining <= 0:
+            break
+        if remaining_source <= 0:
+            budget = remaining
+        else:
+            budget = int(round(float(max_nodes) * float(component.size) / float(remaining_source)))
+        budget = max(1, min(int(component.size), budget, remaining))
+        picked = coverage_truncate(
+            centers=centers,
+            scores=scores,
+            candidate_indices=component.astype(np.int64, copy=False),
+            max_nodes=budget,
+        )
+        for index in picked.tolist():
+            if int(index) not in selected_set:
+                selected.append(int(index))
+                selected_set.add(int(index))
+        remaining = int(max_nodes) - len(selected)
+        remaining_source -= int(component.size)
+
+    if len(selected) < int(max_nodes):
+        seed_indices = np.array(selected, dtype=np.int64) if selected else None
+        filled = coverage_truncate(
+            centers=centers,
+            scores=scores,
+            candidate_indices=np.arange(centers.shape[0], dtype=np.int64),
+            max_nodes=int(max_nodes),
+            seed_indices=seed_indices,
+        )
+        selected = [int(index) for index in filled.tolist()]
+
+    return np.array(selected[: int(max_nodes)], dtype=np.int64)
+
+
+def connected_components_from_mask(connectivity: np.ndarray) -> list[np.ndarray]:
+    node_count = int(connectivity.shape[0])
+    seen = np.zeros((node_count,), dtype=bool)
+    components: list[np.ndarray] = []
+    for start in range(node_count):
+        if seen[start]:
+            continue
+        stack = [start]
+        seen[start] = True
+        component: list[int] = []
+        while stack:
+            node = stack.pop()
+            component.append(node)
+            neighbors = np.flatnonzero(connectivity[node])
+            for neighbor in neighbors.tolist():
+                if not seen[int(neighbor)]:
+                    seen[int(neighbor)] = True
+                    stack.append(int(neighbor))
+        components.append(np.array(component, dtype=np.int64))
+    return components
+
+
+def structural_selection_scores(centers: np.ndarray, scores: np.ndarray, neighbor_count: int = 12) -> np.ndarray:
+    if centers.shape[0] == 0:
+        return scores.astype(np.float32, copy=True)
+    if centers.shape[0] <= 2:
+        return scores.astype(np.float32, copy=True)
+
+    k = min(int(neighbor_count) + 1, int(centers.shape[0]))
+    tree = cKDTree(centers)
+    distances, indices = tree.query(centers, k=k)
+    neighbor_distances = np.asarray(distances[:, 1:], dtype=np.float32)
+    neighbor_indices = np.asarray(indices[:, 1:], dtype=np.int64)
+
+    mean_neighbor_distance = neighbor_distances.mean(axis=1)
+    isolation = robust_normalize(mean_neighbor_distance)
+
+    anisotropy = np.zeros((centers.shape[0],), dtype=np.float32)
+    branchiness = np.zeros((centers.shape[0],), dtype=np.float32)
+    for row, neighbors in enumerate(neighbor_indices):
+        vectors = centers[neighbors] - centers[row].reshape(1, 3)
+        if vectors.shape[0] < 3:
+            continue
+        covariance = np.cov(vectors.T)
+        eigenvalues = np.linalg.eigvalsh(covariance).astype(np.float32, copy=False)
+        total = float(np.maximum(eigenvalues.sum(), 1.0e-6))
+        eigenvalues = np.sort(np.maximum(eigenvalues, 0.0))[::-1]
+        anisotropy[row] = float(eigenvalues[0] / total)
+        branchiness[row] = float((eigenvalues[1] + eigenvalues[2]) / total)
+
+    score_term = robust_normalize(scores.astype(np.float32, copy=False))
+    line_term = robust_normalize(anisotropy)
+    branch_term = robust_normalize(branchiness)
+    # Confidence keeps false positives down; geometry promotes tips, sparse paths, and junction-like neighborhoods.
+    structural = 0.50 * score_term + 0.25 * isolation + 0.15 * line_term + 0.10 * branch_term
+    return structural.astype(np.float32, copy=False)
+
+
+def robust_normalize(values: np.ndarray) -> np.ndarray:
+    values = values.astype(np.float32, copy=False)
+    if values.size == 0:
+        return values.copy()
+    lo = float(np.quantile(values, 0.05))
+    hi = float(np.quantile(values, 0.95))
+    if not np.isfinite(lo) or not np.isfinite(hi) or hi <= lo:
+        return np.zeros_like(values, dtype=np.float32)
+    normalized = (values - lo) / (hi - lo)
+    return np.clip(normalized, 0.0, 1.0).astype(np.float32, copy=False)
 
 
 def coverage_truncate(
@@ -661,6 +866,31 @@ def coverage_truncate(
     return candidate_indices[np.array(selected, dtype=np.int64)]
 
 
+def nms_proposals(
+    centers: np.ndarray,
+    radii: np.ndarray,
+    scores: np.ndarray,
+    nms_mode: str,
+    nms_distance: float,
+    iou_threshold: float,
+    original_indices: np.ndarray,
+) -> np.ndarray:
+    if nms_mode == "sphere":
+        return sphere_iou_nms(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            iou_threshold=float(iou_threshold),
+            original_indices=original_indices,
+        )
+    return euclidean_nms(
+        centers=centers,
+        scores=scores,
+        min_distance=float(nms_distance),
+        original_indices=original_indices,
+    )
+
+
 def euclidean_nms(centers: np.ndarray, scores: np.ndarray, min_distance: float, original_indices: np.ndarray) -> np.ndarray:
     order = np.argsort(-scores)
     kept: list[int] = []
@@ -674,6 +904,67 @@ def euclidean_nms(centers: np.ndarray, scores: np.ndarray, min_distance: float, 
         kept.append(int(original_indices[int(candidate)]))
         kept_centers.append(candidate_center)
     return np.array(kept, dtype=np.int64)
+
+
+def sphere_iou_nms(
+    centers: np.ndarray,
+    radii: np.ndarray,
+    scores: np.ndarray,
+    iou_threshold: float,
+    original_indices: np.ndarray,
+) -> np.ndarray:
+    order = np.argsort(-scores)
+    kept: list[int] = []
+    kept_centers: list[np.ndarray] = []
+    kept_radii: list[float] = []
+    for candidate in order.tolist():
+        candidate_index = int(candidate)
+        candidate_center = centers[candidate_index]
+        candidate_radius = max(float(radii[candidate_index]), 0.0)
+        if kept_centers:
+            ious = sphere_iou_many_np(
+                center_a=candidate_center,
+                radius_a=candidate_radius,
+                centers_b=np.stack(kept_centers).astype(np.float32, copy=False),
+                radii_b=np.asarray(kept_radii, dtype=np.float32),
+            )
+            if np.any(ious > float(iou_threshold)):
+                continue
+        kept.append(int(original_indices[candidate_index]))
+        kept_centers.append(candidate_center)
+        kept_radii.append(candidate_radius)
+    return np.array(kept, dtype=np.int64)
+
+
+def sphere_iou_many_np(center_a: np.ndarray, radius_a: float, centers_b: np.ndarray, radii_b: np.ndarray) -> np.ndarray:
+    radius_a = max(float(radius_a), 0.0)
+    radii_b = np.maximum(radii_b.astype(np.float32, copy=False), 0.0)
+    distances = np.linalg.norm(centers_b - center_a.reshape(1, 3), axis=1).astype(np.float32, copy=False)
+    volume_a = 4.0 * np.pi * radius_a**3 / 3.0
+    volumes_b = 4.0 * np.pi * radii_b**3 / 3.0
+    valid = (radius_a > 0.0) & (radii_b > 0.0)
+
+    intersections = np.zeros_like(distances, dtype=np.float32)
+    contained = valid & (distances <= np.abs(radius_a - radii_b))
+    separated = valid & (distances >= radius_a + radii_b)
+    partial = valid & ~contained & ~separated
+    intersections[contained] = np.minimum(volume_a, volumes_b[contained])
+    if np.any(partial):
+        partial_distances = np.maximum(distances[partial], 1.0e-6)
+        partial_radii = radii_b[partial]
+        term = radius_a + partial_radii - partial_distances
+        intersections[partial] = (
+            np.pi
+            * term**2
+            * (
+                partial_distances**2
+                + 2.0 * partial_distances * (radius_a + partial_radii)
+                - 3.0 * (radius_a - partial_radii) ** 2
+            )
+            / (12.0 * partial_distances)
+        )
+    unions = volume_a + volumes_b - intersections
+    return np.where(unions > 0.0, intersections / unions, np.zeros_like(unions))
 
 
 def edge_values(matrix: np.ndarray, edges: np.ndarray) -> np.ndarray:

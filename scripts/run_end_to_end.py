@@ -41,11 +41,13 @@ def main() -> int:
     parser.add_argument("--initializer", default="geodesic", choices=["geodesic", "image_supported"], help="Connectivity graph initializer.")
     parser.add_argument("--graph-min-proposal-score", type=float, default=0.0, help="Drop proposal nodes below this objectness score before graph initialization.")
     parser.add_argument("--graph-nms-distance", type=float, default=12.0, help="Euclidean proposal-node NMS spacing before graph initialization.")
+    parser.add_argument("--graph-nms-mode", default="distance", choices=["distance", "sphere"], help="Proposal-node NMS mode before graph initialization.")
+    parser.add_argument("--graph-iou-threshold", type=float, default=0.1, help="Sphere IoU threshold for --graph-nms-mode sphere.")
     parser.add_argument("--graph-max-nodes", type=int, default=256, help="Maximum proposal nodes retained for graph initialization. 0 disables.")
     parser.add_argument(
         "--graph-selection-mode",
         default="score_nms",
-        choices=["score_nms", "coverage_nms", "hybrid_nms"],
+        choices=["score_nms", "coverage_nms", "hybrid_nms", "structural_nms", "connected_coverage_nms"],
         help="How graph proposal nodes are selected when --graph-max-nodes is reached.",
     )
     parser.add_argument("--proposal-threshold-fraction", type=float, default=0.2, help="Normalized foreground threshold used by proposal aggregation.")
@@ -82,6 +84,8 @@ def main() -> int:
                 initializer=args.initializer,
                 graph_min_proposal_score=args.graph_min_proposal_score,
                 graph_nms_distance=args.graph_nms_distance,
+                graph_nms_mode=args.graph_nms_mode,
+                graph_iou_threshold=args.graph_iou_threshold,
                 graph_max_nodes=args.graph_max_nodes,
                 graph_selection_mode=args.graph_selection_mode,
                 proposal_threshold_fraction=args.proposal_threshold_fraction,
@@ -143,6 +147,8 @@ def run_sample(
     initializer: str,
     graph_min_proposal_score: float,
     graph_nms_distance: float,
+    graph_nms_mode: str,
+    graph_iou_threshold: float,
     graph_max_nodes: int,
     graph_selection_mode: str,
     proposal_threshold_fraction: float,
@@ -160,7 +166,7 @@ def run_sample(
     sample_dir = output_root / sample_tag
     sample_dir.mkdir(parents=True, exist_ok=True)
     proposal_path = sample_dir / f"{sample_tag}_proposals.npz"
-    existing_proposal = existing_proposal_dir / f"{sample_tag}_proposals.npz" if existing_proposal_dir else None
+    existing_proposal = find_existing_proposal(existing_proposal_dir, sample_tag)
     if existing_proposal is not None and existing_proposal.exists() and not force_proposals:
         print(f"reuse external proposal: {existing_proposal}")
         proposal_path = existing_proposal
@@ -238,6 +244,10 @@ def run_sample(
                     "mst",
                     "--nms-distance",
                     str(graph_nms_distance),
+                    "--nms-mode",
+                    graph_nms_mode,
+                    "--iou-threshold",
+                    str(graph_iou_threshold),
                     "--max-nodes",
                     str(graph_max_nodes),
                     "--selection-mode",
@@ -356,6 +366,19 @@ def run_sample(
 def run_command(command: list[str]) -> None:
     print(" ".join(command))
     subprocess.run(command, cwd=REPO_ROOT, check=True)
+
+
+def find_existing_proposal(existing_proposal_dir: Path | None, sample_tag: str) -> Path | None:
+    if existing_proposal_dir is None:
+        return None
+    candidates = [
+        existing_proposal_dir / f"{sample_tag}_proposals.npz",
+        existing_proposal_dir / sample_tag / f"{sample_tag}_proposals.npz",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
 
 
 def sample_failure(sample_index: int, exc: Exception) -> dict:

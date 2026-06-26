@@ -1,5 +1,13 @@
 import importlib.util
+from pathlib import Path
+import sys
+import tempfile
 import unittest
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = REPO_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 
 class TrainProposalCliTests(unittest.TestCase):
@@ -14,9 +22,26 @@ class TrainProposalCliTests(unittest.TestCase):
         self.assertIsNone(args.target_radius_floor)
         self.assertEqual(args.objectness_radius_floor, 3.0)
         self.assertEqual(args.radius_target_floor, 1.0)
+        self.assertEqual(args.radius_target_mode, "physical")
+        self.assertEqual(args.selection_radius_floor, 8.0)
+        self.assertEqual(args.selection_radius_ceiling, 0.0)
         self.assertEqual(args.endpoint_loss_weight, 1.0)
         self.assertEqual(args.branch_loss_weight, 1.0)
         self.assertEqual(args.proposal_coordinate_mode, "raw")
+
+
+class RunEndToEndCliTests(unittest.TestCase):
+    def test_find_existing_proposal_accepts_nested_sample_outputs(self) -> None:
+        from scripts.run_end_to_end import find_existing_proposal
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            sample_dir = root / "sample_0121"
+            sample_dir.mkdir()
+            expected = sample_dir / "sample_0121_proposals.npz"
+            expected.write_bytes(b"placeholder")
+
+            self.assertEqual(find_existing_proposal(root, "sample_0121"), expected)
 
 
 @unittest.skipIf(importlib.util.find_spec("torch") is None, "PyTorch is not installed")
@@ -379,6 +404,89 @@ class DGCNNEncoderTests(unittest.TestCase):
         self.assertEqual(targets.positive_mask.tolist(), [[True, False]])
         self.assertEqual(targets.matched_radius.tolist(), [[[1.0], [1.0]]])
 
+    def test_selection_radius_target_uses_input_distance_and_floor(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal_loss import build_skeleton_proposal_targets
+
+        points = torch.tensor([[[2.0, 0.0, 0.0, 10.0], [12.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 1.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+
+        targets = build_skeleton_proposal_targets(
+            points,
+            skeleton_nodes,
+            skeleton_mask,
+            positive_distance=20.0,
+            objectness_radius_floor=3.0,
+            radius_target_floor=1.0,
+            radius_target_mode="selection",
+            selection_radius_floor=8.0,
+        )
+
+        self.assertEqual(targets.matched_radius.tolist(), [[[8.0], [12.0]]])
+
+    def test_selection_radius_target_can_be_capped(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal_loss import build_skeleton_proposal_targets
+
+        points = torch.tensor([[[40.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 1.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+
+        targets = build_skeleton_proposal_targets(
+            points,
+            skeleton_nodes,
+            skeleton_mask,
+            positive_distance=50.0,
+            radius_target_floor=1.0,
+            radius_target_mode="selection",
+            selection_radius_floor=8.0,
+            selection_radius_ceiling=24.0,
+        )
+
+        self.assertEqual(targets.matched_radius.tolist(), [[[24.0]]])
+
+    def test_paper_loss_can_train_radius_as_selection_support(self) -> None:
+        import torch
+
+        from pointneuron.models.proposal import SkeletonProposalOutput
+        from pointneuron.models.proposal_loss import paper_skeleton_proposal_loss
+
+        points = torch.tensor([[[2.0, 0.0, 0.0, 10.0]]])
+        skeleton_nodes = torch.tensor([[[1.0, 0.0, 0.0, 0.0, 1.0, -1.0]]])
+        skeleton_mask = torch.tensor([[True]])
+        output = SkeletonProposalOutput(
+            offsets=torch.tensor([[[-2.0, 0.0, 0.0]]]),
+            objectness_logits=torch.zeros(1, 1, 2),
+            radius=torch.tensor([[[8.0]]]),
+            center_proposals=torch.tensor([[[0.0, 0.0, 0.0]]]),
+            raw=torch.zeros(1, 1, 6),
+        )
+
+        physical_loss = paper_skeleton_proposal_loss(
+            output,
+            skeleton_nodes,
+            skeleton_mask,
+            points,
+            objectness_radius_floor=3.0,
+            radius_target_floor=1.0,
+        )
+        selection_loss = paper_skeleton_proposal_loss(
+            output,
+            skeleton_nodes,
+            skeleton_mask,
+            points,
+            objectness_radius_floor=3.0,
+            radius_target_floor=1.0,
+            radius_target_mode="selection",
+            selection_radius_floor=8.0,
+        )
+
+        self.assertGreater(float(physical_loss.radius), 0.0)
+        self.assertLess(float(selection_loss.radius), 1e-8)
+
     def test_paper_skeleton_proposal_loss_defaults_match_paper_weights(self) -> None:
         import torch
 
@@ -429,6 +537,21 @@ class DGCNNEncoderTests(unittest.TestCase):
 
         self.assertGreater(overlap, 0.0)
         self.assertEqual(separate, 0.0)
+
+    def test_graph_sphere_nms_uses_predicted_radii(self) -> None:
+        import numpy as np
+
+        from scripts.initialize_geodesic_graph import sphere_iou_nms
+
+        centers = np.array([[0.0, 0.0, 0.0], [4.0, 0.0, 0.0], [8.0, 0.0, 0.0]], dtype=np.float32)
+        scores = np.array([0.9, 0.8, 0.7], dtype=np.float32)
+        original_indices = np.arange(3, dtype=np.int64)
+
+        tiny_radii = np.array([1.0, 1.0, 1.0], dtype=np.float32)
+        large_radii = np.array([8.0, 8.0, 8.0], dtype=np.float32)
+
+        self.assertEqual(sphere_iou_nms(centers, tiny_radii, scores, 0.1, original_indices).tolist(), [0, 1, 2])
+        self.assertEqual(sphere_iou_nms(centers, large_radii, scores, 0.1, original_indices).tolist(), [0])
 
     def test_knn_excludes_self_for_distinct_points(self) -> None:
         import torch

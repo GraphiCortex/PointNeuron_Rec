@@ -28,6 +28,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--target-radius-floor", type=float, help="Legacy override: minimum SWC radius used for both objectness and radius targets.")
     parser.add_argument("--objectness-radius-floor", type=float, default=3.0, help="Minimum SWC radius used only for objectness labels.")
     parser.add_argument("--radius-target-floor", type=float, default=1.0, help="Minimum SWC radius used only for radius regression targets.")
+    parser.add_argument(
+        "--radius-target-mode",
+        default="physical",
+        choices=["physical", "input_distance", "selection"],
+        help="Radius regression target: SWC physical radius, input-to-center distance, or NMS selection support radius.",
+    )
+    parser.add_argument("--selection-radius-floor", type=float, default=8.0, help="Minimum radius target in voxels when --radius-target-mode selection.")
+    parser.add_argument("--selection-radius-ceiling", type=float, default=0.0, help="Optional max radius target in voxels for non-physical radius modes. 0 disables.")
     parser.add_argument("--positive-class-weight", type=float, default=8.0, help="Class weight for positive objectness.")
     parser.add_argument(
         "--proposal-coordinate-mode",
@@ -146,6 +154,9 @@ def main() -> int:
     radius_target_floor = args.target_radius_floor if args.target_radius_floor is not None else args.radius_target_floor
     print(f"objectness_radius_floor: {objectness_radius_floor}")
     print(f"radius_target_floor: {radius_target_floor}")
+    print(f"radius_target_mode: {args.radius_target_mode}")
+    print(f"selection_radius_floor: {args.selection_radius_floor}")
+    print(f"selection_radius_ceiling: {args.selection_radius_ceiling}")
     print(f"endpoint_loss_weight: {args.endpoint_loss_weight}")
     print(f"branch_loss_weight: {args.branch_loss_weight}")
     if args.loss_mode == "conservative":
@@ -198,6 +209,9 @@ def main() -> int:
                         radius_scale=args.radius_scale,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        radius_target_mode=args.radius_target_mode,
+                        selection_radius_floor=args.selection_radius_floor,
+                        selection_radius_ceiling=args.selection_radius_ceiling,
                     )
 
             optimizer.zero_grad(set_to_none=True)
@@ -216,6 +230,9 @@ def main() -> int:
                         positive_class_weight=args.positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        radius_target_mode=args.radius_target_mode,
+                        selection_radius_floor=args.selection_radius_floor,
+                        selection_radius_ceiling=args.selection_radius_ceiling,
                         endpoint_weight=args.endpoint_loss_weight,
                         branch_weight=args.branch_loss_weight,
                     )
@@ -240,6 +257,9 @@ def main() -> int:
                         positive_class_weight=args.positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        radius_target_mode=args.radius_target_mode,
+                        selection_radius_floor=args.selection_radius_floor,
+                        selection_radius_ceiling=args.selection_radius_ceiling,
                     )
                     offset_value = float(loss.center.item())
                     extra_metrics = {
@@ -280,6 +300,9 @@ def main() -> int:
                 radius_scale=args.radius_scale,
                 objectness_radius_floor=objectness_radius_floor,
                 radius_target_floor=radius_target_floor,
+                radius_target_mode=args.radius_target_mode,
+                selection_radius_floor=args.selection_radius_floor,
+                selection_radius_ceiling=args.selection_radius_ceiling,
                 positive_class_weight=args.positive_class_weight,
                 loss_mode=args.loss_mode,
                 offset_weight=args.offset_weight,
@@ -445,6 +468,9 @@ def evaluate(
     radius_scale: float,
     objectness_radius_floor: float,
     radius_target_floor: float,
+    radius_target_mode: str,
+    selection_radius_floor: float,
+    selection_radius_ceiling: float,
     positive_class_weight: float,
     loss_mode: str,
     offset_weight: float,
@@ -485,6 +511,9 @@ def evaluate(
                     radius_scale=radius_scale,
                     objectness_radius_floor=objectness_radius_floor,
                     radius_target_floor=radius_target_floor,
+                    radius_target_mode=radius_target_mode,
+                    selection_radius_floor=selection_radius_floor,
+                    selection_radius_ceiling=selection_radius_ceiling,
                 )
             with torch.amp.autocast(device_type="cuda", enabled=use_amp):
                 features = encoder(points)
@@ -501,6 +530,9 @@ def evaluate(
                         positive_class_weight=positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        radius_target_mode=radius_target_mode,
+                        selection_radius_floor=selection_radius_floor,
+                        selection_radius_ceiling=selection_radius_ceiling,
                         endpoint_weight=endpoint_loss_weight,
                         branch_weight=branch_loss_weight,
                     )
@@ -525,6 +557,9 @@ def evaluate(
                         positive_class_weight=positive_class_weight,
                         objectness_radius_floor=objectness_radius_floor,
                         radius_target_floor=radius_target_floor,
+                        radius_target_mode=radius_target_mode,
+                        selection_radius_floor=selection_radius_floor,
+                        selection_radius_ceiling=selection_radius_ceiling,
                     )
                     offset_value = float(loss.center.item())
                     extra_metrics = {
