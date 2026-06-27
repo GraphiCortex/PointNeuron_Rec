@@ -8,7 +8,11 @@ import statistics
 import sys
 
 import numpy as np
-from scipy.spatial import cKDTree
+
+try:
+    from scipy.spatial import cKDTree
+except ModuleNotFoundError:
+    cKDTree = None
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
@@ -46,16 +50,17 @@ def main() -> int:
     args = parser.parse_args()
 
     samples = scan_gold166(args.root)
-    topology_by_sample = load_topology_reports([Path(path) for path in args.summary])
+    summary_paths = [Path(path) for path in args.summary]
+    topology_by_graph = load_topology_reports(summary_paths)
     rows = []
-    for summary_path in [Path(path) for path in args.summary]:
+    for summary_path in summary_paths:
         summary = json.loads(summary_path.read_text(encoding="utf-8"))
         for row in summary.get("samples", []):
             rows.append(
                 audit_sample(
                     summary_row=row,
                     samples=samples,
-                    topology_by_sample=topology_by_sample,
+                    topology_by_graph=topology_by_graph,
                     proposal_score_threshold=args.proposal_score_threshold,
                     hit_distance=float(args.hit_distance),
                     segment_step=float(args.segment_step),
@@ -89,7 +94,7 @@ def main() -> int:
 def audit_sample(
     summary_row: dict,
     samples: list,
-    topology_by_sample: dict[int, dict],
+    topology_by_graph: dict[str, dict],
     proposal_score_threshold: float | None,
     hit_distance: float,
     segment_step: float,
@@ -122,8 +127,11 @@ def audit_sample(
     selected_branch = coverage_metrics(selected_centers, swc_info["branches"], hit_distance)
     proposal_segment = coverage_metrics(proposal_centers, swc_info["segments"], hit_distance)
     selected_segment = coverage_metrics(selected_centers, swc_info["segments"], hit_distance)
+    proposal_skeleton = candidate_to_target_metrics(proposal_centers, swc_info["segments"], hit_distance)
+    selected_skeleton = candidate_to_target_metrics(selected_centers, swc_info["segments"], hit_distance)
+    selected_spacing = nearest_neighbor_metrics(selected_centers)
 
-    topology = topology_by_sample.get(sample_index, {})
+    topology = topology_by_graph.get(path_key(graph_path), {})
     edge_f1 = float(topology.get("edge_f1", float("nan")))
     bottleneck = classify_bottleneck(
         proposal_segment_coverage=proposal_segment["coverage"],
@@ -147,6 +155,7 @@ def audit_sample(
         "gt_endpoints": int(swc_info["endpoints"].shape[0]),
         "gt_branchpoints": int(swc_info["branches"].shape[0]),
         "gt_segment_samples": int(swc_info["segments"].shape[0]),
+        "gt_length": float(swc_info["length"]),
         "proposal_node_coverage": proposal_node["coverage"],
         "selected_node_coverage": selected_node["coverage"],
         "node_coverage_drop": proposal_node["coverage"] - selected_node["coverage"],
@@ -162,6 +171,18 @@ def audit_sample(
         "selected_segment_mean_distance": selected_segment["mean_distance"],
         "selected_segment_p90_distance": selected_segment["p90_distance"],
         "selected_segment_max_distance": selected_segment["max_distance"],
+        "proposal_skeleton_precision": proposal_skeleton["hit_fraction"],
+        "selected_skeleton_precision": selected_skeleton["hit_fraction"],
+        "skeleton_precision_drop": proposal_skeleton["hit_fraction"] - selected_skeleton["hit_fraction"],
+        "selected_skeleton_mean_distance": selected_skeleton["mean_distance"],
+        "selected_skeleton_p90_distance": selected_skeleton["p90_distance"],
+        "selected_spacing_p10": selected_spacing["p10_distance"],
+        "selected_spacing_median": selected_spacing["median_distance"],
+        "selected_spacing_mean": selected_spacing["mean_distance"],
+        "selected_redundant_fraction": selected_spacing["redundant_fraction"],
+        "selected_nodes_per_100_voxels": (
+            float(selected_centers.shape[0]) / max(float(swc_info["length"]), 1.0e-6) * 100.0
+        ),
         "edge_f1": edge_f1,
         "bridge_edges": int(topology.get("bridge_edges", summary_row.get("bridge_edges", -1))),
         "reachable_edge_fraction": float(topology.get("reachable_edge_fraction", summary_row.get("reachable_edge_fraction", float("nan")))),
@@ -186,12 +207,14 @@ def swc_geometry(swc: SwcTree, segment_step: float) -> dict[str, np.ndarray]:
         dtype=np.float32,
     ).reshape(-1, 3)
     segment_points: list[np.ndarray] = []
+    total_length = 0.0
     for node in swc.nodes:
         if node.parent_id == -1 or node.parent_id not in nodes_by_id:
             continue
         parent = nodes_by_id[node.parent_id]
         start = np.array([node.x, node.y, node.z], dtype=np.float32)
         end = np.array([parent.x, parent.y, parent.z], dtype=np.float32)
+        total_length += float(np.linalg.norm(end - start))
         segment_points.append(sample_segment(start, end, step=segment_step))
     segment_coords = np.concatenate(segment_points, axis=0) if segment_points else node_coords
     return {
@@ -199,6 +222,7 @@ def swc_geometry(swc: SwcTree, segment_step: float) -> dict[str, np.ndarray]:
         "endpoints": endpoint_coords,
         "branches": branch_coords,
         "segments": segment_coords.astype(np.float32, copy=False),
+        "length": float(total_length),
     }
 
 
@@ -219,14 +243,86 @@ def coverage_metrics(candidate_points: np.ndarray, target_points: np.ndarray, hi
             "p90_distance": float("inf"),
             "max_distance": float("inf"),
         }
-    tree = cKDTree(candidate_points)
-    distances, _ = tree.query(target_points, k=1)
+    distances = nearest_distances(target_points, candidate_points)
     return {
         "coverage": float(np.mean(distances <= hit_distance)),
         "mean_distance": float(np.mean(distances)),
         "p90_distance": float(np.quantile(distances, 0.90)),
         "max_distance": float(np.max(distances)),
     }
+
+
+def candidate_to_target_metrics(candidate_points: np.ndarray, target_points: np.ndarray, hit_distance: float) -> dict[str, float]:
+    if candidate_points.size == 0:
+        return {
+            "hit_fraction": 0.0,
+            "mean_distance": float("inf"),
+            "p90_distance": float("inf"),
+            "max_distance": float("inf"),
+        }
+    if target_points.size == 0:
+        return {"hit_fraction": 1.0, "mean_distance": 0.0, "p90_distance": 0.0, "max_distance": 0.0}
+    distances = nearest_distances(candidate_points, target_points)
+    return {
+        "hit_fraction": float(np.mean(distances <= hit_distance)),
+        "mean_distance": float(np.mean(distances)),
+        "p90_distance": float(np.quantile(distances, 0.90)),
+        "max_distance": float(np.max(distances)),
+    }
+
+
+def nearest_neighbor_metrics(points: np.ndarray) -> dict[str, float]:
+    if points.shape[0] <= 1:
+        return {
+            "p10_distance": float("inf"),
+            "median_distance": float("inf"),
+            "mean_distance": float("inf"),
+            "redundant_fraction": 0.0,
+        }
+    nearest = point_nearest_neighbor_distances(points)
+    return {
+        "p10_distance": float(np.quantile(nearest, 0.10)),
+        "median_distance": float(np.median(nearest)),
+        "mean_distance": float(np.mean(nearest)),
+        "redundant_fraction": float(np.mean(nearest <= 4.0)),
+    }
+
+
+def nearest_distances(query_points: np.ndarray, target_points: np.ndarray) -> np.ndarray:
+    query_points = query_points.astype(np.float32, copy=False)
+    target_points = target_points.astype(np.float32, copy=False)
+    if cKDTree is not None:
+        tree = cKDTree(target_points)
+        distances, _ = tree.query(query_points, k=1)
+        return np.asarray(distances, dtype=np.float32)
+    return brute_force_nearest_distances(query_points, target_points)
+
+
+def point_nearest_neighbor_distances(points: np.ndarray) -> np.ndarray:
+    points = points.astype(np.float32, copy=False)
+    if cKDTree is not None:
+        tree = cKDTree(points)
+        distances, _ = tree.query(points, k=2)
+        return np.asarray(distances[:, 1], dtype=np.float32)
+    distance2 = squared_distances(points, points)
+    np.fill_diagonal(distance2, np.inf)
+    return np.sqrt(np.min(distance2, axis=1)).astype(np.float32, copy=False)
+
+
+def brute_force_nearest_distances(query_points: np.ndarray, target_points: np.ndarray, chunk_size: int = 1024) -> np.ndarray:
+    distances = np.empty((query_points.shape[0],), dtype=np.float32)
+    for start in range(0, query_points.shape[0], int(chunk_size)):
+        end = min(start + int(chunk_size), query_points.shape[0])
+        distance2 = squared_distances(query_points[start:end], target_points)
+        distances[start:end] = np.sqrt(np.min(distance2, axis=1)).astype(np.float32, copy=False)
+    return distances
+
+
+def squared_distances(left: np.ndarray, right: np.ndarray) -> np.ndarray:
+    left_norm = np.sum(left * left, axis=1, dtype=np.float32).reshape(-1, 1)
+    right_norm = np.sum(right * right, axis=1, dtype=np.float32).reshape(1, -1)
+    distance2 = left_norm + right_norm - 2.0 * left @ right.T
+    return np.maximum(distance2, 0.0).astype(np.float32, copy=False)
 
 
 def classify_bottleneck(
@@ -253,16 +349,25 @@ def classify_bottleneck(
     return "ok"
 
 
-def load_topology_reports(summary_paths: list[Path]) -> dict[int, dict]:
-    by_sample: dict[int, dict] = {}
+def load_topology_reports(summary_paths: list[Path]) -> dict[str, dict]:
+    by_graph: dict[str, dict] = {}
     for summary_path in summary_paths:
         report_path = summary_path.with_name("topology_report.json")
         if not report_path.exists():
             continue
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        summary_by_sample = {int(row["sample_index"]): row for row in summary.get("samples", [])}
         report = json.loads(report_path.read_text(encoding="utf-8"))
         for row in report.get("samples", []):
-            by_sample[int(row["sample_index"])] = row
-    return by_sample
+            summary_row = summary_by_sample.get(int(row["sample_index"]))
+            if summary_row is None:
+                continue
+            by_graph[path_key(Path(summary_row["graph_path"]))] = row
+    return by_graph
+
+
+def path_key(path: Path) -> str:
+    return str(path).replace("\\", "/").lower()
 
 
 def summarize(rows: list[dict]) -> dict:
@@ -279,6 +384,12 @@ def summarize(rows: list[dict]) -> dict:
         "mean_selected_endpoint_coverage": mean(rows, "selected_endpoint_coverage"),
         "mean_proposal_branch_coverage": mean(rows, "proposal_branch_coverage"),
         "mean_selected_branch_coverage": mean(rows, "selected_branch_coverage"),
+        "mean_proposal_skeleton_precision": mean(rows, "proposal_skeleton_precision"),
+        "mean_selected_skeleton_precision": mean(rows, "selected_skeleton_precision"),
+        "mean_skeleton_precision_drop": mean(rows, "skeleton_precision_drop"),
+        "mean_selected_spacing_median": mean(rows, "selected_spacing_median"),
+        "mean_selected_redundant_fraction": mean(rows, "selected_redundant_fraction"),
+        "mean_selected_nodes_per_100_voxels": mean(rows, "selected_nodes_per_100_voxels"),
         "bottlenecks": bottlenecks,
     }
 
