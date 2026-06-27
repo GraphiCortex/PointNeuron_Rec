@@ -47,7 +47,14 @@ def main() -> int:
     parser.add_argument(
         "--graph-selection-mode",
         default="score_nms",
-        choices=["score_nms", "coverage_nms", "hybrid_nms", "structural_nms", "connected_coverage_nms"],
+        choices=[
+            "score_nms",
+            "coverage_nms",
+            "hybrid_nms",
+            "structural_nms",
+            "connected_coverage_nms",
+            "adaptive_connected_coverage_nms",
+        ],
         help="How graph proposal nodes are selected when --graph-max-nodes is reached.",
     )
     parser.add_argument("--proposal-threshold-fraction", type=float, default=0.2, help="Normalized foreground threshold used by proposal aggregation.")

@@ -20,10 +20,12 @@ from pointneuron.data.vaa3d_raw import read_volume
 from pointneuron.graph.initialization import (
     euclidean_distance_matrix,
     initialize_weighted_geometric_graph,
+    minimum_spanning_tree,
 )
 
 HYBRID_COVERAGE_FILL_FLOOR = 40
 CONNECTED_COVERAGE_POOL_LIMIT = 512
+ADAPTIVE_CONNECTED_BRIDGE_TRIGGER = 6
 
 
 def main() -> int:
@@ -42,7 +44,14 @@ def main() -> int:
     parser.add_argument(
         "--selection-mode",
         default="score_nms",
-        choices=["score_nms", "coverage_nms", "hybrid_nms", "structural_nms", "connected_coverage_nms"],
+        choices=[
+            "score_nms",
+            "coverage_nms",
+            "hybrid_nms",
+            "structural_nms",
+            "connected_coverage_nms",
+            "adaptive_connected_coverage_nms",
+        ],
         help="How to truncate NMS survivors when --max-nodes is reached.",
     )
     parser.add_argument("--foreground-threshold", type=int, help="Voxel threshold. Defaults to proposal metadata threshold.")
@@ -132,6 +141,7 @@ def main() -> int:
     proposal_geodesic = distances[:, snapped_local].astype(np.float32, copy=False)
     reachable = np.isfinite(proposal_geodesic)
     euclidean = euclidean_distance_matrix(centers)
+    adaptive_selection_metadata: dict[str, int | float] = {}
     if args.selection_mode == "connected_coverage_nms" and args.max_nodes > 0 and centers.shape[0] > args.max_nodes:
         local_keep = connected_coverage_selection(
             centers=centers,
@@ -141,6 +151,30 @@ def main() -> int:
             max_nodes=int(args.max_nodes),
             max_geodesic_ratio=float(args.max_geodesic_ratio),
         )
+        adaptive_selection_metadata = {"selection_pool_nodes": int(centers.shape[0]), "selection_budget": int(args.max_nodes)}
+    elif args.selection_mode == "adaptive_connected_coverage_nms" and args.max_nodes > 0 and centers.shape[0] > 0:
+        local_keep, adaptive_selection_metadata = adaptive_connected_coverage_selection(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            geodesic=proposal_geodesic,
+            euclidean=euclidean,
+            nms_distance=float(args.nms_distance),
+            nms_mode=args.nms_mode,
+            iou_threshold=float(args.iou_threshold),
+            max_nodes=int(args.max_nodes),
+            max_geodesic_ratio=float(args.max_geodesic_ratio),
+            disconnected_multiplier=float(args.disconnected_multiplier),
+            candidate_k=int(args.candidate_k),
+            max_euclidean_distance=float(args.max_euclidean_distance),
+            allow_unreachable_fallback=bool(args.allow_unreachable_fallback),
+            bridge_max_geodesic_ratio=float(args.bridge_max_geodesic_ratio),
+            bridge_allow_unreachable_fallback=bool(args.bridge_allow_unreachable_fallback),
+        )
+    else:
+        local_keep = None
+
+    if local_keep is not None and local_keep.size < centers.shape[0]:
         centers = centers[local_keep]
         radii = radii[local_keep]
         scores = scores[local_keep]
@@ -216,6 +250,7 @@ def main() -> int:
         "iou_threshold": args.iou_threshold,
         "max_nodes": args.max_nodes,
         "selection_mode": args.selection_mode,
+        "adaptive_selection": adaptive_selection_metadata,
         "foreground_threshold": int(threshold),
         "requested_foreground_threshold": int(requested_threshold),
         "foreground_threshold_was_adapted": bool(threshold_was_adapted),
@@ -640,7 +675,7 @@ def filter_proposals(
             )
         else:
             candidate_indices = score_indices
-    elif selection_mode == "connected_coverage_nms":
+    elif selection_mode in {"connected_coverage_nms", "adaptive_connected_coverage_nms"}:
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
     elif nms_distance > 0.0 or nms_mode == "sphere":
@@ -657,7 +692,30 @@ def filter_proposals(
         order = np.argsort(-scores[candidate_indices])
         candidate_indices = candidate_indices[order]
 
-    if max_nodes > 0 and candidate_indices.size > max_nodes and selection_mode == "connected_coverage_nms":
+    if max_nodes > 0 and candidate_indices.size > max_nodes and selection_mode == "adaptive_connected_coverage_nms":
+        pool_limit = min(candidate_indices.size, max(int(max_nodes), min(CONNECTED_COVERAGE_POOL_LIMIT, int(max_nodes) * 4)))
+        if nms_distance > 0.0 or nms_mode == "sphere":
+            score_indices = nms_proposals(
+                centers=centers[candidate_indices],
+                radii=radii[candidate_indices],
+                scores=scores[candidate_indices],
+                nms_mode=nms_mode,
+                nms_distance=float(nms_distance),
+                iou_threshold=float(iou_threshold),
+                original_indices=candidate_indices,
+            )
+        else:
+            order = np.argsort(-scores[candidate_indices])
+            score_indices = candidate_indices[order]
+        anchor_seed_indices = score_indices[: int(max_nodes)] if score_indices.size > int(max_nodes) else score_indices
+        coverage_pool = coverage_truncate(
+            centers=centers,
+            scores=scores,
+            candidate_indices=candidate_indices,
+            max_nodes=pool_limit,
+        )
+        candidate_indices = np.unique(np.concatenate([coverage_pool, anchor_seed_indices])).astype(np.int64, copy=False)
+    elif max_nodes > 0 and candidate_indices.size > max_nodes and selection_mode == "connected_coverage_nms":
         pool_limit = min(candidate_indices.size, max(int(max_nodes), min(CONNECTED_COVERAGE_POOL_LIMIT, int(max_nodes) * 4)))
         candidate_indices = coverage_truncate(
             centers=centers,
@@ -679,6 +737,181 @@ def filter_proposals(
     return centers[candidate_indices], radii[candidate_indices], scores[candidate_indices], features[candidate_indices], candidate_indices
 
 
+def adaptive_connected_coverage_selection(
+    centers: np.ndarray,
+    radii: np.ndarray,
+    scores: np.ndarray,
+    geodesic: np.ndarray,
+    euclidean: np.ndarray,
+    nms_distance: float,
+    nms_mode: str,
+    iou_threshold: float,
+    max_nodes: int,
+    max_geodesic_ratio: float,
+    disconnected_multiplier: float,
+    candidate_k: int,
+    max_euclidean_distance: float,
+    allow_unreachable_fallback: bool,
+    bridge_max_geodesic_ratio: float,
+    bridge_allow_unreachable_fallback: bool,
+) -> tuple[np.ndarray, dict[str, int | float]]:
+    node_count = int(centers.shape[0])
+    if max_nodes <= 0:
+        keep = np.arange(node_count, dtype=np.int64)
+        return keep, {
+            "selection_pool_nodes": node_count,
+            "selection_anchor_nodes": node_count,
+            "selection_budget": node_count,
+            "estimated_path_length": estimate_path_length(geodesic, euclidean, max_geodesic_ratio),
+        }
+
+    if nms_distance > 0.0 or nms_mode == "sphere":
+        anchor_indices = nms_proposals(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            nms_mode=nms_mode,
+            nms_distance=float(nms_distance),
+            iou_threshold=float(iou_threshold),
+            original_indices=np.arange(node_count, dtype=np.int64),
+        )
+    else:
+        anchor_indices = np.argsort(-scores).astype(np.int64, copy=False)
+
+    if anchor_indices.size > int(max_nodes):
+        anchor_indices = anchor_indices[: int(max_nodes)]
+
+    anchor_metrics = selected_graph_pressure(
+        centers=centers[anchor_indices],
+        geodesic=geodesic[np.ix_(anchor_indices, anchor_indices)],
+        euclidean=euclidean[np.ix_(anchor_indices, anchor_indices)],
+        disconnected_multiplier=float(disconnected_multiplier),
+        candidate_k=int(candidate_k),
+        max_euclidean_distance=float(max_euclidean_distance),
+        max_geodesic_ratio=float(max_geodesic_ratio),
+        allow_unreachable_fallback=bool(allow_unreachable_fallback),
+        bridge_max_geodesic_ratio=float(bridge_max_geodesic_ratio),
+        bridge_allow_unreachable_fallback=bool(bridge_allow_unreachable_fallback),
+    )
+    if int(anchor_metrics["bridge_edges"]) < ADAPTIVE_CONNECTED_BRIDGE_TRIGGER:
+        keep = anchor_indices.astype(np.int64, copy=False)
+        return keep, {
+            "selection_policy": "score_anchors",
+            "selection_pool_nodes": node_count,
+            "selection_anchor_nodes": int(anchor_indices.size),
+            "selection_budget": int(anchor_indices.size),
+            **anchor_metrics,
+        }
+
+    dense_keep = connected_coverage_selection(
+        centers=centers,
+        scores=scores,
+        geodesic=geodesic,
+        euclidean=euclidean,
+        max_nodes=int(max_nodes),
+        max_geodesic_ratio=float(max_geodesic_ratio),
+    )
+    dense_metrics = selected_graph_pressure(
+        centers=centers[dense_keep],
+        geodesic=geodesic[np.ix_(dense_keep, dense_keep)],
+        euclidean=euclidean[np.ix_(dense_keep, dense_keep)],
+        disconnected_multiplier=float(disconnected_multiplier),
+        candidate_k=int(candidate_k),
+        max_euclidean_distance=float(max_euclidean_distance),
+        max_geodesic_ratio=float(max_geodesic_ratio),
+        allow_unreachable_fallback=bool(allow_unreachable_fallback),
+        bridge_max_geodesic_ratio=float(bridge_max_geodesic_ratio),
+        bridge_allow_unreachable_fallback=bool(bridge_allow_unreachable_fallback),
+    )
+    return dense_keep.astype(np.int64, copy=False), {
+        "selection_policy": "connected_coverage",
+        "selection_pool_nodes": node_count,
+        "selection_anchor_nodes": int(anchor_indices.size),
+        "selection_budget": int(dense_keep.size),
+        "anchor_bridge_edges": int(anchor_metrics["bridge_edges"]),
+        "anchor_reachable_edge_fraction": float(anchor_metrics["reachable_edge_fraction"]),
+        **{f"dense_{key}": value for key, value in dense_metrics.items()},
+    }
+
+
+def selected_graph_pressure(
+    centers: np.ndarray,
+    geodesic: np.ndarray,
+    euclidean: np.ndarray,
+    disconnected_multiplier: float,
+    candidate_k: int,
+    max_euclidean_distance: float,
+    max_geodesic_ratio: float,
+    allow_unreachable_fallback: bool,
+    bridge_max_geodesic_ratio: float,
+    bridge_allow_unreachable_fallback: bool,
+) -> dict[str, int | float]:
+    if centers.shape[0] <= 1:
+        return {"bridge_edges": 0, "reachable_edge_fraction": 1.0, "components": int(centers.shape[0])}
+    reachable = np.isfinite(geodesic)
+    weights = geodesic.astype(np.float32, copy=True)
+    weights[~reachable] = euclidean[~reachable] * float(disconnected_multiplier)
+    np.fill_diagonal(weights, np.inf)
+    base_weights = weights.copy()
+    candidate_mask = proposal_candidate_mask(
+        euclidean=euclidean,
+        weights=weights,
+        reachable=reachable,
+        candidate_k=int(candidate_k),
+        max_euclidean_distance=float(max_euclidean_distance),
+        max_geodesic_ratio=float(max_geodesic_ratio),
+        allow_unreachable_fallback=bool(allow_unreachable_fallback),
+    )
+    constrained_weights = np.where(candidate_mask, weights, np.inf)
+    result = initialize_weighted_geometric_graph(
+        centers=centers,
+        weights=constrained_weights,
+        mode="mst",
+    )
+    bridge_edges = component_bridge_edges(
+        node_count=centers.shape[0],
+        existing_edges=result.edges,
+        weights=base_weights,
+        euclidean=euclidean,
+        reachable=reachable,
+        max_geodesic_ratio=float(bridge_max_geodesic_ratio),
+        allow_unreachable_fallback=bool(bridge_allow_unreachable_fallback),
+    )
+    final_edges = merge_edges(result.edges, bridge_edges)
+    edge_reachable = edge_values(reachable.astype(np.float32), final_edges).astype(bool, copy=False)
+    reachable_fraction = float(np.count_nonzero(edge_reachable) / max(edge_reachable.size, 1))
+    return {
+        "bridge_edges": int(bridge_edges.shape[0]),
+        "reachable_edge_fraction": reachable_fraction,
+        "components": connected_component_count(centers.shape[0], final_edges),
+    }
+
+
+def estimate_path_length(geodesic: np.ndarray, euclidean: np.ndarray, max_geodesic_ratio: float) -> float:
+    if geodesic.shape[0] <= 1:
+        return 0.0
+
+    weights = geodesic.astype(np.float32, copy=True)
+    weights[~np.isfinite(weights)] = np.inf
+    if max_geodesic_ratio > 0.0:
+        ratio = weights / np.maximum(euclidean, 1.0e-3)
+        weights[ratio > float(max_geodesic_ratio)] = np.inf
+    np.fill_diagonal(weights, np.inf)
+
+    edges = minimum_spanning_tree(weights)
+    if not edges:
+        return euclidean_mst_length(euclidean)
+    length = float(sum(float(weights[left, right]) for left, right in edges if np.isfinite(weights[left, right])))
+    if length > 0.0 and np.isfinite(length):
+        return length
+    return euclidean_mst_length(euclidean)
+
+
+def euclidean_mst_length(euclidean: np.ndarray) -> float:
+    edges = minimum_spanning_tree(euclidean)
+    return float(sum(float(euclidean[left, right]) for left, right in edges if np.isfinite(euclidean[left, right])))
+
+
 def connected_coverage_selection(
     centers: np.ndarray,
     scores: np.ndarray,
@@ -690,12 +923,7 @@ def connected_coverage_selection(
     if centers.shape[0] <= max_nodes:
         return np.arange(centers.shape[0], dtype=np.int64)
 
-    connectivity = np.isfinite(geodesic)
-    np.fill_diagonal(connectivity, False)
-    if max_geodesic_ratio > 0.0:
-        ratio = geodesic / np.maximum(euclidean, 1.0e-3)
-        connectivity &= ratio <= float(max_geodesic_ratio)
-    connectivity |= connectivity.T
+    connectivity = geodesic_connectivity_mask(geodesic, euclidean, max_geodesic_ratio)
 
     components = connected_components_from_mask(connectivity)
     components.sort(key=lambda component: (-component.size, -float(scores[component].mean()) if component.size else 0.0))
@@ -740,6 +968,16 @@ def connected_coverage_selection(
         selected = [int(index) for index in filled.tolist()]
 
     return np.array(selected[: int(max_nodes)], dtype=np.int64)
+
+
+def geodesic_connectivity_mask(geodesic: np.ndarray, euclidean: np.ndarray, max_geodesic_ratio: float) -> np.ndarray:
+    connectivity = np.isfinite(geodesic)
+    np.fill_diagonal(connectivity, False)
+    if max_geodesic_ratio > 0.0:
+        ratio = geodesic / np.maximum(euclidean, 1.0e-3)
+        connectivity &= ratio <= float(max_geodesic_ratio)
+    connectivity |= connectivity.T
+    return connectivity
 
 
 def connected_components_from_mask(connectivity: np.ndarray) -> list[np.ndarray]:

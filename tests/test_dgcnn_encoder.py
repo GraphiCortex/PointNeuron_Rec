@@ -553,6 +553,80 @@ class DGCNNEncoderTests(unittest.TestCase):
         self.assertEqual(sphere_iou_nms(centers, tiny_radii, scores, 0.1, original_indices).tolist(), [0, 1, 2])
         self.assertEqual(sphere_iou_nms(centers, large_radii, scores, 0.1, original_indices).tolist(), [0])
 
+    def test_adaptive_connected_coverage_preserves_low_pressure_score_anchors(self) -> None:
+        import numpy as np
+
+        from scripts.initialize_geodesic_graph import adaptive_connected_coverage_selection
+
+        x = np.arange(128, dtype=np.float32) * 3.0
+        centers = np.stack([x, np.zeros_like(x), np.zeros_like(x)], axis=1)
+        radii = np.ones((centers.shape[0],), dtype=np.float32)
+        scores = np.linspace(1.0, 0.1, centers.shape[0], dtype=np.float32)
+        euclidean = np.abs(x[:, None] - x[None, :]).astype(np.float32)
+        geodesic = euclidean.copy()
+
+        keep, metadata = adaptive_connected_coverage_selection(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            geodesic=geodesic,
+            euclidean=euclidean,
+            nms_distance=18.0,
+            nms_mode="distance",
+            iou_threshold=0.1,
+            max_nodes=128,
+            max_geodesic_ratio=12.0,
+            disconnected_multiplier=100.0,
+            candidate_k=6,
+            max_euclidean_distance=0.0,
+            allow_unreachable_fallback=False,
+            bridge_max_geodesic_ratio=0.0,
+            bridge_allow_unreachable_fallback=True,
+        )
+
+        self.assertLess(len(keep), 128)
+        self.assertEqual(metadata["selection_policy"], "score_anchors")
+        self.assertEqual(metadata["bridge_edges"], 0)
+        self.assertEqual(metadata["selection_budget"], len(keep))
+
+    def test_adaptive_connected_coverage_switches_when_anchor_bridge_pressure_is_high(self) -> None:
+        import numpy as np
+
+        from scripts.initialize_geodesic_graph import adaptive_connected_coverage_selection
+
+        x = np.arange(200, dtype=np.float32) * 15.0
+        centers = np.stack([x, np.zeros_like(x), np.zeros_like(x)], axis=1)
+        radii = np.ones((centers.shape[0],), dtype=np.float32)
+        scores = np.linspace(1.0, 0.1, centers.shape[0], dtype=np.float32)
+        euclidean = np.abs(x[:, None] - x[None, :]).astype(np.float32)
+        geodesic = euclidean.copy()
+        block_ids = np.arange(centers.shape[0]) // 25
+        disconnected = block_ids[:, None] != block_ids[None, :]
+        geodesic[disconnected] = np.inf
+
+        keep, metadata = adaptive_connected_coverage_selection(
+            centers=centers,
+            radii=radii,
+            scores=scores,
+            geodesic=geodesic,
+            euclidean=euclidean,
+            nms_distance=18.0,
+            nms_mode="distance",
+            iou_threshold=0.1,
+            max_nodes=128,
+            max_geodesic_ratio=12.0,
+            disconnected_multiplier=100.0,
+            candidate_k=6,
+            max_euclidean_distance=0.0,
+            allow_unreachable_fallback=False,
+            bridge_max_geodesic_ratio=0.0,
+            bridge_allow_unreachable_fallback=True,
+        )
+
+        self.assertEqual(metadata["selection_policy"], "connected_coverage")
+        self.assertGreaterEqual(metadata["anchor_bridge_edges"], 1)
+        self.assertEqual(len(keep), 128)
+
     def test_knn_excludes_self_for_distinct_points(self) -> None:
         import torch
 
