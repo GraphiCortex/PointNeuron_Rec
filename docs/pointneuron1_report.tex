@@ -1,29 +1,117 @@
 \documentclass[11pt]{article}
 
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=15pt]{geometry}
+\usepackage{microtype}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{enumitem}
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \usepackage{listings}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{hyperref}
 
-\lstset{
+\definecolor{PNBlue}{HTML}{17324D}
+\definecolor{PNTeal}{HTML}{0F766E}
+\definecolor{PNInk}{HTML}{1F2937}
+\definecolor{PNMuted}{HTML}{58657A}
+\definecolor{PNPaper}{HTML}{F5F7FA}
+\definecolor{PNLine}{HTML}{D7DEE8}
+\definecolor{PNCode}{HTML}{F7F9FB}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=PNBlue,
+  citecolor=PNTeal,
+  urlcolor=PNTeal,
+  pdftitle={PointNeuron1.0 Reimplementation and Evaluation on Gold166},
+  pdfauthor={PointNeuron Project}
+}
+
+\titleformat{\section}
+  {\Large\bfseries\color{PNBlue}}
+  {\thesection}{0.75em}{}
+  [\vspace{0.25em}{\color{PNLine}\titlerule}]
+\titleformat{\subsection}
+  {\large\bfseries\color{PNTeal}}
+  {\thesubsection}{0.75em}{}
+\titlespacing*{\section}{0pt}{2.2em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.4em}{0.45em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{PNMuted}PointNeuron1.0 Report}
+\fancyhead[R]{\small\color{PNMuted}Gold166 Evaluation}
+\fancyfoot[C]{\small\color{PNMuted}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{PNLine}\leaders\hrule height \headrulewidth\hfill}}
+
+\captionsetup{font=small,labelfont={bf,color=PNBlue}}
+\setlist{topsep=0.35em,itemsep=0.25em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\arraystretch}{1.15}
+
+\lstdefinestyle{pncode}{
   basicstyle=\ttfamily\small,
   breaklines=true,
   columns=fullflexible,
   frame=single,
-  backgroundcolor=\color{gray!5}
+  rulecolor=\color{PNLine},
+  backgroundcolor=\color{PNCode},
+  xleftmargin=0.5em,
+  xrightmargin=0.5em,
+  framesep=0.55em,
+  keywordstyle=\color{PNBlue}\bfseries,
+  commentstyle=\color{PNMuted},
+  stringstyle=\color{PNTeal}
 }
+\lstset{style=pncode}
 
-\title{PointNeuron1.0 Reimplementation and Evaluation on Gold166}
-\author{PointNeuron Project}
-\date{June 28, 2026}
+\newcommand{\reportbox}[2]{%
+  \vspace{0.6em}%
+  \noindent\fcolorbox{PNLine}{PNPaper}{%
+    \begin{minipage}{0.94\linewidth}
+      \textbf{\color{PNBlue}#1}\par\vspace{0.25em}
+      #2
+    \end{minipage}}%
+  \vspace{0.8em}%
+}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{0.35in}
+
+{\Large\bfseries\color{PNTeal}Technical Report}\par
+\vspace{0.35in}
+{\Huge\bfseries\color{PNBlue}PointNeuron1.0\\[0.15em]
+Reimplementation and Evaluation}\par
+\vspace{0.2in}
+{\Large\color{PNMuted}Gold166 / BigNeuron Reconstruction Pipeline}\par
+
+\vspace{0.6in}
+\noindent{\color{PNLine}\rule{\linewidth}{1pt}}
+\vspace{0.25in}
+
+\begin{center}
+\begin{tabular}{>{\bfseries\color{PNBlue}}p{0.28\textwidth}p{0.58\textwidth}}
+Dataset & Gold166 / BigNeuron-style 3D neuron volumes \\
+Promoted baseline & Guarded30 skeleton proposal with adaptive foreground-geodesic graph reconstruction \\
+Main negative result & Learned connectivity GAE underperformed the geodesic initializer on the eligible validation set \\
+Architectural boundary & Early hard samples fail even with oracle-derived nodes, showing a PointNeuron1.0 graph-stage limitation \\
+\end{tabular}
+\end{center}
+
+\vfill
+{\large PointNeuron Project}\par
+{\large June 28, 2026}\par
+\end{titlepage}
 
 \begin{abstract}
 This report summarizes a reimplementation and experimental evaluation of a
@@ -44,6 +132,33 @@ PointNeuron2.0.
 \end{abstract}
 
 \tableofcontents
+\newpage
+
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+
+\reportbox{Current state}{
+PointNeuron1.0 has a reproducible, promoted baseline for the validated stable
+domain: guarded30 proposal predictions combined with adaptive
+foreground-geodesic graph reconstruction. This is the path to cite as the
+working implementation.
+}
+
+\reportbox{Main lesson}{
+The experiments separated training loss from reconstruction quality. A longer
+proposal checkpoint reduced validation loss but damaged end-to-end topology, so
+checkpoint promotion now depends on topology evaluation rather than proposal
+loss alone.
+}
+
+\reportbox{Known limit}{
+The early hard samples are not merely undertrained proposal cases. The
+oracle-node diagnosis shows that the forced-tree foreground-geodesic graph
+stage can fail even when the node set is already strong, which makes this a
+PointNeuron1.0 architectural boundary and a natural target for PointNeuron2.0.
+}
+
+\newpage
 
 \section{Purpose of the Project}
 
@@ -329,6 +444,12 @@ full60 & 0.4232 & 40.25 & 0.6831 \\
 Although F1 rose slightly, bridges increased dramatically and reachable fraction
 collapsed. Therefore full60 was not promoted.
 
+\reportbox{Promotion rule}{
+Proposal checkpoints are not promoted by validation loss alone. A checkpoint
+must preserve usable graph topology: low bridge count, high reachable fraction,
+and stable reconstruction behavior after SWC export.
+}
+
 \subsection{Guarded30 Checkpoint}
 
 The promoted proposal checkpoint is:
@@ -370,6 +491,11 @@ guarded30 & 0.3910 & 0.6258 & 0.8616 \\
 
 Guarded30 did not dramatically improve local proposal metrics, but it preserved
 controlled offsets and gave better graph behavior.
+
+\reportbox{Promoted proposal checkpoint}{
+Guarded30 is the PointNeuron1.0 proposal checkpoint because it trades a small
+amount of local proposal ambition for more reliable downstream topology.
+}
 
 \section{Stable-Domain End-to-End Results}
 
@@ -414,6 +540,12 @@ guarded30 adaptive v4, 100--162 & approx. 0.8295 & approx. 1.444 & approx. 0.950
 \end{center}
 
 Conclusion: guarded30 is promoted for PointNeuron1.0 stable-domain proposals.
+
+\reportbox{Stable-domain result}{
+Across samples 100--162, guarded30 with adaptive geodesic reconstruction gives
+the best validated PointNeuron1.0 behavior: higher F1, fewer bridges, and a
+slightly higher reachable fraction than the previous adaptive baseline.
+}
 
 \section{Early Hard Samples and Architectural Diagnosis}
 
@@ -498,6 +630,13 @@ saturated / huge / anisotropic volume
 These samples should be treated as PointNeuron2.0 work, not as clean
 PointNeuron1.0 training targets.
 
+\reportbox{Architectural diagnosis}{
+The beast samples are not being avoided because they are inconvenient. They are
+separated because the oracle-node test shows a real graph-stage failure mode:
+the current PointNeuron1.0 geodesic tree builder can invent long bridges even
+when the node candidates are already near the ground truth.
+}
+
 \section{Connectivity GAE Baseline}
 
 The repository includes a PointNeuron-style graph autoencoder:
@@ -545,6 +684,12 @@ init_topk_f1        mean 0.8261
 
 Conclusion: the GAE learned a high-recall, low-precision edge signal. It did
 not beat the initialized geodesic graph and is not promoted.
+
+\reportbox{Connectivity decision}{
+The learned GAE is useful as a baseline and a diagnostic artifact, but not as
+the deployed PointNeuron1.0 connectivity stage. Its precision is too low, and
+its top-k F1 remains below the initializer it was meant to improve.
+}
 
 \section{Final PointNeuron1.0 Status}
 
@@ -594,6 +739,8 @@ Recommended PointNeuron2.0 direction:
   \item Apply topology constraints after edge scoring rather than forcing a
   tree before edge evidence is reliable.
 \end{enumerate}
+
+\newpage
 
 \section{Reproducibility Commands}
 
