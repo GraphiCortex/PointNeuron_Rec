@@ -159,11 +159,10 @@ local node quality is not enough to rescue global connectivity.
 }
 
 \reportbox{Paper comparison}{
-The promoted Gold166 result is strong inside this report's topology-evaluation
-setting, but it is not directly comparable to the original PointNeuron paper's
-Janelia-Fly ESA/DSA/PDS and point-distance precision/recall/F1 benchmark. The
-report therefore treats paper comparison as contextual, not as a claim that this
-implementation beats the published numbers.
+The promoted Gold166 result was also evaluated with local paper-style
+point-distance precision/recall/F1. It is numerically strong, but it is still
+not a direct leaderboard comparison to the original PointNeuron paper because
+the dataset and evaluator are different.
 }
 
 \reportbox{Known limit}{
@@ -663,6 +662,9 @@ Implementation pointers:
   visualization.
   \item \texttt{scripts/run\_end\_to\_end.py}: full proposal-to-SWC pipeline.
   \item \texttt{scripts/evaluate\_geodesic\_baseline.py}: topology evaluation.
+  \item \texttt{scripts/evaluate\_paper\_style\_swc.py}: point-distance SWC
+  evaluation for paper-style precision, recall, F1, and approximate
+  ESA/DSA/PDS.
 \end{itemize}
 
 \section{Proposal Checkpoint Experiments}
@@ -835,10 +837,21 @@ The original PointNeuron paper reports results on the Janelia-Fly dataset from
 the BigNeuron project, not on Gold166. Its test protocol uses 42 total images,
 split into 35 training images, 3 validation images, and 4 testing images. It
 reports spatial reconstruction metrics computed through Vaa3D-style comparison:
-ESA, DSA, PDS, precision, recall, and F1. In contrast, this reimplementation
-currently reports Gold166 topology metrics: edge F1, bridge count, and reachable
-edge fraction. Therefore the numbers should not be compared as if they were the
-same benchmark.
+ESA, DSA, PDS, precision, recall, and F1.
+
+To make the comparison more meaningful, this project now includes a local
+paper-style SWC evaluator:
+
+\begin{lstlisting}
+scripts/evaluate_paper_style_swc.py
+\end{lstlisting}
+
+The evaluator resamples the predicted and ground-truth SWC trees into 3D point
+sets, then computes point-distance precision, recall, and F1 at a 6-voxel
+threshold. It also reports local approximations of ESA, DSA, and PDS. These
+approximate ESA/DSA/PDS values are useful for internal comparison, but they are
+not claimed to be byte-identical to the official Vaa3D metric plugin used by
+the paper.
 
 The paper's strongest APP2-initialized PointNeuron result is:
 
@@ -855,36 +868,51 @@ APP2 + PointNeuron & 91.56 & 63.17 & 71.70 \\
 
 The same table reports that the APP2 + PointNeuron row achieved
 \texttt{ESA = 1.43}, \texttt{DSA = 4.13}, and \texttt{PDS = 0.18}. These are
-paper-style geometric discrepancy metrics; lower is better. This project did
-not yet reproduce those exact metrics on the paper's Janelia-Fly split.
+paper-style geometric discrepancy metrics; lower is better.
 
-Our strongest promoted result is:
+Our strongest promoted result, evaluated on the Gold166 stable domain with the
+new local paper-style evaluator, is:
 
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
-This project & Edge F1 & Bridges & Reachable \\
+This project & Precision & Recall & F1 \\
 \midrule
-Guarded30 adaptive geodesic, Gold166 stable domain & approx. 0.8295 & approx. 1.444 & approx. 0.9504 \\
+Guarded30 adaptive geodesic, Gold166 stable domain & 96.99 & 71.95 & 81.50 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-If one only looks at the F1 values superficially, our stable-domain edge F1 of
-about 82.95\% is numerically higher than the paper's reported reconstruction F1
-of 71.70\%. However, this is not a valid claim of outperforming the paper. The
-dataset is different, the test split is different, and the metric is different.
-The paper's F1 is a spatial point-distance reconstruction metric; our F1 is an
-edge/topology metric induced from selected graph nodes. The correct conclusion
-is more modest:
+The same local evaluator reports:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+This project & Approx. ESA & Approx. DSA & Approx. PDS \\
+\midrule
+Guarded30 adaptive geodesic, Gold166 stable domain & 3.6774 & 5.9063 & 0.1553 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This result is stronger than the original edge/topology-only comparison because
+it evaluates the exported SWC geometry directly. It says that, on the validated
+Gold166 stable domain, the promoted reconstruction is spatially close to the
+ground truth with high precision and good recall.
+
+However, this still should not be reported as a formal claim that the project
+beats the PointNeuron paper. The F1 value is now closer in spirit to the
+paper's F1 than the earlier edge F1 was, but the dataset is still different and
+the ESA/DSA/PDS values are local approximations rather than official Vaa3D
+plugin outputs.
 
 \reportbox{Paper comparison conclusion}{
-This project successfully reproduces the conceptual PointNeuron pipeline and
-achieves strong topology results on the validated Gold166 stable domain, but it
-does not yet demonstrate that it matches or exceeds the original paper's
-reported Janelia-Fly benchmark. To make that claim, the next evaluation step
-must run paper-compatible metrics, including precision, recall, F1, ESA, DSA,
-and PDS, on a paper-compatible dataset split.
+Against the paper's reported APP2 + PointNeuron F1 of 71.70\%, our promoted
+Gold166 stable-domain run obtains 81.50\% local point-distance F1. This is a
+strong result, but it is contextual rather than a direct published-benchmark
+win. A formal claim would require running the same evaluator protocol on a
+paper-compatible Janelia-Fly split or running the official Vaa3D metric plugin
+on both outputs.
 }
 
 This distinction is important. The current report establishes that the
@@ -1158,6 +1186,17 @@ py scripts\evaluate_geodesic_baseline.py `
   --json-output tmp\e2e_guarded30_adaptive_v4_110_129\topology_report.json
 \end{lstlisting}
 
+\subsection{Paper-Style SWC Evaluation}
+
+\begin{lstlisting}[language=bash]
+py scripts\evaluate_paper_style_swc.py `
+  --summary tmp\e2e_guarded30_adaptive_v4_100_109\summary.json `
+  --summary tmp\e2e_guarded30_adaptive_v4_110_129\summary.json `
+  --summary tmp\e2e_guarded30_adaptive_v4_130_162\summary.json `
+  --csv-output tmp\paper_style_eval\guarded30_stable_100_162.csv `
+  --json-output tmp\paper_style_eval\guarded30_stable_100_162.json
+\end{lstlisting}
+
 \subsection{Early Hard Oracle Diagnosis}
 
 \begin{lstlisting}[language=bash]
@@ -1192,10 +1231,12 @@ py scripts\train_connectivity.py `
 
 The project successfully reproduced the main PointNeuron1.0 pipeline stages and
 produced a stable guarded30 + adaptive geodesic baseline for the validated
-domain. It also clarified two important negative results. First, lower proposal
-validation loss does not necessarily imply better reconstruction. Second, the
-current full-adjacency connectivity GAE does not outperform the geodesic graph
-initializer.
+domain. On the Gold166 stable domain, this baseline reaches approximately
+81.50\% local point-distance F1 with high precision and good recall under the
+new paper-style SWC evaluator. It also clarified two important negative
+results. First, lower proposal validation loss does not necessarily imply better
+reconstruction. Second, the current full-adjacency connectivity GAE does not
+outperform the geodesic graph initializer.
 
 Most importantly, the oracle-node diagnosis established a real architectural
 boundary. Several early hard samples fail even when the graph stage is given
