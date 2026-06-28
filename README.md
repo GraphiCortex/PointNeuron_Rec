@@ -224,13 +224,7 @@ initializer and should not be used as the promoted reconstruction path.
 The full report for a reader familiar with the PointNeuron paper is:
 
 ```text
-docs/pointneuron1_report.tex
-```
-
-If a LaTeX distribution is installed, compile it with:
-
-```powershell
-pdflatex -interaction=nonstopmode -output-directory docs docs\pointneuron1_report.tex
+docs/PointNeuron1_Report.pdf
 ```
 
 The report explains the replication process, experimental decisions, failures,
