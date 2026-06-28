@@ -151,6 +151,13 @@ checkpoint promotion now depends on topology evaluation rather than proposal
 loss alone.
 }
 
+\reportbox{Conceptual finding}{
+PointNeuron1.0 is best understood as a hybrid system: learned local proposal of
+skeleton nodes followed by mostly rule-driven global graph construction. The
+strongest results occur when both assumptions hold. The failures occur when
+local node quality is not enough to rescue global connectivity.
+}
+
 \reportbox{Known limit}{
 The early hard samples are not merely undertrained proposal cases. The
 oracle-node diagnosis shows that the forced-tree foreground-geodesic graph
@@ -159,6 +166,35 @@ PointNeuron1.0 architectural boundary and a natural target for PointNeuron2.0.
 }
 
 \newpage
+
+\section{Problem Setting and Report Scope}
+
+Neuron reconstruction is the task of converting a 3D microscopy image of a
+neuron into a compact tree representation of its centerline. The input is a
+volumetric image: each voxel has an intensity value, and bright connected
+structures usually correspond to neuronal signal. The desired output is not
+another image. It is a graph-like skeleton whose nodes trace the neuron's
+branches and whose edges describe how those branches connect.
+
+The standard file format used here is SWC. An SWC file stores a neuronal tree
+as rows of node records. Each record contains a node identifier, a node type,
+3D coordinates, a radius, and the identifier of its parent node. Because each
+node has one parent, a valid SWC describes a rooted tree. In this report,
+\emph{ground-truth SWC} means the manually curated or dataset-provided
+reference reconstruction, while \emph{predicted SWC} means the reconstruction
+exported by this project.
+
+Gold166 is the local experimental dataset used for this work. It is treated as
+a BigNeuron-style collection because samples are stored as raw neuron volumes
+paired with SWC reconstructions and related metadata. The dataset is not
+perfectly uniform: volumes differ in size, intensity distribution, anisotropy,
+and annotation quality. Much of this project was therefore not only model
+training, but also making the data path reliable enough that model failures
+could be separated from data-loading failures.
+
+This report is intentionally self-contained. Code paths are included so the
+reader can verify or reproduce the work, but the scientific and engineering
+argument should be understandable without opening the implementation.
 
 \section{Purpose of the Project}
 
@@ -177,19 +213,194 @@ raw 3D neuron volume
 
 The original PointNeuron paper motivates a learned point-cloud approach to
 neuron reconstruction. The proposal document for PointNeuron2.0 then suggests
-improvements such as adaptive voxel-to-point sampling, a stronger point-cloud
-encoder, DETR-style skeleton proposal, and learned GATv2 connectivity. This
-project does not fully implement PointNeuron2.0. Instead, it establishes a
-reproducible PointNeuron1.0 baseline, evaluates it, and determines which
-failures are fixable within the current architecture and which require a future
-architecture.
+improvements such as adaptive voxel-to-point sampling, a stronger PointNeXt-like
+point-cloud encoder, DETR-style skeleton proposal, and learned GATv2
+connectivity. PointNeXt refers to a stronger modern point-cloud encoder family.
+DETR refers to a transformer-based detection style in which a fixed set of
+queries predicts objects. GATv2 refers to a graph attention network variant for
+learning edge- and neighborhood-aware node representations. This project does
+not fully implement PointNeuron2.0. Instead, it establishes a reproducible
+PointNeuron1.0 baseline, evaluates it, and determines which failures are
+fixable within the current architecture and which require a future architecture.
+
+Conceptually, the project asks five research questions:
+
+\begin{enumerate}
+  \item Can raw Gold166 neuron volumes and SWC labels be converted into a
+  reliable PointNeuron-style training and evaluation pipeline?
+  \item Can a point-cloud proposal model learn useful candidate skeleton nodes
+  from sparse foreground evidence?
+  \item Does better proposal training loss translate into better final neuron
+  reconstruction?
+  \item Is a foreground-geodesic graph initializer strong enough to connect the
+  proposed nodes into a correct SWC tree?
+  \item When the pipeline fails, is the failure caused by weak proposal nodes or
+  by a deeper limitation in the graph-connectivity architecture?
+\end{enumerate}
+
+\section{Conceptual View of the Pipeline}
+
+The PointNeuron1.0 pipeline can be understood as a sequence of compression and
+decision stages. The raw image volume contains too much information to use
+directly as a graph. The reconstruction system must progressively compress that
+image into a tree while preserving the biologically important structure.
+
+\begin{center}
+\begin{tabular}{p{0.24\linewidth}p{0.33\linewidth}p{0.33\linewidth}}
+\toprule
+Stage & Conceptual role & Main assumption \\
+\midrule
+Foreground extraction & Convert the image into candidate evidence. & Bright
+voxels are likely to contain neuron signal. \\
+Point cloud encoding & Learn local geometry from sparse 3D points. & Branch
+shape can be inferred from neighborhoods of foreground points. \\
+Skeleton proposal & Predict where centerline nodes should exist. & Local
+appearance is enough to propose useful skeleton candidates. \\
+Graph initialization & Decide which proposed nodes connect. & True branches
+should have plausible foreground-geodesic paths between nearby nodes. \\
+SWC export & Serialize the graph as a rooted neuron tree. & The final graph
+should be connected, tree-like, and biologically plausible. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This framing matters because not every stage has the same kind of difficulty.
+Proposal prediction is mostly local: it asks whether a point and its neighbors
+look like they belong near a centerline. Connectivity is more global: it asks
+which proposed nodes belong to the same branch, where branches split, and which
+nearby-looking structures should remain separate. A reconstruction can therefore
+have visually reasonable proposal nodes but still fail as a graph.
+
+\reportbox{Central conceptual distinction}{
+PointNeuron1.0 learns where skeleton nodes may be, but its strongest promoted
+connectivity stage is still largely rule-driven. The experiments therefore test
+not only a neural proposal model, but also the boundary between learned local
+geometry and hand-designed global topology.
+}
+
+\subsection{PointNeuron1.0 Versus PointNeuron2.0}
+
+In this report, \emph{PointNeuron1.0} refers to the implemented baseline:
+foreground point-cloud construction, DGCNN/EdgeConv proposal prediction, and
+foreground-geodesic graph reconstruction. It is a practical reproduction and
+extension of the PointNeuron-style idea, but it does not claim to solve every
+case in Gold166.
+
+\emph{PointNeuron2.0} is the proposed next architecture. Its purpose is not
+merely to tune thresholds or add more command-line options. The motivation is
+conceptual: if the graph stage fails even when node locations are good, then
+the next system needs a stronger way to reason about edges. That points toward
+learned candidate-edge scoring, richer node and edge features, and topology
+constraints applied after edge evidence has been estimated.
+
+\subsection{Why Negative Results Matter}
+
+Several results in this report are intentionally negative. The full60 proposal
+checkpoint was not promoted. The first learned connectivity GAE was not
+promoted. The early hard samples were not folded into the first full
+connectivity training set. These are not abandoned experiments; they are
+evidence about the architecture.
+
+The key lesson is that neuron reconstruction should be evaluated as an
+end-to-end structural problem. A model can look better locally while producing
+worse topology. A graph method can produce a valid tree while inventing long
+bridges. A learned edge model can achieve high recall while adding too many
+false connections. The report therefore treats failure modes as measurements of
+where the architecture's assumptions stop matching the data.
 
 \section{Definitions and Metrics}
+
+\subsection{Core Terms}
+
+The following terms are used throughout the report.
+
+\begin{description}[leftmargin=3.6cm]
+  \item[Volume] A 3D image represented as a grid of voxels. In this project the
+  volumes are Vaa3D raw files. Vaa3D is a common tool ecosystem for neuron
+  visualization and reconstruction.
+
+  \item[Voxel] One cell of the 3D image grid. A voxel has integer coordinates
+  and an intensity value.
+
+  \item[Foreground] The subset of voxels considered likely to belong to the
+  neuron signal. Foreground is usually selected by intensity thresholding.
+
+  \item[Point cloud] A sparse set of sampled foreground voxels represented as
+  3D points with optional features such as intensity. PointNeuron uses point
+  clouds so the model does not need to process every voxel in a dense 3D grid.
+
+  \item[SWC] The tree-format file used to represent a neuron skeleton. Each SWC
+  node has coordinates, radius, and a parent pointer.
+
+  \item[Skeleton node] A point on the centerline of the neuron. In the ground
+  truth it comes from the SWC. In prediction it comes from the proposal model
+  or from an oracle diagnostic.
+
+  \item[Proposal] A candidate skeleton node predicted from the point cloud.
+  Proposals are not final reconstructions; they still need to be filtered,
+  selected, connected, and exported.
+
+  \item[Objectness] The proposal model's confidence that a sampled point is
+  near a real skeleton centerline.
+
+  \item[Center offset] A predicted displacement from a sampled foreground point
+  toward the estimated skeleton center.
+
+  \item[Radius] The estimated local radius of the neuron branch near a
+  candidate skeleton node.
+
+  \item[NMS] Non-maximum suppression. This removes redundant nearby proposals
+  so that many high-confidence points on the same local structure do not all
+  become graph nodes.
+
+  \item[Checkpoint] A saved model state produced during training. A checkpoint
+  can have good validation loss while still producing poor downstream
+  reconstructions.
+
+  \item[GT] Ground truth. In this report it usually means the dataset-provided
+  reference SWC.
+
+  \item[Oracle nodes] Diagnostic nodes derived from ground truth rather than
+  predicted by the model. They are used to ask: if the node locations were
+  already good, would the graph stage still fail?
+\end{description}
+
+\subsection{Graph Terms}
+
+\begin{description}[leftmargin=3.6cm]
+  \item[Adjacency] The edge set of a graph, often represented as a matrix where
+  entry $(i,j)$ indicates whether node $i$ connects to node $j$.
+
+  \item[Geodesic path] A shortest path measured through the foreground image
+  graph rather than by straight-line Euclidean distance. In this project,
+  geodesic evidence asks whether two proposed nodes can be connected by a
+  plausible bright path through the original volume.
+
+  \item[MST] Minimum spanning tree. Given candidate connection costs, an MST
+  chooses a set of edges that connects all selected nodes with low total cost.
+  The risk is that it always forces a tree, even when some connections are
+  biologically unsupported.
+
+  \item[Bridge edge] A fallback edge added to connect graph components when the
+  constrained geodesic construction cannot connect everything normally. Bridge
+  edges are useful for producing a valid single tree, but many bridges usually
+  mean the reconstruction is inventing unsupported long jumps.
+
+  \item[GAE] Graph autoencoder. Here it means a neural network that receives
+  node features and an initial graph, then predicts which node pairs should be
+  connected.
+
+  \item[Top-k edge selection] Selecting the $k$ highest-scoring predicted edges,
+  usually where $k$ is the number of target edges. This evaluates edge ranking
+  separately from a fixed probability threshold.
+\end{description}
+
+\subsection{Success Criteria}
 
 During the experiments it became necessary to distinguish three kinds of
 success:
 
-\begin{description}[leftmargin=2.5cm]
+\begin{description}[leftmargin=3.6cm]
   \item[Proposal success] The proposal model predicts candidate nodes near the
   true skeleton.
   \item[Graph success] The selected proposal nodes are connected with edges that
@@ -202,18 +413,28 @@ This distinction is important because a model can improve local proposal loss
 while making the final graph worse. The main topology metrics used throughout
 the project are:
 
-\begin{description}[leftmargin=3.2cm]
-  \item[Edge F1] Precision/recall F1 between predicted graph edges and the
-  target graph induced by assigning proposal nodes to the nearest ground-truth
-  SWC positions.
-  \item[Bridge edges] Edges added to connect graph components when the normal
-  constrained graph construction cannot produce a single connected graph. A
-  high bridge count is dangerous because bridges are often long unsupported
-  jumps.
+\begin{description}[leftmargin=3.6cm]
+  \item[Edge precision] The fraction of predicted graph edges that match the
+  target graph.
+  \item[Edge recall] The fraction of target graph edges recovered by the
+  predicted graph.
+  \item[Edge F1] The harmonic mean of edge precision and edge recall. It is
+  useful because a graph with many false edges may have high recall but low
+  precision, while an overly sparse graph may have high precision but low
+  recall.
+  \item[Bridge edges] The number of fallback edges needed to force a connected
+  tree. Lower is better.
   \item[Reachable edge fraction] Fraction of final graph edges that were
   actually reachable through the foreground-geodesic image graph. Higher is
   better.
 \end{description}
+
+For evaluation, the target graph is induced from the ground-truth SWC. Predicted
+or selected nodes are associated with nearby ground-truth skeleton locations,
+and predicted edges are counted as correct when they agree with the local
+ground-truth connectivity implied by those assignments. This makes it possible
+to compare a predicted graph to the SWC tree even though the predicted nodes are
+not numerically identical to the ground-truth SWC nodes.
 
 The promotion rule used in the final stage was:
 
@@ -224,6 +445,10 @@ fraction.
 \end{quote}
 
 \section{Repository Structure}
+
+This section is not required to understand the experimental argument. It is a
+map from the report's concepts to the repository for readers who want to inspect
+the implementation or rerun the experiments.
 
 \begin{longtable}{p{0.25\linewidth} p{0.68\linewidth}}
 \toprule
@@ -271,7 +496,7 @@ If a preferred SWC is invalid, the scanner falls back to the next valid
 candidate. This prevents downstream model errors from being caused by bad data
 pairing.
 
-Important files:
+Implementation pointers:
 
 \begin{itemize}
   \item \texttt{src/pointneuron/data/gold166.py}: scans the dataset and writes
@@ -301,7 +526,13 @@ neuron volumes are sparse and large. The weakness is that a fixed threshold is
 not equally reliable across all samples. Some volumes are noisy, saturated, or
 anisotropic. These issues later become important for the early hard samples.
 
-Important files:
+In practical terms, thresholding decides which voxels are allowed to become
+evidence. If the threshold is too low, the point cloud includes background noise
+and false structures. If it is too high, faint but real branches disappear. The
+early hard samples expose this tension because their intensity distributions are
+less well behaved than the stable validation range.
+
+Implementation pointers:
 
 \begin{itemize}
   \item \texttt{src/pointneuron/data/point\_cloud.py}: converts volumes to
@@ -319,6 +550,12 @@ patch-level training records that contain foreground points and nearby SWC
 skeleton nodes. These records are stored as \texttt{.npz} files and then split
 deterministically into train/validation/test groups.
 
+A patch is a smaller spatial crop sampled from a full volume. Patch training is
+used because full 3D neuron volumes can contain far more foreground points than
+fit comfortably into a single training example. Deterministic splits are used
+so that the same records remain in the same train/validation/test groups across
+runs, making checkpoint comparisons meaningful.
+
 Each cache record contains:
 
 \begin{lstlisting}
@@ -328,7 +565,7 @@ edge indices and skeleton metadata
 sample and patch metadata
 \end{lstlisting}
 
-Important files:
+Implementation pointers:
 
 \begin{itemize}
   \item \texttt{src/pointneuron/data/training\_cache.py}: creates cached
@@ -357,7 +594,13 @@ This stage corresponds to the skeleton proposal component of PointNeuron. It
 does not directly reconstruct a neuron. It produces a large set of candidate
 skeleton nodes that must later be selected and connected.
 
-Important files:
+DGCNN means Dynamic Graph Convolutional Neural Network. Its EdgeConv operation
+builds local neighborhoods in point space and learns features from relationships
+between neighboring points. This is appropriate for neuron point clouds because
+branch geometry is local: nearby foreground points often carry information about
+centerline direction and radius.
+
+Implementation pointers:
 
 \begin{itemize}
   \item \texttt{src/pointneuron/models/dgcnn.py}: DGCNN/EdgeConv encoder.
@@ -393,7 +636,14 @@ The graph initializer:
   \item exports edge paths to SWC.
 \end{enumerate}
 
-Important files:
+The phrase \emph{adaptive connected coverage NMS} refers to the promoted node
+selection strategy. It begins from high-confidence proposals, suppresses nearby
+duplicates, and tries to preserve spatial coverage so the selected nodes are not
+all concentrated in one bright region. The word \emph{connected} reflects that
+selection is judged by whether the later geodesic graph can plausibly connect
+the selected nodes.
+
+Implementation pointers:
 
 \begin{itemize}
   \item \texttt{src/pointneuron/graph/initialization.py}: shared graph
@@ -408,6 +658,12 @@ Important files:
 \end{itemize}
 
 \section{Proposal Checkpoint Experiments}
+
+The proposal checkpoint names encode how a model was trained. For example,
+\texttt{full60} means a longer 60-epoch training run, while
+\texttt{guarded30} means a 30-epoch run with more conservative losses intended
+to prevent the proposal head from drifting too aggressively. These names are
+project labels, not external benchmarks.
 
 \subsection{Problem: Validation Loss Was Not Enough}
 
@@ -477,6 +733,13 @@ best_val_loss: 5.215460332957181
 
 Proposal audit:
 
+In the audit table, \emph{proposal hit} measures how often predicted candidate
+nodes land near target skeleton structure. \emph{Offset mean} is the average
+size of the predicted center displacement, so a large increase can indicate
+that the model is making more aggressive moves away from the sampled foreground
+points. \emph{Score P90} is the 90th percentile proposal confidence; high
+confidence is only useful if the resulting nodes remain topologically helpful.
+
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
@@ -499,8 +762,14 @@ amount of local proposal ambition for more reliable downstream topology.
 
 \section{Stable-Domain End-to-End Results}
 
-The main stable validation range was samples 100--162. The promoted graph
-configuration was:
+The main stable validation range was samples 100--162. This range is called
+\emph{stable} because the data path, foreground extraction, proposal selection,
+and geodesic graph construction produced interpretable reconstructions without
+the extreme bridge failures seen in the early hard samples. It is not claimed
+to be the entire problem solved; it is the validated domain where
+PointNeuron1.0 can be reported honestly.
+
+The promoted graph configuration was:
 
 \begin{lstlisting}
 initializer: geodesic
@@ -510,6 +779,11 @@ NMS mode: distance
 NMS distance: 18
 max graph nodes: 128
 \end{lstlisting}
+
+The label \emph{old adaptive v4} refers to the previous best adaptive geodesic
+baseline before guarded30 was promoted. It is included as a control so the
+reader can see whether the new proposal checkpoint improved the full
+reconstruction pipeline rather than only improving an isolated training loss.
 
 \begin{center}
 \begin{tabular}{llccc}
@@ -551,8 +825,11 @@ slightly higher reachable fraction than the previous adaptive baseline.
 
 \subsection{Observed Failure}
 
-On early samples 0--24, guarded30 improved some local behavior but graph
-topology became unstable:
+The early hard samples are samples in the 0--24 range that repeatedly produced
+unreliable graph topology. They are difficult because the volume geometry and
+foreground signal can be unusually large, saturated, noisy, anisotropic, or
+otherwise hostile to the foreground-geodesic assumption. On this range,
+guarded30 improved some local behavior but graph topology became unstable:
 
 \begin{lstlisting}
 guarded30 000-024:
@@ -596,7 +873,7 @@ architecture itself is insufficient.
 Oracle result:
 
 \begin{lstlisting}
-oracle beast samples:
+oracle early hard samples:
   mean F1        0.5889
   mean bridges   76.6000
   mean reachable 0.3969
@@ -631,10 +908,10 @@ These samples should be treated as PointNeuron2.0 work, not as clean
 PointNeuron1.0 training targets.
 
 \reportbox{Architectural diagnosis}{
-The beast samples are not being avoided because they are inconvenient. They are
-separated because the oracle-node test shows a real graph-stage failure mode:
-the current PointNeuron1.0 geodesic tree builder can invent long bridges even
-when the node candidates are already near the ground truth.
+The early hard samples are not being avoided because they are inconvenient.
+They are separated because the oracle-node test shows a real graph-stage
+failure mode: the current PointNeuron1.0 geodesic tree builder can invent long
+bridges even when the node candidates are already near the ground truth.
 }
 
 \section{Connectivity GAE Baseline}
@@ -646,8 +923,21 @@ src/pointneuron/models/connectivity.py
 \end{lstlisting}
 
 The GAE receives node features and an initial adjacency, then predicts an
-adjacency matrix. It was trained only on graph-eligible samples to avoid
-learning from corrupted bridge-heavy targets.
+adjacency matrix. In other words, it tries to learn which selected skeleton
+nodes should be connected after seeing both node-level information and the
+initial geodesic graph.
+
+It was trained only on graph-eligible samples to avoid learning from corrupted
+bridge-heavy targets. A sample was considered eligible when the initializer
+already produced enough usable graph signal: sufficient nodes, acceptable edge
+F1, acceptable reachable fraction, and no foreground-cap failure. A
+foreground-cap failure means the foreground extraction produced a point set that
+violated the practical limits used by the graph construction path, usually
+because the sample's intensity/size behavior made the foreground too large or
+unstable to treat as normal evidence. This was a
+training-control decision. It prevented the first GAE baseline from being
+dominated by cases where the target graph itself was already contaminated by
+obvious reconstruction failure.
 
 Eligibility result:
 
@@ -682,6 +972,12 @@ topk_f1             mean 0.5200
 init_topk_f1        mean 0.8261
 \end{lstlisting}
 
+The threshold metrics use a fixed probability cutoff of 0.5. The top-k metrics
+instead select the highest-scoring predicted edges until the same number of
+edges as the target graph is reached. The comparison to
+\texttt{init\_topk\_f1} asks whether the learned GAE improves over the graph it
+was given as input. In this run it did not.
+
 Conclusion: the GAE learned a high-recall, low-precision edge signal. It did
 not beat the initialized geodesic graph and is not promoted.
 
@@ -714,7 +1010,7 @@ Boundary:
 
 \begin{lstlisting}
 PointNeuron1.0 is suitable for the stable validated Gold166 subset.
-PointNeuron1.0 is not architecture-complete for the early beast samples.
+PointNeuron1.0 is not architecture-complete for the early hard samples.
 The first connectivity GAE does not replace the geodesic initializer.
 \end{lstlisting}
 
@@ -791,7 +1087,7 @@ py scripts\evaluate_geodesic_baseline.py `
   --json-output tmp\e2e_guarded30_adaptive_v4_110_129\topology_report.json
 \end{lstlisting}
 
-\subsection{Beast Oracle Diagnosis}
+\subsection{Early Hard Oracle Diagnosis}
 
 \begin{lstlisting}[language=bash]
 py scripts\diagnose_beast_oracle.py `
