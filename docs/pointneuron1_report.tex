@@ -158,6 +158,14 @@ strongest results occur when both assumptions hold. The failures occur when
 local node quality is not enough to rescue global connectivity.
 }
 
+\reportbox{Paper comparison}{
+The promoted Gold166 result is strong inside this report's topology-evaluation
+setting, but it is not directly comparable to the original PointNeuron paper's
+Janelia-Fly ESA/DSA/PDS and point-distance precision/recall/F1 benchmark. The
+report therefore treats paper comparison as contextual, not as a claim that this
+implementation beats the published numbers.
+}
+
 \reportbox{Known limit}{
 The early hard samples are not merely undertrained proposal cases. The
 oracle-node diagnosis shows that the forced-tree foreground-geodesic graph
@@ -820,6 +828,69 @@ Across samples 100--162, guarded30 with adaptive geodesic reconstruction gives
 the best validated PointNeuron1.0 behavior: higher F1, fewer bridges, and a
 slightly higher reachable fraction than the previous adaptive baseline.
 }
+
+\section{Comparison with the Original PointNeuron Paper}
+
+The original PointNeuron paper reports results on the Janelia-Fly dataset from
+the BigNeuron project, not on Gold166. Its test protocol uses 42 total images,
+split into 35 training images, 3 validation images, and 4 testing images. It
+reports spatial reconstruction metrics computed through Vaa3D-style comparison:
+ESA, DSA, PDS, precision, recall, and F1. In contrast, this reimplementation
+currently reports Gold166 topology metrics: edge F1, bridge count, and reachable
+edge fraction. Therefore the numbers should not be compared as if they were the
+same benchmark.
+
+The paper's strongest APP2-initialized PointNeuron result is:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Method from paper & Precision & Recall & F1 \\
+\midrule
+APP2 baseline & 64.51 & 51.67 & 52.63 \\
+APP2 + PointNeuron & 91.56 & 63.17 & 71.70 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The same table reports that the APP2 + PointNeuron row achieved
+\texttt{ESA = 1.43}, \texttt{DSA = 4.13}, and \texttt{PDS = 0.18}. These are
+paper-style geometric discrepancy metrics; lower is better. This project did
+not yet reproduce those exact metrics on the paper's Janelia-Fly split.
+
+Our strongest promoted result is:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+This project & Edge F1 & Bridges & Reachable \\
+\midrule
+Guarded30 adaptive geodesic, Gold166 stable domain & approx. 0.8295 & approx. 1.444 & approx. 0.9504 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+If one only looks at the F1 values superficially, our stable-domain edge F1 of
+about 82.95\% is numerically higher than the paper's reported reconstruction F1
+of 71.70\%. However, this is not a valid claim of outperforming the paper. The
+dataset is different, the test split is different, and the metric is different.
+The paper's F1 is a spatial point-distance reconstruction metric; our F1 is an
+edge/topology metric induced from selected graph nodes. The correct conclusion
+is more modest:
+
+\reportbox{Paper comparison conclusion}{
+This project successfully reproduces the conceptual PointNeuron pipeline and
+achieves strong topology results on the validated Gold166 stable domain, but it
+does not yet demonstrate that it matches or exceeds the original paper's
+reported Janelia-Fly benchmark. To make that claim, the next evaluation step
+must run paper-compatible metrics, including precision, recall, F1, ESA, DSA,
+and PDS, on a paper-compatible dataset split.
+}
+
+This distinction is important. The current report establishes that the
+reimplementation is functional and that the promoted PointNeuron1.0 baseline is
+reasonable on its validated domain. It does not establish a direct leaderboard
+comparison against the original PointNeuron paper.
 
 \section{Early Hard Samples and Architectural Diagnosis}
 
