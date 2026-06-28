@@ -63,6 +63,53 @@ several practical discoveries:
 The final result is not a universal PointNeuron2.0 system. It is a documented
 PointNeuron1.0 baseline with known scope and known limitations.
 
+## Reading Guide for the Professor
+
+This README is written as both a project report and a reproducibility guide.
+The most important distinction is between three different kinds of success:
+
+```text
+proposal success:
+  The model predicts points near the true neuron skeleton.
+
+graph success:
+  The selected proposal points are connected with edges that match the true SWC
+  topology.
+
+reconstruction success:
+  The graph can be converted into a single-root SWC that follows the neuron
+  without adding large false bridges.
+```
+
+Early in the project, it was tempting to judge checkpoints only by proposal
+validation loss. That turned out to be misleading. A checkpoint can make slightly
+better local point predictions while producing worse global topology after graph
+construction. For this reason, the final promotion decision used end-to-end
+topology metrics rather than proposal loss alone.
+
+The report uses three topology metrics repeatedly:
+
+```text
+edge F1:
+  Compares predicted graph edges against the graph induced by assigning proposal
+  nodes to the nearest ground-truth SWC positions. Higher is better.
+
+bridge edges:
+  Edges added to force disconnected graph components into one tree. These are
+  risky because they often represent long unsupported jumps. Lower is better.
+
+reachable edge fraction:
+  Fraction of final graph edges that were actually reachable through the
+  foreground-geodesic image graph. Higher is better.
+```
+
+The key practical rule is:
+
+```text
+A useful checkpoint must improve or preserve edge F1 without creating many more
+bridge edges or reducing reachable edge fraction.
+```
+
 ## Current Baseline
 
 The promoted proposal checkpoint is:
@@ -105,6 +152,16 @@ NMS distance: 18
 max graph nodes: 128
 ```
 
+In plain language, this means the current system first uses the guarded30 neural
+proposal model to produce candidate skeleton points, then keeps a small graph of
+high-confidence and spatially useful nodes. It connects those nodes using paths
+through the bright foreground voxels of the image. The adaptive selector decides
+whether score-based node selection is safe or whether it should switch to a more
+coverage-oriented selection strategy when bridge pressure is high.
+
+This is still a PointNeuron1.0 system. It does not yet contain the stronger
+PointNeuron2.0 learned edge classifier described in the proposal document.
+
 ## What Was Replicated
 
 ### 1. Data Foundation
@@ -121,6 +178,21 @@ SWC priority is:
 If a preferred SWC is structurally invalid, the scanner falls back to a lower
 priority valid SWC. The code also checks that SWC coordinates fit inside the raw
 volume bounds.
+
+This mattered because the Gold166 folders are not a single clean tensor dataset.
+Each sample can contain different raw volume formats, multiple SWC files, and
+occasionally invalid or misaligned labels. Before any model training, the
+project needed a repeatable way to answer:
+
+```text
+Which raw volume belongs to this sample?
+Which SWC should be treated as ground truth?
+Is the SWC structurally valid?
+Do the SWC coordinates lie inside the volume?
+```
+
+Without this foundation, later model errors could be caused by bad data pairing
+rather than by the PointNeuron architecture.
 
 Important files:
 
@@ -154,6 +226,16 @@ volume voxels with intensity > threshold
 -> (x, y, z, intensity) point records
 ```
 
+This stage is intentionally simple. The original PointNeuron idea is to operate
+on point clouds instead of raw dense voxel grids. A 3D microscopy volume can be
+large, sparse, and noisy; converting foreground voxels into points makes the
+input more suitable for point-cloud neural networks such as DGCNN/EdgeConv.
+
+However, this conversion is also a source of later problems. A fixed threshold
+can keep too much noise in some samples and lose structural continuity in
+others. This is one reason the PointNeuron2.0 proposal suggests a more adaptive
+voxel-to-point transformation.
+
 Important files:
 
 ```text
@@ -171,6 +253,20 @@ scripts/visualize_sample.py
 
 The project builds patch-level training records from foreground points and SWC
 nodes. These records are used for PointNeuron-style DGCNN / proposal training.
+
+The full raw volumes are often too large to feed directly into the proposal
+model. The cache builder creates local training patches, each containing:
+
+```text
+sampled foreground points
+SWC skeleton nodes inside or near the patch
+edge indices / skeleton metadata
+sample and patch metadata
+```
+
+Splits are deterministic so that training, validation, and later audits can be
+reproduced. This is especially important because many experiments differed only
+in loss weights or checkpoint choice.
 
 Important files:
 
@@ -199,6 +295,27 @@ scripts/inspect_dataset.py
 The project implements a DGCNN/EdgeConv-style encoder and a proposal head for
 objectness, center offsets, and radius prediction. This corresponds to the
 PointNeuron skeleton proposal stage.
+
+The proposal model does not directly output a complete neuron. It predicts many
+candidate skeleton nodes. For each input point, or each learned point feature, it
+predicts:
+
+```text
+objectness:
+  whether this point is likely near the skeleton
+
+center offset:
+  how to move from the input point toward a skeleton node
+
+radius:
+  local structural thickness estimate
+```
+
+The practical challenge is that good local proposals do not automatically
+produce good global reconstructions. If offsets are too aggressive, points can
+move away from the true centerline. If confidence scores are over-inflated, the
+graph stage may select bad nodes. This is why the project later introduced
+conservative losses and end-to-end graph validation.
 
 Important files:
 
@@ -231,6 +348,30 @@ The strongest PointNeuron1.0 graph path is a foreground-geodesic initializer.
 It selects proposal nodes, builds foreground paths through the image volume, and
 creates a graph that can be converted to SWC.
 
+The geodesic graph initializer is the current strongest topology method in this
+repository. It uses image evidence rather than only Euclidean distance. The
+basic intuition is:
+
+```text
+two proposal nodes should be connected if there is a plausible bright foreground
+path between them through the original image volume
+```
+
+The graph initializer:
+
+```text
+1. filters proposal nodes by score and NMS
+2. selects up to a graph-node budget
+3. snaps nodes to foreground voxels
+4. computes shortest paths through foreground voxels
+5. builds an MST-like tree from geodesic distances
+6. adds bridge edges only when needed to connect components
+7. exports graph paths to SWC
+```
+
+This is also where the main PointNeuron1.0 limitation appears. If the foreground
+graph itself is unreliable, forcing a single tree creates false bridges.
+
 Important files:
 
 ```text
@@ -259,6 +400,17 @@ scripts/evaluate_geodesic_baseline.py
 The repository also contains a PointNeuron-style connectivity graph
 autoencoder. It can train on connectivity records, but the first clean
 experiment showed that it does not beat the geodesic initializer.
+
+The connectivity GAE was tested because the PointNeuron paper includes a learned
+connectivity stage. In this implementation, the GAE receives node features and
+an initial adjacency, then predicts an adjacency matrix. The hope was that it
+would learn to correct mistakes in the geodesic graph.
+
+The first clean experiment showed the opposite: the model learned a broad
+high-recall edge signal but produced too many false edges. This does not mean
+learned connectivity is impossible. It means this full-adjacency GAE is not yet
+the right replacement for the geodesic initializer. A stronger future approach
+should be an edge classifier or reranker over carefully chosen candidate edges.
 
 Important files:
 
@@ -299,6 +451,20 @@ Gold166 volume and SWC scan
 
 This established that the raw data could be decoded and that the model could
 learn PointNeuron-style proposal outputs.
+
+At this stage, the goal was not yet to achieve final reconstruction quality. The
+goal was to prove that each paper-level component had a working local analogue:
+
+```text
+Can we load the data?
+Can we convert the volume into points?
+Can a DGCNN-style encoder run on those points?
+Can the proposal head learn nontrivial skeleton predictions?
+Can predictions be visualized against SWC labels?
+```
+
+Once these basic components worked, the project moved from replication to
+validation and improvement.
 
 ### Proposal Model Issues
 
@@ -341,6 +507,15 @@ full60 hard probe:
 Conclusion: validation loss alone was not a reliable promotion criterion.
 End-to-end topology had to be tested.
 
+This was an important turning point. The full60 checkpoint looked attractive if
+judged by validation loss alone, but its predictions were more aggressive. In
+the final graph, that meant more unsupported bridge edges and worse reachability.
+The project therefore adopted a stricter checkpoint-promotion rule:
+
+```text
+No checkpoint is promoted unless it improves end-to-end reconstruction topology.
+```
+
 ### Guarded30 Proposal Checkpoint
 
 The guarded30 checkpoint was trained to be more conservative:
@@ -371,9 +546,24 @@ guarded30:
 Guarded30 did not make proposal metrics dramatically better, but it gave the
 graph stage better end-to-end behavior than full60.
 
+The name "guarded30" refers to a guarded, conservative 30-epoch training run. It
+was designed to avoid the failure mode of full60:
+
+```text
+do not chase lower validation loss by allowing large center drift
+do not reward confidence inflation that later hurts graph selection
+keep proposal offsets useful but controlled
+```
+
 ### Stable-Domain E2E Results
 
 The main validated stable range was samples 100-162.
+
+This range became the main stable-domain validation block because it produced
+consistent end-to-end behavior and did not suffer from the extreme foreground
+graph pathologies seen in the early beast samples. The goal was not to cherry
+pick easy samples, but to establish a trustworthy PointNeuron1.0 baseline before
+trying to solve known architecture-breaking cases.
 
 Old adaptive-v4 baseline versus guarded30:
 
@@ -421,6 +611,10 @@ guarded30 adaptive v4 100-162:
 ```
 
 Conclusion: guarded30 is promoted for PointNeuron1.0 stable-domain proposals.
+
+This is the main successful result of the current phase. Guarded30 improved F1
+while slightly reducing bridge count and preserving reachable edge fraction over
+the combined stable range.
 
 ## Early Beast Samples and Architectural Boundary
 
@@ -521,10 +715,50 @@ saturated / huge / anisotropic volume
 These samples should not be used as clean PointNeuron1.0 connectivity training
 targets. They are better treated as PointNeuron2.0 architecture work.
 
+This conclusion is not an attempt to avoid difficult data. The oracle experiment
+was specifically designed to avoid that mistake. If the graph stage had worked
+with GT-derived nodes, then the failure would have been blamed on proposal
+quality and we would continue improving PointNeuron1.0 proposals. Instead, most
+beast samples failed even with oracle nodes. That means the failure is deeper:
+the graph support model is not strong enough for these volumes.
+
+This distinction matters:
+
+```text
+proposal-side failure:
+  The architecture may still be valid, but the node detector needs improvement.
+
+graph-stage architectural failure:
+  Even good nodes cannot be connected reliably by the current graph rule.
+```
+
+The beast test showed the second case for most of the selected hard samples.
+
 ## Connectivity GAE Baseline
 
 After promoting guarded30 for proposals, the project built an eligible
 connectivity dataset from graph outputs that passed topology checks.
+
+The eligibility filter was added to avoid training on corrupted graph targets.
+This is important because a learned connectivity model can only learn from the
+labels it is given. If the training records include forced bridges known to be
+wrong, the model may learn to reproduce those errors.
+
+The eligibility policy rejected records for:
+
+```text
+foreground_cap_not_satisfied:
+  foreground graph construction was already under stress
+
+low_edge_f1:
+  initialized topology was too far from the GT-induced graph
+
+low_reachable:
+  too many final edges were not supported by foreground paths
+
+too_few_nodes:
+  the graph did not contain enough selected nodes to be a useful training record
+```
 
 Eligibility command:
 
@@ -606,6 +840,13 @@ It does not beat the initialized geodesic graph.
 It is not promoted as a PointNeuron1.0 connectivity stage.
 ```
 
+This result is useful even though it is negative. It tells us that simply adding
+a full-adjacency graph autoencoder is not enough. The initialized graph already
+contains strong topology information; the GAE must learn to improve on it, not
+replace it with a noisy dense edge ranking. The next learned-connectivity model
+should probably operate on candidate edges with explicit geometric features,
+rather than scoring every possible pair with only a dot-product decoder.
+
 ## Repository Layout
 
 ```text
@@ -634,7 +875,16 @@ tmp/
   source code.
 ```
 
+The `tmp/` directory is where most long-running experiment outputs live. The
+important source code and documentation live outside `tmp/`. The checkpoint and
+E2E paths referenced in this README are reproducibility artifacts from this
+experimental run.
+
 ## Important Scripts
+
+This section groups scripts by the kind of work they perform. The repository has
+many scripts because the project was experimental: individual scripts make it
+possible to inspect each stage rather than treating the pipeline as a black box.
 
 Data and inspection:
 
@@ -647,6 +897,10 @@ scripts/build_point_cloud.py
 scripts/visualize_sample.py
 ```
 
+These scripts answer basic questions about the dataset: what samples exist, can
+the volumes be decoded, do the labels align with the volume, and what does the
+foreground point cloud look like?
+
 Training cache and splits:
 
 ```text
@@ -656,6 +910,10 @@ scripts/inspect_dataset.py
 scripts/inspect_encoder.py
 ```
 
+These scripts create the model-ready training data used by the proposal network.
+They are also useful for debugging shape mismatches and checking whether a split
+or cache is usable before training.
+
 Proposal model:
 
 ```text
@@ -664,6 +922,10 @@ scripts/audit_proposal_checkpoint.py
 scripts/aggregate_proposals.py
 scripts/visualize_proposals.py
 ```
+
+These scripts train and inspect the skeleton proposal stage. Proposal
+visualization is especially important because a checkpoint can look acceptable
+numerically while producing spatially bad centers.
 
 Graph and reconstruction:
 
@@ -676,6 +938,9 @@ scripts/run_end_to_end.py
 scripts/evaluate_geodesic_baseline.py
 ```
 
+These scripts form the current promoted reconstruction path. `run_end_to_end.py`
+is the main user-facing command for reproducing the PointNeuron1.0 baseline.
+
 Diagnostics:
 
 ```text
@@ -684,6 +949,10 @@ scripts/probe_selection_oracle.py
 scripts/diagnose_geodesic_edges.py
 scripts/diagnose_beast_oracle.py
 ```
+
+These scripts are for understanding failure modes. They should be used when a
+sample performs badly and we need to know whether the bottleneck is proposals,
+selection, foreground geodesics, or the architecture itself.
 
 Connectivity:
 
@@ -694,6 +963,10 @@ scripts/train_connectivity.py
 scripts/evaluate_connectivity.py
 scripts/predict_connectivity.py
 ```
+
+These scripts reproduce the learned-connectivity baseline. The current
+checkpoint is retained as an experimental result, but it is not the promoted
+inference path.
 
 ## How to Use This Repository
 
