@@ -2,13 +2,13 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=1in,headheight=15pt]{geometry}
+\usepackage[margin=1in,headheight=23pt]{geometry}
 \usepackage{microtype}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{enumitem}
-\usepackage[table]{xcolor}
+\usepackage{xcolor}
 \usepackage{listings}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -84,6 +84,7 @@
 
 \begin{document}
 
+\hypersetup{pageanchor=false}
 \begin{titlepage}
 \thispagestyle{empty}
 \vspace*{0.35in}
@@ -110,8 +111,9 @@ Architectural boundary & Early hard samples fail even with oracle-derived nodes,
 
 \vfill
 {\large PointNeuron Project}\par
-{\large June 28, 2026}\par
+{\large June 28, 2026; diagnostic closure September 21, 2026}\par
 \end{titlepage}
+\hypersetup{pageanchor=true}
 
 \begin{abstract}
 This report summarizes a reimplementation and experimental evaluation of a
@@ -266,7 +268,7 @@ appearance is enough to propose useful skeleton candidates. \\
 Graph initialization & Decide which proposed nodes connect. & True branches
 should have plausible foreground-geodesic paths between nearby nodes. \\
 SWC export & Serialize the graph as a rooted neuron tree. & The final graph
-should be connected, tree-like, and biologically plausible. \\
+should be connected and tree-like; biological validity requires separate evidence. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -391,7 +393,11 @@ The following terms are used throughout the report.
   \item[Bridge edge] A fallback edge added to connect graph components when the
   constrained geodesic construction cannot connect everything normally. Bridge
   edges are useful for producing a valid single tree, but many bridges usually
-  mean the reconstruction is inventing unsupported long jumps.
+  indicate reliance on fallback connections. A bridge is \emph{not} a biological
+  neuron branch. Some bridges have reachable foreground paths but fail the
+  normal candidate constraints; others are unreachable straight-line fallbacks.
+  Interpret the count jointly with bridge hit rate and reachable-edge fraction,
+  rather than declaring every bridge false.
 
   \item[GAE] Graph autoencoder. Here it means a neural network that receives
   node features and an initial graph, then predicts which node pairs should be
@@ -450,6 +456,49 @@ A checkpoint should not be promoted unless it improves or preserves edge F1
 without creating many additional bridge edges or reducing reachable edge
 fraction.
 \end{quote}
+
+\subsection{Edge validation and biological plausibility}
+
+Three distinct forms of evidence must be kept separate. First,
+\emph{agreement with annotated morphology} is measured by
+\path{scripts/evaluate_geodesic_baseline.py}. In
+\path{src/pointneuron/graph/initialization.py}, each selected proposal is
+assigned to its nearest annotated SWC node. Shortest-path distances along the
+SWC, weighted by Euclidean segment length, define a distance matrix between
+these assignments. An MST on that matrix supplies the GT-induced target edges.
+Precision, recall and F1 compare unordered proposal-node pairs with this target.
+This is agreement with an induced annotation-based tree, not literal equality
+to the original SWC edge list. Node assignment, annotation quality and MST ties
+can affect the target; high edge F1 does not establish spatial coverage.
+
+Second, \emph{image support} is measured independently of that target by the
+foreground-geodesic initializer. The saved graph records eligible candidate
+pairs, snapping distance, edge reachability, Euclidean distance and geodesic
+cost. The edge diagnostic script additionally reports the geodesic/Euclidean
+ratio, endpoint proposal scores, mean radius and continuation support. Its
+continuation score is the maximum absolute dot product with another incident
+edge direction at each endpoint, averaged over the two endpoints; it measures
+geometric alignment, not an independent biological label. Directions use short
+saved path segments where available, otherwise endpoint displacement.
+
+The bridge/traced split in the topology evaluator permits separate hit rates.
+An empty bridge set is assigned hit rate 1.0 by convention; this is not empirical
+evidence about bridge accuracy. Unreachable edges may store a penalized fallback
+cost rather than a measured path length. The new table therefore also reports
+mean distance and ratio restricted to reachable edges. Foreground reachability
+can follow noise or join adjacent structures, and proposal confidence and radius
+are model outputs, so none is sufficient alone.
+
+Third, \emph{independently established biological plausibility} would require
+additional evidence such as expert assessment of the image and morphology,
+independent annotation, or validated anatomical constraints. These experiments
+do not provide that validation. We can say that an edge \emph{matches the
+annotated morphology} and quantify image support; we cannot say it is
+\emph{independently proven biologically plausible}. Target edge matching is
+evaluation only, and GT-derived nodes occur only in the labeled oracle test.
+The existing proposal script also reads SWC for input alignment checks and
+diagnostic coverage, but supplies no GT edges to the promoted graph inference.
+This closure does not change that inference path.
 
 \section{Repository Structure}
 
@@ -518,6 +567,58 @@ Implementation pointers:
 \end{itemize}
 
 \section{Voxel-to-Point Transformation}
+
+\subsection{Patching within a neuron volume}
+
+The dataset unit is a whole sample volume paired with an annotated neuron SWC.
+It is not a patch taken across several neurons. After foreground extraction,
+local spatial point-cloud patches are constructed \emph{within that same
+volume}. The implementation does not biologically segment separate cells before
+patching; noise or other foreground structures can remain in a patch.
+
+The actual crop in
+\texttt{src/pointneuron/data/training\_cache.py} is an axis-aligned cube, despite
+the parameter name \texttt{patch\_radius}. Each coordinate is cropped from
+$\lfloor c-96\rfloor$ to $\lceil c+96+1\rceil$ (exclusive upper array bound),
+clipped to the volume boundary. Integer-centered interior patches therefore
+span 193 voxels per axis. Only voxels strictly above the foreground threshold
+are sampled, and their coordinates remain in the whole-volume coordinate frame.
+
+The guarded30 checkpoint's saved arguments identify the
+{\small\path{mixed_gold_source_coverage_combined_filtered_min15_seed0}}
+split. Its source caches record 512 points per training patch, radius 96,
+stride 96, coverage-based centers and a requested 32 patches per sample.
+The combined cache was quality-filtered, so 32 is not a claim that every sample
+contributed exactly 32 surviving patches. The source caches use threshold
+fractions 0.2 and 0.05; the filter and split are training artifacts, not settings
+to substitute into evaluation. These facts were checked from saved checkpoint
+arguments and cache manifests without loading or modifying model weights.
+
+For full-volume inference, \texttt{scripts/run\_end\_to\_end.py} calls
+\texttt{scripts/aggregate\_proposals.py} with radius 96, stride 96, at most
+256 patches and coverage selection. The grid spans the foreground bounding
+box; patches containing fewer than 256 foreground voxels are discarded. When
+the cap is exceeded, selection starts at the densest patch and spreads centers
+in normalized volume coordinates with a small density preference. Random
+sampling draws exactly 2048 input points per patch by the current aggregation
+default, using replacement when necessary. This is distinct from the
+512-point training configuration. The 2048-point setting is not serialized in
+the proposal archives, so the diagnostic table leaves per-run points per patch
+unrecorded rather than treating a code default as saved evidence.
+
+Inference uses threshold fraction 0.2, local objectness cutoff 0.5 and at most
+512 local proposals per patch. Local proposals are concatenated in global
+coordinates, then filtered by whole-volume spherical-IoU NMS (local and global
+IoU thresholds 0.1), retaining at most 4096 proposals. The supplied distance
+radii 8 and 12 are not the suppression criterion when spherical NMS is active.
+This is selection/aggregation, not averaging overlapping predictions. Saved
+\texttt{patches} records the actual per-sample count (3--220 in the completed
+promoted runs). Graph selection then
+applies the separate promoted configuration: score 0.85, adaptive connected
+coverage, distance NMS 18 and maximum 128 nodes. Graph foreground extraction
+starts at intensity 5 and adapts toward a 350,000-voxel cap; it is separate from
+the proposal threshold and can remain over cap when even the brightest
+nonempty foreground is too large.
 
 The first PointNeuron-style transformation converts the dense image volume into
 a point cloud:
@@ -890,7 +991,7 @@ The same local evaluator reports:
 \toprule
 This project & Approx. ESA & Approx. DSA & Approx. PDS \\
 \midrule
-Guarded30 adaptive geodesic, Gold166 stable domain & 3.6774 & 5.9063 & 0.1553 \\
+Guarded30, stable Gold166 & 3.6774 & 5.9063 & 0.1553 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -992,19 +1093,25 @@ Sample & F1 & Bridges & Reachable \\
 \end{tabular}
 \end{center}
 
-Conclusion: most of these hard samples break PointNeuron1.0 even with good
-nodes. The failure is architectural:
+Samples 7, 16, 23 and 24 retain poor foreground connectivity with oracle nodes.
+This establishes a graph-stage limitation under the existing preprocessing and
+forced-tree rules, without proving that graph architecture is the only cause.
+Sample 22 is an important counterexample: its oracle graph has F1 0.8898,
+zero bridges and full reachability. Its learned-node failure is therefore
+sensitive to upstream node placement/selection. A supported failure pathway
+for several of the other cases is:
 
 \begin{lstlisting}
-saturated / huge / anisotropic volume
--> extreme foreground threshold adaptation
+saturated / large / anisotropic volume (candidate contributing factors)
+-> foreground threshold adaptation, sometimes still over cap
 -> eligible geodesic pairs collapse
 -> MST still forces one connected tree
 -> fake long bridge edges
 \end{lstlisting}
 
-These samples should be treated as PointNeuron2.0 work, not as clean
-PointNeuron1.0 training targets.
+The relative contributions of intensity saturation, geometry and annotation
+alignment are not isolated by this experiment. These cases remain diagnostic
+limitations of PointNeuron1.0; no PointNeuron2.0 work is initiated here.
 
 \reportbox{Architectural diagnosis}{
 The early hard samples are not being avoided because they are inconvenient.
@@ -1012,6 +1119,103 @@ They are separated because the oracle-node test shows a real graph-stage
 failure mode: the current PointNeuron1.0 geodesic tree builder can invent long
 bridges even when the node candidates are already near the ground truth.
 }
+
+\section{Sample-Level Diagnostic Closure}
+
+The post-meeting analysis is generated by
+\texttt{scripts/build\_sample\_diagnostics.py} from saved experiment artifacts.
+The complete table is \path{tmp/diagnostics/pointneuron1_sample_diagnostics.csv};
+its JSON companion retains original observations, per-field provenance and
+separate historical, oracle and GAE evidence. Exact input paths are listed in
+\path{tmp/diagnostics/pointneuron1_sources.json}. The mapping and review rules
+are documented in \path{docs/sample_diagnostics.md}. No model weights,
+training procedure, graph settings or existing experiment results were changed.
+
+The local inventory contains 106 evaluated/requested sample identities: 88
+promoted requests (0--24 and 100--162), 13 with historical primary runs and five
+with auxiliary evidence only. All 88 promoted requests are represented,
+including the three recorded execution failures, samples 3, 4 and 6. Forty-three
+rows lack at least one core or paper-style field; nine lack canonical
+reconstruction/topology evidence. Paper-style geometry is available for the
+63 promoted stable-domain samples. Missing values are NA/null, not zero.
+
+Each row describes one primary run. Promoted identity is checked against graph
+metadata, rather than inferred solely from an experiment directory name.
+Selection audits join by graph path and spatial metrics by exported SWC path.
+Older results remain source-qualified and cannot fill missing promoted metrics.
+The selection audit first score-filters proposals; its candidate count and
+branch coverage are therefore kept separate from aggregation metrics, including
+their different empty-branch conventions. The large source inventory includes
+historical controls; its size must not be mistaken for independent sample count.
+
+\subsection{Evidence-based review taxonomy}
+
+\texttt{execution\_status} records completed versus failed runs.
+\texttt{run\_status} instead records diagnostic triage: PASS means no trigger in
+the available evidence; FAIL means review is required, including unresolved or
+incomplete cases. Neither is a biological acceptance criterion. In this pass,
+52 samples have no trigger and 54 require review: six proposal, five selection,
+four data-preprocessing, five mixed and 34 unknown. There are no exclusively
+connectivity-graph or output-geometry assignments; oracle-supported graph
+deficits coexist with other evidence and are counted as mixed.
+
+The conservative rules attribute an unsatisfied foreground cap to preprocessing;
+candidate coverage below 0.50 to proposal-side evidence; and candidate segment
+coverage at least 0.70 followed by loss at least 0.35 to selection-side evidence.
+Oracle reachability below 0.50 with more than five bridges supports a graph-stage
+limitation. Invalid output, or edge F1 at least 0.80 with spatial F1 below 0.50,
+supports an output discrepancy. Multiple supported stages are labeled mixed.
+Graph F1 below 0.65, reachability below 0.90 or more than five bridges triggers
+review but does not by itself identify a cause. These last cutoffs reuse the
+existing connectivity-eligibility thresholds; they are review heuristics, not
+validated performance boundaries. Ambiguous cases remain unknown and all
+flagged rows require manual review.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{p{0.09\linewidth}p{0.17\linewidth}p{0.64\linewidth}}
+\toprule
+Sample & Attribution & Recorded evidence and interpretation \\
+\midrule
+3, 4, 6 & Preprocessing & Saved data audits record 17, 25 and 24 out-of-bounds SWC nodes. Aggregation's alignment guard exits with the recorded code 2; subprocess output itself is unavailable. \\
+7 & Mixed & Candidate segment coverage 0.107; graph foreground cap unsatisfied. Oracle nodes still give 124 bridges and reachability 0.024. \\
+16 & Mixed & Foreground cap unsatisfied. Oracle graph retains 104 bridges and reachability 0.181; proposal improvement alone cannot explain away this deficit. \\
+19 & Selection & Candidate segment coverage 0.986 falls to 0.409 after selection; edge F1 0.472 despite reachability 0.992 and only one bridge. \\
+22 & Proposal & Candidate coverage is zero in the saved audit; learned-node edge F1 0.110. Oracle nodes recover F1 0.890 with no bridges and full reachability. \\
+23 & Mixed & Candidate segment coverage 0.225; learned graph has 127 bridges and zero reachability. Oracle graph still needs 73 bridges (reachability 0.425). \\
+24 & Mixed & Candidate segment coverage 0.278 and unsatisfied foreground cap. Oracle graph still needs 82 bridges (reachability 0.354). \\
+105 & Unknown & Spatial F1 0.388 and edge F1 0.600 with no bridges and full reachability. A matched promoted selection audit is absent; a unique cause cannot be assigned. \\
+\bottomrule
+\end{tabular}
+\caption{Representative failures and review cases. Values are from the promoted
+run unless explicitly labeled oracle. Full records and evidence are in the CSV/JSON.}
+\end{table}
+
+\subsection{Interpretation and remaining evidence gaps}
+
+The stable-domain guarded30 runs have mean bridge count about 1.444, compared
+with 26.909 in the 22 completed early hard runs. The five oracle cases average
+76.6 bridges, but are a deliberately difficult subset, not a population-matched
+comparison. Sample 19 shows why low bridge count alone is insufficient: selected
+nodes lose much of the annotated skeleton before graph construction. Sample 22
+shows that the successful oracle intervention can reverse the diagnosis implied
+by the group mean. Samples 7, 16, 23 and 24 demonstrate that an oracle node set
+does not remove the foreground-connectivity limitation.
+
+The saved data audits support an alignment-guard explanation for 3, 4 and 6,
+but do not preserve their subprocess traces or explain the underlying annotation
+misalignment. They do not independently validate biological plausibility or
+isolate which image property causes each graph failure. Stable-domain selection audits from older checkpoints
+cannot be substituted for missing promoted audits. Obtaining missing spatial
+metrics or matched selection audits would require additional lightweight
+evaluation of saved outputs, not retraining. Confirming the exact failed subprocess
+traces would require locating further logs or a controlled rerun with output
+capture. Separating thresholding, node placement and graph-rule effects requires
+new controlled experiments. Independent biological review and an external-dataset
+test require new evidence. The schema includes dataset identity and retains
+missingness for future reuse, but no Allen ingestion or PointNeuron2.0 work is
+part of this closure. Further development is deferred until this review.
 
 \section{Connectivity GAE Baseline}
 
@@ -1077,6 +1281,9 @@ edges as the target graph is reached. The comparison to
 \texttt{init\_topk\_f1} asks whether the learned GAE improves over the graph it
 was given as input. In this run it did not.
 
+The saved evaluation covers the eligible records used for this baseline;
+these figures are not evidence of an independent external-dataset test.
+
 Conclusion: the GAE learned a high-recall, low-precision edge signal. It did
 not beat the initialized geodesic graph and is not promoted.
 
@@ -1114,6 +1321,10 @@ The first connectivity GAE does not replace the geodesic initializer.
 \end{lstlisting}
 
 \section{PointNeuron2.0 Implications}
+
+This section preserves prospective discussion from the earlier report. It is
+not an implementation plan authorized by the diagnostic closure; PointNeuron2.0
+remains deferred pending review of the sample-level evidence above.
 
 The PointNeuron2.0 proposal is aligned with the observed failure, but the most
 important fix is learned connectivity. Better proposals alone are not enough,
@@ -1238,12 +1449,10 @@ results. First, lower proposal validation loss does not necessarily imply better
 reconstruction. Second, the current full-adjacency connectivity GAE does not
 outperform the geodesic graph initializer.
 
-Most importantly, the oracle-node diagnosis established a real architectural
-boundary. Several early hard samples fail even when the graph stage is given
-GT-derived nodes. This means the problem is not merely insufficient proposal
-training. It is a limitation of the current foreground-geodesic forced-tree
-graph model. The next major research step should therefore be a PointNeuron2.0
-connectivity architecture that learns candidate-edge reliability and treats
-foreground geodesic evidence as one feature rather than as the final authority.
+The diagnostic closure preserves the oracle-supported graph limitation while
+distinguishing sample 22, which recovers with oracle nodes, and selection losses
+such as sample 19. The full per-sample table exposes unresolved causes and missing
+metrics. Agreement with annotated morphology remains distinct from independent
+biological validation. PointNeuron2.0 work is deferred until this closure is reviewed.
 
 \end{document}

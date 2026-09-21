@@ -164,6 +164,17 @@ py scripts\evaluate_geodesic_baseline.py `
 
 ## Diagnostics
 
+Build the read-only sample diagnostic table from existing local artifacts:
+
+```powershell
+py scripts\build_sample_diagnostics.py
+```
+
+Outputs are under `tmp/diagnostics`: a per-sample CSV/JSON, a failure summary,
+and an exact source manifest. The [schema and triage rules](docs/sample_diagnostics.md)
+explain missing values, provenance, and the distinction between completed runs
+and diagnostic review flags. This command does not train or run inference.
+
 Run the oracle-node diagnosis for early hard samples:
 
 ```powershell
