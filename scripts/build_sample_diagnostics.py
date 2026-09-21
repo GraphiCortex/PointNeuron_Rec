@@ -190,7 +190,7 @@ class Inventory:
                              "directory": self.label(directory)}, "directory evidence")
 
 
-FIELDS = """sample_index sample_id dataset_id primary_source primary_scope run_status execution_status
+FIELDS = """sample_index sample_id dataset_id dataset_name species brain_region cortical_layer primary_source primary_scope review_status execution_status
 primary_failure_stage secondary_failure_stage likely_failure_mechanism diagnostic_evidence
 diagnostic_confidence manual_review_required incomplete missing_fields
 volume_width volume_height volume_depth volume_channels volume_voxels volume_shape_xyz
@@ -222,7 +222,7 @@ def classify(row):
     if row.get("foreground_cap_satisfied") is False:
         add("data_preprocessing", f"foreground_cap_satisfied=false; foreground={row.get('foreground_voxels')}, threshold={row.get('foreground_threshold')}")
     if row.get("execution_status") == "FAIL" and row.get("gt_aligned") is False and "aggregate_proposals.py" in (row.get("failure_command") or "") and row.get("failure_returncode") == 2:
-        add("data_preprocessing", f"Saved data audit reports {row.get('gt_out_of_bounds_nodes')} out-of-bounds SWC nodes; aggregate_proposals.py exits 2 at its pre-inference alignment guard. Consistent with the saved failure, though subprocess output was not retained")
+        add("data_alignment", f"Saved data audit reports {row.get('gt_out_of_bounds_nodes')} out-of-bounds SWC nodes; aggregate_proposals.py exits 2 at its pre-inference alignment guard. Consistent with the saved failure, though subprocess output was not retained")
     oracle_reach = row.get("oracle_reachable_edge_fraction")
     if oracle_reach is not None and oracle_reach < 0.5 and (row.get("oracle_bridge_edges") or 0) > 5:
         add("connectivity_graph", f"Oracle nodes still give reachable={oracle_reach:.4f}, bridges={row['oracle_bridge_edges']}, edge_f1={row.get('oracle_edge_f1')}; proposal error alone cannot explain this")
@@ -252,7 +252,7 @@ def classify(row):
         evidence.append("Incomplete diagnostic record: " + ", ".join(row["missing_fields"]))
     failure = bool(stages or flagged or row.get("execution_status") == "FAIL" or row.get("incomplete"))
     primary = stages[0] if len(stages) == 1 else "mixed" if stages else "unknown" if failure else None
-    return dict(run_status="FAIL" if failure else "PASS", primary_failure_stage=primary,
+    return dict(review_status="REVIEW" if failure else "CLEAR", primary_failure_stage=primary,
                 secondary_failure_stage=";".join(stages) if len(stages) > 1 else None,
                 likely_failure_mechanism="; ".join(evidence) if evidence else "No trigger in recorded diagnostics; this is not proof of biological validity",
                 diagnostic_evidence="; ".join(evidence) if evidence else "Completed run with no triage trigger",
@@ -260,14 +260,15 @@ def classify(row):
                 manual_review_required=failure)
 
 
-def build_rows(inventory, dataset_id):
+def build_rows(inventory, dataset_id, dataset_name=None):
     rows = []
     promoted_sources = {e["source"] for entries in inventory.observations.values() for e in entries
                         if e["kind"] == "run_summary" and e["values"].get("graph_path")
                         and promoted(inventory.npz_metadata(inventory.resolve(e["values"]["graph_path"])))}
     for index, observations in sorted(inventory.observations.items()):
         row = dict.fromkeys(FIELDS)
-        row.update(sample_index=index, dataset_id=dataset_id, field_sources={}, conflicts=[])
+        row.update(sample_index=index, dataset_id=dataset_id, dataset_name=dataset_name or dataset_id,
+                   field_sources={}, conflicts=[])
         def put(key, value, source):
             if value is None:
                 return
@@ -344,6 +345,7 @@ def build_rows(inventory, dataset_id):
             row.update(primary_scope="auxiliary_only", execution_status=None)
         for entry in observations:
             values, source, kind = entry["values"], entry["source"], entry["kind"]
+            copy(values, ("species", "brain_region", "cortical_layer"), source)
             if kind == "topology" and graph_path and compare_html and normalized(values.get("compare_html")) == compare_html and normalized(Path(source).parent) == normalized(Path(graph_path).parent.parent):
                 copy(values, FIELDS, source)
             if kind == "selection_audit" and graph_path and normalized(values.get("graph_path")) == graph_path:
@@ -367,6 +369,7 @@ def build_rows(inventory, dataset_id):
             copy(values, ["sample_id"] + [k for k in FIELDS if k.startswith("volume_")], entry["source"])
             put("gt_aligned", values.get("aligned"), entry["source"] + "#aligned")
             put("gt_out_of_bounds_nodes", values.get("out_of_bounds_nodes"), entry["source"] + "#out_of_bounds_nodes")
+            copy(values, ("species", "brain_region", "cortical_layer"), entry["source"])
         if row["sample_id"] is None:
             for entry in observations:
                 if entry["values"].get("sample_id"):
@@ -381,7 +384,7 @@ def build_rows(inventory, dataset_id):
             row["bridge_hit_rate_convention"] = "1.0 in evaluator when no bridges; no empirical bridge accuracy evidence"
         row["missing_fields"] = [k for k in ("primary_source", "edge_f1", "swc_valid", "proposal_coverage", "point_distance_f1") if row.get(k) is None]
         row["incomplete"] = bool(row["missing_fields"])
-        # Spatial metrics are optional for triage PASS, but their absence is still
+        # Spatial metrics are optional for triage CLEAR, but their absence is still
         # exposed as diagnostic incompleteness. Do not turn absent geometry into 0.
         critical_missing = [k for k in row["missing_fields"] if k != "point_distance_f1"]
         decision_input = dict(row, incomplete=bool(critical_missing), missing_fields=critical_missing)
@@ -401,20 +404,21 @@ def main():
     parser.add_argument("--artifact-root", type=Path, default=REPO / "tmp")
     parser.add_argument("--output-dir", type=Path, default=REPO / "tmp/diagnostics")
     parser.add_argument("--dataset-id", default="Gold166")
+    parser.add_argument("--dataset-name", help="Display name; defaults to --dataset-id. One dataset per artifact root.")
     args = parser.parse_args()
     inventory = Inventory(args.artifact_root, args.output_dir)
     inventory.discover()
-    rows = build_rows(inventory, args.dataset_id)
+    rows = build_rows(inventory, args.dataset_id, args.dataset_name)
     counts = dict(Counter(r["primary_failure_stage"] or "no_trigger" for r in rows))
     summary = {"sample_count": len(rows), "promoted_samples": sum(r["primary_scope"] == "promoted" for r in rows),
                "incomplete_samples": sum(r["incomplete"] for r in rows),
                "promoted_execution_failures": sum(r["primary_scope"] == "promoted" and r["execution_status"] == "FAIL" for r in rows),
-               "failure_stage_counts": counts, "run_status_counts": dict(Counter(r["run_status"] for r in rows)),
+               "failure_stage_counts": counts, "review_status_counts": dict(Counter(r["review_status"] for r in rows)),
                "missing_field_counts": {k: sum(r.get(k) is None for r in rows) for k in FIELDS},
                "source_count": len(inventory.sources), "discovery_issues": inventory.issues}
     output = args.output_dir
     output.mkdir(parents=True, exist_ok=True)
-    payload = {"schema_version": 1, "status_note": "PASS means no triage trigger; FAIL includes incomplete/unknown. execution_status records completion separately.",
+    payload = {"schema_version": 2, "status_note": "CLEAR means no triage trigger; REVIEW includes incomplete/unknown. execution_status records completion separately as PASS/FAIL or null when unknown.",
                "summary": summary, "sources": sorted(inventory.sources.values(), key=lambda x: x["path"]), "samples": rows}
     (output / "pointneuron1_sample_diagnostics.json").write_text(json.dumps(clean(payload), indent=2, allow_nan=False) + "\n", encoding="utf-8")
     with (output / "pointneuron1_sample_diagnostics.csv").open("w", newline="", encoding="utf-8") as handle:
@@ -424,9 +428,9 @@ def main():
             writer.writerow({k: "NA" if row.get(k) is None else json.dumps(row[k]) if isinstance(row[k], (list, dict)) else row[k] for k in FIELDS})
     (output / "pointneuron1_sources.json").write_text(json.dumps(payload["sources"], indent=2) + "\n", encoding="utf-8")
     compact = {k: v for k, v in summary.items() if k != "missing_field_counts"}
-    lines = ["# PointNeuron1.0 diagnostic closure", "", "PASS means no recorded triage trigger, not independently established biological plausibility. FAIL includes incomplete/unknown records. See execution_status for actual run completion.", "", "```json", json.dumps(compact, indent=2), "```", "", "## Sample-level review", "", "| Sample | Scope | Stage | Evidence |", "|---|---|---|---|"]
+    lines = ["# PointNeuron1.0 diagnostic closure", "", "review_status=CLEAR means no recorded triage trigger, not independently established biological plausibility. REVIEW includes incomplete/unknown records. execution_status=PASS/FAIL records actual run completion separately (null when unknown).", "", "```json", json.dumps(compact, indent=2), "```", "", "## Sample-level review", "", "| Sample | Scope | Stage | Evidence |", "|---|---|---|---|"]
     for row in rows:
-        if row["run_status"] == "FAIL":
+        if row["review_status"] == "REVIEW":
             lines.append(f"| {row['sample_index']} | {row['primary_scope']} | {row['primary_failure_stage']} | {row['diagnostic_evidence']} |")
     lines += ["", "## Sources", "", "Exact paths and observation counts: `pointneuron1_sources.json`. Original metric names, missing-field counts and field provenance: `pointneuron1_sample_diagnostics.json`."]
     (output / "pointneuron1_failure_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

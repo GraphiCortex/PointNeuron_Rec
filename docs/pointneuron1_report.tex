@@ -605,6 +605,9 @@ default, using replacement when necessary. This is distinct from the
 512-point training configuration. The 2048-point setting is not serialized in
 the proposal archives, so the diagnostic table leaves per-run points per patch
 unrecorded rather than treating a code default as saved evidence.
+This training/inference point-count difference could be tested in a future
+controlled ablation if unexplained failures remain, without attributing any
+observed failure to it here.
 
 Inference uses threshold fraction 0.2, local objectness cutoff 0.5 and at most
 512 local proposals per patch. Local proposals are concatenated in global
@@ -1151,14 +1154,16 @@ historical controls; its size must not be mistaken for independent sample count.
 \subsection{Evidence-based review taxonomy}
 
 \texttt{execution\_status} records completed versus failed runs.
-\texttt{run\_status} instead records diagnostic triage: PASS means no trigger in
-the available evidence; FAIL means review is required, including unresolved or
+\texttt{review\_status} instead records diagnostic triage: CLEAR means no trigger in
+the available evidence; REVIEW means review is required, including unresolved or
 incomplete cases. Neither is a biological acceptance criterion. In this pass,
 52 samples have no trigger and 54 require review: six proposal, five selection,
-four data-preprocessing, five mixed and 34 unknown. There are no exclusively
+three data-alignment, one foreground data-preprocessing, five mixed and 34 unknown. There are no exclusively
 connectivity-graph or output-geometry assignments; oracle-supported graph
 deficits coexist with other evidence and are counted as mixed.
 
+Alignment and data-pairing problems use \path{data_alignment}.
+Foreground preprocessing uses \path{data_preprocessing}.
 The conservative rules attribute an unsatisfied foreground cap to preprocessing;
 candidate coverage below 0.50 to proposal-side evidence; and candidate segment
 coverage at least 0.70 followed by loss at least 0.35 to selection-side evidence.
@@ -1178,7 +1183,7 @@ flagged rows require manual review.
 \toprule
 Sample & Attribution & Recorded evidence and interpretation \\
 \midrule
-3, 4, 6 & Preprocessing & Saved data audits record 17, 25 and 24 out-of-bounds SWC nodes. Aggregation's alignment guard exits with the recorded code 2; subprocess output itself is unavailable. \\
+3, 4, 6 & Data alignment & Saved data audits record 17, 25 and 24 out-of-bounds SWC nodes: an alignment/data-pairing issue, not foreground thresholding. Aggregation's alignment guard exits with the recorded code 2; subprocess output itself is unavailable. \\
 7 & Mixed & Candidate segment coverage 0.107; graph foreground cap unsatisfied. Oracle nodes still give 124 bridges and reachability 0.024. \\
 16 & Mixed & Foreground cap unsatisfied. Oracle graph retains 104 bridges and reachability 0.181; proposal improvement alone cannot explain away this deficit. \\
 19 & Selection & Candidate segment coverage 0.986 falls to 0.409 after selection; edge F1 0.472 despite reachability 0.992 and only one bridge. \\
@@ -1213,8 +1218,11 @@ evaluation of saved outputs, not retraining. Confirming the exact failed subproc
 traces would require locating further logs or a controlled rerun with output
 capture. Separating thresholding, node placement and graph-rule effects requires
 new controlled experiments. Independent biological review and an external-dataset
-test require new evidence. The schema includes dataset identity and retains
-missingness for future reuse, but no Allen ingestion or PointNeuron2.0 work is
+test require new evidence. The schema includes dataset name and identity,
+nullable species, brain region and cortical layer, separate alignment and
+foreground-preprocessing fields, and the existing metric and attribution groups.
+Metadata remains unrecorded when absent; it is not inferred from paths.
+The schema retains missingness for future reuse, but no Allen ingestion or PointNeuron2.0 work is
 part of this closure. Further development is deferred until this review.
 
 \section{Connectivity GAE Baseline}

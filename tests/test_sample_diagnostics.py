@@ -53,12 +53,39 @@ class DiagnosticsTests(unittest.TestCase):
         self.assertEqual(result["primary_failure_stage"], "mixed")
         self.assertIn("connectivity_graph", result["secondary_failure_stage"])
 
-    def test_alignment_evidence_supports_preprocessing_failure(self):
+    def test_alignment_evidence_is_separate_from_foreground_preprocessing(self):
         result = diagnostics.classify({"execution_status": "FAIL", "gt_aligned": False,
             "gt_out_of_bounds_nodes": 17, "failure_command": "python scripts/aggregate_proposals.py",
             "failure_returncode": 2})
-        self.assertEqual(result["primary_failure_stage"], "data_preprocessing")
+        self.assertEqual(result["primary_failure_stage"], "data_alignment")
         self.assertIn("alignment guard", result["diagnostic_evidence"])
+        cap = diagnostics.classify({"foreground_cap_satisfied": False})
+        self.assertEqual(cap["primary_failure_stage"], "data_preprocessing")
+
+    def test_review_status_is_independent_of_execution_status(self):
+        result = diagnostics.classify({"execution_status": "PASS", "foreground_cap_satisfied": False})
+        self.assertEqual(result["review_status"], "REVIEW")
+        self.assertNotIn("run_status", result)
+        self.assertEqual(diagnostics.classify({"execution_status": "PASS"})["review_status"], "CLEAR")
+
+    def test_optional_dataset_metadata_is_copied_without_inference(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "summary.json").write_text(json.dumps({"samples": [], "failures": [
+                {"sample_index": 1}, {"sample_index": 2}]}))
+            (root / "data.json").write_text(json.dumps({"domains": [], "samples": [
+                {"sample_index": 1, "species": "recorded species", "brain_region": "recorded region",
+                 "cortical_layer": "recorded layer"},
+                {"sample_index": 2, "domain_family": "must not infer species"}]}))
+            inv = diagnostics.Inventory(root, root / "out")
+            inv.discover()
+            first, second = diagnostics.build_rows(inv, "external-id", "External dataset")
+            self.assertEqual(first["dataset_name"], "External dataset")
+            self.assertEqual(first["dataset_id"], "external-id")
+            for key in ("species", "brain_region", "cortical_layer"):
+                self.assertIsNotNone(first[key])
+                self.assertIn(key, first["field_sources"])
+                self.assertIsNone(second[key])
 
     def test_selection_requires_good_candidate_coverage(self):
         poor = diagnostics.classify({"proposal_segment_coverage": 0.4,

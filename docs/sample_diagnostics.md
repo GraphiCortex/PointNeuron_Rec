@@ -15,7 +15,8 @@ Discovery covers JSON/JSONL summaries and failures, topology and selection
 reports, paper-style reports, per-edge reports, standalone per-sample CSVs, and
 proposal/graph NPZ metadata. Training caches and dataset inventories do not by
 themselves count as reconstruction evaluations. Data inventories supply identity
-and volume dimensions only; their GT `swc_valid` is never used for output validity.
+and volume dimensions plus explicitly recorded biological metadata; their GT
+`swc_valid` is never used for output validity.
 GT alignment and out-of-bounds counts are retained as distinct data-quality
 fields. Empty sample directories beside run summaries retain unfinished requests. A
 requested count without identifiable sample indices cannot recover missing IDs.
@@ -73,23 +74,24 @@ names and available evaluator context.
 Unrecorded values are JSON null / CSV `NA`, never zero. `incomplete` means at
 least one of primary source, topology F1, output validity, proposal coverage or
 paper-style F1 is absent. `missing_fields` identifies which. Optional missing
-paper-style geometry alone does not trigger diagnostic FAIL. Missing proposal or
+paper-style geometry alone does not trigger diagnostic REVIEW. Missing proposal or
 graph evidence does. Missingness is not evidence of a particular biological or
 model failure.
 
 ## Conservative triage rules
 
-`execution_status` describes actual run completion. `run_status` is diagnostic
-triage: PASS means no trigger in recorded evidence; FAIL means review is required
+`execution_status` describes actual run completion (PASS / FAIL, or null when
+unknown). `review_status` is diagnostic triage: CLEAR means no trigger in recorded
+evidence; REVIEW means review is required
 because of a trigger, failed execution or insufficient core evidence. Neither is
-a validated biological-quality acceptance test. All FAIL rows require review.
+a validated biological-quality acceptance test. All REVIEW rows require review.
 
 The following explicit **review heuristics** are not fitted scientific cutoffs:
 
 | Evidence | Attribution |
 |---|---|
 | Recorded foreground cap unsatisfied | data_preprocessing |
-| Saved GT alignment failure, aggregation command and return code 2 | data_preprocessing; consistent with the pre-inference alignment guard, without claiming a recovered subprocess trace |
+| Saved GT alignment failure, aggregation command and return code 2 | data_alignment; a data-pairing/alignment issue, consistent with the pre-inference alignment guard, without claiming a recovered subprocess trace |
 | Oracle reachability < 0.50 and > 5 bridges | connectivity_graph evidence despite GT-derived nodes |
 | Candidate segment coverage (or GT-node coverage if no segment audit) < 0.50 | proposal-side evidence |
 | Candidate segment coverage >= 0.70, selected coverage loss >= 0.35 | selection-side evidence |
@@ -109,7 +111,23 @@ model failure. For samples 3, 4 and 6, separate saved alignment evidence (17, 25
 and 24 out-of-bounds nodes) corroborates a specific early guard in aggregation.
 Threshold adaptation alone is not a failure either.
 
-For another dataset, keep the schema and provide `--dataset-id` and an artifact
-root with stable sample IDs and compatible source adapters. Indices are local to
-that dataset; cross-dataset joins should use `(dataset_id, sample_id)`. No Allen
-ingestion, parameter changes or PointNeuron2.0 work is included.
+The taxonomy names are `data_alignment`, `data_preprocessing`, `proposal`,
+`selection`, `connectivity_graph`, `output_geometry`, `mixed`, and `unknown`.
+Rows with no attributed failure have null `primary_failure_stage` (summarized as
+`no_trigger`). Samples 3, 4 and 6 use `data_alignment`; foreground-cap violations
+remain `data_preprocessing` or a contributing stage in `mixed`.
+
+Schema version 2 includes `dataset_name`, stable `dataset_id`, `sample_id`, and
+local `sample_index`, plus nullable `species`, `brain_region`, and `cortical_layer`.
+Optional biological metadata is copied only from explicitly named source fields,
+with provenance; it is never inferred from paths or domain-family labels.
+`gt_aligned`/`gt_out_of_bounds_nodes` describe alignment, while threshold/adaptation
+and `foreground_cap_satisfied` describe foreground preprocessing separately.
+Proposal, selection, graph, bridge and paper-style SWC metrics retain their
+existing definitions and missing-value handling.
+
+For another dataset, provide `--dataset-id`, optionally `--dataset-name` (defaults
+to the ID), and an artifact root containing one dataset with stable sample IDs
+and compatible source adapters. Cross-dataset joins should use
+`(dataset_id, sample_id)`. No Allen ingestion, dataset-specific paths, parameter
+changes or PointNeuron2.0 work is included.

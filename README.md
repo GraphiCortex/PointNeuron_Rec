@@ -173,7 +173,9 @@ py scripts\build_sample_diagnostics.py
 Outputs are under `tmp/diagnostics`: a per-sample CSV/JSON, a failure summary,
 and an exact source manifest. The [schema and triage rules](docs/sample_diagnostics.md)
 explain missing values, provenance, and the distinction between completed runs
-and diagnostic review flags. This command does not train or run inference.
+and diagnostic `review_status` (`CLEAR` / `REVIEW`), separate from actual
+`execution_status`. Alignment/data-pairing issues are distinguished from
+foreground preprocessing. This command does not train or run inference.
 
 Run the oracle-node diagnosis for early hard samples:
 
