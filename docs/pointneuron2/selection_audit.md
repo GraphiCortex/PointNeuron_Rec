@@ -1,8 +1,9 @@
 # Frozen-proposal score and suppression audit
 
 **Update:** the user agreed to the proposed neuron-21 full-volume comparison.
-[Preparation is complete and the visible run command is ready](graph_cutoff_comparison.md).
-No full-volume reconstruction has been launched.
+[The full-volume pair has completed](graph_cutoff_results.md), showing a spatial
+benefit and a topology tradeoff. The agreed
+[seven-neuron extension is prepared](validation_graph_cutoffs.md).
 
 Completed on 11 October 2026 after the user chose a bounded selection audit.
 The two saved corrected-input checkpoints are unchanged. Inference and selection

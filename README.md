@@ -7,7 +7,9 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Next: prepared neuron 21 paired reconstruction and exact local command](docs/pointneuron2/graph_cutoff_comparison.md)
+- [Next: prepared seven-neuron cutoff validation and exact local command](docs/pointneuron2/validation_graph_cutoffs.md)
+- [Measured: neuron 21 reconstruction results and SWC projections](docs/pointneuron2/graph_cutoff_results.md)
+- [Completed preparation: neuron 21 paired reconstruction](docs/pointneuron2/graph_cutoff_comparison.md)
 - [Latest: score filtering and suppression audit, with proposed next check](docs/pointneuron2/selection_audit.md)
 - [Current: corrected-input training results and score-filtering findings](docs/pointneuron2/repair_pilot_results.md)
 - [Completed preparation: corrected-input coordinate pilot](docs/pointneuron2/repair_pilot_ready.md)
@@ -41,8 +43,9 @@ corrected raw/local-coordinate pilot has completed training. Local validation
 loss is modestly lower, but crop geometry gains remain small and the current
 graph score cutoff discards substantial reference coverage. The completed
 selection audit isolates that loss after sphere suppression. A paired full-volume
-check on validation neuron 21 is now prepared with a separate user-run command;
-full reconstruction has not run.
+check on validation neuron 21 has completed: lower-cutoff spatial F1 improves
+from 0.7880 to 0.8326, with lower precision and topology F1. The agreed seven-neuron
+extension is now prepared with a separate user-run command and reuses neuron 21.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

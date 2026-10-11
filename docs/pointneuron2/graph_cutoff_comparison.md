@@ -1,5 +1,10 @@
 # Neuron 21 graph-cutoff comparison: prepared
 
+**Update:** this run completed in 133.7 seconds. See
+[the measured reconstruction results and projections](graph_cutoff_results.md).
+The prepared-state instructions below are historical; do not run the completed
+comparison again in the same directory.
+
 The user agreed to the paired full-volume development check after the
 [score/suppression audit](selection_audit.md). CPU preparation and provenance
 checks have completed. No proposal inference, reconstruction or training has

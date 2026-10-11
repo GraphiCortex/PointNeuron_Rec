@@ -36,6 +36,12 @@ generates one shared proposal file for validation neuron 21 and reconstructs
 graph cutoffs 0.85/0.5 with fixed weights/settings. It checks shared-file hashes
 and scores both SWCs. See [the prepared local command](../../docs/pointneuron2/graph_cutoff_comparison.md).
 
+`summarize_graph_cutoffs.py` verifies saved paired outputs/metrics and renders
+shared-axis SWC projections on CPU. See [neuron 21's measured results](../../docs/pointneuron2/graph_cutoff_results.md).
+`compare_validation_cutoffs.py` extends the same comparison to all seven frozen
+validation neurons, reusing neuron 21 and retaining failures.
+See [the next visible local command](../../docs/pointneuron2/validation_graph_cutoffs.md).
+
 | File | Purpose | Current status |
 |---|---|---|
 | `baseline.py` | Prepare the neuron-disjoint split and run fresh PN 1.0 baseline training | 30-epoch baseline and seven-neuron validation completed |
