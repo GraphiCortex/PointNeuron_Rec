@@ -1,5 +1,9 @@
 # Saved 500-update GPU fit: dropout dependence and confidence
 
+Follow-up: [the dropout-zero control has completed](query_dropout_zero_results.md).
+Its raw geometry improves substantially; confidence and an inference normalization
+gap remain. This report retains the earlier 0.1 run and its original protocol.
+
 The user completed the paired fixed-crop fit in 48 seconds on the local RTX
 3070 Ti Laptop GPU. Both arms executed 500 updates, their pairing checks passed,
 and their saved checkpoints reproduce the final predictions exactly.

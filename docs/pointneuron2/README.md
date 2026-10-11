@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**12 October update:** the dropout-zero 500-update control is complete. Raw
+query target coverage improves from 66.7% to 95.8%, but score 0.5 retains only
+29.2%. Training normalization restores 100% raw support, while confidence still
+rejects targets. See [the verified comparison and proposed next step](query_dropout_zero_results.md).
+The longer fit is proposed; full training and SWC evaluation remain pending.
+
 **Latest:** the user completed the 500-update GPU fit. Query inference reaches
 66.7% target coverage but accepts zero slots at score 0.5. Forward-only controls
 show dropout dependence: restoring decoder dropout yields 95.8–100% coverage,

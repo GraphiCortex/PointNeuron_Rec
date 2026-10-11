@@ -6,6 +6,10 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest results: [completed dropout-zero comparison](../../docs/pointneuron2/query_dropout_zero_results.md).
+`summarize_query_dropout_control.py` verifies matched saved runs and reports
+per-crop geometry/confidence diagnostics, without optimization or source-image reads.
+
 Current architecture work: [query decoder implementation, checks and next GPU
 command](../../docs/pointneuron2/query_decoder_implementation.md).
 Latest: [the completed GPU fit and approved dropout-only control](../../docs/pointneuron2/query_gpu_fit_results.md).
