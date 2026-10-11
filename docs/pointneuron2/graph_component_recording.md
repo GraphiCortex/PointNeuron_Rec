@@ -4,7 +4,8 @@
 in 231.7 seconds. Eligible components 2–12 receive zero anchors; components 0/1
 consume all 128. Every graph array and metadata match the original exactly.
 See the [actual trace results and fixed-reference support audit](graph_component_trace_results.md).
-No repaired reconstruction has run. The protocol below describes the completed run.
+The separate [repaired reconstruction and follow-up audit](remaining_budget_results.md)
+have since completed. The protocol below describes the unchanged recording run.
 
 The user approved recording the actual
 allocation after the [saved graph/path and image audit](hybrid_graph_path_audit.md).

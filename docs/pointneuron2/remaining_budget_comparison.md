@@ -1,6 +1,11 @@
 # Neuron 79: remaining-budget allocation comparison
 
-**Prepared; repaired SWC has not run.** The user approved repairing allocation
+**Completed; paired checks passed.** The user ran the comparison in 298.5s.
+Recall rises from 0.5560 to 0.5731, but precision falls from 0.8961 to 0.8162
+and F1 from 0.6862 to 0.6734. See the [verified reconstruction, image and supervision findings](remaining_budget_results.md).
+The protocol below records the completed experiment; no new default is promoted.
+
+The user approved repairing allocation
 after the [real trace confirmed starvation](graph_component_trace_results.md).
 The repaired selector has passed cached-matrix inspection, but its graph
 requires substantially more bridging. The visible SWC comparison below measures
@@ -50,8 +55,8 @@ sparse anchor proximity. **Bridging increases sharply.** The changed node set
 spans disconnected image regions; the existing bridge policy may add incorrect
 connections. Some eligible components also have high scores but little reference
 proximity. A graph that reaches more components is not automatically a better
-neuronal reconstruction. These are graph/geometry diagnostics; no new SWC
-precision, recall, F1 or topology result exists yet.
+neuronal reconstruction. These are the historical preparation diagnostics;
+the completed SWC results are reported separately above.
 
 Fourteen targeted checks passed: seven allocator cases (including both synthetic
 starvation examples, the actual size pattern, minimal feasible/infeasible

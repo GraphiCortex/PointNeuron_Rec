@@ -1,5 +1,9 @@
 # Neuron 79: actual component allocation confirmed
 
+Follow-up: the [repaired SWC comparison and image/supervision audit](remaining_budget_results.md)
+are now complete. The arithmetic repair removes starvation but lowers spatial F1;
+the report below records the earlier unchanged trace evidence.
+
 The user completed the unchanged CPU graph replay in **231.7 seconds**
 (terminal total 3m57s). Every saved graph array and its metadata match the earlier
 hybrid graph exactly. Recording did not change selection or reconstruction.
@@ -91,8 +95,9 @@ eligible component when the budget permits. Keep the 625-candidate pool,
 coverage selection, model weights and graph settings fixed.
 
 The [cached repair comparison and visible reconstruction command](remaining_budget_comparison.md)
-are now prepared. All 13 eligible components get anchors, but cached bridge
-edges increase from 4 to 21; a repaired SWC has not run. Actual SWC
+were prepared from this trace. All 13 eligible components get anchors, but bridge
+edges increase from 4 to 21. The completed SWC regresses overall; see the follow-up
+above. Actual SWC
 precision, recall, spatial F1, paths and bridging must determine improvement;
 candidate support is not a substitute. Changing the size eligibility policy,
 training again or promoting a new default would be separate decisions.

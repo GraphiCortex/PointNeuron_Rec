@@ -13,10 +13,15 @@ two components consume all 128 anchors and 11 eligible components get none.
 41 of their 72 candidates lie within 6 voxels of the reference, but the audit
 also identifies separate size-rule exclusions and losses near allocated components.
 The user approved a fixed-budget allocation repair and cached-matrix inspection.
-The [versioned repair and visible paired SWC command](remaining_budget_comparison.md)
-are now prepared: all 13 eligible components receive anchors at the same 128
-budget, but cached graph bridges increase from 4 to 21. Fourteen targeted checks
-pass. No repaired SWC has run; that tradeoff needs final reconstruction assessment.
+The [versioned repair comparison](remaining_budget_comparison.md) is now complete:
+all 13 eligible components receive anchors at the same 128 budget, but spatial
+F1 declines 0.6862→0.6734 as precision falls despite a recall gain. The
+[verified path, image and supervision audit](remaining_budget_results.md) locates
+much added off-reference geometry in high-scoring component 2. Both off-reference
+groups follow visible bright image structures. 52/262 training crops lack local
+reference nodes and have zero classification supervision, but most off-reference
+candidates arise in reference-containing crops; that policy alone is not the
+whole explanation. No new training, bridge rule or default is promoted.
 The earlier [saved graph/path audit](hybrid_graph_path_audit.md) provides image context.
 The user completed the focused [neuron-79 SWC comparison](hybrid_swc_results.md).
 Spatial F1 improves from 0.6560 to 0.6862, with higher precision and recall.

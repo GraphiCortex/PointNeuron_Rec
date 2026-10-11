@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready to run: fixed-budget allocation repair versus saved neuron 79 SWC](docs/pointneuron2/remaining_budget_comparison.md)
+- [Latest: allocation repair regression, off-reference paths and supervision findings](docs/pointneuron2/remaining_budget_results.md)
+- [Completed: fixed-budget allocation repair versus saved neuron 79 SWC](docs/pointneuron2/remaining_budget_comparison.md)
 - [Confirmed: actual neuron 79 component starvation and remaining losses](docs/pointneuron2/graph_component_trace_results.md)
 - [Completed: unchanged graph-component allocation recording](docs/pointneuron2/graph_component_recording.md)
 - [Latest: saved graph/path audit and component-allocation counterexamples](docs/pointneuron2/hybrid_graph_path_audit.md)

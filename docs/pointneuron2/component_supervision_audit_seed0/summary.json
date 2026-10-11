@@ -1,0 +1,1926 @@
+{
+  "status": "completed",
+  "verification": "passed",
+  "comparison_sha256": "7e03d3691809facba22cb27c003c1568191b2d9f198b0f3dc6f1a9c3022603db",
+  "inspection_source_sha256": "bd2e8fef3ebd8b14d77aeb84b3a8a41807951cd2b315813492b421bc2ae92743",
+  "image_sha256": "f8fbf5a825c60ace990e93d7062cf14c22f3dcd2fb0aa8a14911e1345e08d978",
+  "reference_sha256": "97a0fb75788a889428003b519fac08f3b733650ca61c589f8d3da3f67982be3f",
+  "manifest_sha256": "627f1e2025c44f223e3617c460eb8ed7067e08fc2441e0d2f71bd58c117d0eff",
+  "training_run_sha256": "9e9929b04621ac17dc0e8ff8f93a835fb4c26f8e9181439c9e6500985e1689bc",
+  "image_dimensions_xyzc": [
+    724,
+    1024,
+    33,
+    1
+  ],
+  "cache_supervision_counts": {
+    "train": {
+      "records": 262,
+      "with_local_reference_nodes": 210,
+      "without_local_reference_nodes": 52
+    },
+    "val": {
+      "records": 56,
+      "with_local_reference_nodes": 47,
+      "without_local_reference_nodes": 9
+    }
+  },
+  "neuron79_validation_cache": [
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 0,
+      "center": [
+        0.0,
+        785.0,
+        2.0
+      ],
+      "label_nodes": 0
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 1,
+      "center": [
+        96.0,
+        497.0,
+        2.0
+      ],
+      "label_nodes": 40
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 2,
+      "center": [
+        192.0,
+        209.0,
+        2.0
+      ],
+      "label_nodes": 49
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 3,
+      "center": [
+        336.0,
+        881.0,
+        2.0
+      ],
+      "label_nodes": 17
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 4,
+      "center": [
+        384.0,
+        449.0,
+        2.0
+      ],
+      "label_nodes": 245
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 5,
+      "center": [
+        528.0,
+        689.0,
+        2.0
+      ],
+      "label_nodes": 22
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 6,
+      "center": [
+        576.0,
+        161.0,
+        2.0
+      ],
+      "label_nodes": 82
+    },
+    {
+      "partition": "val",
+      "sample_index": 79,
+      "patch_index": 7,
+      "center": [
+        720.0,
+        593.0,
+        2.0
+      ],
+      "label_nodes": 0
+    }
+  ],
+  "inference_patches": 156,
+  "inference_patches_without_reference_nodes": 7,
+  "components": [
+    {
+      "component_rank": 0,
+      "candidates": 429,
+      "mean_score": 0.829940140247345,
+      "reference_within_6_candidates": 404,
+      "median_reference_distance": 1.4806721374742342,
+      "median_rounded_voxel_intensity": 66.0,
+      "rounded_voxel_above15_fraction": 0.9976689976689976,
+      "nearby_cube_radius2_above15_fraction": 1.0,
+      "nearby_cube_radius2_above51_fraction": 1.0,
+      "source_patch_count": 121,
+      "source_patches": [
+        {
+          "inference_patch_index": 0,
+          "center": [
+            0.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 1,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 5,
+          "center": [
+            48.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 6,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 6,
+          "center": [
+            48.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 28,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 7,
+          "center": [
+            48.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 22,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 11,
+          "center": [
+            96.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 29,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 12,
+          "center": [
+            96.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 50,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 13,
+          "center": [
+            96.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 70,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 14,
+          "center": [
+            96.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 28,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 17,
+          "center": [
+            144.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 81,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 18,
+          "center": [
+            144.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 85,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 19,
+          "center": [
+            144.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 71,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 20,
+          "center": [
+            144.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 109,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 21,
+          "center": [
+            144.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 76,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 24,
+          "center": [
+            144.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 23,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 26,
+          "center": [
+            192.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 60,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 27,
+          "center": [
+            192.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 19,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 28,
+          "center": [
+            192.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 46,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 30,
+          "center": [
+            192.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 125,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 31,
+          "center": [
+            192.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 90,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 32,
+          "center": [
+            192.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 99,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 34,
+          "center": [
+            192.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 45,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 35,
+          "center": [
+            192.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 17,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 36,
+          "center": [
+            192.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 9,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 37,
+          "center": [
+            240.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 25,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 38,
+          "center": [
+            240.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 70,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 40,
+          "center": [
+            240.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 76,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 41,
+          "center": [
+            240.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 93,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 43,
+          "center": [
+            240.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 92,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 44,
+          "center": [
+            240.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 113,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 45,
+          "center": [
+            240.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 126,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 46,
+          "center": [
+            240.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 69,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 48,
+          "center": [
+            240.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 3,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 49,
+          "center": [
+            288.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 125,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 50,
+          "center": [
+            288.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 158,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 51,
+          "center": [
+            288.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 117,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 52,
+          "center": [
+            288.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 94,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 53,
+          "center": [
+            288.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 57,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 54,
+          "center": [
+            288.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 133,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 55,
+          "center": [
+            288.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 163,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 56,
+          "center": [
+            288.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 168,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 57,
+          "center": [
+            288.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 139,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 58,
+          "center": [
+            288.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 62,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 59,
+          "center": [
+            288.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 44,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 60,
+          "center": [
+            288.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 12,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 61,
+          "center": [
+            288.0,
+            833.0,
+            2.0
+          ],
+          "reference_nodes": 9,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 62,
+          "center": [
+            288.0,
+            881.0,
+            2.0
+          ],
+          "reference_nodes": 11,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 63,
+          "center": [
+            336.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 13,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 64,
+          "center": [
+            336.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 37,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 65,
+          "center": [
+            336.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 151,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 66,
+          "center": [
+            336.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 176,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 67,
+          "center": [
+            336.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 118,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 68,
+          "center": [
+            336.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 133,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 69,
+          "center": [
+            336.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 127,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 70,
+          "center": [
+            336.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 156,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 71,
+          "center": [
+            336.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 152,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 72,
+          "center": [
+            336.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 174,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 73,
+          "center": [
+            336.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 173,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 76,
+          "center": [
+            336.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 28,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 79,
+          "center": [
+            384.0,
+            113.0,
+            2.0
+          ],
+          "reference_nodes": 55,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 80,
+          "center": [
+            384.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 15,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 81,
+          "center": [
+            384.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 25,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 82,
+          "center": [
+            384.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 94,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 83,
+          "center": [
+            384.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 121,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 84,
+          "center": [
+            384.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 74,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 85,
+          "center": [
+            384.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 125,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 86,
+          "center": [
+            384.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 245,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 4
+        },
+        {
+          "inference_patch_index": 87,
+          "center": [
+            384.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 211,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 88,
+          "center": [
+            384.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 120,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 89,
+          "center": [
+            384.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 186,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 90,
+          "center": [
+            384.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 169,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 91,
+          "center": [
+            384.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 59,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 93,
+          "center": [
+            384.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 18,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 94,
+          "center": [
+            384.0,
+            833.0,
+            2.0
+          ],
+          "reference_nodes": 16,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 96,
+          "center": [
+            432.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 73,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 97,
+          "center": [
+            432.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 54,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 98,
+          "center": [
+            432.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 87,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 99,
+          "center": [
+            432.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 140,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 100,
+          "center": [
+            432.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 106,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 101,
+          "center": [
+            432.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 124,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 102,
+          "center": [
+            432.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 237,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 103,
+          "center": [
+            432.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 235,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 104,
+          "center": [
+            432.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 135,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 105,
+          "center": [
+            432.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 205,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 106,
+          "center": [
+            432.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 179,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 107,
+          "center": [
+            432.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 30,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 108,
+          "center": [
+            432.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 7,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 109,
+          "center": [
+            480.0,
+            113.0,
+            2.0
+          ],
+          "reference_nodes": 73,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 110,
+          "center": [
+            480.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 98,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 111,
+          "center": [
+            480.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 86,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 112,
+          "center": [
+            480.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 121,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 113,
+          "center": [
+            480.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 158,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 114,
+          "center": [
+            480.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 134,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 115,
+          "center": [
+            480.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 115,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 116,
+          "center": [
+            480.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 143,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 117,
+          "center": [
+            480.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 164,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 118,
+          "center": [
+            480.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 111,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 120,
+          "center": [
+            480.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 127,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 121,
+          "center": [
+            480.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 34,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 122,
+          "center": [
+            528.0,
+            113.0,
+            2.0
+          ],
+          "reference_nodes": 64,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 123,
+          "center": [
+            528.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 79,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 124,
+          "center": [
+            528.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 105,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 125,
+          "center": [
+            528.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 132,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 126,
+          "center": [
+            528.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 145,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 127,
+          "center": [
+            528.0,
+            353.0,
+            2.0
+          ],
+          "reference_nodes": 136,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 128,
+          "center": [
+            528.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 86,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 129,
+          "center": [
+            528.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 78,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 130,
+          "center": [
+            528.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 97,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 131,
+          "center": [
+            528.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 79,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 132,
+          "center": [
+            528.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 39,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 133,
+          "center": [
+            528.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 38,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 134,
+          "center": [
+            528.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 22,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 5
+        },
+        {
+          "inference_patch_index": 135,
+          "center": [
+            576.0,
+            161.0,
+            2.0
+          ],
+          "reference_nodes": 82,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 6
+        },
+        {
+          "inference_patch_index": 136,
+          "center": [
+            576.0,
+            209.0,
+            2.0
+          ],
+          "reference_nodes": 92,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 138,
+          "center": [
+            576.0,
+            305.0,
+            2.0
+          ],
+          "reference_nodes": 131,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 140,
+          "center": [
+            576.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 62,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 141,
+          "center": [
+            576.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 46,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 142,
+          "center": [
+            576.0,
+            497.0,
+            2.0
+          ],
+          "reference_nodes": 56,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 143,
+          "center": [
+            576.0,
+            545.0,
+            2.0
+          ],
+          "reference_nodes": 50,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 147,
+          "center": [
+            624.0,
+            257.0,
+            2.0
+          ],
+          "reference_nodes": 61,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 148,
+          "center": [
+            624.0,
+            401.0,
+            2.0
+          ],
+          "reference_nodes": 30,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 149,
+          "center": [
+            624.0,
+            449.0,
+            2.0
+          ],
+          "reference_nodes": 27,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        }
+      ],
+      "candidates_from_patches_without_local_reference_nodes": 0,
+      "source_patches_in_validation_cache": 3,
+      "source_patches_without_local_reference_nodes": 0
+    },
+    {
+      "component_rank": 1,
+      "candidates": 44,
+      "mean_score": 0.8542686700820923,
+      "reference_within_6_candidates": 0,
+      "median_reference_distance": 25.30429410832037,
+      "median_rounded_voxel_intensity": 71.0,
+      "rounded_voxel_above15_fraction": 1.0,
+      "nearby_cube_radius2_above15_fraction": 1.0,
+      "nearby_cube_radius2_above51_fraction": 1.0,
+      "source_patch_count": 17,
+      "source_patches": [
+        {
+          "inference_patch_index": 8,
+          "center": [
+            48.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 17,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 14,
+          "center": [
+            96.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 28,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 35,
+          "center": [
+            192.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 17,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 36,
+          "center": [
+            192.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 9,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 47,
+          "center": [
+            240.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 15,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 48,
+          "center": [
+            240.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 3,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 58,
+          "center": [
+            288.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 62,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 74,
+          "center": [
+            336.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 103,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 90,
+          "center": [
+            384.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 169,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 106,
+          "center": [
+            432.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 179,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 119,
+          "center": [
+            480.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 124,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 120,
+          "center": [
+            480.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 127,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 133,
+          "center": [
+            528.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 38,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 145,
+          "center": [
+            576.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 8,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 151,
+          "center": [
+            624.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 153,
+          "center": [
+            672.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 155,
+          "center": [
+            720.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 7
+        }
+      ],
+      "candidates_from_patches_without_local_reference_nodes": 10,
+      "source_patches_in_validation_cache": 1,
+      "source_patches_without_local_reference_nodes": 3
+    },
+    {
+      "component_rank": 2,
+      "candidates": 31,
+      "mean_score": 0.9016290903091431,
+      "reference_within_6_candidates": 0,
+      "median_reference_distance": 45.620957936496495,
+      "median_rounded_voxel_intensity": 58.0,
+      "rounded_voxel_above15_fraction": 1.0,
+      "nearby_cube_radius2_above15_fraction": 1.0,
+      "nearby_cube_radius2_above51_fraction": 1.0,
+      "source_patch_count": 16,
+      "source_patches": [
+        {
+          "inference_patch_index": 4,
+          "center": [
+            0.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 0
+        },
+        {
+          "inference_patch_index": 16,
+          "center": [
+            96.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 40,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 24,
+          "center": [
+            144.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 23,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 36,
+          "center": [
+            192.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 9,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 48,
+          "center": [
+            240.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 3,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 60,
+          "center": [
+            288.0,
+            785.0,
+            2.0
+          ],
+          "reference_nodes": 12,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 74,
+          "center": [
+            336.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 103,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 91,
+          "center": [
+            384.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 59,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 108,
+          "center": [
+            432.0,
+            737.0,
+            2.0
+          ],
+          "reference_nodes": 7,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 121,
+          "center": [
+            480.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 34,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 134,
+          "center": [
+            528.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 22,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 5
+        },
+        {
+          "inference_patch_index": 146,
+          "center": [
+            576.0,
+            689.0,
+            2.0
+          ],
+          "reference_nodes": 7,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 151,
+          "center": [
+            624.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 152,
+          "center": [
+            624.0,
+            641.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 153,
+          "center": [
+            672.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": false,
+          "validation_cache_patch_index": null
+        },
+        {
+          "inference_patch_index": 155,
+          "center": [
+            720.0,
+            593.0,
+            2.0
+          ],
+          "reference_nodes": 0,
+          "in_validation_cache": true,
+          "validation_cache_patch_index": 7
+        }
+      ],
+      "candidates_from_patches_without_local_reference_nodes": 6,
+      "source_patches_in_validation_cache": 3,
+      "source_patches_without_local_reference_nodes": 5
+    }
+  ],
+  "existing_objective_gradient_probe": {
+    "method": "synthetic mixed batch, existing objective, CPU autograd; no parameter update",
+    "annotated_crop_objectness_gradient_l1": 1.0,
+    "unlabeled_crop_objectness_gradient_l1": 0.0,
+    "unlabeled_crop_treated_as_background": false
+  },
+  "recipe": {
+    "split": "train",
+    "val_split": "val",
+    "no_val": false,
+    "epochs": 5,
+    "batch_size": 2,
+    "k": 20,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "positive_distance": 6.0,
+    "radius_scale": 1.5,
+    "target_radius_floor": null,
+    "objectness_radius_floor": 3.0,
+    "radius_target_floor": 1.0,
+    "radius_target_mode": "physical",
+    "selection_radius_floor": 8.0,
+    "selection_radius_ceiling": 0.0,
+    "positive_class_weight": 8.0,
+    "proposal_coordinate_mode": "local",
+    "loss_mode": "conservative",
+    "offset_weight": 1.0,
+    "objectness_weight": 10.0,
+    "radius_weight": 1.0,
+    "conservative_objectness_weight": 2.0,
+    "conservative_center_weight": 3.0,
+    "conservative_radius_weight": 0.2,
+    "offset_regularization_weight": 0.005,
+    "non_worsen_weight": 3.0,
+    "non_worsen_margin": 0.0,
+    "conservative_center_beta": 4.0,
+    "non_worsen_beta": 4.0,
+    "conservative_init": true,
+    "endpoint_loss_weight": 1.0,
+    "branch_loss_weight": 1.0,
+    "augment": true,
+    "rotation_augment": false,
+    "flip_augment": false,
+    "num_workers": 0,
+    "drop_last": false,
+    "limit_batches": null,
+    "amp": true,
+    "device": "cuda"
+  },
+  "scope": "one source image plus saved train/validation cache labels; no reserved test use",
+  "limitations": [
+    "Empty local reference labels do not establish verified biological background.",
+    "Bright foreground may be another structure or an unannotated part of the target neuron.",
+    "This audit cannot establish whether the reference annotation is complete.",
+    "Zero supervision on unlabeled crops is confirmed; its causal contribution to this model error is not isolated.",
+    "Inference patch indices are local to their selected list; cache matching uses actual centers, not index equality.",
+    "Validation labels are used for diagnosis only, not training or inference decisions.",
+    "XY image projections hide depth; local intensity support does not prove neurite identity."
+  ]
+}
