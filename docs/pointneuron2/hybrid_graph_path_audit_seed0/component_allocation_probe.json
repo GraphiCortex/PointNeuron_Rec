@@ -1,0 +1,53 @@
+{
+  "status": "completed",
+  "scope": "synthetic counterexamples; not neuron-79 component measurements",
+  "source_sha256": "9d9d8185862966941b556484cab8a72005ad7636845e128c4b8f5f73f67d5665",
+  "probe_source_sha256": "905faec0c50793068ba2ef097e9a8ede171770508d494c7053c7321867da416f",
+  "cases": [
+    {
+      "eligible_component_sizes": [
+        300,
+        250,
+        75
+      ],
+      "budget": 128,
+      "observed_allocations": [
+        61,
+        67,
+        0
+      ],
+      "fixed_total_proportional_shares": [
+        61.44,
+        51.2,
+        15.36
+      ],
+      "zero_anchor_components": [
+        2
+      ]
+    },
+    {
+      "eligible_component_sizes": [
+        250,
+        250,
+        125
+      ],
+      "budget": 128,
+      "observed_allocations": [
+        51,
+        77,
+        0
+      ],
+      "fixed_total_proportional_shares": [
+        51.2,
+        51.2,
+        25.6
+      ],
+      "zero_anchor_components": [
+        2
+      ]
+    }
+  ],
+  "explanation": "The numerator stays at max_nodes while remaining_source shrinks. A later large component can consume all remaining slots before smaller eligible components are visited.",
+  "production_changed": false,
+  "proposed_fix_implemented": false
+}

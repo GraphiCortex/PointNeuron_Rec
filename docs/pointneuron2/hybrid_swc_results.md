@@ -1,5 +1,9 @@
 # Neuron 79: measured hybrid reconstruction results
 
+Follow-up: the user-approved [graph/path and image inspection](hybrid_graph_path_audit.md)
+is complete. It narrows the graph-stage diagnosis and records a synthetic
+allocation problem, without changing settings or rerunning reconstruction.
+
 **Completed 11 October 2026.** The user ran the fixed paired reconstruction on
 their local RTX 3070 Ti Laptop GPU, with live terminal output. It completed in
 421.4 seconds (7m01s within the driver; terminal total 7m08s). Saved inputs,

@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: saved graph/path audit and component-allocation counterexamples](docs/pointneuron2/hybrid_graph_path_audit.md)
 - [Measured: neuron 79 hybrid SWC improvement and remaining limits](docs/pointneuron2/hybrid_swc_results.md)
 - [Completed: neuron 79 score/hybrid SWC protocol](docs/pointneuron2/hybrid_swc_comparison.md)
 - [Latest: fixed confidence/coverage hybrid and reconstruction decision](docs/pointneuron2/hybrid_global_comparison.md)

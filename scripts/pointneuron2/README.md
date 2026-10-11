@@ -192,3 +192,9 @@ on CPU, then exports SWC projections. Spatial F1 improved from 0.6560 to 0.6862
 on this selected validation case; no selector is promoted.
 See [the results](../../docs/pointneuron2/hybrid_swc_results.md) and
 [the protocol and command](../../docs/pointneuron2/hybrid_swc_comparison.md).
+
+`audit_hybrid_graph_paths.py` inspects fixed graph anchors, saved paths and the
+source image on CPU. `probe_component_allocation.py` reproduces eligible-component
+starvation in synthetic cases using the unchanged production selector. Neither
+changes production settings or reruns geodesics. See the
+[image-backed audit and limits](../../docs/pointneuron2/hybrid_graph_path_audit.md).

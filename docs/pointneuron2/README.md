@@ -6,7 +6,11 @@ dependence. See [the evidence and implemented repairs](root_cause_findings.md).
 The baseline/pilot results below are historical and need reassessment on
 correctly decoded inputs. The agreed direction is input and coordinate repair first.
 
-Latest: the user completed the focused [neuron-79 SWC comparison](hybrid_swc_results.md).
+Latest: the approved [saved graph/path audit](hybrid_graph_path_audit.md) identifies
+represented neurites lacking nearby graph anchors and documents synthetic
+component-allocation starvation. Its occurrence on neuron 79 is not established
+because the full input geodesic matrix was not saved. No repair or new run is
+launched. The user completed the focused [neuron-79 SWC comparison](hybrid_swc_results.md).
 Spatial F1 improves from 0.6560 to 0.6862, with higher precision and recall.
 The control reproduces its saved scores exactly. Graph selection/tracing still
 fails to retain much recovered proposal support; a fragmented-reference topology
