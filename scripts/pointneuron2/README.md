@@ -40,7 +40,10 @@ and scores both SWCs. See [the prepared local command](../../docs/pointneuron2/g
 shared-axis SWC projections on CPU. See [neuron 21's measured results](../../docs/pointneuron2/graph_cutoff_results.md).
 `compare_validation_cutoffs.py` extends the same comparison to all seven frozen
 validation neurons, reusing neuron 21 and retaining failures.
-See [the next visible local command](../../docs/pointneuron2/validation_graph_cutoffs.md).
+See [the completed protocol](../../docs/pointneuron2/validation_graph_cutoffs.md).
+`summarize_validation_cutoffs.py` verifies every saved pair, recomputes means,
+checks numerical graph/SWC equality and renders per-neuron F1 and SWC plots on
+CPU. See [the seven-neuron results and conceptual interpretation](../../docs/pointneuron2/validation_graph_cutoff_results.md).
 
 | File | Purpose | Current status |
 |---|---|---|

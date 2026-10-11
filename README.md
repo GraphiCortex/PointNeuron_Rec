@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Next: prepared seven-neuron cutoff validation and exact local command](docs/pointneuron2/validation_graph_cutoffs.md)
+- [Latest: seven-neuron results, progress versus PN1 and conceptual bottlenecks](docs/pointneuron2/validation_graph_cutoff_results.md)
+- [Completed: seven-neuron cutoff protocol and local command history](docs/pointneuron2/validation_graph_cutoffs.md)
 - [Measured: neuron 21 reconstruction results and SWC projections](docs/pointneuron2/graph_cutoff_results.md)
 - [Completed preparation: neuron 21 paired reconstruction](docs/pointneuron2/graph_cutoff_comparison.md)
 - [Latest: score filtering and suppression audit, with proposed next check](docs/pointneuron2/selection_audit.md)
@@ -44,8 +45,10 @@ loss is modestly lower, but crop geometry gains remain small and the current
 graph score cutoff discards substantial reference coverage. The completed
 selection audit isolates that loss after sphere suppression. A paired full-volume
 check on validation neuron 21 has completed: lower-cutoff spatial F1 improves
-from 0.7880 to 0.8326, with lower precision and topology F1. The agreed seven-neuron
-extension is now prepared with a separate user-run command and reuses neuron 21.
+from 0.7880 to 0.8326, with lower precision and topology F1. The seven-neuron
+extension completed: mean spatial F1 0.6598 to 0.6671, two gains, one loss and four
+unchanged cases. Earlier global proposal selection and sparse anchor selection
+limit the effect of the graph cutoff; no new cutoff is promoted.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

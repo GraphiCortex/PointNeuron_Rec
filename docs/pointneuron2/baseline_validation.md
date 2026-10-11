@@ -1,5 +1,10 @@
 # Clean baseline validation
 
+**Historical input pipeline:** later investigation found decoder/range defects
+affecting this baseline. "Clean" here described the fresh split/training run,
+not verified image decoding. See [the repairs](root_cause_findings.md) and
+[current progress/comparison](validation_graph_cutoff_results.md).
+
 30-epoch training completed; checkpoint selected at epoch 29 by validation loss.
 
 All requested validation neurons are retained below. PASS describes execution, not reconstruction quality. The eight test neurons remain reserved.

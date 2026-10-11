@@ -1,8 +1,14 @@
-# Seven-neuron graph-cutoff validation: prepared
+# Seven-neuron graph-cutoff validation: completed protocol
+
+**Completed 11 October 2026 in 27m52s.** All seven pairs passed saved-output
+verification. See [results, figures and interpretation](validation_graph_cutoff_results.md).
+The preparation/run instructions below are historical; the completed directory
+must not be rerun or overwritten.
 
 The user approved extending the neuron-21 comparison to all seven frozen
 validation neurons. Preparation completed on 11 October 2026. All source
-image/reference and checkpoint hashes match. No new reconstructions have run.
+image/reference and checkpoint hashes matched at preparation. Six new pairs
+subsequently completed; neuron 21 was reused.
 
 ## Fixed comparison
 

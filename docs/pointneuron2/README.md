@@ -29,8 +29,11 @@ from 81.04% to 60.19% across seven cached neuron unions. No full reconstruction 
 run at that point. The user then completed the neuron-21 full-volume pair in
 2m14s: spatial F1 improves from 0.7880 to 0.8326 at cutoff 0.5, with a small
 precision loss and lower topology F1. See [the results and projections](graph_cutoff_results.md).
-The approved [seven-neuron extension is prepared](validation_graph_cutoffs.md),
-reusing neuron 21 and adding six proposal sets/twelve reconstructions.
+The approved seven-neuron extension completed in 27m52s, reusing neuron 21.
+Mean spatial F1 changes from 0.6598 to 0.6671: two gains, one loss, four unchanged.
+See [the measured results, progress against PN1 and conceptual bottlenecks](validation_graph_cutoff_results.md).
+Global proposal selection and sparse score-anchor behavior need investigation;
+the lower cutoff is not promoted. No matched final PN1-versus-PN2 benchmark exists.
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,
