@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Next architecture milestone:** [the query decoder target/design specification](query_decoder_design.md)
+is prepared for review. Training-only sizing and nine geometry checks are complete:
+spacing 8 voxels gives at most 418 targets across 262 crops, with 512 output
+slots proposed. The label policy explicitly measures reference agreement.
+Decoder implementation, matched training and reconstruction evaluation remain
+future work; the prior diagnostics below do not establish PN2 superiority.
+
 **Current update (11 October 2026):** the investigation found confirmed Vaa3D
 decoder errors, an invalid uint16 threshold assumption and absolute-coordinate
 dependence. See [the evidence and implemented repairs](root_cause_findings.md).

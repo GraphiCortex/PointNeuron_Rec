@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Next architecture comparison: [query decoder target specification and design](../../docs/pointneuron2/query_decoder_design.md).
+`audit_query_targets.py` sizes the proposed curve targets on training data only,
+checking source/cache hashes without model execution or changing cached labels.
+The completed check covers 33 neurons / 262 crops; proposed spacing 8 voxels
+fits all of them within 512 query slots. Decoder implementation is the next
+proposed step; no new GPU training has started.
+
 Latest saved-output diagnostics:
 `compare_hybrid_global.py` adds one fixed 50/50 confidence-anchor/coverage-fill
 control, retaining 2,048 currently accepted anchors at the same candidate/output
