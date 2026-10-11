@@ -1,5 +1,9 @@
 # Frozen-proposal score and suppression audit
 
+**Update:** the user agreed to the proposed neuron-21 full-volume comparison.
+[Preparation is complete and the visible run command is ready](graph_cutoff_comparison.md).
+No full-volume reconstruction has been launched.
+
 Completed on 11 October 2026 after the user chose a bounded selection audit.
 The two saved corrected-input checkpoints are unchanged. Inference and selection
 on all 56 cached validation crops took 34.4 seconds, excluding environment/cache

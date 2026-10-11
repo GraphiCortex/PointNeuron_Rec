@@ -26,7 +26,8 @@ removes substantial crop reference coverage. See
 [score/suppression audit](selection_audit.md) is complete: sphere suppression loses
 little six-voxel support, while the 0.85 graph gate reduces local proposal coverage
 from 81.04% to 60.19% across seven cached neuron unions. No full reconstruction has
-run; a paired cutoff comparison on one full validation volume is proposed.
+run. The user agreed to a paired cutoff comparison on validation neuron 21;
+[its provenance is checked and its local command is ready](graph_cutoff_comparison.md).
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,

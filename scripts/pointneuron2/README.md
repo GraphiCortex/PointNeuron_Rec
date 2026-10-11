@@ -31,6 +31,11 @@ adaptive candidate pool. It compares graph cutoffs 0.5/0.85 and adds fixed-budge
 controls, without training or geodesic reconstruction. See
 [the completed audit and repeat command](../../docs/pointneuron2/selection_audit.md).
 
+`compare_graph_cutoffs.py` prepares provenance separately from execution, then
+generates one shared proposal file for validation neuron 21 and reconstructs
+graph cutoffs 0.85/0.5 with fixed weights/settings. It checks shared-file hashes
+and scores both SWCs. See [the prepared local command](../../docs/pointneuron2/graph_cutoff_comparison.md).
+
 | File | Purpose | Current status |
 |---|---|---|
 | `baseline.py` | Prepare the neuron-disjoint split and run fresh PN 1.0 baseline training | 30-epoch baseline and seven-neuron validation completed |
