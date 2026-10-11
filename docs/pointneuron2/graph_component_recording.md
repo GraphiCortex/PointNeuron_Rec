@@ -1,6 +1,12 @@
 # Neuron 79: record actual component allocation
 
-**Prepared; graph replay has not run.** The user approved recording the actual
+**Completed; recording checks passed.** The user ran the unchanged graph replay
+in 231.7 seconds. Eligible components 2–12 receive zero anchors; components 0/1
+consume all 128. Every graph array and metadata match the original exactly.
+See the [actual trace results and fixed-reference support audit](graph_component_trace_results.md).
+No repaired reconstruction has run. The protocol below describes the completed run.
+
+The user approved recording the actual
 allocation after the [saved graph/path and image audit](hybrid_graph_path_audit.md).
 This is one unchanged hybrid graph replay to resolve whether the synthetic
 component-allocation starvation also occurs on the real 625-candidate pool.
@@ -34,8 +40,8 @@ assess recording transparency, not reconstruction improvement.
 Four targeted tests passed: original versus recorded selection equality,
 actual call/zero-component logging, input preservation and original-function
 restoration after interruption. CPU preparation verified the exact saved pool,
-proposal/graph hashes and frozen experiment sources. Actual neuron-79 component
-allocations remain unknown until the user-run graph replay completes.
+proposal/graph hashes and frozen experiment sources. The completed actual trace
+and a cached-matrix replay now confirm eligible-component starvation on neuron 79.
 
 One graph calculation is necessary because the earlier saved graph lacks the
 full 625-candidate geodesic matrix. The large foreground distance/predecessor

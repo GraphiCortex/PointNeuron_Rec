@@ -6,12 +6,18 @@ dependence. See [the evidence and implemented repairs](root_cause_findings.md).
 The baseline/pilot results below are historical and need reassessment on
 correctly decoded inputs. The agreed direction is input and coordinate repair first.
 
-Latest: the approved [saved graph/path audit](hybrid_graph_path_audit.md) identifies
-represented neurites lacking nearby graph anchors and documents synthetic
-component-allocation starvation. Its occurrence on neuron 79 is not established
-because the full input geodesic matrix was not saved. No repair or new run is
-launched. The user-approved [actual component recorder](graph_component_recording.md)
-is prepared for one unchanged CPU graph replay in the user's visible terminal.
+Latest: the user completed the [actual component recorder](graph_component_recording.md)
+in 231.7 seconds with every graph array and metadata unchanged. The
+[verified real trace](graph_component_trace_results.md) confirms that the first
+two components consume all 128 anchors and 11 eligible components get none.
+41 of their 72 candidates lie within 6 voxels of the reference, but the audit
+also identifies separate size-rule exclusions and losses near allocated components.
+The user approved a fixed-budget allocation repair and cached-matrix inspection.
+The [versioned repair and visible paired SWC command](remaining_budget_comparison.md)
+are now prepared: all 13 eligible components receive anchors at the same 128
+budget, but cached graph bridges increase from 4 to 21. Fourteen targeted checks
+pass. No repaired SWC has run; that tradeoff needs final reconstruction assessment.
+The earlier [saved graph/path audit](hybrid_graph_path_audit.md) provides image context.
 The user completed the focused [neuron-79 SWC comparison](hybrid_swc_results.md).
 Spatial F1 improves from 0.6560 to 0.6862, with higher precision and recall.
 The control reproduces its saved scores exactly. Graph selection/tracing still
