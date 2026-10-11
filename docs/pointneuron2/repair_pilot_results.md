@@ -1,5 +1,9 @@
 # Corrected-input coordinate pilot: training and crop diagnostics
 
+**Update:** the user chose the score/suppression audit; its
+[stage-by-stage results are now available](selection_audit.md). The proposed
+comparison below records the discussion before that completed audit.
+
 The user-launched training completed on 11 October 2026 in 1 minute 31 seconds.
 Both five-epoch arms completed. Matched initialization, cache, partition, RNG
 streams, batch order and augmented candidate hashes passed. Eight test neurons

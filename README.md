@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: score filtering and suppression audit, with proposed next check](docs/pointneuron2/selection_audit.md)
 - [Current: corrected-input training results and score-filtering findings](docs/pointneuron2/repair_pilot_results.md)
 - [Completed preparation: corrected-input coordinate pilot](docs/pointneuron2/repair_pilot_ready.md)
 - [Current: confirmed decoder/range/coordinate defects and repairs](docs/pointneuron2/root_cause_findings.md)
@@ -37,8 +38,9 @@ not a required training or inference step.
 The image-reader, intensity-range and coordinate repairs are implemented. The
 corrected raw/local-coordinate pilot has completed training. Local validation
 loss is modestly lower, but crop geometry gains remain small and the current
-graph score cutoff discards substantial reference coverage. See the results
-report above for the proposed next comparison; full reconstruction has not run.
+graph score cutoff discards substantial reference coverage. The completed
+selection audit isolates that loss after sphere suppression. A paired full-volume
+check on one validation neuron is proposed; full reconstruction has not run.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

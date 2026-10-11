@@ -22,8 +22,11 @@ crops, with all 40 source image/reference hashes checked. See
 five-epoch training arms in 1m31s. Local coordinates reduce best validation loss
 by 1.74%, but proposal locations improve only modestly and the 0.85 score cutoff
 removes substantial crop reference coverage. See
-[the training and crop-diagnostic results](repair_pilot_results.md). A proposed
-score/suppression audit awaits user direction; no full reconstruction has run.
+[the training and crop-diagnostic results](repair_pilot_results.md). The user-approved
+[score/suppression audit](selection_audit.md) is complete: sphere suppression loses
+little six-voxel support, while the 0.85 graph gate reduces local proposal coverage
+from 81.04% to 60.19% across seven cached neuron unions. No full reconstruction has
+run; a paired cutoff comparison on one full validation volume is proposed.
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,

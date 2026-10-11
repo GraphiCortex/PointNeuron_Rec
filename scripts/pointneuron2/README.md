@@ -25,6 +25,12 @@ it performs no extraction or training.
 on corrected saved training crops with matched seeds and fixed budgets.
 See [the measured tradeoffs](../../docs/pointneuron2/mixed_candidate_comparison.md).
 
+`audit_proposal_selection.py` checks the two frozen corrected-input checkpoints
+through local/global sphere suppression, graph score gating and the existing
+adaptive candidate pool. It compares graph cutoffs 0.5/0.85 and adds fixed-budget
+controls, without training or geodesic reconstruction. See
+[the completed audit and repeat command](../../docs/pointneuron2/selection_audit.md).
+
 | File | Purpose | Current status |
 |---|---|---|
 | `baseline.py` | Prepare the neuron-disjoint split and run fresh PN 1.0 baseline training | 30-epoch baseline and seven-neuron validation completed |
