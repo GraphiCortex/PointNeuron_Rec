@@ -6,6 +6,15 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest saved-output diagnostics:
+`audit_full_volume_selection.py` follows the full-volume proposals through
+score ranking, suppression/capping, graph gating, actual graph selection and
+saved SWC geometry. `compare_global_coverage.py` tests score versus spatial
+priority with matched candidate/output limits and sphere suppression on three
+capped neurons. Both run on CPU, with no model inference/training/tracing.
+See [the audit](../../docs/pointneuron2/full_volume_selection_audit.md) and
+[the spatial comparison](../../docs/pointneuron2/global_coverage_comparison.md).
+
 Current work: [reader/range/coordinate repairs and measured evidence](../../docs/pointneuron2/root_cause_findings.md).
 `audit_root_causes.py` runs bounded diagnostics. Old sampling caches are
 historical data and cannot be reused for new training. The staged runner accepts

@@ -6,6 +6,13 @@ dependence. See [the evidence and implemented repairs](root_cause_findings.md).
 The baseline/pilot results below are historical and need reassessment on
 correctly decoded inputs. The agreed direction is input and coordinate repair first.
 
+Latest: the [full-volume audit](full_volume_selection_audit.md) locates major
+global-selection losses on 35/79 and an earlier missing-proposal deficit on 94.
+The user-approved [matched spatial control](global_coverage_comparison.md)
+recovers support at the same budget, but fails the specificity proxy on neuron 19.
+These are CPU representation diagnostics, not new SWC improvements or promoted
+settings. Discuss the next coverage/confidence tradeoff before changing strategy.
+
 The [corrected training-only foreground comparison](repaired_foreground_comparison.md)
 is now complete: 12 crops, no failures. Permissive masks retain faint signal but
 greatly increase guide density; exactly matched point counts expose substantial

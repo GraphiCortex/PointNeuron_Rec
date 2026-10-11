@@ -1,5 +1,9 @@
 # Seven-neuron cutoff results and development progress
 
+**Subsequent checks completed:** [the full-volume loss audit](full_volume_selection_audit.md)
+and [matched spatial global-selection control](global_coverage_comparison.md)
+test the proposed next steps below. No production setting has been promoted.
+
 The user-run comparison completed on 11 October 2026 in 27m52s: six new
 pairs, with neuron 21 reused. All seven pairs and their frozen sources,
 checkpoint, proposals, graph/SWC hashes and saved metric reports were verified.
@@ -150,7 +154,8 @@ and can accept a small connected fragment as satisfactory. Increasing recall
 without learned rejection also adds false trajectories, as neuron 44 demonstrates.
 
 These are supported bottleneck mechanisms, with different causes across sources.
-The exact fraction attributable to each stage remains unmeasured. A larger
+At the time of this cutoff report, the fraction attributable to each stage was
+unmeasured; the subsequent audit above now measures saved selection stages. A larger
 encoder alone cannot reliably recover evidence excluded before it sees the image.
 
 Recommended next diagnostic, pending discussion: measure reference segment and
@@ -160,7 +165,7 @@ center-support diagnostic from final SWC recall. It needs no new long run.
 Then agree on an intervention at the measured loss stage, with a controlled
 comparison; do not continue arbitrary threshold sweeps or retrain without a
 specific hypothesis. The user requested this progress/conceptual review before
-accepting that next diagnostic, so it has not been launched.
+accepting that next diagnostic, then approved it and the spatial control above.
 
 ## Reproducibility
 

@@ -7,6 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: matched global spatial-selection control and its tradeoffs](docs/pointneuron2/global_coverage_comparison.md)
+- [Measured: where full-volume branch support is lost](docs/pointneuron2/full_volume_selection_audit.md)
 - [Latest: seven-neuron results, progress versus PN1 and conceptual bottlenecks](docs/pointneuron2/validation_graph_cutoff_results.md)
 - [Completed: seven-neuron cutoff protocol and local command history](docs/pointneuron2/validation_graph_cutoffs.md)
 - [Measured: neuron 21 reconstruction results and SWC projections](docs/pointneuron2/graph_cutoff_results.md)
@@ -49,6 +51,10 @@ from 0.7880 to 0.8326, with lower precision and topology F1. The seven-neuron
 extension completed: mean spatial F1 0.6598 to 0.6671, two gains, one loss and four
 unchanged cases. Earlier global proposal selection and sparse anchor selection
 limit the effect of the graph cutoff; no new cutoff is promoted.
+The saved-output audit locates major global-selection losses on neurons 35/79,
+while neuron 94 already lacks proposals before global selection. A matched
+spatial control recovers proposal support on 35/79 but worsens the proximity
+proxy on neuron 19. No new selector or reconstruction result is promoted.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive
