@@ -14,8 +14,10 @@ points while reserving space for weak signals, before the corrected GPU pilot.
 
 The [bright/weak candidate control](mixed_candidate_comparison.md) has now run on
 the saved corrected crops. Mixed-pool coverage improves, but gains shrink after
-512-input selection and some well-covered branches lose support. The next check
-holds these pools fixed and compares spatial selection; no new training is running.
+512-input selection and some well-covered branches lose support. Spatial selection
+also shows mixed results. Next: the prepared corrected raw/local-coordinate model
+control; CPU preparation and separate GPU commands are in that report. No new
+training has been launched.
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,

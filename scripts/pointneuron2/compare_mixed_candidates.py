@@ -60,24 +60,28 @@ def summaries(rows, selectors):
     return result
 
 
-def render_chart(path, rows):
+def render_chart(path, rows, config):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     annotated = [r for r in rows if r['reference_curve_points']]
-    fig, axes = plt.subplots(2, 1, figsize=(12, 7), sharex=True, constrained_layout=True)
+    stages = ['pool', 'random'] + (['farthest'] if 'farthest' in config['selectors'] else [])
+    fig, axes = plt.subplots(len(stages), 1, figsize=(12, 3.5 * len(stages)), sharex=True, constrained_layout=True)
     xs, width = np.arange(len(annotated)), .25
     for i, method in enumerate(('bright', 'permissive', 'mixed')):
-        for ax, stage in zip(axes, ('pool', 'random')):
+        for ax, stage in zip(axes, stages):
             repeats = [[v[stage]['reference_support']['within_3'] for v in row['methods'][method]['repeats']] for row in annotated]
             ax.bar(xs + (i - 1) * width, [np.mean(v) for v in repeats], width, label=method,
                    yerr=[np.std(v) for v in repeats], capsize=2)
-    for ax, title in zip(axes, ('1024-row candidate pools', '512 randomly selected encoder inputs')):
+    titles = {'pool': f"{config['candidate_points']}-row candidate pools",
+              'random': f"{config['selected_points']} randomly selected encoder inputs",
+              'farthest': f"{config['selected_points']} spatially spread encoder inputs"}
+    for ax, stage in zip(axes, stages):
         ax.set_ylim(0, 1.08); ax.set_ylabel('Reference coverage within 3 voxels')
-        ax.set_title(title + ': eight matched seeds; error bars show draw variability')
+        ax.set_title(titles[stage] + f": {len(config['seed_offsets'])} matched seeds; error bars show draw variability")
         ax.grid(axis='y', alpha=.2); ax.legend()
-    axes[1].set_xticks(xs, [f"{r['sample_index']}/{r['patch_index']}" for r in annotated])
-    axes[1].set_xlabel('TRAIN neuron / crop. Nine annotated crops; three unannotated crops retain null scores in JSON.')
+    axes[-1].set_xticks(xs, [f"{r['sample_index']}/{r['patch_index']}" for r in annotated])
+    axes[-1].set_xlabel(f"TRAIN neuron / crop. {len(annotated)} annotated crops; unannotated crops retain null scores in JSON.")
     fig.savefig(path, dpi=130); plt.close(fig)
 
 
@@ -106,7 +110,9 @@ def main():
         raise ValueError('Selection exceeds candidate budget')
     if (not config['seed_offsets'] or len(set(config['seed_offsets'])) != len(config['seed_offsets'])
             or any(isinstance(v, bool) or not isinstance(v, int) or v < 0 for v in config['seed_offsets'])
-            or config['selectors'] != ['random', 'fixed_medial']
+            or not config['selectors'] or 'random' not in config['selectors']
+            or len(set(config['selectors'])) != len(config['selectors'])
+            or set(config['selectors']) - {'random', 'fixed_medial', 'farthest'}
             or not np.isfinite(config['bright_fraction']) or not 0 <= config['bright_fraction'] <= 1
             or config['reference_distance'] != 3. or config['reference_step'] != 1.):
         raise ValueError('Invalid frozen diagnostic settings')
@@ -198,7 +204,7 @@ def main():
             report['summary'] = summaries(report['patches'], config['selectors'])
             write_json(report_path, report)
             print(f"train {patch['sample_index']}/{patch['patch_index']} curve={len(curve)} recovered_group={len(groups['fixed_missed_noise_available'])} elapsed={time.perf_counter()-started:.1f}s", flush=True)
-        render_chart(args.output_dir / 'coverage.png', report['patches'])
+        render_chart(args.output_dir / 'coverage.png', report['patches'], config)
         report['status'] = 'completed'
     except BaseException as exc:
         report.update(status='failed_or_interrupted', error=str(exc))
