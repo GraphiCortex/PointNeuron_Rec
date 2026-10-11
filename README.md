@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: 2,000-update fit learns confidence; pooled normalization limits inference](docs/pointneuron2/query_extended_fit_results.md)
 - [Ready to run: approved 2,000-update fit with saved checks at 500/1,000/2,000](docs/pointneuron2/query_extended_fit_ready.md)
 - [Latest: completed dropout-zero fit, improved geometry and remaining confidence gap](docs/pointneuron2/query_dropout_zero_results.md)
 - [Latest: 500-update GPU fit, confirmed dropout dependence and approved control](docs/pointneuron2/query_gpu_fit_results.md)

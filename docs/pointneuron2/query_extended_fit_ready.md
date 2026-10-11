@@ -1,5 +1,8 @@
 # Approved 2,000-update fixed-crop comparison
 
+Completed follow-up: [GPU results and the fixed-weight pooled-normalization audit](query_extended_fit_results.md).
+The preparation protocol below is retained for reproducibility.
+
 12 October 2026. The unchanged longer fit is approved and prepared for the
 user's visible local terminal. The 2,000-update GPU experiment has not been
 launched by the assistant.

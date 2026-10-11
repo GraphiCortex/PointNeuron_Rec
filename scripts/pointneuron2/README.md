@@ -6,8 +6,9 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest results: [completed dropout-zero comparison](../../docs/pointneuron2/query_dropout_zero_results.md).
-Next approved run: [2,000 updates per arm with saved inference checks](../../docs/pointneuron2/query_extended_fit_ready.md).
+Latest results: [completed 2,000-update comparison and pooled-normalization audit](../../docs/pointneuron2/query_extended_fit_results.md).
+Earlier results: [completed dropout-zero comparison](../../docs/pointneuron2/query_dropout_zero_results.md).
+Completed protocol: [2,000 updates per arm with saved inference checks](../../docs/pointneuron2/query_extended_fit_ready.md).
 Use `-Steps 2000 -EvalSteps 500,1000,2000 -LogEvery 50 -DecoderDropout 0` with
 the prepared manifest. Checkpoints and raw predictions remain in the printed
 local run directory; intermediate observations preserve the training trajectory.
@@ -26,9 +27,10 @@ curve labels without changing the corrected image candidates.
 `train_query_comparison.py` compares pointwise/query heads with matched initial
 encoder weights, inputs and updates. `aggregate_query_proposals.py` provides
 image-only inference with raw/local/global outputs and a common graph adapter.
-Execution checks pass, but the short two-crop selected-set fit is incomplete.
-The next approved command is the visible 2,000-update fit linked above; the full
-30-epoch pilot remains pending.
+The 2,000-update fit completed and learned useful confidence. A fixed-weight
+audit isolates the pooled encoder BatchNorm mode as the dominant remaining
+placement gap on these two crops. A pooled LayerNorm control is proposed,
+awaiting agreement; the full 30-epoch pilot remains pending.
 `audit_query_targets.py` preserves the independent training-only sizing audit.
 See [the reviewed target specification](../../docs/pointneuron2/query_decoder_design.md).
 

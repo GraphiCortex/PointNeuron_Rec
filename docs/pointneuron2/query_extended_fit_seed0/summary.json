@@ -1,0 +1,1184 @@
+{
+  "scope": "two fitted training crops; sparse target proximity only",
+  "arms": [
+    {
+      "arm": "pointwise",
+      "first_500_training_losses_exact": true,
+      "first_500_geometry_exact": true,
+      "milestones": [
+        {
+          "step": 500,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 484,
+              "near_sparse_target": 484,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 4,
+              "selected_targets_covered": 4,
+              "raw_mean_distance": 3.921674192149048,
+              "selected_mean_distance": 3.921674192149048,
+              "raw_target_distances": [
+                1.1446355452456165,
+                7.102246257683424,
+                0.09570249489168092,
+                0.1809833844334559,
+                0.4309917328467362,
+                14.575485737793374
+              ],
+              "selected_target_distances": [
+                1.1446355452456165,
+                7.102246257683424,
+                0.09570249489168092,
+                0.1809833844334559,
+                0.4309917328467362,
+                14.575485737793374
+              ],
+              "accepted_score_range": [
+                0.6546789035228444,
+                0.9955643969209329
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 512,
+              "near_sparse_target": 512,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 11,
+              "selected_targets_covered": 11,
+              "raw_mean_distance": 1.7863427859232288,
+              "selected_mean_distance": 1.7863427859232288,
+              "raw_target_distances": [
+                0.5185743690628756,
+                3.269244364824804,
+                0.6993577759273353,
+                0.49301561858874526,
+                0.7466245370885114,
+                6.636714027531786,
+                0.6462999481744612,
+                0.49708004734206485,
+                0.7044503997861714,
+                0.9910848215809689,
+                0.39622192833008124,
+                5.837445592840938
+              ],
+              "selected_target_distances": [
+                0.5185743690628756,
+                3.269244364824804,
+                0.6993577759273353,
+                0.49301561858874526,
+                0.7466245370885114,
+                6.636714027531786,
+                0.6462999481744612,
+                0.49708004734206485,
+                0.7044503997861714,
+                0.9910848215809689,
+                0.39622192833008124,
+                5.837445592840938
+              ],
+              "accepted_score_range": [
+                0.7648134399389094,
+                0.9978517019483797
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 2.842992424964905,
+              "target_coverage_6": 0.7916666865348816,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                484,
+                512
+              ],
+              "target_coverage_6": 0.7916666865348816,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 0.6837795972824097,
+              "center": 0.15618883073329926,
+              "objectness": 0.08618903905153275,
+              "radius": 0.0
+            },
+            "step": 500,
+            "optimizer_updates": 500,
+            "checkpoint": "step_000500.pt",
+            "checkpoint_sha256": "f6b3831f379869eb7e896a53568a61a7ebde7fa29908246fd4c240461c9ee6be",
+            "proposals": "step_000500_proposals.npz",
+            "proposals_sha256": "e49ba768449743df6aef855bfe0ce5b5984b69fef10b78e9fae9739f0e344c40"
+          },
+          "last_50_training_mean": {
+            "total": 0.41675653457641604,
+            "center": 0.04522618867456913,
+            "objectness": 0.12307445734739303
+          }
+        },
+        {
+          "step": 1000,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 484,
+              "near_sparse_target": 484,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 4,
+              "selected_targets_covered": 4,
+              "raw_mean_distance": 3.8627215404193094,
+              "selected_mean_distance": 3.8627215404193094,
+              "raw_target_distances": [
+                0.7659734003876415,
+                7.238675608613634,
+                0.25971174199446034,
+                0.17086271666268982,
+                0.06328662563692328,
+                14.677819149220506
+              ],
+              "selected_target_distances": [
+                0.7659734003876415,
+                7.238675608613634,
+                0.25971174199446034,
+                0.17086271666268982,
+                0.06328662563692328,
+                14.677819149220506
+              ],
+              "accepted_score_range": [
+                0.9061987096588554,
+                0.9991579973830672
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 512,
+              "near_sparse_target": 512,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 11,
+              "selected_targets_covered": 11,
+              "raw_mean_distance": 1.9184594704193607,
+              "selected_mean_distance": 1.9184594704193607,
+              "raw_target_distances": [
+                0.5943823452205298,
+                3.232747103180026,
+                0.602598170454432,
+                0.7185164265142352,
+                1.115908635439399,
+                7.286836201066833,
+                0.48191239045602813,
+                0.5346173310496372,
+                0.9069576014312813,
+                1.4350648567516757,
+                0.636405456468239,
+                5.475567127000012
+              ],
+              "selected_target_distances": [
+                0.5943823452205298,
+                3.232747103180026,
+                0.602598170454432,
+                0.7185164265142352,
+                1.115908635439399,
+                7.286836201066833,
+                0.48191239045602813,
+                0.5346173310496372,
+                0.9069576014312813,
+                1.4350648567516757,
+                0.636405456468239,
+                5.475567127000012
+              ],
+              "accepted_score_range": [
+                0.9237373990961162,
+                0.9991426791270565
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 2.88170063495636,
+              "target_coverage_6": 0.7916666865348816,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                484,
+                512
+              ],
+              "target_coverage_6": 0.7916666865348816,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 0.5142853260040283,
+              "center": 0.13994506001472473,
+              "objectness": 0.02184252440929413,
+              "radius": 0.0
+            },
+            "step": 1000,
+            "optimizer_updates": 1000,
+            "checkpoint": "step_001000.pt",
+            "checkpoint_sha256": "ad5bfe6278e95d38bf06b239de447b54b49cb703ab5ef685a133f28845fcbb0c",
+            "proposals": "step_001000_proposals.npz",
+            "proposals_sha256": "a40bba5e8ef4545342699697e28eda92d44abbff65eb4958910960ab82216d44"
+          },
+          "last_50_training_mean": {
+            "total": 0.11559160485863686,
+            "center": 0.005827746046707034,
+            "objectness": 0.026995134390890598
+          }
+        },
+        {
+          "step": 2000,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 484,
+              "near_sparse_target": 484,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 4,
+              "selected_targets_covered": 4,
+              "raw_mean_distance": 3.859414547809143,
+              "selected_mean_distance": 3.859414547809143,
+              "raw_target_distances": [
+                0.503202574962374,
+                7.404673340323942,
+                0.21766646208357499,
+                0.06753085121522924,
+                0.05836939027508528,
+                14.905044667994652
+              ],
+              "selected_target_distances": [
+                0.503202574962374,
+                7.404673340323942,
+                0.21766646208357499,
+                0.06753085121522924,
+                0.05836939027508528,
+                14.905044667994652
+              ],
+              "accepted_score_range": [
+                0.9807227328911771,
+                0.9998393223231605
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 512,
+              "near_sparse_target": 512,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 11,
+              "selected_targets_covered": 11,
+              "raw_mean_distance": 1.916913393660583,
+              "selected_mean_distance": 1.916913393660583,
+              "raw_target_distances": [
+                0.5853060914469461,
+                3.2880038281136406,
+                0.4822194941007916,
+                0.6172174229872472,
+                0.8001401169702752,
+                7.176809845885804,
+                0.6315354533996832,
+                0.6175226947362011,
+                0.8470232765793209,
+                1.6886138468629344,
+                0.8119040117931154,
+                5.45666464105104
+              ],
+              "selected_target_distances": [
+                0.5853060914469461,
+                3.2880038281136406,
+                0.4822194941007916,
+                0.6172174229872472,
+                0.8001401169702752,
+                7.176809845885804,
+                0.6315354533996832,
+                0.6175226947362011,
+                0.8470232765793209,
+                1.6886138468629344,
+                0.8119040117931154,
+                5.45666464105104
+              ],
+              "accepted_score_range": [
+                0.9817201626589914,
+                0.9998691407637076
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 2.87550950050354,
+              "target_coverage_6": 0.7916666865348816,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                484,
+                512
+              ],
+              "target_coverage_6": 0.7916666865348816,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 0.3780502676963806,
+              "center": 0.1066703349351883,
+              "objectness": 0.0041014282032847404,
+              "radius": 0.0
+            },
+            "step": 2000,
+            "optimizer_updates": 2000,
+            "checkpoint": "step_002000.pt",
+            "checkpoint_sha256": "403f893fbfd363f3b2c450f9b8e32119d740b0c1add594d7930f513aeaa4c32f",
+            "proposals": "step_002000_proposals.npz",
+            "proposals_sha256": "2cc9dbe12266ec01faa1e9ebfb1ca970a8aef1c4883f41ee0560e837557e941e"
+          },
+          "last_50_training_mean": {
+            "total": 0.05988406330347061,
+            "center": 0.0009015235560946166,
+            "objectness": 0.006001651594415307
+          }
+        }
+      ]
+    },
+    {
+      "arm": "query",
+      "first_500_training_losses_exact": true,
+      "first_500_geometry_exact": true,
+      "milestones": [
+        {
+          "step": 500,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 1,
+              "near_sparse_target": 0,
+              "off_sparse_target": 1,
+              "raw_targets_covered": 6,
+              "selected_targets_covered": 0,
+              "raw_mean_distance": 1.3420304566051555,
+              "selected_mean_distance": 28.846557781779854,
+              "raw_target_distances": [
+                1.4951811870409386,
+                0.6814442582042325,
+                1.036587241584335,
+                2.458442160771617,
+                2.1026135299211983,
+                0.2779143621086116
+              ],
+              "selected_target_distances": [
+                14.217164696859037,
+                38.89936523878796,
+                31.594666453119718,
+                24.670820508019876,
+                17.470846529581845,
+                46.226483264310694
+              ],
+              "accepted_score_range": [
+                0.5027778011870611,
+                0.5027778011870611
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 15,
+              "near_sparse_target": 8,
+              "off_sparse_target": 7,
+              "raw_targets_covered": 11,
+              "selected_targets_covered": 7,
+              "raw_mean_distance": 4.004455809018034,
+              "selected_mean_distance": 8.61937558430252,
+              "raw_target_distances": [
+                3.266123590805602,
+                3.5202455895924,
+                5.394397391952761,
+                6.315935190939122,
+                4.060398100960849,
+                4.35312666162096,
+                3.6112701143618993,
+                3.514820070581034,
+                3.99716928883561,
+                2.2875779696130665,
+                2.191569181716012,
+                5.5408365572370935
+              ],
+              "selected_target_distances": [
+                3.266123590805602,
+                4.311483904050402,
+                5.394397391952761,
+                6.315935190939122,
+                4.060398100960849,
+                4.35312666162096,
+                3.6112701143618993,
+                3.514820070581034,
+                20.423581645874926,
+                14.910175578051083,
+                7.6474307499151175,
+                25.623764012516492
+              ],
+              "accepted_score_range": [
+                0.5104952161256754,
+                0.9694554185918928
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 2.676588475704193,
+              "target_coverage_6": 0.9583333432674408,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                1,
+                15
+              ],
+              "target_coverage_6": 0.2916666865348816,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 4.035042762756348,
+              "center": 1.2161797285079956,
+              "objectness": 0.1932518482208252,
+              "radius": 6.32737169325992e-07
+            },
+            "step": 500,
+            "optimizer_updates": 500,
+            "checkpoint": "step_000500.pt",
+            "checkpoint_sha256": "94fdcb2fe23ccf5cbb0e03fded43bdfa5c820b511889593c9342ba5efd35ee3d",
+            "proposals": "step_000500_proposals.npz",
+            "proposals_sha256": "75fee1b98b3d01374ab05b82c76152096bc34585106456c64d786834281caefa"
+          },
+          "last_50_training_mean": {
+            "total": 0.6515138345956802,
+            "center": 0.07134003512561321,
+            "objectness": 0.2187468421459198
+          }
+        },
+        {
+          "step": 1000,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 9,
+              "near_sparse_target": 4,
+              "off_sparse_target": 5,
+              "raw_targets_covered": 6,
+              "selected_targets_covered": 4,
+              "raw_mean_distance": 2.396004221017415,
+              "selected_mean_distance": 7.651698915532539,
+              "raw_target_distances": [
+                2.912289837601474,
+                0.437714092486705,
+                2.113610025243591,
+                3.440010189307592,
+                4.9909300556471665,
+                0.4814711258179628
+              ],
+              "selected_target_distances": [
+                2.912289837601474,
+                11.348087503298498,
+                4.425071817261074,
+                3.440010189307592,
+                4.9909300556471665,
+                18.793804090079437
+              ],
+              "accepted_score_range": [
+                0.5796327103622617,
+                0.9565949918550984
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 12,
+              "near_sparse_target": 10,
+              "off_sparse_target": 2,
+              "raw_targets_covered": 11,
+              "selected_targets_covered": 10,
+              "raw_mean_distance": 4.533251976323741,
+              "selected_mean_distance": 4.706302470684172,
+              "raw_target_distances": [
+                3.6862254673354227,
+                5.764820744068139,
+                5.493267783568584,
+                5.710692249926075,
+                3.4301003022985106,
+                3.8589399865642826,
+                4.020633493018809,
+                3.2765840741442327,
+                2.540330666607787,
+                5.138657873180701,
+                6.541059734068185,
+                4.937711341104152
+              ],
+              "selected_target_distances": [
+                3.6862254673354227,
+                5.764820744068139,
+                5.493267783568584,
+                5.710692249926075,
+                3.4301003022985106,
+                3.8589399865642826,
+                4.020633493018809,
+                3.2765840741442327,
+                2.540330666607787,
+                5.138657873180701,
+                6.541059734068185,
+                7.01431727342933
+              ],
+              "accepted_score_range": [
+                0.6669675760838889,
+                0.9994053783919019
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 3.4634506702423096,
+              "target_coverage_6": 0.9583333432674408,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                9,
+                12
+              ],
+              "target_coverage_6": 0.7500000298023224,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 6.330243110656738,
+              "center": 2.0556681156158447,
+              "objectness": 0.08161921799182892,
+              "radius": 2.0613667572888517e-07
+            },
+            "step": 1000,
+            "optimizer_updates": 1000,
+            "checkpoint": "step_001000.pt",
+            "checkpoint_sha256": "0236d7c131b1e2e53a36907afb7d33289fe1c08b9f87be789406a7ad25dbf440",
+            "proposals": "step_001000_proposals.npz",
+            "proposals_sha256": "9c392f407ee316d619c61e73c9eaf7e569715c342a14cfd86e522178c9db1824"
+          },
+          "last_50_training_mean": {
+            "total": 0.2318008378148079,
+            "center": 0.02792857836931944,
+            "objectness": 0.07400753855705261
+          }
+        },
+        {
+          "step": 2000,
+          "crops": [
+            {
+              "crop": 0,
+              "targets": 6,
+              "accepted": 8,
+              "near_sparse_target": 6,
+              "off_sparse_target": 2,
+              "raw_targets_covered": 5,
+              "selected_targets_covered": 5,
+              "raw_mean_distance": 4.670605786368531,
+              "selected_mean_distance": 4.670605786368531,
+              "raw_target_distances": [
+                5.269560662379975,
+                4.515212419791521,
+                5.069453584762428,
+                2.8483034275712753,
+                7.201119022007946,
+                3.1199856016980427
+              ],
+              "selected_target_distances": [
+                5.269560662379975,
+                4.515212419791521,
+                5.069453584762428,
+                2.8483034275712753,
+                7.201119022007946,
+                3.1199856016980427
+              ],
+              "accepted_score_range": [
+                0.5078427468162082,
+                0.9982166012277002
+              ]
+            },
+            {
+              "crop": 1,
+              "targets": 12,
+              "accepted": 12,
+              "near_sparse_target": 12,
+              "off_sparse_target": 0,
+              "raw_targets_covered": 12,
+              "selected_targets_covered": 12,
+              "raw_mean_distance": 4.459353733952567,
+              "selected_mean_distance": 4.459353733952567,
+              "raw_target_distances": [
+                5.072318627235392,
+                4.783606910270825,
+                5.166505469259192,
+                3.8557442124159214,
+                5.058708495983566,
+                4.289241256021257,
+                5.288947199462255,
+                2.1185916086724035,
+                3.3493497528614875,
+                4.651635631404153,
+                5.016226312111745,
+                4.861369331732606
+              ],
+              "selected_target_distances": [
+                5.072318627235392,
+                4.783606910270825,
+                5.166505469259192,
+                3.8557442124159214,
+                5.058708495983566,
+                4.289241256021257,
+                5.288947199462255,
+                2.1185916086724035,
+                3.3493497528614875,
+                4.651635631404153,
+                5.016226312111745,
+                4.861369331732606
+              ],
+              "accepted_score_range": [
+                0.9130182489312195,
+                0.9999874927589789
+              ]
+            }
+          ],
+          "eval": {
+            "fit": {
+              "mean_target_distance": 4.564655065536499,
+              "target_coverage_6": 0.9166666865348816,
+              "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+            },
+            "selection": {
+              "score_threshold": 0.5,
+              "accepted_counts": [
+                8,
+                12
+              ],
+              "target_coverage_6": 0.9166666865348816,
+              "note": "raw score filtering on fitted training crops; no suppression or validation"
+            },
+            "eval_loss": {
+              "total": 8.339390754699707,
+              "center": 2.767503023147583,
+              "objectness": 0.018440820276737213,
+              "radius": 4.913284783469862e-07
+            },
+            "step": 2000,
+            "optimizer_updates": 2000,
+            "checkpoint": "step_002000.pt",
+            "checkpoint_sha256": "8235d2e674822c51666c32b3f64d94612a2cfe9d888d02f26c13d454176b0225",
+            "proposals": "step_002000_proposals.npz",
+            "proposals_sha256": "b70eac507b4659ff6d47b87ac16985093108ca5d07b94315f1e2e66d3afbf56f"
+          },
+          "last_50_training_mean": {
+            "total": 0.04666786573827267,
+            "center": 0.012195557653903961,
+            "objectness": 0.0050405966024845835
+          }
+        }
+      ]
+    }
+  ],
+  "status": "verified",
+  "date": "2026-10-12",
+  "comparison_sha256": "05413b1297f2c81da7e75911749ef0acd2fd254f15787e95d84114e048f50b7c",
+  "audit_sha256": "cc8450a7e6b56e4d46862ecdfbddef611242bda9537152a603c611bdc3cf75cc",
+  "source_comparison": "tmp\\pointneuron2\\local_runs\\query_smoke_20261012_005258_4464\\models\\comparison.json",
+  "normalization_modes": [
+    {
+      "mode": "eval_pair",
+      "recorded_geometry": {
+        "mean_target_distance": 4.564655065536499,
+        "target_coverage_6": 0.9166666865348816,
+        "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+      },
+      "loss": {
+        "total": 8.339390754699707,
+        "center": 2.767503023147583,
+        "objectness": 0.018440820276737213,
+        "radius": 4.913284783469862e-07
+      },
+      "crops": [
+        {
+          "targets": 6,
+          "accepted": 8,
+          "mean_target_distance_float64": 4.670605786368531,
+          "covered_targets": 5,
+          "accepted_near_sparse_target": 6,
+          "unique_nearest_distance_assignment_within_6": 4,
+          "assignment_max_distance": 7.201119022007946
+        },
+        {
+          "targets": 12,
+          "accepted": 12,
+          "mean_target_distance_float64": 4.459353733952567,
+          "covered_targets": 12,
+          "accepted_near_sparse_target": 12,
+          "unique_nearest_distance_assignment_within_6": 12,
+          "assignment_max_distance": 5.622785879934941
+        }
+      ],
+      "matched": [
+        {
+          "mean_error": 4.823116302490234,
+          "max_error": 7.2011189460754395,
+          "scores": [
+            0.9965652823448181,
+            0.9738622903823853,
+            0.3513883352279663,
+            0.907379686832428,
+            0.9980681538581848,
+            0.9906885623931885
+          ],
+          "errors": [
+            5.269560813903809,
+            4.515212535858154,
+            5.9845147132873535,
+            3.119985580444336,
+            7.2011189460754395,
+            2.8483033180236816
+          ],
+          "mean_score": 0.8696587085723877,
+          "unmatched_mean_score": 0.006574930157512426,
+          "unmatched_max_score": 0.9982165694236755
+        },
+        {
+          "mean_error": 4.62662410736084,
+          "max_error": 5.622786045074463,
+          "scores": [
+            0.9999067783355713,
+            0.9947296380996704,
+            0.999909520149231,
+            0.9996784925460815,
+            0.9999866485595703,
+            0.9996088147163391,
+            0.9999874830245972,
+            0.9130182266235352,
+            0.994770348072052,
+            0.999485969543457,
+            0.9798645973205566,
+            0.9991810917854309
+          ],
+          "errors": [
+            5.058708667755127,
+            4.783607006072998,
+            3.8557441234588623,
+            5.622786045074463,
+            2.118591547012329,
+            5.288947105407715,
+            5.166505336761475,
+            4.8613691329956055,
+            4.651635646820068,
+            5.351769924163818,
+            3.3493497371673584,
+            5.410473823547363
+          ],
+          "mean_score": 0.990010678768158,
+          "unmatched_mean_score": 0.001417236402630806,
+          "unmatched_max_score": 0.3528631925582886
+        }
+      ]
+    },
+    {
+      "mode": "eval_single",
+      "recorded_geometry": {
+        "mean_target_distance": 4.535364866256714,
+        "target_coverage_6": 0.9166666865348816,
+        "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+      },
+      "loss": {
+        "total": 8.22541618347168,
+        "center": 2.729515552520752,
+        "objectness": 0.018434863537549973,
+        "radius": 5.030432248531724e-07
+      },
+      "crops": [
+        {
+          "targets": 6,
+          "accepted": 8,
+          "mean_target_distance_float64": 4.670645975779359,
+          "covered_targets": 5,
+          "accepted_near_sparse_target": 6,
+          "unique_nearest_distance_assignment_within_6": 4,
+          "assignment_max_distance": 7.195529762503042
+        },
+        {
+          "targets": 12,
+          "accepted": 12,
+          "mean_target_distance_float64": 4.398050304130508,
+          "covered_targets": 12,
+          "accepted_near_sparse_target": 12,
+          "unique_nearest_distance_assignment_within_6": 12,
+          "assignment_max_distance": 5.485279673660867
+        }
+      ],
+      "matched": [
+        {
+          "mean_error": 4.820415496826172,
+          "max_error": 7.195529937744141,
+          "scores": [
+            0.9965713024139404,
+            0.9738967418670654,
+            0.3524520695209503,
+            0.9074217081069946,
+            0.9980700612068176,
+            0.9907248616218567
+          ],
+          "errors": [
+            5.279044151306152,
+            4.5214457511901855,
+            5.973089218139648,
+            3.116450786590576,
+            7.195529937744141,
+            2.8369345664978027
+          ],
+          "mean_score": 0.869856059551239,
+          "unmatched_mean_score": 0.0065821753814816475,
+          "unmatched_max_score": 0.9982160925865173
+        },
+        {
+          "mean_error": 4.550124645233154,
+          "max_error": 5.4852800369262695,
+          "scores": [
+            0.9999077320098877,
+            0.9949477910995483,
+            0.9999120235443115,
+            0.9996854066848755,
+            0.9999867677688599,
+            0.9996178150177002,
+            0.9999876022338867,
+            0.9159747958183289,
+            0.994874894618988,
+            0.999497652053833,
+            0.9803575873374939,
+            0.999200165271759
+          ],
+          "errors": [
+            4.981948375701904,
+            4.68761682510376,
+            3.833765745162964,
+            5.4852800369262695,
+            2.0818355083465576,
+            5.182948112487793,
+            5.172752857208252,
+            4.7479567527771,
+            4.549368381500244,
+            5.242212295532227,
+            3.2779629230499268,
+            5.35784912109375
+          ],
+          "mean_score": 0.9903292655944824,
+          "unmatched_mean_score": 0.0014815011527389288,
+          "unmatched_max_score": 0.376247763633728
+        }
+      ]
+    },
+    {
+      "mode": "global_batch_stats_pair",
+      "recorded_geometry": {
+        "mean_target_distance": 0.2652231752872467,
+        "target_coverage_6": 1.0,
+        "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+      },
+      "loss": {
+        "total": 0.037433356046676636,
+        "center": 0.009473655372858047,
+        "objectness": 0.004506194964051247,
+        "radius": 4.837401146318143e-09
+      },
+      "crops": [
+        {
+          "targets": 6,
+          "accepted": 6,
+          "mean_target_distance_float64": 0.303608138247441,
+          "covered_targets": 6,
+          "accepted_near_sparse_target": 6,
+          "unique_nearest_distance_assignment_within_6": 6,
+          "assignment_max_distance": 0.3566996852517152
+        },
+        {
+          "targets": 12,
+          "accepted": 12,
+          "mean_target_distance_float64": 0.22213734846606736,
+          "covered_targets": 12,
+          "accepted_near_sparse_target": 12,
+          "unique_nearest_distance_assignment_within_6": 12,
+          "assignment_max_distance": 0.3481860279883627
+        }
+      ],
+      "matched": [
+        {
+          "mean_error": 0.30360811948776245,
+          "max_error": 0.356699675321579,
+          "scores": [
+            0.9958971738815308,
+            0.9945355653762817,
+            0.9328698515892029,
+            0.8600018620491028,
+            0.9924346208572388,
+            0.9787453413009644
+          ],
+          "errors": [
+            0.30144280195236206,
+            0.2623524069786072,
+            0.32295385003089905,
+            0.25540128350257874,
+            0.356699675321579,
+            0.3227987587451935
+          ],
+          "mean_score": 0.959080696105957,
+          "unmatched_mean_score": 0.003907879814505577,
+          "unmatched_max_score": 0.3099732995033264
+        },
+        {
+          "mean_error": 0.22213736176490784,
+          "max_error": 0.34818601608276367,
+          "scores": [
+            0.9999032020568848,
+            0.9975706934928894,
+            0.9999175071716309,
+            0.9998760223388672,
+            0.9999897480010986,
+            0.9998595714569092,
+            0.9999854564666748,
+            0.9693540930747986,
+            0.9964959025382996,
+            0.9997407793998718,
+            0.987903892993927,
+            0.9987829327583313
+          ],
+          "errors": [
+            0.16594208776950836,
+            0.34818601608276367,
+            0.22035463154315948,
+            0.07082509994506836,
+            0.18379907310009003,
+            0.0779639258980751,
+            0.2190638780593872,
+            0.2654034495353699,
+            0.31175297498703003,
+            0.13907165825366974,
+            0.3160282373428345,
+            0.347257137298584
+          ],
+          "mean_score": 0.995781660079956,
+          "unmatched_mean_score": 0.0008215425186790526,
+          "unmatched_max_score": 0.07167821377515793
+        }
+      ]
+    },
+    {
+      "mode": "encoder_batch_stats_pair",
+      "recorded_geometry": {
+        "mean_target_distance": 0.24750493466854095,
+        "target_coverage_6": 1.0,
+        "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"
+      },
+      "loss": {
+        "total": 0.03765041008591652,
+        "center": 0.009545758366584778,
+        "objectness": 0.00450656795874238,
+        "radius": 4.826801180968232e-09
+      },
+      "crops": [
+        {
+          "targets": 6,
+          "accepted": 6,
+          "mean_target_distance_float64": 0.3053128033301215,
+          "covered_targets": 6,
+          "accepted_near_sparse_target": 6,
+          "unique_nearest_distance_assignment_within_6": 6,
+          "assignment_max_distance": 0.3583089935688071
+        },
+        {
+          "targets": 12,
+          "accepted": 12,
+          "mean_target_distance_float64": 0.22235119762745606,
+          "covered_targets": 12,
+          "accepted_near_sparse_target": 12,
+          "unique_nearest_distance_assignment_within_6": 12,
+          "assignment_max_distance": 0.34861772510262046
+        }
+      ],
+      "matched": [
+        {
+          "mean_error": 0.3053128123283386,
+          "max_error": 0.3583090007305145,
+          "scores": [
+            0.9958971738815308,
+            0.9945367574691772,
+            0.9329148530960083,
+            0.8601036667823792,
+            0.9924375414848328,
+            0.978764533996582
+          ],
+          "errors": [
+            0.3012031614780426,
+            0.26321813464164734,
+            0.3248331546783447,
+            0.25787386298179626,
+            0.3583090007305145,
+            0.3264394998550415
+          ],
+          "mean_score": 0.9591090679168701,
+          "unmatched_mean_score": 0.003911095205694437,
+          "unmatched_max_score": 0.31016990542411804
+        },
+        {
+          "mean_error": 0.22235119342803955,
+          "max_error": 0.3486177325248718,
+          "scores": [
+            0.9999032020568848,
+            0.9975710511207581,
+            0.9999175071716309,
+            0.9998760223388672,
+            0.9999897480010986,
+            0.9998595714569092,
+            0.9999854564666748,
+            0.9693549871444702,
+            0.99649578332901,
+            0.9997407793998718,
+            0.9879046678543091,
+            0.9987830519676208
+          ],
+          "errors": [
+            0.1661723405122757,
+            0.3486177325248718,
+            0.2207695096731186,
+            0.07087695598602295,
+            0.18441663682460785,
+            0.07786469906568527,
+            0.219355508685112,
+            0.2653195858001709,
+            0.3117047846317291,
+            0.13939309120178223,
+            0.3161253035068512,
+            0.34759819507598877
+          ],
+          "mean_score": 0.9957818984985352,
+          "unmatched_mean_score": 0.0008215461275540292,
+          "unmatched_max_score": 0.07168520987033844
+        }
+      ]
+    }
+  ],
+  "previous_comparison_sha256": "7dcaecec553ce4d5f160001785a448d58a1ba58ab922a7b659e692712e860e85",
+  "previous_comparison": "tmp\\pointneuron2\\local_runs\\query_smoke_20261012_001222_4464\\models\\comparison.json",
+  "model_source_unchanged_from_500": true,
+  "read_only_audit": true,
+  "model_changes_this_turn": false,
+  "recommended_change_status": "proposed; no implementation or training launched",
+  "config": {
+    "seed": 0,
+    "encoder_k": 20,
+    "target_spacing": 8.0,
+    "target_capacity": 512,
+    "patch_radius": 48,
+    "selected_points": 512,
+    "batch_size": 2,
+    "epochs": 30,
+    "snapshot_epochs": [
+      5,
+      15,
+      30
+    ],
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "augment": true,
+    "decoder": {
+      "in_channels": 1216,
+      "query_count": 512,
+      "model_dim": 128,
+      "layers": 3,
+      "heads": 4,
+      "feedforward_dim": 512,
+      "dropout": 0.0
+    },
+    "pointwise_recipe": "configs/pointneuron2/proposal_repaired.json",
+    "query_loss": {
+      "positive_class_weight": 8.0,
+      "radius_floor": 1.0,
+      "objectness_weight": 2.0,
+      "center_weight": 3.0,
+      "radius_weight": 0.2,
+      "center_beta": 4.0,
+      "match_scale": 6.0
+    },
+    "downstream": {
+      "local_score_threshold": 0.5,
+      "local_nms_mode": "sphere",
+      "local_iou_threshold": 0.1,
+      "local_nms_radius": 8.0,
+      "local_top": 512,
+      "global_top": 4096,
+      "global_nms_radius": 12.0,
+      "global_iou_threshold": 0.1,
+      "graph_min_score": 0.5,
+      "graph_nms_distance": 18.0,
+      "graph_max_nodes": 128
+    }
+  },
+  "source_sha256": {
+    "src\\pointneuron\\__init__.py": "a31860a986c9884e5d009c43704e2b796bc305cb14cf2be62719152ed65a4f3b",
+    "src\\pointneuron\\config.py": "f7e6be878e25075b3b0c6f1c0b963f0bb39229244ec4df47cf121c2df106ba55",
+    "src\\pointneuron\\data\\__init__.py": "81ebaafb32adbe7441155741c0382bb1bc3d5568364c04827921901d88aa13c3",
+    "src\\pointneuron\\data\\alignment.py": "45e8640337304ee06c33f8f76d07e910c7103f9f4437bcf06b8eeb2bf4d2b6af",
+    "src\\pointneuron\\data\\candidate_diagnostics.py": "851cd335e1f007d4f9d37549b8853b040bdaea93981bda618dbbcc1beb933cb6",
+    "src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "src\\pointneuron\\data\\foreground.py": "0b50989cd9f6eb4f0fae27fe56218af578cc3153c29ec419e6643191db33c67e",
+    "src\\pointneuron\\data\\gold166.py": "0add9008789e01cebf6075b4dc899a2b3a6ddba09df8fdd2a8001b72dbc4dd51",
+    "src\\pointneuron\\data\\manual_review.py": "01677f3ab877ae61d516662f4007231e4fe205a192e741dac15dc79ff2bdccfe",
+    "src\\pointneuron\\data\\medial_sampling.py": "3039cbafb46d212a28fca7d0b5c45f4001537564244f1da55e416e9d57bd022b",
+    "src\\pointneuron\\data\\mixed_candidates.py": "2d3b4a7113fdc7ccbd2ea6c95f9fc041b6113d83a6a32128a53d843b65d42d4a",
+    "src\\pointneuron\\data\\point_cloud.py": "d6e4a210746e1678c0d756e1886892788a2828f4eb22b6d00cb03837714def31",
+    "src\\pointneuron\\data\\query_cache.py": "f3393bd221014637fd6738a54122e2284d6079ce9b59ecdf54712689f52df476",
+    "src\\pointneuron\\data\\sampling_cache.py": "ac6b5dd988e40483d1d5a645fe0f52553a9cbaccdb9c496b3970d332d5bf06b8",
+    "src\\pointneuron\\data\\splits.py": "d911e49c029f3973d9ccb6eb49f2c4f2ec3dc479bdfb4278bfd81b0adcc2b967",
+    "src\\pointneuron\\data\\swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51",
+    "src\\pointneuron\\data\\torch_dataset.py": "1aa57dc14374022a04d0cb454e2a17ff083ab56a70f2cb4a2716bf34087bbb92",
+    "src\\pointneuron\\data\\training_cache.py": "04632851884e749dd7d66edbf036b4b510e4cbcb992dab02a1a391946753e699",
+    "src\\pointneuron\\data\\vaa3d_raw.py": "8f77dab6acbddd9f6e46afac1236c941a938d6fb7684ce9dbc397620d679eea8",
+    "src\\pointneuron\\graph\\__init__.py": "7ed5157b514f4f7dc2a638f7519b11178dea314285867f87f440357399105dc6",
+    "src\\pointneuron\\graph\\initialization.py": "4729914abe8fde8b30567e68c14fcec18f5653007b75ea719b1f4ce641f79b07",
+    "src\\pointneuron\\models\\__init__.py": "af7a6d48f573c733895e2e353e18802b2a6ba26ade68c981a12a7107b303caaa",
+    "src\\pointneuron\\models\\adaptive_sampling.py": "1abc03c98456ebe924684efae15d22cd7b254b1e2f5e8b7617d8212afb47b7cc",
+    "src\\pointneuron\\models\\connectivity.py": "09ca0e495659e8aff75fe250bef4d46bcb9e7cd1fba3e4cd54f03cf022bb6e90",
+    "src\\pointneuron\\models\\dgcnn.py": "f701631cd073dbe1de27f9058d72f185bd78b19bbae14f4dd8d61d95d834c271",
+    "src\\pointneuron\\models\\guide_distances.py": "37136c80b7d21f91c2b1b80ade12dac4febe99421b7d4c7573667b12b66c078b",
+    "src\\pointneuron\\models\\proposal.py": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+    "src\\pointneuron\\models\\proposal_loss.py": "256340c2ebb05f500e12b199a1633767835d9eb4bf5bae8c6997dda1580ac207",
+    "src\\pointneuron\\models\\query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "src\\pointneuron\\models\\query_pipeline.py": "018cbdc6b000006c938238bf8fb86873216751affac1a97d72466a5ef416cdcc",
+    "src\\pointneuron\\models\\query_proposal.py": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "src\\pointneuron\\models\\sampling_pipeline.py": "112cfb09a0d2ed79c8800a47ac31a33826d4db26df1eb72cc769c1a412e9cefe",
+    "scripts\\pointneuron2\\train_query_comparison.py": "60d9ebbaec460168ca072081ac296c5c1164fa9e8ecddb648dd128481781bf74"
+  },
+  "pairing": {
+    "initial_encoder_sha256": "bd536e3b9929a14a80bdbf56f886bd9feecb52cde770a28f161a85197f6c9d3e",
+    "manifest_sha256": "2c0658b48b435f060fed8ce55b2b2e72b85fa33afd9946553dc3afbf4749f825",
+    "partition_sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+    "inputs_sha256": "0eb8db12168a4ecfc41f63a1f317d82ae6a9b198f6ee2489badae9d0d67847bf",
+    "crop_paths": [
+      "sample_0000_patch_000.npz",
+      "sample_0000_patch_001.npz"
+    ]
+  },
+  "checks": {
+    "paired_run": "passed",
+    "final_native_reload": "exact for both arms",
+    "first_500_losses_and_geometry": "exact for both arms",
+    "all_snapshot_files": "hashes verified",
+    "snapshot_selected_inputs": "hashes verified",
+    "unchanged_model_source": "hashes verified",
+    "original_final_checkpoints": "hashes unchanged after audit"
+  }
+}
