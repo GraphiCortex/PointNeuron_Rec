@@ -6,12 +6,18 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Next architecture comparison: [query decoder target specification and design](../../docs/pointneuron2/query_decoder_design.md).
-`audit_query_targets.py` sizes the proposed curve targets on training data only,
-checking source/cache hashes without model execution or changing cached labels.
-The completed check covers 33 neurons / 262 crops; proposed spacing 8 voxels
-fits all of them within 512 query slots. Decoder implementation is the next
-proposed step; no new GPU training has started.
+Current architecture work: [query decoder implementation, checks and next GPU
+command](../../docs/pointneuron2/query_decoder_implementation.md).
+`run_query.ps1` separates `prepare`, fixed-crop `smoke` and full `train` actions;
+no stage automatically starts the next. `build_query_cache.py` derives common
+curve labels without changing the corrected image candidates.
+`train_query_comparison.py` compares pointwise/query heads with matched initial
+encoder weights, inputs and updates. `aggregate_query_proposals.py` provides
+image-only inference with raw/local/global outputs and a common graph adapter.
+Execution checks pass, but the short two-crop fit is incomplete. The next command
+is a visible 500-update GPU fit, not the full 30-epoch pilot.
+`audit_query_targets.py` preserves the independent training-only sizing audit.
+See [the reviewed target specification](../../docs/pointneuron2/query_decoder_design.md).
 
 Latest saved-output diagnostics:
 `compare_hybrid_global.py` adds one fixed 50/50 confidence-anchor/coverage-fill

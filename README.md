@@ -7,6 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Current: query decoder implementation, checked results and next GPU command](docs/pointneuron2/query_decoder_implementation.md)
+- [Reviewed: query targets and matched architecture comparison](docs/pointneuron2/query_decoder_design.md)
 - [Latest: allocation repair regression, off-reference paths and supervision findings](docs/pointneuron2/remaining_budget_results.md)
 - [Completed: fixed-budget allocation repair versus saved neuron 79 SWC](docs/pointneuron2/remaining_budget_comparison.md)
 - [Confirmed: actual neuron 79 component starvation and remaining losses](docs/pointneuron2/graph_component_trace_results.md)

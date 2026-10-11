@@ -1,8 +1,9 @@
 # Query proposal decoder: target specification and first comparison
 
-11 October 2026. Target sizing and geometry checks are complete. The decoder,
-loss and model integration below are a proposed implementation for review.
-No new neural training or reconstruction has been launched.
+11 October 2026. This specification was reviewed and its implementation is now
+complete. [Execution checks and the next local command](query_decoder_implementation.md)
+report 26 passing tests and bounded CPU fits on two training crops. Learnability
+is not yet established; full GPU training and new reconstruction remain pending.
 
 ## The hypothesis we will test
 
