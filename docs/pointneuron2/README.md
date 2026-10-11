@@ -18,8 +18,12 @@ the saved corrected crops. Mixed-pool coverage improves, but gains shrink after
 also shows mixed results. Next: the prepared corrected raw/local-coordinate model
 control. Its full cache is now prepared and verified: 262 train / 56 validation
 crops, with all 40 source image/reference hashes checked. See
-[the readiness report and exact GPU command](repair_pilot_ready.md). No training
-has been launched for that corrected-input experiment.
+[the preparation audit](repair_pilot_ready.md). The user has now completed both
+five-epoch training arms in 1m31s. Local coordinates reduce best validation loss
+by 1.74%, but proposal locations improve only modestly and the 0.85 score cutoff
+removes substantial crop reference coverage. See
+[the training and crop-diagnostic results](repair_pilot_results.md). A proposed
+score/suppression audit awaits user direction; no full reconstruction has run.
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,

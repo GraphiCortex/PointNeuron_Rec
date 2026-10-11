@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Next: prepared corrected-input coordinate pilot and exact GPU command](docs/pointneuron2/repair_pilot_ready.md)
+- [Current: corrected-input training results and score-filtering findings](docs/pointneuron2/repair_pilot_results.md)
+- [Completed preparation: corrected-input coordinate pilot](docs/pointneuron2/repair_pilot_ready.md)
 - [Current: confirmed decoder/range/coordinate defects and repairs](docs/pointneuron2/root_cause_findings.md)
 - [Corrected candidate-pool and spatial-selection diagnostics](docs/pointneuron2/mixed_candidate_comparison.md)
 - [Historical reconstruction comparison](docs/pointneuron2/sampling_ablation_reconstruction_results.md)
@@ -34,8 +35,10 @@ failures justify it; the existing parameter viewer is an optional diagnostic,
 not a required training or inference step.
 
 The image-reader, intensity-range and coordinate repairs are implemented. The
-corrected cache is prepared and verified for a matched raw/local-coordinate
-training pilot; its exact visible GPU command is in the readiness report above.
+corrected raw/local-coordinate pilot has completed training. Local validation
+loss is modestly lower, but crop geometry gains remain small and the current
+graph score cutoff discards substantial reference coverage. See the results
+report above for the proposed next comparison; full reconstruction has not run.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

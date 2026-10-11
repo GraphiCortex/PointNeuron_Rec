@@ -1,5 +1,10 @@
 # Corrected-input coordinate pilot: ready to train
 
+**Update:** the user has completed training. See
+[the measured results and proposed next comparison](repair_pilot_results.md).
+The preparation description below records the state before that run; do not
+repeat its training command on this now-trained experiment.
+
 Prepared on 11 October 2026. CPU preparation and cache verification are complete;
 no training or reconstruction has been launched for this experiment. The next
 step is the visible GPU command below. This is a repaired baseline comparison,
