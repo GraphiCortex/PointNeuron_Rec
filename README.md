@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready to run: neuron 79 score/hybrid SWC comparison](docs/pointneuron2/hybrid_swc_comparison.md)
+- [Measured: neuron 79 hybrid SWC improvement and remaining limits](docs/pointneuron2/hybrid_swc_results.md)
+- [Completed: neuron 79 score/hybrid SWC protocol](docs/pointneuron2/hybrid_swc_comparison.md)
 - [Latest: fixed confidence/coverage hybrid and reconstruction decision](docs/pointneuron2/hybrid_global_comparison.md)
 - [Latest: matched global spatial-selection control and its tradeoffs](docs/pointneuron2/global_coverage_comparison.md)
 - [Measured: where full-volume branch support is lost](docs/pointneuron2/full_volume_selection_audit.md)
@@ -59,8 +60,10 @@ spatial control recovers proposal support on 35/79 but worsens the proximity
 proxy on neuron 19. No new selector or reconstruction result is promoted.
 The fixed 50/50 hybrid retains most recovered support on 35/79 and partly improves
 the pure-coverage proximity tradeoff, but still regresses on neuron 19. One
-neuron-79 full-SWC control is prepared for your visible terminal; reconstruction
-has not run. See the ready-to-run protocol above.
+neuron-79 full-SWC control has completed in the user's visible terminal: spatial
+F1 0.6560 -> 0.6862, with higher precision and recall. Much recovered proposal
+support still fails to become the final SWC; the fragmented reference also limits
+the topology metric. See the measured results above. No selector is promoted.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

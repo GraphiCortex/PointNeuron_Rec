@@ -181,10 +181,14 @@ The old root-level PN 2.0 script names remain thin compatibility entry points.
 Historical result files retain the original script paths/hashes recorded when
 those experiments ran.
 
-## Ready: neuron 79 reconstruction control
+## Completed: neuron 79 reconstruction control
 
 `compare_hybrid_swc.py` prepares, checks and runs the approved score-versus-fixed
 hybrid SWC comparison. `aggregate_with_features.py` preserves actual encoder
 features for every source proposal using an equivalence-checked aggregation
 snapshot. Preparation is CPU-only; the GPU run is launched by the user.
-See [the protocol and command](../../docs/pointneuron2/hybrid_swc_comparison.md).
+`summarize_hybrid_swc.py` verifies the saved pair and measures support changes
+on CPU, then exports SWC projections. Spatial F1 improved from 0.6560 to 0.6862
+on this selected validation case; no selector is promoted.
+See [the results](../../docs/pointneuron2/hybrid_swc_results.md) and
+[the protocol and command](../../docs/pointneuron2/hybrid_swc_comparison.md).

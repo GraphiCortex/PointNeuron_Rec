@@ -1,6 +1,11 @@
 # Neuron 79: paired global-selection reconstruction
 
-**Prepared; reconstruction has not run.** The user approved this focused
+**Completed:** the user ran the pair in their visible GPU terminal in 7m08s.
+See [the verified results and SWC projections](hybrid_swc_results.md): spatial
+F1 0.6560 -> 0.6862 with higher precision/recall. No selector is promoted.
+The preparation notes and commands below are preserved for reproduction.
+
+The user approved this focused
 comparison after the fixed hybrid diagnostic. It tests whether retaining more
 available branch evidence survives graph-node selection and tracing into a
 better SWC. Neuron 79 is a selected validation development case; this is not a

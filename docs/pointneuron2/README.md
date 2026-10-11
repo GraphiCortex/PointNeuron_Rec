@@ -6,11 +6,13 @@ dependence. See [the evidence and implemented repairs](root_cause_findings.md).
 The baseline/pilot results below are historical and need reassessment on
 correctly decoded inputs. The agreed direction is input and coordinate repair first.
 
-Latest: the [fixed hybrid control](hybrid_global_comparison.md) retains most
-support gains on 35/79, but still fails the neuron-19 proximity safeguard.
-No ratio sweep or new reconstruction was run. The approved focused
-[neuron-79 SWC comparison](hybrid_swc_comparison.md) is prepared for the user's
-visible GPU terminal before broader selection changes.
+Latest: the user completed the focused [neuron-79 SWC comparison](hybrid_swc_results.md).
+Spatial F1 improves from 0.6560 to 0.6862, with higher precision and recall.
+The control reproduces its saved scores exactly. Graph selection/tracing still
+fails to retain much recovered proposal support; a fragmented-reference topology
+metric limitation is documented. No selector is promoted. The prior
+[fixed hybrid control](hybrid_global_comparison.md) still flags neuron 19's
+proximity regression; neuron 94's upstream deficit remains unresolved.
 
 The [full-volume audit](full_volume_selection_audit.md) locates major
 global-selection losses on 35/79 and an earlier missing-proposal deficit on 94.
