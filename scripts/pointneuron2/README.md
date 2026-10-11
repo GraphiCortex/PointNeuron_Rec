@@ -198,3 +198,8 @@ source image on CPU. `probe_component_allocation.py` reproduces eligible-compone
 starvation in synthetic cases using the unchanged production selector. Neither
 changes production settings or reruns geodesics. See the
 [image-backed audit and limits](../../docs/pointneuron2/hybrid_graph_path_audit.md).
+
+`record_graph_components.py` is prepared to record actual allocation during one
+unchanged CPU graph replay. It keeps the 625-candidate pool and 128-anchor budget,
+records actual selector calls and requires identical graph arrays/settings.
+See [the protocol and user command](../../docs/pointneuron2/graph_component_recording.md).

@@ -1,5 +1,9 @@
 # Neuron 79: where recovered proposals fail to become traced branches
 
+Follow-up: the user approved recording actual component allocation.
+[The fixed recorder and visible CPU command](graph_component_recording.md)
+are prepared; the real graph replay has not run and no repair is implemented.
+
 **Completed 11 October 2026:** user-approved CPU inspection of the saved graph
 selection, traced paths and unchanged source image. No model inference,
 geodesic recomputation, new reconstruction, training or parameter changes.
