@@ -8,8 +8,9 @@ correctly decoded inputs. The agreed direction is input and coordinate repair fi
 
 Latest: the [fixed hybrid control](hybrid_global_comparison.md) retains most
 support gains on 35/79, but still fails the neuron-19 proximity safeguard.
-No ratio sweep or new reconstruction was run. A focused neuron-79 SWC comparison
-is proposed before broader selection changes.
+No ratio sweep or new reconstruction was run. The approved focused
+[neuron-79 SWC comparison](hybrid_swc_comparison.md) is prepared for the user's
+visible GPU terminal before broader selection changes.
 
 The [full-volume audit](full_volume_selection_audit.md) locates major
 global-selection losses on 35/79 and an earlier missing-proposal deficit on 94.

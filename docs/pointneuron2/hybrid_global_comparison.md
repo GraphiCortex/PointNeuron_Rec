@@ -1,5 +1,10 @@
 # Fixed hybrid global-selection control
 
+Follow-up: the user approved the focused neuron-79 reconstruction control.
+[Its protocol and visible command](hybrid_swc_comparison.md) are prepared;
+no SWC reconstruction has run during preparation. The recommendation below
+records the decision at the time of this CPU diagnostic.
+
 **Completed 11 October 2026:** all three cases passed matched-budget,
 protected-anchor, frozen-input and saved-control checks. CPU comparison took
 75.0 seconds after interpreter/import startup. The hybrid retains most support

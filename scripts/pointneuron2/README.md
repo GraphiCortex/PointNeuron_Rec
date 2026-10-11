@@ -180,3 +180,11 @@ You can also invoke the Python entry scripts directly from any working directory
 The old root-level PN 2.0 script names remain thin compatibility entry points.
 Historical result files retain the original script paths/hashes recorded when
 those experiments ran.
+
+## Ready: neuron 79 reconstruction control
+
+`compare_hybrid_swc.py` prepares, checks and runs the approved score-versus-fixed
+hybrid SWC comparison. `aggregate_with_features.py` preserves actual encoder
+features for every source proposal using an equivalence-checked aggregation
+snapshot. Preparation is CPU-only; the GPU run is launched by the user.
+See [the protocol and command](../../docs/pointneuron2/hybrid_swc_comparison.md).
