@@ -82,7 +82,7 @@ fix. It couples predictions to companion crops, and the pooled layer cannot
 use training BatchNorm with a single crop. The ordinary single-crop control
 above also shows that changing inference batching alone does not restore the fit.
 
-## Recommended next comparison, awaiting agreement
+## Approved next comparison
 
 Compare one fresh **2,000-update query fit with only the pooled BatchNorm
 replaced by LayerNorm** against this saved query baseline. Keep dropout zero,
@@ -102,7 +102,10 @@ Judge the control by ordinary inference placement, score-filtered target support
 distinct matched proposals and behavior when evaluated singly versus together.
 If it preserves the close training fit during inference, the next decision is
 the broader train/validation pilot. That pilot and whole-neuron reconstruction
-are not launched here. The normalization control is proposed, not implemented.
+are not launched here. The user approved the normalization control; its source,
+completed execution checks and visible command are in
+[the LayerNorm preparation protocol](query_layernorm_ready.md). The GPU fit has
+not been launched by the assistant.
 
 ## Evidence
 

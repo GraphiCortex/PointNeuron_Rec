@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+from dataclasses import fields
 import hashlib
 import json
 import math
@@ -111,6 +112,22 @@ def inspect_selection(output, nodes, mask):
             "note": "raw score filtering on fitted training crops; no suppression or validation"}
 
 
+def inspect_matches(output, nodes, mask, loss):
+    """One-to-one query matching; distinguish used slots from extra accepted slots."""
+    result = []
+    for i, (predicted, target) in enumerate(loss.assignments):
+        pred = torch.tensor(predicted, dtype=torch.long, device=nodes.device)
+        label = torch.tensor(target, dtype=torch.long, device=nodes.device)
+        distances = torch.linalg.vector_norm(output.center_proposals[i, pred].double() - nodes[i, mask[i]][label, 1:4].double(), dim=-1)
+        scores = output.objectness_logits[i].softmax(-1)[:, 1]
+        unused = torch.ones(len(scores), dtype=torch.bool, device=nodes.device); unused[pred] = False
+        result.append({"targets": len(pred), "mean_matched_distance": float(distances.mean()),
+                       "max_matched_distance": float(distances.max()),
+                       "matched_accepted_within_6": int(((scores[pred] >= .5) & (distances <= 6)).sum()),
+                       "unused_accepted": int((scores[unused] >= .5).sum())})
+    return result
+
+
 def prepare_run_config(base, *, seed=None, decoder_dropout=None, smoke=False):
     config = copy.deepcopy(base)
     if seed is not None:
@@ -132,7 +149,7 @@ def evaluation_steps(steps, requested, smoke):
     return sorted(set([*requested, steps])) if smoke else []
 
 
-def observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe):
+def observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe, inspect_single=False):
     """Observe inference without advancing RNG, BatchNorm or optimizer state."""
     modes = [(m, m.training) for root in (encoder, head) for m in root.modules()]
     devices = [points.device.index if points.device.index is not None else torch.cuda.current_device()] if points.is_cuda else []
@@ -143,6 +160,19 @@ def observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe
             loss = objective(arm, output, points, nodes, mask, config, recipe)
             result = {"fit": inspect_fit(output, nodes, mask), "selection": inspect_selection(output, nodes, mask),
                       "eval_loss": {key: float(getattr(loss, key)) for key in ("total", "center", "objectness", "radius")}}
+            if inspect_single:
+                if arm == "query":
+                    result["matching"] = inspect_matches(output, nodes, mask, loss)
+                outputs = [forward_proposals(head, arm, points[i:i+1], encoder(points[i:i+1]),
+                           centers[i:i+1], config["patch_radius"]) for i in range(len(points))]
+                single = type(output)(**{f.name: torch.cat([getattr(o, f.name) for o in outputs]) for f in fields(output)})
+                result["single_crop"] = {"fit": inspect_fit(single, nodes, mask),
+                    "selection": inspect_selection(single, nodes, mask),
+                    "max_center_difference_from_pair": float((single.center_proposals-output.center_proposals).abs().max()),
+                    "max_score_difference_from_pair": float((single.objectness_logits.softmax(-1)-output.objectness_logits.softmax(-1)).abs().max())}
+                if arm == "query":
+                    single_loss = objective(arm, single, points, nodes, mask, config, recipe)
+                    result["single_crop"]["matching"] = inspect_matches(single, nodes, mask, single_loss)
     finally:
         for module, training in modes:
             module.training = training
@@ -210,7 +240,8 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                     print(f"{arm} fixed-crop step={step+1}/{args.steps} loss={losses[-1]['total']:.4f} "
                           f"center={losses[-1]['center']:.4f} elapsed={time.perf_counter()-started:.1f}s", flush=True)
                 if step + 1 in milestones:
-                    observed, record = observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe)
+                    observed, record = observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe,
+                                                   getattr(args, "inspect_single", False))
                     checkpoint_name = f"step_{step+1:06d}.pt"
                     arrays_name = f"step_{step+1:06d}_proposals.npz"
                     save(0, checkpoint_name)
@@ -230,6 +261,12 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                           f"accepted_at_0.5={record['selection']['accepted_counts']} "
                           f"filtered_coverage_6={record['selection']['target_coverage_6']:.4f} "
                           f"objectness_loss={record['eval_loss']['objectness']:.4f}", flush=True)
+                    if "single_crop" in record:
+                        single = record["single_crop"]
+                        print(f"{arm} single-crop eval step={step+1}: mean_target_distance={single['fit']['mean_target_distance']:.4f} "
+                              f"filtered_coverage_6={single['selection']['target_coverage_6']:.4f} "
+                              f"accepted_at_0.5={single['selection']['accepted_counts']} "
+                              f"max_center_delta={single['max_center_difference_from_pair']:.6f}", flush=True)
             encoder.eval(); head.eval()
             with torch.no_grad():
                 final_output = forward_proposals(head, arm, points, encoder(points), centers, config["patch_radius"])

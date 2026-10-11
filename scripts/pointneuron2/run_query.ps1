@@ -1,8 +1,9 @@
 param(
-    [ValidateSet('prepare', 'smoke', 'train')]
+    [ValidateSet('prepare', 'smoke', 'train', 'normalization-smoke')]
     [Parameter(Mandatory = $true)][string]$Action,
     [string]$ArtifactRoot = 'C:\Users\Seywe\Documents\GitHub\PointNeuron',
     [string]$Manifest,
+    [string]$BaselineModels,
     [string]$OutputDirectory,
     [string]$Python,
     [ValidateSet('cpu', 'cuda')][string]$Device = 'cuda',
@@ -15,9 +16,13 @@ $ErrorActionPreference = 'Stop'
 if ($null -ne $DecoderDropout -and $Action -ne 'smoke') {
     throw 'DecoderDropout is restricted to the fixed-crop smoke comparison.'
 }
-if ($EvalSteps.Count -gt 0 -and $Action -ne 'smoke') {
+if ($EvalSteps.Count -gt 0 -and $Action -notin @('smoke', 'normalization-smoke')) {
     throw 'EvalSteps is restricted to the fixed-crop smoke comparison.'
 }
+if ($Action -eq 'normalization-smoke') {
+    if (-not $BaselineModels) { throw 'Supply -BaselineModels with the completed BatchNorm models directory.' }
+    $BaselineModels = (Resolve-Path -LiteralPath $BaselineModels).Path
+} elseif ($BaselineModels) { throw 'BaselineModels is restricted to normalization-smoke.' }
 foreach ($evaluationStep in $EvalSteps) {
     if ($evaluationStep -lt 1 -or $evaluationStep -gt $Steps) {
         throw 'Each EvalSteps value must be between 1 and Steps.'
@@ -42,6 +47,17 @@ if ($Action -eq 'prepare') {
     $cliArguments = @('-u', (Join-Path $PSScriptRoot 'build_query_cache.py'), '--manifest', $Manifest,
         '--data-root', (Join-Path $ArtifactRoot 'data/gold166'), '--output-dir', (Join-Path $runDirectory 'cache'))
     Write-Output 'CPU target preparation: corrected image candidates unchanged; common SWC curve targets; no training.'
+} elseif ($Action -eq 'normalization-smoke') {
+    $cliArguments = @('-u', (Join-Path $PSScriptRoot 'compare_query_normalization.py'),
+        '--baseline-models', $BaselineModels, '--manifest', $Manifest,
+        '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device,
+        '--steps', "$Steps", '--log-every', "$LogEvery")
+    if ($EvalSteps.Count -gt 0) {
+        $cliArguments += '--eval-steps'
+        $cliArguments += @($EvalSteps | ForEach-Object { "$_" })
+    }
+    Write-Output "Fresh query-only pooled LayerNorm control: $Steps updates; reuse the matched saved BatchNorm run; device=$Device."
+    Write-Output 'Decoder dropout stays zero; saved inference checks include single-crop evaluation. This is not validation.'
 } else {
     $cliArguments = @('-u', (Join-Path $PSScriptRoot 'train_query_comparison.py'), '--manifest', $Manifest,
         '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device, '--log-every', "$LogEvery")

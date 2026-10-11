@@ -36,10 +36,13 @@ class DGCNNEncoder(nn.Module):
         global_feature_dim: int = 1024,
         feature_dim: int | None = None,
         k: int = 20,
+        pooled_normalization: str = "batchnorm",
     ):
         super().__init__()
         if input_channels != 4:
             raise ValueError("DGCNNEncoder currently expects point features (x, y, z, intensity)")
+        if pooled_normalization not in ("batchnorm", "layernorm"):
+            raise ValueError("Pooled normalization must be batchnorm or layernorm")
         self.k = k
         self.feature_dim = feature_dim
         self.edge_blocks = nn.ModuleList()
@@ -53,7 +56,7 @@ class DGCNNEncoder(nn.Module):
         local_feature_dim = sum(local_dims)
         self.global_mlp = nn.Sequential(
             nn.Linear(local_feature_dim, global_feature_dim, bias=False),
-            nn.BatchNorm1d(global_feature_dim),
+            nn.BatchNorm1d(global_feature_dim) if pooled_normalization == "batchnorm" else nn.LayerNorm(global_feature_dim),
             nn.LeakyReLU(negative_slope=0.2, inplace=True),
         )
         geometric_feature_dim = local_feature_dim + global_feature_dim

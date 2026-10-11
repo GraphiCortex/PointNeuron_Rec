@@ -19,7 +19,7 @@ def build_models(config, arm, seed):
         raise ValueError("Unknown comparison arm")
     with torch.random.fork_rng(devices=[]):
         torch.random.default_generator.manual_seed(seed)
-        encoder = DGCNNEncoder(k=config["encoder_k"])
+        encoder = DGCNNEncoder(k=config["encoder_k"], pooled_normalization=config.get("pooled_normalization", "batchnorm"))
         torch.random.default_generator.manual_seed(seed + 101)
         if arm == "query":
             head_config = QueryDecoderConfig(**config["decoder"])
