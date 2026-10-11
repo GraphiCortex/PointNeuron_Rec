@@ -6,7 +6,12 @@ dependence. See [the evidence and implemented repairs](root_cause_findings.md).
 The baseline/pilot results below are historical and need reassessment on
 correctly decoded inputs. The agreed direction is input and coordinate repair first.
 
-Latest: the [full-volume audit](full_volume_selection_audit.md) locates major
+Latest: the [fixed hybrid control](hybrid_global_comparison.md) retains most
+support gains on 35/79, but still fails the neuron-19 proximity safeguard.
+No ratio sweep or new reconstruction was run. A focused neuron-79 SWC comparison
+is proposed before broader selection changes.
+
+The [full-volume audit](full_volume_selection_audit.md) locates major
 global-selection losses on 35/79 and an earlier missing-proposal deficit on 94.
 The user-approved [matched spatial control](global_coverage_comparison.md)
 recovers support at the same budget, but fails the specificity proxy on neuron 19.

@@ -7,6 +7,12 @@ Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
 Latest saved-output diagnostics:
+`compare_hybrid_global.py` adds one fixed 50/50 confidence-anchor/coverage-fill
+control, retaining 2,048 currently accepted anchors at the same candidate/output
+budgets and sphere rule. It verifies and reuses the earlier controls, then measures
+gate/pool effects without training or tracing. See
+[the completed hybrid comparison](../../docs/pointneuron2/hybrid_global_comparison.md).
+
 `audit_full_volume_selection.py` follows the full-volume proposals through
 score ranking, suppression/capping, graph gating, actual graph selection and
 saved SWC geometry. `compare_global_coverage.py` tests score versus spatial

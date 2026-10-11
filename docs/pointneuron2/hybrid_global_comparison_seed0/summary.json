@@ -1,0 +1,3123 @@
+{
+  "status": "completed",
+  "scope": "three capped validation neurons; fixed hybrid representation control",
+  "comparison": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\validation_graph_cutoffs_20261011\\validation_comparison.json",
+  "comparison_sha256": "116a78f88c6e47047a200d7a60d27495da8fcd002298b24f7e4719c400dcaad4",
+  "coverage_report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\docs\\pointneuron2\\global_coverage_comparison_seed0\\summary.json",
+  "coverage_report_sha256": "d037b7ac1775e6e5086c84a8f76456dd53d5e1d2e6d635275520c0e252c6c731",
+  "checkpoint_sha256": "817702dfa00dd8c0c1b29f81b2acb8c62eecd2ec4b2016a8e504330bc6bbd261",
+  "source_sha256": {
+    "scripts/pointneuron2/compare_hybrid_global.py": "d6f720d4ad3ba394784dcff90d4a250c6625f42630e7e6290d5c011469886f80",
+    "scripts/pointneuron2/compare_global_coverage.py": "1604899db60ac72b2daa2287af5b283031a2753e835b15d15e1393783cdce610",
+    "scripts/pointneuron2/audit_full_volume_selection.py": "7b1dfbab3a26a5b4816a73da077eda8cf952a0fbe7df0ccb086d5a47841569fb",
+    "scripts/visualize_proposals.py": "a8fe05a756022b342297f52785706dc98d497c7d16577da3ce4422a5b596a9cc",
+    "scripts/initialize_geodesic_graph.py": "9d9d8185862966941b556484cab8a72005ad7636845e128c4b8f5f73f67d5665",
+    "scripts/evaluate_paper_style_swc.py": "c584a1f6dd97d9bf952b542665f75f29603a98739601e0972cf921784a10bd9e",
+    "src/pointneuron/data/swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51"
+  },
+  "settings": {
+    "candidate_limit": 16384,
+    "output_budget": 4096,
+    "anchors": 2048,
+    "anchor_fraction": 0.5,
+    "sphere_iou": 0.1,
+    "graph_cutoffs_measured": [
+      0.5,
+      0.85
+    ]
+  },
+  "selection_rule": "protect first 2048 accepted score-control proposals; farthest-point fill then unchanged sphere selector",
+  "labels_used_for_selection": false,
+  "new_inference_or_tracing": false,
+  "optimizer_steps": 0,
+  "reserved_test_neurons_used": false,
+  "promoted_method": null,
+  "limitations": [
+    "Local pool has already been filtered at score 0.5 and sphere-suppressed.",
+    "Nearest-reference center proximity is a diagnostic, not semantic precision or final SWC precision.",
+    "Incomplete references can mark real unannotated neurites as far from reference.",
+    "Endpoint counts in reference forests describe annotation fragments.",
+    "Graph pools precede geodesic selection/tracing; no new SWC has been scored.",
+    "Diagnostic artifacts omit unavailable pre-global features and are not production-ready proposal files.",
+    "One fixed balance; no ratio sweep or statistical/generalization claim.",
+    "Protected anchors are a subset, not a guarantee of keeping current curve coverage or proximity."
+  ],
+  "cases": [
+    {
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "reference_nodes": 674,
+      "reference_roots": 1,
+      "terminal_ids": [
+        128,
+        188,
+        189,
+        276,
+        299,
+        316,
+        347,
+        368,
+        379,
+        398,
+        426,
+        436,
+        449,
+        455,
+        526,
+        539,
+        556,
+        595,
+        622,
+        626,
+        674
+      ],
+      "junction_ids": [
+        32,
+        99,
+        100,
+        185,
+        201,
+        224,
+        253,
+        281,
+        366,
+        382,
+        386,
+        403,
+        416,
+        458,
+        459,
+        481,
+        499,
+        501,
+        598
+      ],
+      "arms": {
+        "current_score": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 2730,
+                  "total": 2753,
+                  "fraction": 0.9916454776607337
+                },
+                "12": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 20,
+                  "total": 21,
+                  "fraction": 0.9523809523809523
+                },
+                "12": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                },
+                "12": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.356201171875,
+            "objectness_quantiles": [
+              0.919390082359314,
+              0.9240396618843079,
+              0.948000967502594,
+              0.972781777381897,
+              0.9882059097290039
+            ],
+            "score_fraction_at_least_085": 1.0
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 2730,
+                      "total": 2753,
+                      "fraction": 0.9916454776607337
+                    },
+                    "12": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    },
+                    "12": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 618,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 1309,
+                      "total": 2753,
+                      "fraction": 0.47548129313476206
+                    },
+                    "12": {
+                      "covered": 2723,
+                      "total": 2753,
+                      "fraction": 0.9891027969487831
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 15,
+                      "total": 21,
+                      "fraction": 0.7142857142857143
+                    },
+                    "12": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 11,
+                      "total": 19,
+                      "fraction": 0.5789473684210527
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 2730,
+                      "total": 2753,
+                      "fraction": 0.9916454776607337
+                    },
+                    "12": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    },
+                    "12": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 618,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 1309,
+                      "total": 2753,
+                      "fraction": 0.47548129313476206
+                    },
+                    "12": {
+                      "covered": 2723,
+                      "total": 2753,
+                      "fraction": 0.9891027969487831
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 15,
+                      "total": 21,
+                      "fraction": 0.7142857142857143
+                    },
+                    "12": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 11,
+                      "total": 19,
+                      "fraction": 0.5789473684210527
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "coverage_priority": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 2721,
+                  "total": 2753,
+                  "fraction": 0.9883763167453687
+                },
+                "12": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 19,
+                  "total": 21,
+                  "fraction": 0.9047619047619048
+                },
+                "12": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                },
+                "12": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.0791015625,
+            "objectness_quantiles": [
+              0.500199556350708,
+              0.5674492418766022,
+              0.7614421248435974,
+              0.9154971539974213,
+              0.9882059097290039
+            ],
+            "score_fraction_at_least_085": 0.26025390625
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 2721,
+                      "total": 2753,
+                      "fraction": 0.9883763167453687
+                    },
+                    "12": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 19,
+                      "total": 21,
+                      "fraction": 0.9047619047619048
+                    },
+                    "12": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 619,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 616,
+                      "total": 2753,
+                      "fraction": 0.22375590265165274
+                    },
+                    "12": {
+                      "covered": 2414,
+                      "total": 2753,
+                      "fraction": 0.8768616055212496
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 6,
+                      "total": 21,
+                      "fraction": 0.2857142857142857
+                    },
+                    "12": {
+                      "covered": 16,
+                      "total": 21,
+                      "fraction": 0.7619047619047619
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 8,
+                      "total": 19,
+                      "fraction": 0.42105263157894735
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 1066,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 1529,
+                      "total": 2753,
+                      "fraction": 0.5553941155103523
+                    },
+                    "12": {
+                      "covered": 2652,
+                      "total": 2753,
+                      "fraction": 0.96331274972757
+                    },
+                    "18": {
+                      "covered": 2748,
+                      "total": 2753,
+                      "fraction": 0.9981837994914639
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 7,
+                      "total": 21,
+                      "fraction": 0.3333333333333333
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 21,
+                      "fraction": 0.9047619047619048
+                    },
+                    "18": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 11,
+                      "total": 19,
+                      "fraction": 0.5789473684210527
+                    },
+                    "12": {
+                      "covered": 18,
+                      "total": 19,
+                      "fraction": 0.9473684210526315
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 570,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 840,
+                      "total": 2753,
+                      "fraction": 0.3051216854340719
+                    },
+                    "12": {
+                      "covered": 2485,
+                      "total": 2753,
+                      "fraction": 0.9026516527424627
+                    },
+                    "18": {
+                      "covered": 2748,
+                      "total": 2753,
+                      "fraction": 0.9981837994914639
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 6,
+                      "total": 21,
+                      "fraction": 0.2857142857142857
+                    },
+                    "12": {
+                      "covered": 17,
+                      "total": 21,
+                      "fraction": 0.8095238095238095
+                    },
+                    "18": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 7,
+                      "total": 19,
+                      "fraction": 0.3684210526315789
+                    },
+                    "12": {
+                      "covered": 17,
+                      "total": 19,
+                      "fraction": 0.8947368421052632
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "hybrid_50_50": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 2682,
+                  "total": 2753,
+                  "fraction": 0.9742099527787867
+                },
+                "12": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 2753,
+                  "total": 2753,
+                  "fraction": 1.0
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                },
+                "12": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 21,
+                  "total": 21,
+                  "fraction": 1.0
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 18,
+                  "total": 19,
+                  "fraction": 0.9473684210526315
+                },
+                "12": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                },
+                "18": {
+                  "covered": 19,
+                  "total": 19,
+                  "fraction": 1.0
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.206298828125,
+            "objectness_quantiles": [
+              0.5000284910202026,
+              0.6066928505897522,
+              0.948000967502594,
+              0.972781777381897,
+              0.9882059097290039
+            ],
+            "score_fraction_at_least_085": 0.6005859375
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 2682,
+                      "total": 2753,
+                      "fraction": 0.9742099527787867
+                    },
+                    "12": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    },
+                    "12": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 18,
+                      "total": 19,
+                      "fraction": 0.9473684210526315
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 625,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 932,
+                      "total": 2753,
+                      "fraction": 0.33853977479113695
+                    },
+                    "12": {
+                      "covered": 2449,
+                      "total": 2753,
+                      "fraction": 0.8895750090810025
+                    },
+                    "18": {
+                      "covered": 2753,
+                      "total": 2753,
+                      "fraction": 1.0
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 7,
+                      "total": 21,
+                      "fraction": 0.3333333333333333
+                    },
+                    "12": {
+                      "covered": 15,
+                      "total": 21,
+                      "fraction": 0.7142857142857143
+                    },
+                    "18": {
+                      "covered": 21,
+                      "total": 21,
+                      "fraction": 1.0
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 9,
+                      "total": 19,
+                      "fraction": 0.47368421052631576
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 2460,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 2399,
+                      "total": 2753,
+                      "fraction": 0.8714130039956411
+                    },
+                    "12": {
+                      "covered": 2664,
+                      "total": 2753,
+                      "fraction": 0.9676716309480566
+                    },
+                    "18": {
+                      "covered": 2750,
+                      "total": 2753,
+                      "fraction": 0.9989102796948783
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 18,
+                      "total": 21,
+                      "fraction": 0.8571428571428571
+                    },
+                    "12": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    },
+                    "18": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 18,
+                      "total": 19,
+                      "fraction": 0.9473684210526315
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 600,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 1258,
+                      "total": 2753,
+                      "fraction": 0.4569560479476934
+                    },
+                    "12": {
+                      "covered": 2526,
+                      "total": 2753,
+                      "fraction": 0.9175444969124591
+                    },
+                    "18": {
+                      "covered": 2730,
+                      "total": 2753,
+                      "fraction": 0.9916454776607337
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 12,
+                      "total": 21,
+                      "fraction": 0.5714285714285714
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 21,
+                      "fraction": 0.9047619047619048
+                    },
+                    "18": {
+                      "covered": 20,
+                      "total": 21,
+                      "fraction": 0.9523809523809523
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 8,
+                      "total": 19,
+                      "fraction": 0.42105263157894735
+                    },
+                    "12": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    },
+                    "18": {
+                      "covered": 19,
+                      "total": 19,
+                      "fraction": 1.0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "proposal_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\validation_graph_cutoffs_20261011\\neuron_0019\\shared_proposals\\sample_0019_proposals.npz",
+      "proposal_sha256": "dd2056e38f741a33e08a7b3e1aac646e5abb3a6d7420c68fbd206601579bdec8",
+      "reference_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked7_utokyo_fly\\SLP_PN_neuron\\SLP_PN_neuron.v3dpbd.ano_stamp_2015_06_16_17_57.swc",
+      "reference_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "artifact_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\hybrid_global_comparison_20261011\\neuron_0019_hybrid_selection.npz",
+      "artifact_sha256": "9d868ca9dcbdcdbc72b8ac1c2709709c861163492c54faca2781364972fd21fb",
+      "retained_anchors": 2048,
+      "saved_control_checks": "passed"
+    },
+    {
+      "sample_index": 35,
+      "sample_id": "p_checked6_human_allen_confocal/in_house1",
+      "reference_nodes": 3199,
+      "reference_roots": 110,
+      "terminal_ids": [
+        1,
+        4,
+        9,
+        15,
+        30,
+        45,
+        79,
+        138,
+        188,
+        190,
+        196,
+        253,
+        285,
+        404,
+        406,
+        411,
+        420,
+        430,
+        579,
+        595,
+        652,
+        654,
+        665,
+        671,
+        728,
+        747,
+        751,
+        791,
+        795,
+        848,
+        858,
+        865,
+        871,
+        887,
+        927,
+        947,
+        967,
+        1007,
+        1012,
+        1018,
+        1088,
+        1138,
+        1195,
+        1211,
+        1229,
+        1272,
+        1376,
+        1391,
+        1406,
+        1412,
+        1422,
+        1442,
+        1514,
+        1518,
+        1534,
+        1627,
+        1635,
+        1680,
+        1821,
+        1842,
+        1883,
+        1899,
+        2018,
+        2022,
+        2026,
+        2030,
+        2034,
+        2047,
+        2052,
+        2065,
+        2080,
+        2186,
+        2204,
+        2215,
+        2224,
+        2233,
+        2292,
+        2304,
+        2333,
+        2345,
+        2361,
+        2426,
+        2614,
+        2657,
+        2659,
+        2679,
+        2722,
+        2725,
+        2730,
+        2735,
+        2750,
+        2753,
+        2761,
+        2858,
+        2864,
+        2898,
+        2906,
+        2913,
+        2944,
+        2960,
+        2967,
+        2984,
+        3000,
+        3076,
+        3096,
+        3133,
+        3144,
+        3164,
+        3188,
+        3199
+      ],
+      "junction_ids": [],
+      "arms": {
+        "current_score": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 8665,
+                  "total": 23539,
+                  "fraction": 0.36811249415863034
+                },
+                "12": {
+                  "covered": 10093,
+                  "total": 23539,
+                  "fraction": 0.42877777305747905
+                },
+                "18": {
+                  "covered": 11406,
+                  "total": 23539,
+                  "fraction": 0.48455754280130847
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 34,
+                  "total": 110,
+                  "fraction": 0.3090909090909091
+                },
+                "12": {
+                  "covered": 44,
+                  "total": 110,
+                  "fraction": 0.4
+                },
+                "18": {
+                  "covered": 48,
+                  "total": 110,
+                  "fraction": 0.43636363636363634
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.888427734375,
+            "objectness_quantiles": [
+              0.9211978316307068,
+              0.9265317916870117,
+              0.9471015930175781,
+              0.9807463586330414,
+              0.9951672554016113
+            ],
+            "score_fraction_at_least_085": 1.0
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8665,
+                      "total": 23539,
+                      "fraction": 0.36811249415863034
+                    },
+                    "12": {
+                      "covered": 10093,
+                      "total": 23539,
+                      "fraction": 0.42877777305747905
+                    },
+                    "18": {
+                      "covered": 11406,
+                      "total": 23539,
+                      "fraction": 0.48455754280130847
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 34,
+                      "total": 110,
+                      "fraction": 0.3090909090909091
+                    },
+                    "12": {
+                      "covered": 44,
+                      "total": 110,
+                      "fraction": 0.4
+                    },
+                    "18": {
+                      "covered": 48,
+                      "total": 110,
+                      "fraction": 0.43636363636363634
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 610,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6096,
+                      "total": 23539,
+                      "fraction": 0.258974467904329
+                    },
+                    "12": {
+                      "covered": 9821,
+                      "total": 23539,
+                      "fraction": 0.41722248183865074
+                    },
+                    "18": {
+                      "covered": 11121,
+                      "total": 23539,
+                      "fraction": 0.47244997663452143
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 20,
+                      "total": 110,
+                      "fraction": 0.18181818181818182
+                    },
+                    "12": {
+                      "covered": 43,
+                      "total": 110,
+                      "fraction": 0.39090909090909093
+                    },
+                    "18": {
+                      "covered": 47,
+                      "total": 110,
+                      "fraction": 0.42727272727272725
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8665,
+                      "total": 23539,
+                      "fraction": 0.36811249415863034
+                    },
+                    "12": {
+                      "covered": 10093,
+                      "total": 23539,
+                      "fraction": 0.42877777305747905
+                    },
+                    "18": {
+                      "covered": 11406,
+                      "total": 23539,
+                      "fraction": 0.48455754280130847
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 34,
+                      "total": 110,
+                      "fraction": 0.3090909090909091
+                    },
+                    "12": {
+                      "covered": 44,
+                      "total": 110,
+                      "fraction": 0.4
+                    },
+                    "18": {
+                      "covered": 48,
+                      "total": 110,
+                      "fraction": 0.43636363636363634
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 610,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6096,
+                      "total": 23539,
+                      "fraction": 0.258974467904329
+                    },
+                    "12": {
+                      "covered": 9821,
+                      "total": 23539,
+                      "fraction": 0.41722248183865074
+                    },
+                    "18": {
+                      "covered": 11121,
+                      "total": 23539,
+                      "fraction": 0.47244997663452143
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 20,
+                      "total": 110,
+                      "fraction": 0.18181818181818182
+                    },
+                    "12": {
+                      "covered": 43,
+                      "total": 110,
+                      "fraction": 0.39090909090909093
+                    },
+                    "18": {
+                      "covered": 47,
+                      "total": 110,
+                      "fraction": 0.42727272727272725
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "coverage_priority": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 15147,
+                  "total": 23539,
+                  "fraction": 0.6434852797485024
+                },
+                "12": {
+                  "covered": 16471,
+                  "total": 23539,
+                  "fraction": 0.6997323590636816
+                },
+                "18": {
+                  "covered": 17321,
+                  "total": 23539,
+                  "fraction": 0.7358426441225201
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 72,
+                  "total": 110,
+                  "fraction": 0.6545454545454545
+                },
+                "12": {
+                  "covered": 74,
+                  "total": 110,
+                  "fraction": 0.6727272727272727
+                },
+                "18": {
+                  "covered": 76,
+                  "total": 110,
+                  "fraction": 0.6909090909090909
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.718505859375,
+            "objectness_quantiles": [
+              0.5021234750747681,
+              0.6731075644493103,
+              0.8169348835945129,
+              0.9404502511024475,
+              0.9951672554016113
+            ],
+            "score_fraction_at_least_085": 0.38330078125
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 15147,
+                      "total": 23539,
+                      "fraction": 0.6434852797485024
+                    },
+                    "12": {
+                      "covered": 16471,
+                      "total": 23539,
+                      "fraction": 0.6997323590636816
+                    },
+                    "18": {
+                      "covered": 17321,
+                      "total": 23539,
+                      "fraction": 0.7358426441225201
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 72,
+                      "total": 110,
+                      "fraction": 0.6545454545454545
+                    },
+                    "12": {
+                      "covered": 74,
+                      "total": 110,
+                      "fraction": 0.6727272727272727
+                    },
+                    "18": {
+                      "covered": 76,
+                      "total": 110,
+                      "fraction": 0.6909090909090909
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 622,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 5905,
+                      "total": 23539,
+                      "fraction": 0.25086027443816644
+                    },
+                    "12": {
+                      "covered": 12796,
+                      "total": 23539,
+                      "fraction": 0.5436084795445856
+                    },
+                    "18": {
+                      "covered": 16509,
+                      "total": 23539,
+                      "fraction": 0.7013467012192531
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 32,
+                      "total": 110,
+                      "fraction": 0.2909090909090909
+                    },
+                    "12": {
+                      "covered": 56,
+                      "total": 110,
+                      "fraction": 0.509090909090909
+                    },
+                    "18": {
+                      "covered": 75,
+                      "total": 110,
+                      "fraction": 0.6818181818181818
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 1570,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8974,
+                      "total": 23539,
+                      "fraction": 0.3812396448447258
+                    },
+                    "12": {
+                      "covered": 11989,
+                      "total": 23539,
+                      "fraction": 0.5093249500828413
+                    },
+                    "18": {
+                      "covered": 13384,
+                      "total": 23539,
+                      "fraction": 0.568588300267641
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 42,
+                      "total": 110,
+                      "fraction": 0.38181818181818183
+                    },
+                    "12": {
+                      "covered": 57,
+                      "total": 110,
+                      "fraction": 0.5181818181818182
+                    },
+                    "18": {
+                      "covered": 64,
+                      "total": 110,
+                      "fraction": 0.5818181818181818
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 591,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 5485,
+                      "total": 23539,
+                      "fraction": 0.23301754535026978
+                    },
+                    "12": {
+                      "covered": 11234,
+                      "total": 23539,
+                      "fraction": 0.47725052041293176
+                    },
+                    "18": {
+                      "covered": 13168,
+                      "total": 23539,
+                      "fraction": 0.5594120395938655
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 24,
+                      "total": 110,
+                      "fraction": 0.21818181818181817
+                    },
+                    "12": {
+                      "covered": 53,
+                      "total": 110,
+                      "fraction": 0.4818181818181818
+                    },
+                    "18": {
+                      "covered": 63,
+                      "total": 110,
+                      "fraction": 0.5727272727272728
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "hybrid_50_50": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 15075,
+                  "total": 23539,
+                  "fraction": 0.6404265261905774
+                },
+                "12": {
+                  "covered": 16446,
+                  "total": 23539,
+                  "fraction": 0.6986702918560687
+                },
+                "18": {
+                  "covered": 17284,
+                  "total": 23539,
+                  "fraction": 0.734270784655253
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 72,
+                  "total": 110,
+                  "fraction": 0.6545454545454545
+                },
+                "12": {
+                  "covered": 74,
+                  "total": 110,
+                  "fraction": 0.6727272727272727
+                },
+                "18": {
+                  "covered": 76,
+                  "total": 110,
+                  "fraction": 0.6909090909090909
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.779296875,
+            "objectness_quantiles": [
+              0.5020444989204407,
+              0.7023424506187439,
+              0.9468730390071869,
+              0.9807463586330414,
+              0.9951672554016113
+            ],
+            "score_fraction_at_least_085": 0.650390625
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 15075,
+                      "total": 23539,
+                      "fraction": 0.6404265261905774
+                    },
+                    "12": {
+                      "covered": 16446,
+                      "total": 23539,
+                      "fraction": 0.6986702918560687
+                    },
+                    "18": {
+                      "covered": 17284,
+                      "total": 23539,
+                      "fraction": 0.734270784655253
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 72,
+                      "total": 110,
+                      "fraction": 0.6545454545454545
+                    },
+                    "12": {
+                      "covered": 74,
+                      "total": 110,
+                      "fraction": 0.6727272727272727
+                    },
+                    "18": {
+                      "covered": 76,
+                      "total": 110,
+                      "fraction": 0.6909090909090909
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 624,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 5758,
+                      "total": 23539,
+                      "fraction": 0.2446153192574026
+                    },
+                    "12": {
+                      "covered": 12343,
+                      "total": 23539,
+                      "fraction": 0.5243638217426398
+                    },
+                    "18": {
+                      "covered": 16356,
+                      "total": 23539,
+                      "fraction": 0.6948468499086622
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 29,
+                      "total": 110,
+                      "fraction": 0.2636363636363636
+                    },
+                    "12": {
+                      "covered": 57,
+                      "total": 110,
+                      "fraction": 0.5181818181818182
+                    },
+                    "18": {
+                      "covered": 74,
+                      "total": 110,
+                      "fraction": 0.6727272727272727
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 2664,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 9247,
+                      "total": 23539,
+                      "fraction": 0.3928374187518586
+                    },
+                    "12": {
+                      "covered": 11669,
+                      "total": 23539,
+                      "fraction": 0.49573048982539614
+                    },
+                    "18": {
+                      "covered": 13255,
+                      "total": 23539,
+                      "fraction": 0.5631080334763584
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 42,
+                      "total": 110,
+                      "fraction": 0.38181818181818183
+                    },
+                    "12": {
+                      "covered": 53,
+                      "total": 110,
+                      "fraction": 0.4818181818181818
+                    },
+                    "18": {
+                      "covered": 59,
+                      "total": 110,
+                      "fraction": 0.5363636363636364
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 614,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 5748,
+                      "total": 23539,
+                      "fraction": 0.24419049237435744
+                    },
+                    "12": {
+                      "covered": 10910,
+                      "total": 23539,
+                      "fraction": 0.4634861294022686
+                    },
+                    "18": {
+                      "covered": 12907,
+                      "total": 23539,
+                      "fraction": 0.5483240579463868
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 21,
+                      "total": 110,
+                      "fraction": 0.19090909090909092
+                    },
+                    "12": {
+                      "covered": 49,
+                      "total": 110,
+                      "fraction": 0.44545454545454544
+                    },
+                    "18": {
+                      "covered": 59,
+                      "total": 110,
+                      "fraction": 0.5363636363636364
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "proposal_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\validation_graph_cutoffs_20261011\\neuron_0035\\shared_proposals\\sample_0035_proposals.npz",
+      "proposal_sha256": "ae06645d1301c81f69b161a5ed071d560b86d9448c0580137ff0e6988afb9c43",
+      "reference_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_allen_confocal\\in_house1\\Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd_stamp_2015_06_16_13_31.swc",
+      "reference_sha256": "66b2fdb623b82c56c0291eb7e5ab10f6ea77267be07a6a2fa7f1cfcc6381c1ad",
+      "artifact_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\hybrid_global_comparison_20261011\\neuron_0035_hybrid_selection.npz",
+      "artifact_sha256": "473d8d85e5f74ff30fe0bdf790bbaa0b6d18d6e3a305ce34db2c030c50421cbe",
+      "retained_anchors": 2048,
+      "saved_control_checks": "passed"
+    },
+    {
+      "sample_index": 79,
+      "sample_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "reference_nodes": 3186,
+      "reference_roots": 191,
+      "terminal_ids": [
+        1,
+        49,
+        51,
+        60,
+        66,
+        69,
+        75,
+        81,
+        86,
+        88,
+        92,
+        127,
+        136,
+        155,
+        161,
+        170,
+        180,
+        232,
+        266,
+        333,
+        370,
+        379,
+        388,
+        392,
+        419,
+        473,
+        478,
+        482,
+        520,
+        530,
+        536,
+        541,
+        546,
+        548,
+        564,
+        590,
+        644,
+        666,
+        681,
+        687,
+        700,
+        745,
+        764,
+        774,
+        793,
+        806,
+        814,
+        816,
+        822,
+        863,
+        867,
+        875,
+        923,
+        970,
+        980,
+        989,
+        992,
+        1000,
+        1008,
+        1015,
+        1026,
+        1045,
+        1047,
+        1049,
+        1096,
+        1098,
+        1105,
+        1125,
+        1142,
+        1172,
+        1177,
+        1190,
+        1202,
+        1217,
+        1219,
+        1228,
+        1240,
+        1273,
+        1291,
+        1342,
+        1365,
+        1375,
+        1377,
+        1388,
+        1406,
+        1426,
+        1439,
+        1478,
+        1485,
+        1490,
+        1498,
+        1510,
+        1547,
+        1567,
+        1572,
+        1577,
+        1585,
+        1590,
+        1592,
+        1596,
+        1618,
+        1648,
+        1665,
+        1695,
+        1714,
+        1719,
+        1724,
+        1728,
+        1752,
+        1758,
+        1765,
+        1771,
+        1824,
+        1843,
+        1873,
+        1877,
+        1898,
+        1934,
+        1966,
+        1987,
+        2008,
+        2025,
+        2030,
+        2037,
+        2057,
+        2060,
+        2065,
+        2073,
+        2085,
+        2135,
+        2188,
+        2201,
+        2244,
+        2248,
+        2306,
+        2322,
+        2327,
+        2333,
+        2341,
+        2351,
+        2357,
+        2429,
+        2466,
+        2482,
+        2496,
+        2511,
+        2516,
+        2538,
+        2590,
+        2600,
+        2602,
+        2664,
+        2680,
+        2700,
+        2708,
+        2715,
+        2725,
+        2728,
+        2739,
+        2762,
+        2789,
+        2903,
+        2906,
+        2907,
+        2923,
+        2924,
+        2932,
+        2949,
+        2958,
+        2959,
+        2969,
+        2990,
+        2998,
+        3002,
+        3003,
+        3009,
+        3027,
+        3035,
+        3045,
+        3085,
+        3087,
+        3088,
+        3104,
+        3123,
+        3134,
+        3135,
+        3146,
+        3155,
+        3156,
+        3175,
+        3186
+      ],
+      "junction_ids": [],
+      "arms": {
+        "current_score": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 8890,
+                  "total": 16793,
+                  "fraction": 0.5293872446852855
+                },
+                "12": {
+                  "covered": 10889,
+                  "total": 16793,
+                  "fraction": 0.6484249389626631
+                },
+                "18": {
+                  "covered": 12400,
+                  "total": 16793,
+                  "fraction": 0.7384029059727267
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 102,
+                  "total": 191,
+                  "fraction": 0.5340314136125655
+                },
+                "12": {
+                  "covered": 127,
+                  "total": 191,
+                  "fraction": 0.6649214659685864
+                },
+                "18": {
+                  "covered": 142,
+                  "total": 191,
+                  "fraction": 0.743455497382199
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.724365234375,
+            "objectness_quantiles": [
+              0.8764591217041016,
+              0.8910656273365021,
+              0.9478999376296997,
+              0.9915377497673035,
+              0.9974868297576904
+            ],
+            "score_fraction_at_least_085": 1.0
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8890,
+                      "total": 16793,
+                      "fraction": 0.5293872446852855
+                    },
+                    "12": {
+                      "covered": 10889,
+                      "total": 16793,
+                      "fraction": 0.6484249389626631
+                    },
+                    "18": {
+                      "covered": 12400,
+                      "total": 16793,
+                      "fraction": 0.7384029059727267
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 102,
+                      "total": 191,
+                      "fraction": 0.5340314136125655
+                    },
+                    "12": {
+                      "covered": 127,
+                      "total": 191,
+                      "fraction": 0.6649214659685864
+                    },
+                    "18": {
+                      "covered": 142,
+                      "total": 191,
+                      "fraction": 0.743455497382199
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 604,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6969,
+                      "total": 16793,
+                      "fraction": 0.4149943428809623
+                    },
+                    "12": {
+                      "covered": 10618,
+                      "total": 16793,
+                      "fraction": 0.632287262549872
+                    },
+                    "18": {
+                      "covered": 12199,
+                      "total": 16793,
+                      "fraction": 0.7264336330613946
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 87,
+                      "total": 191,
+                      "fraction": 0.45549738219895286
+                    },
+                    "12": {
+                      "covered": 122,
+                      "total": 191,
+                      "fraction": 0.6387434554973822
+                    },
+                    "18": {
+                      "covered": 141,
+                      "total": 191,
+                      "fraction": 0.7382198952879581
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8890,
+                      "total": 16793,
+                      "fraction": 0.5293872446852855
+                    },
+                    "12": {
+                      "covered": 10889,
+                      "total": 16793,
+                      "fraction": 0.6484249389626631
+                    },
+                    "18": {
+                      "covered": 12400,
+                      "total": 16793,
+                      "fraction": 0.7384029059727267
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 102,
+                      "total": 191,
+                      "fraction": 0.5340314136125655
+                    },
+                    "12": {
+                      "covered": 127,
+                      "total": 191,
+                      "fraction": 0.6649214659685864
+                    },
+                    "18": {
+                      "covered": 142,
+                      "total": 191,
+                      "fraction": 0.743455497382199
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 604,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6969,
+                      "total": 16793,
+                      "fraction": 0.4149943428809623
+                    },
+                    "12": {
+                      "covered": 10618,
+                      "total": 16793,
+                      "fraction": 0.632287262549872
+                    },
+                    "18": {
+                      "covered": 12199,
+                      "total": 16793,
+                      "fraction": 0.7264336330613946
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 87,
+                      "total": 191,
+                      "fraction": 0.45549738219895286
+                    },
+                    "12": {
+                      "covered": 122,
+                      "total": 191,
+                      "fraction": 0.6387434554973822
+                    },
+                    "18": {
+                      "covered": 141,
+                      "total": 191,
+                      "fraction": 0.7382198952879581
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "coverage_priority": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 15499,
+                  "total": 16793,
+                  "fraction": 0.922944083844459
+                },
+                "12": {
+                  "covered": 16516,
+                  "total": 16793,
+                  "fraction": 0.9835050318585125
+                },
+                "18": {
+                  "covered": 16703,
+                  "total": 16793,
+                  "fraction": 0.9946406240695528
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 164,
+                  "total": 191,
+                  "fraction": 0.8586387434554974
+                },
+                "12": {
+                  "covered": 181,
+                  "total": 191,
+                  "fraction": 0.9476439790575916
+                },
+                "18": {
+                  "covered": 187,
+                  "total": 191,
+                  "fraction": 0.9790575916230366
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.78466796875,
+            "objectness_quantiles": [
+              0.500069260597229,
+              0.5962960124015808,
+              0.8205742537975311,
+              0.9580248892307281,
+              0.9974868297576904
+            ],
+            "score_fraction_at_least_085": 0.42236328125
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 15499,
+                      "total": 16793,
+                      "fraction": 0.922944083844459
+                    },
+                    "12": {
+                      "covered": 16516,
+                      "total": 16793,
+                      "fraction": 0.9835050318585125
+                    },
+                    "18": {
+                      "covered": 16703,
+                      "total": 16793,
+                      "fraction": 0.9946406240695528
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 164,
+                      "total": 191,
+                      "fraction": 0.8586387434554974
+                    },
+                    "12": {
+                      "covered": 181,
+                      "total": 191,
+                      "fraction": 0.9476439790575916
+                    },
+                    "18": {
+                      "covered": 187,
+                      "total": 191,
+                      "fraction": 0.9790575916230366
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 614,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 7883,
+                      "total": 16793,
+                      "fraction": 0.46942178288572617
+                    },
+                    "12": {
+                      "covered": 15325,
+                      "total": 16793,
+                      "fraction": 0.9125826237122611
+                    },
+                    "18": {
+                      "covered": 16643,
+                      "total": 16793,
+                      "fraction": 0.9910677067825879
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 88,
+                      "total": 191,
+                      "fraction": 0.4607329842931937
+                    },
+                    "12": {
+                      "covered": 161,
+                      "total": 191,
+                      "fraction": 0.8429319371727748
+                    },
+                    "18": {
+                      "covered": 185,
+                      "total": 191,
+                      "fraction": 0.9685863874345549
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 1730,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 7383,
+                      "total": 16793,
+                      "fraction": 0.43964747216101946
+                    },
+                    "12": {
+                      "covered": 10127,
+                      "total": 16793,
+                      "fraction": 0.60304888941821
+                    },
+                    "18": {
+                      "covered": 11732,
+                      "total": 16793,
+                      "fraction": 0.6986244268445185
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 79,
+                      "total": 191,
+                      "fraction": 0.41361256544502617
+                    },
+                    "12": {
+                      "covered": 109,
+                      "total": 191,
+                      "fraction": 0.5706806282722513
+                    },
+                    "18": {
+                      "covered": 131,
+                      "total": 191,
+                      "fraction": 0.6858638743455497
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 578,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6373,
+                      "total": 16793,
+                      "fraction": 0.3795033644971119
+                    },
+                    "12": {
+                      "covered": 9949,
+                      "total": 16793,
+                      "fraction": 0.5924492348002144
+                    },
+                    "18": {
+                      "covered": 11619,
+                      "total": 16793,
+                      "fraction": 0.6918954326207348
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 70,
+                      "total": 191,
+                      "fraction": 0.36649214659685864
+                    },
+                    "12": {
+                      "covered": 108,
+                      "total": 191,
+                      "fraction": 0.5654450261780105
+                    },
+                    "18": {
+                      "covered": 128,
+                      "total": 191,
+                      "fraction": 0.6701570680628273
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "hybrid_50_50": {
+          "global_selected": {
+            "rows": 4096,
+            "support": {
+              "curve": {
+                "6": {
+                  "covered": 15426,
+                  "total": 16793,
+                  "fraction": 0.9185970344786518
+                },
+                "12": {
+                  "covered": 16515,
+                  "total": 16793,
+                  "fraction": 0.983445483237063
+                },
+                "18": {
+                  "covered": 16702,
+                  "total": 16793,
+                  "fraction": 0.9945810754481034
+                }
+              },
+              "terminal": {
+                "6": {
+                  "covered": 162,
+                  "total": 191,
+                  "fraction": 0.8481675392670157
+                },
+                "12": {
+                  "covered": 180,
+                  "total": 191,
+                  "fraction": 0.9424083769633508
+                },
+                "18": {
+                  "covered": 187,
+                  "total": 191,
+                  "fraction": 0.9790575916230366
+                }
+              },
+              "junction": {
+                "6": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "12": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                },
+                "18": {
+                  "covered": 0,
+                  "total": 0,
+                  "fraction": null
+                }
+              }
+            },
+            "rows_within_6_of_reference_curve": 0.77392578125,
+            "objectness_quantiles": [
+              0.5001223087310791,
+              0.6312107145786285,
+              0.9477053582668304,
+              0.9915377497673035,
+              0.9974868297576904
+            ],
+            "score_fraction_at_least_085": 0.622314453125
+          },
+          "graph_preparation": {
+            "0.5": {
+              "score_gate": {
+                "rows": 4096,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 15426,
+                      "total": 16793,
+                      "fraction": 0.9185970344786518
+                    },
+                    "12": {
+                      "covered": 16515,
+                      "total": 16793,
+                      "fraction": 0.983445483237063
+                    },
+                    "18": {
+                      "covered": 16702,
+                      "total": 16793,
+                      "fraction": 0.9945810754481034
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 162,
+                      "total": 191,
+                      "fraction": 0.8481675392670157
+                    },
+                    "12": {
+                      "covered": 180,
+                      "total": 191,
+                      "fraction": 0.9424083769633508
+                    },
+                    "18": {
+                      "covered": 187,
+                      "total": 191,
+                      "fraction": 0.9790575916230366
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 625,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 7919,
+                      "total": 16793,
+                      "fraction": 0.47156553325790507
+                    },
+                    "12": {
+                      "covered": 15296,
+                      "total": 16793,
+                      "fraction": 0.9108557136902281
+                    },
+                    "18": {
+                      "covered": 16641,
+                      "total": 16793,
+                      "fraction": 0.9909486095396891
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 88,
+                      "total": 191,
+                      "fraction": 0.4607329842931937
+                    },
+                    "12": {
+                      "covered": 161,
+                      "total": 191,
+                      "fraction": 0.8429319371727748
+                    },
+                    "18": {
+                      "covered": 186,
+                      "total": 191,
+                      "fraction": 0.9738219895287958
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            },
+            "0.85": {
+              "score_gate": {
+                "rows": 2549,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 8102,
+                      "total": 16793,
+                      "fraction": 0.48246293098314774
+                    },
+                    "12": {
+                      "covered": 10678,
+                      "total": 16793,
+                      "fraction": 0.6358601798368367
+                    },
+                    "18": {
+                      "covered": 12214,
+                      "total": 16793,
+                      "fraction": 0.7273268623831358
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 93,
+                      "total": 191,
+                      "fraction": 0.4869109947643979
+                    },
+                    "12": {
+                      "covered": 117,
+                      "total": 191,
+                      "fraction": 0.612565445026178
+                    },
+                    "18": {
+                      "covered": 131,
+                      "total": 191,
+                      "fraction": 0.6858638743455497
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              },
+              "adaptive_input_pool": {
+                "rows": 602,
+                "support": {
+                  "curve": {
+                    "6": {
+                      "covered": 6838,
+                      "total": 16793,
+                      "fraction": 0.40719347347108914
+                    },
+                    "12": {
+                      "covered": 10465,
+                      "total": 16793,
+                      "fraction": 0.6231763234681117
+                    },
+                    "18": {
+                      "covered": 12113,
+                      "total": 16793,
+                      "fraction": 0.7213124516167451
+                    }
+                  },
+                  "terminal": {
+                    "6": {
+                      "covered": 79,
+                      "total": 191,
+                      "fraction": 0.41361256544502617
+                    },
+                    "12": {
+                      "covered": 112,
+                      "total": 191,
+                      "fraction": 0.5863874345549738
+                    },
+                    "18": {
+                      "covered": 131,
+                      "total": 191,
+                      "fraction": 0.6858638743455497
+                    }
+                  },
+                  "junction": {
+                    "6": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "12": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    },
+                    "18": {
+                      "covered": 0,
+                      "total": 0,
+                      "fraction": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "proposal_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\validation_graph_cutoffs_20261011\\neuron_0079\\shared_proposals\\sample_0079_proposals.npz",
+      "proposal_sha256": "bbe53a8002025d27fbdd18956361d5677068083b67b57bc31dd8a97d4bba2dba",
+      "reference_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140921c4\\140921c4.tif.v3dpbd.ano_stamp_2015_06_16_18_14.swc",
+      "reference_sha256": "97a0fb75788a889428003b519fac08f3b733650ca61c589f8d3da3f67982be3f",
+      "artifact_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\hybrid_global_comparison_20261011\\neuron_0079_hybrid_selection.npz",
+      "artifact_sha256": "b9eaf28c57b129110d99b4548a63ef1fd3164f7a9c4645f889f2e25a01d1c5d2",
+      "retained_anchors": 2048,
+      "saved_control_checks": "passed"
+    }
+  ],
+  "elapsed_seconds": 75.02615030000015,
+  "matched_budget_checks": "passed",
+  "protected_anchor_checks": "passed",
+  "saved_control_checks": "passed"
+}

@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: fixed confidence/coverage hybrid and reconstruction decision](docs/pointneuron2/hybrid_global_comparison.md)
 - [Latest: matched global spatial-selection control and its tradeoffs](docs/pointneuron2/global_coverage_comparison.md)
 - [Measured: where full-volume branch support is lost](docs/pointneuron2/full_volume_selection_audit.md)
 - [Latest: seven-neuron results, progress versus PN1 and conceptual bottlenecks](docs/pointneuron2/validation_graph_cutoff_results.md)
@@ -55,6 +56,9 @@ The saved-output audit locates major global-selection losses on neurons 35/79,
 while neuron 94 already lacks proposals before global selection. A matched
 spatial control recovers proposal support on 35/79 but worsens the proximity
 proxy on neuron 19. No new selector or reconstruction result is promoted.
+The fixed 50/50 hybrid retains most recovered support on 35/79 and partly improves
+the pure-coverage proximity tradeoff, but still regresses on neuron 19. One
+neuron-79 full-SWC control is proposed for discussion; no new long run is launched.
 Earlier runs are historical results on incorrectly decoded inputs and require
 reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive

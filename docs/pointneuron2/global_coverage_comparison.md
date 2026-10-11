@@ -1,5 +1,10 @@
 # Global selection control: coverage improves, with mixed specificity
 
+**Follow-up completed:** the user-approved
+[fixed 50/50 hybrid control](hybrid_global_comparison.md) tests the proposed
+next step below. It retains most weak-case support gains, but still regresses
+on neuron 19's proximity proxy. No production selector has been promoted.
+
 Following the [full-volume audit](full_volume_selection_audit.md), the user chose
 testing spatial coverage during global selection. This CPU comparison completed
 on 11 October 2026 in 82.2 seconds after interpreter/import startup. It used
@@ -89,8 +94,8 @@ partly priority and spatial allocation, not simply the number 4,096.
 But spatial coverage alone lacks semantic rejection. A proposed next control
 would protect strong proposals while adding spatial representation in neglected
 regions, then assess the same retention/proximity tradeoff and downstream score
-behavior. It must be agreed before implementation; no hybrid selector or
-architecture change has been made. Neuron 94 still requires an upstream audit:
+behavior. It was subsequently agreed and tested in the follow-up linked above;
+no production selector or architecture change has been made. Neuron 94 still requires an upstream audit:
 this experiment does not recover proposals absent from its post-local pool.
 
 Before any promotion, a frozen reconstruction comparison must assess full SWC
