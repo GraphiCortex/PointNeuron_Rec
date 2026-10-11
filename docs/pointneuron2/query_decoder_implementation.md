@@ -1,5 +1,9 @@
 # Query decoder implementation and execution checks
 
+Latest follow-up: [the completed 500-update GPU fit and approved dropout-only
+control](query_gpu_fit_results.md). The CPU implementation evidence below is
+retained as the earlier check; use the follow-up's command for the next run.
+
 11 October 2026. The reviewed target builder, query decoder, matching loss,
 checkpoint format, inference adapter and paired local runner are implemented.
 The implementation checks pass. A short CPU fit shows learning, but has **not

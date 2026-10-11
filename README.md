@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: 500-update GPU fit, confirmed dropout dependence and approved control](docs/pointneuron2/query_gpu_fit_results.md)
 - [Current: query decoder implementation, checked results and next GPU command](docs/pointneuron2/query_decoder_implementation.md)
 - [Reviewed: query targets and matched architecture comparison](docs/pointneuron2/query_decoder_design.md)
 - [Latest: allocation repair regression, off-reference paths and supervision findings](docs/pointneuron2/remaining_budget_results.md)

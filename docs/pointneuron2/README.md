@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Latest:** the user completed the 500-update GPU fit. Query inference reaches
+66.7% target coverage but accepts zero slots at score 0.5. Forward-only controls
+show dropout dependence: restoring decoder dropout yields 95.8–100% coverage,
+while changing BatchNorm statistics does not restore it. The user approved a
+fresh fit changing only training dropout to zero. See [the measured evidence and
+prepared local command](query_gpu_fit_results.md). Full training remains pending.
+
 **Current architecture milestone:** the reviewed query target builder, decoder,
 set loss and paired local runner are implemented. See [the execution evidence
 and next GPU command](query_decoder_implementation.md). All 26 targeted tests

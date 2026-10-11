@@ -178,6 +178,37 @@ def test_paired_execution_gate_detects_different_inputs():
         check_pairs([one, {**one, "inputs_sha256": "different"}])
 
 
+def test_dropout_control_preserves_cache_config_and_weight_initialization():
+    from scripts.pointneuron2.train_query_comparison import prepare_run_config
+    base = small_config()
+    base['decoder']['dropout'] = .1
+    control = prepare_run_config(base, decoder_dropout=0., smoke=True)
+    assert base['decoder']['dropout'] == .1
+    assert control == {**base, 'decoder': {**base['decoder'], 'dropout': 0.}}
+    for arm in ('pointwise', 'query'):
+        old = build_models(base, arm, 0)
+        new = build_models(control, arm, 0)
+        for before, after in zip(old, new):
+            for key, value in before.state_dict().items():
+                torch.testing.assert_close(value, after.state_dict()[key], rtol=0, atol=0)
+    with pytest.raises(ValueError, match='restricted'):
+        prepare_run_config(base, decoder_dropout=0.)
+    for invalid in (-.1, 1., float('nan'), float('inf')):
+        with pytest.raises(ValueError, match='finite'):
+            prepare_run_config(base, decoder_dropout=invalid, smoke=True)
+
+
+def test_fit_diagnostic_distinguishes_geometry_from_confidence():
+    from scripts.pointneuron2.train_query_comparison import inspect_fit, inspect_selection
+    output = QueryProposalOutput(torch.zeros(1, 2, 3), torch.tensor([[[1., -1.], [1., -1.]]]),
+                                 torch.ones(1, 2, 1), torch.zeros(1, 2, 3), torch.zeros(1, 2, 16))
+    nodes = torch.tensor([[[1., 0, 0, 0, 1, -1]]])
+    mask = torch.ones(1, 1, dtype=torch.bool)
+    assert inspect_fit(output, nodes, mask)['target_coverage_6'] == 1.
+    selected = inspect_selection(output, nodes, mask)
+    assert selected['accepted_counts'] == [0] and selected['target_coverage_6'] == 0.
+
+
 def query_cache_fixture(tmp_path):
     config = small_config()
     inputs = {"candidate_points": 12}

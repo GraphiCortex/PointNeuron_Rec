@@ -6,9 +6,13 @@ param(
     [string]$OutputDirectory,
     [string]$Python,
     [ValidateSet('cpu', 'cuda')][string]$Device = 'cuda',
-    [int]$Steps = 100
+    [int]$Steps = 100,
+    [Nullable[double]]$DecoderDropout
 )
 $ErrorActionPreference = 'Stop'
+if ($null -ne $DecoderDropout -and $Action -ne 'smoke') {
+    throw 'DecoderDropout is restricted to the fixed-crop smoke comparison.'
+}
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
 if (-not (Test-Path -LiteralPath $Python -PathType Leaf)) { throw 'Supply -Python with the local PyTorch environment.' }
@@ -33,6 +37,10 @@ if ($Action -eq 'prepare') {
         '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device, '--log-every', '5')
     if ($Action -eq 'smoke') {
         $cliArguments += @('--smoke', '--steps', "$Steps")
+        if ($null -ne $DecoderDropout) {
+            $cliArguments += @('--decoder-dropout', ([double]$DecoderDropout).ToString([System.Globalization.CultureInfo]::InvariantCulture))
+            Write-Output "Query decoder dropout override: $DecoderDropout; cache and base settings unchanged."
+        }
         Write-Output "Fixed two-training-crop check: both arms, $Steps updates each; device=$Device. This is not validation."
     } else {
         Write-Output "Matched pilot: 33 train / 7 validation neurons, 30 epochs per arm; device=$Device. Whole-neuron evaluation is separate."

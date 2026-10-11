@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 import time
@@ -91,6 +93,37 @@ def inspect_fit(output, nodes, mask):
             "note": "all-slot target support on fitted training crops; excludes confidence and is not validation"}
 
 
+def inspect_selection(output, nodes, mask):
+    scores = output.objectness_logits.softmax(-1)[..., 1]
+    accepted, coverage = [], []
+    for i in range(len(nodes)):
+        if not bool(mask[i].any()):
+            continue
+        keep = scores[i] >= .5
+        accepted.append(int(keep.sum()))
+        if bool(keep.any()):
+            distances = torch.cdist(nodes[i, mask[i], 1:4], output.center_proposals[i, keep]).min(1).values
+            coverage.append(float((distances <= 6).float().mean()))
+        else:
+            coverage.append(0.)
+    return {"score_threshold": .5, "accepted_counts": accepted,
+            "target_coverage_6": float(np.mean(coverage)),
+            "note": "raw score filtering on fitted training crops; no suppression or validation"}
+
+
+def prepare_run_config(base, *, seed=None, decoder_dropout=None, smoke=False):
+    config = copy.deepcopy(base)
+    if seed is not None:
+        config["seed"] = seed
+    if decoder_dropout is not None:
+        if not smoke:
+            raise ValueError("Decoder dropout override is restricted to the fixed-crop check")
+        if isinstance(decoder_dropout, bool) or not math.isfinite(decoder_dropout) or not 0 <= decoder_dropout < 1:
+            raise ValueError("Decoder dropout must be finite and in [0,1)")
+        config["decoder"]["dropout"] = float(decoder_dropout)
+    return config
+
+
 def run_arm(arm, args, manifest, config, recipe, output_dir):
     encoder, head = build_models(config, arm, config["seed"])
     initial_encoder = state_digest(encoder)
@@ -152,8 +185,13 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
             with torch.no_grad():
                 final_output = forward_proposals(head, arm, points, encoder(points), centers, config["patch_radius"])
                 report["final_fit"] = inspect_fit(final_output, nodes, mask)
+                report["final_selection"] = inspect_selection(final_output, nodes, mask)
                 adapter = associate_encoder_features(final_output.center_proposals, points, encoder(points))
                 report["adapter_features_shape"] = list(adapter.features.shape)
+            print(f"{arm} final eval: mean_target_distance={report['final_fit']['mean_target_distance']:.4f} "
+                  f"coverage_6={report['final_fit']['target_coverage_6']:.4f} "
+                  f"accepted_at_0.5={report['final_selection']['accepted_counts']} "
+                  f"filtered_coverage_6={report['final_selection']['target_coverage_6']:.4f}", flush=True)
             save(0, "proposal.pt")
             restored_encoder, restored_head = models_from_checkpoint(torch.load(output_dir / "proposal.pt", map_location="cpu", weights_only=True), args.device)
             with torch.no_grad():
@@ -249,6 +287,7 @@ def main():
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--steps", type=int, default=20)
     parser.add_argument("--seed", type=int)
+    parser.add_argument("--decoder-dropout", type=float, help="Fixed-crop control only; leave the cache and base config unchanged")
     parser.add_argument("--log-every", type=int, default=5)
     parser.add_argument("--cpu-threads", type=int, default=2)
     args = parser.parse_args()
@@ -260,9 +299,7 @@ def main():
         raise FileExistsError("Use a new output directory")
     torch.set_num_threads(args.cpu_threads)
     manifest = load_query_manifest(args.manifest, args.partition)
-    config = dict(manifest["config"])
-    if args.seed is not None:
-        config["seed"] = args.seed
+    config = prepare_run_config(manifest["config"], seed=args.seed, decoder_dropout=args.decoder_dropout, smoke=args.smoke)
     recipe = json.loads((REPO_ROOT / config["pointwise_recipe"]).read_text(encoding="utf-8"))["training"]
     if config["batch_size"] < 2 or config["epochs"] < 1:
         raise ValueError("Training requires batch size >=2 and positive epochs")
@@ -270,7 +307,7 @@ def main():
         raise ValueError("This runner requires the declared zero evaluation seed")
     args.output_dir.mkdir(parents=True)
     print(f"Scope: {'fixed two-crop execution check' if args.smoke else 'paired training'}; "
-          f"device={args.device}; outputs={args.output_dir.resolve()}", flush=True)
+          f"device={args.device}; decoder_dropout={config['decoder']['dropout']}; outputs={args.output_dir.resolve()}", flush=True)
     reports = []
     summary = {"status": "running", "config": config, "arms": []}
     try:

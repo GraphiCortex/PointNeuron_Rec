@@ -8,6 +8,10 @@ environments, logs and checkpoints remain outside those snapshots.
 
 Current architecture work: [query decoder implementation, checks and next GPU
 command](../../docs/pointneuron2/query_decoder_implementation.md).
+Latest: [the completed GPU fit and approved dropout-only control](../../docs/pointneuron2/query_gpu_fit_results.md).
+`audit_query_fit.py` diagnoses saved confidence, normalization and dropout with
+fixed checkpoints. `run_query.ps1 -Action smoke -DecoderDropout 0` prepares the
+fresh control without changing the base settings or cache.
 `run_query.ps1` separates `prepare`, fixed-crop `smoke` and full `train` actions;
 no stage automatically starts the next. `build_query_cache.py` derives common
 curve labels without changing the corrected image candidates.
