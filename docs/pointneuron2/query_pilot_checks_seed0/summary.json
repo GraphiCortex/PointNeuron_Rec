@@ -1,0 +1,337 @@
+{
+  "status": "prepared_and_checked",
+  "scope": "no 30-epoch training launched; no whole-neuron evaluation",
+  "tests": {
+    "passed": 66,
+    "seconds": 18.05
+  },
+  "preflight_sha256": "7b715f07a4b1433a2eaa4eae4d7d9d59b89a55ef406afca69625d10d8fbd6cdd",
+  "timing_sha256": "9430b7df0b09de5a726d67cd15b7247637c22031b7b5943e5db5efa9e434ccb0",
+  "preflight": {
+    "status": "preflight_passed",
+    "scope": "config/cache/partition only; no training or neural forwards",
+    "config": {
+      "seed": 0,
+      "encoder_k": 20,
+      "target_spacing": 8.0,
+      "target_capacity": 512,
+      "patch_radius": 48,
+      "selected_points": 512,
+      "batch_size": 2,
+      "epochs": 30,
+      "snapshot_epochs": [
+        5,
+        15,
+        30
+      ],
+      "lr": 0.0001,
+      "weight_decay": 0.0001,
+      "augment": true,
+      "pooled_normalization": "layernorm",
+      "decoder": {
+        "in_channels": 1216,
+        "query_count": 512,
+        "model_dim": 128,
+        "layers": 3,
+        "heads": 4,
+        "feedforward_dim": 512,
+        "dropout": 0.0
+      },
+      "pointwise_recipe": "configs/pointneuron2/proposal_repaired.json",
+      "query_loss": {
+        "positive_class_weight": 8.0,
+        "radius_floor": 1.0,
+        "objectness_weight": 2.0,
+        "center_weight": 3.0,
+        "radius_weight": 0.2,
+        "center_beta": 4.0,
+        "match_scale": 6.0
+      },
+      "downstream": {
+        "local_score_threshold": 0.5,
+        "local_nms_mode": "sphere",
+        "local_iou_threshold": 0.1,
+        "local_nms_radius": 8.0,
+        "local_top": 512,
+        "global_top": 4096,
+        "global_nms_radius": 12.0,
+        "global_iou_threshold": 0.1,
+        "graph_min_score": 0.5,
+        "graph_nms_distance": 18.0,
+        "graph_max_nodes": 128
+      }
+    },
+    "dataset": {
+      "train": {
+        "neurons": 33,
+        "crops": 262,
+        "annotated_crops": 211
+      },
+      "val": {
+        "neurons": 7,
+        "crops": 56,
+        "annotated_crops": 47
+      }
+    },
+    "device": "cuda",
+    "manifest_sha256": "2c0658b48b435f060fed8ce55b2b2e72b85fa33afd9946553dc3afbf4749f825",
+    "partition_sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+    "pilot_config_sha256": "06d15fd5b2e9f7c7745ec0eb882dbb2864f12f2ae3aae9b76be3a6118de775e6"
+  },
+  "timing": {
+    "scope": "representative timing only; fresh throwaway models; no checkpoints or quality experiment",
+    "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "manifest_sha256": "2c0658b48b435f060fed8ce55b2b2e72b85fa33afd9946553dc3afbf4749f825",
+    "pilot_config_sha256": "06d15fd5b2e9f7c7745ec0eb882dbb2864f12f2ae3aae9b76be3a6118de775e6",
+    "config": {
+      "seed": 0,
+      "encoder_k": 20,
+      "target_spacing": 8.0,
+      "target_capacity": 512,
+      "patch_radius": 48,
+      "selected_points": 512,
+      "batch_size": 2,
+      "epochs": 30,
+      "snapshot_epochs": [
+        5,
+        15,
+        30
+      ],
+      "lr": 0.0001,
+      "weight_decay": 0.0001,
+      "augment": true,
+      "pooled_normalization": "layernorm",
+      "decoder": {
+        "in_channels": 1216,
+        "query_count": 512,
+        "model_dim": 128,
+        "layers": 3,
+        "heads": 4,
+        "feedforward_dim": 512,
+        "dropout": 0.0
+      },
+      "pointwise_recipe": "configs/pointneuron2/proposal_repaired.json",
+      "query_loss": {
+        "positive_class_weight": 8.0,
+        "radius_floor": 1.0,
+        "objectness_weight": 2.0,
+        "center_weight": 3.0,
+        "radius_weight": 0.2,
+        "center_beta": 4.0,
+        "match_scale": 6.0
+      },
+      "downstream": {
+        "local_score_threshold": 0.5,
+        "local_nms_mode": "sphere",
+        "local_iou_threshold": 0.1,
+        "local_nms_radius": 8.0,
+        "local_top": 512,
+        "global_top": 4096,
+        "global_nms_radius": 12.0,
+        "global_iou_threshold": 0.1,
+        "graph_min_score": 0.5,
+        "graph_nms_distance": 18.0,
+        "graph_max_nodes": 128
+      }
+    },
+    "epochs_per_arm": 30,
+    "batches_per_epoch": {
+      "train": 131,
+      "val": 28
+    },
+    "timing_policy": "one warmup + four train updates and three validation forwards per arm; annotated crops at declared target-count quantiles; data preparation and validation diagnostics included",
+    "arms": [
+      {
+        "arm": "pointwise",
+        "initial_encoder_sha256": "9a4fd1db2a41c196fdaf6f160de4934ecbcf7250e4198479cce356d3e43473ba",
+        "throwaway_optimizer_updates": 5,
+        "timings": {
+          "train": [
+            {
+              "seconds": 0.10822979999647941,
+              "paths": [
+                "sample_0032_patch_005.npz",
+                "sample_0041_patch_003.npz"
+              ],
+              "target_counts": [
+                8,
+                8
+              ]
+            },
+            {
+              "seconds": 0.09841790000791661,
+              "paths": [
+                "sample_0102_patch_001.npz",
+                "sample_0014_patch_004.npz"
+              ],
+              "target_counts": [
+                29,
+                30
+              ]
+            },
+            {
+              "seconds": 0.09405569999944419,
+              "paths": [
+                "sample_0108_patch_003.npz",
+                "sample_0053_patch_002.npz"
+              ],
+              "target_counts": [
+                100,
+                101
+              ]
+            },
+            {
+              "seconds": 0.08548959999461658,
+              "paths": [
+                "sample_0085_patch_003.npz",
+                "sample_0086_patch_003.npz"
+              ],
+              "target_counts": [
+                296,
+                418
+              ]
+            }
+          ],
+          "val": [
+            {
+              "seconds": 0.039177500002551824,
+              "paths": [
+                "sample_0135_patch_003.npz",
+                "sample_0019_patch_005.npz"
+              ],
+              "target_counts": [
+                11,
+                13
+              ]
+            },
+            {
+              "seconds": 0.025069399998756126,
+              "paths": [
+                "sample_0021_patch_007.npz",
+                "sample_0035_patch_004.npz"
+              ],
+              "target_counts": [
+                33,
+                35
+              ]
+            },
+            {
+              "seconds": 0.03226570000697393,
+              "paths": [
+                "sample_0021_patch_004.npz",
+                "sample_0079_patch_004.npz"
+              ],
+              "target_counts": [
+                158,
+                161
+              ]
+            }
+          ]
+        },
+        "peak_cuda_allocated_mib": 121.71240234375
+      },
+      {
+        "arm": "query",
+        "initial_encoder_sha256": "9a4fd1db2a41c196fdaf6f160de4934ecbcf7250e4198479cce356d3e43473ba",
+        "throwaway_optimizer_updates": 5,
+        "timings": {
+          "train": [
+            {
+              "seconds": 0.07117060000018682,
+              "paths": [
+                "sample_0032_patch_005.npz",
+                "sample_0041_patch_003.npz"
+              ],
+              "target_counts": [
+                8,
+                8
+              ]
+            },
+            {
+              "seconds": 0.06201959999452811,
+              "paths": [
+                "sample_0102_patch_001.npz",
+                "sample_0014_patch_004.npz"
+              ],
+              "target_counts": [
+                29,
+                30
+              ]
+            },
+            {
+              "seconds": 0.0681856000010157,
+              "paths": [
+                "sample_0108_patch_003.npz",
+                "sample_0053_patch_002.npz"
+              ],
+              "target_counts": [
+                100,
+                101
+              ]
+            },
+            {
+              "seconds": 0.17493959999410436,
+              "paths": [
+                "sample_0085_patch_003.npz",
+                "sample_0086_patch_003.npz"
+              ],
+              "target_counts": [
+                296,
+                418
+              ]
+            }
+          ],
+          "val": [
+            {
+              "seconds": 0.022985200004768558,
+              "paths": [
+                "sample_0135_patch_003.npz",
+                "sample_0019_patch_005.npz"
+              ],
+              "target_counts": [
+                11,
+                13
+              ]
+            },
+            {
+              "seconds": 0.02489689999492839,
+              "paths": [
+                "sample_0021_patch_007.npz",
+                "sample_0035_patch_004.npz"
+              ],
+              "target_counts": [
+                33,
+                35
+              ]
+            },
+            {
+              "seconds": 0.04894890000286978,
+              "paths": [
+                "sample_0021_patch_004.npz",
+                "sample_0079_patch_004.npz"
+              ],
+              "target_counts": [
+                158,
+                161
+              ]
+            }
+          ]
+        },
+        "peak_cuda_allocated_mib": 151.86279296875
+      }
+    ],
+    "status": "completed",
+    "estimated_total_seconds": {
+      "sample_minimum": 620.0770199602994,
+      "sample_mean": 803.3007109915343,
+      "sample_maximum": 1186.8819179675484
+    },
+    "estimate_note": "rough projection, not a bound; assumes all batches supervised and includes measured data preparation/metrics; excludes process startup, checkpoint writes, thermal changes and other workload"
+  },
+  "source_sha256": {
+    "scripts\\pointneuron2\\train_query_comparison.py": "873de0f5bab577a627c75c4d50e6e02e9bc6d378ce17d9d715793a05930aaf0b",
+    "scripts\\pointneuron2\\run_query.ps1": "273134f40c22e7c415029fc0d6bb74767c9d3689d50c6ac9afe4f7269507a6c9",
+    "scripts\\pointneuron2\\time_query_pilot.py": "10ab1a2dd904127b016594062149f74595a508c6739673b9397e596da4d87d45",
+    "configs\\pointneuron2\\query_pilot_layernorm.json": "06d15fd5b2e9f7c7745ec0eb882dbb2864f12f2ae3aae9b76be3a6118de775e6"
+  }
+}

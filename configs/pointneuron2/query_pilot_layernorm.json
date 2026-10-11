@@ -1,0 +1,47 @@
+{
+  "seed": 0,
+  "encoder_k": 20,
+  "target_spacing": 8.0,
+  "target_capacity": 512,
+  "patch_radius": 48,
+  "selected_points": 512,
+  "batch_size": 2,
+  "epochs": 30,
+  "snapshot_epochs": [5, 15, 30],
+  "lr": 0.0001,
+  "weight_decay": 0.0001,
+  "augment": true,
+  "pooled_normalization": "layernorm",
+  "decoder": {
+    "in_channels": 1216,
+    "query_count": 512,
+    "model_dim": 128,
+    "layers": 3,
+    "heads": 4,
+    "feedforward_dim": 512,
+    "dropout": 0.0
+  },
+  "pointwise_recipe": "configs/pointneuron2/proposal_repaired.json",
+  "query_loss": {
+    "positive_class_weight": 8.0,
+    "radius_floor": 1.0,
+    "objectness_weight": 2.0,
+    "center_weight": 3.0,
+    "radius_weight": 0.2,
+    "center_beta": 4.0,
+    "match_scale": 6.0
+  },
+  "downstream": {
+    "local_score_threshold": 0.5,
+    "local_nms_mode": "sphere",
+    "local_iou_threshold": 0.1,
+    "local_nms_radius": 8.0,
+    "local_top": 512,
+    "global_top": 4096,
+    "global_nms_radius": 12.0,
+    "global_iou_threshold": 0.1,
+    "graph_min_score": 0.5,
+    "graph_nms_distance": 18.0,
+    "graph_max_nodes": 128
+  }
+}

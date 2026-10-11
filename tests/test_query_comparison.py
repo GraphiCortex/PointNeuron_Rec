@@ -226,6 +226,41 @@ def test_fit_diagnostic_distinguishes_geometry_from_confidence():
     assert selected['accepted_counts'] == [0] and selected['target_coverage_6'] == 0.
 
 
+def test_frozen_pilot_config_preserves_cache_and_rejects_unrelated_changes():
+    from scripts.pointneuron2.train_query_comparison import prepare_run_config
+    base = json.loads(Path('configs/pointneuron2/query_comparison.json').read_text())
+    pilot = json.loads(Path('configs/pointneuron2/query_pilot_layernorm.json').read_text())
+    actual = prepare_run_config(base, pilot_config=pilot)
+    assert actual['pooled_normalization'] == 'layernorm' and actual['decoder']['dropout'] == 0
+    assert base['decoder']['dropout'] == .1 and 'pooled_normalization' not in base
+    for key, changed in (('target_spacing', 4), ('epochs', 5), ('lr', .01), ('selected_points', 1024)):
+        invalid = copy.deepcopy(pilot); invalid[key] = changed
+        with pytest.raises(ValueError, match='Pilot config'):
+            prepare_run_config(base, pilot_config=invalid)
+    with pytest.raises(ValueError, match='Pilot config'):
+        prepare_run_config(base, pilot_config=pilot, smoke=True)
+
+
+def test_validation_diagnostics_exclude_unknowns_and_balance_neurons():
+    from scripts.pointneuron2.train_query_comparison import validation_quality, summarize_validation_quality
+    output = make_output([[[0, 0, 0], [20, 0, 0]], [[0, 0, 0], [20, 0, 0]], [[0, 0, 0], [20, 0, 0]]])
+    nodes = torch.tensor([[[1., 0, 0, 0, 1, -1]], [[1., 0, 0, 0, 1, -1]], [[float('nan')]*6]])
+    mask = torch.tensor([[True], [True], [False]])
+    output.objectness_logits.data[0] = torch.tensor([[-10., 10.], [-10., 10.]])
+    output.objectness_logits.data[1] = torch.tensor([[10., -10.], [10., -10.]])
+    with torch.no_grad():
+        rows = validation_quality(output, nodes, mask, [{'sample_id': s} for s in ('a','b','unknown')])
+    assert len(rows) == 2 and rows[0]['accepted_sparse_target_proximity_6'] == .5
+    assert rows[1]['accepted'] == 0 and rows[1]['filtered_target_coverage_6'] == 0
+    assert rows[1]['accepted_sparse_target_proximity_6'] is None
+    summary = summarize_validation_quality([*rows, rows[0]])
+    assert summary['neurons'] == 2 and summary['annotated_crops'] == 3
+    assert summary['neuron_macro']['filtered_target_coverage_6'] == .5
+    assert summary['crop_macro']['filtered_target_coverage_6'] == pytest.approx(2/3)
+    assert summary['crops_with_no_accepted_slots'] == 1
+    json.dumps(summary, allow_nan=False)
+
+
 def query_cache_fixture(tmp_path):
     config = small_config()
     inputs = {"candidate_points": 12}
@@ -272,7 +307,7 @@ def test_derived_cache_path_escape_is_rejected_before_access(tmp_path):
 
 def test_paired_epoch_loop_uses_same_batches_and_supervised_update_counts(tmp_path):
     config = small_config()
-    config.update(selected_points=8, target_capacity=8, epochs=1, snapshot_epochs=[1])
+    config.update(selected_points=8, target_capacity=8, epochs=1, snapshot_epochs=[1], pooled_normalization='layernorm')
     rows = []
     rng = np.random.default_rng(5)
     for i, role in enumerate(("train", "train", "val", "val")):
@@ -285,12 +320,18 @@ def test_paired_epoch_loop_uses_same_batches_and_supervised_update_counts(tmp_pa
     manifest = {"scope": "internal matched target cache", "partition_sha256": "synthetic",
                 "input_config": {"selected_points": 8}, "medial_config": {}, "records": rows}
     mp = tmp_path / "manifest.json"; mp.write_text(json.dumps(manifest))
-    args = SimpleNamespace(device="cpu", smoke=False, manifest=mp, log_every=1)
+    args = SimpleNamespace(device="cpu", smoke=False, manifest=mp, log_every=1, validation_quality=True)
     recipe = json.loads(Path(config["pointwise_recipe"]).read_text())["training"]
     reports = [run_arm(arm, args, manifest, config, recipe, tmp_path / arm) for arm in ("pointwise", "query")]
     check_pairs(reports)
     assert all(r["updates"] == 1 and r["epochs"][0]["train"]["supervised_crops"] == 1 for r in reports)
     assert all((tmp_path / arm / "epoch_001.pt").is_file() for arm in ("pointwise", "query"))
+    assert all(r['epochs'][0]['val']['quality']['annotated_crops'] == 2 for r in reports)
+    assert all(r['epochs'][0]['val']['quality']['neurons'] == 2 for r in reports)
+    for arm in ('pointwise', 'query'):
+        checkpoint = torch.load(tmp_path / arm / 'proposal.pt', weights_only=True)
+        encoder, _ = models_from_checkpoint(checkpoint)
+        assert isinstance(encoder.global_mlp[1], torch.nn.LayerNorm)
 
 
 @pytest.mark.parametrize("arm", ["pointwise", "query"])

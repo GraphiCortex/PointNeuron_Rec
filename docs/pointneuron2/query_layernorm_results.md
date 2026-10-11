@@ -72,6 +72,8 @@ reporting, and estimate duration with a short representative timing diagnostic.
 The user will launch the full run visibly. Reserved test neurons and downstream
 reconstruction settings stay unchanged. Whole-neuron evaluation is a subsequent
 agreed stage; the seven validation neurons already inform development.
+The [prepared pilot protocol](query_pilot_ready.md) now includes its checked
+config, validation reporting, measured timing estimate and visible command.
 
 ## Evidence
 

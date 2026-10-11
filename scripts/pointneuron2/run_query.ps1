@@ -1,9 +1,11 @@
 param(
-    [ValidateSet('prepare', 'smoke', 'train', 'normalization-smoke')]
+    [ValidateSet('prepare', 'smoke', 'train', 'normalization-smoke', 'pilot')]
     [Parameter(Mandatory = $true)][string]$Action,
     [string]$ArtifactRoot = 'C:\Users\Seywe\Documents\GitHub\PointNeuron',
     [string]$Manifest,
     [string]$BaselineModels,
+    [string]$PilotConfig,
+    [switch]$PreflightOnly,
     [string]$OutputDirectory,
     [string]$Python,
     [ValidateSet('cpu', 'cuda')][string]$Device = 'cuda',
@@ -29,6 +31,10 @@ foreach ($evaluationStep in $EvalSteps) {
     }
 }
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
+if ($Action -eq 'pilot') {
+    if (-not $PilotConfig) { $PilotConfig = Join-Path $projectRoot 'configs/pointneuron2/query_pilot_layernorm.json' }
+    $PilotConfig = (Resolve-Path -LiteralPath $PilotConfig).Path
+} elseif ($PilotConfig -or $PreflightOnly) { throw 'PilotConfig and PreflightOnly are restricted to pilot.' }
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
 if (-not (Test-Path -LiteralPath $Python -PathType Leaf)) { throw 'Supply -Python with the local PyTorch environment.' }
 if (-not $Manifest) {
@@ -61,6 +67,16 @@ if ($Action -eq 'prepare') {
 } else {
     $cliArguments = @('-u', (Join-Path $PSScriptRoot 'train_query_comparison.py'), '--manifest', $Manifest,
         '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device, '--log-every', "$LogEvery")
+    if ($Action -eq 'pilot') {
+        $cliArguments += @('--pilot-config', $PilotConfig)
+        if ($PreflightOnly) {
+            $cliArguments += '--preflight-only'
+            Write-Output 'Pilot preflight only: validate frozen config, full cache and partition; no training or neural forwards.'
+        } else {
+            Write-Output 'Approved matched pilot: 33 train / 7 development-validation neurons; shared pooled LayerNorm; query dropout zero; 30 epochs per arm.'
+            Write-Output 'Validation geometry/confidence every epoch; checkpoints at 5/15/30; fixed final epoch is primary. Whole-neuron reconstruction is separate.'
+        }
+    }
     if ($Action -eq 'smoke') {
         $cliArguments += @('--smoke', '--steps', "$Steps")
         if ($EvalSteps.Count -gt 0) {
@@ -74,7 +90,7 @@ if ($Action -eq 'prepare') {
             Write-Output "Query decoder dropout override: $DecoderDropout; cache and base settings unchanged."
         }
         Write-Output "Fixed two-training-crop check: both arms, $Steps updates each; device=$Device. This is not validation."
-    } else {
+    } elseif ($Action -eq 'train') {
         Write-Output "Matched pilot: 33 train / 7 validation neurons, 30 epochs per arm; device=$Device. Whole-neuron evaluation is separate."
     }
 }

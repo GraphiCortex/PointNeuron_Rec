@@ -128,8 +128,58 @@ def inspect_matches(output, nodes, mask, loss):
     return result
 
 
-def prepare_run_config(base, *, seed=None, decoder_dropout=None, smoke=False):
+def validation_quality(output, nodes, mask, metadata):
+    """Sparse-target diagnostics on annotated crops; not reconstruction precision."""
+    result = []
+    scores = output.objectness_logits.softmax(-1)[..., 1]
+    for i, meta in enumerate(metadata):
+        if not bool(mask[i].any()):
+            continue
+        targets = nodes[i, mask[i], 1:4].double()
+        proposals = output.center_proposals[i].double()
+        distance = torch.linalg.vector_norm(proposals[:, None] - targets[None], dim=-1)
+        nearest = distance.min(0).values
+        keep = scores[i] >= .5
+        selected = distance[keep].min(0).values if bool(keep.any()) else None
+        result.append({"sample_id": str(meta["sample_id"]), "targets": len(targets),
+            "slots": len(proposals), "accepted": int(keep.sum()),
+            "mean_target_distance": float(nearest.mean()),
+            "raw_target_coverage_6": float((nearest <= 6).double().mean()),
+            "filtered_target_coverage_6": float((selected <= 6).double().mean()) if selected is not None else 0.,
+            "accepted_sparse_target_proximity_6": float((distance[keep].min(1).values <= 6).double().mean()) if selected is not None else None})
+    return result
+
+
+def summarize_validation_quality(rows):
+    if not rows:
+        raise ValueError("Validation diagnostics require annotated crops")
+    names = ("mean_target_distance", "raw_target_coverage_6", "filtered_target_coverage_6",
+             "accepted_sparse_target_proximity_6")
+
+    def averages(records):
+        values = {key: [r[key] for r in records if r[key] is not None] for key in names}
+        return {key: float(np.mean(v)) if v else None for key, v in values.items()}
+
+    per_neuron = {}
+    for sample in sorted({r["sample_id"] for r in rows}):
+        group = [r for r in rows if r["sample_id"] == sample]
+        per_neuron[sample] = {"annotated_crops": len(group), **averages(group)}
+    return {"annotated_crops": len(rows), "neurons": len(per_neuron),
+            "crops_with_no_accepted_slots": sum(r["accepted"] == 0 for r in rows),
+            "score_threshold": .5, "tolerance_voxels": 6., "crop_macro": averages(rows),
+            "neuron_macro": averages(list(per_neuron.values())), "per_neuron": per_neuron, "crops": rows,
+            "note": "annotated development-validation crops only; unknown crops excluded; sparse-target proximity counts duplicates and averages only nonempty accepted sets; not SWC precision"}
+
+
+def prepare_run_config(base, *, seed=None, decoder_dropout=None, smoke=False, pilot_config=None):
     config = copy.deepcopy(base)
+    if pilot_config is not None:
+        expected = copy.deepcopy(base)
+        expected["pooled_normalization"] = "layernorm"
+        expected["decoder"]["dropout"] = 0.
+        if smoke or pilot_config != expected:
+            raise ValueError("Pilot config may change only pooled normalization to layernorm and decoder dropout to zero, for full training")
+        config = copy.deepcopy(pilot_config)
     if seed is not None:
         config["seed"] = seed
     if decoder_dropout is not None:
@@ -299,6 +349,7 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                     training = role == "train"
                     encoder.train(training); head.train(training)
                     labeled, count, total, updates = 0, 0, 0., 0
+                    quality_rows = []
                     order, inputs = hashlib.sha256(), hashlib.sha256()
                     tick = time.perf_counter()
                     for j, batch in enumerate(loaders[role]):
@@ -318,6 +369,8 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                                 raise FloatingPointError("Nonfinite objective")
                             if training:
                                 updates += apply_update(loss, optimizer, parameters)
+                            elif getattr(args, "validation_quality", False):
+                                quality_rows.extend(validation_quality(output, nodes, mask, batch["metadata"]))
                         labeled += supervised; total += float(loss.total.detach()) * supervised
                         if j == 0 or (j + 1) % args.log_every == 0 or j + 1 == len(loaders[role]):
                             print(f"{arm} epoch={epoch}/{config['epochs']} {role} batch={j+1}/{len(loaders[role])} "
@@ -328,6 +381,13 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                     record[role] = {"loss": total / labeled, "records": count, "supervised_crops": labeled,
                                     "updates": updates, "batch_order_sha256": order.hexdigest(),
                                     "selected_inputs_sha256": inputs.hexdigest()}
+                    if quality_rows:
+                        record[role]["quality"] = summarize_validation_quality(quality_rows)
+                        macro = record[role]["quality"]["neuron_macro"]
+                        print(f"{arm} epoch={epoch}/{config['epochs']} validation neuron_macro: "
+                              f"distance={macro['mean_target_distance']:.4f} "
+                              f"raw_coverage_6={macro['raw_target_coverage_6']:.4f} "
+                              f"filtered_coverage_6={macro['filtered_target_coverage_6']:.4f}", flush=True)
                     report["updates"] += updates
                 report["epochs"].append(record)
                 if epoch in config["snapshot_epochs"] or epoch == config["epochs"]:
@@ -379,11 +439,15 @@ def main():
     parser.add_argument("--eval-steps", type=int, nargs="+", default=[], help="Fixed-crop inference snapshots; final update is always included")
     parser.add_argument("--seed", type=int)
     parser.add_argument("--decoder-dropout", type=float, help="Fixed-crop control only; leave the cache and base config unchanged")
+    parser.add_argument("--pilot-config", type=Path, help="Frozen full-pilot config; only pooled LayerNorm and zero decoder dropout may differ from the cache")
+    parser.add_argument("--preflight-only", action="store_true", help="Pilot metadata/config checks only; no neural forwards or training")
     parser.add_argument("--log-every", type=int, default=5)
     parser.add_argument("--cpu-threads", type=int, default=2)
     args = parser.parse_args()
     if min(args.steps, args.log_every, args.cpu_threads) < 1:
         parser.error("Steps, log frequency and threads must be positive")
+    if args.preflight_only and args.pilot_config is None:
+        parser.error("Preflight-only requires a pilot config")
     try:
         args.eval_steps = evaluation_steps(args.steps, args.eval_steps, args.smoke)
     except ValueError as exc:
@@ -394,7 +458,18 @@ def main():
         raise FileExistsError("Use a new output directory")
     torch.set_num_threads(args.cpu_threads)
     manifest = load_query_manifest(args.manifest, args.partition)
-    config = prepare_run_config(manifest["config"], seed=args.seed, decoder_dropout=args.decoder_dropout, smoke=args.smoke)
+    pilot_config = json.loads(args.pilot_config.read_text()) if args.pilot_config is not None else None
+    config = prepare_run_config(manifest["config"], seed=args.seed, decoder_dropout=args.decoder_dropout,
+                                smoke=args.smoke, pilot_config=pilot_config)
+    args.validation_quality = args.pilot_config is not None
+    dataset = {role: {"neurons": len({r["sample_id"] for r in manifest["records"] if r["partition"] == role}),
+                      "crops": sum(r["partition"] == role for r in manifest["records"]),
+                      "annotated_crops": sum(r["partition"] == role and r["target_count"] > 0 for r in manifest["records"])}
+               for role in ("train", "val")}
+    if args.pilot_config is not None and (manifest.get("scope") != "internal matched target cache" or
+            dataset["train"]["neurons"] != 33 or dataset["val"]["neurons"] != 7 or
+            config["epochs"] != 30 or config["snapshot_epochs"] != [5, 15, 30]):
+        raise ValueError("Pilot requires the full 33/7 internal cache, 30 epochs and snapshots at 5/15/30")
     recipe = json.loads((REPO_ROOT / config["pointwise_recipe"]).read_text(encoding="utf-8"))["training"]
     if config["batch_size"] < 2 or config["epochs"] < 1:
         raise ValueError("Training requires batch size >=2 and positive epochs")
@@ -403,9 +478,18 @@ def main():
     args.output_dir.mkdir(parents=True)
     print(f"Scope: {'fixed two-crop execution check' if args.smoke else 'paired training'}; "
           f"device={args.device}; decoder_dropout={config['decoder']['dropout']}; outputs={args.output_dir.resolve()}", flush=True)
+    if args.preflight_only:
+        report = {"status": "preflight_passed", "scope": "config/cache/partition only; no training or neural forwards",
+                  "config": config, "dataset": dataset, "device": args.device,
+                  "manifest_sha256": file_digest(args.manifest), "partition_sha256": manifest["partition_sha256"],
+                  "pilot_config_sha256": file_digest(args.pilot_config)}
+        (args.output_dir / "preflight.json").write_text(json.dumps(report, indent=2) + "\n")
+        print(f"Pilot preflight: passed; dataset={json.dumps(dataset)}; report={args.output_dir / 'preflight.json'}", flush=True)
+        return
     reports = []
     summary = {"status": "running", "config": config, "arms": [], "evaluation_steps": args.eval_steps,
-               "update_budget": args.steps if args.smoke else None}
+               "update_budget": args.steps if args.smoke else None, "dataset": dataset,
+               "pilot_config_sha256": file_digest(args.pilot_config) if args.pilot_config else None}
     try:
         for arm in ("pointwise", "query"):
             reports.append(run_arm(arm, args, manifest, config, recipe, args.output_dir / arm))
