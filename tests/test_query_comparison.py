@@ -1,3 +1,4 @@
+import copy
 import io
 import json
 from pathlib import Path
@@ -20,7 +21,7 @@ from pointneuron.models.query_pipeline import (build_models, models_from_checkpo
 from pointneuron.data.sampling_cache import build_image_pools, SamplingPoolConfig
 from pointneuron.data.medial_sampling import MedialSamplingConfig
 from scripts.pointneuron2.aggregate_query_proposals import image_inputs, predict_patch
-from scripts.pointneuron2.train_query_comparison import apply_update, augment, state_digest, check_pairs, run_arm
+from scripts.pointneuron2.train_query_comparison import apply_update, augment, state_digest, check_pairs, run_arm, evaluation_steps
 from scripts.pointneuron2.audit_query_targets import curve_geometry as audited_geometry, patch_targets as audited_targets
 
 
@@ -178,6 +179,22 @@ def test_paired_execution_gate_detects_different_inputs():
         check_pairs([one, {**one, "inputs_sha256": "different"}])
 
 
+def test_evaluation_schedule_and_paired_gate_reject_missing_observations():
+    assert evaluation_steps(2000, [2000, 500, 1000, 500], True) == [500, 1000, 2000]
+    assert evaluation_steps(4, [], True) == [4]
+    for requested in ([0], [2001], [True]):
+        with pytest.raises(ValueError, match="budget"):
+            evaluation_steps(2000, requested, True)
+    with pytest.raises(ValueError, match="restricted"):
+        evaluation_steps(2000, [500], False)
+    one = {"scope": "fixed-training-crop execution check", "manifest_sha256": "a", "partition_sha256": "b",
+           "initial_encoder_sha256": "c", "inputs_sha256": "d", "updates": 4,
+           "evaluation_steps": [2, 4], "evaluations": [{"step": s, "optimizer_updates": s} for s in (2, 4)]}
+    check_pairs([one, copy.deepcopy(one)])
+    with pytest.raises(ValueError, match="milestones"):
+        check_pairs([one, {**one, "evaluations": one["evaluations"][1:]}])
+
+
 def test_dropout_control_preserves_cache_config_and_weight_initialization():
     from scripts.pointneuron2.train_query_comparison import prepare_run_config
     base = small_config()
@@ -274,3 +291,70 @@ def test_paired_epoch_loop_uses_same_batches_and_supervised_update_counts(tmp_pa
     check_pairs(reports)
     assert all(r["updates"] == 1 and r["epochs"][0]["train"]["supervised_crops"] == 1 for r in reports)
     assert all((tmp_path / arm / "epoch_001.pt").is_file() for arm in ("pointwise", "query"))
+
+
+@pytest.mark.parametrize("arm", ["pointwise", "query"])
+def test_saved_observations_preserve_training_trajectory_and_reload_predictions(tmp_path, arm):
+    config = small_config()
+    config.update(selected_points=8, target_capacity=8)
+    config["decoder"]["dropout"] = .1  # Also exercise stochastic training, though the approved run uses zero.
+    rows = []
+    rng = np.random.default_rng(5)
+    for i in range(2):
+        path = tmp_path / f"train_{i}.npz"
+        nodes = np.array([[1, 1 + i, 1, 1, 1, -1]], np.float32)
+        meta = {"seed": i, "patch_center": [0, 0, 0]}
+        np.savez(path, points=rng.random((12, 4)).astype(np.float32) * 5, target_nodes=nodes,
+                 reference_curve=nodes[:, 1:4], metadata=np.array(json.dumps(meta)))
+        rows.append({"path": path.name, "resolved_path": str(path), "partition": "train", "target_count": 1})
+    manifest = {"partition_sha256": "synthetic", "input_config": {"selected_points": 8},
+                "medial_config": {}, "records": rows}
+    mp = tmp_path / "manifest.json"; mp.write_text(json.dumps(manifest))
+    recipe = json.loads(Path(config["pointwise_recipe"]).read_text())["training"]
+    reports, checkpoints, optimizer_states, random_states = [], [], [], []
+    for label, milestones in (("final_only", []), ("observed", [2, 4])):
+        args = SimpleNamespace(device="cpu", smoke=True, manifest=mp, log_every=4, steps=4, eval_steps=milestones)
+        saved_optimizer = []
+
+        def capture_update(loss, optimizer, parameters):
+            updated = apply_update(loss, optimizer, parameters)
+            saved_optimizer[:] = [copy.deepcopy(optimizer.state_dict())]
+            return updated
+
+        with patch("scripts.pointneuron2.train_query_comparison.apply_update", side_effect=capture_update):
+            reports.append(run_arm(arm, args, manifest, config, recipe, tmp_path / label))
+        checkpoints.append(torch.load(tmp_path / label / "proposal.pt", weights_only=True))
+        optimizer_states.append(saved_optimizer[0])
+        random_states.append(torch.get_rng_state().clone())
+
+    def exact_nested(a, b):
+        if isinstance(a, torch.Tensor):
+            torch.testing.assert_close(a, b, rtol=0, atol=0)
+        elif isinstance(a, dict):
+            assert a.keys() == b.keys()
+            for key in a:
+                exact_nested(a[key], b[key])
+        elif isinstance(a, (list, tuple)):
+            assert len(a) == len(b)
+            for x, y in zip(a, b):
+                exact_nested(x, y)
+        else:
+            assert a == b
+
+    exact_nested(checkpoints[0], checkpoints[1])  # Includes all weights and BatchNorm buffers.
+    exact_nested(optimizer_states[0], optimizer_states[1])
+    exact_nested(random_states[0], random_states[1])
+    assert reports[0]["losses"] == reports[1]["losses"]
+    assert reports[0]["final_fit"] == reports[1]["final_fit"]
+    for record in reports[1]["evaluations"]:
+        folder = tmp_path / "observed"
+        assert record["checkpoint_sha256"] == file_digest(folder / record["checkpoint"])
+        assert record["proposals_sha256"] == file_digest(folder / record["proposals"])
+        checkpoint = torch.load(folder / record["checkpoint"], weights_only=True)
+        assert checkpoint["provenance"]["optimizer_updates"] == record["step"]
+        encoder, head = models_from_checkpoint(checkpoint)
+        with np.load(folder / record["proposals"], allow_pickle=False) as arrays, torch.no_grad():
+            points = torch.from_numpy(arrays["points"])
+            actual = forward_proposals(head, arm, points, encoder(points), torch.from_numpy(arrays["patch_centers"]), 48)
+            for name, saved in (("center_proposals", "centers"), ("objectness_logits", "objectness_logits"), ("radius", "radius")):
+                torch.testing.assert_close(getattr(actual, name), torch.from_numpy(arrays[saved]), rtol=0, atol=0)

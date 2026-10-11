@@ -124,6 +124,31 @@ def prepare_run_config(base, *, seed=None, decoder_dropout=None, smoke=False):
     return config
 
 
+def evaluation_steps(steps, requested, smoke):
+    if requested and not smoke:
+        raise ValueError("Update evaluations are restricted to the fixed-crop check")
+    if any(isinstance(s, bool) or not isinstance(s, int) or not 1 <= s <= steps for s in requested):
+        raise ValueError("Evaluation steps must be integers between 1 and the update budget")
+    return sorted(set([*requested, steps])) if smoke else []
+
+
+def observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe):
+    """Observe inference without advancing RNG, BatchNorm or optimizer state."""
+    modes = [(m, m.training) for root in (encoder, head) for m in root.modules()]
+    devices = [points.device.index if points.device.index is not None else torch.cuda.current_device()] if points.is_cuda else []
+    try:
+        with torch.random.fork_rng(devices=devices), torch.no_grad():
+            encoder.eval(); head.eval()
+            output = forward_proposals(head, arm, points, encoder(points), centers, config["patch_radius"])
+            loss = objective(arm, output, points, nodes, mask, config, recipe)
+            result = {"fit": inspect_fit(output, nodes, mask), "selection": inspect_selection(output, nodes, mask),
+                      "eval_loss": {key: float(getattr(loss, key)) for key in ("total", "center", "objectness", "radius")}}
+    finally:
+        for module, training in modes:
+            module.training = training
+    return output, result
+
+
 def run_arm(arm, args, manifest, config, recipe, output_dir):
     encoder, head = build_models(config, arm, config["seed"])
     initial_encoder = state_digest(encoder)
@@ -151,7 +176,7 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
         torch.save(comparison_checkpoint(encoder, head, config, arm, epoch,
                     scope=report["scope"], training_manifest_sha256=report["manifest_sha256"],
                     partition_sha256=report["partition_sha256"], input_pipeline=pipeline,
-                    initial_encoder_sha256=initial_encoder), output_dir / filename)
+                    initial_encoder_sha256=initial_encoder, optimizer_updates=report["updates"]), output_dir / filename)
 
     try:
         if args.smoke:
@@ -162,11 +187,14 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
             points, nodes, mask, centers = prepare_batch(batch, config, args.device, 0)
             report["crop_paths"] = [r["path"] for r in chosen]
             report["inputs_sha256"] = hashlib.sha256(points.cpu().numpy().tobytes()).hexdigest()
+            milestones = evaluation_steps(args.steps, getattr(args, "eval_steps", []), True)
+            report.update(update_budget=args.steps, evaluation_steps=milestones, evaluations=[])
             encoder.eval(); head.eval()
             with torch.no_grad():
                 first_output = forward_proposals(head, arm, points, encoder(points), centers, config["patch_radius"])
                 report["initial_fit"] = inspect_fit(first_output, nodes, mask)
             times, losses = [], []
+            report["losses"] = losses
             for step in range(args.steps):
                 tick = time.perf_counter()
                 encoder.train(); head.train()
@@ -181,6 +209,27 @@ def run_arm(arm, args, manifest, config, recipe, output_dir):
                 if step == 0 or (step + 1) % args.log_every == 0 or step + 1 == args.steps:
                     print(f"{arm} fixed-crop step={step+1}/{args.steps} loss={losses[-1]['total']:.4f} "
                           f"center={losses[-1]['center']:.4f} elapsed={time.perf_counter()-started:.1f}s", flush=True)
+                if step + 1 in milestones:
+                    observed, record = observe_fit(encoder, head, arm, points, nodes, mask, centers, config, recipe)
+                    checkpoint_name = f"step_{step+1:06d}.pt"
+                    arrays_name = f"step_{step+1:06d}_proposals.npz"
+                    save(0, checkpoint_name)
+                    np.savez_compressed(output_dir / arrays_name,
+                        centers=observed.center_proposals.cpu().numpy(),
+                        objectness_logits=observed.objectness_logits.cpu().numpy(),
+                        radius=observed.radius.cpu().numpy(), points=points.cpu().numpy(),
+                        target_nodes=nodes.cpu().numpy(), target_mask=mask.cpu().numpy(),
+                        patch_centers=centers.cpu().numpy())
+                    record.update(step=step+1, optimizer_updates=report["updates"],
+                                  checkpoint=checkpoint_name, checkpoint_sha256=file_digest(output_dir / checkpoint_name),
+                                  proposals=arrays_name, proposals_sha256=file_digest(output_dir / arrays_name))
+                    report["evaluations"].append(record)
+                    path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+                    print(f"{arm} saved eval step={step+1}: mean_target_distance={record['fit']['mean_target_distance']:.4f} "
+                          f"coverage_6={record['fit']['target_coverage_6']:.4f} "
+                          f"accepted_at_0.5={record['selection']['accepted_counts']} "
+                          f"filtered_coverage_6={record['selection']['target_coverage_6']:.4f} "
+                          f"objectness_loss={record['eval_loss']['objectness']:.4f}", flush=True)
             encoder.eval(); head.eval()
             with torch.no_grad():
                 final_output = forward_proposals(head, arm, points, encoder(points), centers, config["patch_radius"])
@@ -268,6 +317,10 @@ def check_pairs(reports):
         if report["scope"] == "fixed-training-crop execution check":
             if report["inputs_sha256"] != first["inputs_sha256"] or report["updates"] != first["updates"]:
                 raise ValueError("Unmatched execution-check inputs/updates")
+            actual = [(r["step"], r["optimizer_updates"]) for r in report.get("evaluations", [])]
+            expected = [(r["step"], r["optimizer_updates"]) for r in first.get("evaluations", [])]
+            if actual != expected or [s for s, _ in actual] != report.get("evaluation_steps", []):
+                raise ValueError("Unmatched execution-check evaluation milestones/updates")
         else:
             if len(report["epochs"]) != len(first["epochs"]):
                 raise ValueError("Unmatched epoch counts")
@@ -286,6 +339,7 @@ def main():
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--steps", type=int, default=20)
+    parser.add_argument("--eval-steps", type=int, nargs="+", default=[], help="Fixed-crop inference snapshots; final update is always included")
     parser.add_argument("--seed", type=int)
     parser.add_argument("--decoder-dropout", type=float, help="Fixed-crop control only; leave the cache and base config unchanged")
     parser.add_argument("--log-every", type=int, default=5)
@@ -293,6 +347,10 @@ def main():
     args = parser.parse_args()
     if min(args.steps, args.log_every, args.cpu_threads) < 1:
         parser.error("Steps, log frequency and threads must be positive")
+    try:
+        args.eval_steps = evaluation_steps(args.steps, args.eval_steps, args.smoke)
+    except ValueError as exc:
+        parser.error(str(exc))
     if args.device == "cuda" and not torch.cuda.is_available():
         parser.error("CUDA requested but unavailable")
     if args.output_dir.exists():
@@ -309,7 +367,8 @@ def main():
     print(f"Scope: {'fixed two-crop execution check' if args.smoke else 'paired training'}; "
           f"device={args.device}; decoder_dropout={config['decoder']['dropout']}; outputs={args.output_dir.resolve()}", flush=True)
     reports = []
-    summary = {"status": "running", "config": config, "arms": []}
+    summary = {"status": "running", "config": config, "arms": [], "evaluation_steps": args.eval_steps,
+               "update_budget": args.steps if args.smoke else None}
     try:
         for arm in ("pointwise", "query"):
             reports.append(run_arm(arm, args, manifest, config, recipe, args.output_dir / arm))

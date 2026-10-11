@@ -6,12 +6,22 @@ param(
     [string]$OutputDirectory,
     [string]$Python,
     [ValidateSet('cpu', 'cuda')][string]$Device = 'cuda',
-    [int]$Steps = 100,
+    [ValidateRange(1, 2147483647)][int]$Steps = 100,
+    [int[]]$EvalSteps = @(),
+    [ValidateRange(1, 2147483647)][int]$LogEvery = 5,
     [Nullable[double]]$DecoderDropout
 )
 $ErrorActionPreference = 'Stop'
 if ($null -ne $DecoderDropout -and $Action -ne 'smoke') {
     throw 'DecoderDropout is restricted to the fixed-crop smoke comparison.'
+}
+if ($EvalSteps.Count -gt 0 -and $Action -ne 'smoke') {
+    throw 'EvalSteps is restricted to the fixed-crop smoke comparison.'
+}
+foreach ($evaluationStep in $EvalSteps) {
+    if ($evaluationStep -lt 1 -or $evaluationStep -gt $Steps) {
+        throw 'Each EvalSteps value must be between 1 and Steps.'
+    }
 }
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
@@ -34,9 +44,15 @@ if ($Action -eq 'prepare') {
     Write-Output 'CPU target preparation: corrected image candidates unchanged; common SWC curve targets; no training.'
 } else {
     $cliArguments = @('-u', (Join-Path $PSScriptRoot 'train_query_comparison.py'), '--manifest', $Manifest,
-        '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device, '--log-every', '5')
+        '--output-dir', (Join-Path $runDirectory 'models'), '--device', $Device, '--log-every', "$LogEvery")
     if ($Action -eq 'smoke') {
         $cliArguments += @('--smoke', '--steps', "$Steps")
+        if ($EvalSteps.Count -gt 0) {
+            $cliArguments += '--eval-steps'
+            $cliArguments += @($EvalSteps | ForEach-Object { "$_" })
+        }
+        $milestones = @(@($EvalSteps) + $Steps | Sort-Object -Unique)
+        Write-Output "Saved inference checks at updates: $($milestones -join ', '); final update remains the primary checkpoint."
         if ($null -ne $DecoderDropout) {
             $cliArguments += @('--decoder-dropout', ([double]$DecoderDropout).ToString([System.Globalization.CultureInfo]::InvariantCulture))
             Write-Output "Query decoder dropout override: $DecoderDropout; cache and base settings unchanged."

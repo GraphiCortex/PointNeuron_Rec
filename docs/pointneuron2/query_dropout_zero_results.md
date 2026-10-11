@@ -80,7 +80,7 @@ but those proximity fractions are 80.2% / 26.1% and 167 / 69 slots are retained.
 This illustrates the ranking/duplicate tradeoff; it does not justify lowering
 the default cutoff or establish full-volume precision.
 
-## Proposed next decision
+## Approved next comparison
 
 The suggested next comparison is **2,000 fresh optimizer updates per arm with
 dropout still zero**, keeping all other training settings and the same fixed
@@ -93,8 +93,9 @@ falling: means over updates 101–150, 301–350 and 451–500 are 0.338, 0.286 
 scores or a cross-head ranking. Estimated local duration is roughly
 2–3 minutes from the observed 26.9 ms pointwise and 40.9 ms query update medians.
 
-This comparison has been proposed to the user; it has not been launched or
-implemented as a new run in this report. A separate controlled normalization
+The user approved this unchanged longer fit. The runner and visible command
+are prepared in [the 2,000-update protocol](query_extended_fit_ready.md); the
+GPU experiment has not been launched by the assistant. A separate controlled normalization
 comparison is another possible next step. No architecture, loss, threshold or
 full-training default is promoted from these results. A 30-epoch pilot remains
 pending because the selected-set fit is incomplete.
