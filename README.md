@@ -7,11 +7,13 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Next: prepared corrected-input coordinate pilot and exact GPU command](docs/pointneuron2/repair_pilot_ready.md)
 - [Current: confirmed decoder/range/coordinate defects and repairs](docs/pointneuron2/root_cause_findings.md)
-- [Completed reconstruction comparison: results and proposed next step](docs/pointneuron2/sampling_ablation_reconstruction_results.md)
-- [Completed training pilot results and next reconstruction command](docs/pointneuron2/sampling_ablation_pilot_results.md)
-- [Next step: matched sampler training pilot and visible local commands](docs/pointneuron2/sampling_ablation.md)
-- [New results: automatic foreground comparison](docs/pointneuron2/foreground_comparison.md)
+- [Corrected candidate-pool and spatial-selection diagnostics](docs/pointneuron2/mixed_candidate_comparison.md)
+- [Historical reconstruction comparison](docs/pointneuron2/sampling_ablation_reconstruction_results.md)
+- [Historical training pilot results](docs/pointneuron2/sampling_ablation_pilot_results.md)
+- [Historical matched sampler pilot](docs/pointneuron2/sampling_ablation.md)
+- [Historical automatic foreground comparison](docs/pointneuron2/foreground_comparison.md)
 - [Automatic preprocessing: current direction and next comparison](docs/pointneuron2/automatic_preprocessing.md)
 - [Current pipeline status](docs/pointneuron2/README.md)
 - [Current input-quality findings and next research discussion](docs/pointneuron2/input_audit.md)
@@ -31,9 +33,11 @@ reconstruction. Manual mask correction may be considered later if measured
 failures justify it; the existing parameter viewer is an optional diagnostic,
 not a required training or inference step.
 
-The current research task is repairing confirmed image-reader, intensity-range
-and coordinate defects. Earlier runs are historical results on incorrectly
-decoded inputs and require reassessment. See the root-cause report above.
+The image-reader, intensity-range and coordinate repairs are implemented. The
+corrected cache is prepared and verified for a matched raw/local-coordinate
+training pilot; its exact visible GPU command is in the readiness report above.
+Earlier runs are historical results on incorrectly decoded inputs and require
+reassessment. Verified changes are pushed to the `pointneuron2` GitHub branch.
 We discuss substantive
 script/strategy changes and agree on long training runs together; small local
 checks may run as part of an agreed task. Stage 1 has not established a

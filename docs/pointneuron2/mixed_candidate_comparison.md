@@ -185,5 +185,8 @@ voxel before padding. Execution checks do not establish model improvement.
 
 Git: the previous PN 2.0 groundwork is now committed locally as `5d18ed8`, and
 the initial mixed-pool experiment as `d7a2b53`, on `pointneuron2`.
-No GitHub push has occurred. The original checkout remains on
-`main`; generated arrays, environments, logs and checkpoints remain ignored.
+These checkpoints and the spatial-selection diagnostic have now been pushed to
+[GitHub](https://github.com/GraphiCortex/PointNeuron_Rec/tree/pointneuron2).
+The [corrected-input pilot cache is ready](repair_pilot_ready.md). The original
+checkout remains on `main`; generated arrays, environments, logs and checkpoints
+remain ignored.

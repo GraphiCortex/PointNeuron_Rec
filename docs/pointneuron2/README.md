@@ -16,8 +16,10 @@ The [bright/weak candidate control](mixed_candidate_comparison.md) has now run o
 the saved corrected crops. Mixed-pool coverage improves, but gains shrink after
 512-input selection and some well-covered branches lose support. Spatial selection
 also shows mixed results. Next: the prepared corrected raw/local-coordinate model
-control; CPU preparation and separate GPU commands are in that report. No new
-training has been launched.
+control. Its full cache is now prepared and verified: 262 train / 56 validation
+crops, with all 40 source image/reference hashes checked. See
+[the readiness report and exact GPU command](repair_pilot_ready.md). No training
+has been launched for that corrected-input experiment.
 
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,
@@ -96,7 +98,9 @@ baseline averages topology F1 0.412 and spatial F1 0.374 on seven mixed-domain
 neurons, with severe failures in some cases. The sampling probe improved coverage
 of its own extracted image axis on three training patches; it has not established
 a reconstruction improvement. Compact configs/reports and code are outside
-ignored `tmp`, but development changes are not yet committed to Git.
+ignored `tmp`. Verified development changes are committed and pushed to the
+`pointneuron2` branch on GitHub. The scores in this historical section precede
+the reader repairs and are not measurements of the corrected model.
 
 ## Frozen baseline and fair comparison
 
