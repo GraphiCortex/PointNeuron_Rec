@@ -1,5 +1,8 @@
 # Approved pooled LayerNorm comparison
 
+Completed follow-up: [LayerNorm fit passes the two-crop learnability check](query_layernorm_results.md).
+The preparation protocol below is retained for reproducibility.
+
 12 October 2026. The query-only normalization comparison is implemented and
 checked, ready for the user's visible GPU terminal. The assistant has not
 launched the 2,000-update GPU fit.

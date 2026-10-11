@@ -6,8 +6,9 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest results: [completed 2,000-update comparison and pooled-normalization audit](../../docs/pointneuron2/query_extended_fit_results.md).
-Next approved run: [query-only pooled LayerNorm comparison](../../docs/pointneuron2/query_layernorm_ready.md).
+Latest results: [pooled LayerNorm passes the two-crop learnability check](../../docs/pointneuron2/query_layernorm_results.md).
+Earlier results: [completed 2,000-update comparison and pooled-normalization audit](../../docs/pointneuron2/query_extended_fit_results.md).
+Completed protocol: [query-only pooled LayerNorm comparison](../../docs/pointneuron2/query_layernorm_ready.md).
 `run_query.ps1 -Action normalization-smoke` calls `compare_query_normalization.py`
 to reuse the saved BatchNorm run and fit only the LayerNorm query model. It
 checks initialization/input/budget matching and saves single-crop diagnostics.

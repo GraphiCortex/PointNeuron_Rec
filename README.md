@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: pooled LayerNorm passes the two-crop learnability check](docs/pointneuron2/query_layernorm_results.md)
 - [Ready to run: approved query-only pooled LayerNorm control](docs/pointneuron2/query_layernorm_ready.md)
 - [Latest: 2,000-update fit learns confidence; pooled normalization limits inference](docs/pointneuron2/query_extended_fit_results.md)
 - [Ready to run: approved 2,000-update fit with saved checks at 500/1,000/2,000](docs/pointneuron2/query_extended_fit_ready.md)
