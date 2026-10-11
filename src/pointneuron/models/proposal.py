@@ -26,8 +26,8 @@ class SkeletonProposalHead(nn.Module):
         coordinate_mode: str = "raw",
     ):
         super().__init__()
-        if coordinate_mode not in {"raw", "normalized"}:
-            raise ValueError(f"Unknown coordinate_mode {coordinate_mode!r}; expected 'raw' or 'normalized'")
+        if coordinate_mode not in {"raw", "normalized", "local"}:
+            raise ValueError(f"Unknown coordinate_mode {coordinate_mode!r}; expected 'raw', 'normalized' or 'local'")
         self.include_xyz = include_xyz
         self.coordinate_mode = coordinate_mode
         layers: list[nn.Module] = []
@@ -55,6 +55,8 @@ class SkeletonProposalHead(nn.Module):
         xyz = points[..., :3]
         normalized_xyz, coordinate_scale = normalize_proposal_coordinates(xyz)
         feature_xyz = xyz if self.coordinate_mode == "raw" else normalized_xyz
+        # 'local' removes absolute-position dependence from features, while
+        # preserving voxel-unit offsets/radii and the conservative loss scale.
 
         if self.include_xyz:
             proposal_features = torch.cat([feature_xyz, geometric_features], dim=-1)

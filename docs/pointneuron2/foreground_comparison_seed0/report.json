@@ -1,0 +1,2510 @@
+{
+  "status": "completed",
+  "scope": "training-only mask comparison; no reconstruction or training run",
+  "config": {
+    "sample_indices": [
+      0,
+      9,
+      15
+    ],
+    "patch_radius": 48,
+    "patch_stride": 48,
+    "max_patches_per_neuron": 4,
+    "min_foreground_points": 256,
+    "threshold_fraction": 0.2,
+    "background_sigma": 8.0,
+    "candidate_points": 1024,
+    "guide_points": 512,
+    "seed": 0,
+    "methods": [
+      "fixed",
+      "raw_otsu",
+      "background_otsu"
+    ],
+    "medial_config": "configs/pointneuron2/medial_sampling.json"
+  },
+  "medial_config": {
+    "spacing_xyz": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "alpha": 0.25,
+    "uniform_fraction": 0.25,
+    "teasar_scale": 1.5,
+    "teasar_const": 2.0,
+    "dust_threshold": 8,
+    "max_crop_voxels": 16000000
+  },
+  "partition_sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+  "config_sha256": "d13b78b5e5d2565bd02cc534887a404394523abd3a75414be774fd65b5927817",
+  "source_sha256": {
+    "scripts\\pointneuron2\\compare_foreground.py": "4702f4ab5928a18a840552776508a3f4476ff923b0749987bc9a96cdcda7c417",
+    "src\\pointneuron\\data\\foreground.py": "cb6bcb7d86149aa07504662ba332bcbe40bcc6ef45e54bda67f14b9cf0d97b67",
+    "src\\pointneuron\\data\\medial_sampling.py": "3039cbafb46d212a28fca7d0b5c45f4001537564244f1da55e416e9d57bd022b",
+    "scripts\\aggregate_proposals.py": "8c289ddb7eb5a2dc7b24908d6eb3aeccc02aa81b452e9e676f4d06c418bdb240",
+    "scripts\\pointneuron2\\audit_sampling.py": "d46c9f0b59a4b98f4953c9a7fb087349e55539f741ab5c2b01d2bc414647240f",
+    "src\\pointneuron\\data\\training_cache.py": "04632851884e749dd7d66edbf036b4b510e4cbcb992dab02a1a391946753e699"
+  },
+  "versions": {
+    "numpy": "2.4.4",
+    "scipy": "1.15.2",
+    "kimimaro": "5.8.5"
+  },
+  "metric_spacing_xyz": [
+    1,
+    1,
+    1
+  ],
+  "metric_units": "voxel proximity; not segmentation precision or reconstruction F1",
+  "patch_rule": "image-defined coverage from fixed mask; identical boxes across methods; no reference filtering",
+  "source_spacing_applied": false,
+  "sources": [
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "dimensions": [
+        1024,
+        1024,
+        62,
+        1
+      ],
+      "volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "spacing_metadata": {
+        "status": "available",
+        "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_09-2902-04R-01C-60x_merge_c1\\09-2902-04R-01C-60x_merge_c1.v3dpbd.pixelsize.txt",
+        "raw": "0.103x0.103x0.3um",
+        "sha256": "29bd382122e8c617a3306d6309dc810e0f992860a10d38577c8e5ea7768af670",
+        "physical_xyz_um": [
+          0.103,
+          0.103,
+          0.3
+        ],
+        "relative_xyz": [
+          1.0,
+          1.0,
+          2.912621359223301
+        ]
+      },
+      "selected_patch_count": 4
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "dimensions": [
+        664,
+        508,
+        161,
+        1
+      ],
+      "volume_sha256": "b1547c593ab8b83cd7128929f29655c2cf9583063c8e2bc3622b860fdddf0296",
+      "swc_sha256": "151202131ee8c6d5f546ae3b0e18b4e417e62d22ab9a3b434ea9eb4b5cbbeb9d",
+      "spacing_metadata": {
+        "status": "missing",
+        "relative_xyz": null,
+        "physical_xyz_um": null
+      },
+      "selected_patch_count": 4
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "dimensions": [
+        1024,
+        1024,
+        120,
+        1
+      ],
+      "volume_sha256": "2fb9e7fc1cd49d1f82c334fe63d514fb39aaa65f9be4c9eeb84816ff33d12cce",
+      "swc_sha256": "7edd7a8854133df432613221a8c62f120b8775467f5f287f49e64e526a6640f8",
+      "spacing_metadata": {
+        "status": "missing",
+        "relative_xyz": null,
+        "physical_xyz_um": null
+      },
+      "selected_patch_count": 4
+    }
+  ],
+  "patches": [
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 0,
+      "lower_xyz": [
+        0,
+        960,
+        0
+      ],
+      "upper_xyz": [
+        48,
+        1023,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 2584,
+          "foreground_fraction": 0.01681591003748438,
+          "connected_components_26": 749,
+          "full_guide_vertices": 1296,
+          "guide_edges": 1234,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.8833130999992136,
+          "artifact": "artifacts/sample_0000_patch_000_fixed.npz",
+          "artifact_sha256": "f776668ff7e4566d2a30715f3d91212ae98e9ccf9289d855f84a0e1f0169fa2a"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 11.953125,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 2584,
+          "foreground_fraction": 0.01681591003748438,
+          "connected_components_26": 749,
+          "full_guide_vertices": 1296,
+          "guide_edges": 1234,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.06309070000133943,
+          "artifact": "artifacts/sample_0000_patch_000_raw_otsu.npz",
+          "artifact_sha256": "f776668ff7e4566d2a30715f3d91212ae98e9ccf9289d855f84a0e1f0169fa2a"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 4.896955192089081,
+          "score_range": [
+            0.0,
+            250.72410583496094
+          ],
+          "foreground_voxels": 2584,
+          "foreground_fraction": 0.01681591003748438,
+          "connected_components_26": 749,
+          "full_guide_vertices": 1296,
+          "guide_edges": 1234,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.13498919999983627,
+          "artifact": "artifacts/sample_0000_patch_000_background_otsu.npz",
+          "artifact_sha256": "e783e87647311a0cea6d8e89f984c73ee9bb876b951f8546295181452840d4b4"
+        }
+      },
+      "figure": "sample_0000_patch_000.png"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 1,
+      "lower_xyz": [
+        480,
+        384,
+        0
+      ],
+      "upper_xyz": [
+        576,
+        480,
+        61
+      ],
+      "reference_curve_points": 551,
+      "boundary_crossing_edges": 10,
+      "terminal_count": 1,
+      "junction_count": 8,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 197488,
+          "foreground_fraction": 0.3385365418833718,
+          "connected_components_26": 51,
+          "full_guide_vertices": 2585,
+          "guide_edges": 2577,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9074410163339383,
+              "within_3": 0.9201451905626135,
+              "within_6": 0.9274047186932849,
+              "median_distance": 0.4439264487318924
+            },
+            "full_guide": {
+              "within_1": 0.030852994555353903,
+              "within_3": 0.19056261343012704,
+              "within_6": 0.5553539019963702,
+              "median_distance": 5.302683981151931
+            },
+            "candidate_pool": {
+              "within_1": 0.030852994555353903,
+              "within_3": 0.3666061705989111,
+              "within_6": 0.8892921960072595,
+              "median_distance": 3.4315624434752445
+            },
+            "bounded_guide": {
+              "within_1": 0.009074410163339383,
+              "within_3": 0.10707803992740472,
+              "within_6": 0.4591651542649728,
+              "median_distance": 6.426420616940987
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.358898943540674
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 5.477225575051661
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.358898943540674
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.125,
+                "within_6": 0.75,
+                "median_distance": 5.354172166250827
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.25,
+                "within_6": 1.0,
+                "median_distance": 3.3362992811282988
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 0.5,
+                "median_distance": 5.950542290280119
+              }
+            }
+          },
+          "seconds": 1.656881799997791,
+          "artifact": "artifacts/sample_0000_patch_001_fixed.npz",
+          "artifact_sha256": "09096c3dac3e0eaff2a2f2fb0302f91b92dfe7b558fb1127b1f088504fe9c2c5"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 71.71875,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 176205,
+          "foreground_fraction": 0.3020529417613198,
+          "connected_components_26": 41,
+          "full_guide_vertices": 2348,
+          "guide_edges": 2343,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.8874773139745916,
+              "within_3": 0.9019963702359347,
+              "within_6": 0.9147005444646098,
+              "median_distance": 0.447397886175791
+            },
+            "full_guide": {
+              "within_1": 0.025408348457350273,
+              "within_3": 0.3484573502722323,
+              "within_6": 0.6551724137931034,
+              "median_distance": 4.305015431617257
+            },
+            "candidate_pool": {
+              "within_1": 0.041742286751361164,
+              "within_3": 0.4301270417422868,
+              "within_6": 0.8838475499092558,
+              "median_distance": 3.2724366748205718
+            },
+            "bounded_guide": {
+              "within_1": 0.003629764065335753,
+              "within_3": 0.132486388384755,
+              "within_6": 0.5136116152450091,
+              "median_distance": 5.791875306225077
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 3.0
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.3166247903554
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.58257569495584
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 0.875,
+                "median_distance": 3.215911094385654
+              },
+              "candidate_pool": {
+                "within_1": 0.125,
+                "within_3": 0.5,
+                "within_6": 1.0,
+                "median_distance": 2.9327921237908274
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.125,
+                "within_6": 0.75,
+                "median_distance": 4.09846813753758
+              }
+            }
+          },
+          "seconds": 1.4652170999979717,
+          "artifact": "artifacts/sample_0000_patch_001_raw_otsu.npz",
+          "artifact_sha256": "57d82562af0fd22c04ba3e3b99d0477b0d35817691012eaec2d21871d3aa063c"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 24.543851613998413,
+          "score_range": [
+            0.0,
+            251.32904052734375
+          ],
+          "foreground_voxels": 117925,
+          "foreground_fraction": 0.20214859485941739,
+          "connected_components_26": 118,
+          "full_guide_vertices": 5567,
+          "guide_edges": 5557,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9056261343012704,
+              "within_3": 0.9292196007259528,
+              "within_6": 0.9473684210526315,
+              "median_distance": 0.447397886175791
+            },
+            "full_guide": {
+              "within_1": 0.13793103448275862,
+              "within_3": 0.7513611615245009,
+              "within_6": 0.9274047186932849,
+              "median_distance": 1.9818408417339406
+            },
+            "candidate_pool": {
+              "within_1": 0.032667876588021776,
+              "within_3": 0.5517241379310345,
+              "within_6": 0.8892921960072595,
+              "median_distance": 2.8417521812552904
+            },
+            "bounded_guide": {
+              "within_1": 0.016333938294010888,
+              "within_3": 0.2323049001814882,
+              "within_6": 0.7404718693284936,
+              "median_distance": 4.359074350908111
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4142135623730951
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.23606797749979
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 3.0
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.125,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.6814861599823248
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 1.887897540982996
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.125,
+                "within_6": 0.75,
+                "median_distance": 4.841158668532166
+              }
+            }
+          },
+          "seconds": 3.0304758999991463,
+          "artifact": "artifacts/sample_0000_patch_001_background_otsu.npz",
+          "artifact_sha256": "9c87f3a50c1c92274e3b0ff202357530fe790ecb26bb34b7c41416d4c3495b14"
+        }
+      },
+      "figure": "sample_0000_patch_001.png"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 2,
+      "lower_xyz": [
+        960,
+        0,
+        0
+      ],
+      "upper_xyz": [
+        1023,
+        48,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 1723,
+          "foreground_fraction": 0.01121277592669721,
+          "connected_components_26": 515,
+          "full_guide_vertices": 885,
+          "guide_edges": 841,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.04521000000022468,
+          "artifact": "artifacts/sample_0000_patch_002_fixed.npz",
+          "artifact_sha256": "d6b285ca6350e1dcd2957e37b23e1464efa89e91b2c7fcc217b49b54172cac59"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 11.953125,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 1723,
+          "foreground_fraction": 0.01121277592669721,
+          "connected_components_26": 515,
+          "full_guide_vertices": 885,
+          "guide_edges": 841,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.048032700000476325,
+          "artifact": "artifacts/sample_0000_patch_002_raw_otsu.npz",
+          "artifact_sha256": "d6b285ca6350e1dcd2957e37b23e1464efa89e91b2c7fcc217b49b54172cac59"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 5.903323173522949,
+          "score_range": [
+            0.0,
+            251.8751220703125
+          ],
+          "foreground_voxels": 1723,
+          "foreground_fraction": 0.01121277592669721,
+          "connected_components_26": 515,
+          "full_guide_vertices": 885,
+          "guide_edges": 841,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.1112178999974276,
+          "artifact": "artifacts/sample_0000_patch_002_background_otsu.npz",
+          "artifact_sha256": "f3d28f851c5569dbe0652aa14fd9aa63d4c7f28154b6d877195438dfcc19cee5"
+        }
+      },
+      "figure": "sample_0000_patch_002.png"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 3,
+      "lower_xyz": [
+        960,
+        960,
+        0
+      ],
+      "upper_xyz": [
+        1023,
+        1023,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 3234,
+          "foreground_fraction": 0.01611328125,
+          "connected_components_26": 823,
+          "full_guide_vertices": 1875,
+          "guide_edges": 1785,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.08495860000039102,
+          "artifact": "artifacts/sample_0000_patch_003_fixed.npz",
+          "artifact_sha256": "74c9310df6ec1f72ff3dc11ac96c842b659d52e9a56ac18fe75287e59ec66a20"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 12.94921875,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 3234,
+          "foreground_fraction": 0.01611328125,
+          "connected_components_26": 823,
+          "full_guide_vertices": 1875,
+          "guide_edges": 1785,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.08630940000148257,
+          "artifact": "artifacts/sample_0000_patch_003_raw_otsu.npz",
+          "artifact_sha256": "74c9310df6ec1f72ff3dc11ac96c842b659d52e9a56ac18fe75287e59ec66a20"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 6.864365220069885,
+          "score_range": [
+            0.0,
+            251.03964233398438
+          ],
+          "foreground_voxels": 3234,
+          "foreground_fraction": 0.01611328125,
+          "connected_components_26": 823,
+          "full_guide_vertices": 1875,
+          "guide_edges": 1785,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.1667261000002327,
+          "artifact": "artifacts/sample_0000_patch_003_background_otsu.npz",
+          "artifact_sha256": "c611a30a9c5b16aebcef94ba6b2de76474d47dab96602d58d60889d9e01ef826"
+        }
+      },
+      "figure": "sample_0000_patch_003.png"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "partition": "train",
+      "patch_index": 0,
+      "lower_xyz": [
+        0,
+        0,
+        0
+      ],
+      "upper_xyz": [
+        48,
+        48,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            72.0
+          ],
+          "foreground_voxels": 322,
+          "foreground_fraction": 0.002736954840245136,
+          "connected_components_26": 29,
+          "full_guide_vertices": 69,
+          "guide_edges": 66,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 69,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.01103799999691546,
+          "artifact": "artifacts/sample_0009_patch_000_fixed.npz",
+          "artifact_sha256": "a58cd1461c3703055fdf1b39cdd2d9937a6d042f744f1d49eb178c6d6ba4e8f1"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 37.125,
+          "score_range": [
+            0.0,
+            72.0
+          ],
+          "foreground_voxels": 16877,
+          "foreground_fraction": 0.14345213303980484,
+          "connected_components_26": 832,
+          "full_guide_vertices": 3044,
+          "guide_edges": 2906,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.18714809999801219,
+          "artifact": "artifacts/sample_0009_patch_000_raw_otsu.npz",
+          "artifact_sha256": "93f2e319e8f9f28b54664473b722047483e4379ccb5fa9f9c0260a2d4739f2e2"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 2.7326035648584366,
+          "score_range": [
+            0.0,
+            30.41506576538086
+          ],
+          "foreground_voxels": 13811,
+          "foreground_fraction": 0.11739156303920985,
+          "connected_components_26": 914,
+          "full_guide_vertices": 3632,
+          "guide_edges": 3436,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.2803913999996439,
+          "artifact": "artifacts/sample_0009_patch_000_background_otsu.npz",
+          "artifact_sha256": "12f415a8f9fd194741de7dfb0c1c6ed4b2d44c799570d6a9856a7cc4e84dd248"
+        }
+      },
+      "figure": "sample_0009_patch_000.png"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "partition": "train",
+      "patch_index": 1,
+      "lower_xyz": [
+        48,
+        432,
+        0
+      ],
+      "upper_xyz": [
+        144,
+        507,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            27.0,
+            167.0
+          ],
+          "foreground_voxels": 359,
+          "foreground_fraction": 0.0009938321503316465,
+          "connected_components_26": 24,
+          "full_guide_vertices": 95,
+          "guide_edges": 88,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 95,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.022843899998406414,
+          "artifact": "artifacts/sample_0009_patch_001_fixed.npz",
+          "artifact_sha256": "7b651619c9481ff7ad028a546ad1fcca914390e422ee7b0252427143671e748b"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 35.203125,
+          "score_range": [
+            27.0,
+            167.0
+          ],
+          "foreground_voxels": 52032,
+          "foreground_fraction": 0.14404199010043517,
+          "connected_components_26": 1935,
+          "full_guide_vertices": 13056,
+          "guide_edges": 12720,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 2.6783476999989944,
+          "artifact": "artifacts/sample_0009_patch_001_raw_otsu.npz",
+          "artifact_sha256": "ba228468996aee4163e928aff40186a88f13261ebf5a65acbae93854aebc98d0"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 3.096992611885071,
+          "score_range": [
+            0.0,
+            132.1383514404297
+          ],
+          "foreground_voxels": 24191,
+          "foreground_fraction": 0.06696878425814168,
+          "connected_components_26": 2967,
+          "full_guide_vertices": 6395,
+          "guide_edges": 5917,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.6342157999970368,
+          "artifact": "artifacts/sample_0009_patch_001_background_otsu.npz",
+          "artifact_sha256": "51c8a4d15bbcb91ce74071f43b7a2f116fd7628fdfd0a5cf024499edde1cf48c"
+        }
+      },
+      "figure": "sample_0009_patch_001.png"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "partition": "train",
+      "patch_index": 2,
+      "lower_xyz": [
+        288,
+        240,
+        48
+      ],
+      "upper_xyz": [
+        384,
+        336,
+        144
+      ],
+      "reference_curve_points": 1150,
+      "boundary_crossing_edges": 17,
+      "terminal_count": 8,
+      "junction_count": 13,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            30.0,
+            166.0
+          ],
+          "foreground_voxels": 58608,
+          "foreground_fraction": 0.06421577059910834,
+          "connected_components_26": 411,
+          "full_guide_vertices": 4441,
+          "guide_edges": 4421,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9426086956521739,
+              "within_3": 0.9991304347826087,
+              "within_6": 1.0,
+              "median_distance": 0.47179299495651095
+            },
+            "full_guide": {
+              "within_1": 0.3565217391304348,
+              "within_3": 0.948695652173913,
+              "within_6": 1.0,
+              "median_distance": 1.2415660033595226
+            },
+            "candidate_pool": {
+              "within_1": 0.043478260869565216,
+              "within_3": 0.6660869565217391,
+              "within_6": 0.9408695652173913,
+              "median_distance": 2.449489742783178
+            },
+            "bounded_guide": {
+              "within_1": 0.04608695652173913,
+              "within_3": 0.41130434782608694,
+              "within_6": 0.871304347826087,
+              "median_distance": 3.432046037509607
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.75,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.7237657404456022
+              },
+              "full_guide": {
+                "within_1": 0.5,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 1.4943467798033336
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.375,
+                "within_6": 0.875,
+                "median_distance": 3.1414258751092587
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.25,
+                "within_6": 0.875,
+                "median_distance": 3.4600559682330045
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.47094416481369666
+              },
+              "full_guide": {
+                "within_1": 0.23076923076923078,
+                "within_3": 0.8461538461538461,
+                "within_6": 1.0,
+                "median_distance": 1.9255842704681818
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.7692307692307693,
+                "within_6": 0.9230769230769231,
+                "median_distance": 2.1343350535204886
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.46153846153846156,
+                "within_6": 0.9230769230769231,
+                "median_distance": 3.0365806282234518
+              }
+            }
+          },
+          "seconds": 1.8478604000010819,
+          "artifact": "artifacts/sample_0009_patch_002_fixed.npz",
+          "artifact_sha256": "663026a9811df4232e947c6102731f4dc0021628db4125bada6c8b63fe86b96c"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 49.125,
+          "score_range": [
+            30.0,
+            166.0
+          ],
+          "foreground_voxels": 68648,
+          "foreground_fraction": 0.0752164247216692,
+          "connected_components_26": 532,
+          "full_guide_vertices": 5168,
+          "guide_edges": 5143,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9652173913043478,
+              "within_3": 0.9991304347826087,
+              "within_6": 1.0,
+              "median_distance": 0.4709387700479871
+            },
+            "full_guide": {
+              "within_1": 0.36869565217391304,
+              "within_3": 0.9721739130434782,
+              "within_6": 1.0,
+              "median_distance": 1.2383494071647458
+            },
+            "candidate_pool": {
+              "within_1": 0.057391304347826085,
+              "within_3": 0.6904347826086956,
+              "within_6": 0.98,
+              "median_distance": 2.4092627596138394
+            },
+            "bounded_guide": {
+              "within_1": 0.05652173913043478,
+              "within_3": 0.4434782608695652,
+              "within_6": 0.8826086956521739,
+              "median_distance": 3.2250582901113316
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.75,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.33448142160686695
+              },
+              "full_guide": {
+                "within_1": 0.375,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.1750343763273519
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 0.875,
+                "median_distance": 2.7753143192509047
+              },
+              "bounded_guide": {
+                "within_1": 0.125,
+                "within_3": 0.625,
+                "within_6": 0.875,
+                "median_distance": 2.740405913108633
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.4258890923829303
+              },
+              "full_guide": {
+                "within_1": 0.3076923076923077,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.5945294872201299
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.6153846153846154,
+                "within_6": 1.0,
+                "median_distance": 2.2497636858555095
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.46153846153846156,
+                "within_6": 0.8461538461538461,
+                "median_distance": 3.0041036333260873
+              }
+            }
+          },
+          "seconds": 2.16755959999864,
+          "artifact": "artifacts/sample_0009_patch_002_raw_otsu.npz",
+          "artifact_sha256": "0d081e3bc36b03adad629e079ca491784218949d8dc498166d70838214d9f017"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 12.758722186088562,
+          "score_range": [
+            0.0,
+            120.97158813476562
+          ],
+          "foreground_voxels": 42018,
+          "foreground_fraction": 0.046038394912526176,
+          "connected_components_26": 425,
+          "full_guide_vertices": 3845,
+          "guide_edges": 3815,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9321739130434783,
+              "within_3": 0.9991304347826087,
+              "within_6": 1.0,
+              "median_distance": 0.4770967392479696
+            },
+            "full_guide": {
+              "within_1": 0.3660869565217391,
+              "within_3": 0.96,
+              "within_6": 1.0,
+              "median_distance": 1.2301084447136184
+            },
+            "candidate_pool": {
+              "within_1": 0.0791304347826087,
+              "within_3": 0.7426086956521739,
+              "within_6": 0.9678260869565217,
+              "median_distance": 2.2720737506352426
+            },
+            "bounded_guide": {
+              "within_1": 0.05304347826086957,
+              "within_3": 0.5121739130434783,
+              "within_6": 0.9295652173913044,
+              "median_distance": 2.9799627251430163
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.75,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.4898736568180086
+              },
+              "full_guide": {
+                "within_1": 0.375,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.3888769404548351
+              },
+              "candidate_pool": {
+                "within_1": 0.25,
+                "within_3": 0.5,
+                "within_6": 1.0,
+                "median_distance": 2.3824749647538868
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 0.75,
+                "median_distance": 3.031348740596348
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.47094416481369666
+              },
+              "full_guide": {
+                "within_1": 0.23076923076923078,
+                "within_3": 0.6923076923076923,
+                "within_6": 1.0,
+                "median_distance": 1.9255842704681818
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.6923076923076923,
+                "within_6": 1.0,
+                "median_distance": 2.478838192613846
+              },
+              "bounded_guide": {
+                "within_1": 0.07692307692307693,
+                "within_3": 0.6153846153846154,
+                "within_6": 1.0,
+                "median_distance": 2.8199879142282804
+              }
+            }
+          },
+          "seconds": 1.6052350000027218,
+          "artifact": "artifacts/sample_0009_patch_002_background_otsu.npz",
+          "artifact_sha256": "19df38e7ad0b700a34f3e49da5164f0a81578b6bc7320a7c070902de3f044929"
+        }
+      },
+      "figure": "sample_0009_patch_002.png"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "partition": "train",
+      "patch_index": 3,
+      "lower_xyz": [
+        576,
+        0,
+        0
+      ],
+      "upper_xyz": [
+        663,
+        96,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            84.0
+          ],
+          "foreground_voxels": 487,
+          "foreground_fraction": 0.001164336399977048,
+          "connected_components_26": 52,
+          "full_guide_vertices": 78,
+          "guide_edges": 74,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 78,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.022487899997940985,
+          "artifact": "artifacts/sample_0009_patch_003_fixed.npz",
+          "artifact_sha256": "7f4f652ecbd4be2063297d73f713c82679e265f9f393ea4931f1c055d976e0a3"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 36.09375,
+          "score_range": [
+            0.0,
+            84.0
+          ],
+          "foreground_voxels": 45156,
+          "foreground_fraction": 0.10796052254078764,
+          "connected_components_26": 3261,
+          "full_guide_vertices": 8534,
+          "guide_edges": 7963,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.7059063999986392,
+          "artifact": "artifacts/sample_0009_patch_003_raw_otsu.npz",
+          "artifact_sha256": "3b6f46a90203a3d5d54d006399435295cf77a30f29c44d52f1a4ccf5124e0e5d"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 2.766207754611969,
+          "score_range": [
+            0.0,
+            47.20994567871094
+          ],
+          "foreground_voxels": 33103,
+          "foreground_fraction": 0.07914379434997992,
+          "connected_components_26": 3439,
+          "full_guide_vertices": 7592,
+          "guide_edges": 7001,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.7455563999974402,
+          "artifact": "artifacts/sample_0009_patch_003_background_otsu.npz",
+          "artifact_sha256": "a214d0c806be4f37338f4215c1815d758aa89cbbf8c72a7380978cb6a8e12dd7"
+        }
+      },
+      "figure": "sample_0009_patch_003.png"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "source_group": "e_checked7_utokyo_fly",
+      "partition": "train",
+      "patch_index": 0,
+      "lower_xyz": [
+        1,
+        480,
+        0
+      ],
+      "upper_xyz": [
+        97,
+        576,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 279,
+          "foreground_fraction": 0.0006051522532703165,
+          "connected_components_26": 126,
+          "full_guide_vertices": 15,
+          "guide_edges": 12,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 15,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.02415859999746317,
+          "artifact": "artifacts/sample_0015_patch_000_fixed.npz",
+          "artifact_sha256": "e2bb348b91b3569bc3240cd1a5c4069b8fa7a8d052026d3a696dac96000866d1"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 121.5234375,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 247,
+          "foreground_fraction": 0.0005357441095260509,
+          "connected_components_26": 124,
+          "full_guide_vertices": 7,
+          "guide_edges": 6,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 7,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.030786799998168135,
+          "artifact": "artifacts/sample_0015_patch_000_raw_otsu.npz",
+          "artifact_sha256": "7ca9c8ebb7d9c6c8d6eb7dfc542064c61d05a3dfe4a03078d33cadceccbfa0e5"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 124.45440888404846,
+          "score_range": [
+            0.0,
+            254.88262939453125
+          ],
+          "foreground_voxels": 246,
+          "foreground_fraction": 0.0005335751050340426,
+          "connected_components_26": 124,
+          "full_guide_vertices": 7,
+          "guide_edges": 6,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 7,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.24913240000023507,
+          "artifact": "artifacts/sample_0015_patch_000_background_otsu.npz",
+          "artifact_sha256": "ef478ecc11e50efe8cc7b4908d0d89b0de43a7f26a98f91919a3c9e132cc0d59"
+        }
+      },
+      "figure": "sample_0015_patch_000.png"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "source_group": "e_checked7_utokyo_fly",
+      "partition": "train",
+      "patch_index": 1,
+      "lower_xyz": [
+        97,
+        624,
+        48
+      ],
+      "upper_xyz": [
+        193,
+        720,
+        119
+      ],
+      "reference_curve_points": 614,
+      "boundary_crossing_edges": 8,
+      "terminal_count": 8,
+      "junction_count": 12,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 30658,
+          "foreground_fraction": 0.04525513397338246,
+          "connected_components_26": 800,
+          "full_guide_vertices": 1682,
+          "guide_edges": 1672,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.995114006514658,
+              "within_3": 1.0,
+              "within_6": 1.0,
+              "median_distance": 0.48132919505348226
+            },
+            "full_guide": {
+              "within_1": 0.34527687296416937,
+              "within_3": 0.990228013029316,
+              "within_6": 1.0,
+              "median_distance": 1.2075103837138506
+            },
+            "candidate_pool": {
+              "within_1": 0.1254071661237785,
+              "within_3": 0.9478827361563518,
+              "within_6": 1.0,
+              "median_distance": 1.689339341113138
+            },
+            "bounded_guide": {
+              "within_1": 0.13355048859934854,
+              "within_3": 0.8485342019543974,
+              "within_6": 1.0,
+              "median_distance": 1.903446891409958
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.875,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.3105718256091162
+              },
+              "full_guide": {
+                "within_1": 0.25,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 1.7551167507859367
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 2.2010075874677626
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.6127754253372606
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.4581169419194755
+              },
+              "full_guide": {
+                "within_1": 0.25,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.2913448024150385
+              },
+              "candidate_pool": {
+                "within_1": 0.08333333333333333,
+                "within_3": 0.9166666666666666,
+                "within_6": 1.0,
+                "median_distance": 2.0826577787843092
+              },
+              "bounded_guide": {
+                "within_1": 0.08333333333333333,
+                "within_3": 0.5833333333333334,
+                "within_6": 1.0,
+                "median_distance": 2.76087642851873
+              }
+            }
+          },
+          "seconds": 0.9747721999992791,
+          "artifact": "artifacts/sample_0015_patch_001_fixed.npz",
+          "artifact_sha256": "2de9785f4aea3af50fce45135022d7aa1c14de0ec724003677dc66bb04163757"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 94.62890625,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 16473,
+          "foreground_fraction": 0.02431625748396925,
+          "connected_components_26": 535,
+          "full_guide_vertices": 801,
+          "guide_edges": 795,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9755700325732899,
+              "within_3": 0.998371335504886,
+              "within_6": 1.0,
+              "median_distance": 0.48749222294992556
+            },
+            "full_guide": {
+              "within_1": 0.38925081433224756,
+              "within_3": 0.9739413680781759,
+              "within_6": 1.0,
+              "median_distance": 1.1726460738767055
+            },
+            "candidate_pool": {
+              "within_1": 0.20684039087947884,
+              "within_3": 0.9560260586319218,
+              "within_6": 0.998371335504886,
+              "median_distance": 1.4492087384874097
+            },
+            "bounded_guide": {
+              "within_1": 0.28013029315960913,
+              "within_3": 0.9576547231270358,
+              "within_6": 0.995114006514658,
+              "median_distance": 1.3585835054467554
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.75,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 0.5525897899947328
+              },
+              "full_guide": {
+                "within_1": 0.125,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 1.4618252942847825
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 1.78769154636458
+              },
+              "bounded_guide": {
+                "within_1": 0.125,
+                "within_3": 0.875,
+                "within_6": 0.875,
+                "median_distance": 1.4618252942847825
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.4581169419194755
+              },
+              "full_guide": {
+                "within_1": 0.3333333333333333,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.127420754225001
+              },
+              "candidate_pool": {
+                "within_1": 0.16666666666666666,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.3005877105359833
+              },
+              "bounded_guide": {
+                "within_1": 0.08333333333333333,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.252625130552524
+              }
+            }
+          },
+          "seconds": 0.3806407999982184,
+          "artifact": "artifacts/sample_0015_patch_001_raw_otsu.npz",
+          "artifact_sha256": "0f686cdf5d9ae953fbdf5dd4ba7a06ee1f080a1e1fac2d36c9e11419a8f5630a"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 80.75417518615723,
+          "score_range": [
+            0.0,
+            252.110595703125
+          ],
+          "foreground_voxels": 11871,
+          "foreground_fraction": 0.017523116165373578,
+          "connected_components_26": 531,
+          "full_guide_vertices": 608,
+          "guide_edges": 599,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 512,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9592833876221498,
+              "within_3": 0.998371335504886,
+              "within_6": 1.0,
+              "median_distance": 0.4986263892764056
+            },
+            "full_guide": {
+              "within_1": 0.4022801302931596,
+              "within_3": 0.9511400651465798,
+              "within_6": 1.0,
+              "median_distance": 1.1440284926853557
+            },
+            "candidate_pool": {
+              "within_1": 0.2996742671009772,
+              "within_3": 0.9543973941368078,
+              "within_6": 1.0,
+              "median_distance": 1.2905294271799135
+            },
+            "bounded_guide": {
+              "within_1": 0.3517915309446254,
+              "within_3": 0.9462540716612378,
+              "within_6": 1.0,
+              "median_distance": 1.203537603655142
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.75,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 0.5525897899947328
+              },
+              "full_guide": {
+                "within_1": 0.125,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 1.603463435203934
+              },
+              "candidate_pool": {
+                "within_1": 0.125,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 1.8223538582513081
+              },
+              "bounded_guide": {
+                "within_1": 0.125,
+                "within_3": 0.875,
+                "within_6": 1.0,
+                "median_distance": 1.6214036362266553
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.4581169419194755
+              },
+              "full_guide": {
+                "within_1": 0.4166666666666667,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.0899856568493846
+              },
+              "candidate_pool": {
+                "within_1": 0.3333333333333333,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4149371511572801
+              },
+              "bounded_guide": {
+                "within_1": 0.3333333333333333,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.0971305656547568
+              }
+            }
+          },
+          "seconds": 0.579311499997857,
+          "artifact": "artifacts/sample_0015_patch_001_background_otsu.npz",
+          "artifact_sha256": "aa5b0c3d8b9150ea81a8ec90d362a4895c71a2bae80db138e0a5f33a7e887f8a"
+        }
+      },
+      "figure": "sample_0015_patch_001.png"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "source_group": "e_checked7_utokyo_fly",
+      "partition": "train",
+      "patch_index": 2,
+      "lower_xyz": [
+        337,
+        0,
+        0
+      ],
+      "upper_xyz": [
+        433,
+        48,
+        48
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 354,
+          "foreground_fraction": 0.0015199852295220634,
+          "connected_components_26": 188,
+          "full_guide_vertices": 19,
+          "guide_edges": 16,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 19,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.015682699999160832,
+          "artifact": "artifacts/sample_0015_patch_002_fixed.npz",
+          "artifact_sha256": "6d0cd537883b411aa23b90d981d23a5bec391fd738274331b89b3191b93a309b"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 41.8359375,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 354,
+          "foreground_fraction": 0.0015199852295220634,
+          "connected_components_26": 188,
+          "full_guide_vertices": 19,
+          "guide_edges": 16,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 19,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.020929700000124285,
+          "artifact": "artifacts/sample_0015_patch_002_raw_otsu.npz",
+          "artifact_sha256": "6d0cd537883b411aa23b90d981d23a5bec391fd738274331b89b3191b93a309b"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 37.73783802986145,
+          "score_range": [
+            0.0,
+            254.23385620117188
+          ],
+          "foreground_voxels": 354,
+          "foreground_fraction": 0.0015199852295220634,
+          "connected_components_26": 188,
+          "full_guide_vertices": 19,
+          "guide_edges": 16,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 19,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.16084269999919343,
+          "artifact": "artifacts/sample_0015_patch_002_background_otsu.npz",
+          "artifact_sha256": "574b30d849758b8e3082652aa0cf5b6c48ea8a460f2661530f4db46ce1475cc9"
+        }
+      },
+      "figure": "sample_0015_patch_002.png"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "source_group": "e_checked7_utokyo_fly",
+      "partition": "train",
+      "patch_index": 3,
+      "lower_xyz": [
+        577,
+        144,
+        48
+      ],
+      "upper_xyz": [
+        673,
+        240,
+        119
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 519,
+          "foreground_fraction": 0.000766110461614766,
+          "connected_components_26": 226,
+          "full_guide_vertices": 69,
+          "guide_edges": 60,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 69,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.03122829999847454,
+          "artifact": "artifacts/sample_0015_patch_003_fixed.npz",
+          "artifact_sha256": "6e0f41989b4094ba631dc6cde955fed28172023cd8e8934d79c38ecf681985ac"
+        },
+        "raw_otsu": {
+          "method": "raw_otsu",
+          "constant_score": false,
+          "threshold": 20.91796875,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 519,
+          "foreground_fraction": 0.000766110461614766,
+          "connected_components_26": 226,
+          "full_guide_vertices": 69,
+          "guide_edges": 60,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 69,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.044829599999502534,
+          "artifact": "artifacts/sample_0015_patch_003_raw_otsu.npz",
+          "artifact_sha256": "6e0f41989b4094ba631dc6cde955fed28172023cd8e8934d79c38ecf681985ac"
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 14.753402173519135,
+          "score_range": [
+            0.0,
+            251.79139709472656
+          ],
+          "foreground_voxels": 519,
+          "foreground_fraction": 0.000766110461614766,
+          "connected_components_26": 226,
+          "full_guide_vertices": 69,
+          "guide_edges": 60,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 69,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.3997111999997287,
+          "artifact": "artifacts/sample_0015_patch_003_background_otsu.npz",
+          "artifact_sha256": "43f16ad78b9525f4e0cfae89c9e8b65651e056794bdc5a8e7dcb9aa79a061f01"
+        }
+      },
+      "figure": "sample_0015_patch_003.png"
+    }
+  ],
+  "failures": [],
+  "promoted_method": null,
+  "inventory_note": "Dataset inventory scans SWCs for valid source selection; only requested training sources enter metrics.",
+  "summary": {
+    "fixed": {
+      "completed_patches": 12,
+      "patches_with_reference_curve": 3,
+      "empty_masks": 0,
+      "mean_foreground_fraction": 0.04166131541708377,
+      "mean_support_within_3": {
+        "all_foreground": 0.973091875115074,
+        "full_guide": 0.709828759544452,
+        "candidate_pool": 0.6601919544256672,
+        "bounded_guide": 0.455638863235963
+      }
+    },
+    "raw_otsu": {
+      "completed_patches": 12,
+      "patches_with_reference_curve": 3,
+      "empty_masks": 0,
+      "mean_foreground_fraction": 0.07033367305523587,
+      "mean_support_within_3": {
+        "all_foreground": 0.9664993801744766,
+        "full_guide": 0.764857543797962,
+        "candidate_pool": 0.6921959609943015,
+        "bounded_guide": 0.511206457460452
+      }
+    },
+    "background_otsu": {
+      "completed_patches": 12,
+      "patches_with_reference_curve": 3,
+      "empty_masks": 0,
+      "mean_foreground_fraction": 0.048014657132916756,
+      "mean_support_within_3": {
+        "all_foreground": 0.9755737903378158,
+        "full_guide": 0.8875004088903603,
+        "candidate_pool": 0.7495767425733387,
+        "bounded_guide": 0.5635776282954014
+      }
+    }
+  },
+  "limitations": [
+    "Three training sources, small image-defined patch cap; not a dataset-wide estimate.",
+    "Masks are threshold rules, not verified semantic segmentation; incomplete SWCs limit precision claims.",
+    "Original isotropic extraction spacing held fixed to isolate masks; source metadata recorded, not applied.",
+    "Background filtering uses a 4-sigma halo; threshold is computed from the core patch only.",
+    "Uniform candidate/guide reduction held fixed; unannotated patches have null reference metrics.",
+    "No method is promoted; no validation or reserved-test neuron evaluated."
+  ],
+  "generated_artifact_root": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\foreground_comparison_seed0",
+  "console_log": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\foreground_comparison_seed0_console.log"
+}

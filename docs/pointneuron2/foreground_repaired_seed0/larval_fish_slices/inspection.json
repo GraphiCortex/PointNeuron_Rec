@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "scope": "saved training-patch slice inspection; no new extraction",
+  "comparison": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\docs\\pointneuron2\\foreground_repaired_seed0\\comparison.json",
+  "comparison_sha256": "355e768c8ba63d3f691e6750a2dbf5a4d2eedb2b15d0e612847f3f71bbe33916",
+  "artifact_sha256": {
+    "fixed": "b0f3f9fd59346a8f1873271b3f3fc9d4881859cdf15f6f6ac7c8aabc1ba0dc39",
+    "noise_hysteresis": "f3af5ee93916623e1ba1f2e1865f9d3275571e84e250de155ebfcf0df1819fa4"
+  },
+  "script_sha256": "968cb3d847598874b283d652eb96f3dae7e3c45646ddabe0167020a11de837b4",
+  "sample_index": 9,
+  "patch_index": 1,
+  "contrast_diagnostic": {
+    "raw_max_fraction": 1.0956826815299675e-06,
+    "raw_uint8_saturation_fraction": 0.0,
+    "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+    "interior_reference_points": 1032,
+    "median_signed_contrast": 12.60547544663239,
+    "fraction_contrast_above_2": 0.9089147286821705,
+    "fraction_contrast_below_minus_2": 0.02616279069767442,
+    "reference_uint8_saturation_fraction": 0.0
+  },
+  "slice_rule": "user-specified local Z or image-depth quartiles; no reference-based choice",
+  "slices": [
+    {
+      "local_z": 24,
+      "absolute_z": 72.0,
+      "foreground_voxels_by_method": {
+        "fixed": 825,
+        "noise_hysteresis": 2241
+      },
+      "reference_segments_in_slab": 9
+    },
+    {
+      "local_z": 48,
+      "absolute_z": 96.0,
+      "foreground_voxels_by_method": {
+        "fixed": 657,
+        "noise_hysteresis": 1712
+      },
+      "reference_segments_in_slab": 14
+    },
+    {
+      "local_z": 72,
+      "absolute_z": 120.0,
+      "foreground_voxels_by_method": {
+        "fixed": 939,
+        "noise_hysteresis": 1995
+      },
+      "reference_segments_in_slab": 2
+    }
+  ],
+  "display_vmax": 104.0
+}

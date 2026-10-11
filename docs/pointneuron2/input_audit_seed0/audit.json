@@ -1,0 +1,440 @@
+{
+  "scope": "input audit of the existing eight-patch execution cache, not a reconstruction benchmark",
+  "manifest_sha256": "fbcfa1b7b52828575183328ba2815e278670681d9d4a5ed34e16aace36a73eb4",
+  "source_sha256": "6f8df25bf7865a0740e703843975b79cf565df41901a5f2efca3038beced96d1",
+  "reference_rule": "all full-SWC edges clipped to cached box, including boundary crossings; step <=1 voxel",
+  "distance_units": "configured spacing; currently voxel units",
+  "spacing_xyz": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "patches": [
+    {
+      "partition": "train",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 0,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 2584,
+      "full_guide_vertices": 1296,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 512,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "source_swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 2584,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 2584,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 2584,
+          "reference_support": null
+        }
+      }
+    },
+    {
+      "partition": "train",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 1,
+      "label_nodes": 135,
+      "reference_curve_points": 551,
+      "boundary_crossing_edges": 10,
+      "foreground_voxels": 197488,
+      "full_guide_vertices": 2585,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 512,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "source_swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.9074410163339383,
+          "within_3": 0.9201451905626135,
+          "within_6": 0.9274047186932849,
+          "median_distance": 0.4439264487318924
+        },
+        "full_guide": {
+          "within_1": 0.030852994555353903,
+          "within_3": 0.19056261343012704,
+          "within_6": 0.5553539019963702,
+          "median_distance": 5.302683981151931
+        },
+        "candidate_pool": {
+          "within_1": 0.030852994555353903,
+          "within_3": 0.3666061705989111,
+          "within_6": 0.8892921960072595,
+          "median_distance": 3.4315624434752445
+        },
+        "bounded_guide": {
+          "within_1": 0.009074410163339383,
+          "within_3": 0.10707803992740472,
+          "within_6": 0.4591651542649728,
+          "median_distance": 6.426420616940987
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 253735,
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.4190678006177598
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 197488,
+          "reference_support": {
+            "within_1": 0.9074410163339383,
+            "within_3": 0.9201451905626135,
+            "within_6": 0.9274047186932849,
+            "median_distance": 0.4439264487318924
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 171910,
+          "reference_support": {
+            "within_1": 0.8874773139745916,
+            "within_3": 0.8929219600725953,
+            "within_6": 0.911070780399274,
+            "median_distance": 0.447397886175791
+          }
+        }
+      }
+    },
+    {
+      "partition": "train",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 2,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 1723,
+      "full_guide_vertices": 885,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 512,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "source_swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 1723,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 1723,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 1723,
+          "reference_support": null
+        }
+      }
+    },
+    {
+      "partition": "train",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 3,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 3234,
+      "full_guide_vertices": 1875,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 512,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "source_swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 3234,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 3234,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 3234,
+          "reference_support": null
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "patch_index": 0,
+      "label_nodes": 48,
+      "reference_curve_points": 155,
+      "boundary_crossing_edges": 2,
+      "foreground_voxels": 32673,
+      "full_guide_vertices": 3762,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 512,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "8b9e486a88a7109879ebfe9225e04b9ff5fdffd5bce2906646a78154eac13533",
+      "source_swc_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.9935483870967742,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 0.4552677500306945
+        },
+        "full_guide": {
+          "within_1": 0.5290322580645161,
+          "within_3": 0.9612903225806452,
+          "within_6": 1.0,
+          "median_distance": 0.9806353954116876
+        },
+        "candidate_pool": {
+          "within_1": 0.14193548387096774,
+          "within_3": 0.7225806451612903,
+          "within_6": 1.0,
+          "median_distance": 1.9569207054986406
+        },
+        "bounded_guide": {
+          "within_1": 0.0967741935483871,
+          "within_3": 0.5935483870967742,
+          "within_6": 0.9354838709677419,
+          "median_distance": 2.5441946269956586
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 93241,
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.4552677500306945
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 32673,
+          "reference_support": {
+            "within_1": 0.9935483870967742,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.4552677500306945
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 17547,
+          "reference_support": {
+            "within_1": 0.9870967741935484,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.47093337534407853
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "patch_index": 1,
+      "label_nodes": 1,
+      "reference_curve_points": 1,
+      "boundary_crossing_edges": 2,
+      "foreground_voxels": 1196,
+      "full_guide_vertices": 189,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 189,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "8b9e486a88a7109879ebfe9225e04b9ff5fdffd5bce2906646a78154eac13533",
+      "source_swc_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 1.0,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 0.0
+        },
+        "full_guide": {
+          "within_1": 1.0,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 1.0
+        },
+        "candidate_pool": {
+          "within_1": 1.0,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 0.0
+        },
+        "bounded_guide": {
+          "within_1": 1.0,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 1.0
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 7004,
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.0
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 1196,
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.0
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 337,
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.0
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "patch_index": 2,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 426,
+      "full_guide_vertices": 8,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 8,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "8b9e486a88a7109879ebfe9225e04b9ff5fdffd5bce2906646a78154eac13533",
+      "source_swc_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 470,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 426,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 425,
+          "reference_support": null
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "patch_index": 3,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 304,
+      "full_guide_vertices": 0,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 0,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "8b9e486a88a7109879ebfe9225e04b9ff5fdffd5bce2906646a78154eac13533",
+      "source_swc_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 325,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 304,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 304,
+          "reference_support": null
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "small train/validation diagnostic; no alternate reference or coordinate transform chosen",
+    "reference proximity is not foreground precision with incomplete annotation",
+    "MIP projections can hide depth mismatch; matching linear-index coordinates is not full anatomical alignment QA"
+  ],
+  "test_neurons_evaluated": false,
+  "patch_count": 8,
+  "inventory_note": "Dataset inventory scans SWCs for valid file selection; only cached train/val sources enter diagnostic metrics.",
+  "metadata_clarification": "Corrected the inventory/read distinction after audit execution. Measurements and executed source hash are unchanged."
+}

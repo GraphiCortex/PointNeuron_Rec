@@ -1,0 +1,431 @@
+{
+  "scope": "input audit of existing train/validation cache, not a reconstruction benchmark",
+  "manifest_sha256": "8c7361c1120c0edf7e092eea969312a49f518cb0774a6fde2cf1460bb3063be0",
+  "source_sha256": "d46c9f0b59a4b98f4953c9a7fb087349e55539f741ab5c2b01d2bc414647240f",
+  "reference_rule": "all full-SWC edges clipped to cached box, including boundary crossings; step <=1 voxel",
+  "distance_units": "configured spacing; currently voxel units",
+  "spacing_xyz": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "test_neurons_evaluated": false,
+  "patch_count": 6,
+  "patches": [
+    {
+      "partition": "val",
+      "sample_index": 21,
+      "sample_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "patch_index": 0,
+      "label_nodes": 122,
+      "reference_curve_points": 228,
+      "boundary_crossing_edges": 2,
+      "foreground_voxels": 672,
+      "full_guide_vertices": 74,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 74,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "da8fc6ffdf2cf8ec88719935776de273d99db84e1dc5ea8f7e37f7bc2310d85d",
+      "source_swc_sha256": "f27aac851be70d3a200f067ed4320ca13838de8f27970f61f30317a85143825f",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.4298245614035088,
+          "within_3": 0.6885964912280702,
+          "within_6": 0.8157894736842105,
+          "median_distance": 1.3994001165996632
+        },
+        "full_guide": {
+          "within_1": 0.19736842105263158,
+          "within_3": 0.5087719298245614,
+          "within_6": 0.6403508771929824,
+          "median_distance": 2.8929708814395347
+        },
+        "candidate_pool": {
+          "within_1": 0.4298245614035088,
+          "within_3": 0.6885964912280702,
+          "within_6": 0.8157894736842105,
+          "median_distance": 1.3994001165996632
+        },
+        "bounded_guide": {
+          "within_1": 0.19736842105263158,
+          "within_3": 0.5087719298245614,
+          "within_6": 0.6403508771929824,
+          "median_distance": 2.8929708814395347
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 1065,
+          "reference_support": {
+            "within_1": 0.543859649122807,
+            "within_3": 0.7456140350877193,
+            "within_6": 0.8421052631578947,
+            "median_distance": 0.8354488461020828
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 672,
+          "reference_support": {
+            "within_1": 0.4298245614035088,
+            "within_3": 0.6885964912280702,
+            "within_6": 0.8157894736842105,
+            "median_distance": 1.3994001165996632
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 565,
+          "reference_support": {
+            "within_1": 0.39473684210526316,
+            "within_3": 0.6140350877192983,
+            "within_6": 0.7324561403508771,
+            "median_distance": 1.626325871384359
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 21,
+      "sample_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "patch_index": 1,
+      "label_nodes": 752,
+      "reference_curve_points": 1208,
+      "boundary_crossing_edges": 17,
+      "foreground_voxels": 15071,
+      "full_guide_vertices": 576,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 576,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "da8fc6ffdf2cf8ec88719935776de273d99db84e1dc5ea8f7e37f7bc2310d85d",
+      "source_swc_sha256": "f27aac851be70d3a200f067ed4320ca13838de8f27970f61f30317a85143825f",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.679635761589404,
+          "within_3": 0.8874172185430463,
+          "within_6": 0.9759933774834437,
+          "median_distance": 0.6006478109979027
+        },
+        "full_guide": {
+          "within_1": 0.31374172185430466,
+          "within_3": 0.7168874172185431,
+          "within_6": 0.8269867549668874,
+          "median_distance": 1.3567198203446742
+        },
+        "candidate_pool": {
+          "within_1": 0.1390728476821192,
+          "within_3": 0.5695364238410596,
+          "within_6": 0.7400662251655629,
+          "median_distance": 2.2943096050343703
+        },
+        "bounded_guide": {
+          "within_1": 0.31374172185430466,
+          "within_3": 0.7168874172185431,
+          "within_6": 0.8269867549668874,
+          "median_distance": 1.3567198203446742
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 19481,
+          "reference_support": {
+            "within_1": 0.7566225165562914,
+            "within_3": 0.9370860927152318,
+            "within_6": 0.9867549668874173,
+            "median_distance": 0.5406495331661005
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 15071,
+          "reference_support": {
+            "within_1": 0.679635761589404,
+            "within_3": 0.8874172185430463,
+            "within_6": 0.9759933774834437,
+            "median_distance": 0.6006478109979027
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 13579,
+          "reference_support": {
+            "within_1": 0.6175496688741722,
+            "within_3": 0.8327814569536424,
+            "within_6": 0.9619205298013245,
+            "median_distance": 0.6796126244520755
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 44,
+      "sample_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "patch_index": 0,
+      "label_nodes": 261,
+      "reference_curve_points": 595,
+      "boundary_crossing_edges": 5,
+      "foreground_voxels": 4873,
+      "full_guide_vertices": 360,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 360,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "1816496b5da2f20218235af96bd27e712f5ef71c7983c58e1be1956bba27ed98",
+      "source_swc_sha256": "bc23645c0ae92a7e1dcbbadbfc7f5f6412cf8a65f31e529349f8f4b9477aaac7",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.7966386554621848,
+          "within_3": 0.9663865546218487,
+          "within_6": 1.0,
+          "median_distance": 0.5342275422233614
+        },
+        "full_guide": {
+          "within_1": 0.3798319327731092,
+          "within_3": 0.8033613445378152,
+          "within_6": 0.8756302521008403,
+          "median_distance": 1.1273109708350697
+        },
+        "candidate_pool": {
+          "within_1": 0.3865546218487395,
+          "within_3": 0.8739495798319328,
+          "within_6": 0.9445378151260504,
+          "median_distance": 1.1175828683002569
+        },
+        "bounded_guide": {
+          "within_1": 0.3798319327731092,
+          "within_3": 0.8033613445378152,
+          "within_6": 0.8756302521008403,
+          "median_distance": 1.1273109708350697
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 6554,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "0.2": {
+          "threshold": 13107,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "0.3": {
+          "threshold": 19660,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 44,
+      "sample_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "patch_index": 1,
+      "label_nodes": 38,
+      "reference_curve_points": 107,
+      "boundary_crossing_edges": 2,
+      "foreground_voxels": 509,
+      "full_guide_vertices": 74,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 74,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "1816496b5da2f20218235af96bd27e712f5ef71c7983c58e1be1956bba27ed98",
+      "source_swc_sha256": "bc23645c0ae92a7e1dcbbadbfc7f5f6412cf8a65f31e529349f8f4b9477aaac7",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.9158878504672897,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 0.5730461893552125
+        },
+        "full_guide": {
+          "within_1": 0.35514018691588783,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 1.1154306963872807
+        },
+        "candidate_pool": {
+          "within_1": 0.9158878504672897,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 0.5730461893552125
+        },
+        "bounded_guide": {
+          "within_1": 0.35514018691588783,
+          "within_3": 1.0,
+          "within_6": 1.0,
+          "median_distance": 1.1154306963872807
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 6554,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "0.2": {
+          "threshold": 13107,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "0.3": {
+          "threshold": 19660,
+          "foreground_voxels": 0,
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 94,
+      "sample_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "patch_index": 0,
+      "label_nodes": 0,
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "foreground_voxels": 334,
+      "full_guide_vertices": 33,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 33,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "2591c076f73a84dfc5e19b5ad48fe11c5dc8d891c32cb8f6e59ba53efa5b83b5",
+      "source_swc_sha256": "a1b5bc1e7e694b25987ee3db2038ec5ee9ce72d4ce0c4e79e8b52d8d5e2c89d5",
+      "reference_support": {
+        "all_foreground": null,
+        "full_guide": null,
+        "candidate_pool": null,
+        "bounded_guide": null
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 772,
+          "reference_support": null
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 334,
+          "reference_support": null
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 202,
+          "reference_support": null
+        }
+      }
+    },
+    {
+      "partition": "val",
+      "sample_index": 94,
+      "sample_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "patch_index": 1,
+      "label_nodes": 347,
+      "reference_curve_points": 1104,
+      "boundary_crossing_edges": 22,
+      "foreground_voxels": 19342,
+      "full_guide_vertices": 149,
+      "candidate_rows": 1024,
+      "bounded_guide_vertices": 149,
+      "cached_xyz_and_intensity_match_source": true,
+      "source_volume_sha256": "2591c076f73a84dfc5e19b5ad48fe11c5dc8d891c32cb8f6e59ba53efa5b83b5",
+      "source_swc_sha256": "a1b5bc1e7e694b25987ee3db2038ec5ee9ce72d4ce0c4e79e8b52d8d5e2c89d5",
+      "reference_support": {
+        "all_foreground": {
+          "within_1": 0.24818840579710144,
+          "within_3": 0.33605072463768115,
+          "within_6": 0.4003623188405797,
+          "median_distance": 14.276882434139083
+        },
+        "full_guide": {
+          "within_1": 0.10326086956521739,
+          "within_3": 0.2391304347826087,
+          "within_6": 0.3378623188405797,
+          "median_distance": 20.72600463202246
+        },
+        "candidate_pool": {
+          "within_1": 0.029891304347826088,
+          "within_3": 0.213768115942029,
+          "within_6": 0.2898550724637681,
+          "median_distance": 18.836971917868926
+        },
+        "bounded_guide": {
+          "within_1": 0.10326086956521739,
+          "within_3": 0.2391304347826087,
+          "within_6": 0.3378623188405797,
+          "median_distance": 20.72600463202246
+        }
+      },
+      "threshold_sensitivity": {
+        "0.1": {
+          "threshold": 26,
+          "foreground_voxels": 26333,
+          "reference_support": {
+            "within_1": 0.41757246376811596,
+            "within_3": 0.5751811594202898,
+            "within_6": 0.6893115942028986,
+            "median_distance": 1.939733379572985
+          }
+        },
+        "0.2": {
+          "threshold": 51,
+          "foreground_voxels": 19342,
+          "reference_support": {
+            "within_1": 0.24818840579710144,
+            "within_3": 0.33605072463768115,
+            "within_6": 0.4003623188405797,
+            "median_distance": 14.276882434139083
+          }
+        },
+        "0.3": {
+          "threshold": 76,
+          "foreground_voxels": 16689,
+          "reference_support": {
+            "within_1": 0.1693840579710145,
+            "within_3": 0.22735507246376813,
+            "within_6": 0.27445652173913043,
+            "median_distance": 21.721715197658224
+          }
+        }
+      }
+    }
+  ],
+  "inventory_note": "Dataset inventory scans SWCs for valid file selection; only cached train/val sources enter diagnostic metrics.",
+  "limitations": [
+    "small train/validation diagnostic; no alternate reference or coordinate transform chosen",
+    "reference proximity is not foreground precision with incomplete annotation",
+    "MIP projections can hide depth mismatch; matching linear-index coordinates is not full anatomical alignment QA"
+  ]
+}

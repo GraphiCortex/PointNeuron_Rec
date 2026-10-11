@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import json
 from pathlib import Path
 
 import numpy as np
+
+from pointneuron.data.medial_sampling import MedialSamplingConfig, sample_medial_indices
 
 from pointneuron.data.alignment import check_swc_in_volume
 from pointneuron.data.gold166 import Gold166Sample
@@ -36,6 +38,7 @@ class PatchCacheConfig:
     point_sample_cell_size: int = 8
     endpoint_fraction: float = 0.25
     branch_fraction: float = 0.10
+    medial_sampling: MedialSamplingConfig = field(default_factory=MedialSamplingConfig)
 
 
 def build_training_record(
@@ -186,6 +189,7 @@ def build_patch_training_records(
             width=width,
             height=height,
             cell_size=config.point_sample_cell_size,
+            medial_config=config.medial_sampling,
         )
         points_array = indices_to_point_array(selected_indices, data, width, height)
         patch_skeleton_array = skeleton_nodes_in_patch(skeleton_array, center, config.patch_radius)
@@ -211,6 +215,7 @@ def build_patch_training_records(
             "center_strategy": config.center_strategy,
             "point_sample_strategy": config.point_sample_strategy,
             "point_sample_cell_size": config.point_sample_cell_size,
+            "medial_sampling": config.medial_sampling.to_dict() if config.point_sample_strategy == "medial" else None,
             "endpoint_fraction": config.endpoint_fraction,
             "branch_fraction": config.branch_fraction,
             "patch_center": [float(value) for value in center],
@@ -528,6 +533,7 @@ def sample_indices_fixed(
     width: int | None = None,
     height: int | None = None,
     cell_size: int = 8,
+    medial_config: MedialSamplingConfig | None = None,
 ) -> np.ndarray:
     if strategy == "random":
         replace = indices.shape[0] < max_points
@@ -545,7 +551,11 @@ def sample_indices_fixed(
             rng=rng,
             cell_size=cell_size,
         )
-    raise ValueError(f"Unknown point sample strategy {strategy!r}; expected 'random' or 'spatial'")
+    if strategy == "medial":
+        if width is None or height is None:
+            raise ValueError("medial point sampling requires width and height")
+        return sample_medial_indices(indices, width, height, max_points, rng, medial_config or MedialSamplingConfig())
+    raise ValueError(f"Unknown point sample strategy {strategy!r}; expected 'random', 'spatial' or 'medial'")
 
 
 def spatially_balanced_sample_indices(

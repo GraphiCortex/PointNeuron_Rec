@@ -1,0 +1,307 @@
+{
+  "status": "completed",
+  "scope": "GPU forward/backward and memory diagnostic; no optimizer, training run or quality evaluation",
+  "gpu": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "torch_version": "2.12.1+cu130",
+  "cuda_version": "13.0",
+  "repeats": 3,
+  "comparison_sha256": "996185f838d99b8fe9e4b021109c7e903a04d4d83a6f280acaf3e55629d49f9b",
+  "cases": [
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "mask_method": "background_otsu",
+      "artifact_sha256": "9c87f3a50c1c92274e3b0ff202357530fe790ecb26bb34b7c41416d4c3495b14",
+      "full_guide_vertices": 5567,
+      "measurements": [
+        {
+          "mode": "capped_dense",
+          "guide_vertices": 512,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 500.57449999803794,
+          "max_allocated_mib": 28.755859375,
+          "max_reserved_mib": 54.0,
+          "loss": 0.004687839653342962,
+          "alpha_gradient": -2.6644216632121243e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            543.3008999971207,
+            483.09879999942495,
+            500.57449999803794
+          ]
+        },
+        {
+          "mode": "full_dense",
+          "guide_vertices": 5567,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 528.3626999989792,
+          "max_allocated_mib": 104.44189453125,
+          "max_reserved_mib": 136.0,
+          "loss": 0.003554427996277809,
+          "alpha_gradient": 3.163905057590455e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            551.1891000023752,
+            528.3626999989792,
+            488.05730000094627
+          ]
+        },
+        {
+          "mode": "full_blocked",
+          "guide_vertices": 5567,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": 256,
+          "median_forward_backward_ms": 704.4353999990562,
+          "max_allocated_mib": 24.599609375,
+          "max_reserved_mib": 52.0,
+          "loss": 0.0035544377751648426,
+          "alpha_gradient": 3.046300662390422e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            704.4353999990562,
+            695.2528000001621,
+            764.3850999993447
+          ]
+        }
+      ]
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 2,
+      "mask_method": "background_otsu",
+      "artifact_sha256": "19df38e7ad0b700a34f3e49da5164f0a81578b6bc7320a7c070902de3f044929",
+      "full_guide_vertices": 3845,
+      "measurements": [
+        {
+          "mode": "capped_dense",
+          "guide_vertices": 512,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 488.0683000010322,
+          "max_allocated_mib": 28.716796875,
+          "max_reserved_mib": 54.0,
+          "loss": 0.0038962909020483494,
+          "alpha_gradient": 3.0863597203278914e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            489.26120000032824,
+            488.0683000010322,
+            477.9132000003301
+          ]
+        },
+        {
+          "mode": "full_dense",
+          "guide_vertices": 3845,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 504.5234999997774,
+          "max_allocated_mib": 76.47216796875,
+          "max_reserved_mib": 112.0,
+          "loss": 0.002701981458812952,
+          "alpha_gradient": -8.952656571636908e-06,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            483.22250000273925,
+            504.5234999997774,
+            510.1730000023963
+          ]
+        },
+        {
+          "mode": "full_blocked",
+          "guide_vertices": 3845,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": 256,
+          "median_forward_backward_ms": 645.5676000005042,
+          "max_allocated_mib": 24.47119140625,
+          "max_reserved_mib": 50.0,
+          "loss": 0.0027019879780709743,
+          "alpha_gradient": -2.031906660704408e-06,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            647.4152000009781,
+            637.8444000001764,
+            645.5676000005042
+          ]
+        }
+      ]
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 1,
+      "mask_method": "background_otsu",
+      "artifact_sha256": "aa5b0c3d8b9150ea81a8ec90d362a4895c71a2bae80db138e0a5f33a7e887f8a",
+      "full_guide_vertices": 608,
+      "measurements": [
+        {
+          "mode": "capped_dense",
+          "guide_vertices": 512,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 498.19489999936195,
+          "max_allocated_mib": 28.642578125,
+          "max_reserved_mib": 54.0,
+          "loss": 0.0018599741160869598,
+          "alpha_gradient": 3.7601323128910735e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            545.9014999978535,
+            498.19489999936195,
+            482.75980000107666
+          ]
+        },
+        {
+          "mode": "full_dense",
+          "guide_vertices": 608,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 506.8848999981128,
+          "max_allocated_mib": 30.431640625,
+          "max_reserved_mib": 46.0,
+          "loss": 0.001894174376502633,
+          "alpha_gradient": 5.921590854995884e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            487.08890000125393,
+            514.8671999995713,
+            506.8848999981128
+          ]
+        },
+        {
+          "mode": "full_blocked",
+          "guide_vertices": 608,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": 256,
+          "median_forward_backward_ms": 557.9674000000523,
+          "max_allocated_mib": 24.22265625,
+          "max_reserved_mib": 50.0,
+          "loss": 0.0018941867165267467,
+          "alpha_gradient": 5.354599124984816e-05,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            529.9473999984912,
+            566.1529999997583,
+            557.9674000000523
+          ]
+        }
+      ]
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 1,
+      "mask_method": "raw_otsu",
+      "artifact_sha256": "ba228468996aee4163e928aff40186a88f13261ebf5a65acbae93854aebc98d0",
+      "full_guide_vertices": 13056,
+      "measurements": [
+        {
+          "mode": "capped_dense",
+          "guide_vertices": 512,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 485.222999999678,
+          "max_allocated_mib": 28.92724609375,
+          "max_reserved_mib": 54.0,
+          "loss": 0.005189158022403717,
+          "alpha_gradient": -0.00020142168796155602,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            494.7128000021621,
+            479.7206000002916,
+            485.222999999678
+          ]
+        },
+        {
+          "mode": "full_dense",
+          "guide_vertices": 13056,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": null,
+          "median_forward_backward_ms": 532.5711999976193,
+          "max_allocated_mib": 220.65576171875,
+          "max_reserved_mib": 252.0,
+          "loss": 0.0032570234034210443,
+          "alpha_gradient": -2.182708385589649e-06,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            532.5711999976193,
+            547.1106000004511,
+            511.14589999997406
+          ]
+        },
+        {
+          "mode": "full_blocked",
+          "guide_vertices": 13056,
+          "batch_size": 2,
+          "candidate_points": 1024,
+          "selected_points": 512,
+          "distance_chunk_size": 256,
+          "median_forward_backward_ms": 992.5258000002941,
+          "max_allocated_mib": 25.169921875,
+          "max_reserved_mib": 52.0,
+          "loss": 0.0032570306211709976,
+          "alpha_gradient": -6.263674549700227e-06,
+          "optimizer_updates": 0,
+          "individual_ms": [
+            1016.2100000015926,
+            992.5258000002941,
+            982.5223999978334
+          ]
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "source_sha256": {
+    "scripts/pointneuron2/profile_full_guides.py": "ade99f7976c6c073de9736c63564f14f175e54567ca84bf8db17680d95a9ca9e",
+    "src/pointneuron/models/guide_distances.py": "37136c80b7d21f91c2b1b80ade12dac4febe99421b7d4c7573667b12b66c078b",
+    "src/pointneuron/models/adaptive_sampling.py": "1abc03c98456ebe924684efae15d22cd7b254b1e2f5e8b7617d8212afb47b7cc"
+  },
+  "batch_rule": "Each saved patch repeated twice; timings are diagnostic, not representative dataset throughput.",
+  "coordinate_rule": "Shared patch origin subtracted from candidates and guide; distances retain voxel units.",
+  "memory_rule": "PyTorch allocated/reserved peaks include input tensors and live model state, exclude other processes and driver allocations.",
+  "full_proposal_step": {
+    "mode": "full_blocked",
+    "guide_vertices": 5567,
+    "batch_size": 2,
+    "candidate_points": 1024,
+    "selected_points": 512,
+    "distance_chunk_size": 256,
+    "median_forward_backward_ms": 744.9154000023555,
+    "max_allocated_mib": 116.03466796875,
+    "max_reserved_mib": 136.0,
+    "loss": 51.35843276977539,
+    "alpha_gradient": 0.09364181756973267,
+    "optimizer_updates": 0,
+    "individual_ms": [
+      740.5651999979455,
+      744.9154000023555,
+      814.5775000011781
+    ],
+    "scope": "fresh DGCNN/proposal plus sampler and supervised/Chamfer backward; repeated chick patch",
+    "reference_cache_sha256": "fb07e8879f959475f9231391ed93f4540493a9bac765c0eb2e24479bf5868a2a"
+  },
+  "generated_artifact_root": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\full_guide_profile_seed0",
+  "original_report_sha256": "9db0d724524a3bdcc2018238dd59d7eac5c02fdb51b28ee2245b1d934dc48ebe"
+}

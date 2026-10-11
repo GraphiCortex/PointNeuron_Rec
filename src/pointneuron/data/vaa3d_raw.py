@@ -9,6 +9,8 @@ import numpy as np
 RAW_HEADER_KEY = "raw_image_stack_by_hpeng"
 PBD_HEADER_KEY = "v3d_volume_pkbitdf_encod"
 HEADER_SIZE = 43
+# Stored in PN 2.0 cache/checkpoint contracts to prevent mixing old decoded inputs.
+VOLUME_READER_VERSION = "vaa3d-pbd-v2"
 
 
 @dataclass(frozen=True)
@@ -129,7 +131,9 @@ def decode_pbd8(encoded: bytes, expected_voxels: int) -> bytes:
             if output_index + length > expected_voxels or input_index + packed_length > len(encoded):
                 raise ValueError("PBD8 difference run exceeds stream bounds")
             for packed in encoded[input_index : input_index + packed_length]:
-                for shift in (6, 4, 2, 0):
+                # Vaa3D ImageLoaderBasic::decompressPBD8 consumes low bits first.
+                # Partial final groups also carry their last decoded value onward.
+                for shift in (0, 2, 4, 6):
                     if length == 0:
                         break
                     diff_code = (packed >> shift) & 0x03
@@ -203,20 +207,9 @@ def decode_pbd16(encoded: bytes, expected_voxels: int, byteorder: str = "little"
                 raise ValueError("PBD16 3-bit difference run ended early")
             input_index += packed_length
         elif control < 223:
-            length = control - 79
-            packed_length = (length + 1) // 2
-            if output_index + length > expected_voxels or input_index + packed_length > len(encoded):
-                raise ValueError("PBD16 4-bit difference run exceeds stream bounds")
-            decoded = 0
-            for packed in encoded[input_index : input_index + packed_length]:
-                for shift in (4, 0):
-                    if decoded == length:
-                        break
-                    diff_code = (packed >> shift) & 0x0F
-                    previous = (previous + _signed_difference(diff_code, 4)) & 0xFFFF
-                    write_value(previous)
-                    decoded += 1
-            input_index += packed_length
+            # These extensions are not implemented in the reference decoder.
+            # The old implementation incorrectly treated both ranges as nibbles.
+            raise NotImplementedError("PBD16 four/five-bit extensions require a verified decoder")
         else:
             length = control - 222
             if input_index + 2 > len(encoded) or output_index + length > expected_voxels:
@@ -236,9 +229,11 @@ def decode_pbd16(encoded: bytes, expected_voxels: int, byteorder: str = "little"
 
 def _signed_difference(code: int, bits: int) -> int:
     sign_threshold = 1 << (bits - 1)
-    if code < sign_threshold:
+    # PBD is not two's complement: 3-bit codes 0..4 mean 0..+4;
+    # codes 5..7 mean -1..-3 (ImageLoaderBasic::decompressPBD16).
+    if code <= sign_threshold:
         return code
-    return code - (1 << bits)
+    return sign_threshold - code
 
 
 def _byteorder(endian: str) -> str:

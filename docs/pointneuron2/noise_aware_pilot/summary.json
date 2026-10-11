@@ -1,0 +1,1472 @@
+{
+  "status": "completed",
+  "scope": "four-case preparation pilot; deliberately selected failure/contrast cases, not a broad benchmark",
+  "full_48_patch_run_status": "prepared, not launched",
+  "tests_passed": 142,
+  "powershell_parse": "passed",
+  "pilot_report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_comparison_prepare_pilot\\comparison.json",
+  "pilot_report_sha256": "165db3e7864049cb1cd508488ed4c6e4cae2cd539dab43c95fb1d71d523365bf",
+  "candidate_report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_candidate_prepare_pilot\\comparison.json",
+  "candidate_report_sha256": "31b86300bf77cb9fbfebe72535826d7396230de87d3cc52a8f2c5a47a6ad2c4b",
+  "cli_smoke_report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_cli_prepare_smoke\\comparison.json",
+  "cli_smoke_report_sha256": "09fec5eaa06740f855851bfd132db09a53b7248f7654d401fb40556cd18645c1",
+  "cli_arrays_identical_to_saved_score_pilot": [
+    "fixed/raw_image",
+    "fixed/mask",
+    "fixed/score",
+    "fixed/points",
+    "fixed/full_guide_xyz",
+    "fixed/guide_edges",
+    "fixed/image_guide_xyz",
+    "fixed/lower_xyz",
+    "background_otsu/raw_image",
+    "background_otsu/mask",
+    "background_otsu/score",
+    "background_otsu/points",
+    "background_otsu/full_guide_xyz",
+    "background_otsu/guide_edges",
+    "background_otsu/image_guide_xyz",
+    "background_otsu/lower_xyz",
+    "noise_hysteresis/raw_image",
+    "noise_hysteresis/mask",
+    "noise_hysteresis/score",
+    "noise_hysteresis/points",
+    "noise_hysteresis/full_guide_xyz",
+    "noise_hysteresis/guide_edges",
+    "noise_hysteresis/image_guide_xyz",
+    "noise_hysteresis/lower_xyz"
+  ],
+  "candidate_counts": {
+    "patches": 4,
+    "pool_variants": 36,
+    "selections": 72
+  },
+  "config": {
+    "sample_indices": [
+      0,
+      1,
+      9,
+      10,
+      15,
+      18
+    ],
+    "patch_radius": 48,
+    "patch_stride": 48,
+    "max_patches_per_neuron": 8,
+    "min_foreground_points": 256,
+    "threshold_fraction": 0.2,
+    "background_sigma": 8.0,
+    "noise_high": 4.0,
+    "noise_low": 2.0,
+    "candidate_points": 1024,
+    "guide_points": null,
+    "seed": 0,
+    "methods": [
+      "fixed",
+      "background_otsu",
+      "noise_hysteresis"
+    ],
+    "medial_config": "configs/pointneuron2/medial_sampling.json"
+  },
+  "patches": [
+    {
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 3,
+      "lower_xyz": [
+        480,
+        384,
+        0
+      ],
+      "upper_xyz": [
+        576,
+        480,
+        61
+      ],
+      "reference_curve_points": 551,
+      "boundary_crossing_edges": 10,
+      "terminal_count": 1,
+      "junction_count": 8,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 197488,
+          "foreground_fraction": 0.3385365418833718,
+          "connected_components_26": 51,
+          "full_guide_vertices": 2585,
+          "guide_edges": 2577,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 2585,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9074410163339383,
+              "within_3": 0.9201451905626135,
+              "within_6": 0.9274047186932849,
+              "median_distance": 0.4439264487318924
+            },
+            "full_guide": {
+              "within_1": 0.030852994555353903,
+              "within_3": 0.19056261343012704,
+              "within_6": 0.5553539019963702,
+              "median_distance": 5.302683981151931
+            },
+            "candidate_pool": {
+              "within_1": 0.010889292196007259,
+              "within_3": 0.3194192377495463,
+              "within_6": 0.9056261343012704,
+              "median_distance": 3.6168784455569893
+            },
+            "bounded_guide": {
+              "within_1": 0.030852994555353903,
+              "within_3": 0.19056261343012704,
+              "within_6": 0.5553539019963702,
+              "median_distance": 5.302683981151931
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.358898943540674
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.242640687119285
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 4.358898943540674
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.125,
+                "within_6": 0.75,
+                "median_distance": 5.354172166250827
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.375,
+                "within_6": 1.0,
+                "median_distance": 3.5638086560812248
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.125,
+                "within_6": 0.75,
+                "median_distance": 5.354172166250827
+              }
+            }
+          },
+          "seconds": 2.971333399997093,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0000_patch_003_fixed.npz",
+          "artifact_sha256": "fab0504302947df8dfe6b64148047c8d8ed9699ae2d20019f603887cc956be24",
+          "reused_from_previous_run": true
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 24.543851613998413,
+          "score_range": [
+            0.0,
+            251.32904052734375
+          ],
+          "foreground_voxels": 117925,
+          "foreground_fraction": 0.20214859485941739,
+          "connected_components_26": 118,
+          "full_guide_vertices": 5567,
+          "guide_edges": 5557,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 5567,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9056261343012704,
+              "within_3": 0.9292196007259528,
+              "within_6": 0.9473684210526315,
+              "median_distance": 0.447397886175791
+            },
+            "full_guide": {
+              "within_1": 0.13793103448275862,
+              "within_3": 0.7513611615245009,
+              "within_6": 0.9274047186932849,
+              "median_distance": 1.9818408417339406
+            },
+            "candidate_pool": {
+              "within_1": 0.038112522686025406,
+              "within_3": 0.4809437386569873,
+              "within_6": 0.8874773139745916,
+              "median_distance": 3.0603125486860363
+            },
+            "bounded_guide": {
+              "within_1": 0.13793103448275862,
+              "within_3": 0.7513611615245009,
+              "within_6": 0.9274047186932849,
+              "median_distance": 1.9818408417339406
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4142135623730951
+              },
+              "candidate_pool": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.0
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4142135623730951
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.125,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.6814861599823248
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.7150729388477086
+              },
+              "bounded_guide": {
+                "within_1": 0.125,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.6814861599823248
+              }
+            }
+          },
+          "seconds": 2.968717600000673,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0000_patch_003_background_otsu.npz",
+          "artifact_sha256": "773d03bd2cbfc05b90f702621da12263ea20c4b6494b166ff43787c5e01ed9a5",
+          "reused_from_previous_run": true
+        },
+        "noise_hysteresis": {
+          "difference_sigma_zyx": [
+            3.145074247522592,
+            2.096716165015061,
+            2.096716165015061
+          ],
+          "noise_sigma_before_floor": 2.096716165015061,
+          "noise_floor": 0.2886751345948129,
+          "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+          "noise_scope": "core patch; scalar, not a spatially varying noise map",
+          "noise_sigma": 2.096716165015061,
+          "noise_high": 4.0,
+          "noise_low": 2.0,
+          "threshold": 8.386864660060244,
+          "weak_threshold": 4.193432330030122,
+          "strong_seed_voxels": 164235,
+          "allowed_weak_voxels": 175300,
+          "connectivity": 26,
+          "propagation_scope": "core patch only; no gap filling",
+          "method": "noise_hysteresis",
+          "foreground_voxels": 175285,
+          "foreground_fraction": 0.30047586559196926,
+          "connected_components_26": 35,
+          "full_guide_vertices": 4860,
+          "guide_edges": 4853,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 4860,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9891107078039928,
+              "within_3": 0.9981851179673321,
+              "within_6": 1.0,
+              "median_distance": 0.4216819174118104
+            },
+            "full_guide": {
+              "within_1": 0.09618874773139746,
+              "within_3": 0.6569872958257713,
+              "within_6": 0.9836660617059891,
+              "median_distance": 2.358476063044284
+            },
+            "candidate_pool": {
+              "within_1": 0.032667876588021776,
+              "within_3": 0.5662431941923775,
+              "within_6": 0.9600725952813067,
+              "median_distance": 2.8490725999380953
+            },
+            "bounded_guide": {
+              "within_1": 0.09618874773139746,
+              "within_3": 0.6569872958257713,
+              "within_6": 0.9836660617059891,
+              "median_distance": 2.358476063044284
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.0
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.7416573867739413
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.7416573867739413
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.7416573867739413
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.5184553983001909
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 2.125241466196549
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.625,
+                "within_6": 1.0,
+                "median_distance": 2.8162107049032294
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.75,
+                "within_6": 1.0,
+                "median_distance": 2.125241466196549
+              }
+            }
+          },
+          "seconds": 4.01991149999958,
+          "background_score_artifact_sha256": "773d03bd2cbfc05b90f702621da12263ea20c4b6494b166ff43787c5e01ed9a5",
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_comparison_prepare_pilot\\artifacts\\sample_0000_patch_003_noise_hysteresis.npz",
+          "artifact_sha256": "713fbde4295aebbf3c7264ecd0c2f758efc912886c9450a3296c366670bf0bc0"
+        }
+      },
+      "figure": "sample_0000_patch_003.png",
+      "slice_figure": "sample_0000_patch_003_slices.png",
+      "slices": [
+        {
+          "local_z": 15,
+          "absolute_z": 15.0,
+          "foreground_voxels_by_method": {
+            "fixed": 34,
+            "background_otsu": 2,
+            "noise_hysteresis": 36
+          },
+          "reference_segments_in_slab": 1
+        },
+        {
+          "local_z": 30,
+          "absolute_z": 30.0,
+          "foreground_voxels_by_method": {
+            "fixed": 8678,
+            "background_otsu": 6064,
+            "noise_hysteresis": 8129
+          },
+          "reference_segments_in_slab": 17
+        },
+        {
+          "local_z": 45,
+          "absolute_z": 45.0,
+          "foreground_voxels_by_method": {
+            "fixed": 5192,
+            "background_otsu": 3855,
+            "noise_hysteresis": 4527
+          },
+          "reference_segments_in_slab": 0
+        }
+      ],
+      "contrast_diagnostic": {
+        "raw_max_fraction": 0.00011485228624618159,
+        "raw_uint8_saturation_fraction": 0.00011485228624618159,
+        "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+        "interior_reference_points": 499,
+        "median_signed_contrast": 7.425717519130558,
+        "fraction_contrast_above_2": 0.779559118236473,
+        "fraction_contrast_below_minus_2": 0.10420841683366733,
+        "reference_uint8_saturation_fraction": 0.0
+      }
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 3,
+      "lower_xyz": [
+        481,
+        459,
+        3
+      ],
+      "upper_xyz": [
+        577,
+        555,
+        99
+      ],
+      "reference_curve_points": 761,
+      "boundary_crossing_edges": 9,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 750492,
+          "foreground_fraction": 0.8223010870267884,
+          "connected_components_26": 281,
+          "full_guide_vertices": 4655,
+          "guide_edges": 4654,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 4655,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 1.0,
+              "within_3": 1.0,
+              "within_6": 1.0,
+              "median_distance": 0.49463275737691764
+            },
+            "full_guide": {
+              "within_1": 0.009198423127463863,
+              "within_3": 0.09198423127463863,
+              "within_6": 0.2680683311432326,
+              "median_distance": 9.78640277787627
+            },
+            "candidate_pool": {
+              "within_1": 0.010512483574244415,
+              "within_3": 0.1471747700394218,
+              "within_6": 0.7122207621550591,
+              "median_distance": 4.846598943878445
+            },
+            "bounded_guide": {
+              "within_1": 0.009198423127463863,
+              "within_3": 0.09198423127463863,
+              "within_6": 0.2680683311432326,
+              "median_distance": 9.78640277787627
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 6.911052799998288,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0001_patch_003_fixed.npz",
+          "artifact_sha256": "83f646fe05a63c3a9c7cb1a224ab5fee194859637467c3adf8b51b2b55130e0a",
+          "reused_from_previous_run": true
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 21.560565948486328,
+          "score_range": [
+            0.0,
+            108.2255859375
+          ],
+          "foreground_voxels": 174170,
+          "foreground_fraction": 0.19083505264207443,
+          "connected_components_26": 37,
+          "full_guide_vertices": 5026,
+          "guide_edges": 5024,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 5026,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.5137976346911958,
+              "within_3": 0.7844940867279895,
+              "within_6": 0.8554533508541393,
+              "median_distance": 0.9370531099128513
+            },
+            "full_guide": {
+              "within_1": 0.07227332457293036,
+              "within_3": 0.4980289093298292,
+              "within_6": 0.8318002628120894,
+              "median_distance": 3.0428620524758485
+            },
+            "candidate_pool": {
+              "within_1": 0.01576872536136662,
+              "within_3": 0.23653088042049936,
+              "within_6": 0.7109067017082786,
+              "median_distance": 4.284211167476996
+            },
+            "bounded_guide": {
+              "within_1": 0.07227332457293036,
+              "within_3": 0.4980289093298292,
+              "within_6": 0.8318002628120894,
+              "median_distance": 3.0428620524758485
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 3.573911699997552,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0001_patch_003_background_otsu.npz",
+          "artifact_sha256": "f094956a151104a7080e778ff91b338f337183d52a4916ff98bfc26e7efcf6a8",
+          "reused_from_previous_run": true
+        },
+        "noise_hysteresis": {
+          "difference_sigma_zyx": [
+            3.145074247522592,
+            2.096716165015061,
+            2.096716165015061
+          ],
+          "noise_sigma_before_floor": 2.096716165015061,
+          "noise_floor": 0.2886751345948129,
+          "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+          "noise_scope": "core patch; scalar, not a spatially varying noise map",
+          "noise_sigma": 2.096716165015061,
+          "noise_high": 4.0,
+          "noise_low": 2.0,
+          "threshold": 8.386864660060244,
+          "weak_threshold": 4.193432330030122,
+          "strong_seed_voxels": 286392,
+          "allowed_weak_voxels": 340408,
+          "connectivity": 26,
+          "propagation_scope": "core patch only; no gap filling",
+          "method": "noise_hysteresis",
+          "foreground_voxels": 338253,
+          "foreground_fraction": 0.3706179540755561,
+          "connected_components_26": 44,
+          "full_guide_vertices": 5647,
+          "guide_edges": 5644,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 5647,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.8935611038107752,
+              "within_3": 0.9434954007884363,
+              "within_6": 1.0,
+              "median_distance": 0.5186568898406704
+            },
+            "full_guide": {
+              "within_1": 0.04730617608409987,
+              "within_3": 0.442838370565046,
+              "within_6": 0.8646517739816032,
+              "median_distance": 3.346479561278591
+            },
+            "candidate_pool": {
+              "within_1": 0.018396846254927726,
+              "within_3": 0.27463863337713534,
+              "within_6": 0.8186596583442839,
+              "median_distance": 4.094454567300257
+            },
+            "bounded_guide": {
+              "within_1": 0.04730617608409987,
+              "within_3": 0.442838370565046,
+              "within_6": 0.8646517739816032,
+              "median_distance": 3.346479561278591
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 4.026184199999989,
+          "background_score_artifact_sha256": "f094956a151104a7080e778ff91b338f337183d52a4916ff98bfc26e7efcf6a8",
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_comparison_prepare_pilot\\artifacts\\sample_0001_patch_003_noise_hysteresis.npz",
+          "artifact_sha256": "6c7345c018289031cc2bfc6319db55a91d1b8002cd78680faa25ad3193f79735"
+        }
+      },
+      "figure": "sample_0001_patch_003.png",
+      "slice_figure": "sample_0001_patch_003_slices.png",
+      "slices": [
+        {
+          "local_z": 24,
+          "absolute_z": 27.0,
+          "foreground_voxels_by_method": {
+            "fixed": 8876,
+            "background_otsu": 0,
+            "noise_hysteresis": 0
+          },
+          "reference_segments_in_slab": 0
+        },
+        {
+          "local_z": 48,
+          "absolute_z": 51.0,
+          "foreground_voxels_by_method": {
+            "fixed": 9409,
+            "background_otsu": 3654,
+            "noise_hysteresis": 8988
+          },
+          "reference_segments_in_slab": 7
+        },
+        {
+          "local_z": 72,
+          "absolute_z": 75.0,
+          "foreground_voxels_by_method": {
+            "fixed": 9409,
+            "background_otsu": 2319,
+            "noise_hysteresis": 7539
+          },
+          "reference_segments_in_slab": 0
+        }
+      ],
+      "contrast_diagnostic": {
+        "raw_max_fraction": 0.31194524216230785,
+        "raw_uint8_saturation_fraction": 0.31194524216230785,
+        "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+        "interior_reference_points": 677,
+        "median_signed_contrast": 0.0,
+        "fraction_contrast_above_2": 0.1019202363367799,
+        "fraction_contrast_below_minus_2": 0.12259970457902511,
+        "reference_uint8_saturation_fraction": 0.6868537666174298
+      }
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "source_group": "e_checked6_chick_uw",
+      "partition": "train",
+      "patch_index": 7,
+      "lower_xyz": [
+        817,
+        795,
+        51
+      ],
+      "upper_xyz": [
+        913,
+        891,
+        112
+      ],
+      "reference_curve_points": 0,
+      "boundary_crossing_edges": 0,
+      "terminal_count": 0,
+      "junction_count": 0,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            5.0,
+            133.0
+          ],
+          "foreground_voxels": 267,
+          "foreground_fraction": 0.0004576949317571714,
+          "connected_components_26": 1,
+          "full_guide_vertices": 19,
+          "guide_edges": 18,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 19,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.022132799997052643,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0001_patch_007_fixed.npz",
+          "artifact_sha256": "11b8c18b1c4af1bf9b9c5dfdfc965aae9ec8f6b8250db040c920af81ef669b0d",
+          "reused_from_previous_run": true
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 1.0587860941886902,
+          "score_range": [
+            0.0,
+            90.34974670410156
+          ],
+          "foreground_voxels": 239127,
+          "foreground_fraction": 0.4099146664655323,
+          "connected_components_26": 133,
+          "full_guide_vertices": 29030,
+          "guide_edges": 29027,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 29030,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 30.937802999997075,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0001_patch_007_background_otsu.npz",
+          "artifact_sha256": "3a940c728b164bf91bd7287611830163ce4c0f71d259037be9e9814d29bbfbc5",
+          "reused_from_previous_run": true
+        },
+        "noise_hysteresis": {
+          "difference_sigma_zyx": [
+            2.096716165015061,
+            2.096716165015061,
+            2.096716165015061
+          ],
+          "noise_sigma_before_floor": 2.096716165015061,
+          "noise_floor": 0.2886751345948129,
+          "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+          "noise_scope": "core patch; scalar, not a spatially varying noise map",
+          "noise_sigma": 2.096716165015061,
+          "noise_high": 4.0,
+          "noise_low": 2.0,
+          "threshold": 8.386864660060244,
+          "weak_threshold": 4.193432330030122,
+          "strong_seed_voxels": 358,
+          "allowed_weak_voxels": 4052,
+          "connectivity": 26,
+          "propagation_scope": "core patch only; no gap filling",
+          "method": "noise_hysteresis",
+          "foreground_voxels": 1364,
+          "foreground_fraction": 0.0023381868423849508,
+          "connected_components_26": 7,
+          "full_guide_vertices": 352,
+          "guide_edges": 347,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 352,
+          "reference_support": {
+            "all_foreground": null,
+            "full_guide": null,
+            "candidate_pool": null,
+            "bounded_guide": null
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            },
+            "junctions": {
+              "all_foreground": null,
+              "full_guide": null,
+              "candidate_pool": null,
+              "bounded_guide": null
+            }
+          },
+          "seconds": 0.11347899999964284,
+          "background_score_artifact_sha256": "3a940c728b164bf91bd7287611830163ce4c0f71d259037be9e9814d29bbfbc5",
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_comparison_prepare_pilot\\artifacts\\sample_0001_patch_007_noise_hysteresis.npz",
+          "artifact_sha256": "b78e156f258141907c25e81684fea51fc8b6f43ee516af0859f8ff101c55d02e"
+        }
+      },
+      "figure": "sample_0001_patch_007.png",
+      "slice_figure": "sample_0001_patch_007_slices.png",
+      "slices": [
+        {
+          "local_z": 15,
+          "absolute_z": 66.0,
+          "foreground_voxels_by_method": {
+            "fixed": 0,
+            "background_otsu": 3554,
+            "noise_hysteresis": 0
+          },
+          "reference_segments_in_slab": 0
+        },
+        {
+          "local_z": 30,
+          "absolute_z": 81.0,
+          "foreground_voxels_by_method": {
+            "fixed": 0,
+            "background_otsu": 3868,
+            "noise_hysteresis": 0
+          },
+          "reference_segments_in_slab": 0
+        },
+        {
+          "local_z": 45,
+          "absolute_z": 96.0,
+          "foreground_voxels_by_method": {
+            "fixed": 0,
+            "background_otsu": 4011,
+            "noise_hysteresis": 0
+          },
+          "reference_segments_in_slab": 0
+        }
+      ],
+      "contrast_diagnostic": {
+        "raw_max_fraction": 1.7142132275549491e-06,
+        "raw_uint8_saturation_fraction": 0.0,
+        "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+        "interior_reference_points": 0,
+        "median_signed_contrast": null,
+        "reference_uint8_saturation_fraction": null
+      }
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+      "source_group": "e_checked7_utokyo_fly",
+      "partition": "train",
+      "patch_index": 4,
+      "lower_xyz": [
+        512,
+        591,
+        0
+      ],
+      "upper_xyz": [
+        608,
+        687,
+        96
+      ],
+      "reference_curve_points": 79,
+      "boundary_crossing_edges": 3,
+      "terminal_count": 2,
+      "junction_count": 1,
+      "methods": {
+        "fixed": {
+          "method": "fixed",
+          "constant_score": false,
+          "threshold": 51.0,
+          "score_range": [
+            0.0,
+            255.0
+          ],
+          "foreground_voxels": 25922,
+          "foreground_fraction": 0.028402286470619816,
+          "connected_components_26": 7858,
+          "full_guide_vertices": 4761,
+          "guide_edges": 4263,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 4761,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.8734177215189873,
+              "within_3": 1.0,
+              "within_6": 1.0,
+              "median_distance": 0.544286569826772
+            },
+            "full_guide": {
+              "within_1": 0.379746835443038,
+              "within_3": 0.9493670886075949,
+              "within_6": 1.0,
+              "median_distance": 1.3590249634439142
+            },
+            "candidate_pool": {
+              "within_1": 0.13924050632911392,
+              "within_3": 0.9240506329113924,
+              "within_6": 1.0,
+              "median_distance": 1.88360429499939
+            },
+            "bounded_guide": {
+              "within_1": 0.379746835443038,
+              "within_3": 0.9493670886075949,
+              "within_6": 1.0,
+              "median_distance": 1.3590249634439142
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.9154309543331385
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 1.0,
+                "median_distance": 3.75934639420794
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.2194139122477563
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 1.0,
+                "median_distance": 3.75934639420794
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.6049876410849652
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4240884340978182
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.6107629704845
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.4240884340978182
+              }
+            }
+          },
+          "seconds": 0.5083397999987938,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0018_patch_004_fixed.npz",
+          "artifact_sha256": "dbb89a422c884c3ba7412590282d1880f4ada641272bb6f25a6230f7b04dcf85",
+          "reused_from_previous_run": true
+        },
+        "background_otsu": {
+          "method": "background_otsu",
+          "constant_score": false,
+          "background_sigma": 8.0,
+          "sigma_zyx": [
+            8.0,
+            8.0,
+            8.0
+          ],
+          "boundary_mode": "reflect",
+          "negative_residuals": "clipped to zero",
+          "threshold": 120.28204071521759,
+          "score_range": [
+            0.0,
+            250.34310913085938
+          ],
+          "foreground_voxels": 24765,
+          "foreground_fraction": 0.027134581608089646,
+          "connected_components_26": 7858,
+          "full_guide_vertices": 4751,
+          "guide_edges": 4250,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 4751,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.6329113924050633,
+              "within_3": 0.9746835443037974,
+              "within_6": 1.0,
+              "median_distance": 0.705304688792625
+            },
+            "full_guide": {
+              "within_1": 0.2911392405063291,
+              "within_3": 0.8734177215189873,
+              "within_6": 1.0,
+              "median_distance": 1.5137253857198687
+            },
+            "candidate_pool": {
+              "within_1": 0.0379746835443038,
+              "within_3": 0.7848101265822784,
+              "within_6": 0.9746835443037974,
+              "median_distance": 2.1122138383815767
+            },
+            "bounded_guide": {
+              "within_1": 0.2911392405063291,
+              "within_3": 0.8734177215189873,
+              "within_6": 1.0,
+              "median_distance": 1.5137253857198687
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.1856831103154932
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.875383219457442
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.913866107988787
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.0,
+                "within_6": 1.0,
+                "median_distance": 3.875383219457442
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.3349253428059378
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.279921335455579
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.9057810096658667
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.279921335455579
+              }
+            }
+          },
+          "seconds": 0.9684244000018225,
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\artifacts\\sample_0018_patch_004_background_otsu.npz",
+          "artifact_sha256": "e108a04471910341549f70283fa34bd60da25c7c5c45120f6a7f1a2ab6919bb8",
+          "reused_from_previous_run": true
+        },
+        "noise_hysteresis": {
+          "difference_sigma_zyx": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "noise_sigma_before_floor": 0.0,
+          "noise_floor": 0.2886751345948129,
+          "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+          "noise_scope": "core patch; scalar, not a spatially varying noise map",
+          "noise_sigma": 0.2886751345948129,
+          "noise_high": 4.0,
+          "noise_low": 2.0,
+          "threshold": 1.1547005383792517,
+          "weak_threshold": 0.5773502691896258,
+          "strong_seed_voxels": 29835,
+          "allowed_weak_voxels": 30348,
+          "connectivity": 26,
+          "propagation_scope": "core patch only; no gap filling",
+          "method": "noise_hysteresis",
+          "foreground_voxels": 30281,
+          "foreground_fraction": 0.03317836727940895,
+          "connected_components_26": 7961,
+          "full_guide_vertices": 5542,
+          "guide_edges": 5008,
+          "candidate_rows": 1024,
+          "bounded_guide_vertices": 5542,
+          "reference_support": {
+            "all_foreground": {
+              "within_1": 0.9240506329113924,
+              "within_3": 1.0,
+              "within_6": 1.0,
+              "median_distance": 0.525899363707483
+            },
+            "full_guide": {
+              "within_1": 0.189873417721519,
+              "within_3": 0.9367088607594937,
+              "within_6": 0.9873417721518988,
+              "median_distance": 1.8087705777844383
+            },
+            "candidate_pool": {
+              "within_1": 0.11392405063291139,
+              "within_3": 0.9493670886075949,
+              "within_6": 1.0,
+              "median_distance": 1.5639318737575634
+            },
+            "bounded_guide": {
+              "within_1": 0.189873417721519,
+              "within_3": 0.9367088607594937,
+              "within_6": 0.9873417721518988,
+              "median_distance": 1.8087705777844383
+            }
+          },
+          "role_support": {
+            "terminals": {
+              "all_foreground": {
+                "within_1": 0.5,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.0327584501031999
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 0.5,
+                "median_distance": 4.298654525284016
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.9909974264293013
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 0.5,
+                "within_6": 0.5,
+                "median_distance": 4.298654525284016
+              }
+            },
+            "junctions": {
+              "all_foreground": {
+                "within_1": 1.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 0.6049876410849652
+              },
+              "full_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.080403012941525
+              },
+              "candidate_pool": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 1.0488178273313487
+              },
+              "bounded_guide": {
+                "within_1": 0.0,
+                "within_3": 1.0,
+                "within_6": 1.0,
+                "median_distance": 2.080403012941525
+              }
+            }
+          },
+          "seconds": 0.6034561000014946,
+          "background_score_artifact_sha256": "e108a04471910341549f70283fa34bd60da25c7c5c45120f6a7f1a2ab6919bb8",
+          "artifact": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\noise_comparison_prepare_pilot\\artifacts\\sample_0018_patch_004_noise_hysteresis.npz",
+          "artifact_sha256": "62357ad8ed738de40a3d81255de9e89f2b4de1859889002d7c717c27e6fcf5f0"
+        }
+      },
+      "figure": "sample_0018_patch_004.png",
+      "slice_figure": "sample_0018_patch_004_slices.png",
+      "slices": [
+        {
+          "local_z": 24,
+          "absolute_z": 24.0,
+          "foreground_voxels_by_method": {
+            "fixed": 68,
+            "background_otsu": 68,
+            "noise_hysteresis": 86
+          },
+          "reference_segments_in_slab": 0
+        },
+        {
+          "local_z": 48,
+          "absolute_z": 48.0,
+          "foreground_voxels_by_method": {
+            "fixed": 396,
+            "background_otsu": 294,
+            "noise_hysteresis": 688
+          },
+          "reference_segments_in_slab": 6
+        },
+        {
+          "local_z": 72,
+          "absolute_z": 72.0,
+          "foreground_voxels_by_method": {
+            "fixed": 552,
+            "background_otsu": 552,
+            "noise_hysteresis": 554
+          },
+          "reference_segments_in_slab": 0
+        }
+      ],
+      "contrast_diagnostic": {
+        "raw_max_fraction": 0.024346069183595876,
+        "raw_uint8_saturation_fraction": 0.024346069183595876,
+        "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+        "interior_reference_points": 38,
+        "median_signed_contrast": 70.06824078756645,
+        "fraction_contrast_above_2": 0.8157894736842105,
+        "fraction_contrast_below_minus_2": 0.18421052631578946,
+        "reference_uint8_saturation_fraction": 0.0
+      }
+    }
+  ],
+  "candidate_summary": [
+    {
+      "mask_method": "background_otsu",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "fixed_medial",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.32107363616573315,
+        "supported_length_fraction": 0.32371064093250207,
+        "max_unsupported_run_length": 34.84093991030948
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.23055560192792462,
+          "supported_length_fraction": 0.23124425351778513,
+          "max_unsupported_run_length": 50.266095231352985
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.5021097046413502,
+          "supported_length_fraction": 0.5086434157619358,
+          "max_unsupported_run_length": 3.990629268222463
+        }
+      }
+    },
+    {
+      "mask_method": "background_otsu",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "random",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.31784512977808105,
+        "supported_length_fraction": 0.3192884330334578,
+        "max_unsupported_run_length": 34.84093991030948
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.22782254698779664,
+          "supported_length_fraction": 0.22665051462101815,
+          "max_unsupported_run_length": 50.266095231352985
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.49789029535864976,
+          "supported_length_fraction": 0.504564269858337,
+          "max_unsupported_run_length": 3.990629268222463
+        }
+      }
+    },
+    {
+      "mask_method": "fixed",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "fixed_medial",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.28233224042464333,
+        "supported_length_fraction": 0.2838899025905068,
+        "max_unsupported_run_length": 35.39179037782309
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.1070426644344333,
+          "supported_length_fraction": 0.10728587511288215,
+          "max_unsupported_run_length": 51.299679390619545
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.6329113924050633,
+          "supported_length_fraction": 0.6370979575457559,
+          "max_unsupported_run_length": 3.5760123522301996
+        }
+      }
+    },
+    {
+      "mask_method": "fixed",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "random",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.2747970373647686,
+        "supported_length_fraction": 0.27797868508842627,
+        "max_unsupported_run_length": 37.03079566267731
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.11683690625812346,
+          "supported_length_fraction": 0.11660636914047207,
+          "max_unsupported_run_length": 53.75818731790088
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.5907172995780591,
+          "supported_length_fraction": 0.6007233169843347,
+          "max_unsupported_run_length": 3.5760123522301996
+        }
+      }
+    },
+    {
+      "mask_method": "noise_hysteresis",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "fixed_medial",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.37251366157665095,
+        "supported_length_fraction": 0.37375286575010574,
+        "max_unsupported_run_length": 31.183852280205922
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.18324306620463887,
+          "supported_length_fraction": 0.17946220339969074,
+          "max_unsupported_run_length": 45.47184745060376
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.7510548523206751,
+          "supported_length_fraction": 0.7623341904509359,
+          "max_unsupported_run_length": 2.6078619394102427
+        }
+      }
+    },
+    {
+      "mask_method": "noise_hysteresis",
+      "candidate_method": "uniform",
+      "candidate_budget": 1024,
+      "selector": "random",
+      "reference_patches": 3,
+      "reference_neurons": 3,
+      "mean_over_patches_after_seed_average": {
+        "within_3": 0.386672817940459,
+        "supported_length_fraction": 0.3811304288727873,
+        "max_unsupported_run_length": 31.513411335400196
+      },
+      "by_source_group": {
+        "e_checked6_chick_uw": {
+          "within_3": 0.17916534505414838,
+          "supported_length_fraction": 0.17684674513209334,
+          "max_unsupported_run_length": 45.966186033395175
+        },
+        "e_checked7_utokyo_fly": {
+          "within_3": 0.8016877637130801,
+          "supported_length_fraction": 0.7896977963541754,
+          "max_unsupported_run_length": 2.6078619394102427
+        }
+      }
+    }
+  ],
+  "promoted_method": null
+}

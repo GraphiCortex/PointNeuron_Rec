@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "scope": "saved training-patch slice inspection; no new extraction",
+  "comparison": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\preprocessing-compare_20261010_190312_1596\\masks\\comparison.json",
+  "comparison_sha256": "442773b94afe7f0e3443e25345a6b6c210f85477fe83f79f24765d7b9484db31",
+  "artifact_sha256": {
+    "fixed": "dbb89a422c884c3ba7412590282d1880f4ada641272bb6f25a6230f7b04dcf85",
+    "raw_otsu": "b5a19f29fb053def54c07d7b54b64ce6763d87a740b9955847e88f82cdc3a4bb",
+    "background_otsu": "e108a04471910341549f70283fa34bd60da25c7c5c45120f6a7f1a2ab6919bb8"
+  },
+  "script_sha256": "5fc83de8cf7db92a91f401407c3d0e990f0c642bec2e6c014ffbb980f391f208",
+  "sample_index": 18,
+  "patch_index": 4,
+  "slice_rule": "user-specified local Z or image-depth quartiles; no reference-based choice",
+  "slices": [
+    {
+      "local_z": 24,
+      "absolute_z": 24.0,
+      "foreground_voxels_by_method": {
+        "fixed": 68,
+        "raw_otsu": 68,
+        "background_otsu": 68
+      },
+      "reference_segments_in_slab": 0
+    },
+    {
+      "local_z": 48,
+      "absolute_z": 48.0,
+      "foreground_voxels_by_method": {
+        "fixed": 396,
+        "raw_otsu": 297,
+        "background_otsu": 294
+      },
+      "reference_segments_in_slab": 6
+    },
+    {
+      "local_z": 72,
+      "absolute_z": 72.0,
+      "foreground_voxels_by_method": {
+        "fixed": 552,
+        "raw_otsu": 552,
+        "background_otsu": 552
+      },
+      "reference_segments_in_slab": 0
+    }
+  ],
+  "display_vmax": 255.0
+}

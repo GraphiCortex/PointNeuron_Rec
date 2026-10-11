@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import random
 from pathlib import Path
 import sys
 
@@ -10,11 +11,14 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from pointneuron.data.torch_dataset import TrainingCacheDataset, collate_training_records, load_split_paths
+from pointneuron.data.splits import validate_split_file
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Train the PointNeuron skeleton proposal module.")
     parser.add_argument("--split-file", required=True, help="Path to split JSON.")
+    parser.add_argument("--seed", type=int, help="Seed Python, NumPy, PyTorch and CUDA RNGs; unset preserves historical behavior.")
+    parser.add_argument("--require-neuron-split", action="store_true", help="Reject legacy patch splits and crossed neuron/group assignments before training.")
     parser.add_argument("--split", default="train", choices=["train", "val", "test"], help="Split to train on.")
     parser.add_argument("--val-split", default="val", choices=["train", "val", "test"], help="Split to evaluate after each epoch.")
     parser.add_argument("--no-val", action="store_true", help="Disable validation evaluation.")
@@ -40,7 +44,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--proposal-coordinate-mode",
         default="raw",
-        choices=["raw", "normalized"],
+        choices=["raw", "normalized", "local"],
         help="Coordinate convention used by the proposal head. Use normalized for scale-local training; raw preserves legacy checkpoints.",
     )
     parser.add_argument("--loss-mode", default="paper", choices=["paper", "nearest", "conservative"], help="Skeleton proposal loss to train with.")
@@ -74,6 +78,10 @@ def main() -> int:
     parser = build_arg_parser()
     args = parser.parse_args()
 
+    validate_split_file(args.split_file, require_neuron_split=args.require_neuron_split)
+    if args.require_neuron_split and (args.split != "train" or args.val_split != "val" or args.no_val):
+        parser.error("--require-neuron-split trains on train and validates on val; test is reserved")
+
     try:
         import torch
         from torch.utils.data import DataLoader
@@ -89,6 +97,14 @@ def main() -> int:
         paper_skeleton_proposal_loss,
         skeleton_proposal_loss,
     )
+
+    if args.seed is not None:
+        import numpy as np
+        random.seed(args.seed)
+        np.random.seed(args.seed)
+        torch.manual_seed(args.seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(args.seed)
 
     if args.device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"

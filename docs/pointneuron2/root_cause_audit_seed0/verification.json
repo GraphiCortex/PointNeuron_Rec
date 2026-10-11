@@ -1,0 +1,3646 @@
+{
+  "volume_reader_version": "vaa3d-pbd-v2",
+  "volumes": [
+    {
+      "sample_index": 21,
+      "production_matches_reference_byte_for_byte": true,
+      "decoded_sha256": "04f41d7368a400dd7e12a33209c966cf35c4eb6fa4fcd5e8dd4665f1b0371a25"
+    },
+    {
+      "sample_index": 44,
+      "production_matches_reference_byte_for_byte": true,
+      "decoded_sha256": "b762610e564099d6cf68743a1dcb3bcc865699b135db1d5d4bb84d75fa2c97ae"
+    },
+    {
+      "sample_index": 94,
+      "production_matches_reference_byte_for_byte": true,
+      "decoded_sha256": "0cdf25c7328bc312223408a61dc215f89b87fafbc28eb8bdedd0798f37ca9985"
+    }
+  ],
+  "foreground_crops": [
+    {
+      "sample_index": 21,
+      "patch_index": 4,
+      "reference_points": 1588,
+      "image_box_xyz": [
+        [
+          215,
+          192,
+          0
+        ],
+        [
+          311,
+          288,
+          40
+        ]
+      ],
+      "methods": {
+        "historical_dtype_fraction": {
+          "foreground_voxels": 2541,
+          "foreground_fraction": 0.0065868434218405315,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 51.0,
+            "score_range": [
+              0.0,
+              210.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6473551637279596,
+            "within_3": 0.8595717884130982,
+            "within_6": 0.9414357682619647,
+            "median_distance": 0.6618894038557654
+          }
+        },
+        "image_max_fraction": {
+          "foreground_voxels": 2541,
+          "foreground_fraction": 0.0065868434218405315,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 51.0,
+            "score_range": [
+              0.0,
+              210.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6473551637279596,
+            "within_3": 0.8595717884130982,
+            "within_6": 0.9414357682619647,
+            "median_distance": 0.6618894038557654
+          }
+        },
+        "raw_otsu": {
+          "foreground_voxels": 2541,
+          "foreground_fraction": 0.0065868434218405315,
+          "parameters": {
+            "method": "raw_otsu",
+            "constant_score": false,
+            "threshold": 47.578125,
+            "score_range": [
+              0.0,
+              210.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6473551637279596,
+            "within_3": 0.8595717884130982,
+            "within_6": 0.9414357682619647,
+            "median_distance": 0.6618894038557654
+          }
+        },
+        "background_otsu": {
+          "foreground_voxels": 2351,
+          "foreground_fraction": 0.00609432069450889,
+          "parameters": {
+            "method": "background_otsu",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "threshold": 57.459890842437744,
+            "score_range": [
+              0.0,
+              196.1297607421875
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6448362720403022,
+            "within_3": 0.8583123425692695,
+            "within_6": 0.9414357682619647,
+            "median_distance": 0.6751867905933693
+          }
+        },
+        "noise_hysteresis": {
+          "foreground_voxels": 17064,
+          "foreground_fraction": 0.04423372536414279,
+          "parameters": {
+            "method": "noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "noise_sigma_before_floor": 0.0,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": false,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 0.2886751345948129,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 1.1547005383792517,
+            "weak_threshold": 0.5773502691896258,
+            "strong_seed_voxels": 17064,
+            "allowed_weak_voxels": 17064,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "score_range": [
+              0.0,
+              196.1297607421875
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.982367758186398,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.463111086263515
+          }
+        },
+        "guarded_noise_hysteresis": {
+          "foreground_voxels": 2351,
+          "foreground_fraction": 0.00609432069450889,
+          "parameters": {
+            "method": "guarded_noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "noise_sigma_before_floor": 0.0,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": false,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 0.2886751345948129,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 57.459890842437744,
+            "weak_threshold": 57.459890842437744,
+            "strong_seed_voxels": 2351,
+            "allowed_weak_voxels": 2351,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "background_otsu_threshold": 57.459890842437744,
+            "fallback": "background_otsu; noise MAD at floor",
+            "growth_bound": "subset of background Otsu foreground",
+            "score_range": [
+              0.0,
+              196.1297607421875
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6448362720403022,
+            "within_3": 0.8583123425692695,
+            "within_6": 0.9414357682619647,
+            "median_distance": 0.6751867905933693
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 44,
+      "patch_index": 2,
+      "reference_points": 230,
+      "image_box_xyz": [
+        [
+          144,
+          144,
+          0
+        ],
+        [
+          240,
+          240,
+          46
+        ]
+      ],
+      "methods": {
+        "historical_dtype_fraction": {
+          "foreground_voxels": 0,
+          "foreground_fraction": 0.0,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 13107.0,
+            "score_range": [
+              23.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "image_max_fraction": {
+          "foreground_voxels": 927,
+          "foreground_fraction": 0.0020962274689466627,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 819.0,
+            "score_range": [
+              23.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.6956521739130435,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6874769523407834
+          }
+        },
+        "raw_otsu": {
+          "foreground_voxels": 542,
+          "foreground_fraction": 0.0012256259850799258,
+          "parameters": {
+            "method": "raw_otsu",
+            "constant_score": false,
+            "threshold": 1629.53125,
+            "score_range": [
+              23.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.45217391304347826,
+            "within_3": 0.9478260869565217,
+            "within_6": 1.0,
+            "median_distance": 1.0627340987400755
+          }
+        },
+        "background_otsu": {
+          "foreground_voxels": 531,
+          "foreground_fraction": 0.0012007516569694475,
+          "parameters": {
+            "method": "background_otsu",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "threshold": 1540.0165014266968,
+            "score_range": [
+              0.0,
+              3982.264892578125
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.45217391304347826,
+            "within_3": 0.9478260869565217,
+            "within_6": 1.0,
+            "median_distance": 1.0627340987400755
+          }
+        },
+        "noise_hysteresis": {
+          "foreground_voxels": 64601,
+          "foreground_fraction": 0.14608240638772746,
+          "parameters": {
+            "method": "noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              2.096716165015061,
+              2.096716165015061,
+              2.096716165015061
+            ],
+            "noise_sigma_before_floor": 2.096716165015061,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 2.096716165015061,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 8.386864660060244,
+            "weak_threshold": 4.193432330030122,
+            "strong_seed_voxels": 57792,
+            "allowed_weak_voxels": 65523,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "score_range": [
+              0.0,
+              3982.264892578125
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9608695652173913,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.4888418499019247
+          }
+        },
+        "guarded_noise_hysteresis": {
+          "foreground_voxels": 531,
+          "foreground_fraction": 0.0012007516569694475,
+          "parameters": {
+            "method": "guarded_noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              2.096716165015061,
+              2.096716165015061,
+              2.096716165015061
+            ],
+            "noise_sigma_before_floor": 2.096716165015061,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 2.096716165015061,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 1540.0165014266968,
+            "weak_threshold": 1540.0165014266968,
+            "strong_seed_voxels": 531,
+            "allowed_weak_voxels": 531,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "background_otsu_threshold": 1540.0165014266968,
+            "fallback": "none",
+            "growth_bound": "subset of background Otsu foreground",
+            "score_range": [
+              0.0,
+              3982.264892578125
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.45217391304347826,
+            "within_3": 0.9478260869565217,
+            "within_6": 1.0,
+            "median_distance": 1.0627340987400755
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 44,
+      "patch_index": 5,
+      "reference_points": 80,
+      "image_box_xyz": [
+        [
+          384,
+          240,
+          0
+        ],
+        [
+          480,
+          336,
+          46
+        ]
+      ],
+      "methods": {
+        "historical_dtype_fraction": {
+          "foreground_voxels": 0,
+          "foreground_fraction": 0.0,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 13107.0,
+            "score_range": [
+              24.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "image_max_fraction": {
+          "foreground_voxels": 523,
+          "foreground_fraction": 0.0011826612365254635,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 819.0,
+            "score_range": [
+              24.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.95,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.48114973238612696
+          }
+        },
+        "raw_otsu": {
+          "foreground_voxels": 313,
+          "foreground_fraction": 0.0007077876998708797,
+          "parameters": {
+            "method": "raw_otsu",
+            "constant_score": false,
+            "threshold": 1487.015625,
+            "score_range": [
+              24.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.95,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6055215970161025
+          }
+        },
+        "background_otsu": {
+          "foreground_voxels": 298,
+          "foreground_fraction": 0.0006738681615384094,
+          "parameters": {
+            "method": "background_otsu",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "threshold": 1439.0146808624268,
+            "score_range": [
+              0.0,
+              3961.15869140625
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.95,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6069065814652916
+          }
+        },
+        "noise_hysteresis": {
+          "foreground_voxels": 66177,
+          "foreground_fraction": 0.14964621921519233,
+          "parameters": {
+            "method": "noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              10.483580825075306,
+              11.531938907582834,
+              10.483580825075306
+            ],
+            "noise_sigma_before_floor": 10.483580825075306,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 10.483580825075306,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 41.93432330030122,
+            "weak_threshold": 20.96716165015061,
+            "strong_seed_voxels": 42782,
+            "allowed_weak_voxels": 68010,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "score_range": [
+              0.0,
+              3961.15869140625
+            ]
+          },
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.45655407540715026
+          }
+        },
+        "guarded_noise_hysteresis": {
+          "foreground_voxels": 298,
+          "foreground_fraction": 0.0006738681615384094,
+          "parameters": {
+            "method": "guarded_noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              10.483580825075306,
+              11.531938907582834,
+              10.483580825075306
+            ],
+            "noise_sigma_before_floor": 10.483580825075306,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 10.483580825075306,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 1439.0146808624268,
+            "weak_threshold": 1439.0146808624268,
+            "strong_seed_voxels": 298,
+            "allowed_weak_voxels": 298,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "background_otsu_threshold": 1439.0146808624268,
+            "fallback": "none",
+            "growth_bound": "subset of background Otsu foreground",
+            "score_range": [
+              0.0,
+              3961.15869140625
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.95,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6069065814652916
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 44,
+      "patch_index": 6,
+      "reference_points": 20,
+      "image_box_xyz": [
+        [
+          432,
+          0,
+          0
+        ],
+        [
+          511,
+          96,
+          46
+        ]
+      ],
+      "methods": {
+        "historical_dtype_fraction": {
+          "foreground_voxels": 0,
+          "foreground_fraction": 0.0,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 13107.0,
+            "score_range": [
+              30.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0,
+            "median_distance": null
+          }
+        },
+        "image_max_fraction": {
+          "foreground_voxels": 101,
+          "foreground_fraction": 0.00027692476420267603,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 819.0,
+            "score_range": [
+              30.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6382082161305984
+          }
+        },
+        "raw_otsu": {
+          "foreground_voxels": 39399,
+          "foreground_fraction": 0.10802533450318053,
+          "parameters": {
+            "method": "raw_otsu",
+            "constant_score": false,
+            "threshold": 93.515625,
+            "score_range": [
+              30.0,
+              4095.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.5036979895601682
+          }
+        },
+        "background_otsu": {
+          "foreground_voxels": 68,
+          "foreground_fraction": 0.00018644439570081157,
+          "parameters": {
+            "method": "background_otsu",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "threshold": 994.8837890625,
+            "score_range": [
+              0.0,
+              3979.53515625
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6438162663065359
+          }
+        },
+        "noise_hysteresis": {
+          "foreground_voxels": 65148,
+          "foreground_fraction": 0.17862469839877165,
+          "parameters": {
+            "method": "noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              5.241790412537653,
+              5.241790412537653,
+              5.241790412537653
+            ],
+            "noise_sigma_before_floor": 5.241790412537653,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 5.241790412537653,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 20.96716165015061,
+            "weak_threshold": 10.483580825075306,
+            "strong_seed_voxels": 50022,
+            "allowed_weak_voxels": 66762,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "score_range": [
+              0.0,
+              3979.53515625
+            ]
+          },
+          "reference_support": {
+            "within_1": 1.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.5036979895601682
+          }
+        },
+        "guarded_noise_hysteresis": {
+          "foreground_voxels": 68,
+          "foreground_fraction": 0.00018644439570081157,
+          "parameters": {
+            "method": "guarded_noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              5.241790412537653,
+              5.241790412537653,
+              5.241790412537653
+            ],
+            "noise_sigma_before_floor": 5.241790412537653,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": true,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 5.241790412537653,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 994.8837890625,
+            "weak_threshold": 994.8837890625,
+            "strong_seed_voxels": 68,
+            "allowed_weak_voxels": 68,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "background_otsu_threshold": 994.8837890625,
+            "fallback": "none",
+            "growth_bound": "subset of background Otsu foreground",
+            "score_range": [
+              0.0,
+              3979.53515625
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.6438162663065359
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 94,
+      "patch_index": 3,
+      "reference_points": 192,
+      "image_box_xyz": [
+        [
+          240,
+          288,
+          96
+        ],
+        [
+          336,
+          384,
+          164
+        ]
+      ],
+      "methods": {
+        "historical_dtype_fraction": {
+          "foreground_voxels": 16691,
+          "foreground_fraction": 0.025709273113469835,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 51.0,
+            "score_range": [
+              0.0,
+              255.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9322916666666666,
+            "within_3": 0.9791666666666666,
+            "within_6": 1.0,
+            "median_distance": 0.507091093603247
+          }
+        },
+        "image_max_fraction": {
+          "foreground_voxels": 16691,
+          "foreground_fraction": 0.025709273113469835,
+          "parameters": {
+            "method": "fixed",
+            "constant_score": false,
+            "threshold": 51.0,
+            "score_range": [
+              0.0,
+              255.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.9322916666666666,
+            "within_3": 0.9791666666666666,
+            "within_6": 1.0,
+            "median_distance": 0.507091093603247
+          }
+        },
+        "raw_otsu": {
+          "foreground_voxels": 13527,
+          "foreground_fraction": 0.02083574006386115,
+          "parameters": {
+            "method": "raw_otsu",
+            "constant_score": false,
+            "threshold": 121.5234375,
+            "score_range": [
+              0.0,
+              255.0
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.7239583333333334,
+            "within_3": 0.7916666666666666,
+            "within_6": 0.875,
+            "median_distance": 0.5563878123063153
+          }
+        },
+        "background_otsu": {
+          "foreground_voxels": 13043,
+          "foreground_fraction": 0.0200902312155645,
+          "parameters": {
+            "method": "background_otsu",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "threshold": 64.93583530187607,
+            "score_range": [
+              0.0,
+              195.5714569091797
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.8385416666666666,
+            "within_3": 0.921875,
+            "within_6": 1.0,
+            "median_distance": 0.5362363490085995
+          }
+        },
+        "noise_hysteresis": {
+          "foreground_voxels": 29863,
+          "foreground_fraction": 0.04599820400141092,
+          "parameters": {
+            "method": "noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "noise_sigma_before_floor": 0.0,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": false,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 0.2886751345948129,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 1.1547005383792517,
+            "weak_threshold": 0.5773502691896258,
+            "strong_seed_voxels": 19535,
+            "allowed_weak_voxels": 33541,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "score_range": [
+              0.0,
+              195.5714569091797
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.984375,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 0.4976487845385216
+          }
+        },
+        "guarded_noise_hysteresis": {
+          "foreground_voxels": 13043,
+          "foreground_fraction": 0.0200902312155645,
+          "parameters": {
+            "method": "guarded_noise_hysteresis",
+            "constant_score": false,
+            "background_sigma": 8.0,
+            "sigma_zyx": [
+              8.0,
+              8.0,
+              8.0
+            ],
+            "boundary_mode": "reflect",
+            "negative_residuals": "clipped to zero",
+            "difference_sigma_zyx": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "noise_sigma_before_floor": 0.0,
+            "noise_floor": 0.2886751345948129,
+            "noise_estimate_above_floor": false,
+            "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+            "noise_scope": "core patch; scalar, not a spatially varying noise map",
+            "noise_sigma": 0.2886751345948129,
+            "noise_high": 4.0,
+            "noise_low": 2.0,
+            "threshold": 64.93583530187607,
+            "weak_threshold": 64.93583530187607,
+            "strong_seed_voxels": 13043,
+            "allowed_weak_voxels": 13043,
+            "connectivity": 26,
+            "propagation_scope": "core patch only; no gap filling",
+            "background_otsu_threshold": 64.93583530187607,
+            "fallback": "background_otsu; noise MAD at floor",
+            "growth_bound": "subset of background Otsu foreground",
+            "score_range": [
+              0.0,
+              195.5714569091797
+            ]
+          },
+          "reference_support": {
+            "within_1": 0.8385416666666666,
+            "within_3": 0.921875,
+            "within_6": 1.0,
+            "median_distance": 0.5362363490085995
+          }
+        }
+      }
+    }
+  ],
+  "scope": "decoder correctness and exploratory crop coverage; no training or reconstruction gain",
+  "training_supervision": [
+    {
+      "sample_index": 0,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 3,
+      "local_label_nodes": 135,
+      "clipped_reference_points": 551,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 223,
+      "near_curve_but_node_target_negative": 8,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 4,
+      "local_label_nodes": 203,
+      "clipped_reference_points": 714,
+      "crossing_edges": 11,
+      "candidate_rows_near_curve_6": 299,
+      "near_curve_but_node_target_negative": 6,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 0,
+      "local_label_nodes": 8,
+      "clipped_reference_points": 31,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1023,
+      "near_curve_but_node_target_negative": 7,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 1,
+      "local_label_nodes": 9,
+      "clipped_reference_points": 49,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1012,
+      "near_curve_but_node_target_negative": 31,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 2,
+      "local_label_nodes": 1,
+      "clipped_reference_points": 2,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 359,
+      "near_curve_but_node_target_negative": 10,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 761,
+      "crossing_edges": 9,
+      "candidate_rows_near_curve_6": 102,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 102
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 4,
+      "local_label_nodes": 4,
+      "clipped_reference_points": 46,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 686,
+      "near_curve_but_node_target_negative": 192,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 5,
+      "local_label_nodes": 12,
+      "clipped_reference_points": 121,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 411,
+      "near_curve_but_node_target_negative": 125,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 1,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 3,
+      "local_label_nodes": 109,
+      "clipped_reference_points": 1325,
+      "crossing_edges": 22,
+      "candidate_rows_near_curve_6": 325,
+      "near_curve_but_node_target_negative": 105,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 7,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 3,
+      "local_label_nodes": 131,
+      "clipped_reference_points": 320,
+      "crossing_edges": 8,
+      "candidate_rows_near_curve_6": 885,
+      "near_curve_but_node_target_negative": 10,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 4,
+      "local_label_nodes": 382,
+      "clipped_reference_points": 1150,
+      "crossing_edges": 17,
+      "candidate_rows_near_curve_6": 607,
+      "near_curve_but_node_target_negative": 11,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 0,
+      "local_label_nodes": 40,
+      "clipped_reference_points": 164,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 913,
+      "near_curve_but_node_target_negative": 6,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 1,
+      "local_label_nodes": 137,
+      "clipped_reference_points": 425,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 955,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 2,
+      "local_label_nodes": 229,
+      "clipped_reference_points": 727,
+      "crossing_edges": 11,
+      "candidate_rows_near_curve_6": 889,
+      "near_curve_but_node_target_negative": 9,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 3,
+      "local_label_nodes": 28,
+      "clipped_reference_points": 94,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 91,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 4,
+      "local_label_nodes": 11,
+      "clipped_reference_points": 34,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 48,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 5,
+      "local_label_nodes": 3,
+      "clipped_reference_points": 10,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 114,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 6,
+      "local_label_nodes": 75,
+      "clipped_reference_points": 307,
+      "crossing_edges": 7,
+      "candidate_rows_near_curve_6": 975,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 10,
+      "patch_index": 7,
+      "local_label_nodes": 79,
+      "clipped_reference_points": 319,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 981,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 3,
+      "local_label_nodes": 146,
+      "clipped_reference_points": 513,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 305,
+      "near_curve_but_node_target_negative": 8,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 4,
+      "local_label_nodes": 44,
+      "clipped_reference_points": 154,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 106,
+      "near_curve_but_node_target_negative": 3,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 11,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 0,
+      "local_label_nodes": 10,
+      "clipped_reference_points": 77,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 1,
+      "local_label_nodes": 10,
+      "clipped_reference_points": 77,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 2,
+      "local_label_nodes": 19,
+      "clipped_reference_points": 78,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 795,
+      "near_curve_but_node_target_negative": 51,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 3,
+      "local_label_nodes": 10,
+      "clipped_reference_points": 67,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 97,
+      "near_curve_but_node_target_negative": 33,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 4,
+      "local_label_nodes": 49,
+      "clipped_reference_points": 229,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 258,
+      "near_curve_but_node_target_negative": 13,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 5,
+      "local_label_nodes": 76,
+      "clipped_reference_points": 269,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 929,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 6,
+      "local_label_nodes": 46,
+      "clipped_reference_points": 193,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 928,
+      "near_curve_but_node_target_negative": 14,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 14,
+      "patch_index": 7,
+      "local_label_nodes": 33,
+      "clipped_reference_points": 213,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 464,
+      "near_curve_but_node_target_negative": 24,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 2,
+      "local_label_nodes": 236,
+      "clipped_reference_points": 614,
+      "crossing_edges": 8,
+      "candidate_rows_near_curve_6": 778,
+      "near_curve_but_node_target_negative": 14,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 4,
+      "local_label_nodes": 28,
+      "clipped_reference_points": 79,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 60,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 5,
+      "local_label_nodes": 23,
+      "clipped_reference_points": 62,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 30,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 18,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 0,
+      "local_label_nodes": 5,
+      "clipped_reference_points": 25,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 941,
+      "near_curve_but_node_target_negative": 29,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 3,
+      "local_label_nodes": 331,
+      "clipped_reference_points": 642,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 659,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 20,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 3,
+      "local_label_nodes": 20,
+      "clipped_reference_points": 41,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 4,
+      "local_label_nodes": 62,
+      "clipped_reference_points": 255,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 591,
+      "near_curve_but_node_target_negative": 54,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 23,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 3,
+      "local_label_nodes": 33,
+      "clipped_reference_points": 243,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 520,
+      "near_curve_but_node_target_negative": 40,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 25,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 4,
+      "local_label_nodes": 83,
+      "clipped_reference_points": 362,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 518,
+      "near_curve_but_node_target_negative": 21,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 5,
+      "local_label_nodes": 21,
+      "clipped_reference_points": 98,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 344,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 2,
+      "local_label_nodes": 24,
+      "clipped_reference_points": 86,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 693,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 3,
+      "local_label_nodes": 59,
+      "clipped_reference_points": 212,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 561,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 39,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 0,
+      "local_label_nodes": 20,
+      "clipped_reference_points": 57,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 950,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 1,
+      "local_label_nodes": 13,
+      "clipped_reference_points": 49,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 855,
+      "near_curve_but_node_target_negative": 4,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 2,
+      "local_label_nodes": 95,
+      "clipped_reference_points": 279,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 927,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 3,
+      "local_label_nodes": 18,
+      "clipped_reference_points": 47,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 759,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 4,
+      "local_label_nodes": 33,
+      "clipped_reference_points": 99,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 846,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 5,
+      "local_label_nodes": 82,
+      "clipped_reference_points": 274,
+      "crossing_edges": 8,
+      "candidate_rows_near_curve_6": 849,
+      "near_curve_but_node_target_negative": 3,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 6,
+      "local_label_nodes": 92,
+      "clipped_reference_points": 144,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 771,
+      "near_curve_but_node_target_negative": 4,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 41,
+      "patch_index": 7,
+      "local_label_nodes": 79,
+      "clipped_reference_points": 208,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 974,
+      "near_curve_but_node_target_negative": 3,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 0,
+      "local_label_nodes": 577,
+      "clipped_reference_points": 946,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 270,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 1,
+      "local_label_nodes": 16,
+      "clipped_reference_points": 29,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 94,
+      "near_curve_but_node_target_negative": 1,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 3,
+      "local_label_nodes": 7,
+      "clipped_reference_points": 12,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 63,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 4,
+      "local_label_nodes": 13,
+      "clipped_reference_points": 24,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 101,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 5,
+      "local_label_nodes": 4,
+      "clipped_reference_points": 9,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 56,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 6,
+      "local_label_nodes": 158,
+      "clipped_reference_points": 254,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 219,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 53,
+      "patch_index": 7,
+      "local_label_nodes": 43,
+      "clipped_reference_points": 79,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 133,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 4,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 5,
+      "local_label_nodes": 156,
+      "clipped_reference_points": 744,
+      "crossing_edges": 18,
+      "candidate_rows_near_curve_6": 474,
+      "near_curve_but_node_target_negative": 22,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 66,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 4,
+      "local_label_nodes": 121,
+      "clipped_reference_points": 651,
+      "crossing_edges": 14,
+      "candidate_rows_near_curve_6": 541,
+      "near_curve_but_node_target_negative": 18,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 75,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 0,
+      "local_label_nodes": 946,
+      "clipped_reference_points": 1587,
+      "crossing_edges": 22,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 1,
+      "local_label_nodes": 1236,
+      "clipped_reference_points": 2085,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 2,
+      "local_label_nodes": 994,
+      "clipped_reference_points": 1681,
+      "crossing_edges": 22,
+      "candidate_rows_near_curve_6": 994,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 3,
+      "local_label_nodes": 1296,
+      "clipped_reference_points": 2193,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1006,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 4,
+      "local_label_nodes": 61,
+      "clipped_reference_points": 119,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 887,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 5,
+      "local_label_nodes": 110,
+      "clipped_reference_points": 201,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 882,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 6,
+      "local_label_nodes": 97,
+      "clipped_reference_points": 185,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 946,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 85,
+      "patch_index": 7,
+      "local_label_nodes": 224,
+      "clipped_reference_points": 304,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 983,
+      "near_curve_but_node_target_negative": 1,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 0,
+      "local_label_nodes": 48,
+      "clipped_reference_points": 93,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 1,
+      "local_label_nodes": 48,
+      "clipped_reference_points": 93,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 2,
+      "local_label_nodes": 534,
+      "clipped_reference_points": 981,
+      "crossing_edges": 20,
+      "candidate_rows_near_curve_6": 884,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 3,
+      "local_label_nodes": 2253,
+      "clipped_reference_points": 4112,
+      "crossing_edges": 51,
+      "candidate_rows_near_curve_6": 808,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 4,
+      "local_label_nodes": 19,
+      "clipped_reference_points": 40,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 363,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 5,
+      "local_label_nodes": 142,
+      "clipped_reference_points": 271,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 973,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 6,
+      "local_label_nodes": 137,
+      "clipped_reference_points": 248,
+      "crossing_edges": 7,
+      "candidate_rows_near_curve_6": 964,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 86,
+      "patch_index": 7,
+      "local_label_nodes": 137,
+      "clipped_reference_points": 248,
+      "crossing_edges": 7,
+      "candidate_rows_near_curve_6": 964,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 0,
+      "local_label_nodes": 15,
+      "clipped_reference_points": 88,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 895,
+      "near_curve_but_node_target_negative": 35,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 1,
+      "local_label_nodes": 78,
+      "clipped_reference_points": 242,
+      "crossing_edges": 8,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 89,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 2,
+      "local_label_nodes": 61,
+      "clipped_reference_points": 227,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 3,
+      "local_label_nodes": 222,
+      "clipped_reference_points": 721,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 376,
+      "near_curve_but_node_target_negative": 62,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 4,
+      "local_label_nodes": 23,
+      "clipped_reference_points": 101,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 67,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 5,
+      "local_label_nodes": 73,
+      "clipped_reference_points": 190,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 978,
+      "near_curve_but_node_target_negative": 30,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 6,
+      "local_label_nodes": 107,
+      "clipped_reference_points": 371,
+      "crossing_edges": 11,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 7,
+      "local_label_nodes": 4,
+      "clipped_reference_points": 22,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 0,
+      "local_label_nodes": 84,
+      "clipped_reference_points": 329,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 577,
+      "near_curve_but_node_target_negative": 69,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 1,
+      "local_label_nodes": 97,
+      "clipped_reference_points": 355,
+      "crossing_edges": 9,
+      "candidate_rows_near_curve_6": 601,
+      "near_curve_but_node_target_negative": 72,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 2,
+      "local_label_nodes": 158,
+      "clipped_reference_points": 647,
+      "crossing_edges": 14,
+      "candidate_rows_near_curve_6": 608,
+      "near_curve_but_node_target_negative": 12,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 3,
+      "local_label_nodes": 129,
+      "clipped_reference_points": 588,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 616,
+      "near_curve_but_node_target_negative": 15,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 4,
+      "local_label_nodes": 124,
+      "clipped_reference_points": 579,
+      "crossing_edges": 14,
+      "candidate_rows_near_curve_6": 604,
+      "near_curve_but_node_target_negative": 18,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 5,
+      "local_label_nodes": 133,
+      "clipped_reference_points": 547,
+      "crossing_edges": 9,
+      "candidate_rows_near_curve_6": 638,
+      "near_curve_but_node_target_negative": 18,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 6,
+      "local_label_nodes": 145,
+      "clipped_reference_points": 577,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 647,
+      "near_curve_but_node_target_negative": 24,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 93,
+      "patch_index": 7,
+      "local_label_nodes": 40,
+      "clipped_reference_points": 171,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 3,
+      "local_label_nodes": 5,
+      "clipped_reference_points": 13,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 4,
+      "local_label_nodes": 259,
+      "clipped_reference_points": 732,
+      "crossing_edges": 15,
+      "candidate_rows_near_curve_6": 329,
+      "near_curve_but_node_target_negative": 9,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 95,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 0,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 1,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "local_label_nodes": 122,
+      "clipped_reference_points": 624,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 605,
+      "near_curve_but_node_target_negative": 5,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 4,
+      "local_label_nodes": 173,
+      "clipped_reference_points": 688,
+      "crossing_edges": 15,
+      "candidate_rows_near_curve_6": 563,
+      "near_curve_but_node_target_negative": 12,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 0,
+      "local_label_nodes": 1,
+      "clipped_reference_points": 3,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 44,
+      "near_curve_but_node_target_negative": 1,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 1,
+      "local_label_nodes": 15,
+      "clipped_reference_points": 63,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 159,
+      "near_curve_but_node_target_negative": 9,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 2,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 3,
+      "local_label_nodes": 93,
+      "clipped_reference_points": 312,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 256,
+      "near_curve_but_node_target_negative": 13,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 4,
+      "local_label_nodes": 114,
+      "clipped_reference_points": 366,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 254,
+      "near_curve_but_node_target_negative": 8,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 5,
+      "local_label_nodes": 12,
+      "clipped_reference_points": 51,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 124,
+      "near_curve_but_node_target_negative": 13,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 6,
+      "local_label_nodes": 55,
+      "clipped_reference_points": 200,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 196,
+      "near_curve_but_node_target_negative": 10,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 102,
+      "patch_index": 7,
+      "local_label_nodes": 22,
+      "clipped_reference_points": 60,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 270,
+      "near_curve_but_node_target_negative": 9,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 0,
+      "local_label_nodes": 2,
+      "clipped_reference_points": 4,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 32,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 1,
+      "local_label_nodes": 44,
+      "clipped_reference_points": 76,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 197,
+      "near_curve_but_node_target_negative": 2,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 2,
+      "local_label_nodes": 50,
+      "clipped_reference_points": 71,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 144,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 3,
+      "local_label_nodes": 470,
+      "clipped_reference_points": 741,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 271,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 4,
+      "local_label_nodes": 448,
+      "clipped_reference_points": 714,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 343,
+      "near_curve_but_node_target_negative": 1,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 6,
+      "local_label_nodes": 353,
+      "clipped_reference_points": 573,
+      "crossing_edges": 10,
+      "candidate_rows_near_curve_6": 500,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 108,
+      "patch_index": 7,
+      "local_label_nodes": 381,
+      "clipped_reference_points": 615,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 485,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 0,
+      "local_label_nodes": 273,
+      "clipped_reference_points": 423,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 165,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 1,
+      "local_label_nodes": 72,
+      "clipped_reference_points": 137,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 137,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 2,
+      "local_label_nodes": 9,
+      "clipped_reference_points": 12,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 25,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 3,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 4,
+      "local_label_nodes": 230,
+      "clipped_reference_points": 389,
+      "crossing_edges": 9,
+      "candidate_rows_near_curve_6": 287,
+      "near_curve_but_node_target_negative": 1,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 5,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 6,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 126,
+      "patch_index": 7,
+      "local_label_nodes": 0,
+      "clipped_reference_points": 0,
+      "crossing_edges": 0,
+      "candidate_rows_near_curve_6": 0,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 0,
+      "local_label_nodes": 71,
+      "clipped_reference_points": 117,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 1,
+      "local_label_nodes": 18,
+      "clipped_reference_points": 21,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 772,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 2,
+      "local_label_nodes": 18,
+      "clipped_reference_points": 21,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 766,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 3,
+      "local_label_nodes": 375,
+      "clipped_reference_points": 518,
+      "crossing_edges": 6,
+      "candidate_rows_near_curve_6": 1019,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 4,
+      "local_label_nodes": 217,
+      "clipped_reference_points": 326,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 1020,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 5,
+      "local_label_nodes": 63,
+      "clipped_reference_points": 96,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 6,
+      "local_label_nodes": 63,
+      "clipped_reference_points": 96,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 143,
+      "patch_index": 7,
+      "local_label_nodes": 335,
+      "clipped_reference_points": 513,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 1022,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 0,
+      "local_label_nodes": 191,
+      "clipped_reference_points": 301,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 857,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 1,
+      "local_label_nodes": 191,
+      "clipped_reference_points": 301,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 840,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 2,
+      "local_label_nodes": 269,
+      "clipped_reference_points": 435,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 865,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 3,
+      "local_label_nodes": 99,
+      "clipped_reference_points": 154,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 818,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 4,
+      "local_label_nodes": 264,
+      "clipped_reference_points": 416,
+      "crossing_edges": 7,
+      "candidate_rows_near_curve_6": 1001,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 5,
+      "local_label_nodes": 201,
+      "clipped_reference_points": 317,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 995,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 6,
+      "local_label_nodes": 232,
+      "clipped_reference_points": 366,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 1022,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 149,
+      "patch_index": 7,
+      "local_label_nodes": 45,
+      "clipped_reference_points": 69,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 332,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 0,
+      "local_label_nodes": 110,
+      "clipped_reference_points": 159,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 1,
+      "local_label_nodes": 135,
+      "clipped_reference_points": 186,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 2,
+      "local_label_nodes": 79,
+      "clipped_reference_points": 116,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 964,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 3,
+      "local_label_nodes": 102,
+      "clipped_reference_points": 157,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 4,
+      "local_label_nodes": 102,
+      "clipped_reference_points": 157,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 5,
+      "local_label_nodes": 187,
+      "clipped_reference_points": 284,
+      "crossing_edges": 5,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 6,
+      "local_label_nodes": 290,
+      "clipped_reference_points": 516,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 980,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 158,
+      "patch_index": 7,
+      "local_label_nodes": 290,
+      "clipped_reference_points": 516,
+      "crossing_edges": 1,
+      "candidate_rows_near_curve_6": 970,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 0,
+      "local_label_nodes": 259,
+      "clipped_reference_points": 408,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 839,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 1,
+      "local_label_nodes": 375,
+      "clipped_reference_points": 598,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 843,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "local_label_nodes": 64,
+      "clipped_reference_points": 96,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 3,
+      "local_label_nodes": 66,
+      "clipped_reference_points": 99,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 4,
+      "local_label_nodes": 48,
+      "clipped_reference_points": 57,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 1014,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 5,
+      "local_label_nodes": 48,
+      "clipped_reference_points": 57,
+      "crossing_edges": 3,
+      "candidate_rows_near_curve_6": 1014,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 6,
+      "local_label_nodes": 39,
+      "clipped_reference_points": 75,
+      "crossing_edges": 2,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 7,
+      "local_label_nodes": 126,
+      "clipped_reference_points": 159,
+      "crossing_edges": 4,
+      "candidate_rows_near_curve_6": 1024,
+      "near_curve_but_node_target_negative": 0,
+      "near_curve_in_unlabelled_patch": 0
+    }
+  ],
+  "verification_source_sha256": "e76f1fadc90a8ad94aaea96254314373537283aaf3a55f46d286c9187c4354b1"
+}

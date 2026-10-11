@@ -63,11 +63,14 @@ def main() -> int:
     parser.add_argument("--proposal-global-top", type=int, default=4096, help="Maximum aggregated proposals after global NMS.")
     parser.add_argument("--proposal-local-nms-radius", type=float, default=8.0, help="Local proposal NMS radius.")
     parser.add_argument("--proposal-global-nms-radius", type=float, default=12.0, help="Global proposal NMS radius.")
-    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each proposal patch.")
+    parser.add_argument("--point-sample-strategy", default="auto", choices=["auto", "random", "spatial", "medial", "learned"], help="auto restores the checkpoint's sampler; legacy checkpoints use random.")
+    parser.add_argument("--medial-sampling-config", help="JSON parameters forwarded to medial proposal sampling.")
     parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
     parser.add_argument("--render-points", type=int, default=12000)
     args = parser.parse_args()
+    if args.medial_sampling_config and args.point_sample_strategy != "medial":
+        parser.error("--medial-sampling-config requires --point-sample-strategy medial")
 
     sample_indices = requested_sample_indices(args.sample_index, args.sample_range)
     if not sample_indices:
@@ -105,6 +108,7 @@ def main() -> int:
                 point_sample_cell_size=args.point_sample_cell_size,
                 device=args.device,
                 render_points=args.render_points,
+                medial_sampling_config=args.medial_sampling_config,
             )
         except Exception as exc:
             failure = sample_failure(sample_index, exc)
@@ -168,6 +172,7 @@ def run_sample(
     point_sample_cell_size: int,
     device: str,
     render_points: int,
+    medial_sampling_config: str | None = None,
 ) -> dict:
     sample_tag = f"sample_{sample_index:04d}"
     sample_dir = output_root / sample_tag
@@ -181,6 +186,11 @@ def run_sample(
         print(f"reuse proposal: {proposal_path}")
     else:
         proposal_html = sample_dir / f"{sample_tag}_proposals.html"
+        # Keep patch geometry consistent with the sampler's saved training inputs.
+        import torch
+        sampling_pipeline = torch.load(checkpoint, map_location="cpu", weights_only=False).get("sampling_pipeline")
+        patch_radius = sampling_pipeline["patch_radius"] if sampling_pipeline else 96
+        stride = sampling_pipeline["stride"] if sampling_pipeline else 96
         run_command(
             [
                 sys.executable,
@@ -194,9 +204,9 @@ def run_sample(
                 "--threshold-fraction",
                 str(proposal_threshold_fraction),
                 "--patch-radius",
-                "96",
+                str(patch_radius),
                 "--stride",
-                "96",
+                str(stride),
                 "--max-patches",
                 "256",
                 "--patch-selection",
@@ -227,7 +237,7 @@ def run_sample(
                 str(proposal_path),
                 "--html-output",
                 str(proposal_html),
-            ]
+            ] + (["--medial-sampling-config", medial_sampling_config] if medial_sampling_config else [])
         )
 
     graph_path = sample_dir / f"{sample_tag}_{initializer}_graph.npz"

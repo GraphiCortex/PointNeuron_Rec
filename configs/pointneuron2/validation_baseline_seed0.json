@@ -1,0 +1,37 @@
+{
+  "dataset_id": "gold166",
+  "partition": "configs/pointneuron2/partition_seed0.json",
+  "split": "val",
+  "sample_indices": [
+    19,
+    21,
+    35,
+    44,
+    79,
+    94,
+    135
+  ],
+  "checkpoint": "tmp/pointneuron2/baseline_seed0/proposal.pt",
+  "checkpoint_sha256": "a8bba6938ecbe92f33f4f4af45eb5b5dd797e1248c373218ecdd152f77335f43",
+  "reconstruction": {
+    "initializer": "geodesic",
+    "graph_selection_mode": "adaptive_connected_coverage_nms",
+    "graph_min_proposal_score": 0.85,
+    "graph_nms_mode": "distance",
+    "graph_nms_distance": 18,
+    "graph_max_nodes": 128
+  },
+  "proposal_inference": {
+    "points_per_patch": 2048,
+    "patch_radius": 96,
+    "stride": 96,
+    "max_patches": 256,
+    "seed": 0
+  },
+  "geometry_evaluation": {
+    "distance_threshold": 6.0,
+    "sample_step": 1.0,
+    "units": "voxel coordinates"
+  },
+  "interpretation": "Neuron-disjoint internal validation; not external confirmation or an architectural upgrade."
+}

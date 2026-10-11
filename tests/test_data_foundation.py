@@ -103,6 +103,28 @@ class Gold166ScanTests(unittest.TestCase):
 
 
 class Vaa3dRawTests(unittest.TestCase):
+    def test_pbd8_vaa3d_low_bits_first_partial_run_and_carry(self) -> None:
+        # Vaa3D source: p0=sourceChar & 3, followed by right shifts of 2.
+        # Literal 10; differences +1,+2,-1,0; partial +2; next run +1.
+        encoded = bytes([0, 10, 36, 0x39, 33, 0x02, 33, 0x01])
+        self.assertEqual(decode_pbd8(encoded, 7), bytes([10, 11, 13, 12, 12, 14, 15]))
+
+    def test_pbd8_vaa3d_all_packed_codes_and_partial_lengths(self) -> None:
+        for packed in range(256):
+            for length in range(1, 5):
+                expected = [100]
+                for i in range(length):
+                    code = (packed // (4 ** i)) % 4
+                    expected.append((expected[-1] + (code if code < 3 else -1)) % 256)
+                self.assertEqual(decode_pbd8(bytes([0, 100, 32 + length, packed]), 1 + length), bytes(expected))
+
+    def test_pbd16_vaa3d_three_bit_difference_code_mapping(self) -> None:
+        # Codes 0,1,2,3,4,5,6,7 map to 0,+1,+2,+3,+4,-1,-2,-3.
+        encoded = bytes([0, 100, 0, 39, 0x05, 0x39, 0x77])
+        decoded = decode_pbd16(encoded, 9)
+        values = [int.from_bytes(decoded[i:i + 2], 'little') for i in range(0, len(decoded), 2)]
+        self.assertEqual(values, [100, 100, 101, 103, 106, 110, 109, 107, 104])
+
     def test_decode_pbd8_repeat_literal_and_difference_runs(self) -> None:
         encoded = bytes(
             [
@@ -113,7 +135,7 @@ class Vaa3dRawTests(unittest.TestCase):
                 6,
                 7,
                 35,
-                0b00011011,
+                0b00100100,
             ]
         )
 
@@ -128,7 +150,7 @@ class Vaa3dRawTests(unittest.TestCase):
                 0xE8,
                 0x03,
                 33,
-                0b00111100,
+                0b00110100,
                 224,
                 0x05,
                 0x00,

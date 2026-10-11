@@ -1,0 +1,157 @@
+{
+  "requested_neurons": 7,
+  "samples": [
+    {
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.4251968503937008,
+      "spatial_f1": 0.6156359781106435,
+      "proposal_segment_coverage": 0.9973208305425318,
+      "selected_segment_coverage": 0.477561955793704,
+      "segment_coverage_drop": 0.5197588747488279,
+      "selected_endpoint_coverage": 0.38095238095238093,
+      "bridges": 1,
+      "reachable_edge_fraction": 0.9921259842519685,
+      "foreground_cap_satisfied": true,
+      "failure": null
+    },
+    {
+      "sample_index": 21,
+      "sample_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.5408163265306122,
+      "spatial_f1": 0.8193696607980491,
+      "proposal_segment_coverage": 0.916404077849861,
+      "selected_segment_coverage": 0.6607970342910102,
+      "segment_coverage_drop": 0.2556070435588508,
+      "selected_endpoint_coverage": 0.5824175824175825,
+      "bridges": 1,
+      "reachable_edge_fraction": 0.9921259842519685,
+      "foreground_cap_satisfied": true,
+      "failure": null
+    },
+    {
+      "sample_index": 35,
+      "sample_id": "p_checked6_human_allen_confocal/in_house1",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.3162393162393162,
+      "spatial_f1": 0.09528303274000564,
+      "proposal_segment_coverage": 0.14747977598008713,
+      "selected_segment_coverage": 0.023231694669155777,
+      "segment_coverage_drop": 0.12424808131093135,
+      "selected_endpoint_coverage": 0.05454545454545454,
+      "bridges": 61,
+      "reachable_edge_fraction": 0.5196850393700787,
+      "foreground_cap_satisfied": true,
+      "failure": null
+    },
+    {
+      "sample_index": 44,
+      "sample_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.14960629921259844,
+      "spatial_f1": 0.002933507170795306,
+      "proposal_segment_coverage": 0.03389830508474576,
+      "selected_segment_coverage": 0.025055268975681652,
+      "segment_coverage_drop": 0.00884303610906411,
+      "selected_endpoint_coverage": 0.0,
+      "bridges": 54,
+      "reachable_edge_fraction": 0.7086614173228346,
+      "foreground_cap_satisfied": true,
+      "failure": null
+    },
+    {
+      "sample_index": 79,
+      "sample_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.3316582914572864,
+      "spatial_f1": 0.21093702474322848,
+      "proposal_segment_coverage": 0.5964444444444444,
+      "selected_segment_coverage": 0.08482539682539683,
+      "segment_coverage_drop": 0.5116190476190476,
+      "selected_endpoint_coverage": 0.08376963350785341,
+      "bridges": 84,
+      "reachable_edge_fraction": 0.33858267716535434,
+      "foreground_cap_satisfied": false,
+      "failure": null
+    },
+    {
+      "sample_index": 94,
+      "sample_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.1732283464566929,
+      "spatial_f1": 0.027547602165048563,
+      "proposal_segment_coverage": 0.13251748251748252,
+      "selected_segment_coverage": 0.031818181818181815,
+      "segment_coverage_drop": 0.1006993006993007,
+      "selected_endpoint_coverage": 0.018518518518518517,
+      "bridges": 89,
+      "reachable_edge_fraction": 0.30708661417322836,
+      "foreground_cap_satisfied": false,
+      "failure": null
+    },
+    {
+      "sample_index": 135,
+      "sample_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+      "execution_status": "PASS",
+      "swc_valid": true,
+      "edge_f1": 0.9473684210526315,
+      "spatial_f1": 0.8486582209508242,
+      "proposal_segment_coverage": 0.8222950819672131,
+      "selected_segment_coverage": 0.4426229508196721,
+      "segment_coverage_drop": 0.379672131147541,
+      "selected_endpoint_coverage": 0.2727272727272727,
+      "bridges": 0,
+      "reachable_edge_fraction": 1.0,
+      "foreground_cap_satisfied": true,
+      "failure": null
+    }
+  ],
+  "means": {
+    "edge_f1": {
+      "mean": 0.41201626447754836,
+      "count": 7
+    },
+    "spatial_f1": {
+      "mean": 0.37433786095408494,
+      "count": 7
+    },
+    "proposal_segment_coverage": {
+      "mean": 0.5209085711980522,
+      "count": 7
+    },
+    "selected_segment_coverage": {
+      "mean": 0.2494160690275432,
+      "count": 7
+    },
+    "segment_coverage_drop": {
+      "mean": 0.2714925021705091,
+      "count": 7
+    },
+    "bridges": {
+      "mean": 41.42857142857143,
+      "count": 7
+    }
+  },
+  "source_sha256": {
+    "tmp/pointneuron2/validation_baseline_seed0/summary.json": "054ffe112197877e0b3b5a56f7d4e257b259e3fb602e1ac1db247758db35750b",
+    "tmp/pointneuron2/validation_baseline_seed0/topology_report.json": "639423b12703ac830c934565e29c2603c87d228851df6e42b845e3379f9420bc",
+    "tmp/pointneuron2/validation_baseline_seed0/geometry_report.json": "049dd59eddb83c951f6340c114efda8ef532d56c498f1cee05ea75afee13db03",
+    "tmp/pointneuron2/validation_baseline_seed0/selection_report.json": "2ff61a1ece98c8e79ceef2d5b814d910b090d13b1a98df3dd3d6117b21ca1dea"
+  },
+  "checkpoint_sha256": "a8bba6938ecbe92f33f4f4af45eb5b5dd797e1248c373218ecdd152f77335f43",
+  "metric_notes": [
+    "Internal validation on seven mixed-domain neurons; not external testing or a direct comparison to historical stable-domain means.",
+    "Spatial F1: voxel distance threshold 6, resampling step 1; topology F1: GT-induced graph on predicted nodes.",
+    "Selection coverage: distance threshold 8, GT segment sampling step 4, proposal score threshold inherited from graph (0.85).",
+    "Candidate proposals in the selection audit are post-local-filtered and score-filtered; this is not raw network-output coverage.",
+    "Bridge counts refer to fallback graph connections. Tree validity does not establish anatomical correctness."
+  ]
+}

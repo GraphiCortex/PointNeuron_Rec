@@ -1,0 +1,94 @@
+{
+  "records_checked": 883,
+  "points_per_patch": [
+    512
+  ],
+  "validation_header_and_swc_checks": [
+    {
+      "sample_index": 19,
+      "sample_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "volume_dimensions": [
+        1024,
+        1024,
+        126,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 21,
+      "sample_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "volume_dimensions": [
+        512,
+        512,
+        41,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 35,
+      "sample_id": "p_checked6_human_allen_confocal/in_house1",
+      "volume_dimensions": [
+        1882,
+        1025,
+        85,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 44,
+      "sample_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "volume_dimensions": [
+        512,
+        512,
+        47,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 79,
+      "sample_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "volume_dimensions": [
+        724,
+        1024,
+        33,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 94,
+      "sample_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "volume_dimensions": [
+        700,
+        732,
+        165,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    },
+    {
+      "sample_index": 135,
+      "sample_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+      "volume_dimensions": [
+        511,
+        511,
+        423,
+        1
+      ],
+      "swc_valid": true,
+      "out_of_bounds_nodes": 0
+    }
+  ],
+  "errors": [],
+  "alignment_scope": "Bounds and SWC validity only; image/SWC overlay correspondence and physical spacing still require review."
+}

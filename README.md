@@ -1,4 +1,45 @@
-# PointNeuron Reimplementation on Gold166
+# PointNeuron 2.0 development
+
+This is the real PN 2.0 working folder inside the original PointNeuron directory.
+It is a separate Git checkout on branch `pointneuron2`, sharing the original Git
+history. Source files, configs, reports and local run artifacts are physically
+stored here. The original parent checkout remains on `main`.
+
+Start here:
+
+- [Current: confirmed decoder/range/coordinate defects and repairs](docs/pointneuron2/root_cause_findings.md)
+- [Completed reconstruction comparison: results and proposed next step](docs/pointneuron2/sampling_ablation_reconstruction_results.md)
+- [Completed training pilot results and next reconstruction command](docs/pointneuron2/sampling_ablation_pilot_results.md)
+- [Next step: matched sampler training pilot and visible local commands](docs/pointneuron2/sampling_ablation.md)
+- [New results: automatic foreground comparison](docs/pointneuron2/foreground_comparison.md)
+- [Automatic preprocessing: current direction and next comparison](docs/pointneuron2/automatic_preprocessing.md)
+- [Current pipeline status](docs/pointneuron2/README.md)
+- [Current input-quality findings and next research discussion](docs/pointneuron2/input_audit.md)
+- [PN 2.0 scripts and local commands](scripts/pointneuron2/README.md)
+- [Training integration results](docs/pointneuron2/sampling_training.md)
+- [Optional skeleton inspection tool](docs/pointneuron2/manual_review.md)
+
+Entry scripts live in `scripts/pointneuron2`; shared algorithms live in
+`src/pointneuron`; settings live in `configs/pointneuron2`. Figures and readable
+reports live in `docs/pointneuron2`. Logs, caches, checkpoints and the local
+Python environment live in ignored `tmp/pointneuron2`. The large source dataset
+and historical PN 1.0 artifacts remain in the original parent checkout and are
+referenced explicitly by PN 2.0 runners.
+
+The main pipeline should run automatically from the input image through
+reconstruction. Manual mask correction may be considered later if measured
+failures justify it; the existing parameter viewer is an optional diagnostic,
+not a required training or inference step.
+
+The current research task is repairing confirmed image-reader, intensity-range
+and coordinate defects. Earlier runs are historical results on incorrectly
+decoded inputs and require reassessment. See the root-cause report above.
+We discuss substantive
+script/strategy changes and agree on long training runs together; small local
+checks may run as part of an agreed task. Stage 1 has not established a
+reconstruction improvement yet.
+
+## Inherited PN 1.0 reference
 
 This repository contains a working reimplementation of the PointNeuron neuron
 reconstruction pipeline on Gold166 / BigNeuron-style data.

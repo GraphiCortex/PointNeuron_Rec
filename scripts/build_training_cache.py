@@ -14,6 +14,7 @@ from pointneuron.data.alignment import check_swc_in_volume
 from pointneuron.data.gold166 import scan_gold166
 from pointneuron.data.swc import parse_swc
 from pointneuron.data.training_cache import PatchCacheConfig, build_patch_training_records, build_training_record
+from pointneuron.data.medial_sampling import load_medial_config
 from pointneuron.data.vaa3d_raw import read_header
 
 
@@ -36,11 +37,17 @@ def main() -> int:
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to keep a patch.")
     parser.add_argument("--min-unique-fraction", type=float, default=0.0, help="Minimum unique foreground count as a fraction of --max-points for patch records.")
     parser.add_argument("--center-strategy", default="random", choices=["random", "topology", "foreground", "coverage"], help="Patch center sampling strategy for patch records.")
-    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each patch.")
+    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial", "medial"], help="How foreground points are sampled inside each patch.")
+    parser.add_argument("--medial-sampling-config", help="JSON parameters for image-only medial-axis sampling.")
     parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--endpoint-fraction", type=float, default=0.25, help="Fraction of patch centers reserved for SWC endpoints when --center-strategy topology.")
     parser.add_argument("--branch-fraction", type=float, default=0.10, help="Fraction of patch centers reserved for SWC branch nodes when --center-strategy topology.")
     args = parser.parse_args()
+    medial_config = load_medial_config(args.medial_sampling_config)
+    if args.point_sample_strategy == "medial" and args.patches_per_sample <= 0:
+        parser.error("medial sampling requires --patches-per-sample > 0")
+    if args.medial_sampling_config and args.point_sample_strategy != "medial":
+        parser.error("--medial-sampling-config requires --point-sample-strategy medial")
 
     samples = scan_gold166(args.root)
     requested_indices = requested_sample_indices(args.sample_index, args.sample_list)
@@ -81,6 +88,7 @@ def main() -> int:
                     point_sample_cell_size=args.point_sample_cell_size,
                     endpoint_fraction=args.endpoint_fraction,
                     branch_fraction=args.branch_fraction,
+                    medial_sampling=medial_config.to_dict() if args.point_sample_strategy == "medial" else None,
                 )
             if reused:
                 records.extend(reused)
@@ -104,6 +112,7 @@ def main() -> int:
                         point_sample_cell_size=args.point_sample_cell_size,
                         endpoint_fraction=args.endpoint_fraction,
                         branch_fraction=args.branch_fraction,
+                        medial_sampling=medial_config,
                     ),
                     threshold=threshold,
                     seed=args.seed + ordinal,
@@ -188,6 +197,7 @@ def main() -> int:
                 "center_strategy": args.center_strategy if args.patches_per_sample > 0 else None,
                 "point_sample_strategy": args.point_sample_strategy if args.patches_per_sample > 0 else None,
                 "point_sample_cell_size": args.point_sample_cell_size if args.patches_per_sample > 0 else None,
+                "medial_sampling": medial_config.to_dict() if args.point_sample_strategy == "medial" else None,
                 "endpoint_fraction": args.endpoint_fraction if args.patches_per_sample > 0 else None,
                 "branch_fraction": args.branch_fraction if args.patches_per_sample > 0 else None,
                 "records": records,
@@ -272,6 +282,7 @@ def cached_patch_summaries(
     point_sample_cell_size: int = 8,
     endpoint_fraction: float = 0.25,
     branch_fraction: float = 0.10,
+    medial_sampling: dict | None = None,
 ) -> list[dict[str, object]]:
     paths = sorted(output_dir.glob(f"sample_{sample_index:04d}_patch_*.npz"))
     records = []
@@ -303,6 +314,8 @@ def cached_patch_summaries(
         if metadata.get("point_sample_strategy", "random") != point_sample_strategy:
             return []
         if metadata.get("point_sample_cell_size", 8) != point_sample_cell_size:
+            return []
+        if metadata.get("medial_sampling") != medial_sampling:
             return []
         if metadata.get("endpoint_fraction", 0.25) != endpoint_fraction:
             return []

@@ -1,0 +1,523 @@
+{
+  "status": "completed",
+  "scope": "training-only saved-guide point-count control; no extraction or training",
+  "comparison_sha256": "c791da0d9ccd5b74b6ae83c2e28a8836308f839129496dcfbe72d5c0b9a6c720",
+  "script_sha256": "aa527f31235e4377f43494c4f8202d25e1bf57a505f6e70a53dae656f0ee330e",
+  "artifact_sha256": {
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0000_patch_000_fixed.npz": "4a43fd7e5260af13389512eb643e56906cebd069141653e4758fb8379a6a1dd9",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0000_patch_000_noise_hysteresis.npz": "b1c52c8fd77b4808990617d3885a98a858436aa4a577c084d45393899f2ee6fe",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0000_patch_001_fixed.npz": "1f28bf6e7d894833ba7b6e095b276fa707761b8ee85a095f63d8c67caed19b4b",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0000_patch_001_noise_hysteresis.npz": "16769780d35178e272a8579c29d0256c88408d5aad7661c98e1bed3e3b3318e8",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0009_patch_000_fixed.npz": "ed0b13406ddd8a364e90ea9233cbb3f7fac4b3762d7e221b85fdeaf9de90c7d2",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0009_patch_000_noise_hysteresis.npz": "e46099f652621254913d32399a7b2626a1cab6e755c9907975fed16b926d45f9",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0009_patch_001_fixed.npz": "b0f3f9fd59346a8f1873271b3f3fc9d4881859cdf15f6f6ac7c8aabc1ba0dc39",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0009_patch_001_noise_hysteresis.npz": "f3af5ee93916623e1ba1f2e1865f9d3275571e84e250de155ebfcf0df1819fa4",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0015_patch_000_fixed.npz": "89e7487ee7766b0dda2ea0a0fb6f1403069f6dcbce5bf5e20952287d54cb2653",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0015_patch_000_noise_hysteresis.npz": "587c5b410030973aaa38f4949d0c0429bfef0cc19941d18818facf918b80aea0",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0015_patch_001_fixed.npz": "d50374c2c6cfd2abf31e1f8041be3f99260debda1d5df3736c98c66b076423fb",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0015_patch_001_noise_hysteresis.npz": "9f10a3a27f82419f9a49913b3ee1955189132280e0a6493ba6f37ec69c39b622",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0022_patch_000_fixed.npz": "23f601ae9630c5ae9ca8553032a49ce4d4247290c0a53a46ec79a69b2583831e",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0022_patch_000_noise_hysteresis.npz": "f8e4cd41a68d4ce4f9f986127bbe11456dfc499b8ba276827013167afa07d03c",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0022_patch_001_fixed.npz": "56d3aadb1404ae6f878b587a1065506b92eb676f34dcf15fd4225098e4637ed3",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0022_patch_001_noise_hysteresis.npz": "8f39020df94dbff83f1da7e40fbde8672d65c6ee8560fd3980d3e9d7fc357a50",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0046_patch_000_fixed.npz": "3e03d2d5092033f7cb3ae1ad94871871f9bc8d70e585655ef2573c46f3f40507",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0046_patch_000_noise_hysteresis.npz": "f1eaaee7c5bab7da85c617d22b453ffe9d71055fa513f726d57368d8a43e1abb",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0046_patch_001_fixed.npz": "34afde7a955405e8e831108a9cfc22bf0b338152940f2b4755a5a650a941aeea",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0046_patch_001_noise_hysteresis.npz": "7c68234d86743dd6d8fa2f13772ab6b7be171e6cd09e0abfebaf51130fbcb958",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0092_patch_000_fixed.npz": "b0273fb09a9bcb2b2ed4a4c44807aa0d03f592dfe557a82f70e68dcdd7af2cf8",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0092_patch_000_noise_hysteresis.npz": "569c66c4237253e5becb8291df7b7a4858eaa4e0ab641fad9e10d3b889cd341c",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0092_patch_001_fixed.npz": "24ff9ebfb6e733fba25fab32db31c49c819efb7052e669cbd884fb4e45443516",
+    "../../../tmp/pointneuron2/foreground_repaired_seed0/artifacts/sample_0092_patch_001_noise_hysteresis.npz": "f7e81f8ef2317ba9ea98abd8df33268dd398e9819ed2f0ef414c81d857887d7b"
+  },
+  "maximum_budget": 1024,
+  "draws_per_method": 8,
+  "rule": "Per patch, sample the same min(maximum budget, every method unique guide count); no padding",
+  "metric_units": "voxel proximity to available sampled SWC curve; not reconstruction F1 or precision",
+  "mean_rule": "unweighted annotated-patch mean; also retains the six-reference-point fly crop",
+  "patches": [
+    {
+      "sample_index": 0,
+      "patch_index": 0,
+      "reference_curve_points": 770,
+      "common_guide_points": 69,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 69,
+          "full_guide_support": {
+            "within_1": 0.02727272727272727,
+            "within_3": 0.07142857142857142,
+            "within_6": 0.08961038961038961,
+            "median_distance": 32.48071048221285
+          },
+          "matched_mean_support": {
+            "within_1": 0.02727272727272727,
+            "within_3": 0.07142857142857142,
+            "within_6": 0.08961038961038961
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 1685,
+          "full_guide_support": {
+            "within_1": 0.45584415584415583,
+            "within_3": 0.9467532467532468,
+            "within_6": 1.0,
+            "median_distance": 1.0541683366529977
+          },
+          "matched_mean_support": {
+            "within_1": 0.0262987012987013,
+            "within_3": 0.19837662337662337,
+            "within_6": 0.525487012987013
+          },
+          "matched_std_support": {
+            "within_1": 0.003827865624205063,
+            "within_3": 0.024484480715718012,
+            "within_6": 0.028622574499096286
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "reference_curve_points": 595,
+      "common_guide_points": 1024,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 2876,
+          "full_guide_support": {
+            "within_1": 0.06386554621848739,
+            "within_3": 0.39663865546218485,
+            "within_6": 0.7126050420168067,
+            "median_distance": 3.8733603398914562
+          },
+          "matched_mean_support": {
+            "within_1": 0.024789915966386553,
+            "within_3": 0.28634453781512603,
+            "within_6": 0.6754201680672269
+          },
+          "matched_std_support": {
+            "within_1": 0.005231050251255769,
+            "within_3": 0.029958159981563773,
+            "within_6": 0.015229281260033123
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 4618,
+          "full_guide_support": {
+            "within_1": 0.08571428571428572,
+            "within_3": 0.6974789915966386,
+            "within_6": 0.9865546218487395,
+            "median_distance": 2.3122865858403774
+          },
+          "matched_mean_support": {
+            "within_1": 0.02100840336134454,
+            "within_3": 0.3951680672268908,
+            "within_6": 0.9342436974789916
+          },
+          "matched_std_support": {
+            "within_1": 0.006001200360120041,
+            "within_3": 0.04368485192479822,
+            "within_6": 0.02548086371472938
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 0,
+      "reference_curve_points": 0,
+      "common_guide_points": 65,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 65,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 4279,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        }
+      }
+    },
+    {
+      "sample_index": 9,
+      "patch_index": 1,
+      "reference_curve_points": 1150,
+      "common_guide_points": 1024,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 4396,
+          "full_guide_support": {
+            "within_1": 0.3652173913043478,
+            "within_3": 0.9504347826086956,
+            "within_6": 1.0,
+            "median_distance": 1.2109708363126204
+          },
+          "matched_mean_support": {
+            "within_1": 0.09782608695652173,
+            "within_3": 0.7072826086956522,
+            "within_6": 0.9772826086956522
+          },
+          "matched_std_support": {
+            "within_1": 0.008920993273340519,
+            "within_3": 0.01666946258842101,
+            "within_6": 0.008851190472406971
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 22250,
+          "full_guide_support": {
+            "within_1": 0.3130434782608696,
+            "within_3": 0.9617391304347827,
+            "within_6": 1.0,
+            "median_distance": 1.3373455032686845
+          },
+          "matched_mean_support": {
+            "within_1": 0.019347826086956524,
+            "within_3": 0.22032608695652173,
+            "within_6": 0.7341304347826088
+          },
+          "matched_std_support": {
+            "within_1": 0.004118977243803569,
+            "within_3": 0.02418398875101588,
+            "within_6": 0.05160147929474917
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 0,
+      "reference_curve_points": 350,
+      "common_guide_points": 1024,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 1382,
+          "full_guide_support": {
+            "within_1": 0.27714285714285714,
+            "within_3": 0.9514285714285714,
+            "within_6": 1.0,
+            "median_distance": 1.3272689577650139
+          },
+          "matched_mean_support": {
+            "within_1": 0.2114285714285714,
+            "within_3": 0.9389285714285714,
+            "within_6": 1.0
+          },
+          "matched_std_support": {
+            "within_1": 0.011517511068997925,
+            "within_3": 0.005333280186810022,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 14872,
+          "full_guide_support": {
+            "within_1": 0.21714285714285714,
+            "within_3": 0.9342857142857143,
+            "within_6": 1.0,
+            "median_distance": 1.4209306302128666
+          },
+          "matched_mean_support": {
+            "within_1": 0.015357142857142857,
+            "within_3": 0.30642857142857144,
+            "within_6": 0.8371428571428572
+          },
+          "matched_std_support": {
+            "within_1": 0.007816453081514033,
+            "within_3": 0.04906784141598742,
+            "within_6": 0.03752550153303914
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 15,
+      "patch_index": 1,
+      "reference_curve_points": 6,
+      "common_guide_points": 35,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 35,
+          "full_guide_support": {
+            "within_1": 0.0,
+            "within_3": 1.0,
+            "within_6": 1.0,
+            "median_distance": 1.948588074895987
+          },
+          "matched_mean_support": {
+            "within_1": 0.0,
+            "within_3": 1.0,
+            "within_6": 1.0
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 5346,
+          "full_guide_support": {
+            "within_1": 0.0,
+            "within_3": 0.8333333333333334,
+            "within_6": 1.0,
+            "median_distance": 2.3111239893951003
+          },
+          "matched_mean_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.22916666666666669
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.399109251263917
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 0,
+      "reference_curve_points": 395,
+      "common_guide_points": 196,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 196,
+          "full_guide_support": {
+            "within_1": 0.19746835443037974,
+            "within_3": 0.4151898734177215,
+            "within_6": 0.4531645569620253,
+            "median_distance": 8.344001180224966
+          },
+          "matched_mean_support": {
+            "within_1": 0.19746835443037974,
+            "within_3": 0.4151898734177215,
+            "within_6": 0.4531645569620253
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 5149,
+          "full_guide_support": {
+            "within_1": 0.22531645569620254,
+            "within_3": 0.9392405063291139,
+            "within_6": 1.0,
+            "median_distance": 1.4578714672867983
+          },
+          "matched_mean_support": {
+            "within_1": 0.008860759493670886,
+            "within_3": 0.15443037974683543,
+            "within_6": 0.5683544303797469
+          },
+          "matched_std_support": {
+            "within_1": 0.008396518456595949,
+            "within_3": 0.04307518867638875,
+            "within_6": 0.08858950990846934
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 22,
+      "patch_index": 1,
+      "reference_curve_points": 0,
+      "common_guide_points": 132,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 132,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 1824,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        }
+      }
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 0,
+      "reference_curve_points": 0,
+      "common_guide_points": 0,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 0,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 17489,
+          "full_guide_support": null,
+          "matched_mean_support": null,
+          "matched_std_support": null
+        }
+      }
+    },
+    {
+      "sample_index": 46,
+      "patch_index": 1,
+      "reference_curve_points": 489,
+      "common_guide_points": 341,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 341,
+          "full_guide_support": {
+            "within_1": 0.44785276073619634,
+            "within_3": 0.901840490797546,
+            "within_6": 0.9550102249488752,
+            "median_distance": 1.0747176368046474
+          },
+          "matched_mean_support": {
+            "within_1": 0.44785276073619634,
+            "within_3": 0.901840490797546,
+            "within_6": 0.9550102249488752
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 12496,
+          "full_guide_support": {
+            "within_1": 0.3047034764826176,
+            "within_3": 0.983640081799591,
+            "within_6": 1.0,
+            "median_distance": 1.2985362726249727
+          },
+          "matched_mean_support": {
+            "within_1": 0.008691206543967281,
+            "within_3": 0.16768916155419222,
+            "within_6": 0.6007157464212678
+          },
+          "matched_std_support": {
+            "within_1": 0.005577051183351593,
+            "within_3": 0.04244277623827661,
+            "within_6": 0.05439201895449623
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 0,
+      "reference_curve_points": 721,
+      "common_guide_points": 317,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 317,
+          "full_guide_support": {
+            "within_1": 0.2510402219140083,
+            "within_3": 0.651872399445215,
+            "within_6": 0.8238557558945908,
+            "median_distance": 1.9722467280672746
+          },
+          "matched_mean_support": {
+            "within_1": 0.2510402219140083,
+            "within_3": 0.651872399445215,
+            "within_6": 0.8238557558945908
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 10065,
+          "full_guide_support": {
+            "within_1": 0.3217753120665742,
+            "within_3": 0.941747572815534,
+            "within_6": 0.9875173370319001,
+            "median_distance": 1.2876887161692072
+          },
+          "matched_mean_support": {
+            "within_1": 0.018030513176144243,
+            "within_3": 0.15481969486823854,
+            "within_6": 0.46359223300970875
+          },
+          "matched_std_support": {
+            "within_1": 0.007564987596834753,
+            "within_3": 0.026342591653408128,
+            "within_6": 0.049391983764916776
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 92,
+      "patch_index": 1,
+      "reference_curve_points": 190,
+      "common_guide_points": 45,
+      "methods": {
+        "fixed": {
+          "full_guide_points": 45,
+          "full_guide_support": {
+            "within_1": 0.17894736842105263,
+            "within_3": 0.47368421052631576,
+            "within_6": 0.7105263157894737,
+            "median_distance": 3.2262246833975006
+          },
+          "matched_mean_support": {
+            "within_1": 0.17894736842105263,
+            "within_3": 0.47368421052631576,
+            "within_6": 0.7105263157894737
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.0,
+            "within_6": 0.0
+          }
+        },
+        "noise_hysteresis": {
+          "full_guide_points": 20314,
+          "full_guide_support": {
+            "within_1": 0.5210526315789473,
+            "within_3": 0.9578947368421052,
+            "within_6": 1.0,
+            "median_distance": 1.0
+          },
+          "matched_mean_support": {
+            "within_1": 0.0,
+            "within_3": 0.003947368421052632,
+            "within_6": 0.049342105263157895
+          },
+          "matched_std_support": {
+            "within_1": 0.0,
+            "within_3": 0.010443755175254964,
+            "within_6": 0.060005626467492475
+          }
+        }
+      }
+    }
+  ],
+  "summary_within_3": {
+    "fixed": {
+      "full_guide_support": 0.6458352839016469,
+      "matched_mean_support": 0.6051745848394132
+    },
+    "noise_hysteresis": {
+      "full_guide_support": 0.9106792571322289,
+      "matched_mean_support": 0.1779095503976585
+    }
+  }
+}

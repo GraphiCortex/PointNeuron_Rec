@@ -20,6 +20,7 @@ from pointneuron.data.point_cloud import swc_to_skeleton_records, volume_to_poin
 from pointneuron.data.swc import parse_swc
 from pointneuron.data.training_cache import indices_to_point_array, patch_foreground_indices, sample_indices_fixed, volume_data_array
 from pointneuron.data.vaa3d_raw import read_header, read_volume
+from pointneuron.data.medial_sampling import load_medial_config
 from scripts.visualize_proposals import render_html, select_proposals
 
 
@@ -36,7 +37,8 @@ def main() -> int:
     parser.add_argument("--patch-selection", default="coverage", choices=["coverage", "density"], help="How to choose patches when --max-patches truncates the sliding grid.")
     parser.add_argument("--max-points", type=int, default=2048, help="Maximum foreground points per patch.")
     parser.add_argument("--min-points", type=int, default=256, help="Minimum foreground points required to evaluate a patch.")
-    parser.add_argument("--point-sample-strategy", default="random", choices=["random", "spatial"], help="How foreground points are sampled inside each patch.")
+    parser.add_argument("--point-sample-strategy", default="auto", choices=["auto", "random", "spatial", "medial", "learned"], help="auto restores a saved sampling pipeline, or uses random for legacy checkpoints.")
+    parser.add_argument("--medial-sampling-config", help="JSON parameters for image-only medial-axis sampling.")
     parser.add_argument("--point-sample-cell-size", type=int, default=8, help="Voxel cell size for --point-sample-strategy spatial.")
     parser.add_argument("--batch-size", type=int, default=4, help="Patch inference batch size.")
     parser.add_argument("--score-threshold", type=float, default=0.5, help="Per-patch objectness threshold before local NMS.")
@@ -65,6 +67,9 @@ def main() -> int:
     parser.add_argument("--html-output", default="tmp/visualizations/aggregated_proposals.html", help="Output HTML visualization path.")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"], help="Device to run on.")
     args = parser.parse_args()
+    medial_config = load_medial_config(args.medial_sampling_config)
+    if args.medial_sampling_config and args.point_sample_strategy != "medial":
+        parser.error("--medial-sampling-config requires --point-sample-strategy medial")
 
     try:
         import torch
@@ -74,6 +79,31 @@ def main() -> int:
 
     from pointneuron.models.dgcnn import DGCNNEncoder
     from pointneuron.models.proposal import SkeletonProposalHead
+    from pointneuron.models.sampling_pipeline import sampler_from_checkpoint, inference_sample, validate_inference_reader
+
+    checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=False)
+    validate_inference_reader(checkpoint)
+    sampling_pipeline = checkpoint.get("sampling_pipeline")
+    threshold_mode = 'dtype_fraction' if sampling_pipeline is None else sampling_pipeline.get('threshold_mode', 'dtype_fraction')
+    if sampling_pipeline is not None:
+        saved_strategy = sampling_pipeline["strategy"]
+        if args.point_sample_strategy not in ("auto", saved_strategy):
+            parser.error("Sampling strategy differs from this checkpoint's training pipeline")
+        args.point_sample_strategy = saved_strategy
+        for flag, attribute, value in (
+            ("--max-points", "max_points", sampling_pipeline["selected_points"]),
+            ("--patch-radius", "patch_radius", sampling_pipeline["patch_radius"]),
+            ("--stride", "stride", sampling_pipeline["stride"]),
+            ("--threshold-fraction", "threshold_fraction", sampling_pipeline["threshold_fraction"]),
+            ("--min-points", "min_points", sampling_pipeline["min_foreground_points"]),
+        ):
+            if any(arg == flag or arg.startswith(flag + "=") for arg in sys.argv[1:]) and getattr(args, attribute) != value:
+                parser.error(f"{flag} differs from the saved sampling pipeline")
+            setattr(args, attribute, value)
+    elif args.point_sample_strategy == "auto":
+        args.point_sample_strategy = "random"
+    elif args.point_sample_strategy == "learned":
+        parser.error("learned sampling requires a checkpoint containing sampler weights")
 
     samples = scan_gold166(args.root)
     sample = samples[args.sample_index]
@@ -89,8 +119,8 @@ def main() -> int:
         return 2
 
     volume = read_volume(sample.volume_path)
-    threshold = effective_threshold(header.datatype, args.threshold, args.threshold_fraction)
     data = volume_data_array(volume)
+    threshold = effective_threshold(header.datatype, args.threshold, args.threshold_fraction, data=data, mode=threshold_mode)
     width, height, depth, channels = volume.dimensions
     if channels != 1:
         raise NotImplementedError(f"Expected a single-channel volume, got {channels} channels")
@@ -125,7 +155,6 @@ def main() -> int:
         print("CUDA was requested but torch.cuda.is_available() is false.")
         return 2
 
-    checkpoint = torch.load(args.checkpoint, map_location=device, weights_only=False)
     checkpoint_args = checkpoint.get("args", {})
     k = int(checkpoint_args.get("k", 20))
     proposal_coordinate_mode = checkpoint_args.get("proposal_coordinate_mode", "raw")
@@ -140,6 +169,7 @@ def main() -> int:
     proposal.load_state_dict(checkpoint["proposal"])
     encoder.eval()
     proposal.eval()
+    sampler = sampler_from_checkpoint(checkpoint, device)
 
     rng = np.random.default_rng(args.seed)
     all_centers = []
@@ -154,6 +184,11 @@ def main() -> int:
             batch_specs = patch_specs[batch_start : batch_start + args.batch_size]
             patch_points = []
             for patch_index, spec in batch_specs:
+                if sampling_pipeline is not None:
+                    patch_points.append(inference_sample(
+                        checkpoint, sampler, spec["indices"], data, width, height,
+                        args.seed + args.sample_index * 10000 + patch_index, device))
+                    continue
                 selected_indices = sample_indices_fixed(
                     spec["indices"],
                     args.max_points,
@@ -163,6 +198,7 @@ def main() -> int:
                     width=width,
                     height=height,
                     cell_size=args.point_sample_cell_size,
+                    medial_config=medial_config,
                 )
                 patch_points.append(indices_to_point_array(selected_indices, data, width, height))
 
@@ -276,6 +312,9 @@ def main() -> int:
                     "patch_selection": args.patch_selection,
                     "point_sample_strategy": args.point_sample_strategy,
                     "point_sample_cell_size": args.point_sample_cell_size,
+                    "medial_sampling": medial_config.to_dict() if args.point_sample_strategy == "medial" else None,
+                    "sampling_pipeline": sampling_pipeline,
+                    "learned_alpha": float(sampler.alpha.detach()) if sampler is not None else None,
                     "local_score_threshold": args.score_threshold,
                     "local_top_proposals": args.top_proposals_per_patch,
                     "global_top_proposals": args.global_top_proposals,
@@ -345,16 +384,11 @@ def main() -> int:
     return 0
 
 
-def effective_threshold(datatype: int, threshold: int, threshold_fraction: float | None) -> int:
+def effective_threshold(datatype: int, threshold: int, threshold_fraction: float | None, *, data=None, mode='dtype_fraction') -> int:
     if threshold_fraction is None:
         return threshold
-    if threshold_fraction < 0.0 or threshold_fraction > 1.0:
-        raise ValueError(f"--threshold-fraction must be in [0, 1], got {threshold_fraction}")
-    if datatype == 1:
-        return int(round(255 * threshold_fraction))
-    if datatype == 2:
-        return int(round(65535 * threshold_fraction))
-    raise NotImplementedError(f"Vaa3D datatype {datatype} is not supported yet")
+    from pointneuron.data.foreground import fractional_intensity_threshold
+    return fractional_intensity_threshold(datatype, threshold_fraction, data=data, mode=mode)
 
 
 def build_patch_specs(

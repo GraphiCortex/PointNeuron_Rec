@@ -1,0 +1,148 @@
+[
+  {
+    "sample_index": 0,
+    "patch_index": 3,
+    "noise_foreground": 175285,
+    "original_foreground": 197488,
+    "background_otsu_foreground": 117925,
+    "metadata": {
+      "difference_sigma_zyx": [
+        3.145074247522592,
+        2.096716165015061,
+        2.096716165015061
+      ],
+      "noise_sigma_before_floor": 2.096716165015061,
+      "noise_floor": 0.2886751345948129,
+      "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+      "noise_scope": "core patch; scalar, not a spatially varying noise map",
+      "noise_sigma": 2.096716165015061,
+      "noise_high": 4.0,
+      "noise_low": 2.0,
+      "threshold": 8.386864660060244,
+      "weak_threshold": 4.193432330030122,
+      "strong_seed_voxels": 164235,
+      "allowed_weak_voxels": 175300,
+      "connectivity": 26,
+      "propagation_scope": "core patch only; no gap filling"
+    },
+    "contrast_diagnostic": {
+      "raw_max_fraction": 0.00011485228624618159,
+      "raw_uint8_saturation_fraction": 0.00011485228624618159,
+      "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+      "interior_reference_points": 499,
+      "median_signed_contrast": 7.425717519130558,
+      "fraction_contrast_above_2": 0.779559118236473,
+      "fraction_contrast_below_minus_2": 0.10420841683366733,
+      "reference_uint8_saturation_fraction": 0.0
+    }
+  },
+  {
+    "sample_index": 1,
+    "patch_index": 3,
+    "noise_foreground": 338253,
+    "original_foreground": 750492,
+    "background_otsu_foreground": 174170,
+    "metadata": {
+      "difference_sigma_zyx": [
+        3.145074247522592,
+        2.096716165015061,
+        2.096716165015061
+      ],
+      "noise_sigma_before_floor": 2.096716165015061,
+      "noise_floor": 0.2886751345948129,
+      "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+      "noise_scope": "core patch; scalar, not a spatially varying noise map",
+      "noise_sigma": 2.096716165015061,
+      "noise_high": 4.0,
+      "noise_low": 2.0,
+      "threshold": 8.386864660060244,
+      "weak_threshold": 4.193432330030122,
+      "strong_seed_voxels": 286392,
+      "allowed_weak_voxels": 340408,
+      "connectivity": 26,
+      "propagation_scope": "core patch only; no gap filling"
+    },
+    "contrast_diagnostic": {
+      "raw_max_fraction": 0.31194524216230785,
+      "raw_uint8_saturation_fraction": 0.31194524216230785,
+      "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+      "interior_reference_points": 677,
+      "median_signed_contrast": 0.0,
+      "fraction_contrast_above_2": 0.1019202363367799,
+      "fraction_contrast_below_minus_2": 0.12259970457902511,
+      "reference_uint8_saturation_fraction": 0.6868537666174298
+    }
+  },
+  {
+    "sample_index": 1,
+    "patch_index": 7,
+    "noise_foreground": 1364,
+    "original_foreground": 267,
+    "background_otsu_foreground": 239127,
+    "metadata": {
+      "difference_sigma_zyx": [
+        2.096716165015061,
+        2.096716165015061,
+        2.096716165015061
+      ],
+      "noise_sigma_before_floor": 2.096716165015061,
+      "noise_floor": 0.2886751345948129,
+      "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+      "noise_scope": "core patch; scalar, not a spatially varying noise map",
+      "noise_sigma": 2.096716165015061,
+      "noise_high": 4.0,
+      "noise_low": 2.0,
+      "threshold": 8.386864660060244,
+      "weak_threshold": 4.193432330030122,
+      "strong_seed_voxels": 358,
+      "allowed_weak_voxels": 4052,
+      "connectivity": 26,
+      "propagation_scope": "core patch only; no gap filling"
+    },
+    "contrast_diagnostic": {
+      "raw_max_fraction": 1.7142132275549491e-06,
+      "raw_uint8_saturation_fraction": 0.0,
+      "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+      "interior_reference_points": 0,
+      "median_signed_contrast": null,
+      "reference_uint8_saturation_fraction": null
+    }
+  },
+  {
+    "sample_index": 18,
+    "patch_index": 4,
+    "noise_foreground": 30281,
+    "original_foreground": 25922,
+    "background_otsu_foreground": 24765,
+    "metadata": {
+      "difference_sigma_zyx": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "noise_sigma_before_floor": 0.0,
+      "noise_floor": 0.2886751345948129,
+      "noise_estimator": "median of axis-wise normal-scaled neighbor-difference MAD / sqrt(2)",
+      "noise_scope": "core patch; scalar, not a spatially varying noise map",
+      "noise_sigma": 0.2886751345948129,
+      "noise_high": 4.0,
+      "noise_low": 2.0,
+      "threshold": 1.1547005383792517,
+      "weak_threshold": 0.5773502691896258,
+      "strong_seed_voxels": 29835,
+      "allowed_weak_voxels": 30348,
+      "connectivity": 26,
+      "propagation_scope": "core patch only; no gap filling"
+    },
+    "contrast_diagnostic": {
+      "raw_max_fraction": 0.024346069183595876,
+      "raw_uint8_saturation_fraction": 0.024346069183595876,
+      "rule": "Trilinear intensity at reference curve versus median of six axial neighbors at +/- 3 voxels; boundary points excluded",
+      "interior_reference_points": 38,
+      "median_signed_contrast": 70.06824078756645,
+      "fraction_contrast_above_2": 0.8157894736842105,
+      "fraction_contrast_below_minus_2": 0.18421052631578946,
+      "reference_uint8_saturation_fraction": 0.0
+    }
+  }
+]
