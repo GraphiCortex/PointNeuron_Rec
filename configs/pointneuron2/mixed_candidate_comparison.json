@@ -1,0 +1,9 @@
+{
+  "candidate_points": 1024,
+  "selected_points": 512,
+  "bright_fraction": 0.5,
+  "seed_offsets": [0, 1, 2, 3, 4, 5, 6, 7],
+  "selectors": ["random", "fixed_medial"],
+  "reference_distance": 3.0,
+  "reference_step": 1.0
+}

@@ -21,6 +21,10 @@ storage while retaining reports and figures in the visible documentation folder.
 `summarize_repaired_foreground.py` compares saved guides at exactly matched counts;
 it performs no extraction or training.
 
+`compare_mixed_candidates.py` compares bright, permissive and preset mixed pools
+on corrected saved training crops with matched seeds and fixed budgets.
+See [the measured tradeoffs](../../docs/pointneuron2/mixed_candidate_comparison.md).
+
 | File | Purpose | Current status |
 |---|---|---|
 | `baseline.py` | Prepare the neuron-disjoint split and run fresh PN 1.0 baseline training | 30-epoch baseline and seven-neuron validation completed |

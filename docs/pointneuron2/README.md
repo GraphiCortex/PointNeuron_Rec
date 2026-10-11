@@ -12,6 +12,11 @@ greatly increase guide density; exactly matched point counts expose substantial
 losses. Neither mask is promoted. The next proposed control preserves bright-core
 points while reserving space for weak signals, before the corrected GPU pilot.
 
+The [bright/weak candidate control](mixed_candidate_comparison.md) has now run on
+the saved corrected crops. Mixed-pool coverage improves, but gains shrink after
+512-input selection and some well-covered branches lose support. The next check
+holds these pools fixed and compares spatial selection; no new training is running.
+
 Development starts from PN 1.0 commit `1719a56e63328782dda7e160a880f16ec1f49937`
 on the `pointneuron2` branch in a separate Git worktree. Existing architecture,
 loaders, evaluators and SWC export are retained. Clean baseline retraining and
