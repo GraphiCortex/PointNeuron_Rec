@@ -70,8 +70,9 @@ Its isolated selector/comparison has now [completed the eight-crop check](field_
 Candidate expansion helps reference coverage in these fitted examples; expanded
 random is the strongest coverage baseline, and the 50/50 allocation has some
 branch losses. This is not production/PointNeXt integration or a promoted recipe;
-a [broader field train/development-validation pilot](field_pilot_ready.md) is now
-approved and prepared, with real native caching/timing/training still pending.
+the [broader field train/development-validation pilot](field_pilot_results.md) is
+complete: useful development candidate expansion, with missing branches and
+off-reference support. The fixed-budget development sampling comparison is next.
 
 The controlled comparison is implemented. The field could guide the selection of informative **image points**,
 while retaining intensities, local image evidence and spatial coverage. An

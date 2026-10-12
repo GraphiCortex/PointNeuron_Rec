@@ -1,8 +1,10 @@
-# Approved field train/development pilot: preparation complete, GPU timing next
+# Approved field train/development pilot: training complete, sampling comparison next
 
 12 October 2026. The user approved a bounded generalization pilot after the
 [four-control training-crop comparison](field_sampling_results.md). Commands are
-prepared; **native preparation is complete; GPU timing and training have not run**.
+prepared; **native preparation, GPU timing and training are complete**. The
+development four-control sampling comparison remains pending; see the
+[reviewed results, curves and image limits](field_pilot_results.md).
 Execution tests below use tiny synthetic CPU fixtures, not research results.
 
 **13 October update:** the user completed CPU preparation in seven minutes
@@ -12,8 +14,8 @@ inference. Training: 33 neurons, 211 supervised / 51 unsupervised crops.
 Development: seven neurons, 47 supervised / nine unsupervised crops. Every neuron
 has usable supervision; zero reserved test records were included. The agreed
 30 epochs will perform **6,330 optimizer updates**. This verifies preparation,
-not learnability or reconstruction quality. Run **preflight** next; do not repeat
-preparation into the completed cache.
+not learnability or reconstruction quality. The subsequent timing and training
+have now completed; do not repeat actions into their existing output folders.
 
 The intended architecture remains Phase 1 point cloud -> PointNeXt -> Transformer
 skeleton proposals -> GATv2 connectivity -> SWC. This pilot tests only a candidate
@@ -96,7 +98,7 @@ action. Existing cache/model/timing/comparison folders are preserved; rerunning
 an action into existing output is refused. Incomplete outputs are never consumed
 as successful runs. No packages or environments are installed.
 
-## Next: measure timing before the separate GPU training command
+## Completed: timing and GPU training commands
 
 After reviewing the preparation counts:
 
