@@ -112,7 +112,13 @@ The optional scikit-image thinning diagnostic remains unavailable due to its
 NumPy ABI mismatch; no dependency changes were made and no thinning result is
 claimed. The distance/voxel/loss audit does not depend on that optional step.
 
-## Recommended next decision — not executed
+## Center-path diagnostic — now completed
+
+After this review the user approved the proposed check. The two frozen training
+cases have now been inspected with the existing extractor; see
+[the measured center-path results](field_centerpaths_results.md). The historical
+rationale below records the agreed diagnostic. No follow-up training or
+validation was launched.
 
 Retain this hard-negative version as the current field candidate. Keep training
 and validation paused. Before another training change, inspect **center paths
@@ -129,8 +135,8 @@ from the unavailable scikit-image diagnostic. Its fixed output must itself be
 inspected; successful operation is not a quality result. Record distance and
 coverage on extracted paths alongside the existing field metrics.
 
-This proposal does not relax the failed gate, promote validation, start graph
-reconstruction or alter training. Discuss it together before preparation. A
+This diagnostic does not relax the failed gate, promote validation, start full
+graph/SWC reconstruction or alter training. A
 later decision about the field, labels, extraction or optimization should
 follow the observed path failure rather than another blind parameter change.
 

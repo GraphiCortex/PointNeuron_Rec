@@ -1,0 +1,260 @@
+{
+  "status": "completed",
+  "scope": "two selected training-crop center-path diagnostics; no optimizer, validation or SWC promotion",
+  "cases": [
+    [
+      162,
+      2
+    ],
+    [
+      96,
+      3
+    ]
+  ],
+  "checkpoint_and_report_hashes": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\field_step_0400.pt": "c71913fcc765c425039bbf5b8eca1c414436ec56874fd7af543dddd3fc8b3c8f",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\fit_report.json": "c5c23e2c72e6941ed8363a3d7181b57a67add6dc69c59b7500d310906e79744d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_loss_control_20261012_203344_14488\\model\\field_step_0400.pt": "a82238e41043dbbc4f67b1dbb98cee7d5726adf9514ab84fda8fb43f9414304b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_loss_control_20261012_203344_14488\\model\\fit_report.json": "b898864c20327feba03b45e4a8e61e3ec6b08ff2ecf7457acf973d13e1276d3e"
+  },
+  "manifest_sha256": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+  "threshold": 0.5,
+  "kimimaro_version": "5.8.5",
+  "probe_step_voxels": 1.0,
+  "reference_usage": "measurement only after GT-free extraction",
+  "reference_scope": "full-forest segments for predicted proximity; patch-clipped segments for coverage",
+  "rows": [
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "arm": "original",
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "field": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9856468737711365,
+        "known_voxel_dice": 0.3167301009432401,
+        "accepted_voxels": 5086,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9986060857772827
+      },
+      "extraction_seconds": 1.3081590000074357,
+      "vertices": 75,
+      "edges": 74,
+      "components": 1,
+      "endpoints": 3,
+      "branch_vertices": 1,
+      "path_length_voxels": 97.8890505706126,
+      "reference_length_voxels": 76.25483399593905,
+      "reference_to_paths": {
+        "length_weighted_mean_voxels": 0.5956960099329721,
+        "length_weighted_median_voxels": 0.408248290463863,
+        "length_weighted_p95_voxels": 1.4577379737113252,
+        "within_voxels": {
+          "1": 0.7985182023804924,
+          "2": 0.9683401899150202,
+          "4": 1.0,
+          "6": 1.0
+        }
+      },
+      "paths_to_reference": {
+        "length_weighted_mean_voxels": 1.1624635362870817,
+        "length_weighted_median_voxels": 0.7905694150420949,
+        "length_weighted_p95_voxels": 4.430011286667337,
+        "within_voxels": {
+          "1": 0.6205764950281148,
+          "2": 0.8141567052652866,
+          "4": 0.9287490127442093,
+          "6": 1.0
+        }
+      },
+      "isolated_reference_points": 0
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "arm": "hard_negative",
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "field": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.7428571428571429,
+        "accepted_voxels": 1598,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9627658128738403
+      },
+      "extraction_seconds": 0.010952399985399097,
+      "vertices": 65,
+      "edges": 64,
+      "components": 1,
+      "endpoints": 2,
+      "branch_vertices": 0,
+      "path_length_voxels": 84.25750482643203,
+      "reference_length_voxels": 76.25483399593905,
+      "reference_to_paths": {
+        "length_weighted_mean_voxels": 0.4959396350878524,
+        "length_weighted_median_voxels": 0.5400617248673217,
+        "length_weighted_p95_voxels": 1.0606601717798212,
+        "within_voxels": {
+          "1": 0.9197254780741423,
+          "2": 1.0,
+          "4": 1.0,
+          "6": 1.0
+        }
+      },
+      "paths_to_reference": {
+        "length_weighted_mean_voxels": 0.5803107957618651,
+        "length_weighted_median_voxels": 0.7071067811865476,
+        "length_weighted_p95_voxels": 1.25,
+        "within_voxels": {
+          "1": 0.8512278585412031,
+          "2": 0.9897216822932459,
+          "4": 1.0,
+          "6": 1.0
+        }
+      },
+      "isolated_reference_points": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "arm": "original",
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "field": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.6108909801331792,
+        "known_voxel_dice": 0.30386375430485446,
+        "accepted_voxels": 36342,
+        "accepted_unknown_bright_voxels": 826,
+        "mean_reference_tube_score": 0.8893409967422485
+      },
+      "extraction_seconds": 0.16133440000703558,
+      "vertices": 1678,
+      "edges": 1676,
+      "components": 2,
+      "endpoints": 309,
+      "branch_vertices": 288,
+      "path_length_voxels": 2432.3273666996565,
+      "reference_length_voxels": 597.4460016531029,
+      "reference_to_paths": {
+        "length_weighted_mean_voxels": 1.4032048915111288,
+        "length_weighted_median_voxels": 1.2150089391532048,
+        "length_weighted_p95_voxels": 3.0607260780736363,
+        "within_voxels": {
+          "1": 0.37352819462910836,
+          "2": 0.7660424019478984,
+          "4": 0.989084016232609,
+          "6": 1.0
+        }
+      },
+      "paths_to_reference": {
+        "length_weighted_mean_voxels": 6.055823969575557,
+        "length_weighted_median_voxels": 4.9148376371961655,
+        "length_weighted_p95_voxels": 15.09732544582207,
+        "within_voxels": {
+          "1": 0.10190840276270938,
+          "2": 0.2364113994968079,
+          "4": 0.4377473504117703,
+          "6": 0.5534726359673668
+        }
+      },
+      "isolated_reference_points": 0
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "arm": "hard_negative",
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "field": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.6997612415439713,
+        "known_voxel_dice": 0.3825620262699496,
+        "accepted_voxels": 15078,
+        "accepted_unknown_bright_voxels": 715,
+        "mean_reference_tube_score": 0.5682358741760254
+      },
+      "extraction_seconds": 0.08425099999294616,
+      "vertices": 1048,
+      "edges": 1039,
+      "components": 9,
+      "endpoints": 118,
+      "branch_vertices": 99,
+      "path_length_voxels": 1423.9684651470147,
+      "reference_length_voxels": 597.4460016531029,
+      "reference_to_paths": {
+        "length_weighted_mean_voxels": 1.4868326756401253,
+        "length_weighted_median_voxels": 1.2033027855656246,
+        "length_weighted_p95_voxels": 3.597967238594588,
+        "within_voxels": {
+          "1": 0.39290824327523716,
+          "2": 0.7499618253769037,
+          "4": 0.9585878819225037,
+          "6": 1.0
+        }
+      },
+      "paths_to_reference": {
+        "length_weighted_mean_voxels": 4.981669573393182,
+        "length_weighted_median_voxels": 3.2809336931665456,
+        "length_weighted_p95_voxels": 14.217067208112931,
+        "within_voxels": {
+          "1": 0.1644101937663163,
+          "2": 0.3440812292595853,
+          "4": 0.5533495040482708,
+          "6": 0.6754927495171876
+        }
+      },
+      "isolated_reference_points": 0
+    }
+  ],
+  "checkpoints_unchanged": true,
+  "inference_reproduction_checks": "passed",
+  "elapsed_seconds": 7.337181799986865,
+  "primary_gate_changed": false
+}

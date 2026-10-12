@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: simple center-path accuracy improves; crowded geometry remains unresolved](docs/pointneuron2/field_centerpaths_results.md)
 - [Latest: negative-loss control improves all crops; remaining width and placement errors](docs/pointneuron2/centerline_loss_control_results.md)
 - [Completed protocol: matched centerline negative-loss control and visible GPU command](docs/pointneuron2/centerline_loss_control_ready.md)
 - [Latest: field learns structure but fails centerline localization; diagnosis and proposed loss control](docs/pointneuron2/centerline_fit_results.md)

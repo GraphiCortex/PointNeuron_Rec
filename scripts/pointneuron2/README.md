@@ -6,7 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [negative-loss control improves all eight crops; remaining width and placement errors](../../docs/pointneuron2/centerline_loss_control_results.md).
+Latest: [fixed center-path extraction improves the simple case; crowding remains problematic](../../docs/pointneuron2/field_centerpaths_results.md).
+`audit_field_centerpaths.py` compares two pre-agreed training crops using frozen
+checkpoint inference and the existing CPU image-medial extractor, with no
+optimizer or reference-guided extraction. It measures arc-length-weighted
+distances to continuous segments and saves native path arrays and overlays.
+Earlier result: [negative-loss control improves all eight crops; remaining width and placement errors](../../docs/pointneuron2/centerline_loss_control_results.md).
 `plot_centerline_loss_comparison.py` renders two illustrative original/control
 fields at identical display scales. The read-only audit also reports reference
 distance to accepted support at several tolerances without changing inference
