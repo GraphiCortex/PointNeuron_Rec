@@ -11,6 +11,8 @@ from pathlib import Path
 import sys
 
 import numpy as np
+from scipy.spatial import cKDTree
+from scipy.ndimage import map_coordinates
 import torch
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -82,6 +84,10 @@ def run(args):
         far = neg & ~near
         true_positive = int((predicted & pos).sum())
         false_positive = int((predicted & neg).sum())
+        predicted_xyz = np.argwhere(predicted)[:, ::-1]
+        reference = r["reference_local_xyz"]
+        reference_distance = np.full(len(reference), np.inf) if not len(predicted_xyz) else cKDTree(predicted_xyz).query(reference)[0]
+        reference_score = map_coordinates(probability, reference[:, ::-1].T, order=1, mode="nearest")
         thinned = None
         if thinning_function is not None:
             skeleton = thinning_function(predicted, method="lee").astype(bool)
@@ -91,6 +97,11 @@ def run(args):
                "target_voxels": int(pos.sum()), "known_negative_voxels": int(neg.sum()),
                "known_tube_recall": float(true_positive / pos.sum()),
                "known_tube_precision": float(true_positive / max(1, true_positive+false_positive)),
+               "reference_sample_distance_to_accepted_voxel": {
+                   "mean": float(reference_distance.mean()), "median": float(np.median(reference_distance)),
+                   "p95": float(np.quantile(reference_distance, .95)),
+                   "coverage_by_tolerance_voxels": {str(t): float((reference_distance <= t).mean()) for t in (1, 2, 4, 6)}},
+               "interpolated_reference_center_score_mean": float(reference_score.mean()),
                "known_false_positive_voxels": false_positive,
                "known_false_positive_near_2_to_6": int((predicted & near).sum()),
                "known_false_positive_farther_than_6": int((predicted & far).sum()),

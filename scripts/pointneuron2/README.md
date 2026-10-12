@@ -6,8 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [field learns structure but fails centerline localization](../../docs/pointneuron2/centerline_fit_results.md).
-Next: [prepared loss-only paired control](../../docs/pointneuron2/centerline_loss_control_ready.md).
+Latest: [negative-loss control improves all eight crops; remaining width and placement errors](../../docs/pointneuron2/centerline_loss_control_results.md).
+`plot_centerline_loss_comparison.py` renders two illustrative original/control
+fields at identical display scales. The read-only audit also reports reference
+distance to accepted support at several tolerances without changing inference
+or the primary gate.
+Earlier result: [field learns structure but fails centerline localization](../../docs/pointneuron2/centerline_fit_results.md).
+Completed protocol: [loss-only paired control](../../docs/pointneuron2/centerline_loss_control_ready.md).
 `run_centerline.ps1 -Action loss-control` fits one fresh matched model using
 the top min(N,3P) known-negative BCE, then compares against the preserved
 original run. `-Action loss-control-preflight` checks pairing and eight initial

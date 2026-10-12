@@ -1,0 +1,244 @@
+{
+  "scope": "fixed training-crop loss-only control; not generalization or SWC quality",
+  "pairing_checks": {
+    "identical_initial_model_tensors": true,
+    "identical_cache_hash": true,
+    "identical_config_and_declared_update_budget": true,
+    "identical_device_and_torch": true,
+    "identical_evaluation_steps_and_crop_identities": true,
+    "step_zero_inference_matches": true,
+    "baseline_files_unchanged": true,
+    "control_crop_order_matches_declared_seeded_algorithm": true
+  },
+  "baseline_crop_order_recorded": false,
+  "baseline_files_sha256": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\fit_report.json": "c5c23e2c72e6941ed8363a3d7181b57a67add6dc69c59b7500d310906e79744d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\field_step_0000.pt": "3c476f70eb7e0c86fac0557558dcd7b858c547976b2bd70cd7f42c95ec185126",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\field_step_0400.pt": "c71913fcc765c425039bbf5b8eca1c414436ec56874fd7af543dddd3fc8b3c8f"
+  },
+  "loss_spec": {
+    "schema": "pointneuron2-centerline-loss-control-v1",
+    "negative_aggregation": "topk",
+    "negative_to_positive_ratio": 3
+  },
+  "final_step": 400,
+  "threshold": 0.5,
+  "crops": [
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.22648005388818201,
+        "known_voxel_dice": 0.11351122405760271,
+        "accepted_voxels": 13361,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9729389553178099,
+        "known_voxel_dice": 0.6307435254803676,
+        "accepted_voxels": 1589,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.7464589014296279,
+        "known_voxel_dice": 0.5172323014227649,
+        "accepted_voxels": -11772,
+        "accepted_unknown_bright_voxels": 0
+      }
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 2,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.8904578208020962,
+        "known_voxel_dice": 0.45200411671441687,
+        "accepted_voxels": 27478,
+        "accepted_unknown_bright_voxels": 55
+      },
+      "control": {
+        "reference_coverage_6": 0.9722991689750693,
+        "reference_proximity_6": 0.9062452048488568,
+        "known_voxel_dice": 0.5137623209968384,
+        "accepted_voxels": 13034,
+        "accepted_unknown_bright_voxels": 54
+      },
+      "delta": {
+        "reference_coverage_6": -0.027700831024930705,
+        "reference_proximity_6": 0.01578738404676061,
+        "known_voxel_dice": 0.061758204282421514,
+        "accepted_voxels": -14444,
+        "accepted_unknown_bright_voxels": -1
+      }
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 0,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9984306340238543,
+        "known_voxel_dice": 0.583019286189315,
+        "accepted_voxels": 3186,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.6934619506966774,
+        "accepted_voxels": 2407,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.0015693659761456535,
+        "known_voxel_dice": 0.1104426645073624,
+        "accepted_voxels": -779,
+        "accepted_unknown_bright_voxels": 0
+      }
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 3,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.6475583864118896,
+        "accepted_voxels": 7579,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.6888528654524649,
+        "accepted_voxels": 6762,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.0,
+        "known_voxel_dice": 0.04129447904057537,
+        "accepted_voxels": -817,
+        "accepted_unknown_bright_voxels": 0
+      }
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 0,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.875406283856988,
+        "known_voxel_dice": 0.42417106254709874,
+        "accepted_voxels": 16614,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9500793360185524,
+        "known_voxel_dice": 0.5437514635859808,
+        "accepted_voxels": 8193,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.07467305216156439,
+        "known_voxel_dice": 0.11958040103888207,
+        "accepted_voxels": -8421,
+        "accepted_unknown_bright_voxels": 0
+      }
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.6108909801331792,
+        "known_voxel_dice": 0.30386375430485446,
+        "accepted_voxels": 36342,
+        "accepted_unknown_bright_voxels": 826
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.6997612415439713,
+        "known_voxel_dice": 0.3825620262699496,
+        "accepted_voxels": 15078,
+        "accepted_unknown_bright_voxels": 715
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.08887026141079213,
+        "known_voxel_dice": 0.07869827196509516,
+        "accepted_voxels": -21264,
+        "accepted_unknown_bright_voxels": -111
+      }
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 1,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.8811244979919679,
+        "known_voxel_dice": 0.3647249912417593,
+        "accepted_voxels": 26145,
+        "accepted_unknown_bright_voxels": 488
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9580366467293269,
+        "known_voxel_dice": 0.6713330029732408,
+        "accepted_voxels": 10533,
+        "accepted_unknown_bright_voxels": 131
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.07691214873735897,
+        "known_voxel_dice": 0.30660801173148156,
+        "accepted_voxels": -15612,
+        "accepted_unknown_bright_voxels": -357
+      }
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "baseline": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9856468737711365,
+        "known_voxel_dice": 0.3167301009432401,
+        "accepted_voxels": 5086,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "control": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.7428571428571429,
+        "accepted_voxels": 1598,
+        "accepted_unknown_bright_voxels": 0
+      },
+      "delta": {
+        "reference_coverage_6": 0.0,
+        "reference_proximity_6": 0.014353126228863533,
+        "known_voxel_dice": 0.42612704191390277,
+        "accepted_voxels": -3488,
+        "accepted_unknown_bright_voxels": 0
+      }
+    }
+  ],
+  "baseline_gate_passed": false,
+  "control_gate_passed": false,
+  "summary": {
+    "baseline": {
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.8085546430584255,
+      "known_voxel_dice": 0.4006978653012721
+    },
+    "control": {
+      "reference_coverage_6": 0.9965373961218836,
+      "reference_proximity_6": 0.9358826730573147,
+      "known_voxel_dice": 0.6084155372890828
+    }
+  },
+  "status": "completed",
+  "next_step": "review paired scores and overlays; no automatic validation promotion"
+}

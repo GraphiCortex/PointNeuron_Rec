@@ -1,8 +1,10 @@
 # Ready: one-change centerline negative-loss comparison
 
-12 October 2026. The user approved preparing the control after reviewing the
-[failed field fit](centerline_fit_results.md). The new 400-update fit **has not
-started**. Its command is ready for the user to run visibly on the local GPU.
+12 October 2026. Historical protocol for the approved control after the
+[failed field fit](centerline_fit_results.md). **The user has completed this
+400-update comparison; its gate still fails despite improvements on all eight
+crops.** Read [the measured results](centerline_loss_control_results.md) before
+running anything further. The command below documents the completed experiment.
 
 ## Exactly one training change
 
