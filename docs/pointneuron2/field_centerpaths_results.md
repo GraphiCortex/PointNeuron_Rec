@@ -107,9 +107,9 @@ crops as a separately labeled oracle control. This would test how much
 crowded-path error the extractor creates even with ideal input, versus error
 originating in the learned field. Oracle output would be diagnostic ground
 truth input, not model inference, training data changes or an automatic
-reconstruction result. **That additional control has not been run.** Discuss
-it together before implementation. No long training or validation command
-is needed at this point.
+reconstruction result. **The user subsequently approved this oracle control;
+it is now complete.** See [the measured ideal-input results](centerpath_oracle_results.md).
+No long training or validation was launched.
 
 ## Execution checks and visible artifacts
 

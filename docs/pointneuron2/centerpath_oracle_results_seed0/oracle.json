@@ -1,0 +1,200 @@
+{
+  "status": "completed",
+  "scope": "ground-truth-input oracle on two selected training crops; NOT learned-model performance",
+  "cases": [
+    [
+      162,
+      2
+    ],
+    [
+      96,
+      3
+    ]
+  ],
+  "input": "cached exact SWC tube intersected with valid native voxels",
+  "tube_radius_voxels": 2.0,
+  "mask_probability_threshold": 0.5,
+  "kimimaro_version": "5.8.5",
+  "prior_paths_sha256": "98c62434501a2b906843ba36fc135e4262e95db3793e46509ae114feaa6f297e",
+  "manifest_sha256": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+  "primary_gate_changed": false,
+  "rows": [
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "oracle_input_voxels": 957,
+      "oracle_extraction_seconds": 1.677336099994136,
+      "learned": {
+        "vertices": 65,
+        "edges": 64,
+        "components": 1,
+        "endpoints": 2,
+        "branch_vertices": 0,
+        "path_length_voxels": 84.25750482643203,
+        "reference_length_voxels": 76.25483399593905,
+        "reference_to_paths": {
+          "length_weighted_mean_voxels": 0.4959396350878524,
+          "length_weighted_median_voxels": 0.5400617248673217,
+          "length_weighted_p95_voxels": 1.0606601717798212,
+          "within_voxels": {
+            "1": 0.9197254780741423,
+            "2": 1.0,
+            "4": 1.0,
+            "6": 1.0
+          }
+        },
+        "paths_to_reference": {
+          "length_weighted_mean_voxels": 0.5803107957618651,
+          "length_weighted_median_voxels": 0.7071067811865476,
+          "length_weighted_p95_voxels": 1.25,
+          "within_voxels": {
+            "1": 0.8512278585412031,
+            "2": 0.9897216822932459,
+            "4": 1.0,
+            "6": 1.0
+          }
+        }
+      },
+      "oracle": {
+        "vertices": 65,
+        "edges": 64,
+        "components": 1,
+        "endpoints": 2,
+        "branch_vertices": 0,
+        "path_length_voxels": 79.13314917344991,
+        "reference_length_voxels": 76.25483399593905,
+        "reference_to_paths": {
+          "length_weighted_mean_voxels": 0.04074389439204064,
+          "length_weighted_median_voxels": 0.0,
+          "length_weighted_p95_voxels": 0.3535533905932738,
+          "within_voxels": {
+            "1": 0.9868860772806448,
+            "2": 1.0,
+            "4": 1.0,
+            "6": 1.0
+          }
+        },
+        "paths_to_reference": {
+          "length_weighted_mean_voxels": 0.10543309620125424,
+          "length_weighted_median_voxels": 0.0,
+          "length_weighted_p95_voxels": 0.9185586535436918,
+          "within_voxels": {
+            "1": 0.9513052217512231,
+            "2": 1.0,
+            "4": 1.0,
+            "6": 1.0
+          }
+        }
+      }
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "medial_config": {
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "alpha": 0.25,
+        "uniform_fraction": 0.25,
+        "teasar_scale": 1.5,
+        "teasar_const": 2.0,
+        "dust_threshold": 8,
+        "max_crop_voxels": 16000000
+      },
+      "oracle_input_voxels": 6878,
+      "oracle_extraction_seconds": 0.066031499998644,
+      "learned": {
+        "vertices": 1048,
+        "edges": 1039,
+        "components": 9,
+        "endpoints": 118,
+        "branch_vertices": 99,
+        "path_length_voxels": 1423.9684651470147,
+        "reference_length_voxels": 597.4460016531029,
+        "reference_to_paths": {
+          "length_weighted_mean_voxels": 1.4868326756401253,
+          "length_weighted_median_voxels": 1.2033027855656246,
+          "length_weighted_p95_voxels": 3.597967238594588,
+          "within_voxels": {
+            "1": 0.39290824327523716,
+            "2": 0.7499618253769037,
+            "4": 0.9585878819225037,
+            "6": 1.0
+          }
+        },
+        "paths_to_reference": {
+          "length_weighted_mean_voxels": 4.981669573393182,
+          "length_weighted_median_voxels": 3.2809336931665456,
+          "length_weighted_p95_voxels": 14.217067208112931,
+          "within_voxels": {
+            "1": 0.1644101937663163,
+            "2": 0.3440812292595853,
+            "4": 0.5533495040482708,
+            "6": 0.6754927495171876
+          }
+        }
+      },
+      "oracle": {
+        "vertices": 514,
+        "edges": 513,
+        "components": 1,
+        "endpoints": 18,
+        "branch_vertices": 16,
+        "path_length_voxels": 649.9283473537246,
+        "reference_length_voxels": 597.4460016531029,
+        "reference_to_paths": {
+          "length_weighted_mean_voxels": 0.3715145301003702,
+          "length_weighted_median_voxels": 0.2781159829998953,
+          "length_weighted_p95_voxels": 0.9915811605293163,
+          "within_voxels": {
+            "1": 0.9523769254053693,
+            "2": 0.9866859419891436,
+            "4": 1.0,
+            "6": 1.0
+          }
+        },
+        "paths_to_reference": {
+          "length_weighted_mean_voxels": 0.411324690432658,
+          "length_weighted_median_voxels": 0.2848107496645529,
+          "length_weighted_p95_voxels": 1.4240306335254271,
+          "within_voxels": {
+            "1": 0.8959823022944741,
+            "2": 1.0,
+            "4": 1.0,
+            "6": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "learned_path_metrics_reproduced": true,
+  "protected_artifacts_unchanged": true,
+  "protected_artifact_hashes": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_centerpaths_20261012\\centerpaths.json": "98c62434501a2b906843ba36fc135e4262e95db3793e46509ae114feaa6f297e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\manifest.json": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\field_step_0400.pt": "c71913fcc765c425039bbf5b8eca1c414436ec56874fd7af543dddd3fc8b3c8f",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_fit_20261012_144121_14488\\model\\fit_report.json": "c5c23e2c72e6941ed8363a3d7181b57a67add6dc69c59b7500d310906e79744d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_loss_control_20261012_203344_14488\\model\\field_step_0400.pt": "a82238e41043dbbc4f67b1dbb98cee7d5726adf9514ab84fda8fb43f9414304b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_loss_control_20261012_203344_14488\\model\\fit_report.json": "b898864c20327feba03b45e4a8e61e3ec6b08ff2ecf7457acf973d13e1276d3e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_centerpaths_20261012\\sample_0162_patch_002_hard_negative.npz": "eae2ec4b7395b7b7149908a34785567e3e7f6a3542ccd555505c87ea71ee60a2",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_centerpaths_20261012\\sample_0096_patch_003_hard_negative.npz": "2e43153608863e3512bdb94aa2a51162cfa977bc91aeae508247273fbb4a0a81"
+  },
+  "elapsed_seconds": 6.4250494000152685,
+  "optimizer_steps": 0,
+  "checkpoint_inference_passes": 0
+}

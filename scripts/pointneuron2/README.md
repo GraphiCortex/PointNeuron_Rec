@@ -6,7 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [fixed center-path extraction improves the simple case; crowding remains problematic](../../docs/pointneuron2/field_centerpaths_results.md).
+Latest: [reference-tube oracle localizes crowded-case errors upstream](../../docs/pointneuron2/centerpath_oracle_results.md).
+`audit_centerpath_oracle.py` runs the unchanged extractor on explicitly
+ground-truth-derived tube input for two training crops, then compares with
+the saved learned paths. This is a diagnostic oracle, not model inference.
+It leaves checkpoints, labels, the primary gate and validation unchanged.
+Earlier result: [fixed center-path extraction improves the simple case; crowding remains problematic](../../docs/pointneuron2/field_centerpaths_results.md).
 `audit_field_centerpaths.py` compares two pre-agreed training crops using frozen
 checkpoint inference and the existing CPU image-medial extractor, with no
 optimizer or reference-guided extraction. It measures arc-length-weighted

@@ -67,7 +67,7 @@ def distance_summary(distances, weights):
 
 
 def reference_segments(record, data_root):
-    """Read the original hashed SWC only after extraction; preserve all its edges."""
+    """Recover original hashed reference geometry for diagnostic measurements."""
     meta = record["metadata"]
     directory = (data_root / meta["sample_id"]).resolve()
     if not directory.is_relative_to(data_root.resolve()):
@@ -99,7 +99,28 @@ def reference_segments(record, data_root):
     return np.asarray(full).reshape(-1, 2, 3), np.asarray(clipped).reshape(-1, 2, 3), np.asarray(isolated).reshape(-1, 3)
 
 
-def plot_paths(record, arms, output):
+def measure_paths(vertices, edges, full_reference, clipped_reference):
+    """Shared, fixed one-voxel arc probes for learned and oracle path scoring."""
+    degree = np.bincount(edges.ravel(), minlength=len(vertices))
+    segments = vertices[edges]
+    points_as_segments = np.repeat(vertices[degree == 0, None, :], 2, axis=1)
+    prediction_geometry = np.concatenate((segments, points_as_segments))
+    prediction_probe = segment_probe(segments)
+    reference_probe = segment_probe(clipped_reference)
+    reference_distances = nearest_segments(reference_probe["points"], prediction_geometry)
+    prediction_distances = nearest_segments(prediction_probe["points"], full_reference)
+    adj = coo_matrix((np.ones(len(edges)*2), (np.r_[edges[:, 0], edges[:, 1]], np.r_[edges[:, 1], edges[:, 0]])),
+                     shape=(len(vertices), len(vertices))).tocsr()
+    components = int(connected_components(adj, directed=False, return_labels=False)) if len(vertices) else 0
+    return {"vertices": len(vertices), "edges": len(edges), "components": components,
+            "endpoints": int((degree == 1).sum()), "branch_vertices": int((degree >= 3).sum()),
+            "path_length_voxels": float(prediction_probe["weights"].sum()),
+            "reference_length_voxels": float(reference_probe["weights"].sum()),
+            "reference_to_paths": distance_summary(reference_distances, reference_probe["weights"]),
+            "paths_to_reference": distance_summary(prediction_distances, prediction_probe["weights"])}
+
+
+def plot_paths(record, arms, output, *, diagnostic_title=None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -116,12 +137,14 @@ def plot_paths(record, arms, output):
             if len(edges):
                 ax.add_collection(LineCollection(vertices[edges][:, :, coordinates], colors="orange", linewidths=1))
             ax.scatter(reference[:, coordinates[0]], reference[:, coordinates[1]], s=2, color="cyan")
-            title = "Original loss" if arm == "original" else "Hard-negative loss"
+            title = {"original": "Original loss", "hard_negative": "Hard-negative loss",
+                     "oracle": "Reference-tube oracle"}.get(arm, arm)
             ax.set_title(f"{title}: {plane}")
             ax.set_xlabel("local X voxel")
             ax.set_ylabel("local Y / Z voxel")
     meta = record["metadata"]
-    fig.suptitle(f"Training neuron {meta['sample_index']}, crop {meta['patch_index']} | fixed threshold 0.5\n"
+    extra = "" if diagnostic_title is None else diagnostic_title + "\n"
+    fig.suptitle(extra + f"Training neuron {meta['sample_index']}, crop {meta['patch_index']} | fixed threshold 0.5\n"
                  "Orange: extracted paths; cyan: reference | fixed TEASAR settings\n"
                  "Image contrast for display only; projections do not establish connectivity")
     fig.savefig(output, dpi=140)
@@ -188,31 +211,15 @@ def run(args):
             extracted[arm] = (vertices, edges, measured, extraction_seconds)
         # Reference access happens after both arms have already been extracted.
         full_reference, clipped_reference, isolated_reference = reference_segments(r, args.data_root)
-        reference_probe = segment_probe(clipped_reference)
         for arm, (vertices, edges, measured, extraction_seconds) in extracted.items():
-            degree = np.bincount(edges.ravel(), minlength=len(vertices))
-            segments = vertices[edges]
-            points_as_segments = np.repeat(vertices[degree == 0, None, :], 2, axis=1)
-            prediction_geometry = np.concatenate((segments, points_as_segments))
-            prediction_probe = segment_probe(segments)
-            reference_distances = nearest_segments(reference_probe["points"], prediction_geometry)
-            prediction_distances = nearest_segments(prediction_probe["points"], full_reference)
-            adj = coo_matrix((np.ones(len(edges)*2), (np.r_[edges[:, 0], edges[:, 1]], np.r_[edges[:, 1], edges[:, 0]])),
-                             shape=(len(vertices), len(vertices))).tocsr()
-            components = int(connected_components(adj, directed=False, return_labels=False)) if len(vertices) else 0
             row = {"sample_index": case[0], "patch_index": case[1], "arm": arm, "medial_config": medial.to_dict(),
                    "field": measured, "extraction_seconds": extraction_seconds,
-                   "vertices": len(vertices), "edges": len(edges), "components": components,
-                   "endpoints": int((degree == 1).sum()), "branch_vertices": int((degree >= 3).sum()),
-                   "path_length_voxels": float(prediction_probe["weights"].sum()),
-                   "reference_length_voxels": float(reference_probe["weights"].sum()),
-                   "reference_to_paths": distance_summary(reference_distances, reference_probe["weights"]),
-                   "paths_to_reference": distance_summary(prediction_distances, prediction_probe["weights"]),
+                   **measure_paths(vertices, edges, full_reference, clipped_reference),
                    "isolated_reference_points": len(isolated_reference)}
             summary["rows"].append(row)
             np.savez_compressed(args.output_dir / f"sample_{case[0]:04d}_patch_{case[1]:03d}_{arm}.npz",
                                 vertices_local_xyz=vertices, edges=edges, origin_xyz=np.array(r["metadata"]["origin_xyz"]))
-            print(f"neuron={case[0]} crop={case[1]} arm={arm}: components={components} path_length={row['path_length_voxels']:.1f} "
+            print(f"neuron={case[0]} crop={case[1]} arm={arm}: components={row['components']} path_length={row['path_length_voxels']:.1f} "
                   f"coverage6={row['reference_to_paths']['within_voxels']['6'] if row['reference_to_paths'] else None} "
                   f"proximity6={row['paths_to_reference']['within_voxels']['6'] if row['paths_to_reference'] else None}", flush=True)
         plot_paths(r, plot_arms, args.output_dir / f"sample_{case[0]:04d}_patch_{case[1]:03d}_paths.png")
