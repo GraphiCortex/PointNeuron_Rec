@@ -3,8 +3,10 @@
 **Ready:** the user approved the [33-training / 7-development field pilot](field_pilot_ready.md):
 existing field model/loss, 30 epochs, batch 1, LR .001, no augmentation, checks
 0/5/15/30, fixed final-checkpoint four-control comparison. Native preparation and
-GPU timing are separate commands before training. Real preparation/training has
-not run; reserved test neurons and later architecture stages stay separate.
+GPU timing are separate commands before training. Native preparation is complete:
+211 supervised training and 47 supervised development crops; all 318 records
+were verified. GPU timing is next; training has not run. Reserved test neurons
+and later architecture stages stay separate.
 
 **Latest:** the user completed the [Phase 1 four-control comparison](field_sampling_results.md).
 Candidate expansion improves reference coverage on fitted crops; expanded random

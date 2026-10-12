@@ -16,7 +16,8 @@ epoch 30 and unchanged four controls; no automatic production integration.
 Latest: [completed Phase 1 input results and branch losses](../../docs/pointneuron2/field_sampling_results.md).
 The user completed the four-control comparison; candidate expansion helps fitted
 crops, while the 50/50 selector is not promoted. The broader field pilot is
-approved and prepared; actual caching/timing/training has not run.
+approved and prepared; native caching is complete and verified. GPU timing and
+training have not run.
 Completed protocol: [isolated input comparison](../../docs/pointneuron2/field_sampling_ready.md).
 `run_field_sampling.ps1 -Action compare` reuses the frozen passing field checkpoint
 for eight training-crop forward passes, then compares four selectors on CPU with

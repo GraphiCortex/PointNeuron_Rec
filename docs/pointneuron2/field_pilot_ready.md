@@ -1,9 +1,19 @@
-# Approved field train/development pilot: prepare first, then measure runtime
+# Approved field train/development pilot: preparation complete, GPU timing next
 
 12 October 2026. The user approved a bounded generalization pilot after the
 [four-control training-crop comparison](field_sampling_results.md). Commands are
-prepared; **the real native cache, timing and training have not been run**.
+prepared; **native preparation is complete; GPU timing and training have not run**.
 Execution tests below use tiny synthetic CPU fixtures, not research results.
+
+**13 October update:** the user completed CPU preparation in seven minutes
+(manifest elapsed 416.29 seconds). All 318 native record hashes and raw/normalized
+image and supervision-mask contracts were subsequently verified without model
+inference. Training: 33 neurons, 211 supervised / 51 unsupervised crops.
+Development: seven neurons, 47 supervised / nine unsupervised crops. Every neuron
+has usable supervision; zero reserved test records were included. The agreed
+30 epochs will perform **6,330 optimizer updates**. This verifies preparation,
+not learnability or reconstruction quality. Run **preflight** next; do not repeat
+preparation into the completed cache.
 
 The intended architecture remains Phase 1 point cloud -> PointNeXt -> Transformer
 skeleton proposals -> GATv2 connectivity -> SWC. This pilot tests only a candidate
@@ -59,7 +69,7 @@ independent final test. The eight reserved test neurons remain unopened.
 Seeds, crop order and backend flags are recorded; exact repeated training has
 not been established, and the earlier repeatability caveat remains relevant.
 
-## Run now: CPU native-image preparation only
+## Completed: CPU native-image preparation command
 
 In the PowerShell terminal you want to watch:
 
@@ -73,11 +83,9 @@ Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
 
 This decodes the original train/development images, verifies provenance and
 caches native arrays/labels. It uses CPU and **does not start training**. Each
-crop prints progress; preparation may take several minutes and its actual
-runtime is not yet measured. At completion, share the train/development usable
-counts and any neurons without usable supervision. The 51 train and nine
-development crops without query targets need this native check before assigning
-their field-supervision status.
+crop prints progress; the completed run took seven minutes. The native check
+confirmed the 51 train and nine development crops without query targets remain
+unsupervised under the agreed rule. They are not labeled as verified background.
 
 All actions default to the same experiment directory:
 
