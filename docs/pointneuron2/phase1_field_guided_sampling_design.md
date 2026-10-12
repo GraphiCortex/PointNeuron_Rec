@@ -3,7 +3,7 @@
 12 October 2026. The user agreed to design this comparison after the
 [eight-crop field learnability pass](centerline_duration_results.md).
 The user subsequently approved this design. Its isolated selector/comparison is
-now [implemented, checked and ready for the visible run](field_sampling_ready.md).
+now [implemented and completed through the user-run comparison](field_sampling_results.md).
 The specification below records the reviewed choices; it is not adoption of a
 production sampler or authorization for a broader training run.
 

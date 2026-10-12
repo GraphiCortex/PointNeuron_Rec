@@ -64,10 +64,11 @@ sampled inputs and downstream reconstructions have not been demonstrated.
 ## How the field could serve Phase 1
 
 The user approved the [Phase 1 interface and comparison design](phase1_field_guided_sampling_design.md).
-Its isolated selector/comparison is now [implemented and ready for the visible
-eight-crop check](field_sampling_ready.md), with synthetic tests and a one-crop
-preflight passed. This is not production/PointNeXt integration or a promoted
-recipe; the full input comparison and generalization check remain pending.
+Its isolated selector/comparison has now [completed the eight-crop check](field_sampling_results.md).
+Candidate expansion helps reference coverage in these fitted examples; expanded
+random is the strongest coverage baseline, and the 50/50 allocation has some
+branch losses. This is not production/PointNeXt integration or a promoted recipe;
+a broader field train/development-validation pilot remains for discussion.
 
 After reviewing the fit, separately design and agree a controlled point-cloud
 comparison. The field could guide the selection of informative **image points**,

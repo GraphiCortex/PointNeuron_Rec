@@ -1,11 +1,13 @@
 # PointNeuron 2.0 development
 
-**Ready:** the user-approved [Phase 1 four-control input comparison](field_sampling_ready.md)
-is implemented and execution-tested, with a one-crop CUDA timing check complete.
-The full eight-crop comparison remains for the user to launch visibly. The
+**Latest:** the user completed the [Phase 1 four-control comparison](field_sampling_results.md).
+Candidate expansion improves reference coverage on fitted crops; expanded random
+is the strongest coverage control and the 50/50 selector has some branch losses.
+The [completed protocol](field_sampling_ready.md) records execution details. The
 [design](phase1_field_guided_sampling_design.md) separates candidate expansion,
 coverage and guidance at matched unique-point counts and 512/2,048 budgets.
-Production/PointNeXt integration and broader field training remain pending.
+Production/PointNeXt integration and broader field training remain pending;
+no sampler has been promoted automatically.
 
 **Latest field result:** the user completed the 1,600-update eight-crop fit;
 the frozen gate passes, with mean tube Dice 0.9173. The replay's 400-update

@@ -6,7 +6,11 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Ready: [isolated Phase 1 input comparison and command](../../docs/pointneuron2/field_sampling_ready.md).
+Latest: [completed Phase 1 input results and branch losses](../../docs/pointneuron2/field_sampling_results.md).
+The user completed the four-control comparison; candidate expansion helps fitted
+crops, while the 50/50 selector is not promoted. The broader field pilot is for
+discussion; no new training command has been prepared.
+Completed protocol: [isolated input comparison](../../docs/pointneuron2/field_sampling_ready.md).
 `run_field_sampling.ps1 -Action compare` reuses the frozen passing field checkpoint
 for eight training-crop forward passes, then compares four selectors on CPU with
 reference scoring only after inputs are frozen. `-Action preflight` checks/times

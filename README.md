@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: isolated Phase 1 four-control input comparison and visible command](docs/pointneuron2/field_sampling_ready.md)
+- [Latest: candidate expansion helps; 50/50 allocation loses some branch support](docs/pointneuron2/field_sampling_results.md)
+- [Completed protocol: isolated Phase 1 four-control input comparison](docs/pointneuron2/field_sampling_ready.md)
 - [Approved design: field-guided point-selection interface and matched comparison](docs/pointneuron2/phase1_field_guided_sampling_design.md)
 - [Latest: eight-crop field learnability passes; measured improvements and reproducibility caveat](docs/pointneuron2/centerline_duration_results.md)
 - [Intended architecture: Phase 1 point cloud, PointNeXt, Transformer and GATv2; isolated field-guide experiment](docs/pointneuron2/centerline_framework.md)

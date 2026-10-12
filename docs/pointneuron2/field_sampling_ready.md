@@ -1,8 +1,12 @@
-# Ready: isolated Phase 1 field-guided input comparison
+# Completed protocol: isolated Phase 1 field-guided input comparison
 
 12 October 2026. The user approved the [four-control design](phase1_field_guided_sampling_design.md).
 The selector, scorer and local launcher are implemented as an isolated
-comparison. **The full eight-crop comparison has not been launched.**
+comparison. **The user completed it in 1 minute 7 seconds.** Candidate expansion
+helps these fitted examples, while the 50/50 selector is not the strongest
+coverage control. Read [the measured results and branch losses](field_sampling_results.md)
+before proceeding. The command below documents the completed experiment; it
+is not a request to repeat it.
 
 The intended architecture stays **Phase 1 point cloud -> PointNeXt -> Transformer
 proposals -> GATv2 connectivity -> SWC**. This command evaluates possible input
