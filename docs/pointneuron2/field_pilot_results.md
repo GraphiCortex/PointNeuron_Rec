@@ -11,7 +11,8 @@ The model learns reference-related support beyond the eight-crop fitting
 experiment, but misses branches and adds off-reference locations in difficult
 cases. This is a **candidate Phase 1 guide**, not an accepted complete model.
 The intended PointNeXt -> Transformer -> GATv2 stages have not run here.
-The four-control development sampling comparison is prepared but not run.
+The four-control development sampling comparison has subsequently completed;
+see [its gains and dilution findings](field_pilot_sampling_results.md).
 
 ## Training and development results
 
@@ -127,9 +128,9 @@ not proof of recovered visible fluorescence. The nine unannotated crops produce
 nonempty fields, but their biological correctness cannot be scored from an
 absent local reference.
 
-## Next: finish the agreed finite-budget comparison
+## Completed subsequent step: the agreed finite-budget comparison
 
-Run the already prepared four-control comparison with the fixed final checkpoint:
+The user ran this four-control comparison with the fixed final checkpoint:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
@@ -145,8 +146,8 @@ choose a sampler from the overall mean alone.
 
 The comparison produces `comparison/comparison.json`, `metrics.csv`, clouds,
 per-chain measurements and overlays beneath `field_pilot_20261012`. Its actual
-duration is not yet measured; the completed training's 17-minute duration does
-not predict this mostly CPU comparison. It prints freezing/scoring progress.
+duration is now measured at 4m24s at the terminal; the training's 17-minute
+duration did not predict this mostly CPU comparison. It prints freezing/scoring progress.
 No new training, production integration or proposal-stage bypass starts.
 
 ## Execution checks and visible evidence

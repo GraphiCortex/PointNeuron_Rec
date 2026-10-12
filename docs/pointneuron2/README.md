@@ -1,10 +1,16 @@
 # PointNeuron 2.0 development
 
+**Latest:** [development sampling is complete and reviewed](field_pilot_sampling_results.md).
+At matched counts, expanded random raises mean coverage from 71.47% to 85.47%,
+with severe dilution in some neuron-35 crops. The 50/50 selector is not a universal
+winner. One bounded image-backbone preservation comparison is proposed for
+discussion; no new selector or additional training has been implemented.
+
 **13 October results:** the [field pilot is complete and reviewed](field_pilot_results.md).
 Final development field coverage is 90.19% within two voxels, tube Dice 0.5772.
 Full expanded candidates raise eligible coverage from 75.27% to 95.33%, with a
-proximity cost and difficult per-crop failures. Finish the fixed four-control
-development comparison next; no retraining or sampler promotion has occurred.
+proximity cost and difficult per-crop failures. The fixed four-control development
+comparison has now completed; no retraining or sampler promotion has occurred.
 
 **Ready:** the user approved the [33-training / 7-development field pilot](field_pilot_ready.md):
 existing field model/loss, 30 epochs, batch 1, LR .001, no augmentation, checks
@@ -20,7 +26,8 @@ is the strongest coverage control and the 50/50 selector has some branch losses.
 The [completed protocol](field_sampling_ready.md) records execution details. The
 [design](phase1_field_guided_sampling_design.md) separates candidate expansion,
 coverage and guidance at matched unique-point counts and 512/2,048 budgets.
-Production/PointNeXt integration and actual broader field training remain pending;
+Production/PointNeXt integration remains pending; broader field training and
+development sampling are complete;
 no sampler has been promoted automatically.
 
 **Latest field result:** the user completed the 1,600-update eight-crop fit;

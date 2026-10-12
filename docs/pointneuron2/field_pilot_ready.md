@@ -1,10 +1,12 @@
-# Approved field train/development pilot: training complete, sampling comparison next
+# Completed field train/development pilot and four-control sampling protocol
 
 12 October 2026. The user approved a bounded generalization pilot after the
 [four-control training-crop comparison](field_sampling_results.md). Commands are
 prepared; **native preparation, GPU timing and training are complete**. The
-development four-control sampling comparison remains pending; see the
-[reviewed results, curves and image limits](field_pilot_results.md).
+development four-control sampling comparison is also complete; see the
+[sampling results, gains and dilution](field_pilot_sampling_results.md) and
+[training results, curves and image limits](field_pilot_results.md).
+Commands below record the completed protocol, not a request to rerun it.
 Execution tests below use tiny synthetic CPU fixtures, not research results.
 
 **13 October update:** the user completed CPU preparation in seven minutes

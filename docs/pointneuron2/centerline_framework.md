@@ -72,7 +72,9 @@ random is the strongest coverage baseline, and the 50/50 allocation has some
 branch losses. This is not production/PointNeXt integration or a promoted recipe;
 the [broader field train/development-validation pilot](field_pilot_results.md) is
 complete: useful development candidate expansion, with missing branches and
-off-reference support. The fixed-budget development sampling comparison is next.
+off-reference support. The [fixed-budget development comparison](field_pilot_sampling_results.md)
+is complete: expansion improves mean coverage but dilutes some useful image
+pools and introduces branch losses. No production sampler is promoted.
 
 The controlled comparison is implemented. The field could guide the selection of informative **image points**,
 while retaining intensities, local image evidence and spatial coverage. An

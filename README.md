@@ -7,8 +7,9 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: development sampling gains survive at equal counts; image-pool dilution and branch losses remain](docs/pointneuron2/field_pilot_sampling_results.md)
 - [Latest: field train/development pilot completed; candidate support improves, finite-budget comparison next](docs/pointneuron2/field_pilot_results.md)
-- [Protocol: approved 33-training / 7-development field pilot; training complete, sampling comparison next](docs/pointneuron2/field_pilot_ready.md)
+- [Completed protocol: approved 33-training / 7-development field pilot and four-control sampling comparison](docs/pointneuron2/field_pilot_ready.md)
 - [Latest: candidate expansion helps; 50/50 allocation loses some branch support](docs/pointneuron2/field_sampling_results.md)
 - [Completed protocol: isolated Phase 1 four-control input comparison](docs/pointneuron2/field_sampling_ready.md)
 - [Approved design: field-guided point-selection interface and matched comparison](docs/pointneuron2/phase1_field_guided_sampling_design.md)
