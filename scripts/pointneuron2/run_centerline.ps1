@@ -1,11 +1,12 @@
 param(
-    [Parameter(Mandatory=$true)][ValidateSet('prepare','preflight','fit','loss-control','loss-control-preflight')][string]$Action,
+    [Parameter(Mandatory=$true)][ValidateSet('prepare','preflight','fit','loss-control','loss-control-preflight','duration','duration-preflight')][string]$Action,
     [string]$ArtifactRoot = 'C:\Users\Seywe\Documents\GitHub\PointNeuron',
     [string]$Manifest,
     [string]$OutputDirectory,
     [string]$Python,
     [string]$BaselineModels,
     [string]$LossConfig,
+    [string]$DurationConfig,
     [ValidateSet('cuda','cpu')][string]$Device = 'cuda'
 )
 $ErrorActionPreference = 'Stop'
@@ -13,12 +14,21 @@ $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Pat
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
 if (-not (Test-Path -LiteralPath $Python -PathType Leaf)) { throw 'Supply -Python with the local PyTorch environment.' }
 $lossControl = $Action -in @('loss-control','loss-control-preflight')
-if ($lossControl) {
-    if (-not $BaselineModels) { $BaselineModels = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/centerline_fit_20261012_144121_14488/model' }
+$duration = $Action -in @('duration','duration-preflight')
+if ($DurationConfig -and -not $duration) { throw 'DurationConfig applies only to duration actions.' }
+if ($lossControl -or $duration) {
+    if (-not $BaselineModels) {
+        $baselineRun = if ($duration) { 'centerline_loss_control_20261012_203344_14488' } else { 'centerline_fit_20261012_144121_14488' }
+        $BaselineModels = Join-Path $projectRoot "tmp/pointneuron2/local_runs/$baselineRun/model"
+    }
     if (-not $LossConfig) { $LossConfig = Join-Path $projectRoot 'configs/pointneuron2/centerline_loss_control.json' }
     $BaselineModels = (Resolve-Path -LiteralPath $BaselineModels).Path
     $LossConfig = (Resolve-Path -LiteralPath $LossConfig).Path
-} elseif ($BaselineModels -or $LossConfig) { throw 'BaselineModels and LossConfig apply only to loss-control actions.' }
+} elseif ($BaselineModels -or $LossConfig) { throw 'BaselineModels and LossConfig apply only to loss-control or duration actions.' }
+if ($duration) {
+    if (-not $DurationConfig) { $DurationConfig = Join-Path $projectRoot 'configs/pointneuron2/centerline_duration.json' }
+    $DurationConfig = (Resolve-Path -LiteralPath $DurationConfig).Path
+}
 if (-not $Manifest) {
     if ($Action -eq 'prepare') {
         $Manifest = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/query_implementation_20261011/cache/manifest.json'
@@ -44,9 +54,15 @@ if ($Action -eq 'prepare') {
         $cliArguments += @('--baseline-models', $BaselineModels, '--loss-config', $LossConfig)
         Write-Output 'Loss-only paired control: top min(N,3P) known-negative BCE; reuse completed baseline; fresh matched initialization; other settings fixed.'
     }
-    if ($Action -in @('preflight','loss-control-preflight')) {
+    if ($duration) {
+        $cliArguments += @('--duration-baseline-models', $BaselineModels, '--duration-config', $DurationConfig, '--loss-config', $LossConfig)
+        Write-Output 'Duration-only fresh replay: same eight training crops, hard-negative loss and model; preserve AdamW state for all 1600 updates.'
+    }
+    if ($Action -in @('preflight','loss-control-preflight','duration-preflight')) {
         $cliArguments += '--preflight'
         Write-Output 'Timing only: 4 throwaway updates, no trained checkpoint retained.'
+    } elseif ($duration) {
+        Write-Output '1600 updates, batch 1; saved checks 0/400/800/1600; fixed threshold/gate; no validation/test or SWC reconstruction.'
     } else {
         Write-Output 'Fixed training-crop learnability: 400 updates, batch 1; evaluations 0/100/200/400; no validation/test or SWC reconstruction.'
     }

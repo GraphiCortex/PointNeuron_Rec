@@ -21,6 +21,7 @@ from pointneuron.data.vaa3d_raw import VOLUME_READER_VERSION
 from pointneuron.models.centerline_unet import CenterlineUNet, field_loss
 from scripts.pointneuron2.prepare_centerline_fit import inspection
 from scripts.pointneuron2.centerline_loss_comparison import check_baseline, compare_final, assert_baseline_unchanged, assert_initial_metrics
+from scripts.pointneuron2.centerline_duration_comparison import duration_config, check_duration_baseline, compare_duration
 
 
 def load_records(path, partition_path):
@@ -105,7 +106,12 @@ def run(args):
         raise RuntimeError("CUDA unavailable; full fit requires explicit device choice")
     device = torch.device(args.device)
     manifest, records = load_records(args.manifest, args.partition)
-    cfg = manifest["config"]
+    source_cfg = manifest["config"]
+    duration_recipe = getattr(args, "duration_config", None)
+    duration_models = getattr(args, "duration_baseline_models", None)
+    if bool(duration_recipe) != bool(duration_models):
+        raise ValueError("Duration-only replay requires both duration recipe and completed baseline")
+    cfg = source_cfg if duration_recipe is None else duration_config(source_cfg, duration_recipe)
     if cfg["schema"] != "pointneuron2-centerline-fit-v1" or cfg["threshold"] != .5 or cfg["coverage_tolerance_voxels"] != 6:
         raise ValueError("Unsupported frozen protocol")
     if args.output_dir.exists():
@@ -116,10 +122,15 @@ def run(args):
     model = CenterlineUNet(cfg["base_channels"]).to(device)
     baseline_models = getattr(args, "baseline_models", None)
     loss_config = getattr(args, "loss_config", None)
-    if bool(baseline_models) != bool(loss_config):
+    if duration_recipe and (baseline_models or not loss_config):
+        raise ValueError("Duration replay needs the frozen loss config and cannot combine with a loss-only control")
+    if not duration_recipe and bool(baseline_models) != bool(loss_config):
         raise ValueError("Loss-only control requires both baseline models and loss config")
     pairing = None if baseline_models is None else check_baseline(
         baseline_models, args.manifest, cfg, device, model, loss_config)
+    if duration_recipe:
+        pairing = check_duration_baseline(duration_models, args.manifest, source_cfg, cfg,
+                                          device, model, loss_config, duration_recipe)
     loss_spec = {"negative_aggregation": "all", "negative_to_positive_ratio": 3} if pairing is None else pairing["loss_spec"]
     loss_kwargs = {key: loss_spec[key] for key in ("negative_aggregation", "negative_to_positive_ratio")}
     optimizer = torch.optim.AdamW(model.parameters(), lr=cfg["learning_rate"], weight_decay=cfg["weight_decay"])
@@ -132,7 +143,9 @@ def run(args):
     print(f"Outputs: {args.output_dir.resolve()}", flush=True)
     print(f"Negative BCE aggregation: {loss_spec['negative_aggregation']} | known negatives only; positive BCE and Dice unchanged", flush=True)
     if pairing:
-        print("Baseline pairing checks passed: exact initial model tensors, cache, config, device and declared budget.", flush=True)
+        print("Baseline pairing checks passed: exact initial model tensors, cache, training settings, device and loss.", flush=True)
+    if duration_recipe:
+        print("Duration-only fresh replay: 1600 uninterrupted updates; AdamW state retained throughout; saved checks 0/400/800/1600.", flush=True)
 
     def update(i):
         model.train()
@@ -175,12 +188,14 @@ def run(args):
                   "manifest_sha256": file_digest(args.manifest), "device": str(device),
                   "seconds_per_update": update_seconds, "seconds_per_crop_eval": eval_seconds,
                   "estimated_fit_seconds": estimate, "parameters": sum(p.numel() for p in model.parameters()),
-                  "loss_spec": loss_spec,
+                  "loss_spec": loss_spec, "config": cfg,
                   "cuda_peak_allocated_mib": torch.cuda.max_memory_allocated()/2**20 if device.type == "cuda" else None}
         if pairing:
             assert_baseline_unchanged(pairing)
             report["pairing_checks"] = {**pairing["checks"], "step_zero_inference_matches": True,
                                        "baseline_files_unchanged": True}
+        if duration_recipe:
+            report["duration_config_sha256"] = pairing["duration_config_sha256"]
         (args.output_dir / "timing.json").write_text(json.dumps(report, indent=2))
         print(json.dumps(report, indent=2), flush=True)
         return report
@@ -193,6 +208,8 @@ def run(args):
               "raw_image_cutoff_baseline": []}
     if pairing:
         report["baseline_pairing"] = {key: value for key, value in pairing.items() if key != "baseline_report"}
+    if duration_recipe:
+        report["duration_config_sha256"] = pairing["duration_config_sha256"]
     for r in records:
         cutoff = r["metadata"]["threshold"] / r["metadata"]["image_scale"]
         report["raw_image_cutoff_baseline"].append({"sample_index": r["row"]["sample_index"], "patch_index": r["row"]["patch_index"],
@@ -259,14 +276,19 @@ def run(args):
                   crop_index_order=visits,
                   next_step="review all crop overlays; validation only if final gate passes")
     if pairing:
-        comparison = compare_final(report, pairing)
-        (args.output_dir / "loss_comparison.json").write_text(json.dumps(comparison, indent=2))
-        print(f"Loss-only comparison: paired checks passed; baseline gate={comparison['baseline_gate_passed']} "
-              f"control gate={comparison['control_gate_passed']}", flush=True)
+        comparison = compare_duration(report, pairing) if duration_recipe else compare_final(report, pairing)
+        comparison_path = args.output_dir / ("duration_comparison.json" if duration_recipe else "loss_comparison.json")
+        comparison_path.write_text(json.dumps(comparison, indent=2))
+        if duration_recipe:
+            print(f"Duration-only pairing checks passed; common-budget metrics reproduced="
+                  f"{comparison['common_budget_metrics_match_within_tolerance']} | gates={comparison['gate_passed']}", flush=True)
+        else:
+            print(f"Loss-only comparison: paired checks passed; baseline gate={comparison['baseline_gate_passed']} "
+                  f"control gate={comparison['control_gate_passed']}", flush=True)
         for arm, summary in comparison["summary"].items():
             print(f"{arm}: mean coverage_6={summary['reference_coverage_6']:.4f} "
                   f"proximity_6={summary['reference_proximity_6']:.4f} known_dice={summary['known_voxel_dice']:.4f}", flush=True)
-        print(f"comparison: {args.output_dir / 'loss_comparison.json'}", flush=True)
+        print(f"comparison: {comparison_path}", flush=True)
     (args.output_dir / "fit_report.json").write_text(json.dumps(report, indent=2))
     print(f"Status: completed; checkpoint reload passed; learnability gate: {report['final_gate_passed']}", flush=True)
     print(f"report: {args.output_dir / 'fit_report.json'}", flush=True)
@@ -282,4 +304,6 @@ if __name__ == "__main__":
     parser.add_argument("--preflight", action="store_true")
     parser.add_argument("--baseline-models", type=Path)
     parser.add_argument("--loss-config", type=Path)
+    parser.add_argument("--duration-baseline-models", type=Path)
+    parser.add_argument("--duration-config", type=Path)
     run(parser.parse_args())

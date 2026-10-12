@@ -6,6 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Ready: [approved duration-only 1,600-update field check](../../docs/pointneuron2/centerline_duration_ready.md).
+`run_centerline.ps1 -Action duration` starts one fresh uninterrupted hard-negative
+fit with saved checks 0/400/800/1600 and compares against the completed 400-update
+run. `-Action duration-preflight` checks initial matching and times only four
+throwaway updates. The [framework explanation](../../docs/pointneuron2/centerline_framework.md)
+distinguishes voxel learning from the downstream point/path representation.
 Latest: [reference-tube oracle localizes crowded-case errors upstream](../../docs/pointneuron2/centerpath_oracle_results.md).
 `audit_centerpath_oracle.py` runs the unchanged extractor on explicitly
 ground-truth-derived tube input for two training crops, then compares with

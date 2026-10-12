@@ -22,13 +22,14 @@ from pointneuron.data.centerline_field import SCHEMA
 from pointneuron.data.query_cache import file_digest
 from pointneuron.models.centerline_unet import CenterlineUNet, field_loss_terms
 from scripts.pointneuron2.train_centerline_fit import load_records, field_metrics
+from scripts.pointneuron2.centerline_duration_comparison import completed_fit_config
 
 
 def run(args):
     torch.set_num_threads(2)
     manifest, records = load_records(args.manifest, ROOT / "configs/pointneuron2/partition_seed0.json")
     fit = json.loads((args.models / "fit_report.json").read_text())
-    cfg = manifest["config"]
+    cfg = completed_fit_config(manifest["config"], fit, ROOT / "configs/pointneuron2/centerline_duration.json")
     if fit["status"] != "completed" or fit["config"] != cfg or fit["manifest_sha256"] != file_digest(args.manifest):
         raise ValueError("Completed fit/cache contract mismatch")
     checkpoint_path = args.models / f"field_step_{cfg['steps']:04d}.pt"

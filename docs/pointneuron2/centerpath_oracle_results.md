@@ -113,10 +113,13 @@ checkpoints do not save optimizer state, so this should be a fresh replay rather
 than claim an exact continuation while resetting AdamW moments. No LR schedule,
 loss, architecture or target change is bundled with the update-budget change.
 
+The user subsequently approved preparation; see the
+[duration-only protocol and visible command](centerline_duration_ready.md).
+The full fit remains for the user to launch.
+
 If the final result fails, stop the duration hypothesis and inspect the learning
 curve and image/reference ambiguity; do not automatically extend it or promote
-validation. **This extended fit has not been implemented or launched.** Discuss
-and agree the bounded experiment before preparation. The existing 400-update
+validation. The existing 400-update
 candidate's primary gate remains failed; the oracle cannot pass it on behalf
 of the model.
 

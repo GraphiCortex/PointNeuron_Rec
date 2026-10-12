@@ -1,0 +1,5 @@
+{
+  "schema": "pointneuron2-centerline-duration-v1",
+  "steps": 1600,
+  "eval_steps": [0, 400, 800, 1600]
+}
