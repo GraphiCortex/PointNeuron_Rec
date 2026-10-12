@@ -1,0 +1,497 @@
+{
+  "status": "completed",
+  "scope": "fixed-training-crop learnability; not validation or SWC quality",
+  "manifest_sha256": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+  "partition_sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+  "config": {
+    "schema": "pointneuron2-centerline-fit-v1",
+    "seed": 0,
+    "crops": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        32,
+        0
+      ],
+      [
+        32,
+        3
+      ],
+      [
+        96,
+        0
+      ],
+      [
+        96,
+        3
+      ],
+      [
+        162,
+        1
+      ],
+      [
+        162,
+        2
+      ]
+    ],
+    "tube_radius_voxels": 2.0,
+    "uncertainty_distance_voxels": 6.0,
+    "base_channels": 8,
+    "steps": 400,
+    "eval_steps": [
+      0,
+      100,
+      200,
+      400
+    ],
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "threshold": 0.5,
+    "coverage_tolerance_voxels": 6.0,
+    "gate": {
+      "minimum_crop_reference_coverage": 0.95,
+      "minimum_crop_reference_proximity": 0.9,
+      "minimum_mean_known_dice": 0.8
+    }
+  },
+  "device": "cuda",
+  "torch_version": "2.12.1+cu130",
+  "evaluations": [
+    {
+      "step": 0,
+      "crops": [
+        {
+          "sample_index": 0,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.013116173415538135,
+          "known_voxel_dice": 0.0010468778538558516,
+          "accepted_voxels": 448149,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.3374931812286377
+        },
+        {
+          "sample_index": 0,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.1033644913759204,
+          "known_voxel_dice": 0.020174277618383536,
+          "accepted_voxels": 554378,
+          "accepted_unknown_bright_voxels": 11,
+          "mean_reference_tube_score": 0.5486733913421631
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.032326345241474395,
+          "known_voxel_dice": 0.005977807088662738,
+          "accepted_voxels": 246610,
+          "accepted_unknown_bright_voxels": 18,
+          "mean_reference_tube_score": 0.5372785925865173
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.10527106673567863,
+          "known_voxel_dice": 0.017690530798129014,
+          "accepted_voxels": 239572,
+          "accepted_unknown_bright_voxels": 3,
+          "mean_reference_tube_score": 0.5386775135993958
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.054488472622478384,
+          "known_voxel_dice": 0.009038651847564744,
+          "accepted_voxels": 555200,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.5131521821022034
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.08101742816768724,
+          "known_voxel_dice": 0.016807926550829383,
+          "accepted_voxels": 551980,
+          "accepted_unknown_bright_voxels": 431,
+          "mean_reference_tube_score": 0.5574648380279541
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.04785107418511053,
+          "known_voxel_dice": 0.008015478775215407,
+          "accepted_voxels": 899938,
+          "accepted_unknown_bright_voxels": 182,
+          "mean_reference_tube_score": 0.5355424284934998
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.007139803854212805,
+          "known_voxel_dice": 0.0010879351740696278,
+          "accepted_voxels": 905347,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.4992693364620209
+        }
+      ],
+      "gate_passed": false
+    },
+    {
+      "step": 100,
+      "crops": [
+        {
+          "sample_index": 0,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.3094289508632138,
+          "known_voxel_dice": 0.1060084700899947,
+          "accepted_voxels": 14307,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9756244421005249
+        },
+        {
+          "sample_index": 0,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8220837574162798,
+          "known_voxel_dice": 0.329928624169333,
+          "accepted_voxels": 40283,
+          "accepted_unknown_bright_voxels": 55,
+          "mean_reference_tube_score": 0.8695210218429565
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9631284916201117,
+          "known_voxel_dice": 0.4574486449162783,
+          "accepted_voxels": 4475,
+          "accepted_unknown_bright_voxels": 7,
+          "mean_reference_tube_score": 0.977262556552887
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9927604362542309,
+          "known_voxel_dice": 0.5116991643454039,
+          "accepted_voxels": 10636,
+          "accepted_unknown_bright_voxels": 1,
+          "mean_reference_tube_score": 0.9528169631958008
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.7911420863309353,
+          "known_voxel_dice": 0.29061521753018593,
+          "accepted_voxels": 26688,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9350185990333557
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.5643878565420204,
+          "known_voxel_dice": 0.22297297297297297,
+          "accepted_voxels": 52308,
+          "accepted_unknown_bright_voxels": 874,
+          "mean_reference_tube_score": 0.855067789554596
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.7344884784362952,
+          "known_voxel_dice": 0.2303125125366069,
+          "accepted_voxels": 44612,
+          "accepted_unknown_bright_voxels": 500,
+          "mean_reference_tube_score": 0.9532822370529175
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8222456351595424,
+          "known_voxel_dice": 0.25180897250361794,
+          "accepted_voxels": 6644,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9980754256248474
+        }
+      ],
+      "gate_passed": false
+    },
+    {
+      "step": 200,
+      "crops": [
+        {
+          "sample_index": 0,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.08846464690592167,
+          "known_voxel_dice": 0.0342592195080067,
+          "accepted_voxels": 45781,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9651755094528198
+        },
+        {
+          "sample_index": 0,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8384991432315291,
+          "known_voxel_dice": 0.33619203854060675,
+          "accepted_voxels": 39684,
+          "accepted_unknown_bright_voxels": 55,
+          "mean_reference_tube_score": 0.9107459783554077
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9509619896762084,
+          "known_voxel_dice": 0.4723618090452261,
+          "accepted_voxels": 4262,
+          "accepted_unknown_bright_voxels": 15,
+          "mean_reference_tube_score": 0.9840315580368042
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9980696941989231,
+          "known_voxel_dice": 0.5430824795459571,
+          "accepted_voxels": 9843,
+          "accepted_unknown_bright_voxels": 1,
+          "mean_reference_tube_score": 0.9761762022972107
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.7459785522788204,
+          "known_voxel_dice": 0.3035154425988927,
+          "accepted_voxels": 25364,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9476116895675659
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.5367066609972084,
+          "known_voxel_dice": 0.21974840255591055,
+          "accepted_voxels": 54091,
+          "accepted_unknown_bright_voxels": 873,
+          "mean_reference_tube_score": 0.8982093334197998
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8070400372982108,
+          "known_voxel_dice": 0.2882709807886754,
+          "accepted_voxels": 34318,
+          "accepted_unknown_bright_voxels": 500,
+          "mean_reference_tube_score": 0.9480183720588684
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9325142758262676,
+          "known_voxel_dice": 0.28414489311163893,
+          "accepted_voxels": 5779,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9978088140487671
+        }
+      ],
+      "gate_passed": false
+    },
+    {
+      "step": 400,
+      "crops": [
+        {
+          "sample_index": 0,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.22648005388818201,
+          "known_voxel_dice": 0.11351122405760271,
+          "accepted_voxels": 13361,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9907318949699402
+        },
+        {
+          "sample_index": 0,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8904578208020962,
+          "known_voxel_dice": 0.45200411671441687,
+          "accepted_voxels": 27478,
+          "accepted_unknown_bright_voxels": 55,
+          "mean_reference_tube_score": 0.9184708595275879
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9984306340238543,
+          "known_voxel_dice": 0.583019286189315,
+          "accepted_voxels": 3186,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9834367632865906
+        },
+        {
+          "sample_index": 32,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 1.0,
+          "known_voxel_dice": 0.6475583864118896,
+          "accepted_voxels": 7579,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9691966772079468
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 0,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.875406283856988,
+          "known_voxel_dice": 0.42417106254709874,
+          "accepted_voxels": 16614,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9534819722175598
+        },
+        {
+          "sample_index": 96,
+          "patch_index": 3,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.6108909801331792,
+          "known_voxel_dice": 0.30386375430485446,
+          "accepted_voxels": 36342,
+          "accepted_unknown_bright_voxels": 826,
+          "mean_reference_tube_score": 0.8893409967422485
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 1,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.8811244979919679,
+          "known_voxel_dice": 0.3647249912417593,
+          "accepted_voxels": 26145,
+          "accepted_unknown_bright_voxels": 488,
+          "mean_reference_tube_score": 0.9796369075775146
+        },
+        {
+          "sample_index": 162,
+          "patch_index": 2,
+          "reference_coverage_6": 1.0,
+          "reference_proximity_6": 0.9856468737711365,
+          "known_voxel_dice": 0.3167301009432401,
+          "accepted_voxels": 5086,
+          "accepted_unknown_bright_voxels": 0,
+          "mean_reference_tube_score": 0.9986060857772827
+        }
+      ],
+      "gate_passed": false
+    }
+  ],
+  "raw_image_cutoff_baseline": [
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "reference_coverage_6": 0.9420289855072463,
+      "reference_proximity_6": 1.0,
+      "known_voxel_dice": 0.3798319327731092,
+      "accepted_voxels": 385,
+      "accepted_unknown_bright_voxels": 0,
+      "mean_reference_tube_score": 0.28074534161490683
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 2,
+      "reference_coverage_6": 0.19529085872576177,
+      "reference_proximity_6": 0.9102773246329527,
+      "known_voxel_dice": 0.06097292537970504,
+      "accepted_voxels": 613,
+      "accepted_unknown_bright_voxels": 55,
+      "mean_reference_tube_score": 0.0324812382739212
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 0,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.978689818468824,
+      "known_voxel_dice": 0.3828460038986355,
+      "accepted_voxels": 1267,
+      "accepted_unknown_bright_voxels": 27,
+      "mean_reference_tube_score": 0.37056603773584906
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 3,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.9984756097560976,
+      "known_voxel_dice": 0.41854996734160677,
+      "accepted_voxels": 3936,
+      "accepted_unknown_bright_voxels": 6,
+      "mean_reference_tube_score": 0.43006711409395976
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 0,
+      "reference_coverage_6": 0.27486910994764396,
+      "reference_proximity_6": 1.0,
+      "known_voxel_dice": 0.10029382957884427,
+      "accepted_voxels": 487,
+      "accepted_unknown_bright_voxels": 0,
+      "mean_reference_tube_score": 0.055435253356431353
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "reference_coverage_6": 0.6781609195402298,
+      "reference_proximity_6": 0.8405665516615217,
+      "known_voxel_dice": 0.3088554792734857,
+      "accepted_voxels": 5507,
+      "accepted_unknown_bright_voxels": 878,
+      "mean_reference_tube_score": 0.2583599883687118
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 1,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.829409757761856,
+      "known_voxel_dice": 0.31004527101431545,
+      "accepted_voxels": 2931,
+      "accepted_unknown_bright_voxels": 500,
+      "mean_reference_tube_score": 0.22065482410309997
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 1.0,
+      "known_voxel_dice": 0.4166666666666667,
+      "accepted_voxels": 603,
+      "accepted_unknown_bright_voxels": 0,
+      "mean_reference_tube_score": 0.3396029258098224
+    }
+  ],
+  "elapsed_seconds": 82.40928160000476,
+  "checkpoint_reload_max_logit_delta": 0.0,
+  "final_gate_passed": false,
+  "next_step": "review all crop overlays; validation only if final gate passes"
+}

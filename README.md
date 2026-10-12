@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Next: prepared centerline-field prototype, inspection images and visible GPU command](docs/pointneuron2/centerline_fit_ready.md)
+- [Latest: field learns structure but fails centerline localization; diagnosis and proposed loss control](docs/pointneuron2/centerline_fit_results.md)
+- [Completed protocol: centerline-field prototype, inspection images and visible GPU command](docs/pointneuron2/centerline_fit_ready.md)
 - [Latest: completed query pilot fails selection; proposed centerline-field direction](docs/pointneuron2/query_pilot_results.md)
 - [Completed protocol: matched 30-epoch train/validation pilot](docs/pointneuron2/query_pilot_ready.md)
 - [Latest: pooled LayerNorm passes the two-crop learnability check](docs/pointneuron2/query_layernorm_results.md)

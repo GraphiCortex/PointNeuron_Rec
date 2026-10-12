@@ -1,8 +1,10 @@
 # Centerline field: first bounded learning check
 
-12 October 2026. Prepared locally after the user approved trying an image-native
-field. **The 400-update fit has not been run.** CPU preparation, synthetic
-execution checks and four throwaway GPU timing updates are complete.
+12 October 2026. Historical protocol, prepared locally after the user approved
+trying an image-native field. **The user has now completed the 400-update fit;
+its learning gate fails.** See [the measured result and diagnosis](centerline_fit_results.md)
+before running anything further. The commands below document the completed
+experiment; another fit is not the current recommendation.
 
 The conceptual change is to give every voxel a stable spatial target derived
 from continuous reference segments, while retaining image context before point

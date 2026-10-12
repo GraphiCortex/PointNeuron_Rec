@@ -1,0 +1,298 @@
+{
+  "scope": "read-only fixed training-crop diagnosis; no validation, optimizer or gate change",
+  "fit_report_sha256": "c5c23e2c72e6941ed8363a3d7181b57a67add6dc69c59b7500d310906e79744d",
+  "checkpoint_sha256": "c71913fcc765c425039bbf5b8eca1c414436ec56874fd7af543dddd3fc8b3c8f",
+  "manifest_sha256": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+  "device": "cuda",
+  "primary_gate_passed": false,
+  "threshold": 0.5,
+  "thinning_method": "skimage skeletonize Lee, 3D, fixed threshold mask",
+  "thinning_error": "ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject",
+  "trajectory": [
+    {
+      "step": 0,
+      "known_voxel_dice": 0.009979935713338788,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.05557185694976256
+    },
+    {
+      "step": 100,
+      "known_voxel_dice": 0.3000993223830492,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.7499582115778287
+    },
+    {
+      "step": 200,
+      "known_voxel_dice": 0.3101969082118643,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.7372793750516362
+    },
+    {
+      "step": 400,
+      "known_voxel_dice": 0.4006978653012721,
+      "reference_coverage_6": 1.0,
+      "reference_proximity_6": 0.8085546430584255
+    }
+  ],
+  "crops": [
+    {
+      "sample_index": 0,
+      "patch_index": 1,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.22648005388818201,
+        "known_voxel_dice": 0.11351122405760271,
+        "accepted_voxels": 13361,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9907318949699402
+      },
+      "target_voxels": 805,
+      "known_negative_voxels": 469645,
+      "known_tube_recall": 0.9987577639751553,
+      "known_tube_precision": 0.06017513659157249,
+      "known_false_positive_voxels": 12557,
+      "known_false_positive_near_2_to_6": 2222,
+      "known_false_positive_farther_than_6": 10335,
+      "accepted_to_target_voxel_ratio": 16.59751552795031,
+      "mean_known_negative_score": 0.03398876637220383,
+      "known_positive_probability_mass": 797.5391845703125,
+      "known_negative_probability_mass": 15962.6533203125,
+      "bce_positive_to_negative_per_voxel_weight": 583.4099378881988,
+      "near_negative_fraction_of_all_known_negatives": 0.016348518561892494,
+      "loss": {
+        "positive_bce_contribution": 0.005894631613045931,
+        "negative_bce_contribution": 0.04193301498889923,
+        "soft_dice_loss": 0.9091909527778625,
+        "total": 0.9570185993798077
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 0,
+      "patch_index": 2,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.8904578208020962,
+        "known_voxel_dice": 0.45200411671441687,
+        "accepted_voxels": 27478,
+        "accepted_unknown_bright_voxels": 55,
+        "mean_reference_tube_score": 0.9184708595275879
+      },
+      "target_voxels": 8528,
+      "known_negative_voxels": 565366,
+      "known_tube_recall": 0.9527439024390244,
+      "known_tube_precision": 0.29628414104948403,
+      "known_false_positive_voxels": 19298,
+      "known_false_positive_near_2_to_6": 16343,
+      "known_false_positive_farther_than_6": 2955,
+      "accepted_to_target_voxel_ratio": 3.222091932457786,
+      "mean_known_negative_score": 0.04383895918726921,
+      "known_positive_probability_mass": 7832.71923828125,
+      "known_negative_probability_mass": 24785.056640625,
+      "bce_positive_to_negative_per_voxel_weight": 66.29526266416511,
+      "near_negative_fraction_of_all_known_negatives": 0.10973422526292702,
+      "loss": {
+        "positive_bce_contribution": 0.06292510032653809,
+        "negative_bce_contribution": 0.05513373389840126,
+        "soft_dice_loss": 0.619269847869873,
+        "total": 0.7373286820948124
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 0,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9984306340238543,
+        "known_voxel_dice": 0.583019286189315,
+        "accepted_voxels": 3186,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9834367632865906
+      },
+      "target_voxels": 1325,
+      "known_negative_voxels": 252691,
+      "known_tube_recall": 0.9924528301886792,
+      "known_tube_precision": 0.41274325172630255,
+      "known_false_positive_voxels": 1871,
+      "known_false_positive_near_2_to_6": 1866,
+      "known_false_positive_farther_than_6": 5,
+      "accepted_to_target_voxel_ratio": 2.4045283018867925,
+      "mean_known_negative_score": 0.008383275009691715,
+      "known_positive_probability_mass": 1303.0537109375,
+      "known_negative_probability_mass": 2118.378173828125,
+      "bce_positive_to_negative_per_voxel_weight": 190.71018867924528,
+      "near_negative_fraction_of_all_known_negatives": 0.04042090933195088,
+      "loss": {
+        "positive_bce_contribution": 0.012039976194500923,
+        "negative_bce_contribution": 0.019472116604447365,
+        "soft_dice_loss": 0.4509333372116089,
+        "total": 0.4824454300105572
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 32,
+      "patch_index": 3,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 1.0,
+        "known_voxel_dice": 0.6475583864118896,
+        "accepted_voxels": 7579,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9691966772079468
+      },
+      "target_voxels": 3725,
+      "known_negative_voxels": 250312,
+      "known_tube_recall": 0.9825503355704698,
+      "known_tube_precision": 0.48291331310199237,
+      "known_false_positive_voxels": 3919,
+      "known_false_positive_near_2_to_6": 3919,
+      "known_false_positive_farther_than_6": 0,
+      "accepted_to_target_voxel_ratio": 2.0346308724832216,
+      "mean_known_negative_score": 0.017172517254948616,
+      "known_positive_probability_mass": 3610.257568359375,
+      "known_negative_probability_mass": 4298.4873046875,
+      "bce_positive_to_negative_per_voxel_weight": 67.1978523489933,
+      "near_negative_fraction_of_all_known_negatives": 0.11983444661062993,
+      "loss": {
+        "positive_bce_contribution": 0.02362940087914467,
+        "negative_bce_contribution": 0.03070307895541191,
+        "soft_dice_loss": 0.3793473243713379,
+        "total": 0.43367980420589447
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 0,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.875406283856988,
+        "known_voxel_dice": 0.42417106254709874,
+        "accepted_voxels": 16614,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9534819722175598
+      },
+      "target_voxels": 4618,
+      "known_negative_voxels": 569331,
+      "known_tube_recall": 0.9750974447812906,
+      "known_tube_precision": 0.2710364752618274,
+      "known_false_positive_voxels": 12111,
+      "known_false_positive_near_2_to_6": 10041,
+      "known_false_positive_farther_than_6": 2070,
+      "accepted_to_target_voxel_ratio": 3.5976613252490255,
+      "mean_known_negative_score": 0.031806010752916336,
+      "known_positive_probability_mass": 4403.1796875,
+      "known_negative_probability_mass": 18108.1484375,
+      "bce_positive_to_negative_per_voxel_weight": 123.28518839324383,
+      "near_negative_fraction_of_all_known_negatives": 0.06229592275846564,
+      "loss": {
+        "positive_bce_contribution": 0.03389745205640793,
+        "negative_bce_contribution": 0.04167592152953148,
+        "soft_dice_loss": 0.6753934621810913,
+        "total": 0.7509668357670307
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 96,
+      "patch_index": 3,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.6108909801331792,
+        "known_voxel_dice": 0.30386375430485446,
+        "accepted_voxels": 36342,
+        "accepted_unknown_bright_voxels": 826,
+        "mean_reference_tube_score": 0.8893409967422485
+      },
+      "target_voxels": 6878,
+      "known_negative_voxels": 566193,
+      "known_tube_recall": 0.93646408839779,
+      "known_tube_precision": 0.18135488230656605,
+      "known_false_positive_voxels": 29075,
+      "known_false_positive_near_2_to_6": 15760,
+      "known_false_positive_farther_than_6": 13315,
+      "accepted_to_target_voxel_ratio": 5.283803431230009,
+      "mean_known_negative_score": 0.059910040348768234,
+      "known_positive_probability_mass": 6116.88720703125,
+      "known_negative_probability_mass": 33920.64453125,
+      "bce_positive_to_negative_per_voxel_weight": 82.31942425123583,
+      "near_negative_fraction_of_all_known_negatives": 0.08516883818768511,
+      "loss": {
+        "positive_bce_contribution": 0.08543748408555984,
+        "negative_bce_contribution": 0.07350150495767593,
+        "soft_dice_loss": 0.7392382621765137,
+        "total": 0.8981772512197495
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 1,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.8811244979919679,
+        "known_voxel_dice": 0.3647249912417593,
+        "accepted_voxels": 26145,
+        "accepted_unknown_bright_voxels": 488,
+        "mean_reference_tube_score": 0.9796369075775146
+      },
+      "target_voxels": 5742,
+      "known_negative_voxels": 906431,
+      "known_tube_recall": 0.9972135144548938,
+      "known_tube_precision": 0.22317496199867481,
+      "known_false_positive_voxels": 19931,
+      "known_false_positive_near_2_to_6": 17311,
+      "known_false_positive_farther_than_6": 2620,
+      "accepted_to_target_voxel_ratio": 4.553291536050157,
+      "mean_known_negative_score": 0.05715644732117653,
+      "known_positive_probability_mass": 5625.0751953125,
+      "known_negative_probability_mass": 51808.375,
+      "bce_positive_to_negative_per_voxel_weight": 157.85980494601185,
+      "near_negative_fraction_of_all_known_negatives": 0.04943454052211365,
+      "loss": {
+        "positive_bce_contribution": 0.011575847864151001,
+        "negative_bce_contribution": 0.04730981960892677,
+        "soft_dice_loss": 0.8219221234321594,
+        "total": 0.8808077909052372
+      },
+      "thinning_diagnostic": null
+    },
+    {
+      "sample_index": 162,
+      "patch_index": 2,
+      "primary": {
+        "reference_coverage_6": 1.0,
+        "reference_proximity_6": 0.9856468737711365,
+        "known_voxel_dice": 0.3167301009432401,
+        "accepted_voxels": 5086,
+        "accepted_unknown_bright_voxels": 0,
+        "mean_reference_tube_score": 0.9986060857772827
+      },
+      "target_voxels": 957,
+      "known_negative_voxels": 911716,
+      "known_tube_recall": 1.0,
+      "known_tube_precision": 0.18816358631537555,
+      "known_false_positive_voxels": 4129,
+      "known_false_positive_near_2_to_6": 4056,
+      "known_false_positive_farther_than_6": 73,
+      "accepted_to_target_voxel_ratio": 5.3145245559038665,
+      "mean_known_negative_score": 0.045587580651044846,
+      "known_positive_probability_mass": 955.666015625,
+      "known_negative_probability_mass": 41562.92578125,
+      "bce_positive_to_negative_per_voxel_weight": 952.6812957157784,
+      "near_negative_fraction_of_all_known_negatives": 0.008373221485638072,
+      "loss": {
+        "positive_bce_contribution": 0.0007067159749567509,
+        "negative_bce_contribution": 0.029425421729683876,
+        "soft_dice_loss": 0.9560366868972778,
+        "total": 0.9861688246019185
+      },
+      "thinning_diagnostic": null
+    }
+  ],
+  "status": "completed",
+  "checkpoint_unchanged": true,
+  "inference_reproduction_checks": "passed"
+}

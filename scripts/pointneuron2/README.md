@@ -6,7 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Next: [prepared centerline-field prototype and eight-crop fit protocol](../../docs/pointneuron2/centerline_fit_ready.md).
+Latest: [field learns structure but fails centerline localization](../../docs/pointneuron2/centerline_fit_results.md).
+`audit_centerline_fit.py` verifies the frozen final checkpoint and diagnoses
+known-label false positives, tube width and loss contributions without an
+optimizer. Its optional thinning step reports incompatible/missing libraries
+explicitly and leaves the environment unchanged.
+Completed protocol: [centerline-field prototype and eight-crop fit](../../docs/pointneuron2/centerline_fit_ready.md).
 `run_centerline.ps1 -Action fit` launches the 400-update full-resolution 3D image
 learning check visibly; preparation is already cached. `-Action prepare` writes
 native crops/weak labels/inspection overlays to a fresh cache, and
