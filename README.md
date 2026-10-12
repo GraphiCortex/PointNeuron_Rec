@@ -7,8 +7,9 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: eight-crop field learnability passes; measured improvements and reproducibility caveat](docs/pointneuron2/centerline_duration_results.md)
 - [Intended architecture: Phase 1 point cloud, PointNeXt, Transformer and GATv2; isolated field-guide experiment](docs/pointneuron2/centerline_framework.md)
-- [Ready to run: approved 1,600-update duration-only field check](docs/pointneuron2/centerline_duration_ready.md)
+- [Completed protocol: 1,600-update duration-only field check](docs/pointneuron2/centerline_duration_ready.md)
 - [Latest: ideal-input oracle confirms good crowded-case geometry; learned field remains the bottleneck](docs/pointneuron2/centerpath_oracle_results.md)
 - [Latest: simple center-path accuracy improves; crowded geometry remains unresolved](docs/pointneuron2/field_centerpaths_results.md)
 - [Latest: negative-loss control improves all crops; remaining width and placement errors](docs/pointneuron2/centerline_loss_control_results.md)

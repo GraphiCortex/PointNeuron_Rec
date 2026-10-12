@@ -6,7 +6,11 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Ready: [approved duration-only 1,600-update field check](../../docs/pointneuron2/centerline_duration_ready.md).
+Latest: [eight-crop field learnability passes at 1,600 updates](../../docs/pointneuron2/centerline_duration_results.md).
+The user completed the fit; review its within-run improvements and common-budget
+reproducibility caveat before another experiment. `plot_centerline_duration.py`
+renders the saved 400/1600 fields with equal scales and no inference.
+Completed protocol: [duration-only field check](../../docs/pointneuron2/centerline_duration_ready.md).
 `run_centerline.ps1 -Action duration` starts one fresh uninterrupted hard-negative
 fit with saved checks 0/400/800/1600 and compares against the completed 400-update
 run. `-Action duration-preflight` checks initial matching and times only four

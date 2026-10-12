@@ -1,10 +1,13 @@
-# Ready: approved 1,600-update duration-only field check
+# Completed protocol: 1,600-update duration-only field check
 
 12 October 2026. The user approved this bounded follow-up to the
 [ideal-input oracle](centerpath_oracle_results.md). The oracle shows useful
 geometry is feasible for two selected crops; it is not learned performance.
 This new run tests whether the current recipe needs more optimization.
-**The full 1,600-update fit has not been launched during preparation.**
+**The user has completed this fit in 2 minutes 49 seconds; the final gate
+passes.** Read [the measured results and reproducibility caveat](centerline_duration_results.md)
+before taking another step. The command below documents the completed run;
+it is not a request to repeat it. Only the short preflight ran during preparation.
 
 **Clarified scope:** the intended architecture remains Phase 1 point-cloud
 preparation -> PointNeXt -> Transformer proposals -> GATv2 -> SWC. This command

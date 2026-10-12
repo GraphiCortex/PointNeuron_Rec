@@ -53,13 +53,13 @@ would be supplied to the model. Threshold 0.5 and the fixed CPU skeletonizer
 convert the field into center paths. The ground-truth-derived oracle is only
 a diagnostic: its successful extraction does not count as learned performance.
 
-The immediate question is deliberately smaller: **can the present model fit
-the same eight selected training crops well enough?** The 400-update
-hard-negative fit improved reference agreement but failed the frozen gate.
-The [approved duration-only check](centerline_duration_ready.md) tests 1,600
-updates. Its gate is a field learnability gate, not acceptance of Phase 1 or
-a final PN 2.0 model. Even a pass would not prove better sampled inputs or
-downstream reconstructions.
+The immediate question was whether this model could fit the same eight selected
+training crops. The 400-update hard-negative fit failed, but the user-completed
+[1,600-update replay passes the field gate](centerline_duration_results.md)
+with mean tube Dice 0.9173. Its 400-update checkpoint differs from the earlier
+run, so the cleanest duration comparison is within this replay. This is a field
+learnability result, not acceptance of Phase 1 or a final PN 2.0 model. Better
+sampled inputs and downstream reconstructions have not been demonstrated.
 
 ## How the field could serve Phase 1
 

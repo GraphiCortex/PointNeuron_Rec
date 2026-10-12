@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Latest field result:** the user completed the 1,600-update eight-crop fit;
+the frozen gate passes, with mean tube Dice 0.9173. The replay's 400-update
+result differs from the earlier run despite matching settings and initialization.
+See [the independent audit, images and limits](centerline_duration_results.md).
+No point-cloud interface or new train/validation run has been implemented.
+
 **Current architecture clarification, 12 October 2026:** retain Phase 1
 point-cloud preparation -> PointNeXt -> Transformer skeleton proposals -> GATv2
 connectivity. The image-field candidate is an isolated experiment for potential
