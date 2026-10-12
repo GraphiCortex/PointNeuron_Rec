@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Ready:** [two-skip-gate attention comparison](field_attention_ready.md).
+The user approved fresh baseline and attention fits with shared initial backbone
+tensors and unchanged cache/loss/training budget/sampling rules. GPU timing is
+next; real attention training has not run. The image-backbone reservation idea
+is deferred rather than combined with this architecture test.
+
 **Latest:** [development sampling is complete and reviewed](field_pilot_sampling_results.md).
 At matched counts, expanded random raises mean coverage from 71.47% to 85.47%,
 with severe dilution in some neuron-35 crops. The 50/50 selector is not a universal

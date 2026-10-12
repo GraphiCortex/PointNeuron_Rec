@@ -21,10 +21,10 @@ from pointneuron.models.centerline_unet import CenterlineUNet, field_loss
 from scripts.pointneuron2.prepare_centerline_fit import inspection
 
 
-def source_hashes():
+def source_hashes(extra_sources=()):
     paths = [Path(__file__), ROOT / "src/pointneuron/data/field_pilot.py",
              ROOT / "src/pointneuron/models/centerline_unet.py", ROOT / "src/pointneuron/data/centerline_field.py"]
-    return {str(p.resolve()): file_digest(p) for p in paths}
+    return {str(p.resolve()): file_digest(p) for p in [*paths, *extra_sources]}
 
 
 def synchronize(device):
@@ -49,12 +49,15 @@ def verify_unchanged(protected):
         raise AssertionError("Protected pilot source/cache changed")
 
 
-def run(args):
+def run(args, *, model_factory=None, model_spec=None, extra_sources=()):
     manifest, cfg = load_manifest(args.manifest, args.partition, args.config)
     torch.set_num_threads(cfg["torch_threads"])
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA unavailable; choose the device explicitly")
     device = torch.device(args.device)
+    model_factory = CenterlineUNet if model_factory is None else model_factory
+    model_spec = {"kind": "centerline_unet_v1"} if model_spec is None else model_spec
+    sources = source_hashes(extra_sources)
     if args.output_dir.exists():
         raise FileExistsError("Use a fresh output directory; earlier runs are immutable")
     train_rows = [r for r in manifest["records"] if r["partition"] == "train" and r["supervised"]]
@@ -62,7 +65,7 @@ def run(args):
     all_train_rows = [r for r in manifest["records"] if r["partition"] == "train"]
     protected = {str(p.resolve()): file_digest(p) for p in (args.manifest, args.partition, args.config)}
     protected.update({str((args.manifest.parent/r["path"]).resolve()): r["sha256"] for r in manifest["records"]})
-    protected.update(source_hashes())
+    protected.update(sources)
     total_updates = cfg["epochs"] * len(train_rows)
     if not args.preflight:
         if not args.timing:
@@ -71,7 +74,7 @@ def run(args):
         if (timing.get("status") != "completed" or timing.get("scope") != "timing only; throwaway weights"
                 or timing.get("manifest_sha256") != file_digest(args.manifest)
                 or timing.get("config_sha256") != file_digest(args.config)
-                or timing.get("source_files_sha256") != source_hashes()
+                or timing.get("source_files_sha256") != sources or timing.get("model_spec") != model_spec
                 or timing.get("backend") != backend_record(device) or timing.get("planned_optimizer_updates") != total_updates):
             raise ValueError("Preflight differs from the requested cache/config/backend/source; rerun preflight")
         protected[str(args.timing.resolve())] = file_digest(args.timing)
@@ -80,7 +83,7 @@ def run(args):
     report_path = args.output_dir / ("timing.json" if args.preflight else "pilot_report.json")
     report = {"schema": SCHEMA, "status": "running", "config": cfg,
               "manifest_sha256": file_digest(args.manifest), "config_sha256": file_digest(args.config),
-              "partition_sha256": file_digest(args.partition), "source_files_sha256": source_hashes(),
+              "partition_sha256": file_digest(args.partition), "source_files_sha256": sources, "model_spec": model_spec,
               "backend": backend_record(device), "planned_optimizer_updates": total_updates,
               "scope": "timing only; throwaway weights" if args.preflight else "train/development patch pilot; no reserved test or final SWC",
               "training_crops": len(all_train_rows), "supervised_training_crops": len(train_rows),
@@ -92,7 +95,7 @@ def run(args):
     if device.type == "cuda":
         torch.cuda.manual_seed_all(cfg["seed"])
         torch.cuda.reset_peak_memory_stats(device)
-    model = CenterlineUNet(cfg["base_channels"]).to(device)
+    model = model_factory(cfg["base_channels"]).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=cfg["learning_rate"], weight_decay=cfg["weight_decay"])
     cache = NativeRecords(args.manifest, cfg["cpu_cache_records"])
     print(f"Device: {report['backend']['device_name']} | native 97-voxel crop boxes | batch=1 float32", flush=True)
@@ -100,6 +103,7 @@ def run(args):
           f"epochs={cfg['epochs']} updates={total_updates}; no augmentation", flush=True)
     print("Existing U-Net/GroupNorm and top min(N,3P) known-negative BCE + masked Dice; no PointNeXt/Transformer/GATv2 execution.", flush=True)
     print(f"Outputs: {args.output_dir.resolve()}", flush=True)
+    print(f"Field architecture: {model_spec['kind']} | parameters={sum(p.numel() for p in model.parameters()):,}", flush=True)
 
     def update(row):
         record = cache.get(row)
@@ -169,7 +173,7 @@ def run(args):
                 torch.save({"schema": SCHEMA, "epoch": epoch, "optimizer_updates": update_count, "config": cfg,
                             "manifest_sha256": report["manifest_sha256"], "partition_sha256": report["partition_sha256"],
                             "source_files_sha256": report["source_files_sha256"], "backend": report["backend"],
-                            "model": model.state_dict(), "optimizer": optimizer.state_dict(),
+                            "model": model.state_dict(), "model_spec": model_spec, "optimizer": optimizer.state_dict(),
                             "torch_rng_state": torch.get_rng_state(), "crop_index_order": visits}, path)
                 return path
 
@@ -222,7 +226,7 @@ def run(args):
                 write_json(report_path, report)
             final_path = checkpoint_dir / f"field_epoch_{cfg['epochs']:03d}.pt"
             cp = torch.load(final_path, map_location=device, weights_only=True)
-            reloaded = CenterlineUNet(cfg["base_channels"]).to(device).eval()
+            reloaded = model_factory(cfg["base_channels"]).to(device).eval()
             reloaded.load_state_dict(cp["model"], strict=True)
             model.eval()
             # Compare development crops from every neuron, not just one fitted crop.

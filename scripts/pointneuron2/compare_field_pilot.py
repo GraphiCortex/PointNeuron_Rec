@@ -52,7 +52,7 @@ def paired_neuron_deltas(rows, left, right, group="expanded", budget=2048):
             "pairs": pairs, "per_neuron": per_neuron}
 
 
-def load_contract(args):
+def load_contract(args, *, model_factory=None):
     manifest, cfg = load_manifest(args.manifest, args.partition, args.config)
     sampling = json.loads(args.sampling_config.read_text())
     if sampling != EXPECTED_CONFIG:
@@ -82,7 +82,16 @@ def load_contract(args):
     expected_fields = {Path(r["path"]).name for r in val_rows}
     if set(fit["final_development_fields_sha256"]) != expected_fields:
         raise ValueError("Incomplete full-precision development inference cache")
-    model = CenterlineUNet(cfg["base_channels"]).to(args.device).eval().requires_grad_(False)
+    spec = cp.get("model_spec", {"kind": "centerline_unet_v1"})
+    if spec != fit.get("model_spec", {"kind": "centerline_unet_v1"}):
+        raise ValueError("Checkpoint/report architecture mismatch")
+    if model_factory is None:
+        if spec["kind"] != "centerline_unet_v1":
+            raise ValueError("Attention checkpoint requires the explicit attention comparison runner")
+        model = CenterlineUNet(cfg["base_channels"])
+    else:
+        model = model_factory(cfg["base_channels"], spec)
+    model = model.to(args.device).eval().requires_grad_(False)
     model.load_state_dict(cp["model"], strict=True)
     protected = {str(p.resolve()): file_digest(p) for p in (args.manifest, args.partition, args.config, args.sampling_config, report_path, checkpoint_path)}
     for row in manifest["records"]:
@@ -95,10 +104,10 @@ def load_contract(args):
     return manifest, cfg, sampling, fit, model, protected
 
 
-def run(args):
+def run(args, *, model_factory=None, extra_sources=()):
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA unavailable; choose the device explicitly")
-    manifest, cfg, config, fit, model, protected = load_contract(args)
+    manifest, cfg, config, fit, model, protected = load_contract(args, model_factory=model_factory)
     torch.set_num_threads(cfg["torch_threads"])
     if args.output_dir.exists():
         raise FileExistsError("Choose a fresh comparison directory")
@@ -109,14 +118,15 @@ def run(args):
                     ROOT / "scripts/pointneuron2/field_sampling_metrics.py", ROOT / "scripts/pointneuron2/reference_gaps.py",
                     ROOT / "scripts/pointneuron2/audit_field_centerpaths.py", ROOT / "src/pointneuron/data/curve_targets.py",
                     ROOT / "src/pointneuron/models/centerline_unet.py"]
-    source_hashes = {str(p.resolve()): file_digest(p) for p in source_paths}
+    source_hashes = {str(p.resolve()): file_digest(p) for p in [*source_paths, *extra_sources]}
     protected.update(source_hashes)
     sampling_cfg = FieldSamplingConfig(config["field_threshold"], config["cell_size"], config["guide_fraction"])
     val_rows = [r for r in manifest["records"] if r["partition"] == "val"]
     started = time.perf_counter()
     report_path = args.output_dir / "comparison.json"
     report = {"status": "running", "scope": "seven development neurons, image-defined crop regions; not reserved test or final SWC",
-              "config": config, "pilot_config": cfg, "optimizer_updates": 0, "phase": "freezing every development input cloud",
+              "config": config, "pilot_config": cfg, "model_spec": fit.get("model_spec", {"kind": "centerline_unet_v1"}),
+              "optimizer_updates": 0, "phase": "freezing every development input cloud",
               "source_fit_sha256": file_digest(args.models/"pilot_report.json"),
               "source_checkpoint_sha256": fit["final_checkpoint_sha256"], "manifest_sha256": file_digest(args.manifest),
               "source_files_sha256": source_hashes, "reserved_test_records": 0}
