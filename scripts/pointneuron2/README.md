@@ -11,7 +11,9 @@ Ready: [approved duration-only 1,600-update field check](../../docs/pointneuron2
 fit with saved checks 0/400/800/1600 and compares against the completed 400-update
 run. `-Action duration-preflight` checks initial matching and times only four
 throwaway updates. The [framework explanation](../../docs/pointneuron2/centerline_framework.md)
-distinguishes voxel learning from the downstream point/path representation.
+retains Phase 1 point-cloud preparation, PointNeXt, Transformer proposals and
+GATv2 as the intended architecture. This command fits an isolated field candidate
+for possible Phase 1 guidance; its point-cloud interface is not implemented.
 Latest: [reference-tube oracle localizes crowded-case errors upstream](../../docs/pointneuron2/centerpath_oracle_results.md).
 `audit_centerpath_oracle.py` runs the unchanged extractor on explicitly
 ground-truth-derived tube input for two training crops, then compares with

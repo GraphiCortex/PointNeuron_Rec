@@ -1,5 +1,14 @@
 # PointNeuron 2.0 development
 
+**Current architecture clarification, 12 October 2026:** retain Phase 1
+point-cloud preparation -> PointNeXt -> Transformer skeleton proposals -> GATv2
+connectivity. The image-field candidate is an isolated experiment for potential
+Phase 1 guidance, not an adopted replacement of the encoder or decoder. PointNeXt
+and GATv2 are not implemented; the query pilot used DGCNN. See
+[the agreed framework and status](centerline_framework.md) and
+[the approved field-duration command](centerline_duration_ready.md).
+Updates below describe historical milestones and are not a current run queue.
+
 **12 October update:** the dropout-zero 500-update control is complete. Raw
 query target coverage improves from 66.7% to 95.8%, but score 0.5 retains only
 29.2%. Training normalization restores 100% raw support, while confidence still

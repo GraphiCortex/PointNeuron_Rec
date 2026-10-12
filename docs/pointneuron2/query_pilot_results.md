@@ -1,5 +1,13 @@
 # Query pilot fails selection; proposed centerline-field direction
 
+**Subsequent scope clarification:** the field-to-skeleton route proposed below
+was an alternative experiment, not adoption of a different full architecture.
+The agreed intended system retains Phase 1 point-cloud preparation, PointNeXt,
+Transformer proposals and GATv2. The field is now being assessed as a possible
+Phase 1 guide, with no point-cloud interface implemented yet. This pilot used
+DGCNN and does not test or disprove the full proposed PointNeXt-based system.
+See [the current architecture and actual status](centerline_framework.md).
+
 12 October 2026. The user completed the matched 30-epoch pilot in **six minutes**.
 Both arms received 3,774 optimizer updates. Pairing checks pass; they establish
 matched execution, not reconstruction improvement. The actual runtime supersedes

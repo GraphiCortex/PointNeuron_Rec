@@ -56,6 +56,7 @@ if ($Action -eq 'prepare') {
     }
     if ($duration) {
         $cliArguments += @('--duration-baseline-models', $BaselineModels, '--duration-config', $DurationConfig, '--loss-config', $LossConfig)
+        Write-Output 'Scope: isolated field learnability for possible Phase 1 point-cloud guidance. Intended later stages remain PointNeXt, Transformer and GATv2; the interface is not implemented.'
         Write-Output 'Duration-only fresh replay: same eight training crops, hard-negative loss and model; preserve AdamW state for all 1600 updates.'
     }
     if ($Action -in @('preflight','loss-control-preflight','duration-preflight')) {

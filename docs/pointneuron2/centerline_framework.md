@@ -1,41 +1,40 @@
-# Current PN 2.0 experiment: learn a centerline field from the 3D image
+# Intended PN 2.0 architecture and the Phase 1 field experiment
 
-12 October 2026. This explains the current prototype, not a completed commercial
-architecture. [The query pilot](query_pilot_results.md) did not produce usable
-filtered proposals on development validation. The user agreed to test an
-image-native centerline field instead. Historical point-cloud implementations
-and results remain available; they are not silently replaced by a proven winner.
+12 October 2026. Architecture clarification agreed with the user: keep
+**PointNeXt -> Transformer skeleton proposals -> GATv2 connectivity** in the
+intended system. Investigate the image-native field as a possible improvement
+to Phase 1 point-cloud preparation. The earlier version of this explanation
+described a field-to-path-to-graph alternative too broadly as the new framework;
+that alternative has not been adopted as the PN 2.0 architecture.
 
-## What changed
-
-Earlier learned stages took a limited set of sampled image points, encoded
-their features and predicted skeleton proposals with confidence scores. The
-query variant could place points away from the sampled input, but its pilot
-confidence filtering still rejected all annotated validation crops at 0.5.
-
-The current model takes a full-resolution **3D image crop**, retaining its
-spatial grid and intensity values. A compact 3D U-Net predicts one probability
-per voxel: does this location belong to a narrow tube around the neurite's
-centerline? It can use neighboring image structure without first reducing
-the crop to 512 sampled points. No PointNext or point-cloud encoder is used
-in this current learning stage.
+## Intended pipeline and actual implementation
 
 ```text
-3D image crop
-    -> learned centerline probability field       [implemented and being fitted]
-    -> fixed threshold and skeleton extraction   [checked on two selected crops]
-    -> points connected into center paths        [saved diagnostic geometry]
-    -> merge crops and reconstruct full graph    [integration/evaluation pending]
-    -> final neuron SWC                          [not yet validated for this model]
+3D image
+    -> Phase 1: informative image point cloud
+         possible addition: learned centerline-field guidance
+    -> PointNeXt point-cloud encoder
+    -> Transformer decoder: skeleton positions, confidence and radius
+    -> GATv2: predicted connectivity between proposed nodes
+    -> final SWC
 ```
 
-The center paths contain XYZ points and edges. They can supply downstream graph
-reconstruction, so point geometry remains useful. We are currently testing a
-voxel-based learned front end rather than an entirely point-cloud-based model.
-A future learned point or graph refinement stage is an option, not an existing
-component of this experiment.
+| Stage | Intended role | Current implementation status |
+| --- | --- | --- |
+| Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Historical sampling methods and isolated field fits exist; field-guided point-cloud interface is not implemented |
+| PointNeXt | Encode local and broader point geometry | Not implemented |
+| Transformer decoder | Predict skeleton-node positions, confidence and radius | Implemented and piloted with DGCNN; not yet tested with PointNeXt |
+| GATv2 | Learn candidate-edge probabilities using node features and geometry | Not implemented; previous reconstructions used inherited graph machinery |
 
-## What the model learns
+The [completed query pilot](query_pilot_results.md) failed confidence selection
+with **DGCNN**, not PointNeXt. It does not establish that the complete proposed
+PointNeXt/Transformer/GATv2 system would fail. None of the current field runs
+trains or evaluates those three modules together.
+
+## What the isolated field test measures
+
+The compact 3D U-Net sees a full-resolution 97-cubed image crop and predicts
+one score per voxel for membership in a narrow centerline tube.
 
 During training, an existing reference SWC provides the supervision. Continuous
 reference segments are surrounded by a **two-voxel-radius tube**; the model is
@@ -54,21 +53,51 @@ would be supplied to the model. Threshold 0.5 and the fixed CPU skeletonizer
 convert the field into center paths. The ground-truth-derived oracle is only
 a diagnostic: its successful extraction does not count as learned performance.
 
-## Why this is worth testing, and what it leaves unresolved
-
-The hypothesis is that local image context and dense spatial supervision give
-us more reliable centerline support than selecting and scoring isolated point
-proposals. Two-crop extraction and oracle checks now separate field errors from
-extractor feasibility. They do not prove the image-to-reference mapping,
-generalization or correct graph connectivity.
-
-Voxel processing costs more memory than sparse points; overlapping crop
-inference and merging still need development. A binary tube can also merge
-nearby branches and lose their identities. Good center placement alone does
-not establish correct parentage, radius, topology or commercial readiness.
-
 The immediate question is deliberately smaller: **can the present model fit
 the same eight selected training crops well enough?** The 400-update
 hard-negative fit improved reference agreement but failed the frozen gate.
 The [approved duration-only check](centerline_duration_ready.md) tests 1,600
-updates before any broader validation or new architecture decision.
+updates. Its gate is a field learnability gate, not acceptance of Phase 1 or
+a final PN 2.0 model. Even a pass would not prove better sampled inputs or
+downstream reconstructions.
+
+## How the field could serve Phase 1
+
+After reviewing the fit, separately design and agree a controlled point-cloud
+comparison. The field could guide the selection of informative **image points**,
+while retaining intensities, local image evidence and spatial coverage. An
+extracted medial path could help as a guide; it would not automatically become
+the final skeleton or replace the Transformer proposal task.
+
+Important interface decisions remain open:
+
+- How to include dim but image-supported candidates without assuming every
+  thresholded foreground voxel or every high field score belongs to the neuron.
+- How to balance field scores with coverage so that bright trunks do not consume
+  the entire input budget and erase thin branches.
+- Which point attributes to supply to PointNeXt, and how to retain context around
+  the centerline rather than reducing the input to bare path vertices.
+- How to compare field-guided and existing input clouds with matched budgets
+  and downstream settings, including per-branch coverage and false support.
+
+These are design questions, not implemented behavior or additional training
+changes hidden inside the duration command. We will review them together before
+changing the sampling interface, input budget or downstream strategy.
+
+## What the skeleton extraction checks do not establish
+
+The existing fixed-threshold Kimimaro checks turn fields into center paths to
+diagnose geometric errors. The ideal-reference-tube oracle uses ground truth
+and is not learned performance. Neither check supplies a final PN 2.0 graph or
+substitutes for GATv2 training.
+
+Hard thresholding and this CPU skeleton extraction are outside the current
+training graph. The isolated experiment does not implement the proposal's joint
+end-to-end training. How to train or freeze a Phase 1 field guide alongside later
+modules must be specified before claiming such integration. Nearby branches may
+merge in a binary tube, so accurate center placement alone cannot establish
+correct neuronal connectivity.
+
+Architecture replacements or stage bypasses must be discussed and explicitly
+agreed before implementation. A successful component experiment does not by
+itself authorize adopting a different complete system.

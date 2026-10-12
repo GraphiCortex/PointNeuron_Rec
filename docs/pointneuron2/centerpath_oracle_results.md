@@ -117,6 +117,11 @@ The user subsequently approved preparation; see the
 [duration-only protocol and visible command](centerline_duration_ready.md).
 The full fit remains for the user to launch.
 
+The user clarified that the field should be investigated for possible Phase 1
+point-cloud guidance while retaining PointNeXt, Transformer proposals and GATv2
+in the intended architecture. Oracle paths are a diagnostic, not adoption of a
+field-to-final-graph replacement. See [the agreed scope](centerline_framework.md).
+
 If the final result fails, stop the duration hypothesis and inspect the learning
 curve and image/reference ambiguity; do not automatically extend it or promote
 validation. The existing 400-update

@@ -6,6 +6,14 @@ geometry is feasible for two selected crops; it is not learned performance.
 This new run tests whether the current recipe needs more optimization.
 **The full 1,600-update fit has not been launched during preparation.**
 
+**Clarified scope:** the intended architecture remains Phase 1 point-cloud
+preparation -> PointNeXt -> Transformer proposals -> GATv2 -> SWC. This command
+fits an isolated field candidate that might guide Phase 1 image-point selection.
+It does not train PointNeXt, the Transformer or GATv2, nor connect the field to
+them. A pass establishes selected-crop field learnability only. The sampling
+interface and its downstream comparison require a separate design review.
+See [the agreed architecture and actual status](centerline_framework.md).
+
 ## Exactly what changes
 
 Freshly replay the completed hard-negative recipe for **1,600 rather than 400
