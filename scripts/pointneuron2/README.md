@@ -6,10 +6,17 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Ready: [approved field train/development pilot](../../docs/pointneuron2/field_pilot_ready.md).
+`run_field_pilot.ps1` has separate `prepare`, `preflight`, `train` and `compare`
+actions. First prepare full native crops/weak labels from the existing image-defined
+33/7 cache, then measure local GPU runtime. Training is fresh, 30 epochs, batch 1,
+LR .001, no augmentation, with checks 0/5/15/30. The sampling comparison uses fixed
+epoch 30 and unchanged four controls; no automatic production integration.
+
 Latest: [completed Phase 1 input results and branch losses](../../docs/pointneuron2/field_sampling_results.md).
 The user completed the four-control comparison; candidate expansion helps fitted
-crops, while the 50/50 selector is not promoted. The broader field pilot is for
-discussion; no new training command has been prepared.
+crops, while the 50/50 selector is not promoted. The broader field pilot is
+approved and prepared; actual caching/timing/training has not run.
 Completed protocol: [isolated input comparison](../../docs/pointneuron2/field_sampling_ready.md).
 `run_field_sampling.ps1 -Action compare` reuses the frozen passing field checkpoint
 for eight training-crop forward passes, then compares four selectors on CPU with

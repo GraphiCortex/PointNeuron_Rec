@@ -49,9 +49,10 @@ helps avoid labeling every untraced bright structure as a confirmed negative,
 but it cannot guarantee that all remaining negative annotations are correct.
 
 **At inference the input is the image alone.** No reference SWC or manual mask
-would be supplied to the model. Threshold 0.5 and the fixed CPU skeletonizer
-convert the field into center paths. The ground-truth-derived oracle is only
-a diagnostic: its successful extraction does not count as learned performance.
+would be supplied to the model. The current input experiment uses score 0.5 to
+admit native image locations to the candidate pool. The earlier CPU center-path
+extraction and reference-derived oracle were diagnostics; neither replaces the
+Transformer proposal task or counts as final learned reconstruction performance.
 
 The immediate question was whether this model could fit the same eight selected
 training crops. The 400-update hard-negative fit failed, but the user-completed
@@ -59,7 +60,8 @@ training crops. The 400-update hard-negative fit failed, but the user-completed
 with mean tube Dice 0.9173. Its 400-update checkpoint differs from the earlier
 run, so the cleanest duration comparison is within this replay. This is a field
 learnability result, not acceptance of Phase 1 or a final PN 2.0 model. Better
-sampled inputs and downstream reconstructions have not been demonstrated.
+sampled inputs have since been demonstrated on those fitted crops; independent
+generalization and downstream reconstructions have not been demonstrated.
 
 ## How the field could serve Phase 1
 
@@ -68,10 +70,10 @@ Its isolated selector/comparison has now [completed the eight-crop check](field_
 Candidate expansion helps reference coverage in these fitted examples; expanded
 random is the strongest coverage baseline, and the 50/50 allocation has some
 branch losses. This is not production/PointNeXt integration or a promoted recipe;
-a broader field train/development-validation pilot remains for discussion.
+a [broader field train/development-validation pilot](field_pilot_ready.md) is now
+approved and prepared, with real native caching/timing/training still pending.
 
-After reviewing the fit, separately design and agree a controlled point-cloud
-comparison. The field could guide the selection of informative **image points**,
+The controlled comparison is implemented. The field could guide the selection of informative **image points**,
 while retaining intensities, local image evidence and spatial coverage. An
 extracted medial path could help as a guide; it would not automatically become
 the final skeleton or replace the Transformer proposal task.

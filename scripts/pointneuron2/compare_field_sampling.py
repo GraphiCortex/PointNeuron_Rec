@@ -152,7 +152,7 @@ def save_clouds(record, output, config, sampling_config, protected, preflight):
                         elapsed = time.perf_counter() - started
                         path = output / "clouds" / f"{record['name']}_{arm}_n{n:04d}_seed{seed}.npz"
                         metadata = {"schema": config["schema"], "sample_index": record["row"]["sample_index"],
-                                    "patch_index": record["row"]["patch_index"], "partition": "train", "arm": arm,
+                                    "patch_index": record["row"]["patch_index"], "partition": record["row"]["partition"], "arm": arm,
                                     "actual_unique_count": n, "seed": selection_seed,
                                     "origin_xyz": record["origin"].tolist(), "image_scale": record["metadata"]["image_scale"],
                                     "raw_intensity_dtype": str(record["raw"].dtype), "field_fallback": cloud.fallback,
@@ -329,7 +329,8 @@ def inspect_record(record, rows, output):
             ax.set_title(f"{arm.replace('_', ' ')} | {plane}\nunique N={len(xyz)} | cov2={value:.3f}" if value is not None else arm)
             ax.set_xlabel("local X voxel")
             ax.set_ylabel("local Y / Z voxel")
-    fig.suptitle(f"Training crop {record['row']['sample_index']}/{record['row']['patch_index']} | nominal 2048, seed 0\n"
+    role = "Development" if record["row"]["partition"] == "val" else "Training"
+    fig.suptitle(f"{role} crop {record['row']['sample_index']}/{record['row']['patch_index']} | nominal 2048, seed 0\n"
                  "cyan: reference; orange: context; green: guide; A may have fewer unique points; projections are not connections")
     fig.savefig(output / "inspection" / (record["name"] + ".png"), dpi=120)
     plt.close(fig)

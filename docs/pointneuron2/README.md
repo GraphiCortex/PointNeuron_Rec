@@ -1,19 +1,26 @@
 # PointNeuron 2.0 development
 
+**Ready:** the user approved the [33-training / 7-development field pilot](field_pilot_ready.md):
+existing field model/loss, 30 epochs, batch 1, LR .001, no augmentation, checks
+0/5/15/30, fixed final-checkpoint four-control comparison. Native preparation and
+GPU timing are separate commands before training. Real preparation/training has
+not run; reserved test neurons and later architecture stages stay separate.
+
 **Latest:** the user completed the [Phase 1 four-control comparison](field_sampling_results.md).
 Candidate expansion improves reference coverage on fitted crops; expanded random
 is the strongest coverage control and the 50/50 selector has some branch losses.
 The [completed protocol](field_sampling_ready.md) records execution details. The
 [design](phase1_field_guided_sampling_design.md) separates candidate expansion,
 coverage and guidance at matched unique-point counts and 512/2,048 budgets.
-Production/PointNeXt integration and broader field training remain pending;
+Production/PointNeXt integration and actual broader field training remain pending;
 no sampler has been promoted automatically.
 
 **Latest field result:** the user completed the 1,600-update eight-crop fit;
 the frozen gate passes, with mean tube Dice 0.9173. The replay's 400-update
 result differs from the earlier run despite matching settings and initialization.
 See [the independent audit, images and limits](centerline_duration_results.md).
-No point-cloud interface or new train/validation run has been implemented.
+The isolated selector is implemented and the broader pilot is prepared; actual
+development training and production integration remain pending.
 
 **Current architecture clarification, 12 October 2026:** retain Phase 1
 point-cloud preparation -> PointNeXt -> Transformer skeleton proposals -> GATv2
