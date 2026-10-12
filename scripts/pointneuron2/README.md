@@ -6,9 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-For review: [Phase 1 field-guided point-selection design](../../docs/pointneuron2/phase1_field_guided_sampling_design.md).
-This is a specification, not a runnable selector. No sampler implementation or
-new training command has been added for it.
+Ready: [isolated Phase 1 input comparison and command](../../docs/pointneuron2/field_sampling_ready.md).
+`run_field_sampling.ps1 -Action compare` reuses the frozen passing field checkpoint
+for eight training-crop forward passes, then compares four selectors on CPU with
+reference scoring only after inputs are frozen. `-Action preflight` checks/times
+one crop. Neither action trains or modifies the production sampler; the broader
+field pilot and PointNeXt/Transformer/GATv2 integration remain separate steps.
 
 Latest: [eight-crop field learnability passes at 1,600 updates](../../docs/pointneuron2/centerline_duration_results.md).
 The user completed the fit; review its within-run improvements and common-budget

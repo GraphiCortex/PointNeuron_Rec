@@ -1,9 +1,11 @@
-# Draft for review: field-guided Phase 1 image-point sampling
+# Approved design: field-guided Phase 1 image-point sampling
 
 12 October 2026. The user agreed to design this comparison after the
 [eight-crop field learnability pass](centerline_duration_results.md).
-**This is a proposed interface and experiment, not implemented sampling code
-or authorization to launch a new training run.**
+The user subsequently approved this design. Its isolated selector/comparison is
+now [implemented, checked and ready for the visible run](field_sampling_ready.md).
+The specification below records the reviewed choices; it is not adoption of a
+production sampler or authorization for a broader training run.
 
 The intended system stays:
 
@@ -225,9 +227,9 @@ automatic win. No point-cloud gate is retroactively borrowed from the field gate
 
 ## Execution sequence and explicit decision boundaries
 
-1. **Now:** review this design and its candidate-expansion and 50/50 allocation
-   assumptions. No sampler code is implemented during drafting.
-2. If agreed, implement an isolated selector/comparison entry script. Verify
+1. **Completed:** the user reviewed and approved candidate expansion and 50/50
+   allocation as hypotheses for the four-control comparison.
+2. **Prepared:** implement an isolated selector/comparison entry script. Verify
    XYZ/ZYX origins, intensity restoration, reference-free inputs, uniqueness,
    shortage/fallback rules, reproducible seeds and unchanged saved checkpoints.
    Reproduce the frozen field predictions, then prepare a visible bounded
@@ -260,7 +262,9 @@ decision, rather than an implicit consequence of this interface prototype.
 - `configs/pointneuron2/sampling_training.json`: historical 1,024 candidates / 512 inputs.
 - `configs/pointneuron2/partition_seed0.json`: fixed neuron partitions.
 
-No source sampler, model, active config, checkpoint, cache or environment was
-changed, and no new training, model inference or point selection ran during
-this design step. The availability check read the eight existing training
-records and their saved display fields only; development/test files were not opened.
+During the original design-only step, no sampler, model, active config,
+checkpoint, cache or environment changed and no training, inference or point
+selection ran. Its availability check read only the eight existing training
+records and saved display fields. The later approved implementation and
+one-crop execution preflight are documented separately in the ready note;
+development/test files remain untouched.

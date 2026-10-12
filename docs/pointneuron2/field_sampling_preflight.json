@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "scope": "one-crop timing/execution check only; not the full comparison",
+  "config": {
+    "schema": "pointneuron2-field-sampling-comparison-v1",
+    "field_threshold": 0.5,
+    "cell_size": 8,
+    "guide_fraction": 0.5,
+    "budgets": [
+      512,
+      2048
+    ],
+    "sampling_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "probe_step_voxels": 1.0,
+    "tolerances_voxels": [
+      1,
+      2,
+      4,
+      6
+    ],
+    "primary_group": "expanded",
+    "primary_budget": 2048,
+    "primary_endpoint": "reference_coverage_2"
+  },
+  "device": "cuda",
+  "torch_version": "2.12.1+cu130",
+  "source_fit_sha256": "49725b391a2d05db165bfc0c8dda1e6421abcbc8fc37f93b0a50a4ef54a53b9b",
+  "source_checkpoint_sha256": "c4c07b1fe091be7d2fd6a1f87ad0a486a032f6381866cec35d98521932e02a83",
+  "manifest_sha256": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+  "phase": "completed",
+  "crop": [
+    96,
+    3
+  ],
+  "inference_passes": 1,
+  "optimizer_updates": 0,
+  "raw_source_seconds": 17.535305800003698,
+  "inference_seconds": 0.8093835000181571,
+  "selection_cycle_seconds": 0.13267720001749694,
+  "scoring_cycle_seconds": 0.059133199974894524,
+  "reference_setup_seconds": 0.19362550001824275,
+  "representative_compute_estimate_seconds": 93.51012719969731,
+  "estimate_note": "One representative crop, one budget, one seed; different images/counts and plotting/startup add variability.",
+  "elapsed_seconds": 20.739680300001055,
+  "scoring_seconds": 0.4740798000129871,
+  "protected_files_sha256": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\manifest.json": "14da0d64f873dfa1b5eb3b2888449d254ff40af76ed1af9633e1ae3833cb730b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\configs\\pointneuron2\\partition_seed0.json": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\configs\\pointneuron2\\field_sampling_comparison.json": "de44fbb568f7a5e5824da1fb704cc8b2cd8f0c86213a3e86e5938fc08c34d395",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_duration_20261012_220038_14488\\model\\fit_report.json": "49725b391a2d05db165bfc0c8dda1e6421abcbc8fc37f93b0a50a4ef54a53b9b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_duration_20261012_220038_14488\\model\\field_step_1600.pt": "c4c07b1fe091be7d2fd6a1f87ad0a486a032f6381866cec35d98521932e02a83",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0000_patch_001.npz": "bbb0decf7e88c5153ef559591a9b8d13d87484ebb132afe6a5f8a21a2436530f",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0000_patch_002.npz": "ab11bdf6dde7307b0745fec2888ecf26e43263d94d47ec729b1f2a33771203b8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0032_patch_000.npz": "a3fe62aa6b90ebd6adcd4b0c2cd83caa7cdfa2e6b425123015ec584c1e6c456e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0032_patch_003.npz": "9cfc813a5cd8afafaaef2e1979809e0d3bf9444ba6abcf64acf511eb483a7fdf",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0096_patch_000.npz": "abd5df8b49602ba571c9e884749f96e6b07f1f8f938d9d5003a801d108da91d5",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0096_patch_003.npz": "ac3c1a782b5c3ef2a3e58e54eea53fb8d94d1babf1565a42aaf5140ae6ceb8bb",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0162_patch_001.npz": "15efc802b2caaba1a829ce9105c18778404e40bf535490d7e70b62b149b89037",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\centerline_prepare_20261012\\cache\\sample_0162_patch_002.npz": "48fefea83dae8fc48d095961090ae7767169567689c6ff09a1cada9818c5ea99",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_horizontal_cells_UW\\1_a_Ch2\\1_a_Ch2.tif_uint8.v3dpbd": "6573b54b3ad3ec2ec1dccaa5cbf42337a190f074f8e19b9bd773323d7210d9b0",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_sampling_preflight_20261012_225500_3700\\comparison\\inputs\\sample_0096_patch_003.npz": "afd92628eb54388e6025cecf1c582c4d554cc5585817c6e1c67e78c8f86d78e2",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_sampling_preflight_20261012_225500_3700\\comparison\\clouds\\sample_0096_patch_003_threshold_random_n2048_seed0.npz": "a2e15b2f51373c380b6b3c3caa98e6a08029f6363d42b9b954dd72e664ee6187",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_sampling_preflight_20261012_225500_3700\\comparison\\clouds\\sample_0096_patch_003_expanded_random_n2048_seed0.npz": "371f4973e412b0622b2a024190f0df7c27c343ece4b3f6ad6946a16845697476",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_sampling_preflight_20261012_225500_3700\\comparison\\clouds\\sample_0096_patch_003_expanded_coverage_n2048_seed0.npz": "9aa72d3a3ac9bc0306f1602f5448ae8dc45bafbca04f3ce916ce89dd81f326fd",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_sampling_preflight_20261012_225500_3700\\comparison\\clouds\\sample_0096_patch_003_guided_context_n2048_seed0.npz": "ce3c8e6b4e7c2d53166e7e883dcc003c004011d31de1593cf4838c1d141d66e2",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_horizontal_cells_UW\\1_a_Ch2\\1_a_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_13_16_02.swc": "f9cff68046b4771c041178424fccd6762f03afe43c5989f2521c35f7220ccc5a"
+  },
+  "checks": {
+    "sources_and_frozen_clouds_unchanged": true,
+    "raw_images_and_intensity_restoration_exact": true,
+    "all_inputs_frozen_before_reference_scoring": true,
+    "saved_field_metrics_reproduced": true,
+    "matched_unique_counts_and_zero_duplicates": true
+  }
+}

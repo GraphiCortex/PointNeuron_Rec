@@ -21,7 +21,7 @@ that alternative has not been adopted as the PN 2.0 architecture.
 
 | Stage | Intended role | Current implementation status |
 | --- | --- | --- |
-| Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Historical sampling methods and isolated field fits exist; field-guided point-cloud interface is not implemented |
+| Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Isolated field-guided selector/comparison implemented and checked; production/PointNeXt integration pending |
 | PointNeXt | Encode local and broader point geometry | Not implemented |
 | Transformer decoder | Predict skeleton-node positions, confidence and radius | Implemented and piloted with DGCNN; not yet tested with PointNeXt |
 | GATv2 | Learn candidate-edge probabilities using node features and geometry | Not implemented; previous reconstructions used inherited graph machinery |
@@ -63,10 +63,11 @@ sampled inputs and downstream reconstructions have not been demonstrated.
 
 ## How the field could serve Phase 1
 
-The [concrete Phase 1 interface and comparison draft](phase1_field_guided_sampling_design.md)
-is ready for review. It specifies four controls, candidate expansion, intensity
-handling, unique-point budgets and the separate generalization check. It is not
-an implemented selector or an adopted production recipe.
+The user approved the [Phase 1 interface and comparison design](phase1_field_guided_sampling_design.md).
+Its isolated selector/comparison is now [implemented and ready for the visible
+eight-crop check](field_sampling_ready.md), with synthetic tests and a one-crop
+preflight passed. This is not production/PointNeXt integration or a promoted
+recipe; the full input comparison and generalization check remain pending.
 
 After reviewing the fit, separately design and agree a controlled point-cloud
 comparison. The field could guide the selection of informative **image points**,
