@@ -6,7 +6,7 @@ import torch
 
 from pointneuron.data.centerline_field import crop_volume, segment_distance_field, weak_labels
 from pointneuron.data.swc import SwcNode, SwcTree
-from pointneuron.models.centerline_unet import CenterlineUNet, field_loss
+from pointneuron.models.centerline_unet import CenterlineUNet, field_loss, field_loss_terms
 from scripts.pointneuron2.train_centerline_fit import gate, load_records
 
 
@@ -74,6 +74,45 @@ def test_unknown_has_zero_direct_loss_gradient_and_known_classes_receive_gradien
     assert logits.grad[0] < 0 and logits.grad[1] > 0 and logits.grad[2] == 0
     with pytest.raises(ValueError, match="positive and negative"):
         field_loss(logits, torch.tensor([True, False, False]), torch.zeros(3, dtype=torch.bool))
+
+
+def test_original_loss_is_preserved_exactly():
+    from torch.nn import functional as F
+    logits = torch.tensor([-.7, .8, 1.2, -2., 9.], requires_grad=True)
+    target = torch.tensor([True, True, False, False, False])
+    known = torch.tensor([True, True, True, True, False])
+    positive, negative = target & known, ~target & known
+    p, y = logits.sigmoid()[known], target[known].float()
+    old = .5*(F.softplus(-logits[positive]).mean()+F.softplus(logits[negative]).mean())
+    old = old + (1 - (2*(p*y).sum()+1e-6)/(p.sum()+y.sum()+1e-6))
+    torch.testing.assert_close(field_loss(logits, target, known), old, atol=0, rtol=0)
+
+
+def test_topk_targets_hard_known_negatives_without_changing_positive_or_dice():
+    logits = torch.tensor([.8, 8., 5., 2., -1., -3., -5., 99.], requires_grad=True)
+    target = torch.tensor([True, False, False, False, False, False, False, False])
+    known = torch.tensor([True, True, True, True, True, True, True, False])
+    a = field_loss_terms(logits, target, known)
+    b = field_loss_terms(logits, target, known, negative_aggregation="topk")
+    assert a[3] == 6 and b[3] == 3
+    torch.testing.assert_close(a[0], b[0], atol=0, rtol=0)
+    torch.testing.assert_close(a[2], b[2], atol=0, rtol=0)
+    assert b[1] > a[1]
+    b[1].backward()
+    assert (logits.grad[1:4] > 0).all()
+    assert torch.count_nonzero(logits.grad[[0, 4, 5, 6, 7]]) == 0
+    logits.grad = None
+    field_loss(logits, target, known, negative_aggregation="topk").backward()
+    assert logits.grad[7] == 0  # Unknown remains excluded from both loss terms.
+    assert logits.grad[4] > 0   # Non-mined known negatives still receive Dice gradient.
+
+
+def test_topk_uses_all_negatives_when_pool_is_smaller_than_three_positives():
+    logits = torch.tensor([.5, 1., -.5, 2.])
+    target = torch.tensor([True, True, False, False])
+    known = torch.ones(4, dtype=torch.bool)
+    torch.testing.assert_close(field_loss(logits, target, known, negative_aggregation="topk"),
+                               field_loss(logits, target, known), atol=0, rtol=0)
 
 
 def test_odd_size_single_crop_inference_and_checkpoint_roundtrip(tmp_path):
@@ -157,3 +196,29 @@ def test_synthetic_runner_saves_final_result_and_reloads_checkpoint(tmp_path, mo
     assert len(list(output.glob("field_step_*.pt"))) == 2
     assert len(list(output.glob("step_0001/*.npz"))) == 8
     assert json.loads((output / "fit_report.json").read_text())["status"] == "completed"
+
+    # A tiny paired control exercises actual save/evaluation/order comparisons
+    # without launching either real eight-crop fit.
+    control_config = tmp_path / "loss_control.json"
+    control_config.write_text((Path(__file__).resolve().parents[1] / "configs/pointneuron2/centerline_loss_control.json").read_text())
+    control_output = tmp_path / "control"
+    controlled = runner.run(Namespace(manifest=manifest, partition=partition, output_dir=control_output,
+        device="cpu", preflight=False, baseline_models=output, loss_config=control_config))
+    comparison = json.loads((control_output / "loss_comparison.json").read_text())
+    assert all(comparison["pairing_checks"].values())
+    assert comparison["baseline_crop_order_recorded"] is True
+    assert controlled["loss_spec"]["negative_aggregation"] == "topk"
+    assert controlled["config"] == result["config"]
+
+    from scripts.pointneuron2.centerline_loss_comparison import check_baseline, compare_final
+    fresh = CenterlineUNet(4)
+    with pytest.raises(ValueError, match="initialization differs"):
+        check_baseline(output, manifest, cfg, torch.device("cpu"), fresh, control_config)
+    torch.manual_seed(cfg["seed"])
+    fresh = CenterlineUNet(4)
+    with pytest.raises(ValueError, match="cache/config/device"):
+        check_baseline(output, manifest, {**cfg, "threshold": .4}, torch.device("cpu"), fresh, control_config)
+    pairing = check_baseline(output, manifest, cfg, torch.device("cpu"), fresh, control_config)
+    controlled["crop_index_order"] = [7 if controlled["crop_index_order"][0] != 7 else 6]
+    with pytest.raises(AssertionError, match="crop order"):
+        compare_final(controlled, pairing)

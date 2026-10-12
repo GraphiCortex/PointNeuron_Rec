@@ -125,9 +125,11 @@ studied region-based object detection. That supports the general rationale,
 not this voxel-level adaptation or guaranteed neuron improvements. Whether
 the proposed aggregation helps this field must be measured in the fixed control.
 
-No loss change or follow-up training has been implemented or launched. Discuss
-this control together before preparing it. Retain the existing stop rule:
-validation stays paused until the fixed learning gate and inspection pass.
+After this audit, the user approved preparing the loss-only control. It is now
+[implemented, checked and ready to run visibly](centerline_loss_control_ready.md);
+the real follow-up fit has not been launched. The original all-negative loss
+behavior remains available. Retain the existing stop rule: validation stays
+paused until the fixed learning gate and inspection pass.
 
 ## Visible evidence and reproduction
 

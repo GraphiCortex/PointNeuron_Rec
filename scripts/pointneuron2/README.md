@@ -7,6 +7,12 @@ Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
 Latest: [field learns structure but fails centerline localization](../../docs/pointneuron2/centerline_fit_results.md).
+Next: [prepared loss-only paired control](../../docs/pointneuron2/centerline_loss_control_ready.md).
+`run_centerline.ps1 -Action loss-control` fits one fresh matched model using
+the top min(N,3P) known-negative BCE, then compares against the preserved
+original run. `-Action loss-control-preflight` checks pairing and eight initial
+inferences, then times only four throwaway updates. Neither action changes the
+threshold, labels, model or gate; the ordinary `fit` action remains all-negative.
 `audit_centerline_fit.py` verifies the frozen final checkpoint and diagnoses
 known-label false positives, tube width and loss contributions without an
 optimizer. Its optional thinning step reports incompatible/missing libraries

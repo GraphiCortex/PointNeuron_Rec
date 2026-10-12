@@ -36,16 +36,34 @@ class CenterlineUNet(nn.Module):
         return self.head(h)
 
 
-def field_loss(logits, target, known):
-    """Equal positive/negative BCE contribution plus masked soft Dice.
+def field_loss_terms(logits, target, known, *, negative_aggregation="all", negative_to_positive_ratio=3):
+    """Return positive BCE, negative BCE, masked Dice and selected-negative count.
 
     Unknown voxels have exactly zero direct loss gradient. Skip entirely unknown
-    crops before calling; class-balanced means avoid a voxel-count prior collapse.
+    crops before calling. The optional top-k control changes only which known
+    negatives contribute to the BCE mean; Dice still uses every known voxel.
     """
+    if negative_aggregation not in ("all", "topk"):
+        raise ValueError("Unsupported negative aggregation")
+    if (isinstance(negative_to_positive_ratio, bool) or not isinstance(negative_to_positive_ratio, int)
+            or negative_to_positive_ratio < 1):
+        raise ValueError("Negative-to-positive ratio must be a positive integer")
     positive, negative = known & target, known & ~target
     if not positive.any() or not negative.any():
         raise ValueError("Supervised crop requires positive and negative voxels")
-    bce = .5 * (F.softplus(-logits[positive]).mean() + F.softplus(logits[negative]).mean())
+    positive_bce = F.softplus(-logits[positive]).mean()
+    negative_losses = F.softplus(logits[negative])
+    if negative_aggregation == "topk":
+        k = min(negative_losses.numel(), negative_to_positive_ratio * int(positive.sum()))
+        negative_losses = torch.topk(negative_losses, k, sorted=False).values
+    negative_bce = negative_losses.mean()
     p, y = logits.sigmoid()[known], target[known].to(logits.dtype)
     dice = 1 - (2*(p*y).sum() + 1e-6) / (p.sum() + y.sum() + 1e-6)
-    return bce + dice
+    return positive_bce, negative_bce, dice, negative_losses.numel()
+
+
+def field_loss(logits, target, known, *, negative_aggregation="all", negative_to_positive_ratio=3):
+    """Class-balanced BCE plus masked Dice; default preserves the original loss."""
+    positive, negative, dice, _ = field_loss_terms(logits, target, known,
+        negative_aggregation=negative_aggregation, negative_to_positive_ratio=negative_to_positive_ratio)
+    return .5 * (positive + negative) + dice

@@ -12,14 +12,13 @@ import sys
 
 import numpy as np
 import torch
-from torch.nn import functional as F
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 from pointneuron.data.centerline_field import SCHEMA
 from pointneuron.data.query_cache import file_digest
-from pointneuron.models.centerline_unet import CenterlineUNet
+from pointneuron.models.centerline_unet import CenterlineUNet, field_loss_terms
 from scripts.pointneuron2.train_centerline_fit import load_records, field_metrics
 
 
@@ -38,6 +37,10 @@ def run(args):
         raise ValueError("Final checkpoint contract mismatch")
     model = CenterlineUNet(cfg["base_channels"]).to(args.device).eval()
     model.load_state_dict(checkpoint["model"], strict=True)
+    loss_spec = checkpoint.get("loss_spec", {"negative_aggregation": "all", "negative_to_positive_ratio": 3})
+    if "loss_spec" in fit and fit["loss_spec"] != loss_spec:
+        raise ValueError("Checkpoint and report loss definitions differ")
+    loss_kwargs = {k: loss_spec[k] for k in ("negative_aggregation", "negative_to_positive_ratio")}
     if args.output_dir.exists():
         raise FileExistsError("Use a new output directory")
     args.output_dir.mkdir(parents=True)
@@ -52,6 +55,7 @@ def run(args):
               "fit_report_sha256": file_digest(args.models / "fit_report.json"), "checkpoint_sha256": checkpoint_sha,
               "manifest_sha256": file_digest(args.manifest), "device": args.device,
               "primary_gate_passed": fit["final_gate_passed"],
+              "loss_spec": loss_spec,
               "threshold": cfg["threshold"], "thinning_method": "skimage skeletonize Lee, 3D, fixed threshold mask",
               "thinning_error": thinning_error,
               "trajectory": [], "crops": []}
@@ -66,11 +70,8 @@ def run(args):
             probability = logits.sigmoid().cpu().numpy()
             target = torch.from_numpy(r["target"]).to(args.device)
             known = torch.from_numpy(r["known"]).to(args.device)
-            positive, negative = known & target, known & ~target
-            pos_bce = .5 * float(F.softplus(-logits[positive]).mean())
-            neg_bce = .5 * float(F.softplus(logits[negative]).mean())
-            p, y = logits.sigmoid()[known], target[known].float()
-            soft_dice_loss = float(1 - (2*(p*y).sum()+1e-6)/(p.sum()+y.sum()+1e-6))
+            pos_term, neg_term, dice_term, selected_negatives = field_loss_terms(logits, target, known, **loss_kwargs)
+            pos_bce, neg_bce, soft_dice_loss = .5*float(pos_term), .5*float(neg_term), float(dice_term)
         measured = field_metrics(probability, r)
         for key in ("reference_coverage_6", "reference_proximity_6", "known_voxel_dice"):
             if abs(measured[key] - original[key]) > 1e-5:
@@ -97,7 +98,8 @@ def run(args):
                "mean_known_negative_score": float(probability[neg].mean()),
                "known_positive_probability_mass": float(probability[pos].sum()),
                "known_negative_probability_mass": float(probability[neg].sum()),
-               "bce_positive_to_negative_per_voxel_weight": float(neg.sum()/pos.sum()),
+               "selected_negative_bce_voxels": selected_negatives,
+               "bce_positive_to_selected_negative_per_voxel_weight": float(selected_negatives/pos.sum()),
                "near_negative_fraction_of_all_known_negatives": float(near.sum()/neg.sum()),
                "loss": {"positive_bce_contribution": pos_bce, "negative_bce_contribution": neg_bce,
                         "soft_dice_loss": soft_dice_loss, "total": pos_bce+neg_bce+soft_dice_loss},

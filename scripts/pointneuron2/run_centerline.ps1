@@ -1,15 +1,24 @@
 param(
-    [Parameter(Mandatory=$true)][ValidateSet('prepare','preflight','fit')][string]$Action,
+    [Parameter(Mandatory=$true)][ValidateSet('prepare','preflight','fit','loss-control','loss-control-preflight')][string]$Action,
     [string]$ArtifactRoot = 'C:\Users\Seywe\Documents\GitHub\PointNeuron',
     [string]$Manifest,
     [string]$OutputDirectory,
     [string]$Python,
+    [string]$BaselineModels,
+    [string]$LossConfig,
     [ValidateSet('cuda','cpu')][string]$Device = 'cuda'
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
 if (-not (Test-Path -LiteralPath $Python -PathType Leaf)) { throw 'Supply -Python with the local PyTorch environment.' }
+$lossControl = $Action -in @('loss-control','loss-control-preflight')
+if ($lossControl) {
+    if (-not $BaselineModels) { $BaselineModels = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/centerline_fit_20261012_144121_14488/model' }
+    if (-not $LossConfig) { $LossConfig = Join-Path $projectRoot 'configs/pointneuron2/centerline_loss_control.json' }
+    $BaselineModels = (Resolve-Path -LiteralPath $BaselineModels).Path
+    $LossConfig = (Resolve-Path -LiteralPath $LossConfig).Path
+} elseif ($BaselineModels -or $LossConfig) { throw 'BaselineModels and LossConfig apply only to loss-control actions.' }
 if (-not $Manifest) {
     if ($Action -eq 'prepare') {
         $Manifest = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/query_implementation_20261011/cache/manifest.json'
@@ -19,7 +28,7 @@ if (-not $Manifest) {
 }
 $Manifest = (Resolve-Path -LiteralPath $Manifest).Path
 if (-not $OutputDirectory) {
-    $OutputDirectory = Join-Path $projectRoot ('tmp/pointneuron2/local_runs/centerline_{0}_{1}_{2}' -f $Action, (Get-Date -Format 'yyyyMMdd_HHmmss'), $PID)
+    $OutputDirectory = Join-Path $projectRoot ('tmp/pointneuron2/local_runs/centerline_{0}_{1}_{2}' -f ($Action -replace '-', '_'), (Get-Date -Format 'yyyyMMdd_HHmmss'), $PID)
 }
 if (Test-Path -LiteralPath $OutputDirectory) { throw 'Choose a fresh output directory to preserve earlier runs.' }
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
@@ -31,7 +40,11 @@ if ($Action -eq 'prepare') {
 } else {
     $cliArguments = @('-u', (Join-Path $PSScriptRoot 'train_centerline_fit.py'), '--manifest', $Manifest,
         '--output-dir', (Join-Path $runDirectory 'model'), '--device', $Device)
-    if ($Action -eq 'preflight') {
+    if ($lossControl) {
+        $cliArguments += @('--baseline-models', $BaselineModels, '--loss-config', $LossConfig)
+        Write-Output 'Loss-only paired control: top min(N,3P) known-negative BCE; reuse completed baseline; fresh matched initialization; other settings fixed.'
+    }
+    if ($Action -in @('preflight','loss-control-preflight')) {
         $cliArguments += '--preflight'
         Write-Output 'Timing only: 4 throwaway updates, no trained checkpoint retained.'
     } else {

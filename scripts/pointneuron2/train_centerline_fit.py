@@ -20,6 +20,7 @@ from pointneuron.data.query_cache import file_digest
 from pointneuron.data.vaa3d_raw import VOLUME_READER_VERSION
 from pointneuron.models.centerline_unet import CenterlineUNet, field_loss
 from scripts.pointneuron2.prepare_centerline_fit import inspection
+from scripts.pointneuron2.centerline_loss_comparison import check_baseline, compare_final, assert_baseline_unchanged, assert_initial_metrics
 
 
 def load_records(path, partition_path):
@@ -113,6 +114,14 @@ def run(args):
     torch.manual_seed(cfg["seed"])
     np.random.seed(cfg["seed"])
     model = CenterlineUNet(cfg["base_channels"]).to(device)
+    baseline_models = getattr(args, "baseline_models", None)
+    loss_config = getattr(args, "loss_config", None)
+    if bool(baseline_models) != bool(loss_config):
+        raise ValueError("Loss-only control requires both baseline models and loss config")
+    pairing = None if baseline_models is None else check_baseline(
+        baseline_models, args.manifest, cfg, device, model, loss_config)
+    loss_spec = {"negative_aggregation": "all", "negative_to_positive_ratio": 3} if pairing is None else pairing["loss_spec"]
+    loss_kwargs = {key: loss_spec[key] for key in ("negative_aggregation", "negative_to_positive_ratio")}
     optimizer = torch.optim.AdamW(model.parameters(), lr=cfg["learning_rate"], weight_decay=cfg["weight_decay"])
     inputs = [torch.from_numpy(r["image"])[None, None].to(device) for r in records]
     targets = [torch.from_numpy(r["target"])[None, None].to(device) for r in records]
@@ -121,11 +130,14 @@ def run(args):
     print(f"Training-only crops: 8 from 4 neurons | batch=1 | U-Net base={cfg['base_channels']} | "
           f"parameters={sum(p.numel() for p in model.parameters()):,} | steps={cfg['steps']}", flush=True)
     print(f"Outputs: {args.output_dir.resolve()}", flush=True)
+    print(f"Negative BCE aggregation: {loss_spec['negative_aggregation']} | known negatives only; positive BCE and Dice unchanged", flush=True)
+    if pairing:
+        print("Baseline pairing checks passed: exact initial model tensors, cache, config, device and declared budget.", flush=True)
 
     def update(i):
         model.train()
         optimizer.zero_grad(set_to_none=True)
-        loss = field_loss(model(inputs[i]), targets[i], masks[i])
+        loss = field_loss(model(inputs[i]), targets[i], masks[i], **loss_kwargs)
         if not torch.isfinite(loss):
             raise FloatingPointError("Nonfinite field loss")
         loss.backward()
@@ -134,6 +146,14 @@ def run(args):
         return float(loss.detach())
 
     if args.preflight:
+        if pairing:
+            model.eval()
+            initial_metrics = []
+            with torch.no_grad():
+                for i, r in enumerate(records):
+                    initial_metrics.append(field_metrics(model(inputs[i]).sigmoid()[0, 0].cpu().numpy(), r))
+            assert_initial_metrics(initial_metrics, pairing)
+            print("All eight step-zero inference results match the saved baseline.", flush=True)
         print("Timing only: two warm-up and two measured throwaway updates; no model checkpoint retained.", flush=True)
         for i in range(2):
             update(i)
@@ -155,7 +175,12 @@ def run(args):
                   "manifest_sha256": file_digest(args.manifest), "device": str(device),
                   "seconds_per_update": update_seconds, "seconds_per_crop_eval": eval_seconds,
                   "estimated_fit_seconds": estimate, "parameters": sum(p.numel() for p in model.parameters()),
+                  "loss_spec": loss_spec,
                   "cuda_peak_allocated_mib": torch.cuda.max_memory_allocated()/2**20 if device.type == "cuda" else None}
+        if pairing:
+            assert_baseline_unchanged(pairing)
+            report["pairing_checks"] = {**pairing["checks"], "step_zero_inference_matches": True,
+                                       "baseline_files_unchanged": True}
         (args.output_dir / "timing.json").write_text(json.dumps(report, indent=2))
         print(json.dumps(report, indent=2), flush=True)
         return report
@@ -164,7 +189,10 @@ def run(args):
     report = {"status": "running", "scope": "fixed-training-crop learnability; not validation or SWC quality",
               "manifest_sha256": file_digest(args.manifest), "partition_sha256": manifest["partition_sha256"],
               "config": cfg, "device": str(device), "torch_version": torch.__version__, "evaluations": [],
+              "loss_spec": loss_spec,
               "raw_image_cutoff_baseline": []}
+    if pairing:
+        report["baseline_pairing"] = {key: value for key, value in pairing.items() if key != "baseline_report"}
     for r in records:
         cutoff = r["metadata"]["threshold"] / r["metadata"]["image_scale"]
         report["raw_image_cutoff_baseline"].append({"sample_index": r["row"]["sample_index"], "patch_index": r["row"]["patch_index"],
@@ -192,18 +220,23 @@ def run(args):
                   f"known_dice={measured['known_voxel_dice']:.4f} accepted={measured['accepted_voxels']} "
                   f"accepted_unknown={measured['accepted_unknown_bright_voxels']}", flush=True)
         passed = gate(metrics, cfg)
+        if step == 0 and pairing:
+            assert_initial_metrics(metrics, pairing)
+            print("Step-zero inference matches the saved baseline before the first optimizer update.", flush=True)
         report["evaluations"].append({"step": step, "crops": metrics, "gate_passed": bool(passed)})
-        torch.save({"schema": SCHEMA, "step": step, "config": cfg, "manifest_sha256": report["manifest_sha256"],
+        torch.save({"schema": SCHEMA, "step": step, "config": cfg, "loss_spec": loss_spec, "manifest_sha256": report["manifest_sha256"],
                     "model": model.state_dict()}, args.output_dir / f"field_step_{step:04d}.pt")
         (args.output_dir / "fit_report.json").write_text(json.dumps(report, indent=2))
         print(f"step={step}: learnability_gate_passed={passed}", flush=True)
 
     evaluate(0)
-    rng, order = np.random.default_rng(cfg["seed"]), []
+    rng, order, visits = np.random.default_rng(cfg["seed"]), [], []
     for step in range(1, cfg["steps"] + 1):
         if not order:
             order = rng.permutation(8).tolist()
-        loss = update(order.pop())
+        index = order.pop()
+        visits.append(index)
+        loss = update(index)
         if step == 1 or step % 20 == 0:
             print(f"step={step}/{cfg['steps']} loss={loss:.5f} elapsed={time.perf_counter()-started:.1f}s "
                   f"cuda_allocated={torch.cuda.memory_allocated()/2**20 if device.type == 'cuda' else 0:.1f}MiB", flush=True)
@@ -223,7 +256,17 @@ def run(args):
     report.update(status="completed", elapsed_seconds=time.perf_counter()-started,
                   checkpoint_reload_max_logit_delta=delta,
                   final_gate_passed=report["evaluations"][-1]["gate_passed"],
+                  crop_index_order=visits,
                   next_step="review all crop overlays; validation only if final gate passes")
+    if pairing:
+        comparison = compare_final(report, pairing)
+        (args.output_dir / "loss_comparison.json").write_text(json.dumps(comparison, indent=2))
+        print(f"Loss-only comparison: paired checks passed; baseline gate={comparison['baseline_gate_passed']} "
+              f"control gate={comparison['control_gate_passed']}", flush=True)
+        for arm, summary in comparison["summary"].items():
+            print(f"{arm}: mean coverage_6={summary['reference_coverage_6']:.4f} "
+                  f"proximity_6={summary['reference_proximity_6']:.4f} known_dice={summary['known_voxel_dice']:.4f}", flush=True)
+        print(f"comparison: {args.output_dir / 'loss_comparison.json'}", flush=True)
     (args.output_dir / "fit_report.json").write_text(json.dumps(report, indent=2))
     print(f"Status: completed; checkpoint reload passed; learnability gate: {report['final_gate_passed']}", flush=True)
     print(f"report: {args.output_dir / 'fit_report.json'}", flush=True)
@@ -237,4 +280,6 @@ if __name__ == "__main__":
     parser.add_argument("--partition", type=Path, default=ROOT / "configs/pointneuron2/partition_seed0.json")
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
     parser.add_argument("--preflight", action="store_true")
+    parser.add_argument("--baseline-models", type=Path)
+    parser.add_argument("--loss-config", type=Path)
     run(parser.parse_args())

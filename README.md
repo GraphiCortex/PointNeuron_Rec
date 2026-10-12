@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Next: matched centerline negative-loss control and visible GPU command](docs/pointneuron2/centerline_loss_control_ready.md)
 - [Latest: field learns structure but fails centerline localization; diagnosis and proposed loss control](docs/pointneuron2/centerline_fit_results.md)
 - [Completed protocol: centerline-field prototype, inspection images and visible GPU command](docs/pointneuron2/centerline_fit_ready.md)
 - [Latest: completed query pilot fails selection; proposed centerline-field direction](docs/pointneuron2/query_pilot_results.md)
