@@ -1,0 +1,19 @@
+{
+  "schema": "pointneuron2-centerline-fit-v1",
+  "seed": 0,
+  "crops": [[0, 1], [0, 2], [32, 0], [32, 3], [96, 0], [96, 3], [162, 1], [162, 2]],
+  "tube_radius_voxels": 2.0,
+  "uncertainty_distance_voxels": 6.0,
+  "base_channels": 8,
+  "steps": 400,
+  "eval_steps": [0, 100, 200, 400],
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "threshold": 0.5,
+  "coverage_tolerance_voxels": 6.0,
+  "gate": {
+    "minimum_crop_reference_coverage": 0.95,
+    "minimum_crop_reference_proximity": 0.90,
+    "minimum_mean_known_dice": 0.80
+  }
+}

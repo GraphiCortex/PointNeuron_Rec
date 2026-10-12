@@ -1,0 +1,188 @@
+{
+  "schema": "pointneuron2-centerline-field-v1",
+  "status": "completed",
+  "scope": "fixed-training-crop learnability only",
+  "volume_reader_version": "vaa3d-pbd-v2",
+  "config": {
+    "schema": "pointneuron2-centerline-fit-v1",
+    "seed": 0,
+    "crops": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        32,
+        0
+      ],
+      [
+        32,
+        3
+      ],
+      [
+        96,
+        0
+      ],
+      [
+        96,
+        3
+      ],
+      [
+        162,
+        1
+      ],
+      [
+        162,
+        2
+      ]
+    ],
+    "tube_radius_voxels": 2.0,
+    "uncertainty_distance_voxels": 6.0,
+    "base_channels": 8,
+    "steps": 400,
+    "eval_steps": [
+      0,
+      100,
+      200,
+      400
+    ],
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "threshold": 0.5,
+    "coverage_tolerance_voxels": 6.0,
+    "gate": {
+      "minimum_crop_reference_coverage": 0.95,
+      "minimum_crop_reference_proximity": 0.9,
+      "minimum_mean_known_dice": 0.8
+    }
+  },
+  "config_sha256": "248ede00f2be9f40a9e18c3d882d749783be24b999156d5928486d863a1d2d5c",
+  "partition_sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+  "source_manifest_sha256": "2c0658b48b435f060fed8ce55b2b2e72b85fa33afd9946553dc3afbf4749f825",
+  "records": [
+    {
+      "path": "sample_0000_patch_001.npz",
+      "sha256": "bbb0decf7e88c5153ef559591a9b8d13d87484ebb132afe6a5f8a21a2436530f",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 1,
+      "partition": "train",
+      "valid_voxels": 470450,
+      "positive_voxels": 805,
+      "unknown_bright_voxels": 0,
+      "reference_above_old_cutoff_fraction": 0.5185185185185185,
+      "reference_mean_intensity_normalized": 0.20305012166500092,
+      "volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563"
+    },
+    {
+      "path": "sample_0000_patch_002.npz",
+      "sha256": "ab11bdf6dde7307b0745fec2888ecf26e43263d94d47ec729b1f2a33771203b8",
+      "sample_index": 0,
+      "sample_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "patch_index": 2,
+      "partition": "train",
+      "valid_voxels": 573949,
+      "positive_voxels": 8528,
+      "unknown_bright_voxels": 55,
+      "reference_above_old_cutoff_fraction": 0.05803571428571429,
+      "reference_mean_intensity_normalized": 0.11258503794670105,
+      "volume_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "swc_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563"
+    },
+    {
+      "path": "sample_0032_patch_000.npz",
+      "sha256": "a3fe62aa6b90ebd6adcd4b0c2cd83caa7cdfa2e6b425123015ec584c1e6c456e",
+      "sample_index": 32,
+      "sample_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "patch_index": 0,
+      "partition": "train",
+      "valid_voxels": 254043,
+      "positive_voxels": 1325,
+      "unknown_bright_voxels": 27,
+      "reference_above_old_cutoff_fraction": 0.4227941176470588,
+      "reference_mean_intensity_normalized": 0.2708621919155121,
+      "volume_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "swc_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b"
+    },
+    {
+      "path": "sample_0032_patch_003.npz",
+      "sha256": "9cfc813a5cd8afafaaef2e1979809e0d3bf9444ba6abcf64acf511eb483a7fdf",
+      "sample_index": 32,
+      "sample_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "patch_index": 3,
+      "partition": "train",
+      "valid_voxels": 254043,
+      "positive_voxels": 3725,
+      "unknown_bright_voxels": 6,
+      "reference_above_old_cutoff_fraction": 0.5073746312684366,
+      "reference_mean_intensity_normalized": 0.3859390616416931,
+      "volume_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "swc_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b"
+    },
+    {
+      "path": "sample_0096_patch_000.npz",
+      "sha256": "abd5df8b49602ba571c9e884749f96e6b07f1f8f938d9d5003a801d108da91d5",
+      "sample_index": 96,
+      "sample_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "patch_index": 0,
+      "partition": "train",
+      "valid_voxels": 573949,
+      "positive_voxels": 4618,
+      "unknown_bright_voxels": 0,
+      "reference_above_old_cutoff_fraction": 0.09273743016759776,
+      "reference_mean_intensity_normalized": 0.10724496841430664,
+      "volume_sha256": "6573b54b3ad3ec2ec1dccaa5cbf42337a190f074f8e19b9bd773323d7210d9b0",
+      "swc_sha256": "f9cff68046b4771c041178424fccd6762f03afe43c5989f2521c35f7220ccc5a"
+    },
+    {
+      "path": "sample_0096_patch_003.npz",
+      "sha256": "ac3c1a782b5c3ef2a3e58e54eea53fb8d94d1babf1565a42aaf5140ae6ceb8bb",
+      "sample_index": 96,
+      "sample_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "patch_index": 3,
+      "partition": "train",
+      "valid_voxels": 573949,
+      "positive_voxels": 6878,
+      "unknown_bright_voxels": 878,
+      "reference_above_old_cutoff_fraction": 0.3388182498130142,
+      "reference_mean_intensity_normalized": 0.19035153090953827,
+      "volume_sha256": "6573b54b3ad3ec2ec1dccaa5cbf42337a190f074f8e19b9bd773323d7210d9b0",
+      "swc_sha256": "f9cff68046b4771c041178424fccd6762f03afe43c5989f2521c35f7220ccc5a"
+    },
+    {
+      "path": "sample_0162_patch_001.npz",
+      "sha256": "15efc802b2caaba1a829ce9105c18778404e40bf535490d7e70b62b149b89037",
+      "sample_index": 162,
+      "sample_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "patch_index": 1,
+      "partition": "train",
+      "valid_voxels": 912673,
+      "positive_voxels": 5742,
+      "unknown_bright_voxels": 500,
+      "reference_above_old_cutoff_fraction": 0.2457627118644068,
+      "reference_mean_intensity_normalized": 0.1353415995836258,
+      "volume_sha256": "073a436c5040df16c858482365acebbf3a793ff1426ac152fc509bcf923618d0",
+      "swc_sha256": "f8e8278cb3206fd6bc23141e1213ba58af0dc459d9c8000c0f54ed17fe05402a"
+    },
+    {
+      "path": "sample_0162_patch_002.npz",
+      "sha256": "48fefea83dae8fc48d095961090ae7767169567689c6ff09a1cada9818c5ea99",
+      "sample_index": 162,
+      "sample_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "patch_index": 2,
+      "partition": "train",
+      "valid_voxels": 912673,
+      "positive_voxels": 957,
+      "unknown_bright_voxels": 0,
+      "reference_above_old_cutoff_fraction": 0.34375,
+      "reference_mean_intensity_normalized": 0.15361520648002625,
+      "volume_sha256": "073a436c5040df16c858482365acebbf3a793ff1426ac152fc509bcf923618d0",
+      "swc_sha256": "f8e8278cb3206fd6bc23141e1213ba58af0dc459d9c8000c0f54ed17fe05402a"
+    }
+  ]
+}

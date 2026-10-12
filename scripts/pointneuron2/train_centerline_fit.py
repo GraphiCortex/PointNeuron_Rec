@@ -1,0 +1,240 @@
+"""Bounded native-image field learnability check; user launches the full fit."""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import sys
+import time
+
+import numpy as np
+from scipy.spatial import cKDTree
+import torch
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT))
+
+from pointneuron.data.centerline_field import SCHEMA
+from pointneuron.data.query_cache import file_digest
+from pointneuron.data.vaa3d_raw import VOLUME_READER_VERSION
+from pointneuron.models.centerline_unet import CenterlineUNet, field_loss
+from scripts.pointneuron2.prepare_centerline_fit import inspection
+
+
+def load_records(path, partition_path):
+    manifest = json.loads(path.read_text())
+    partition = json.loads(partition_path.read_text())
+    if manifest.get("status") != "completed" or manifest.get("schema") != SCHEMA:
+        raise ValueError("Incomplete or invalid field cache")
+    if manifest.get("volume_reader_version") != VOLUME_READER_VERSION or manifest["partition_sha256"] != file_digest(partition_path):
+        raise ValueError("Reader/partition mismatch")
+    allowed = {(r["sample_index"], r["sample_id"]) for r in partition["partitions"]["train"]}
+    reserved = {(r["sample_index"], r["sample_id"]) for role in ("val", "test") for r in partition["partitions"][role]}
+    if {i for i, _ in allowed} & {i for i, _ in reserved} or {s for _, s in allowed} & {s for _, s in reserved}:
+        raise ValueError("Crossed neuron partitions")
+    records, seen = [], set()
+    for row in manifest["records"]:
+        if row["partition"] != "train" or (row["sample_index"], row["sample_id"]) not in allowed:
+            raise ValueError("Learnability uses training neurons only")
+        record_path = (path.parent / row["path"]).resolve()
+        if not record_path.is_relative_to(path.parent.resolve()) or record_path in seen or file_digest(record_path) != row["sha256"]:
+            raise ValueError("Invalid, duplicate or changed field record")
+        seen.add(record_path)
+        with np.load(record_path, allow_pickle=False) as z:
+            r = {key: z[key].copy() for key in z.files if key != "metadata"}
+            r["metadata"] = json.loads(str(z["metadata"]))
+        if r["metadata"].get("field_schema") != SCHEMA:
+            raise ValueError("Field schema mismatch")
+        for key in ("sample_index", "sample_id", "partition", "patch_index"):
+            if r["metadata"][key] != row[key]:
+                raise ValueError("Record identity mismatch")
+        shape = r["image"].shape
+        if len(shape) != 3 or not np.isfinite(r["image"]).all() or r["image"].min() < 0 or r["image"].max() > 1:
+            raise ValueError("Invalid normalized image")
+        if any(r[k].shape != shape for k in ("target", "known", "valid", "distance", "unknown_bright")):
+            raise ValueError("Misaligned voxel fields")
+        if any(r[k].dtype != np.bool_ for k in ("target", "known", "valid", "unknown_bright")):
+            raise ValueError("Expected boolean label masks")
+        if np.any(r["known"] & ~r["valid"]) or np.any(r["known"] & r["unknown_bright"]):
+            raise ValueError("Unknown/padding contributes direct supervision")
+        if not np.any(r["target"] & r["known"]) or not np.any(~r["target"] & r["known"]):
+            raise ValueError("Unsupervised fit crop")
+        if np.isnan(r["distance"]).any() or (r["distance"] < 0).any() or not np.isfinite(r["reference_local_xyz"]).all():
+            raise ValueError("Invalid geometry")
+        r["row"] = row
+        records.append(r)
+    cfg = manifest["config"]
+    actual = [(r["row"]["sample_index"], r["row"]["patch_index"]) for r in records]
+    if actual != [tuple(x) for x in cfg["crops"]] or len(actual) != 8 or len(set(actual)) != 8:
+        raise ValueError("Fixed crop contract mismatch")
+    return manifest, records
+
+
+def field_metrics(probability, record, threshold=.5, tolerance=6.):
+    """Reference agreement, not biological precision; count unknown predictions too."""
+    accepted = (probability >= threshold) & record["valid"]
+    xyz = np.argwhere(accepted)[:, ::-1].astype(float)
+    coverage = 0. if not len(xyz) else float((cKDTree(xyz).query(record["reference_local_xyz"])[0] <= tolerance).mean())
+    proximity = 0. if not len(xyz) else float((record["distance"][accepted] <= tolerance).mean())
+    predicted_known = accepted & record["known"]
+    target = record["target"] & record["known"]
+    dice = float(2*(predicted_known & target).sum() / max(1, predicted_known.sum() + target.sum()))
+    return {"reference_coverage_6": coverage, "reference_proximity_6": proximity,
+            "known_voxel_dice": dice, "accepted_voxels": int(accepted.sum()),
+            "accepted_unknown_bright_voxels": int((accepted & record["unknown_bright"]).sum()),
+            "mean_reference_tube_score": float(probability[target].mean())}
+
+
+def gate(metrics, cfg):
+    g = cfg["gate"]
+    return (all(m["accepted_voxels"] > 0 and m["reference_coverage_6"] >= g["minimum_crop_reference_coverage"]
+                and m["reference_proximity_6"] >= g["minimum_crop_reference_proximity"] for m in metrics)
+            and float(np.mean([m["known_voxel_dice"] for m in metrics])) >= g["minimum_mean_known_dice"])
+
+
+def synchronize(device):
+    if device.type == "cuda":
+        torch.cuda.synchronize()
+
+
+def run(args):
+    torch.set_num_threads(2)
+    if args.device == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA unavailable; full fit requires explicit device choice")
+    device = torch.device(args.device)
+    manifest, records = load_records(args.manifest, args.partition)
+    cfg = manifest["config"]
+    if cfg["schema"] != "pointneuron2-centerline-fit-v1" or cfg["threshold"] != .5 or cfg["coverage_tolerance_voxels"] != 6:
+        raise ValueError("Unsupported frozen protocol")
+    if args.output_dir.exists():
+        raise FileExistsError("Use a fresh output directory")
+    args.output_dir.mkdir(parents=True)
+    torch.manual_seed(cfg["seed"])
+    np.random.seed(cfg["seed"])
+    model = CenterlineUNet(cfg["base_channels"]).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=cfg["learning_rate"], weight_decay=cfg["weight_decay"])
+    inputs = [torch.from_numpy(r["image"])[None, None].to(device) for r in records]
+    targets = [torch.from_numpy(r["target"])[None, None].to(device) for r in records]
+    masks = [torch.from_numpy(r["known"])[None, None].to(device) for r in records]
+    print(f"Device: {torch.cuda.get_device_name() if device.type == 'cuda' else 'CPU'} | native full-resolution 3D image", flush=True)
+    print(f"Training-only crops: 8 from 4 neurons | batch=1 | U-Net base={cfg['base_channels']} | "
+          f"parameters={sum(p.numel() for p in model.parameters()):,} | steps={cfg['steps']}", flush=True)
+    print(f"Outputs: {args.output_dir.resolve()}", flush=True)
+
+    def update(i):
+        model.train()
+        optimizer.zero_grad(set_to_none=True)
+        loss = field_loss(model(inputs[i]), targets[i], masks[i])
+        if not torch.isfinite(loss):
+            raise FloatingPointError("Nonfinite field loss")
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 10., error_if_nonfinite=True)
+        optimizer.step()
+        return float(loss.detach())
+
+    if args.preflight:
+        print("Timing only: two warm-up and two measured throwaway updates; no model checkpoint retained.", flush=True)
+        for i in range(2):
+            update(i)
+        synchronize(device)
+        started = time.perf_counter()
+        for i in (2, 3):
+            update(i)
+        synchronize(device)
+        update_seconds = (time.perf_counter() - started)/2
+        model.eval()
+        started = time.perf_counter()
+        with torch.no_grad():
+            probability = model(inputs[0]).sigmoid()[0, 0].cpu().numpy()
+        field_metrics(probability, records[0])
+        synchronize(device)
+        eval_seconds = time.perf_counter() - started
+        estimate = cfg["steps"] * update_seconds + len(cfg["eval_steps"]) * 8 * eval_seconds
+        report = {"status": "completed", "scope": "timing only; throwaway weights",
+                  "manifest_sha256": file_digest(args.manifest), "device": str(device),
+                  "seconds_per_update": update_seconds, "seconds_per_crop_eval": eval_seconds,
+                  "estimated_fit_seconds": estimate, "parameters": sum(p.numel() for p in model.parameters()),
+                  "cuda_peak_allocated_mib": torch.cuda.max_memory_allocated()/2**20 if device.type == "cuda" else None}
+        (args.output_dir / "timing.json").write_text(json.dumps(report, indent=2))
+        print(json.dumps(report, indent=2), flush=True)
+        return report
+
+    started = time.perf_counter()
+    report = {"status": "running", "scope": "fixed-training-crop learnability; not validation or SWC quality",
+              "manifest_sha256": file_digest(args.manifest), "partition_sha256": manifest["partition_sha256"],
+              "config": cfg, "device": str(device), "torch_version": torch.__version__, "evaluations": [],
+              "raw_image_cutoff_baseline": []}
+    for r in records:
+        cutoff = r["metadata"]["threshold"] / r["metadata"]["image_scale"]
+        report["raw_image_cutoff_baseline"].append({"sample_index": r["row"]["sample_index"], "patch_index": r["row"]["patch_index"],
+                                                   **field_metrics((r["image"] > cutoff).astype(float), r)})
+
+    def evaluate(step):
+        model.eval()
+        metrics = []
+        for i, r in enumerate(records):
+            with torch.no_grad():
+                probability = model(inputs[i]).sigmoid()[0, 0].cpu().numpy()
+            measured = {"sample_index": r["row"]["sample_index"], "patch_index": r["row"]["patch_index"],
+                        **field_metrics(probability, r, cfg["threshold"], cfg["coverage_tolerance_voxels"])}
+            metrics.append(measured)
+            name = Path(r["row"]["path"]).stem
+            snapshot = args.output_dir / f"step_{step:04d}"
+            snapshot.mkdir(exist_ok=True)
+            np.savez_compressed(snapshot / (name + ".npz"), probability=probability.astype(np.float16),
+                                origin_xyz=np.array(r["metadata"]["origin_xyz"]))
+            inspection(r["image"], r["distance"], r["valid"], r["unknown_bright"],
+                       f"Training neuron {measured['sample_index']}, crop {measured['patch_index']} | update {step}",
+                       snapshot / (name + ".png"), probability)
+            print(f"eval step={step} neuron={measured['sample_index']} crop={measured['patch_index']} "
+                  f"coverage_6={measured['reference_coverage_6']:.4f} proximity_6={measured['reference_proximity_6']:.4f} "
+                  f"known_dice={measured['known_voxel_dice']:.4f} accepted={measured['accepted_voxels']} "
+                  f"accepted_unknown={measured['accepted_unknown_bright_voxels']}", flush=True)
+        passed = gate(metrics, cfg)
+        report["evaluations"].append({"step": step, "crops": metrics, "gate_passed": bool(passed)})
+        torch.save({"schema": SCHEMA, "step": step, "config": cfg, "manifest_sha256": report["manifest_sha256"],
+                    "model": model.state_dict()}, args.output_dir / f"field_step_{step:04d}.pt")
+        (args.output_dir / "fit_report.json").write_text(json.dumps(report, indent=2))
+        print(f"step={step}: learnability_gate_passed={passed}", flush=True)
+
+    evaluate(0)
+    rng, order = np.random.default_rng(cfg["seed"]), []
+    for step in range(1, cfg["steps"] + 1):
+        if not order:
+            order = rng.permutation(8).tolist()
+        loss = update(order.pop())
+        if step == 1 or step % 20 == 0:
+            print(f"step={step}/{cfg['steps']} loss={loss:.5f} elapsed={time.perf_counter()-started:.1f}s "
+                  f"cuda_allocated={torch.cuda.memory_allocated()/2**20 if device.type == 'cuda' else 0:.1f}MiB", flush=True)
+        if step in cfg["eval_steps"]:
+            evaluate(step)
+    # Reload the exact final checkpoint and verify one inference crop. This is
+    # an execution check, separate from the learnability gate.
+    checkpoint = torch.load(args.output_dir / f"field_step_{cfg['steps']:04d}.pt", map_location=device, weights_only=True)
+    reloaded = CenterlineUNet(cfg["base_channels"]).to(device)
+    reloaded.load_state_dict(checkpoint["model"], strict=True)
+    reloaded.eval()
+    model.eval()
+    with torch.no_grad():
+        delta = float((model(inputs[0]) - reloaded(inputs[0])).abs().max())
+    if delta > 1e-6:
+        raise AssertionError("Final checkpoint reload changes inference")
+    report.update(status="completed", elapsed_seconds=time.perf_counter()-started,
+                  checkpoint_reload_max_logit_delta=delta,
+                  final_gate_passed=report["evaluations"][-1]["gate_passed"],
+                  next_step="review all crop overlays; validation only if final gate passes")
+    (args.output_dir / "fit_report.json").write_text(json.dumps(report, indent=2))
+    print(f"Status: completed; checkpoint reload passed; learnability gate: {report['final_gate_passed']}", flush=True)
+    print(f"report: {args.output_dir / 'fit_report.json'}", flush=True)
+    return report
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--partition", type=Path, default=ROOT / "configs/pointneuron2/partition_seed0.json")
+    parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
+    parser.add_argument("--preflight", action="store_true")
+    run(parser.parse_args())
