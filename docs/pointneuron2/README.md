@@ -1,5 +1,10 @@
 # PointNeuron 2.0 development
 
+**Current design for review:** [Phase 1 field-guided image-point sampling](phase1_field_guided_sampling_design.md)
+separates candidate expansion, spatial coverage and guided allocation, with
+matched unique-point counts and 512/2,048 diagnostic budgets. The sampler and
+broader field train/development pilot remain unimplemented and unlaunched.
+
 **Latest field result:** the user completed the 1,600-update eight-crop fit;
 the frozen gate passes, with mean tube Dice 0.9173. The replay's 400-update
 result differs from the earlier run despite matching settings and initialization.

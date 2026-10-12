@@ -63,6 +63,11 @@ sampled inputs and downstream reconstructions have not been demonstrated.
 
 ## How the field could serve Phase 1
 
+The [concrete Phase 1 interface and comparison draft](phase1_field_guided_sampling_design.md)
+is ready for review. It specifies four controls, candidate expansion, intensity
+handling, unique-point budgets and the separate generalization check. It is not
+an implemented selector or an adopted production recipe.
+
 After reviewing the fit, separately design and agree a controlled point-cloud
 comparison. The field could guide the selection of informative **image points**,
 while retaining intensities, local image evidence and spatial coverage. An

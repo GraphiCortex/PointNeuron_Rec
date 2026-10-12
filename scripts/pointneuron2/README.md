@@ -6,6 +6,10 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+For review: [Phase 1 field-guided point-selection design](../../docs/pointneuron2/phase1_field_guided_sampling_design.md).
+This is a specification, not a runnable selector. No sampler implementation or
+new training command has been added for it.
+
 Latest: [eight-crop field learnability passes at 1,600 updates](../../docs/pointneuron2/centerline_duration_results.md).
 The user completed the fit; review its within-run improvements and common-budget
 reproducibility caveat before another experiment. `plot_centerline_duration.py`
