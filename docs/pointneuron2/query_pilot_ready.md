@@ -1,5 +1,8 @@
 # Approved matched train/validation pilot
 
+Completed follow-up: [query selection fails; proposed centerline-field direction](query_pilot_results.md).
+The preparation protocol below is retained for reproducibility.
+
 12 October 2026. The [pooled LayerNorm fit](query_layernorm_results.md) passes
 the two-crop learnability check. The user approved preparation of this broader
 pilot. Its config, validation diagnostics, pairing checks and local timing

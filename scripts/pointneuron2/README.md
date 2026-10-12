@@ -6,8 +6,9 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest results: [pooled LayerNorm passes the two-crop learnability check](../../docs/pointneuron2/query_layernorm_results.md).
-Next approved run: [matched 30-epoch train/validation pilot](../../docs/pointneuron2/query_pilot_ready.md).
+Latest results: [completed query pilot fails selection; proposed centerline-field direction](../../docs/pointneuron2/query_pilot_results.md).
+Earlier result: [pooled LayerNorm passes the two-crop learnability check](../../docs/pointneuron2/query_layernorm_results.md).
+Completed protocol: [matched 30-epoch train/validation pilot](../../docs/pointneuron2/query_pilot_ready.md).
 `run_query.ps1 -Action pilot` selects the frozen pooled-LayerNorm/dropout-zero
 config and reports per-neuron validation geometry/confidence every epoch.
 `-PreflightOnly` checks that full setup without training. `time_query_pilot.py`
@@ -40,8 +41,9 @@ image-only inference with raw/local/global outputs and a common graph adapter.
 The 2,000-update fit completed and learned useful confidence. A fixed-weight
 audit isolates the pooled encoder BatchNorm mode as the dominant remaining
 placement gap on these two crops. The pooled LayerNorm control completed and
-passes the learnability check. The approved 30-epoch pilot is implemented and
-checked, ready for the user's visible GPU terminal.
+passes the two-crop learnability check. The 30-epoch pilot completed but the
+query model accepts no validation proposals at score 0.5. It is not promoted.
+The proposed image-native centerline-field direction awaits agreement.
 `audit_query_targets.py` preserves the independent training-only sizing audit.
 See [the reviewed target specification](../../docs/pointneuron2/query_decoder_design.md).
 
