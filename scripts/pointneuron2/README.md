@@ -6,12 +6,18 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [PointNeXt fit and inference-normalization audit](../../docs/pointneuron2/pointnext_query_results.md).
+`audit_pointnext_inference.py` compares ordinary eval and current-crop BN on
+temporary CPU copies of the saved weights, with no optimizer/checkpoint writes.
+The real audit completed; placement improves substantially but confidence
+still fails. No new training or production-normalization policy is queued.
+
 Ready: [native PointNeXt/Transformer prototype and visible commands](../../docs/pointneuron2/pointnext_query_ready.md).
 `run_pointnext_query.ps1` separates read-only `check`, two frozen field forwards
 in `prepare`, four throwaway timing updates in `preflight`, and a future explicit
 2,000-update `train`. Synthetic CPU tests and the pinned-reference topology
-audit passed. Real preparation/timing and fit quality remain pending. Review
-the input images/counts and measured GPU estimate before launching the fit.
+audit passed. Real preparation/timing and the bounded fit are complete;
+the failed learnability gate is reviewed above. Do not repeat the fit automatically.
 
 Latest: [reviewed image-reservation gains and dim-support losses](../../docs/pointneuron2/field_image_reservation_results.md).
 `run_field_image_reservation.ps1 -Action check` verifies existing sources read-only;

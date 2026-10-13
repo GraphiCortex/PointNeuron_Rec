@@ -4,8 +4,9 @@
 agreed to prepare this design and subsequently selected the native-PyTorch
 implementation route. The [prototype and separate preparation/timing actions](pointnext_query_ready.md)
 are now implemented and checked on synthetic CPU data. This document retains
-the agreed experimental design; no real PointNeXt fit has started and no
-production default has been promoted.
+the agreed experimental design. The subsequent real fit failed its gate; see
+[the saved-weight normalization and confidence diagnosis](pointnext_query_results.md).
+No production default has been promoted.
 
 ## The next question
 

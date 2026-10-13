@@ -10,8 +10,10 @@ that alternative has not been adopted as the PN 2.0 architecture.
 13 October update: field, attention and fixed-quota development comparisons
 are complete. No new sampler is promoted. The selected
 [native PointNeXt/Transformer prototype](pointnext_query_ready.md) is implemented
-and checked on synthetic CPU data. Real preparation, timing and fit quality
-remain pending; the [agreed design](pointnext_query_design.md) defines the check.
+and checked on synthetic CPU data. The real bounded fit subsequently completed
+but failed ordinary-inference learnability. The
+[saved-weight audit](pointnext_query_results.md) locates a large normalization
+discrepancy and unresolved confidence; no new normalization policy is adopted.
 
 ## Intended pipeline and actual implementation
 
@@ -28,8 +30,8 @@ remain pending; the [agreed design](pointnext_query_design.md) defines the check
 | Stage | Intended role | Current implementation status |
 | --- | --- | --- |
 | Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Isolated field-guided selector/comparison implemented and checked; production/PointNeXt integration pending |
-| PointNeXt | Encode local and broader point geometry | Native S prototype implemented; synthetic train/eval/operator checks pass; real fit pending |
-| Transformer decoder | Predict skeleton-node positions, confidence and radius | Historical DGCNN pilot; native PointNeXt pairing implemented and synthetically checked; real fit pending |
+| PointNeXt | Encode local and broader point geometry | Native S prototype implemented; real bounded fit exposes train/eval normalization discrepancy |
+| Transformer decoder | Predict skeleton-node positions, confidence and radius | PointNeXt pairing learns subvoxel placement with current-crop statistics on two training crops; confidence and ordinary inference fail |
 | GATv2 | Learn candidate-edge probabilities using node features and geometry | Not implemented; previous reconstructions used inherited graph machinery |
 
 The [completed query pilot](query_pilot_results.md) failed confidence selection

@@ -1,11 +1,17 @@
 # PointNeuron 2.0 development
 
+**Latest:** [PointNeXt/query fit and saved-weight normalization diagnosis](pointnext_query_results.md).
+The user completed the bounded fit; reload passed but both crop gates failed.
+With identical weights on CPU, current-crop BN reduces matched placement error
+to .43/.22 voxels, while confidence misses/extras remain. No policy change or
+additional fit has started; normalization consistency is the proposed next discussion.
+
 **Ready:** [native PointNeXt → Transformer prototype and visible commands](pointnext_query_ready.md).
 The selected native backend restores 32-channel features to original points and
 reuses the query body/loss under its own checkpoint schema. Fifteen synthetic
 CPU tests, a pinned-reference topology audit and real read-only source checks
-passed. Separate preparation and GPU timing commands are ready; no real
-PointNeXt fit or environment change has occurred. The
+passed. The user subsequently completed preparation, GPU timing and the bounded
+fit; its quality failures are reviewed above. No environment change occurred. The
 [agreed design](pointnext_query_design.md) records the bounded two-crop protocol.
 
 **Latest:** [image-reservation control is complete and reviewed](field_image_reservation_results.md).

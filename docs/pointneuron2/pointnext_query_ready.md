@@ -1,6 +1,11 @@
 # Native PointNeXt → Transformer prototype: preparation and timing
 
 13 October 2026. The user selected the native-PyTorch implementation route.
+**Completion update:** preparation, GPU timing and the 2,000-update fit are now
+complete. Reload passed; both learnability gates failed. See the
+[results and saved-weight normalization diagnosis](pointnext_query_results.md).
+The text below preserves the implemented protocol as it was prepared.
+
 The prototype, immutable two-crop cache builder and separate timing/fit actions
 are implemented in the real PN2 folder. **No real PointNeXt fit has run.**
 Passing implementation checks is not measured reconstruction improvement.
