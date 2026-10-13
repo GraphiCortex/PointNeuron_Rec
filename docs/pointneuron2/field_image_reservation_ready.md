@@ -4,8 +4,10 @@
 after the [attention sampling review](field_attention_sampling_results.md).
 The comparison reuses the **fresh ungated baseline** from the attention study,
 fixed at epoch 30. No additional training, model inference, field threshold
-change or architecture replacement is included. The real comparison has not
-run; preparation and execution checks are not quality results.
+change or architecture replacement is included. The real comparison is now
+[complete and reviewed](field_image_reservation_results.md): 1m28s, zero inference
+and zero updates. The fixed quota is not promoted. The commands below retain
+the original protocol; no rerun is needed.
 
 ## Hypothesis and tradeoff
 
@@ -70,8 +72,8 @@ Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
 ```
 
 No timing/throwaway optimizer preflight is needed because no model runs. Expect
-a few minutes of CPU scoring and plotting; this comparison's full runtime has
-not yet been measured. Progress prints each of the 56 freeze steps, then each
+a few minutes of CPU scoring and plotting; the completed local command took
+1m28s. Progress prints each of the 56 freeze steps, then each
 of the 56 scoring steps. There is no automatic next experiment or retry.
 
 Default outputs are in:

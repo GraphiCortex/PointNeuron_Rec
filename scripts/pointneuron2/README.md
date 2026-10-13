@@ -6,12 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Ready: [approved cached-field image-reservation comparison](../../docs/pointneuron2/field_image_reservation_ready.md).
+Latest: [reviewed image-reservation gains and dim-support losses](../../docs/pointneuron2/field_image_reservation_results.md).
 `run_field_image_reservation.ps1 -Action check` verifies existing sources read-only;
 `-Action compare` separately freezes the quota clouds and scores paired coverage,
 proximity and branch gaps against saved expanded random. CPU only, no model
 inference or training. Fixed half-budget uniform foreground reservation, uniform
-union fill, matched 512/2048 nominal budgets and seeds 0–4; real comparison pending.
+union fill, matched 512/2048 nominal budgets and seeds 0–4. Real comparison
+completed in 1m28s; the fixed quota is not promoted. No further run is queued.
 
 Latest: [completed attention sampling and branch-support findings](../../docs/pointneuron2/field_attention_sampling_results.md).
 `run_field_attention.ps1` has separate `preflight`, `train` and `compare` actions.
@@ -20,12 +21,12 @@ and crop order. Attention adds two skip gates; sampling rules are unchanged.
 Timing, both 30-epoch fits and the fixed-final-checkpoint sampling comparison
 are complete. Comparison took 8m20s and made zero optimizer updates. No new
 run is queued; attention is not promoted. The image-reservation control is
-now approved and implemented separately; its real comparison has not run.
+implemented separately and its completed comparison is reviewed above.
 
 Latest: [completed development sampling and input dilution findings](../../docs/pointneuron2/field_pilot_sampling_results.md).
 The user completed the fixed final comparison in 4m24s, with zero updates.
-No new run is queued. The image-backbone preservation control is proposed for
-discussion; no selector changes or additional training were implemented.
+The subsequent bounded image-reservation comparison is complete and reviewed
+above. No selector was promoted and no new run is queued.
 
 Latest: [field train/development results and saved-field audit](../../docs/pointneuron2/field_pilot_results.md).
 The user completed 6,330 updates in 17m14s. Training/development and full-pool

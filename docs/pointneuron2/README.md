@@ -1,10 +1,11 @@
 # PointNeuron 2.0 development
 
-**Ready:** [approved image-reservation control](field_image_reservation_ready.md).
-Frozen fresh-baseline field, half-budget raw-image quota plus uniform union fill,
-compared with saved B at equal counts/seeds across the seven development neurons.
-This is a cached-field CPU comparison: zero inference and zero updates. No real
-comparison has run yet; PointNeXt/Transformer/GATv2 architecture remains intended.
+**Latest:** [image-reservation control is complete and reviewed](field_image_reservation_results.md).
+At matched nominal 2,048, mean coverage falls 85.69% → 84.49%, while proximity
+rises 74.74% → 76.55%. Neuron-35 dilution improves, but neuron-94 dim support
+and average longest gaps worsen. This fixed quota is not promoted. The proposed
+next discussion is the intended PointNeXt/Transformer interface and learnability
+plan; no new implementation or training has started.
 
 **Latest:** [attention sampling is complete and reviewed](field_attention_sampling_results.md).
 At matched counts, expanded uniform retains 85.68% coverage versus baseline
@@ -17,13 +18,13 @@ Attention cleans the targeted neuron-35 field, but mean development coverage
 falls from 92.21% to 89.67%; Dice rises .5653 to .5723 amid baseline replay
 variation. All 112 saved fields were independently audited. The agreed separate
 sampling comparison has now completed; attention is not promoted. The image-backbone
-reservation idea remains deferred.
+reservation control has subsequently completed and is reviewed above.
 
 **Latest:** [development sampling is complete and reviewed](field_pilot_sampling_results.md).
 At matched counts, expanded random raises mean coverage from 71.47% to 85.47%,
 with severe dilution in some neuron-35 crops. The 50/50 selector is not a universal
-winner. One bounded image-backbone preservation comparison is proposed for
-discussion; no new selector or additional training has been implemented.
+winner. A subsequent bounded image-reservation comparison is complete and
+reviewed above; neither that quota nor attention was promoted.
 
 **13 October results:** the [field pilot is complete and reviewed](field_pilot_results.md).
 Final development field coverage is 90.19% within two voxels, tube Dice 0.5772.

@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: approved half-budget image reservation using cached baseline fields; no retraining](docs/pointneuron2/field_image_reservation_ready.md)
+- [Latest: half-image quota fixes dilution locally but loses dim support; not promoted](docs/pointneuron2/field_image_reservation_results.md)
+- [Completed protocol: cached-field image-reservation allocation comparison](docs/pointneuron2/field_image_reservation_ready.md)
 - [Latest: attention cleanup survives sampling, but dim branches and path gaps remain](docs/pointneuron2/field_attention_sampling_results.md)
 - [Latest: skip attention cleans targeted support but loses some branches; fixed-budget comparison next](docs/pointneuron2/field_attention_results.md)
 - [Approved protocol: fresh baseline versus two skip gates; training completed](docs/pointneuron2/field_attention_ready.md)
