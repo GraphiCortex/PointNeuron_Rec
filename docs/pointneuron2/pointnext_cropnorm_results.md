@@ -1,7 +1,12 @@
 # Per-crop normalization control and saved-query confidence audit
 
 13 October 2026. The user agreed to prepare the normalization consistency
-control and inspect saved scores before another fit. Both are complete.
+control and inspect saved scores before another fit. **Subsequent update:** the
+user agreed to the [fixed-placement confidence diagnostic](query_confidence_ready.md).
+Its source/CPU feature cache are now prepared; the visible GPU timing and fit
+remain pending. The text below preserves the normalization-control findings.
+
+The normalization control and saved-score audit are both complete.
 The comparison used **CPU inference only, zero optimizer updates and zero field
 inference**. Original checkpoints, cache, training scripts and source hashes
 remain unchanged. The complete learnability gate still fails.

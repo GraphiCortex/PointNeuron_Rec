@@ -1,11 +1,18 @@
 # PointNeuron 2.0 development
 
+**Ready:** [fixed-feature, fixed-placement confidence diagnostic](query_confidence_ready.md).
+The user agreed; the head/runner and real CPU feature cache are prepared.
+Only 258 confidence parameters train against fixed 6/12 assignments, with
+both crops contributing each update. GPU timing and the bounded 2,000-update
+fit are separate visible commands; neither has started. PointNeXt, Transformer
+features, geometry, radii and source checkpoints remain frozen.
+
 **Latest:** [explicit per-crop normalization control and query-score audit](pointnext_cropnorm_results.md).
 Saved-weight CPU comparison passes train/eval/reload/crop-order checks, with no
 optimizer updates. Subvoxel placement survives ordinary eval; confidence still
 fails. All five unmatched accepted queries are matched positives in the other
-crop. Crop-0 assignments change across snapshots. A confidence-only comparison
-with frozen placement is proposed for discussion; no new fit is prepared or launched.
+crop. Crop-0 assignments change across snapshots. The subsequently agreed
+confidence-only diagnostic with frozen placement is prepared above, not launched.
 
 **Latest:** [PointNeXt/query fit and saved-weight normalization diagnosis](pointnext_query_results.md).
 The user completed the bounded fit; reload passed but both crop gates failed.
