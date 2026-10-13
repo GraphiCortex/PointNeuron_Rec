@@ -5,7 +5,7 @@ the targeted neuron-35 dilution case, but do not improve development fields
 consistently.** At the fixed final checkpoint, average reference coverage falls,
 average field proximity barely changes, and known-voxel Dice rises slightly.
 Attention is not promoted. The already-approved fixed-budget sampling comparison
-is the next action; it has not run yet.
+is now [complete and reviewed](field_attention_sampling_results.md).
 
 ## What we tested
 
@@ -165,7 +165,9 @@ candidates, so lost field support need not always mean a lost input point; fewer
 off-reference candidates may also reduce dilution. Field metrics cannot settle
 that question.
 
-Run the already-approved separate comparison visibly on your local GPU:
+The user completed this approved separate comparison on the local GPU in
+8m20s. The command below is retained as the reproducible entry point; no rerun
+is needed. See the [sampling results](field_attention_sampling_results.md).
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"

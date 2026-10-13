@@ -1,0 +1,374 @@
+{
+  "schema": "pointneuron2-field-attention-v1",
+  "status": "completed",
+  "action": "compare",
+  "recipe": {
+    "schema": "pointneuron2-field-attention-v1",
+    "arms": [
+      "baseline",
+      "attention"
+    ],
+    "attention_kind": "additive_decoder_conditioned_skip_gates",
+    "gates": [
+      "gate_b",
+      "gate_a"
+    ],
+    "initial_gate_coefficient": 0.99,
+    "shared_initialization": "saved_pilot_epoch_000_backbone",
+    "sampling_checkpoint_epoch": 30,
+    "sampling_controls_unchanged": true
+  },
+  "shared_initialization_sha256": "c563346a490b1faae543f9230e454ed8f7ba8b7a77ab1c0f6fb8e550208bc95d",
+  "saved_baseline_report_sha256": "5288bdb1740632215bb7a08d6003be77e5046eb3f51d37e31ab7a2055b394e83",
+  "manifest_sha256": "4a9e4204857ea6bae511b1d74efe9f1761c2dceca0da515299664fcc9c60a6e7",
+  "arms": {
+    "baseline": {
+      "status": "completed",
+      "report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_attention_20261013\\baseline\\comparison\\comparison.json",
+      "report_sha256": "2a18219533778af0330124081a6cd499225fd68e1a9af32c6f881e2cb49d017e"
+    },
+    "attention": {
+      "status": "completed",
+      "report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\local_runs\\field_attention_20261013\\attention\\comparison\\comparison.json",
+      "report_sha256": "e6d883459de4093424e1f4c1b73b6d727447af2c583339d1aa8a3f35c5ae8f14"
+    }
+  },
+  "reserved_test_records": 0,
+  "optimizer_updates": 0,
+  "checks": {
+    "field_training_pair_verified": true,
+    "sampling_rules_unchanged": true,
+    "image_only_reference_points_identical": true,
+    "matched_counts_across_models": true
+  },
+  "elapsed_seconds": 494.13576600002125,
+  "saved_baseline_and_cache_unchanged": true,
+  "next_step": "Review per-neuron/branch changes; no automatic attention adoption, selector change or later-stage execution.",
+  "sampling_metrics": {
+    "baseline_summaries": [
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6920842887121516,
+          "reference_proximity_6": 0.6963036777210885
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7652510275492516,
+          "reference_proximity_6": 0.7472696109693876
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7598405945325883,
+          "reference_proximity_6": 0.7496934125212584
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6251464315353107,
+          "reference_proximity_6": 0.7798912734498232
+        },
+        "availability_only_pairs": 150
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.891675406365682,
+          "reference_proximity_6": 0.7375921023950024
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.911807387244781,
+          "reference_proximity_6": 0.7477053371420261
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.9102512618367781,
+          "reference_proximity_6": 0.7669397985046962
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7147309801509093,
+          "reference_proximity_6": 0.7813378399619896
+        },
+        "availability_only_pairs": 215
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6623675392994184,
+          "reference_proximity_6": 0.6956754957363701
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7431981087222338,
+          "reference_proximity_6": 0.747516872465896
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7347336078682075,
+          "reference_proximity_6": 0.7491014566280327
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6251464315353107,
+          "reference_proximity_6": 0.7798912734498232
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8060969029422708,
+          "reference_proximity_6": 0.730385522153672
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8568561916051862,
+          "reference_proximity_6": 0.7473589326710036
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8308252106399525,
+          "reference_proximity_6": 0.7593786249093818
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7147309801509093,
+          "reference_proximity_6": 0.7813378399619896
+        },
+        "availability_only_pairs": 0
+      }
+    ],
+    "attention_summaries": [
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7098672756191406,
+          "reference_proximity_6": 0.7227137143920068
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7637539845162602,
+          "reference_proximity_6": 0.765916972257653
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7579182346365794,
+          "reference_proximity_6": 0.759424824617347
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 512,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6251464315353107,
+          "reference_proximity_6": 0.7798912734498232
+        },
+        "availability_only_pairs": 150
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.883917863244511,
+          "reference_proximity_6": 0.7657735982613847
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8956621414938667,
+          "reference_proximity_6": 0.7644677780817503
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8948019114579715,
+          "reference_proximity_6": 0.7796356372175922
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "expanded",
+        "nominal_budget": 2048,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7147309801509093,
+          "reference_proximity_6": 0.7813378399619896
+        },
+        "availability_only_pairs": 215
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6855608028441671,
+          "reference_proximity_6": 0.7220673803452508
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7476680857486067,
+          "reference_proximity_6": 0.7658872333234424
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7330794315903671,
+          "reference_proximity_6": 0.7591435228568226
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 512,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.6251464315353107,
+          "reference_proximity_6": 0.7798912734498232
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "expanded_coverage",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8197388701675284,
+          "reference_proximity_6": 0.7565123818410882
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "expanded_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8568347907512905,
+          "reference_proximity_6": 0.7651919828528762
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "guided_context",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.8261415337777579,
+          "reference_proximity_6": 0.770883151005063
+        },
+        "availability_only_pairs": 0
+      },
+      {
+        "group": "matched",
+        "nominal_budget": 2048,
+        "arm": "threshold_random",
+        "neuron_macro_mean": {
+          "reference_coverage_2": 0.7147309801509093,
+          "reference_proximity_6": 0.7813378399619896
+        },
+        "availability_only_pairs": 0
+      }
+    ],
+    "interpretation": "Matched rows have equal actual N across models; expanded rows may include availability differences. Inspect per-neuron/chain losses, not only means."
+  }
+}

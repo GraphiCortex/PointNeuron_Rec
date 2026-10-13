@@ -4,7 +4,8 @@
 the Phase 1 field U-Net and chose **a fresh baseline replay alongside the gated
 model**. Timing and both 30-epoch fits are complete; the
 [reviewed results are mixed](field_attention_results.md). The separate sampling
-comparison is next and has not run yet. Measured training command: 35m19s.
+comparison is now [complete and reviewed](field_attention_sampling_results.md).
+Measured training command: 35m19s; sampling command: 8m20s with zero updates.
 Point-cloud preparation -> PointNeXt -> Transformer proposals -> GATv2 -> SWC
 remains the intended architecture. The image-backbone selector change is deferred:
 it is not mixed into this architecture comparison.

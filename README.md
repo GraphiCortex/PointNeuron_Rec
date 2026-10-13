@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: attention cleanup survives sampling, but dim branches and path gaps remain](docs/pointneuron2/field_attention_sampling_results.md)
 - [Latest: skip attention cleans targeted support but loses some branches; fixed-budget comparison next](docs/pointneuron2/field_attention_results.md)
 - [Approved protocol: fresh baseline versus two skip gates; training completed](docs/pointneuron2/field_attention_ready.md)
 - [Latest: development sampling gains survive at equal counts; image-pool dilution and branch losses remain](docs/pointneuron2/field_pilot_sampling_results.md)

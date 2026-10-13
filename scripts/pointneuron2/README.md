@@ -6,14 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [reviewed attention fits and mixed branch retention](../../docs/pointneuron2/field_attention_results.md).
+Latest: [completed attention sampling and branch-support findings](../../docs/pointneuron2/field_attention_sampling_results.md).
 `run_field_attention.ps1` has separate `preflight`, `train` and `compare` actions.
 It reuses the native cache; two fresh 30-epoch fits share initial backbone tensors
 and crop order. Attention adds two skip gates; sampling rules are unchanged.
-Timing and both 30-epoch fits are complete. Next visible command:
-`& .\scripts\pointneuron2\run_field_attention.ps1 -Action compare`.
-This uses fixed final checkpoints and makes zero optimizer updates; the attention
-model has not been promoted.
+Timing, both 30-epoch fits and the fixed-final-checkpoint sampling comparison
+are complete. Comparison took 8m20s and made zero optimizer updates. No new
+run is queued; attention is not promoted. The image-reservation control is
+proposed for discussion and has not been implemented.
 
 Latest: [completed development sampling and input dilution findings](../../docs/pointneuron2/field_pilot_sampling_results.md).
 The user completed the fixed final comparison in 4m24s, with zero updates.

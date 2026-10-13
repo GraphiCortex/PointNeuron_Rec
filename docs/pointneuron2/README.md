@@ -1,10 +1,16 @@
 # PointNeuron 2.0 development
 
+**Latest:** [attention sampling is complete and reviewed](field_attention_sampling_results.md).
+At matched counts, expanded uniform retains 85.68% coverage versus baseline
+85.69%, while proximity improves 74.74% → 76.52%. Crop 35/0 improves strongly;
+19/79/94 retention and guided path gaps remain concerns. Neither attention nor
+the 50/50 guide is promoted. One image-reservation control is proposed for discussion.
+
 **Latest:** [fresh baseline versus skip attention is complete and reviewed](field_attention_results.md).
 Attention cleans the targeted neuron-35 field, but mean development coverage
 falls from 92.21% to 89.67%; Dice rises .5653 to .5723 amid baseline replay
 variation. All 112 saved fields were independently audited. The agreed separate
-sampling comparison is next; attention is not promoted. The image-backbone
+sampling comparison has now completed; attention is not promoted. The image-backbone
 reservation idea remains deferred.
 
 **Latest:** [development sampling is complete and reviewed](field_pilot_sampling_results.md).
