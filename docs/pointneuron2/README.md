@@ -1,10 +1,16 @@
 # PointNeuron 2.0 development
 
+**Ready:** [approved image-reservation control](field_image_reservation_ready.md).
+Frozen fresh-baseline field, half-budget raw-image quota plus uniform union fill,
+compared with saved B at equal counts/seeds across the seven development neurons.
+This is a cached-field CPU comparison: zero inference and zero updates. No real
+comparison has run yet; PointNeXt/Transformer/GATv2 architecture remains intended.
+
 **Latest:** [attention sampling is complete and reviewed](field_attention_sampling_results.md).
 At matched counts, expanded uniform retains 85.68% coverage versus baseline
 85.69%, while proximity improves 74.74% → 76.52%. Crop 35/0 improves strongly;
 19/79/94 retention and guided path gaps remain concerns. Neither attention nor
-the 50/50 guide is promoted. One image-reservation control is proposed for discussion.
+the 50/50 guide is promoted. The user approved preparing one image-reservation control.
 
 **Latest:** [fresh baseline versus skip attention is complete and reviewed](field_attention_results.md).
 Attention cleans the targeted neuron-35 field, but mean development coverage

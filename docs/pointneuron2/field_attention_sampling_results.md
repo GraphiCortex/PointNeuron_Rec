@@ -178,6 +178,10 @@ The paired full report is `sampling_comparison.json` in the experiment root.
 
 ## Conclusion and proposed next comparison
 
+Update: the user approved preparing this control. The
+[ready protocol and visible commands](field_image_reservation_ready.md) describe
+the separate implementation; real comparison results are still pending.
+
 Field-guided expansion has a measured benefit over the original threshold-only
 input at equal counts. The remaining limitation has **two parts**: uneven field
 predictions (especially dim-support loss), and budget allocation that can dilute
@@ -193,6 +197,7 @@ quota change without adding score ranking or spatial gate changes. Measure the
 neuron-35 dilution benefit, neuron-94 dim-support cost and neuron-79 path gaps.
 
 This is a proposed bounded diagnostic, not a promised universal solution. No
-new selector is implemented or adopted by this report. Point-cloud → PointNeXt
+new selector is adopted by this report. The approved control is implemented
+separately and has not been evaluated on the real development set. Point-cloud → PointNeXt
 → Transformer → GATv2 remains the intended architecture; this report evaluates
 only the candidate Phase 1 input guide and selectors.
