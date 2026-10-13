@@ -1,5 +1,10 @@
 # Fixed-placement confidence: one crop passes; linear capacity verified
 
+**14 October update:** the user agreed to the
+[matched LR .001 replay](confidence_lr_ready.md). It is implemented and checked,
+with separate visible timing/fit commands; no real replay has run. The report
+below preserves the original results and motivation for that control.
+
 14 October 2026 review. The user completed the agreed 2,000-update confidence-only fit
 on the RTX 3070 Ti Laptop GPU in 14s wall time (8.25s recorded fit time).
 Only 258 parameters trained; geometry, radii, features and labels remained

@@ -1,0 +1,18 @@
+{
+  "schema": "pointneuron2-frozen-query-confidence-v1",
+  "training_crops": [[0, 0], [0, 1]],
+  "expected_positive_counts": [6, 12],
+  "feature_width": 128,
+  "query_count": 512,
+  "updates": 2000,
+  "snapshots": [0, 100, 500, 1000, 2000],
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "positive_class_weight": 8.0,
+  "confidence_weight": 2.0,
+  "gradient_clip": 10.0,
+  "score_threshold": 0.5,
+  "update_scope": "mean_of_two_cached_crop_losses",
+  "initialization": "saved_final_linear_confidence_rows",
+  "augmentation": false
+}

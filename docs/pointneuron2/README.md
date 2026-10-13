@@ -1,11 +1,17 @@
 # PointNeuron 2.0 development
 
+**Ready:** [learning-rate-only confidence replay](confidence_lr_ready.md).
+The user agreed to LR .001 versus the saved .0001 baseline. Source checks and
+four tests passed; starting weights, fixed features, labels,
+geometry, loss, 2,000 updates and backend are paired. Separate visible GPU
+timing and training commands are ready; no real replay has started.
+
 **Latest:** [fixed-placement confidence result and linear-capacity audit](query_confidence_results.md).
 The user completed the bounded fit: crop 1 accepts all 12 matches with no extras;
 crop 0 remains at 3/6 matches and two extras. A CPU oracle verifies a shared
 linear separator for all 1,024 frozen labels, with zero float32 label errors.
-The next discussion is an optimization-only learning-rate replay; no new fit
-or architecture change has started.
+The subsequently agreed optimization-only learning-rate replay is prepared
+above; no new fit or architecture change has started.
 
 **Ready:** [fixed-feature, fixed-placement confidence diagnostic](query_confidence_ready.md).
 The user agreed; the head/runner and real CPU feature cache are prepared.
