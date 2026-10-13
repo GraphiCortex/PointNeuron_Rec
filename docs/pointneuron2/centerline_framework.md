@@ -7,6 +7,11 @@ to Phase 1 point-cloud preparation. The earlier version of this explanation
 described a field-to-path-to-graph alternative too broadly as the new framework;
 that alternative has not been adopted as the PN 2.0 architecture.
 
+13 October update: field, attention and fixed-quota development comparisons
+are complete. No new sampler is promoted. The next
+[PointNeXt/Transformer interface and learnability plan](pointnext_query_design.md)
+is prepared for review; PointNeXt remains unimplemented and no new fit has started.
+
 ## Intended pipeline and actual implementation
 
 ```text

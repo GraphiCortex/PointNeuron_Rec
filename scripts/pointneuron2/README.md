@@ -6,6 +6,11 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Design for review: [PointNeXt/Transformer boundary and bounded two-crop fit](../../docs/pointneuron2/pointnext_query_design.md).
+This is a plan, not a runnable command. PointNeXt is not implemented locally;
+backend selection, per-point features, variable counts and ordinary-inference
+checks must be resolved before any new fit.
+
 Latest: [reviewed image-reservation gains and dim-support losses](../../docs/pointneuron2/field_image_reservation_results.md).
 `run_field_image_reservation.ps1 -Action check` verifies existing sources read-only;
 `-Action compare` separately freezes the quota clouds and scores paired coverage,

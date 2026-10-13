@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Design for review:** [PointNeXt → Transformer interface and learnability plan](pointnext_query_design.md).
+Restore hierarchy features to the original input points, reuse the existing query
+head/loss with explicit feature width, and test two fixed training crops before
+broader fitting. Backend choice and low-count contracts precede implementation;
+no encoder code, environment change or new training has started.
+
 **Latest:** [image-reservation control is complete and reviewed](field_image_reservation_results.md).
 At matched nominal 2,048, mean coverage falls 85.69% → 84.49%, while proximity
 rises 74.74% → 76.55%. Neuron-35 dilution improves, but neuron-94 dim support
