@@ -2,8 +2,13 @@
 
 13 October 2026. The user agreed to the confidence-only diagnostic following
 the [normalization and query-score audit](pointnext_cropnorm_results.md).
-The implementation and real CPU feature preparation are complete. **No real
-confidence-only fit or GPU timing has started.**
+**Completion update:** GPU timing and the bounded fit are complete. Crop 1
+passes and crop 0 fails; a subsequent linear oracle verifies capacity for both.
+See the [results and proposed optimization control](query_confidence_results.md).
+The remaining text preserves the prepared protocol.
+
+The implementation and immutable CPU feature cache remain available alongside
+the completed run. Preparation itself made no optimizer updates.
 
 ## What question this tests
 
@@ -99,7 +104,7 @@ The [preparation/timing/fit code](../../scripts/pointneuron2/query_confidence_ex
 [PowerShell entry point](../../scripts/pointneuron2/run_query_confidence.ps1)
 are visible source files. The generated cache and future outputs are ignored.
 
-## Your next visible commands
+## Visible commands for this completed protocol
 
 First measure the real GPU runtime:
 
@@ -111,11 +116,11 @@ Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
 This uses the existing environment and RTX 3070 Ti Laptop GPU for four throwaway
 confidence updates, two warm-up and two measured. It checks reload and frozen
 cache integrity, times one evaluation and prints a 2,000-update estimate.
-No fitted checkpoint is retained. There is no measured GPU duration yet; this
-small head should be substantially cheaper than a full encoder/decoder fit,
-but the actual estimate comes from this command. Python startup is additional.
+No fitted checkpoint is retained. The completed GPU preflight estimated 12.2s
+of fit/evaluation compute, with a 12.2–28.2s planning range plus Python startup.
+The actual fit recorded 8.25s; user-observed wall time was 14s.
 
-After reviewing that estimate, launch the separate visible fit:
+The separate visible fit command was:
 
 ```powershell
 & .\scripts\pointneuron2\run_query_confidence.ps1 -Action train

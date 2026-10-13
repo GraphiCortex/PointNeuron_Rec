@@ -6,10 +6,17 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [confidence fit and linear-capacity findings](../../docs/pointneuron2/query_confidence_results.md).
+The real confidence fit is complete: crop 1 passes, crop 0 does not.
+`audit_confidence_separability.py` is a CPU training-label oracle that checks
+whether the cached labels admit a linear separator. It verified a shared
+separator without neural updates or classifier checkpoint writes. An LR-only
+replay is proposed for discussion; no new fit or architecture change is queued.
+
 Ready: [frozen-placement confidence diagnostic](../../docs/pointneuron2/query_confidence_ready.md).
 `run_query_confidence.ps1` separates CPU `prepare`, four throwaway timing updates
 in `preflight`, and a visible bounded `train`. The real feature cache is already
-prepared; GPU timing/fit remain pending. Only the existing final two-class output
+prepared; GPU timing/fit are complete and reviewed above. Only the existing final two-class output
 trains (258 parameters), with fixed features/assignments and no model forwards
 during the cached-feature fit. No full-model checkpoint is overwritten.
 

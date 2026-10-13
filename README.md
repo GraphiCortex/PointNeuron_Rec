@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: frozen-placement confidence diagnostic; separate visible GPU timing and fit](docs/pointneuron2/query_confidence_ready.md)
+- [Latest: one confidence crop passes; linear oracle verifies capacity on both crops](docs/pointneuron2/query_confidence_results.md)
+- [Completed protocol: frozen-placement confidence diagnostic and visible commands](docs/pointneuron2/query_confidence_ready.md)
 - [Latest: per-crop normalization is consistent; confidence carries query identities between crops](docs/pointneuron2/pointnext_cropnorm_results.md)
 - [Latest: PointNeXt/query fit fails inference; saved-weight audit locates normalization and confidence issues](docs/pointneuron2/pointnext_query_results.md)
 - [Ready: native PointNeXt/Transformer prototype; separate input preparation and GPU timing](docs/pointneuron2/pointnext_query_ready.md)
