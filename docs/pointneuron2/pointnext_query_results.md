@@ -1,7 +1,12 @@
 # PointNeXt/query fit: normalization discrepancy and unresolved confidence
 
 13 October 2026. The user completed the agreed fresh 2,000-update fit on the
-RTX 3070 Ti Laptop GPU in 9m10s. The execution and checkpoint reload checks
+RTX 3070 Ti Laptop GPU in 9m10s. **Subsequent update:** the user agreed to the
+[explicit per-crop normalization control and saved-score audit](pointnext_cropnorm_results.md).
+It is now complete with zero updates; confidence remains unresolved. The
+sections below retain the original fit diagnosis and its proposed next step.
+
+The original execution and checkpoint reload checks
 passed (reload maximum delta 0.0), but **the learnability gate failed on both
 fixed training crops**. No development/test fit, graph reconstruction or
 production promotion occurred.

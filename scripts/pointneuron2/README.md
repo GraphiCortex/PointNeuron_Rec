@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [per-crop normalization consistency and detailed query-score audit](../../docs/pointneuron2/pointnext_cropnorm_results.md).
+`compare_pointnext_cropnorm.py` is CPU only and makes zero optimizer updates.
+It explicitly converts saved parameters into a separate checkpoint identity,
+checks train/eval/reload/crop order and writes score CSVs at 500/1000/2000.
+The completed control fixes the inference-statistics switch; confidence still
+fails and a frozen-placement confidence comparison remains a discussion item.
+
 Latest: [PointNeXt fit and inference-normalization audit](../../docs/pointneuron2/pointnext_query_results.md).
 `audit_pointnext_inference.py` compares ordinary eval and current-crop BN on
 temporary CPU copies of the saved weights, with no optimizer/checkpoint writes.

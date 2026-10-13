@@ -13,7 +13,10 @@ are complete. No new sampler is promoted. The selected
 and checked on synthetic CPU data. The real bounded fit subsequently completed
 but failed ordinary-inference learnability. The
 [saved-weight audit](pointnext_query_results.md) locates a large normalization
-discrepancy and unresolved confidence; no new normalization policy is adopted.
+discrepancy and unresolved confidence. A subsequent
+[explicit batch-one per-crop normalization control](pointnext_cropnorm_results.md)
+passes mode/reload consistency; confidence remains unresolved and no production
+normalization policy is promoted.
 
 ## Intended pipeline and actual implementation
 

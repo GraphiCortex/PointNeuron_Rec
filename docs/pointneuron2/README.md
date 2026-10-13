@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Latest:** [explicit per-crop normalization control and query-score audit](pointnext_cropnorm_results.md).
+Saved-weight CPU comparison passes train/eval/reload/crop-order checks, with no
+optimizer updates. Subvoxel placement survives ordinary eval; confidence still
+fails. All five unmatched accepted queries are matched positives in the other
+crop. Crop-0 assignments change across snapshots. A confidence-only comparison
+with frozen placement is proposed for discussion; no new fit is prepared or launched.
+
 **Latest:** [PointNeXt/query fit and saved-weight normalization diagnosis](pointnext_query_results.md).
 The user completed the bounded fit; reload passed but both crop gates failed.
 With identical weights on CPU, current-crop BN reduces matched placement error
