@@ -1,17 +1,19 @@
 # PointNeuron 2.0 development
 
-**Design for review:** [PointNeXt → Transformer interface and learnability plan](pointnext_query_design.md).
-Restore hierarchy features to the original input points, reuse the existing query
-head/loss with explicit feature width, and test two fixed training crops before
-broader fitting. Backend choice and low-count contracts precede implementation;
-no encoder code, environment change or new training has started.
+**Ready:** [native PointNeXt → Transformer prototype and visible commands](pointnext_query_ready.md).
+The selected native backend restores 32-channel features to original points and
+reuses the query body/loss under its own checkpoint schema. Fifteen synthetic
+CPU tests, a pinned-reference topology audit and real read-only source checks
+passed. Separate preparation and GPU timing commands are ready; no real
+PointNeXt fit or environment change has occurred. The
+[agreed design](pointnext_query_design.md) records the bounded two-crop protocol.
 
 **Latest:** [image-reservation control is complete and reviewed](field_image_reservation_results.md).
 At matched nominal 2,048, mean coverage falls 85.69% → 84.49%, while proximity
 rises 74.74% → 76.55%. Neuron-35 dilution improves, but neuron-94 dim support
 and average longest gaps worsen. This fixed quota is not promoted. The proposed
-next discussion is the intended PointNeXt/Transformer interface and learnability
-plan; no new implementation or training has started.
+PointNeXt/Transformer prototype is now implemented as described above;
+real input preparation and fitting remain separate, pending actions.
 
 **Latest:** [attention sampling is complete and reviewed](field_attention_sampling_results.md).
 At matched counts, expanded uniform retains 85.68% coverage versus baseline
@@ -67,7 +69,8 @@ development training and production integration remain pending.
 point-cloud preparation -> PointNeXt -> Transformer skeleton proposals -> GATv2
 connectivity. The image-field candidate is an isolated experiment for potential
 Phase 1 guidance, not an adopted replacement of the encoder or decoder. PointNeXt
-and GATv2 are not implemented; the query pilot used DGCNN. See
+is now implemented as a native prototype; GATv2 remains unimplemented and the
+historical query pilot used DGCNN. See
 [the agreed framework and status](centerline_framework.md) and
 [the approved field-duration command](centerline_duration_ready.md).
 Updates below describe historical milestones and are not a current run queue.

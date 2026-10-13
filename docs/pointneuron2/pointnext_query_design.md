@@ -1,9 +1,11 @@
 # PointNeXt to Transformer: interface and bounded learnability plan
 
 13 October 2026. Following the completed Phase 1 allocation studies, the user
-agreed to prepare this design. **This is a reviewable plan, not an implemented
-encoder or a training command.** No model code, environment, field checkpoint,
-sampling recipe or production default is changed by this document.
+agreed to prepare this design and subsequently selected the native-PyTorch
+implementation route. The [prototype and separate preparation/timing actions](pointnext_query_ready.md)
+are now implemented and checked on synthetic CPU data. This document retains
+the agreed experimental design; no real PointNeXt fit has started and no
+production default has been promoted.
 
 ## The next question
 
@@ -37,7 +39,7 @@ subsequent agreement to pursue an automatic Phase 1 and involve them in changes.
 | --- | --- | --- |
 | Field guide | Trained/evaluated as an isolated Phase 1 candidate | Freeze weights during this learnability check |
 | Expanded image points | Selector and comparisons exist | Freeze a new versioned two-training-crop cache |
-| PointNeXt | Not implemented locally | Hierarchical encoding plus resolution restoration |
+| PointNeXt | Native S prototype implemented; synthetic checks passed | Hierarchical encoding plus resolution restoration |
 | Transformer | Existing query head, previously paired with DGCNN | Reuse body configuration and loss; explicit new memory-input width |
 | GATv2 | Not implemented | Later consumer of proposal geometry/features |
 
@@ -75,7 +77,8 @@ apply coordinate normalization twice.
 Actual N is recorded. Start with batch size **1**, so crops of different counts
 need no point duplication or batch padding. An empty/one-point input is reported
 as insufficient for this prototype; it must not be disguised as a normal
-cloud. Later batching requires explicit valid masks throughout neighborhoods,
+cloud. The implemented minimum is 256 points for the fixed four-stride
+hierarchy. Later batching requires explicit valid masks throughout neighborhoods,
 feature propagation and Transformer attention; the current head does not yet
 implement that mask contract.
 
@@ -129,7 +132,7 @@ encoder comparison must verify shared compatible decoder initialization and
 declare the distinct input projections; historical DGCNN runs are not a matched
 control for this new input cache or batch schedule.
 
-## Local backend decision, before coding
+## Selected local backend
 
 The [official installation](https://github.com/guochengqian/PointNeXt#installation)
 states that full training/evaluation requires custom CUDA/C++ operations. The
@@ -137,7 +140,7 @@ current PointNeuron environment is Windows/PyTorch 2.12.1 + CUDA 13.0; `nvcc`
 and `cl` were not found on the current PATH. This does not prove they are absent
 from the machine, but the official compilation path is unverified here.
 
-Recommended route for discussion: a documented **native PyTorch prototype** of
+The user selected a documented **native PyTorch prototype** of
 the reference architecture/point operations in the current environment. Specify
 FPS, ball grouping, reductions and three-neighbor feature interpolation; test
 analytic cases, ties, boundary inclusion, gradients and short neighbor sets.
@@ -146,18 +149,20 @@ Label the checkpoint with the actual backend and source/config hashes. Do not
 claim official benchmark reproduction, exact kernel equivalence or published
 throughput without the relevant comparisons.
 
-Alternatively, investigate the official backend and toolchain first, reporting
-compatibility before any environment changes. The user has been asked which
-route to use; no package install, compiler setup or backend implementation has
-started. Resolve that choice before code is written.
+The native implementation and synthetic operator/interface tests now exist.
+Pinned-reference layer wiring was also audited with the same native operations;
+this does not compare compiled kernels. No package install or compiler setup
+occurred. Investigating the official backend remains a separate future choice.
 
 The hierarchy must be tested on short actual counts, including 256/358 points.
 Fixed strides can leave very few coarse points. Check both normalization and
 sampling in batch-1 train/eval mode. Do not pad duplicate input points, silently
 drop a stage, or replace normalization to get around a failure: report the issue
 and agree the smallest explicit adjustment before fitting. Neighborhood index
-padding, if needed to reproduce reference grouping, is distinct from duplicating
-the input cloud and must have documented semantics.
+padding is distinct from duplicating the input cloud and has documented
+semantics in the ready report. Both 256/358-point train/eval checks pass using
+the original reference normalization: residual skip projections have no pooled
+BatchNorm, even when the final coarse level has one point.
 
 ## Proposed learnability run: two fixed training crops
 

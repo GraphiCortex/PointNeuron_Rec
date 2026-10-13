@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Ready: native PointNeXt/Transformer prototype; separate input preparation and GPU timing](docs/pointneuron2/pointnext_query_ready.md)
 - [Design for review: PointNeXt per-point interface and two-crop Transformer learnability plan](docs/pointneuron2/pointnext_query_design.md)
 - [Latest: half-image quota fixes dilution locally but loses dim support; not promoted](docs/pointneuron2/field_image_reservation_results.md)
 - [Completed protocol: cached-field image-reservation allocation comparison](docs/pointneuron2/field_image_reservation_ready.md)

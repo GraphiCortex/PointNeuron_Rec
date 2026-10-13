@@ -8,9 +8,10 @@ described a field-to-path-to-graph alternative too broadly as the new framework;
 that alternative has not been adopted as the PN 2.0 architecture.
 
 13 October update: field, attention and fixed-quota development comparisons
-are complete. No new sampler is promoted. The next
-[PointNeXt/Transformer interface and learnability plan](pointnext_query_design.md)
-is prepared for review; PointNeXt remains unimplemented and no new fit has started.
+are complete. No new sampler is promoted. The selected
+[native PointNeXt/Transformer prototype](pointnext_query_ready.md) is implemented
+and checked on synthetic CPU data. Real preparation, timing and fit quality
+remain pending; the [agreed design](pointnext_query_design.md) defines the check.
 
 ## Intended pipeline and actual implementation
 
@@ -27,8 +28,8 @@ is prepared for review; PointNeXt remains unimplemented and no new fit has start
 | Stage | Intended role | Current implementation status |
 | --- | --- | --- |
 | Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Isolated field-guided selector/comparison implemented and checked; production/PointNeXt integration pending |
-| PointNeXt | Encode local and broader point geometry | Not implemented |
-| Transformer decoder | Predict skeleton-node positions, confidence and radius | Implemented and piloted with DGCNN; not yet tested with PointNeXt |
+| PointNeXt | Encode local and broader point geometry | Native S prototype implemented; synthetic train/eval/operator checks pass; real fit pending |
+| Transformer decoder | Predict skeleton-node positions, confidence and radius | Historical DGCNN pilot; native PointNeXt pairing implemented and synthetically checked; real fit pending |
 | GATv2 | Learn candidate-edge probabilities using node features and geometry | Not implemented; previous reconstructions used inherited graph machinery |
 
 The [completed query pilot](query_pilot_results.md) failed confidence selection

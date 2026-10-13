@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scope": "pinned reference network classes with native point operations; not official CUDA kernels",
+  "input_shape": [
+    1,
+    358,
+    4
+  ],
+  "output_shape": [
+    1,
+    358,
+    32
+  ],
+  "maximum_descriptor_delta": 0.0,
+  "reference_hierarchy_counts": [
+    358,
+    89,
+    22,
+    5,
+    1
+  ],
+  "encoder_and_restoration_parameters": 790720,
+  "reference_parameters": 790720,
+  "optimizer_updates": 0,
+  "data": "synthetic CPU coordinates and features",
+  "reference_source_sha256": "f9a4b6e8807cd226cee31dbb813261c3fad1951a51165977a4f9b95bcd0889e0"
+}
