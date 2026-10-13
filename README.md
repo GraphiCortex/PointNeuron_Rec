@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: matched confidence replay at LR .001; same fixed cache and initialization](docs/pointneuron2/confidence_lr_ready.md)
+- [Latest: LR replay accepts 17/18 matches with no extras; one confidence miss remains](docs/pointneuron2/confidence_lr_results.md)
+- [Completed protocol: matched confidence replay at LR .001](docs/pointneuron2/confidence_lr_ready.md)
 - [Latest: one confidence crop passes; linear oracle verifies capacity on both crops](docs/pointneuron2/query_confidence_results.md)
 - [Completed protocol: frozen-placement confidence diagnostic and visible commands](docs/pointneuron2/query_confidence_ready.md)
 - [Latest: per-crop normalization is consistent; confidence carries query identities between crops](docs/pointneuron2/pointnext_cropnorm_results.md)

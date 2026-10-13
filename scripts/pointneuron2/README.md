@@ -6,12 +6,18 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [LR replay improvement and one remaining miss](../../docs/pointneuron2/confidence_lr_results.md).
+The user completed the .001 replay: 17/18 matches accepted and no extras,
+with a failed combined gate because crop-0 query 408 scores .415. Hash/reload
+and paired checks passed. No new fit is prepared; a duration-only fresh replay
+is proposed, since the existing head checkpoints do not save AdamW moments.
+
 Ready: [matched learning-rate-only confidence replay](../../docs/pointneuron2/confidence_lr_ready.md).
 `run_confidence_lr.ps1` separates read-only `check`, four throwaway timing
 updates in `preflight`, and fresh `train`. LR changes .0001 -> .001; all other
 recipe settings, initial weights, fixed cache and labels match. Real source
-checks and four tests passed. No replay GPU timing/fit has started;
-the completed baseline runner and outputs are unchanged.
+checks and four tests passed. Replay GPU timing/fit are complete and reviewed
+above; the completed baseline runner and outputs are unchanged.
 
 Latest: [confidence fit and linear-capacity findings](../../docs/pointneuron2/query_confidence_results.md).
 The real confidence fit is complete: crop 1 passes, crop 0 does not.

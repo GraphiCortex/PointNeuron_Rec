@@ -1,5 +1,11 @@
 # Learning-rate-only confidence replay: ready
 
+**Completion update, 14 October:** the GPU timing and replay are complete.
+Crop 0 reaches 5/6 accepted matches with no extras, crop 1 stays 12/12 with
+no extras, and one confidence miss keeps the combined gate false. See the
+[results and duration-only proposal](confidence_lr_results.md).
+The text below preserves the prepared protocol; its default outputs already exist.
+
 14 October 2026. The user agreed to replay the fixed-feature confidence test
 at LR **.001**, versus the completed **.0001** baseline. The runner, recipe,
 paired checks and readable comparison output are prepared. **No real GPU

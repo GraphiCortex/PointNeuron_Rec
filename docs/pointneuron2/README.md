@@ -1,10 +1,16 @@
 # PointNeuron 2.0 development
 
+**Latest:** [LR .001 replay result and remaining confidence miss](confidence_lr_results.md).
+At 2,000 updates crop 0 improves 3/6 + two extras → 5/6 + no extras, with
+96.10% accepted curve coverage; crop 1 stays 12/12 + no extras. Query 408
+remains below .5 but is still improving. A duration-only 4,000-update replay
+with overlapping-prefix checks is proposed; no additional fit has started.
+
 **Ready:** [learning-rate-only confidence replay](confidence_lr_ready.md).
 The user agreed to LR .001 versus the saved .0001 baseline. Source checks and
 four tests passed; starting weights, fixed features, labels,
 geometry, loss, 2,000 updates and backend are paired. Separate visible GPU
-timing and training commands are ready; no real replay has started.
+timing and training commands have now completed and are reviewed above.
 
 **Latest:** [fixed-placement confidence result and linear-capacity audit](query_confidence_results.md).
 The user completed the bounded fit: crop 1 accepts all 12 matches with no extras;
