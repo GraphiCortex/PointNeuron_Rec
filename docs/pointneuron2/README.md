@@ -1,10 +1,11 @@
 # PointNeuron 2.0 development
 
-**Ready:** [two-skip-gate attention comparison](field_attention_ready.md).
-The user approved fresh baseline and attention fits with shared initial backbone
-tensors and unchanged cache/loss/training budget/sampling rules. GPU timing is
-next; real attention training has not run. The image-backbone reservation idea
-is deferred rather than combined with this architecture test.
+**Latest:** [fresh baseline versus skip attention is complete and reviewed](field_attention_results.md).
+Attention cleans the targeted neuron-35 field, but mean development coverage
+falls from 92.21% to 89.67%; Dice rises .5653 to .5723 amid baseline replay
+variation. All 112 saved fields were independently audited. The agreed separate
+sampling comparison is next; attention is not promoted. The image-backbone
+reservation idea remains deferred.
 
 **Latest:** [development sampling is complete and reviewed](field_pilot_sampling_results.md).
 At matched counts, expanded random raises mean coverage from 71.47% to 85.47%,

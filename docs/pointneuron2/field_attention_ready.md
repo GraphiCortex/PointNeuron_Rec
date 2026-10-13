@@ -2,7 +2,9 @@
 
 13 October 2026. The user approved testing two additive attention gates inside
 the Phase 1 field U-Net and chose **a fresh baseline replay alongside the gated
-model**. The runner is prepared; no real attention preflight or training has run.
+model**. Timing and both 30-epoch fits are complete; the
+[reviewed results are mixed](field_attention_results.md). The separate sampling
+comparison is next and has not run yet. Measured training command: 35m19s.
 Point-cloud preparation -> PointNeXt -> Transformer proposals -> GATv2 -> SWC
 remains the intended architecture. The image-backbone selector change is deferred:
 it is not mixed into this architecture comparison.

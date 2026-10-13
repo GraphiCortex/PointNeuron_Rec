@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: approved two-skip-gate field comparison; fresh baseline and attention, timing first](docs/pointneuron2/field_attention_ready.md)
+- [Latest: skip attention cleans targeted support but loses some branches; fixed-budget comparison next](docs/pointneuron2/field_attention_results.md)
+- [Approved protocol: fresh baseline versus two skip gates; training completed](docs/pointneuron2/field_attention_ready.md)
 - [Latest: development sampling gains survive at equal counts; image-pool dilution and branch losses remain](docs/pointneuron2/field_pilot_sampling_results.md)
 - [Latest: field train/development pilot completed; candidate support improves, finite-budget comparison next](docs/pointneuron2/field_pilot_results.md)
 - [Completed protocol: approved 33-training / 7-development field pilot and four-control sampling comparison](docs/pointneuron2/field_pilot_ready.md)
