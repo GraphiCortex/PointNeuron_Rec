@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [For review: proposed GATv2 inputs, edge supervision, scorer and forest decoder](docs/pointneuron2/gatv2_connectivity_design.md)
 - [Latest: training-only node/graph/SWC representation check passes; learned connectivity remains open](docs/pointneuron2/representation_oracle_results.md)
 - [Protocol: reference-only feasibility cases, criteria and CPU command](docs/pointneuron2/representation_oracle_protocol.md)
 - [Latest: LR replay accepts 17/18 matches with no extras; one confidence miss remains](docs/pointneuron2/confidence_lr_results.md)

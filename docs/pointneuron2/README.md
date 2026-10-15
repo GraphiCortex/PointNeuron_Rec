@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Design for review:** [GATv2 connectivity contract](gatv2_connectivity_design.md)
+specifies actual Transformer features, reference-independent candidates, masked
+edge labels, a separate edge classifier and deterministic forest decoding.
+This is a per-crop component design, not implemented GATv2 or solved full-volume
+matching. No training is prepared or launched by this document.
+
 **Current direction, 16 October:** the [training-only representation oracle](representation_oracle_results.md)
 passes four branched/dense/crop-joining/fragmented cases with perfect nodes and
 known connections. This is CPU reference feasibility, not learned reconstruction
