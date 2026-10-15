@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Current direction, 16 October:** the [training-only representation oracle](representation_oracle_results.md)
+passes four branched/dense/crop-joining/fragmented cases with perfect nodes and
+known connections. This is CPU reference feasibility, not learned reconstruction
+or GATv2 training. The next discussion is the learned connectivity/interface
+contract; Phase 1 and existing model recipes are unchanged. The proposed
+4,000-update frozen-confidence replay below remains deferred.
+
 **Latest:** [LR .001 replay result and remaining confidence miss](confidence_lr_results.md).
 At 2,000 updates crop 0 improves 3/6 + two extras → 5/6 + no extras, with
 96.10% accepted curve coverage; crop 1 stays 12/12 + no extras. Query 408

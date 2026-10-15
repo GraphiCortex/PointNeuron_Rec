@@ -7,6 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: training-only node/graph/SWC representation check passes; learned connectivity remains open](docs/pointneuron2/representation_oracle_results.md)
+- [Protocol: reference-only feasibility cases, criteria and CPU command](docs/pointneuron2/representation_oracle_protocol.md)
 - [Latest: LR replay accepts 17/18 matches with no extras; one confidence miss remains](docs/pointneuron2/confidence_lr_results.md)
 - [Completed protocol: matched confidence replay at LR .001](docs/pointneuron2/confidence_lr_ready.md)
 - [Latest: one confidence crop passes; linear oracle verifies capacity on both crops](docs/pointneuron2/query_confidence_results.md)

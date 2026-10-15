@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Current: [reference-only representation results](../../docs/pointneuron2/representation_oracle_results.md).
+`representation_oracle.py` checks four fixed training-reference cases on CPU,
+without images, models or training. All representation criteria pass; learned
+connectivity and automatic crop matching remain unimplemented. See the
+[protocol and command](../../docs/pointneuron2/representation_oracle_protocol.md).
+The older frozen-confidence duration proposal below is deferred.
+
 Latest: [LR replay improvement and one remaining miss](../../docs/pointneuron2/confidence_lr_results.md).
 The user completed the .001 replay: 17/18 matches accepted and no extras,
 with a failed combined gate because crop-0 query 408 scores .415. Hash/reload
