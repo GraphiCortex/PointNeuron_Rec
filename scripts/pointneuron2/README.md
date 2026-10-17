@@ -11,8 +11,10 @@ Prepared: [hard-negative confidence comparison](../../docs/pointneuron2/hard_neg
 `hard_negative_query_experiment.py`. The new loss changes only confidence
 redistribution, keeping all geometry, matching and primary candidate gates.
 Twenty-eight targeted tests pass. Exact-cache CPU checks and fresh initialization
-are recorded in the linked report; GPU timing and the capped fit are user-launched.
-No trained comparison checkpoint or GPU workload has been created.
+are recorded in the linked report. User-launched GPU timing passes with zero
+reload delta and unchanged memory, estimating 85–128 minutes under those measured
+conditions. The capped retained fit has not started; timing retains no trained
+checkpoint. No additional GPU work was launched during review.
 
 Design: [hard-negative objective specification](../../docs/pointneuron2/hard_negative_objective_proposal.md).
 `audit_hard_negative_objective.py` computes proposed CE and analytic score-margin

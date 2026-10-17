@@ -3,8 +3,9 @@
 **Prepared, 18 October:** [hard-negative comparison and CPU checks](hard_negative_query_ready.md).
 The agreed 50/25/25 objective is isolated from the completed fits. Twenty-eight
 targeted tests pass; the exact-cache/fresh-model CPU check is reviewed in the
-linked evidence. GPU timing/training remain separate user-launched actions and
-have not started. Same four crops, seed, architecture, optimizer, original gates
+linked evidence. User-launched GPU timing passes with zero reload difference;
+its estimate is 85–128 minutes, substantially slower than the prior fit for an
+unestablished reason. Retained training has not started. Same four crops, seed, architecture, optimizer, original gates
 and 4,000-update cap; no development/test evaluation or automatic GATv2 fit.
 
 **Design discussion, 18 October:** [hard-negative objective proposal](hard_negative_objective_proposal.md)

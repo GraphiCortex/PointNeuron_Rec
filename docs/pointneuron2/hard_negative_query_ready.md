@@ -1,8 +1,8 @@
 # Hard-negative confidence comparison: implementation and CPU readiness
 
 18 October 2026. The user agreed to the [specified 50/25/25 comparison](hard_negative_objective_proposal.md).
-It is implemented as a separate loss, recipe, runner and launcher. **No GPU
-timing or training has started.** All completed balanced/weighted-loss sources
+It is implemented as a separate loss, recipe, runner and launcher. **User-launched
+GPU timing is complete; retained training has not started.** All completed balanced/weighted-loss sources
 and outputs remain preserved. This is a four-training-crop learnability
 experiment, not a reconstruction benchmark or a change to the architecture.
 
@@ -93,18 +93,35 @@ or provenance/checkpoint failure and preserve evidence for review.
 
 ## User-launched GPU commands
 
-The prepared cache and CPU check do not need repeating. First run eight
-throwaway GPU updates for timing, peak memory and reload:
+The prepared cache, CPU check and user-launched eight-update GPU timing are
+complete. Timing verifies matching backend, cache, initialization and source
+hashes, zero reload difference, and no retained trained checkpoint. Torch peak
+allocated memory is 93.1 MiB and reserved memory 118 MiB, excluding driver/context
+and other-process memory. See [timing evidence](hard_negative_query_ready_seed0/timing.json).
+
+The completed timing command was:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
 & .\scripts\pointneuron2\run_hard_negative_query.ps1 -Action timing
 ```
 
-The device is the NVIDIA GeForce RTX 3070 Ti Laptop GPU. Previous matched fits
-took roughly 18–20 minutes; review this variant's measured estimate before the
-retained fit. Timing retains no trained checkpoint. After reviewing its output,
-the separate bounded command is:
+The device is the NVIDIA GeForce RTX 3070 Ti Laptop GPU. This timing estimates
+**85.5–128.2 minutes**, plus checkpoint IO/system variability. Its four measured
+updates take .729/1.431/1.099/1.638 seconds, about 3.4–4.5 times the previous
+balanced timing, including 3.7 times on the dense crop with an identical direct
+loss formula. There is no contemporaneous baseline replay, so this does not
+isolate objective overhead from runtime conditions. The cause is unestablished;
+the earlier 19.7-minute fit is context, not a duration promise. No additional
+timing or GPU diagnostic was launched during review.
+
+All eight throwaway updates exceed gradient clip ten, with maximum pre-clip norm
+616.7. These early updates do not establish late-training behavior or divergence;
+the retained fit will record its own segment-local clipping statistics.
+Fresh evaluation gates fail as expected after eight updates; this is an execution
+check, not a failed or successful learnability comparison.
+
+The agreed settings and cap are unchanged. The separate bounded command is:
 
 ```powershell
 & .\scripts\pointneuron2\run_hard_negative_query.ps1 -Action train

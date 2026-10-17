@@ -2,7 +2,7 @@
 
 18 October 2026. This records the design specification. The user subsequently
 agreed to the [isolated implementation and CPU preparation](hard_negative_query_ready.md).
-No new GPU work has started. Existing baseline model/loss sources, sampler,
+GPU timing subsequently completed; retained training has not started. Existing baseline model/loss sources, sampler,
 inference policy and architecture remain unchanged. The completed balanced fit
 remains stopped at 4,000.
 
