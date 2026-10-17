@@ -1,0 +1,35 @@
+{
+  "schema": "pointneuron2-balanced-query-timing-review-v1",
+  "date": "2026-10-18",
+  "report": "tmp/pointneuron2/local_runs/balanced_query_20261018/timing/report.json",
+  "report_sha256": "88de8f773f04580cbe46016fea227bb810d9b9df09df9103acb5b0e0bd83a74e",
+  "status": "completed",
+  "backend": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "cudnn": 92000,
+    "cudnn_benchmark": false,
+    "cudnn_tf32": false,
+    "matmul_tf32": false,
+    "deterministic_algorithms": false,
+    "cudnn_deterministic": false,
+    "threads": 2
+  },
+  "backend_matches_baseline": true,
+  "source_mismatches": 0,
+  "cache_matches_baseline": true,
+  "initial_state_hashes_match_baseline": true,
+  "throwaway_optimizer_updates": 8,
+  "retained_fit_updates": 0,
+  "checkpoint_reload_max_delta": 0.0,
+  "checkpoint_retained": false,
+  "cuda_peak_allocated_mib": 93.10693359375,
+  "cuda_peak_reserved_mib": 118.0,
+  "planning_range_seconds": [
+    1353.57708349713,
+    2030.365625245695
+  ],
+  "scope": "Execution, timing and memory checks only; no retained training fit or reconstruction improvement."
+}

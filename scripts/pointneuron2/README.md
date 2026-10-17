@@ -11,8 +11,9 @@ Prepared: [matched confidence normalization and candidate-margin comparison](../
 `balanced_query_experiment.py` changes only classification normalization in the
 matched four-crop fit. Exact cache/initialization, 18 tests and CPU reload pass.
 `compare_candidate_margin.py` compares radii eight/twelve on saved predictions
-without model forwards. GPU timing/training remain user-launched; original gates
-and baseline sources are preserved.
+without model forwards. User-launched GPU timing passes with zero reload delta
+and a 22.6–33.8 minute fit estimate; the capped fit remains user-launched and has
+not started. Original gates and baseline sources are preserved.
 
 Previous: [completed four-crop fit and research decision](../../docs/pointneuron2/branched_query_results.md).
 `review_branched_query_fit.py` checks cached predictions/checkpoints on CPU and

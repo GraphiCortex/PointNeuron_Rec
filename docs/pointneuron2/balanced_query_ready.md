@@ -1,7 +1,7 @@
 # Matched confidence normalization comparison
 
 18 October 2026. Prepared after agreement to examine class normalization and a
-candidate distance margin. **GPU timing and training have not started.** The
+candidate distance margin. **GPU timing is complete; training has not started.** The
 completed four-crop baseline remains preserved. This is a training-set
 learnability comparison, not validation of reconstruction quality.
 
@@ -136,8 +136,16 @@ evidence justifies this objective, not whether more compute can eventually fit i
 
 ## Visible commands
 
-Preparation and CPU checks are already complete. First run eight throwaway GPU
-updates for timing, memory and state-reload checks:
+Preparation, CPU checks and the user-launched GPU timing are complete. The eight
+throwaway updates passed with zero reload difference. Source hashes, cache,
+initialization and backend match the baseline. Torch peak allocated memory was
+93.1 MiB and peak reserved memory 118 MiB; these exclude driver/context and other
+process memory. No trained timing checkpoint was retained. The estimate is
+22.6–33.8 minutes plus checkpoint IO/system variability. Fresh early evaluation
+failures are expected and do not measure learnability. See the
+[timing evidence](balanced_query_ready_seed0/timing.json).
+
+The completed timing command was:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
@@ -145,9 +153,9 @@ Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
 ```
 
 The device is the NVIDIA GeForce RTX 3070 Ti Laptop GPU. The matched baseline
-actually took about 18 minutes; the new timing command provides its own estimate
-and peak memory before any retained fit. No trained timing checkpoint is kept.
-After inspecting that output, the separate bounded fit command is:
+actually took about 18 minutes. The timing checks support proceeding with the
+agreed comparison; they do not establish reconstruction quality. The separate
+bounded fit command is:
 
 ```powershell
 & .\scripts\pointneuron2\run_balanced_query.ps1 -Action train

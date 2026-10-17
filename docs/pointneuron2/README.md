@@ -2,8 +2,9 @@
 
 **Prepared, 18 October:** [matched class-normalization comparison](balanced_query_ready.md).
 The exact four-crop cache and fresh initialization match the completed baseline;
-18 tests and a zero-update CPU reload check pass. Separate GPU timing/training
-commands are ready but have not run. A saved-prediction radius-eight/twelve check
+18 tests and a zero-update CPU reload check pass. User-launched GPU timing also
+passes, with zero reload difference and a 22.6–33.8 minute fit estimate; training
+has not started. A saved-prediction radius-eight/twelve check
 recovers smaller-crop candidate omissions without fixing confidence or dense-crop
 placement. Radius eight remains the primary gate; radius twelve is diagnostic.
 
