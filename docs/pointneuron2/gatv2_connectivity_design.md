@@ -1,5 +1,10 @@
 # GATv2 connectivity: proposed first implementation contract
 
+17 October update: the user agreed to proceed. The
+[first per-crop implementation and CPU checks](gatv2_connectivity_implementation.md)
+are complete with zero optimizer updates. This document retains the reviewed
+design; no training or whole-neuron integration is established.
+
 16 October 2026. Design following the completed training-only representation
 oracle. This document specifies the next component; it does not implement GATv2,
 alter existing checkpoints/model policies, or authorize a training run.

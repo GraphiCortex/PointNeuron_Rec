@@ -1,0 +1,27 @@
+{
+  "raw_summary_sha256": "501aa59a67eecc207a5ab39cc37de53874a70c5e4d90bcab5e1b5ac52a610a62",
+  "code_hashes_match": true,
+  "upstream_hashes_match": true,
+  "source_hashes_match": true,
+  "snapshot_hashes_match": true,
+  "tests": {
+    "tests": "42",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "26.627"
+  },
+  "test_files": [
+    "tests/test_proposal_connectivity_graph.py",
+    "tests/test_gatv2_connectivity.py",
+    "tests/test_representation_oracle.py",
+    "tests/test_query_target_audit.py"
+  ],
+  "test_sha256": {
+    "tests\\test_proposal_connectivity_graph.py": "0a9feee41a76949d06a3e299048a1ff9172307326a2f040f448e3f18787843d6",
+    "tests\\test_gatv2_connectivity.py": "837bae5df9759991da8ff07ade2a4731fff693c99b4b3e4cb07b7ece18de4fea"
+  },
+  "synthetic_inputs_matched": true,
+  "optimizer_updates": 0,
+  "learned_reconstruction_evaluated": false
+}

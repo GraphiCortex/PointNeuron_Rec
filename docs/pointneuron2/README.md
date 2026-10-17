@@ -1,10 +1,17 @@
 # PointNeuron 2.0 development
 
-**Design for review:** [GATv2 connectivity contract](gatv2_connectivity_design.md)
+**Latest, 17 October:** [per-crop connectivity implementation](gatv2_connectivity_implementation.md)
+is complete: native GATv2, matched pairwise control, masked edge labels and
+score-to-forest/SWC decoding. 42 targeted tests and fixed CPU execution checks
+pass with zero optimizer updates. No GATv2 fit, learned reconstruction or
+automatic whole-neuron crop matching is established. Existing Phase 1 and
+proposal-model policies remain unchanged.
+
+**Reviewed design:** [GATv2 connectivity contract](gatv2_connectivity_design.md)
 specifies actual Transformer features, reference-independent candidates, masked
 edge labels, a separate edge classifier and deterministic forest decoding.
-This is a per-crop component design, not implemented GATv2 or solved full-volume
-matching. No training is prepared or launched by this document.
+The per-crop components are now implemented as described above; full-volume
+matching remains open. No training is prepared or launched by this document.
 
 **Current direction, 16 October:** the [training-only representation oracle](representation_oracle_results.md)
 passes four branched/dense/crop-joining/fragmented cases with perfect nodes and

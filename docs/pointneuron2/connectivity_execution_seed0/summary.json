@@ -1,0 +1,438 @@
+{
+  "schema": "pointneuron2-connectivity-execution-check-v1",
+  "status": "completed",
+  "implementation_checks_passed": true,
+  "scope": "CPU synthetic GATv2/pairwise checks and four training-reference oracle decodes",
+  "optimizer_updates": 0,
+  "upstream_model_forwards": 0,
+  "gpu_workloads": 0,
+  "config": {
+    "schema": "pointneuron2-connectivity-execution-check-v1",
+    "seed": 0,
+    "torch_threads": 2,
+    "synthetic_queries": 512,
+    "candidate_neighbors": 16,
+    "candidate_radius_voxels": 8.0,
+    "node_cutoff": 0.5,
+    "edge_cutoff": 0.5,
+    "match_tolerance_voxels": 2.0,
+    "oracle_recipe": "configs/pointneuron2/representation_oracle.json",
+    "oracle_review": "docs/pointneuron2/representation_oracle_results_seed0/review.json",
+    "oracle_summary": "docs/pointneuron2/representation_oracle_results_seed0/summary.json",
+    "oracle_edge_logits": {
+      "reference_edge": 12.0,
+      "other_candidate": -12.0
+    }
+  },
+  "code_sha256": {
+    "scripts\\pointneuron2\\check_connectivity.py": "8c1abb13dd41f21f702972c9d065aaed957f415f304d96e6e8fd84821b812ee6",
+    "configs\\pointneuron2\\connectivity_check.json": "891a7d990354705483563bd60847016e31038d20929cbab2a5593791b506bcd8",
+    "src\\pointneuron\\graph\\proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "src\\pointneuron\\graph\\connectivity_decoder.py": "6394ebddb8af434ee471ea38b10d5120430a776130bb396f0d985fb78e5ea082",
+    "src\\pointneuron\\data\\connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1",
+    "src\\pointneuron\\models\\gatv2_connectivity.py": "4b6f380292b0afe7f93d67ac4ad1b1e7c31f48d9f5d549c995d37a6f0410d937"
+  },
+  "protected_upstream_sha256": {
+    "src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "configs\\pointneuron2\\partition_seed0.json": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+    "docs\\pointneuron2\\query_target_counts_seed0\\summary.json": "059ebac58659bb99eaf741b964c9dcc0f764aa24f724f8398808047aef8f95da",
+    "src\\pointneuron\\models\\__init__.py": "af7a6d48f573c733895e2e353e18802b2a6ba26ade68c981a12a7107b303caaa",
+    "src\\pointneuron\\models\\adaptive_sampling.py": "1abc03c98456ebe924684efae15d22cd7b254b1e2f5e8b7617d8212afb47b7cc",
+    "src\\pointneuron\\models\\centerline_attention.py": "e7b567e276be95f09697621dc43138053d9fbd5f378871eb18efdb37506013ba",
+    "src\\pointneuron\\models\\centerline_unet.py": "b0351948c06c6836926035ebf4bcf3840498ce3498bf2d7259cfffd966ae5df1",
+    "src\\pointneuron\\models\\connectivity.py": "09ca0e495659e8aff75fe250bef4d46bcb9e7cd1fba3e4cd54f03cf022bb6e90",
+    "src\\pointneuron\\models\\dgcnn.py": "876bca0862c3e7a3d7eb746aac9cbebdec55dac57cda712327cf5fe5aaefdfb7",
+    "src\\pointneuron\\models\\frozen_query_confidence.py": "856fc422b7d4e6a23729dc1a43db93c6286f4f3111bd0828f555ecb43efd094c",
+    "src\\pointneuron\\models\\guide_distances.py": "37136c80b7d21f91c2b1b80ade12dac4febe99421b7d4c7573667b12b66c078b",
+    "src\\pointneuron\\models\\pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "src\\pointneuron\\models\\pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d",
+    "src\\pointneuron\\models\\pointnext_query.py": "2dad14d35a54015403e9cd2e78f0946c09597134849d3b78e683081cdcb2bab3",
+    "src\\pointneuron\\models\\pointnext_query_cropnorm.py": "d00150124060db147f9f7a188506bd4323df236da1ea0cc80c2677540ce10ebc",
+    "src\\pointneuron\\models\\proposal.py": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+    "src\\pointneuron\\models\\proposal_loss.py": "256340c2ebb05f500e12b199a1633767835d9eb4bf5bae8c6997dda1580ac207",
+    "src\\pointneuron\\models\\query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "src\\pointneuron\\models\\query_pipeline.py": "6ee740c7748e2a0caac6391c01b09497cda4387ecb3ff43d3e8cb11027a5eaaa",
+    "src\\pointneuron\\models\\query_proposal.py": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "src\\pointneuron\\models\\sampling_pipeline.py": "112cfb09a0d2ed79c8800a47ac31a33826d4db26df1eb72cc769c1a412e9cefe",
+    "scripts\\pointneuron2\\representation_oracle.py": "5379d3290d71746522852428afddf3a2e52a688a4d96715be4a1447d5c80093e",
+    "src\\pointneuron\\graph\\representation_oracle.py": "83618f4b7aa84ed1ce99e8756f7bb63bfe50320266d6ab712400895d4b98074d",
+    "src\\pointneuron\\data\\swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51",
+    "configs\\pointneuron2\\representation_oracle.json": "c4071e45d098f73685271e3f3b59cdc2b66406f7d51b8b68af3524873d3e01ea"
+  },
+  "source_sha256": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_6_Ch2\\1_6_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_18_12.swc": "8485897aeb81627f1af39a1e39ae827b2f4dad17469ecd2540e7d9cda29448fc",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0986_seg\\0986_seg.v3dpbd.swc": "3de5f2fa7aad0895dac89f4a46d86713933240138dd33de4b3c3ca726d55e454",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\HO_140921c14\\140921c14.tif.v3dpbd.ano_stamp_2015_06_17_11_07.swc": "f134ded985606c9e9a6bd3dfc84e63d4dbcc72ea2337e92a7cc2e377ca3dd301"
+  },
+  "source_preservation_passed": true,
+  "torch_version": "2.12.1+cu130",
+  "synthetic": [
+    {
+      "mode": "gatv2",
+      "config": {
+        "mode": "gatv2",
+        "hidden_channels": 128,
+        "heads": 4,
+        "layers": 2,
+        "seed": 0
+      },
+      "nodes": 512,
+      "candidate_edges": 4807,
+      "input_sha256": {
+        "positions": "f8bf4395b17c26c148843deb9f1920f3ce158555b679ae579f05f478dbb360ef",
+        "radii": "5430cc9c48e2cb6bb010cbc7daa1de726735a39fc3b016c072fcc2365612fc09",
+        "objectness_logits": "7705420f1090c2e439251bed4af79e93a491bf5f5616a38584a3e061393d0bfb",
+        "local_centers": "af7226933d456107dfc87b6011464e94a0424439677f45829afa6a84d8bcdd64",
+        "decoder_features": "08c583dee5699072f5b2d93da1d62966a0e8355f39bf5a339fff5c09953f4252",
+        "candidate_edges": "ceb3e8070c3070c60b901fc8fccc72e5fa59c1449f02351718fd5b99e5cc86a2"
+      },
+      "parameters": 119041,
+      "parameter_gradients_finite": true,
+      "train_eval_max_logit_delta": 0.0,
+      "reload_max_logit_delta": 0.0,
+      "optimizer_updates": 0,
+      "elapsed_seconds_including_reload": 1.0796131000024616
+    },
+    {
+      "mode": "pairwise",
+      "config": {
+        "mode": "pairwise",
+        "hidden_channels": 128,
+        "heads": 4,
+        "layers": 2,
+        "seed": 0
+      },
+      "nodes": 512,
+      "candidate_edges": 4807,
+      "input_sha256": {
+        "positions": "f8bf4395b17c26c148843deb9f1920f3ce158555b679ae579f05f478dbb360ef",
+        "radii": "5430cc9c48e2cb6bb010cbc7daa1de726735a39fc3b016c072fcc2365612fc09",
+        "objectness_logits": "7705420f1090c2e439251bed4af79e93a491bf5f5616a38584a3e061393d0bfb",
+        "local_centers": "af7226933d456107dfc87b6011464e94a0424439677f45829afa6a84d8bcdd64",
+        "decoder_features": "08c583dee5699072f5b2d93da1d62966a0e8355f39bf5a339fff5c09953f4252",
+        "candidate_edges": "ceb3e8070c3070c60b901fc8fccc72e5fa59c1449f02351718fd5b99e5cc86a2"
+      },
+      "parameters": 51201,
+      "parameter_gradients_finite": true,
+      "train_eval_max_logit_delta": 0.0,
+      "reload_max_logit_delta": 0.0,
+      "optimizer_updates": 0,
+      "elapsed_seconds_including_reload": 0.3929885999968974
+    }
+  ],
+  "oracle_rows": [
+    {
+      "name": "branched_0092_crop_004",
+      "sample_index": 92,
+      "source_sha256": "8485897aeb81627f1af39a1e39ae827b2f4dad17469ecd2540e7d9cda29448fc",
+      "node_source": "reference oracle",
+      "edge_score_source": "reference oracle, not GATv2",
+      "target_nodes": 16,
+      "target_edges": 15,
+      "all_known_edges_preserved": true,
+      "edge_supervision": {
+        "positive": 15,
+        "negative": 105,
+        "unknown": 0,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 16,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 15,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 1.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "decoder": {
+        "input_nodes": 16,
+        "accepted_nodes": 16,
+        "rejected_nodes": 0,
+        "candidate_edges": 120,
+        "edges_rejected_by_node_cutoff": 0,
+        "edges_below_edge_cutoff": 105,
+        "eligible_edges": 15,
+        "cycle_rejections": 0,
+        "selected_edges": 15,
+        "components": 1,
+        "isolated_nodes": 0,
+        "node_cutoff": 0.5,
+        "edge_cutoff": 0.5,
+        "root_policy": "highest_node_logit_difference_then_smallest_stable_id"
+      },
+      "topology": {
+        "reference": {
+          "nodes": 24,
+          "edges": 23,
+          "components": 1,
+          "junctions": 2,
+          "terminals": 4,
+          "isolated": 0
+        },
+        "target": {
+          "nodes": 16,
+          "edges": 15,
+          "components": 1,
+          "junctions": 2,
+          "terminals": 4,
+          "isolated": 0
+        },
+        "missing_structural_identities": 0,
+        "structural_degree_errors": 0,
+        "detected_cross_component_edges": 0,
+        "unresolved_component_identities": 0,
+        "branch_incidence_errors": 0,
+        "passed": true
+      },
+      "serialization": {
+        "passed": true,
+        "maximum_coordinate_delta": 4.985230859233525e-07,
+        "maximum_radius_delta": 2.8295192056049245e-07,
+        "parent_before_child": true,
+        "nodes": 16,
+        "edges": 15,
+        "roots": 1,
+        "radius_floor": 1.0
+      }
+    },
+    {
+      "name": "dense_0086_crop_003",
+      "sample_index": 86,
+      "source_sha256": "3de5f2fa7aad0895dac89f4a46d86713933240138dd33de4b3c3ca726d55e454",
+      "node_source": "reference oracle",
+      "edge_score_source": "reference oracle, not GATv2",
+      "target_nodes": 418,
+      "target_edges": 404,
+      "all_known_edges_preserved": true,
+      "edge_supervision": {
+        "positive": 404,
+        "negative": 3577,
+        "unknown": 0,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 418,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 404,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 1.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "decoder": {
+        "input_nodes": 418,
+        "accepted_nodes": 418,
+        "rejected_nodes": 0,
+        "candidate_edges": 3981,
+        "edges_rejected_by_node_cutoff": 0,
+        "edges_below_edge_cutoff": 3577,
+        "eligible_edges": 404,
+        "cycle_rejections": 0,
+        "selected_edges": 404,
+        "components": 14,
+        "isolated_nodes": 0,
+        "node_cutoff": 0.5,
+        "edge_cutoff": 0.5,
+        "root_policy": "highest_node_logit_difference_then_smallest_stable_id"
+      },
+      "topology": {
+        "reference": {
+          "nodes": 2291,
+          "edges": 2277,
+          "components": 14,
+          "junctions": 77,
+          "terminals": 105,
+          "isolated": 0
+        },
+        "target": {
+          "nodes": 418,
+          "edges": 404,
+          "components": 14,
+          "junctions": 77,
+          "terminals": 105,
+          "isolated": 0
+        },
+        "missing_structural_identities": 0,
+        "structural_degree_errors": 0,
+        "detected_cross_component_edges": 0,
+        "unresolved_component_identities": 0,
+        "branch_incidence_errors": 0,
+        "passed": true
+      },
+      "serialization": {
+        "passed": true,
+        "maximum_coordinate_delta": 4.999999987376214e-07,
+        "maximum_radius_delta": 4.870227852116216e-07,
+        "parent_before_child": true,
+        "nodes": 418,
+        "edges": 404,
+        "roots": 14,
+        "radius_floor": 1.0
+      }
+    },
+    {
+      "name": "boundary_join_0092_crops_001_002",
+      "sample_index": 92,
+      "source_sha256": "8485897aeb81627f1af39a1e39ae827b2f4dad17469ecd2540e7d9cda29448fc",
+      "node_source": "reference oracle",
+      "edge_score_source": "reference oracle, not GATv2",
+      "target_nodes": 73,
+      "target_edges": 64,
+      "all_known_edges_preserved": true,
+      "edge_supervision": {
+        "positive": 64,
+        "negative": 630,
+        "unknown": 0,
+        "targets": 73,
+        "assigned": 73,
+        "trusted_matches": 73,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 64,
+        "edges_with_trusted_endpoints": 64,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 1.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "decoder": {
+        "input_nodes": 73,
+        "accepted_nodes": 73,
+        "rejected_nodes": 0,
+        "candidate_edges": 694,
+        "edges_rejected_by_node_cutoff": 0,
+        "edges_below_edge_cutoff": 630,
+        "eligible_edges": 64,
+        "cycle_rejections": 0,
+        "selected_edges": 64,
+        "components": 9,
+        "isolated_nodes": 0,
+        "node_cutoff": 0.5,
+        "edge_cutoff": 0.5,
+        "root_policy": "highest_node_logit_difference_then_smallest_stable_id"
+      },
+      "topology": {
+        "reference": {
+          "nodes": 151,
+          "edges": 142,
+          "components": 9,
+          "junctions": 6,
+          "terminals": 24,
+          "isolated": 0
+        },
+        "target": {
+          "nodes": 73,
+          "edges": 64,
+          "components": 9,
+          "junctions": 6,
+          "terminals": 24,
+          "isolated": 0
+        },
+        "missing_structural_identities": 0,
+        "structural_degree_errors": 0,
+        "detected_cross_component_edges": 0,
+        "unresolved_component_identities": 0,
+        "branch_incidence_errors": 0,
+        "passed": true
+      },
+      "serialization": {
+        "passed": true,
+        "maximum_coordinate_delta": 4.967367317476601e-07,
+        "maximum_radius_delta": 4.3553576034582875e-07,
+        "parent_before_child": true,
+        "nodes": 73,
+        "edges": 64,
+        "roots": 9,
+        "radius_floor": 1.0
+      }
+    },
+    {
+      "name": "fragmented_0066_full_reference",
+      "sample_index": 66,
+      "source_sha256": "f134ded985606c9e9a6bd3dfc84e63d4dbcc72ea2337e92a7cc2e377ca3dd301",
+      "node_source": "reference oracle",
+      "edge_score_source": "reference oracle, not GATv2",
+      "target_nodes": 1541,
+      "target_edges": 1341,
+      "all_known_edges_preserved": true,
+      "edge_supervision": {
+        "positive": 1341,
+        "negative": 3098,
+        "unknown": 10015,
+        "targets": 1541,
+        "assigned": 1541,
+        "trusted_matches": 1541,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 1341,
+        "edges_with_trusted_endpoints": 1341,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 1.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "decoder": {
+        "input_nodes": 1541,
+        "accepted_nodes": 1541,
+        "rejected_nodes": 0,
+        "candidate_edges": 14454,
+        "edges_rejected_by_node_cutoff": 0,
+        "edges_below_edge_cutoff": 13113,
+        "eligible_edges": 1341,
+        "cycle_rejections": 0,
+        "selected_edges": 1341,
+        "components": 200,
+        "isolated_nodes": 0,
+        "node_cutoff": 0.5,
+        "edge_cutoff": 0.5,
+        "root_policy": "highest_node_logit_difference_then_smallest_stable_id"
+      },
+      "topology": {
+        "reference": {
+          "nodes": 2566,
+          "edges": 2366,
+          "components": 200,
+          "junctions": 0,
+          "terminals": 400,
+          "isolated": 0
+        },
+        "target": {
+          "nodes": 1541,
+          "edges": 1341,
+          "components": 200,
+          "junctions": 0,
+          "terminals": 400,
+          "isolated": 0
+        },
+        "missing_structural_identities": 0,
+        "structural_degree_errors": 0,
+        "detected_cross_component_edges": 0,
+        "unresolved_component_identities": 0,
+        "branch_incidence_errors": 0,
+        "passed": true
+      },
+      "serialization": {
+        "passed": true,
+        "maximum_coordinate_delta": 4.999532734473178e-07,
+        "maximum_radius_delta": 4.990977300334265e-07,
+        "parent_before_child": true,
+        "nodes": 1541,
+        "edges": 1341,
+        "roots": 200,
+        "radius_floor": 1.0
+      }
+    }
+  ],
+  "elapsed_seconds_excluding_imports": 7.018393399994238,
+  "limitations": [
+    "No GATv2/pairwise fitting or learned reconstruction evaluation.",
+    "Real-case nodes, matches and edge scores are reference-defined; GATv2 is not run on those cases.",
+    "Full-reference forest is a decoder stress test, not a 512-query crop.",
+    "Unknown-edge scores in oracle decoding do not become negative training labels.",
+    "Upstream normalization/confidence failures and automatic whole-neuron crop matching remain unresolved.",
+    "CPU formula/reload checks do not establish official library/kernel parity or GPU runtime."
+  ]
+}

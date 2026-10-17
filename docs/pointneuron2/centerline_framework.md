@@ -1,5 +1,10 @@
 # Intended PN 2.0 architecture and the Phase 1 field experiment
 
+17 October update: [per-crop GATv2/control and forest decoding](gatv2_connectivity_implementation.md)
+are implemented and pass CPU execution checks without optimizer updates.
+Learned connectivity, whole-neuron integration and reconstruction improvement
+remain unestablished. Earlier dated scope/status notes are preserved below.
+
 12 October 2026. Architecture clarification agreed with the user: keep
 **PointNeXt -> Transformer skeleton proposals -> GATv2 connectivity** in the
 intended system. Investigate the image-native field as a possible improvement
@@ -35,7 +40,7 @@ normalization policy is promoted.
 | Phase 1 | Preserve neurite evidence and useful coverage in the input cloud | Isolated field-guided selector/comparison implemented and checked; production/PointNeXt integration pending |
 | PointNeXt | Encode local and broader point geometry | Native S prototype implemented; real bounded fit exposes train/eval normalization discrepancy |
 | Transformer decoder | Predict skeleton-node positions, confidence and radius | PointNeXt pairing learns subvoxel placement with current-crop statistics on two training crops; confidence and ordinary inference fail |
-| GATv2 | Learn candidate-edge probabilities using node features and geometry | Not implemented; previous reconstructions used inherited graph machinery |
+| GATv2 | Learn candidate-edge probabilities using node features and geometry | Native per-crop GATv2/control, labels and forest decoder implemented; CPU checks pass; no trained model or whole-neuron integration |
 
 The [completed query pilot](query_pilot_results.md) failed confidence selection
 with **DGCNN**, not PointNeXt. It does not establish that the complete proposed

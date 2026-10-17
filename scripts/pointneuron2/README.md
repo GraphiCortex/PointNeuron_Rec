@@ -6,6 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [connectivity implementation and CPU execution checks](../../docs/pointneuron2/gatv2_connectivity_implementation.md).
+`check_connectivity.py` verifies native GATv2/control gradients and strict reload
+on identical synthetic proposals, then tests forest decoding with reference
+edge scores. No optimizer updates or upstream/image forwards occur. The runner
+is not a real training command; checkpoints it writes are explicitly untrained.
+
 Current: [reference-only representation results](../../docs/pointneuron2/representation_oracle_results.md).
 `representation_oracle.py` checks four fixed training-reference cases on CPU,
 without images, models or training. All representation criteria pass; learned

@@ -1,0 +1,15 @@
+{
+  "schema": "pointneuron2-connectivity-execution-check-v1",
+  "seed": 0,
+  "torch_threads": 2,
+  "synthetic_queries": 512,
+  "candidate_neighbors": 16,
+  "candidate_radius_voxels": 8.0,
+  "node_cutoff": 0.5,
+  "edge_cutoff": 0.5,
+  "match_tolerance_voxels": 2.0,
+  "oracle_recipe": "configs/pointneuron2/representation_oracle.json",
+  "oracle_review": "docs/pointneuron2/representation_oracle_results_seed0/review.json",
+  "oracle_summary": "docs/pointneuron2/representation_oracle_results_seed0/summary.json",
+  "oracle_edge_logits": {"reference_edge": 12.0, "other_candidate": -12.0}
+}
