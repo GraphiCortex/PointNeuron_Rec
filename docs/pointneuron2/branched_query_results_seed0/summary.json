@@ -1,0 +1,1552 @@
+{
+  "status": "completed",
+  "scope": "saved training predictions/checkpoints; no model forwards, optimizer updates, GPU work, dev/test evaluation or threshold search",
+  "fit_report_sha256": "3e023316978632587f7b9d0b2798cbb6964aa0dacb1ce158e2c04647bb667def",
+  "review_script_sha256": "7e079fbcbb4338682cb537f877c29e9883f871c632e2596413f19f5e31f66290",
+  "checkpoint_reload_max_delta_reported_by_fit": 0.0,
+  "source_cache_snapshot_checks_passed": true,
+  "independent_candidate_label_distance_ce_checks_passed": true,
+  "fit_elapsed_seconds": 1083.0242480999987,
+  "combined_learnability_gate_passed": false,
+  "prediction_files_sha256": {
+    "step_0000_crop_0.npz": "9645c0a191ea5b9c3bf60f7708ba81cd1a3c69b94ec1945da2d3806d73292064",
+    "step_0000_crop_1.npz": "969057b34db5b773713d8c4d12ca56e173fe8f4280cf46a77699fbe0df66f729",
+    "step_0000_crop_2.npz": "ed350325a73b7a0797e5d94377bddb46086c3f251d2b32df4607edfa1242407b",
+    "step_0000_crop_3.npz": "7cc297f6fc36e78fb34d4711d0ea3e906e137220c7c30492143d5f0ad825f712",
+    "step_0500_crop_0.npz": "ce50b9c9e0f4e783f63a8d84db40e682d9b5443a2145560b50386d8fd8fbbf0d",
+    "step_0500_crop_1.npz": "52c0b9be8b68a6301a604b2f682252b8ca53b36d27b29b6da8b7f242c9cfafe0",
+    "step_0500_crop_2.npz": "e5ded79c48ff978a4ad34c98c51b8402c6cb3a87cc0f028eb0a3719fc75d4bea",
+    "step_0500_crop_3.npz": "a0d351e1e6e2616f3fed60c65fed9ccb3d186e753bea398288cd362915fce84c",
+    "step_1000_crop_0.npz": "67654dda990d8bff34cf270f2a2afd66617dfcf2c78a2bcbcba08016342a71d7",
+    "step_1000_crop_1.npz": "ce602b8a2a639d9ea1d29902c8f238453079d78fa2640fd94daa906366c2fe1c",
+    "step_1000_crop_2.npz": "159d2d475442283c774e523802fa6d2872482c472e471d16dbea13e5b6699c5d",
+    "step_1000_crop_3.npz": "306a7a544aac27c79a9c4cfb48791ecd89ab3442a045e72a9be30cb6f162d288",
+    "step_2000_crop_0.npz": "05094e7d01d9caa8603aed7eba4c27695b411198e8c34115eebc49a6f73eccf8",
+    "step_2000_crop_1.npz": "154bb73c8c4c7c87ed277e40a6debc7ff6f6c577a308299a6ea44ffa3d2d19da",
+    "step_2000_crop_2.npz": "8b28e82494b30bfab66a9e0c36ed234bcac3e39148d06ad4d0665b3a96f05b83",
+    "step_2000_crop_3.npz": "b3b43ae7d6a10218ef60adb13171cf44e8f9da46d4e4a438bdb650569e7827a2",
+    "step_4000_crop_0.npz": "69af66234da5e04d63d7e6e488f4c6f09f5d24b50fe2f405e4753e03b0b69252",
+    "step_4000_crop_1.npz": "fb0053f87ae0932c303f751529bd205e45149694f02d91ec5b7e5c8b7e17a8a9",
+    "step_4000_crop_2.npz": "80fd37934868f998080b3050c3ce6afdfa47c0914f70dfaded334fdc0e1e2be4",
+    "step_4000_crop_3.npz": "c35a56f136c729f01374be9898f1374c0ad115e4b941449602dd856efddafa51"
+  },
+  "checkpoints": [
+    {
+      "step": 0,
+      "sha256": "99107e77cdc81b8a2e9cf5e9090b68d6e18e114824e143957a8a2e79f61e1fff",
+      "resumable": true,
+      "optimizer_parameter_states": 0,
+      "cuda_rng_states": 1
+    },
+    {
+      "step": 500,
+      "sha256": "a68e2c7769ac8cbf19ec7923e643636baf41ef7b63551f280d5ca81f2cb84026",
+      "resumable": true,
+      "optimizer_parameter_states": 123,
+      "cuda_rng_states": 1
+    },
+    {
+      "step": 1000,
+      "sha256": "7047208a605f78dc8cc1da9bbb62b9f3c646bbbebdeb37728a57c9663f7eb4f1",
+      "resumable": true,
+      "optimizer_parameter_states": 123,
+      "cuda_rng_states": 1
+    },
+    {
+      "step": 2000,
+      "sha256": "a54406b3207f0fe638968cdecfb0b69eff0ab9b6e7163f90449667c0ec56b3a7",
+      "resumable": true,
+      "optimizer_parameter_states": 123,
+      "cuda_rng_states": 1
+    },
+    {
+      "step": 4000,
+      "sha256": "90d685bd14ba4cf128c7cf5e229103b81abc708bb035385bacfbf1f2fdd4ecef",
+      "resumable": false,
+      "optimizer_parameter_states": 123,
+      "cuda_rng_states": 1
+    }
+  ],
+  "rows": [
+    {
+      "step": 0,
+      "sample_index": 0,
+      "patch_index": 0,
+      "targets": 6,
+      "trusted_matches": 0,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 62.720065555478136,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.008453965187072754,
+      "confidence": {
+        "roc_auc": 0.5184453227931489,
+        "average_precision": 0.014105311572312752,
+        "positive_fraction": 0.01171875,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.26921708251749876,
+          0.27013392263984193,
+          0.27096491629111263,
+          0.2718325319267737,
+          0.2721377303637571
+        ],
+        "unassigned_probability_quantiles": [
+          0.2665507169885435,
+          0.2697404554230851,
+          0.2707432394624289,
+          0.2719154739080226,
+          0.2759362202829464
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.08664259927797834,
+        "weighted_constant_minimum_ce": 0.294700421073933,
+        "actual_weighted_ce": 0.4016125186396772
+      },
+      "assignment_changes_since_previous_snapshot": null,
+      "connectivity_supervision": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 130816,
+        "targets": 6,
+        "assigned": 6,
+        "trusted_matches": 0,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 6,
+        "required_target_edges": 5,
+        "edges_with_trusted_endpoints": 0,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 5,
+        "attainable_recall_all_target_edges": 0.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 0,
+      "sample_index": 0,
+      "patch_index": 1,
+      "targets": 12,
+      "trusted_matches": 0,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 42.740978136071185,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.005545462016016245,
+      "confidence": {
+        "roc_auc": 0.46166666666666667,
+        "average_precision": 0.024980501718118032,
+        "positive_fraction": 0.0234375,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.2680315915301718,
+          0.2696395375003935,
+          0.27060126732111084,
+          0.2721169122410683,
+          0.27324129103063255
+        ],
+        "unassigned_probability_quantiles": [
+          0.266521457846619,
+          0.26985214407534097,
+          0.270871881568493,
+          0.2720132215104209,
+          0.276369539373852
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.1610738255033557,
+        "weighted_constant_minimum_ce": 0.44144624493110796,
+        "actual_weighted_ce": 0.4755795419177632
+      },
+      "assignment_changes_since_previous_snapshot": null,
+      "connectivity_supervision": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 130816,
+        "targets": 12,
+        "assigned": 12,
+        "trusted_matches": 0,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 12,
+        "required_target_edges": 10,
+        "edges_with_trusted_endpoints": 0,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 10,
+        "attainable_recall_all_target_edges": 0.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 0,
+      "sample_index": 92,
+      "patch_index": 4,
+      "targets": 16,
+      "trusted_matches": 0,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 44.31731899897221,
+      "trusted_junctions": 0,
+      "junctions": 2,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.6293798089027405,
+      "confidence": {
+        "roc_auc": 0.5871975806451613,
+        "average_precision": 0.04487927002666095,
+        "positive_fraction": 0.03125,
+        "oracle_known_target_count_top_k_recall": 0.0625,
+        "matched_probability_quantiles": [
+          0.26807856258514046,
+          0.2703751089592611,
+          0.2719083454413122,
+          0.272443661435015,
+          0.27388421980084804
+        ],
+        "unassigned_probability_quantiles": [
+          0.26670330314903,
+          0.27005915014009696,
+          0.2709821871848367,
+          0.27212469487572677,
+          0.27632962007743933
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.20512820512820512,
+        "weighted_constant_minimum_ce": 0.5074299622199485,
+        "actual_weighted_ce": 0.5188201733595569
+      },
+      "assignment_changes_since_previous_snapshot": null,
+      "connectivity_supervision": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 130816,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 0,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 16,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 0,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 15,
+        "attainable_recall_all_target_edges": 0.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 0,
+      "sample_index": 86,
+      "patch_index": 3,
+      "targets": 418,
+      "trusted_matches": 0,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 41.76334540705687,
+      "trusted_junctions": 0,
+      "junctions": 77,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 3.089439630508423,
+      "confidence": {
+        "roc_auc": 0.5715412806678204,
+        "average_precision": 0.858061592474283,
+        "positive_fraction": 0.81640625,
+        "oracle_known_target_count_top_k_recall": 0.8301435406698564,
+        "matched_probability_quantiles": [
+          0.26637666045005665,
+          0.26990594532908563,
+          0.27090411141423926,
+          0.2720909381619846,
+          0.2761704789691107
+        ],
+        "unassigned_probability_quantiles": [
+          0.2674272695584458,
+          0.2696543002401456,
+          0.270647417156581,
+          0.2714287488726347,
+          0.2746058993370251
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.9726585223967423,
+        "weighted_constant_minimum_ce": 0.12537580395514555,
+        "actual_weighted_ce": 1.2786887969268523
+      },
+      "assignment_changes_since_previous_snapshot": null,
+      "connectivity_supervision": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 130816,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 0,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 418,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 0,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 404,
+        "attainable_recall_all_target_edges": 0.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 500,
+      "sample_index": 0,
+      "patch_index": 0,
+      "targets": 6,
+      "trusted_matches": 6,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 1.435253508924392,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.061603009700775146,
+      "confidence": {
+        "roc_auc": 0.1320816864295125,
+        "average_precision": 0.007474755773718615,
+        "positive_fraction": 0.01171875,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.10195636569387602,
+          0.10290627066958993,
+          0.1087065118164027,
+          0.12170259553801749,
+          0.13724862023475684
+        ],
+        "unassigned_probability_quantiles": [
+          0.09815286935184846,
+          0.12496562497493896,
+          0.1478742448280309,
+          0.1779114840489256,
+          0.2688680492769781
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.08664259927797834,
+        "weighted_constant_minimum_ce": 0.294700421073933,
+        "actual_weighted_ce": 0.343015151127281
+      },
+      "assignment_changes_since_previous_snapshot": 6,
+      "connectivity_supervision": {
+        "positive": 5,
+        "negative": 0,
+        "unknown": 17029,
+        "targets": 6,
+        "assigned": 6,
+        "trusted_matches": 6,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 5,
+        "edges_with_trusted_endpoints": 5,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 1.0,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 500,
+      "sample_index": 0,
+      "patch_index": 1,
+      "targets": 12,
+      "trusted_matches": 11,
+      "accepted_assigned": 4,
+      "accepted_unassigned": 80,
+      "matched_distance_mean": 1.1506190715514446,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.6008432125018066,
+      "radius_mae": 0.6365603804588318,
+      "confidence": {
+        "roc_auc": 0.7013333333333334,
+        "average_precision": 0.04436252174435478,
+        "positive_fraction": 0.0234375,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.36873573493130174,
+          0.3785512380262577,
+          0.4715338461332368,
+          0.5136739931822144,
+          0.5460026192991517
+        ],
+        "unassigned_probability_quantiles": [
+          0.16284178787730136,
+          0.3036614831881048,
+          0.3859202926348357,
+          0.45668422674613707,
+          0.652187362723518
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.1610738255033557,
+        "weighted_constant_minimum_ce": 0.44144624493110796,
+        "actual_weighted_ce": 0.5503785876456672
+      },
+      "assignment_changes_since_previous_snapshot": 12,
+      "connectivity_supervision": {
+        "positive": 7,
+        "negative": 0,
+        "unknown": 4918,
+        "targets": 12,
+        "assigned": 12,
+        "trusted_matches": 11,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 1,
+        "required_target_edges": 10,
+        "edges_with_trusted_endpoints": 9,
+        "missing_candidate_positive_edges": 2,
+        "unrepresented_target_edges": 1,
+        "attainable_recall_all_target_edges": 0.7,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.2,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            2,
+            3
+          ],
+          "query_edge": [
+            334,
+            409
+          ],
+          "predicted_length": 8.918473810693916,
+          "target_chord_length": 7.706730365753174,
+          "endpoint_neighbor_ranks_excluding_self": [
+            17,
+            18
+          ]
+        },
+        {
+          "target_edge": [
+            5,
+            6
+          ],
+          "query_edge": [
+            351,
+            269
+          ],
+          "predicted_length": 8.63555024916646,
+          "target_chord_length": 7.97334623336792,
+          "endpoint_neighbor_ranks_excluding_self": [
+            18,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "step": 500,
+      "sample_index": 92,
+      "patch_index": 4,
+      "targets": 16,
+      "trusted_matches": 16,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 0.7817324820380152,
+      "trusted_junctions": 2,
+      "junctions": 2,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.6137884259223938,
+      "confidence": {
+        "roc_auc": 0.5589717741935484,
+        "average_precision": 0.03484591750269772,
+        "positive_fraction": 0.03125,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.16919881089537595,
+          0.20886537124034613,
+          0.2319808632286293,
+          0.2413065283571791,
+          0.2693339186430082
+        ],
+        "unassigned_probability_quantiles": [
+          0.11924178407459175,
+          0.18121364473719734,
+          0.21564465971915095,
+          0.2507319546227264,
+          0.3543255518466177
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.20512820512820512,
+        "weighted_constant_minimum_ce": 0.5074299622199485,
+        "actual_weighted_ce": 0.5052351504188177
+      },
+      "assignment_changes_since_previous_snapshot": 16,
+      "connectivity_supervision": {
+        "positive": 10,
+        "negative": 7,
+        "unknown": 7905,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 16,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 15,
+        "missing_candidate_positive_edges": 5,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.6666666666666666,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            0,
+            6
+          ],
+          "query_edge": [
+            347,
+            45
+          ],
+          "predicted_length": 8.557325789844443,
+          "target_chord_length": 8.000000953674316,
+          "endpoint_neighbor_ranks_excluding_self": [
+            17,
+            37
+          ]
+        },
+        {
+          "target_edge": [
+            1,
+            14
+          ],
+          "query_edge": [
+            492,
+            73
+          ],
+          "predicted_length": 8.750220137181024,
+          "target_chord_length": 7.973404407501221,
+          "endpoint_neighbor_ranks_excluding_self": [
+            42,
+            58
+          ]
+        },
+        {
+          "target_edge": [
+            7,
+            8
+          ],
+          "query_edge": [
+            359,
+            156
+          ],
+          "predicted_length": 8.813870979066778,
+          "target_chord_length": 7.961609840393066,
+          "endpoint_neighbor_ranks_excluding_self": [
+            39,
+            51
+          ]
+        },
+        {
+          "target_edge": [
+            9,
+            10
+          ],
+          "query_edge": [
+            406,
+            33
+          ],
+          "predicted_length": 8.433869584830406,
+          "target_chord_length": 7.279308319091797,
+          "endpoint_neighbor_ranks_excluding_self": [
+            35,
+            40
+          ]
+        },
+        {
+          "target_edge": [
+            10,
+            11
+          ],
+          "query_edge": [
+            33,
+            230
+          ],
+          "predicted_length": 8.25774234355153,
+          "target_chord_length": 7.821486949920654,
+          "endpoint_neighbor_ranks_excluding_self": [
+            36,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "step": 500,
+      "sample_index": 86,
+      "patch_index": 3,
+      "targets": 418,
+      "trusted_matches": 86,
+      "accepted_assigned": 228,
+      "accepted_unassigned": 47,
+      "matched_distance_mean": 4.81215434537272,
+      "trusted_junctions": 19,
+      "junctions": 77,
+      "accepted_curve_support_6": 0.4764104181734671,
+      "radius_mae": 2.5301077365875244,
+      "confidence": {
+        "roc_auc": 0.5106382978723404,
+        "average_precision": 0.8159724409635565,
+        "positive_fraction": 0.81640625,
+        "oracle_known_target_count_top_k_recall": 0.8157894736842105,
+        "matched_probability_quantiles": [
+          0.21398878656846923,
+          0.38421303021506253,
+          0.5208199261913281,
+          0.639263915076547,
+          0.7698989204271492
+        ],
+        "unassigned_probability_quantiles": [
+          0.23600049810999604,
+          0.3623012763087105,
+          0.5037759731793423,
+          0.6335364972218445,
+          0.762527350814719
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.9726585223967423,
+        "weighted_constant_minimum_ce": 0.12537580395514555,
+        "actual_weighted_ce": 0.7141610799714803
+      },
+      "assignment_changes_since_previous_snapshot": 412,
+      "connectivity_supervision": {
+        "positive": 25,
+        "negative": 156,
+        "unknown": 4612,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 86,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 332,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 25,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 379,
+        "attainable_recall_all_target_edges": 0.06188118811881188,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.019801980198019802,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 1000,
+      "sample_index": 0,
+      "patch_index": 0,
+      "targets": 6,
+      "trusted_matches": 6,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 1.2361300961558417,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.047886211425065994,
+      "confidence": {
+        "roc_auc": 0.3000658761528327,
+        "average_precision": 0.009172125250060108,
+        "positive_fraction": 0.01171875,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.10583361626540987,
+          0.11887997059257603,
+          0.12338856627762579,
+          0.12856967857423404,
+          0.1359203984503353
+        ],
+        "unassigned_probability_quantiles": [
+          0.08475364774183615,
+          0.12090029989933036,
+          0.13460651086201297,
+          0.15693575825063993,
+          0.2534842620392127
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.08664259927797834,
+        "weighted_constant_minimum_ce": 0.294700421073933,
+        "actual_weighted_ce": 0.3214701350853448
+      },
+      "assignment_changes_since_previous_snapshot": 5,
+      "connectivity_supervision": {
+        "positive": 4,
+        "negative": 0,
+        "unknown": 15718,
+        "targets": 6,
+        "assigned": 6,
+        "trusted_matches": 6,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 5,
+        "edges_with_trusted_endpoints": 5,
+        "missing_candidate_positive_edges": 1,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.8,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            3,
+            4
+          ],
+          "query_edge": [
+            377,
+            416
+          ],
+          "predicted_length": 9.412568315333207,
+          "target_chord_length": 7.7346577644348145,
+          "endpoint_neighbor_ranks_excluding_self": [
+            50,
+            74
+          ]
+        }
+      ]
+    },
+    {
+      "step": 1000,
+      "sample_index": 0,
+      "patch_index": 1,
+      "targets": 12,
+      "trusted_matches": 7,
+      "accepted_assigned": 1,
+      "accepted_unassigned": 12,
+      "matched_distance_mean": 1.6726532433343244,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.34797200583578247,
+      "radius_mae": 0.49778690934181213,
+      "confidence": {
+        "roc_auc": 0.869,
+        "average_precision": 0.10201284854829412,
+        "positive_fraction": 0.0234375,
+        "oracle_known_target_count_top_k_recall": 0.08333333333333333,
+        "matched_probability_quantiles": [
+          0.3933865405672656,
+          0.4179988983241981,
+          0.4572981315144603,
+          0.4718081933039457,
+          0.5077077749432338
+        ],
+        "unassigned_probability_quantiles": [
+          0.12307505438153091,
+          0.26244981176610893,
+          0.3241898020391013,
+          0.4009276748708164,
+          0.6306917786455716
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.1610738255033557,
+        "weighted_constant_minimum_ce": 0.44144624493110796,
+        "actual_weighted_ce": 0.4779924300849111
+      },
+      "assignment_changes_since_previous_snapshot": 12,
+      "connectivity_supervision": {
+        "positive": 4,
+        "negative": 1,
+        "unknown": 6045,
+        "targets": 12,
+        "assigned": 12,
+        "trusted_matches": 7,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 5,
+        "required_target_edges": 10,
+        "edges_with_trusted_endpoints": 4,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 6,
+        "attainable_recall_all_target_edges": 0.4,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 1000,
+      "sample_index": 92,
+      "patch_index": 4,
+      "targets": 16,
+      "trusted_matches": 15,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 0.95780865733079,
+      "trusted_junctions": 2,
+      "junctions": 2,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.6077585816383362,
+      "confidence": {
+        "roc_auc": 0.7329889112903226,
+        "average_precision": 0.11502936002791755,
+        "positive_fraction": 0.03125,
+        "oracle_known_target_count_top_k_recall": 0.125,
+        "matched_probability_quantiles": [
+          0.1350025905881757,
+          0.1897067996794508,
+          0.21294252310497924,
+          0.22697390686306665,
+          0.24382504882529424
+        ],
+        "unassigned_probability_quantiles": [
+          0.09661315384010406,
+          0.14728781524397513,
+          0.17069432359615888,
+          0.19855023001618338,
+          0.28996527052376486
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.20512820512820512,
+        "weighted_constant_minimum_ce": 0.5074299622199485,
+        "actual_weighted_ce": 0.4828245329654548
+      },
+      "assignment_changes_since_previous_snapshot": 15,
+      "connectivity_supervision": {
+        "positive": 12,
+        "negative": 8,
+        "unknown": 19337,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 15,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 1,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 14,
+        "missing_candidate_positive_edges": 2,
+        "unrepresented_target_edges": 1,
+        "attainable_recall_all_target_edges": 0.8,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            1,
+            14
+          ],
+          "query_edge": [
+            414,
+            61
+          ],
+          "predicted_length": 8.09940645073938,
+          "target_chord_length": 7.973404407501221,
+          "endpoint_neighbor_ranks_excluding_self": [
+            89,
+            121
+          ]
+        },
+        {
+          "target_edge": [
+            8,
+            9
+          ],
+          "query_edge": [
+            426,
+            33
+          ],
+          "predicted_length": 8.295574878501506,
+          "target_chord_length": 7.929793834686279,
+          "endpoint_neighbor_ranks_excluding_self": [
+            123,
+            105
+          ]
+        }
+      ]
+    },
+    {
+      "step": 1000,
+      "sample_index": 86,
+      "patch_index": 3,
+      "targets": 418,
+      "trusted_matches": 34,
+      "accepted_assigned": 221,
+      "accepted_unassigned": 55,
+      "matched_distance_mean": 4.885278052519799,
+      "trusted_junctions": 8,
+      "junctions": 77,
+      "accepted_curve_support_6": 0.47113104548058105,
+      "radius_mae": 2.560380220413208,
+      "confidence": {
+        "roc_auc": 0.5057772574569886,
+        "average_precision": 0.827598267108872,
+        "positive_fraction": 0.81640625,
+        "oracle_known_target_count_top_k_recall": 0.8229665071770335,
+        "matched_probability_quantiles": [
+          0.1943080000520543,
+          0.3776449257387473,
+          0.5285213065866823,
+          0.7033758838043193,
+          0.83897494616835
+        ],
+        "unassigned_probability_quantiles": [
+          0.1905572228765338,
+          0.35666204924243117,
+          0.5682051910857875,
+          0.6987643244860933,
+          0.8191658665271023
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.9726585223967423,
+        "weighted_constant_minimum_ce": 0.12537580395514555,
+        "actual_weighted_ce": 0.6976882226573095
+      },
+      "assignment_changes_since_previous_snapshot": 297,
+      "connectivity_supervision": {
+        "positive": 6,
+        "negative": 26,
+        "unknown": 4781,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 34,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 384,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 6,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 398,
+        "attainable_recall_all_target_edges": 0.01485148514851485,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.007425742574257425,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 2000,
+      "sample_index": 0,
+      "patch_index": 0,
+      "targets": 6,
+      "trusted_matches": 6,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 0.7521425761962851,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.06053358316421509,
+      "confidence": {
+        "roc_auc": 0.8586956521739131,
+        "average_precision": 0.08304118873351073,
+        "positive_fraction": 0.01171875,
+        "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+        "matched_probability_quantiles": [
+          0.09964065148148599,
+          0.10502652740761124,
+          0.12567422394027253,
+          0.1728251484693036,
+          0.24158625580175067
+        ],
+        "unassigned_probability_quantiles": [
+          0.04578315715149586,
+          0.06529068341787872,
+          0.0798247874127049,
+          0.10184211400809313,
+          0.3067494180521013
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.08664259927797834,
+        "weighted_constant_minimum_ce": 0.294700421073933,
+        "actual_weighted_ce": 0.25842893466167544
+      },
+      "assignment_changes_since_previous_snapshot": 6,
+      "connectivity_supervision": {
+        "positive": 3,
+        "negative": 0,
+        "unknown": 27143,
+        "targets": 6,
+        "assigned": 6,
+        "trusted_matches": 6,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 5,
+        "edges_with_trusted_endpoints": 5,
+        "missing_candidate_positive_edges": 2,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.6,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            1,
+            5
+          ],
+          "query_edge": [
+            92,
+            291
+          ],
+          "predicted_length": 8.881549732802375,
+          "target_chord_length": 7.508237838745117,
+          "endpoint_neighbor_ranks_excluding_self": [
+            55,
+            20
+          ]
+        },
+        {
+          "target_edge": [
+            2,
+            3
+          ],
+          "query_edge": [
+            209,
+            404
+          ],
+          "predicted_length": 8.148335974992705,
+          "target_chord_length": 7.4629034996032715,
+          "endpoint_neighbor_ranks_excluding_self": [
+            80,
+            118
+          ]
+        }
+      ]
+    },
+    {
+      "step": 2000,
+      "sample_index": 0,
+      "patch_index": 1,
+      "targets": 12,
+      "trusted_matches": 12,
+      "accepted_assigned": 11,
+      "accepted_unassigned": 97,
+      "matched_distance_mean": 1.0739030174268696,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 1.0,
+      "radius_mae": 0.5053161382675171,
+      "confidence": {
+        "roc_auc": 0.893,
+        "average_precision": 0.1582988024469104,
+        "positive_fraction": 0.0234375,
+        "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+        "matched_probability_quantiles": [
+          0.48240271142026375,
+          0.5233300588191312,
+          0.5437251056051013,
+          0.5768187064833599,
+          0.6894246646434914
+        ],
+        "unassigned_probability_quantiles": [
+          0.06472029736665118,
+          0.23082524043681296,
+          0.3219420889536313,
+          0.46558279762810856,
+          0.7210242213482412
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.1610738255033557,
+        "weighted_constant_minimum_ce": 0.44144624493110796,
+        "actual_weighted_ce": 0.4741753008847269
+      },
+      "assignment_changes_since_previous_snapshot": 11,
+      "connectivity_supervision": {
+        "positive": 9,
+        "negative": 0,
+        "unknown": 5526,
+        "targets": 12,
+        "assigned": 12,
+        "trusted_matches": 12,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 10,
+        "edges_with_trusted_endpoints": 10,
+        "missing_candidate_positive_edges": 1,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.9,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.8,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            2,
+            3
+          ],
+          "query_edge": [
+            270,
+            313
+          ],
+          "predicted_length": 8.219877874622002,
+          "target_chord_length": 7.706730365753174,
+          "endpoint_neighbor_ranks_excluding_self": [
+            17,
+            27
+          ]
+        }
+      ]
+    },
+    {
+      "step": 2000,
+      "sample_index": 92,
+      "patch_index": 4,
+      "targets": 16,
+      "trusted_matches": 16,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 0.8374945194420553,
+      "trusted_junctions": 2,
+      "junctions": 2,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.6153305768966675,
+      "confidence": {
+        "roc_auc": 0.7550403225806451,
+        "average_precision": 0.25095928286750724,
+        "positive_fraction": 0.03125,
+        "oracle_known_target_count_top_k_recall": 0.25,
+        "matched_probability_quantiles": [
+          0.09599976695314762,
+          0.1644461305248755,
+          0.2303696971119513,
+          0.27013227911882043,
+          0.3881650404110974
+        ],
+        "unassigned_probability_quantiles": [
+          0.056746162995757805,
+          0.11708362012629026,
+          0.15290063250526204,
+          0.19185689426478125,
+          0.34922535139062316
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.20512820512820512,
+        "weighted_constant_minimum_ce": 0.5074299622199485,
+        "actual_weighted_ce": 0.45576302410784447
+      },
+      "assignment_changes_since_previous_snapshot": 14,
+      "connectivity_supervision": {
+        "positive": 14,
+        "negative": 8,
+        "unknown": 20567,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 16,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 15,
+        "missing_candidate_positive_edges": 1,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.9333333333333333,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            7,
+            8
+          ],
+          "query_edge": [
+            263,
+            462
+          ],
+          "predicted_length": 9.089273815216888,
+          "target_chord_length": 7.961609840393066,
+          "endpoint_neighbor_ranks_excluding_self": [
+            62,
+            126
+          ]
+        }
+      ]
+    },
+    {
+      "step": 2000,
+      "sample_index": 86,
+      "patch_index": 3,
+      "targets": 418,
+      "trusted_matches": 305,
+      "accepted_assigned": 316,
+      "accepted_unassigned": 66,
+      "matched_distance_mean": 1.8241646533839562,
+      "trusted_junctions": 52,
+      "junctions": 77,
+      "accepted_curve_support_6": 0.7601091173832012,
+      "radius_mae": 2.3733890056610107,
+      "confidence": {
+        "roc_auc": 0.49694594319454344,
+        "average_precision": 0.8206144995327639,
+        "positive_fraction": 0.81640625,
+        "oracle_known_target_count_top_k_recall": 0.8325358851674641,
+        "matched_probability_quantiles": [
+          0.19196044708614576,
+          0.5038495914974225,
+          0.6944554394512101,
+          0.8637668324420984,
+          0.9850754483521108
+        ],
+        "unassigned_probability_quantiles": [
+          0.17023100275036793,
+          0.46083329248768934,
+          0.7067301927001624,
+          0.8812180097922835,
+          0.9718237705403684
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.9726585223967423,
+        "weighted_constant_minimum_ce": 0.12537580395514555,
+        "actual_weighted_ce": 0.4743730470571647
+      },
+      "assignment_changes_since_previous_snapshot": 252,
+      "connectivity_supervision": {
+        "positive": 226,
+        "negative": 1561,
+        "unknown": 3084,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 305,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 113,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 226,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 178,
+        "attainable_recall_all_target_edges": 0.5594059405940595,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.38613861386138615,
+      "missing_candidate_edges_with_trusted_endpoints": []
+    },
+    {
+      "step": 4000,
+      "sample_index": 0,
+      "patch_index": 0,
+      "targets": 6,
+      "trusted_matches": 6,
+      "accepted_assigned": 0,
+      "accepted_unassigned": 0,
+      "matched_distance_mean": 0.6683933992140093,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 0.0,
+      "radius_mae": 0.07391795516014099,
+      "confidence": {
+        "roc_auc": 0.6350461133069829,
+        "average_precision": 0.029045821153644,
+        "positive_fraction": 0.01171875,
+        "oracle_known_target_count_top_k_recall": 0.0,
+        "matched_probability_quantiles": [
+          0.04249302844298031,
+          0.04516478910451177,
+          0.06829175236838697,
+          0.11687308344649396,
+          0.2511651745492442
+        ],
+        "unassigned_probability_quantiles": [
+          0.010910771207099922,
+          0.03300719043068971,
+          0.053437398784278584,
+          0.09009991873415765,
+          0.44537054013261135
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.08664259927797834,
+        "weighted_constant_minimum_ce": 0.294700421073933,
+        "actual_weighted_ce": 0.29097536513913985
+      },
+      "assignment_changes_since_previous_snapshot": 6,
+      "connectivity_supervision": {
+        "positive": 4,
+        "negative": 0,
+        "unknown": 31994,
+        "targets": 6,
+        "assigned": 6,
+        "trusted_matches": 6,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 5,
+        "edges_with_trusted_endpoints": 5,
+        "missing_candidate_positive_edges": 1,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.8,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.0,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            1,
+            5
+          ],
+          "query_edge": [
+            437,
+            331
+          ],
+          "predicted_length": 8.045744887586286,
+          "target_chord_length": 7.508237838745117,
+          "endpoint_neighbor_ranks_excluding_self": [
+            131,
+            63
+          ]
+        }
+      ],
+      "unassigned_queries_within_2_of_clipped_reference": 169,
+      "unassigned_queries_within_6_of_clipped_reference": 407,
+      "unassigned_queries": 506,
+      "poorly_placed_targets_near_input_within_6": 0,
+      "poorly_placed_targets": 0,
+      "floored_target_radius_range": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "step": 4000,
+      "sample_index": 0,
+      "patch_index": 1,
+      "targets": 12,
+      "trusted_matches": 12,
+      "accepted_assigned": 8,
+      "accepted_unassigned": 25,
+      "matched_distance_mean": 0.8680096627749574,
+      "trusted_junctions": 0,
+      "junctions": 0,
+      "accepted_curve_support_6": 1.0,
+      "radius_mae": 0.3179640471935272,
+      "confidence": {
+        "roc_auc": 0.9598333333333333,
+        "average_precision": 0.2948476105297108,
+        "positive_fraction": 0.0234375,
+        "oracle_known_target_count_top_k_recall": 0.3333333333333333,
+        "matched_probability_quantiles": [
+          0.37085017638981643,
+          0.4764984094841762,
+          0.5462624208038316,
+          0.6664050807746819,
+          0.8346597896072113
+        ],
+        "unassigned_probability_quantiles": [
+          0.005972641808804382,
+          0.03902330365636218,
+          0.07970711999508631,
+          0.18249324341994994,
+          0.9040843705439494
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.1610738255033557,
+        "weighted_constant_minimum_ce": 0.44144624493110796,
+        "actual_weighted_ce": 0.2444079725950724
+      },
+      "assignment_changes_since_previous_snapshot": 9,
+      "connectivity_supervision": {
+        "positive": 9,
+        "negative": 3,
+        "unknown": 6403,
+        "targets": 12,
+        "assigned": 12,
+        "trusted_matches": 12,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 10,
+        "edges_with_trusted_endpoints": 10,
+        "missing_candidate_positive_edges": 1,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.9,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.5,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            9,
+            10
+          ],
+          "query_edge": [
+            370,
+            426
+          ],
+          "predicted_length": 8.963468890846437,
+          "target_chord_length": 7.393584251403809,
+          "endpoint_neighbor_ranks_excluding_self": [
+            19,
+            29
+          ]
+        }
+      ],
+      "unassigned_queries_within_2_of_clipped_reference": 19,
+      "unassigned_queries_within_6_of_clipped_reference": 49,
+      "unassigned_queries": 500,
+      "poorly_placed_targets_near_input_within_6": 0,
+      "poorly_placed_targets": 0,
+      "floored_target_radius_range": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "step": 4000,
+      "sample_index": 92,
+      "patch_index": 4,
+      "targets": 16,
+      "trusted_matches": 16,
+      "accepted_assigned": 6,
+      "accepted_unassigned": 17,
+      "matched_distance_mean": 0.7591607139921958,
+      "trusted_junctions": 2,
+      "junctions": 2,
+      "accepted_curve_support_6": 0.6204306308879936,
+      "radius_mae": 0.5723761320114136,
+      "confidence": {
+        "roc_auc": 0.8736139112903226,
+        "average_precision": 0.30918995218322826,
+        "positive_fraction": 0.03125,
+        "oracle_known_target_count_top_k_recall": 0.3125,
+        "matched_probability_quantiles": [
+          0.08648809197561587,
+          0.24676296278200066,
+          0.44962492809942833,
+          0.5765569591592941,
+          0.8392061880376401
+        ],
+        "unassigned_probability_quantiles": [
+          0.00504458357567442,
+          0.039216388588270056,
+          0.08932812659457666,
+          0.1731836515688378,
+          0.7828535865177132
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.20512820512820512,
+        "weighted_constant_minimum_ce": 0.5074299622199485,
+        "actual_weighted_ce": 0.3402843658023063
+      },
+      "assignment_changes_since_previous_snapshot": 13,
+      "connectivity_supervision": {
+        "positive": 13,
+        "negative": 11,
+        "unknown": 19475,
+        "targets": 16,
+        "assigned": 16,
+        "trusted_matches": 16,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 0,
+        "required_target_edges": 15,
+        "edges_with_trusted_endpoints": 15,
+        "missing_candidate_positive_edges": 2,
+        "unrepresented_target_edges": 0,
+        "attainable_recall_all_target_edges": 0.8666666666666667,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.26666666666666666,
+      "missing_candidate_edges_with_trusted_endpoints": [
+        {
+          "target_edge": [
+            8,
+            9
+          ],
+          "query_edge": [
+            231,
+            351
+          ],
+          "predicted_length": 8.64799882416024,
+          "target_chord_length": 7.929793834686279,
+          "endpoint_neighbor_ranks_excluding_self": [
+            62,
+            80
+          ]
+        },
+        {
+          "target_edge": [
+            14,
+            15
+          ],
+          "query_edge": [
+            381,
+            159
+          ],
+          "predicted_length": 8.237135351060806,
+          "target_chord_length": 7.274557113647461,
+          "endpoint_neighbor_ranks_excluding_self": [
+            58,
+            18
+          ]
+        }
+      ],
+      "unassigned_queries_within_2_of_clipped_reference": 58,
+      "unassigned_queries_within_6_of_clipped_reference": 222,
+      "unassigned_queries": 496,
+      "poorly_placed_targets_near_input_within_6": 0,
+      "poorly_placed_targets": 0,
+      "floored_target_radius_range": [
+        1.0,
+        3.062000036239624
+      ]
+    },
+    {
+      "step": 4000,
+      "sample_index": 86,
+      "patch_index": 3,
+      "targets": 418,
+      "trusted_matches": 384,
+      "accepted_assigned": 418,
+      "accepted_unassigned": 94,
+      "matched_distance_mean": 1.0976802871055735,
+      "trusted_junctions": 74,
+      "junctions": 77,
+      "accepted_curve_support_6": 0.9997760316852883,
+      "radius_mae": 1.7347469329833984,
+      "confidence": {
+        "roc_auc": 0.5139977603583427,
+        "average_precision": 0.8203399099662935,
+        "positive_fraction": 0.81640625,
+        "oracle_known_target_count_top_k_recall": 0.8301435406698564,
+        "matched_probability_quantiles": [
+          0.5356950016659683,
+          0.930123624246013,
+          0.9624393654837979,
+          0.9882997898365755,
+          0.9992131682404337
+        ],
+        "unassigned_probability_quantiles": [
+          0.7099853026043728,
+          0.9152874047356359,
+          0.9620695694344954,
+          0.9881691615242201,
+          0.9977513783802249
+        ],
+        "all_labels_separable_by_some_cutoff": false,
+        "weighted_constant_probability_optimum": 0.9726585223967423,
+        "weighted_constant_minimum_ce": 0.12537580395514555,
+        "actual_weighted_ce": 0.1497730133983245
+      },
+      "assignment_changes_since_previous_snapshot": 239,
+      "connectivity_supervision": {
+        "positive": 353,
+        "negative": 2387,
+        "unknown": 2137,
+        "targets": 418,
+        "assigned": 418,
+        "trusted_matches": 384,
+        "unmatched_targets": 0,
+        "poorly_placed_matches": 34,
+        "required_target_edges": 404,
+        "edges_with_trusted_endpoints": 353,
+        "missing_candidate_positive_edges": 0,
+        "unrepresented_target_edges": 51,
+        "attainable_recall_all_target_edges": 0.8737623762376238,
+        "trusted_match_tolerance": 2.0
+      },
+      "edge_ceiling_after_node_cutoff": 0.8737623762376238,
+      "missing_candidate_edges_with_trusted_endpoints": [],
+      "unassigned_queries_within_2_of_clipped_reference": 15,
+      "unassigned_queries_within_6_of_clipped_reference": 65,
+      "unassigned_queries": 94,
+      "poorly_placed_targets_near_input_within_6": 31,
+      "poorly_placed_targets": 34,
+      "floored_target_radius_range": [
+        1.0,
+        12.0
+      ]
+    }
+  ],
+  "caveats": [
+    "Final assignment labels are set labels, not independently verified foreground/background.",
+    "Top-k uses reference target count as a ranking oracle, never an inference rule.",
+    "Constant-score optimum is an algebraic loss baseline, not a fitted alternative model.",
+    "Assignment changes across sparse snapshots do not prove harmful churn within individual updates."
+  ]
+}

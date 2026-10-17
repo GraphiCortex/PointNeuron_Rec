@@ -1,5 +1,14 @@
 # PointNeuron 2.0 development
 
+**Completed fit, 17 October:** the [four-crop results](branched_query_results.md)
+verify successful 4,000-update execution and zero reload delta, but every
+learnability gate fails. Sparse crops place 6/6, 12/12 and 16/16 targets;
+confidence accepts 0/6, 8/12 and 6/16 with 0/25/17 extras. The dense crop has
+384/418 trusted matches, 74/77 junctions and accepts all 512 queries. Candidate
+availability is also below the gate. Stop at the cap; no GATv2 fit or extension.
+Class-normalized confidence and a candidate error margin are proposed for
+discussion; neither is implemented or launched.
+
 **Evaluation repair, 17 October:** the first four-crop fit failed at update 500
 on two empty JSON probe arrays in dense-crop scoring. The
 [repair report](branched_query_evaluation_repair.md) documents the cause and

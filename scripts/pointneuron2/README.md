@@ -6,7 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [500-update evaluation repair and restart](../../docs/pointneuron2/branched_query_evaluation_repair.md).
+Latest: [completed four-crop fit and research decision](../../docs/pointneuron2/branched_query_results.md).
+`review_branched_query_fit.py` checks cached predictions/checkpoints on CPU and
+reports geometry, confidence ranking/class-prior baselines, assignment changes
+and candidate-edge losses. No model forwards, optimizer updates, GPU work or
+threshold search. All four final learnability gates fail; no training extension
+or GATv2 fit is queued. Proposed objective/interface changes await discussion.
+
+Previous: [500-update evaluation repair and restart](../../docs/pointneuron2/branched_query_evaluation_repair.md).
 The four-crop runner restores empty probe array dimensions, saves complete
 checkpoints before evaluation and writes full Python tracebacks. The launcher
 preserves full native stderr and now defaults to `branched_query_restart_20261017`.
