@@ -1,11 +1,18 @@
 # PointNeuron 2.0 development
 
+**Prepared, 18 October:** [hard-negative comparison and CPU checks](hard_negative_query_ready.md).
+The agreed 50/25/25 objective is isolated from the completed fits. Twenty-eight
+targeted tests pass; the exact-cache/fresh-model CPU check is reviewed in the
+linked evidence. GPU timing/training remain separate user-launched actions and
+have not started. Same four crops, seed, architecture, optimizer, original gates
+and 4,000-update cap; no development/test evaluation or automatic GATv2 fit.
+
 **Design discussion, 18 October:** [hard-negative objective proposal](hard_negative_objective_proposal.md)
 specifies one candidate loss: retain half the negative mass on all unmatched
 queries and put half on the highest-scoring subset, K=min(P,N). Saved-score
 algebra confirms the intended sparse-crop emphasis and exact dense-crop equality.
-This is a discussion specification; no training loss or runner is implemented,
-and no new fit is prepared or launched.
+The subsequently agreed implementation and preparation are linked above.
+No new GPU fit has started.
 
 **Completed comparison, 18 October:** [balanced confidence results](balanced_query_results.md).
 The paired 4,000-update fit improves ranking on all four training crops. Smaller

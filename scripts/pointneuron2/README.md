@@ -6,11 +6,19 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Discussion: [hard-negative objective specification](../../docs/pointneuron2/hard_negative_objective_proposal.md).
+Prepared: [hard-negative confidence comparison](../../docs/pointneuron2/hard_negative_query_ready.md).
+`run_hard_negative_query.ps1` separates prepare/check/timing/train/resume through
+`hard_negative_query_experiment.py`. The new loss changes only confidence
+redistribution, keeping all geometry, matching and primary candidate gates.
+Twenty-eight targeted tests pass. Exact-cache CPU checks and fresh initialization
+are recorded in the linked report; GPU timing and the capped fit are user-launched.
+No trained comparison checkpoint or GPU workload has been created.
+
+Design: [hard-negative objective specification](../../docs/pointneuron2/hard_negative_objective_proposal.md).
 `audit_hard_negative_objective.py` computes proposed CE and analytic score-margin
 derivatives on saved final predictions, without forwards, backpropagation or
 updates. It is an algebraic check, not an implemented training loss or evidence
-of better predictions. No new fit is prepared.
+of better predictions. The subsequently agreed comparison is prepared above.
 
 Latest result: [completed matched confidence comparison](../../docs/pointneuron2/balanced_query_results.md).
 `review_balanced_query_fit.py` checks both fits' saved predictions/checkpoints on
