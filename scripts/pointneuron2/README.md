@@ -6,7 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [completed matched confidence comparison](../../docs/pointneuron2/balanced_query_results.md).
+Discussion: [hard-negative objective specification](../../docs/pointneuron2/hard_negative_objective_proposal.md).
+`audit_hard_negative_objective.py` computes proposed CE and analytic score-margin
+derivatives on saved final predictions, without forwards, backpropagation or
+updates. It is an algebraic check, not an implemented training loss or evidence
+of better predictions. No new fit is prepared.
+
+Latest result: [completed matched confidence comparison](../../docs/pointneuron2/balanced_query_results.md).
 `review_balanced_query_fit.py` checks both fits' saved predictions/checkpoints on
 CPU, including initialization/cache/backend identity, independent distances,
 class losses, candidate labels, curve support and original gates. It makes no

@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Design discussion, 18 October:** [hard-negative objective proposal](hard_negative_objective_proposal.md)
+specifies one candidate loss: retain half the negative mass on all unmatched
+queries and put half on the highest-scoring subset, K=min(P,N). Saved-score
+algebra confirms the intended sparse-crop emphasis and exact dense-crop equality.
+This is a discussion specification; no training loss or runner is implemented,
+and no new fit is prepared or launched.
+
 **Completed comparison, 18 October:** [balanced confidence results](balanced_query_results.md).
 The paired 4,000-update fit improves ranking on all four training crops. Smaller
 crops accept all assigned targets but retain 11/32/17 extras; the dense crop
