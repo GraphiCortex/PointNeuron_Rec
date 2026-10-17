@@ -6,7 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [real upstream connectivity audit](../../docs/pointneuron2/upstream_connectivity_results.md).
+Ready: [four-crop branched proposal fit](../../docs/pointneuron2/branched_query_ready.md).
+`run_branched_query.ps1` exposes separate prepare/check/timing/train/resume
+actions through `branched_query_experiment.py`. Exact clouds and CPU checks
+are complete; GPU timing and the capped 4,000-update fit remain user-launched.
+Phase 1 stays fixed. Full optimizer/RNG state is saved; explicit resume cannot
+extend the original budget. This is proposal learnability, not reconstruction.
+
+Previous: [real upstream connectivity audit](../../docs/pointneuron2/upstream_connectivity_results.md).
 `audit_upstream_connectivity.py` performs four training-crop CPU forwards with
 pinned source weights and image-only clouds, then measures trusted node/edge
 availability. No optimizer/GATv2/GPU workload is created. Both branched cases
