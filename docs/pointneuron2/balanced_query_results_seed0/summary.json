@@ -1,0 +1,3401 @@
+{
+  "schema": "pointneuron2-balanced-query-paired-review-v1",
+  "status": "completed",
+  "scope": "saved TRAINING predictions; CPU only; zero model forwards/optimizer updates; no cutoff search or dev/test evaluation",
+  "review_script_sha256": "7a9a21af8227888bf2d2bf58969f4ce8cf36be786478e616056f9fdd17531131",
+  "paired_initialization_cache_backend_recipe_checks_passed": true,
+  "baseline": {
+    "fit_report_sha256": "3e023316978632587f7b9d0b2798cbb6964aa0dacb1ce158e2c04647bb667def",
+    "elapsed_seconds": 1083.0242480999987,
+    "checkpoint_reload_max_delta_reported_by_fit": 0.0,
+    "source_cache_snapshot_checks_passed": true,
+    "independent_metrics_checks_passed": true,
+    "prediction_files_sha256": {
+      "step_0000_crop_0.npz": "9645c0a191ea5b9c3bf60f7708ba81cd1a3c69b94ec1945da2d3806d73292064",
+      "step_0000_crop_1.npz": "969057b34db5b773713d8c4d12ca56e173fe8f4280cf46a77699fbe0df66f729",
+      "step_0000_crop_2.npz": "ed350325a73b7a0797e5d94377bddb46086c3f251d2b32df4607edfa1242407b",
+      "step_0000_crop_3.npz": "7cc297f6fc36e78fb34d4711d0ea3e906e137220c7c30492143d5f0ad825f712",
+      "step_0500_crop_0.npz": "ce50b9c9e0f4e783f63a8d84db40e682d9b5443a2145560b50386d8fd8fbbf0d",
+      "step_0500_crop_1.npz": "52c0b9be8b68a6301a604b2f682252b8ca53b36d27b29b6da8b7f242c9cfafe0",
+      "step_0500_crop_2.npz": "e5ded79c48ff978a4ad34c98c51b8402c6cb3a87cc0f028eb0a3719fc75d4bea",
+      "step_0500_crop_3.npz": "a0d351e1e6e2616f3fed60c65fed9ccb3d186e753bea398288cd362915fce84c",
+      "step_1000_crop_0.npz": "67654dda990d8bff34cf270f2a2afd66617dfcf2c78a2bcbcba08016342a71d7",
+      "step_1000_crop_1.npz": "ce602b8a2a639d9ea1d29902c8f238453079d78fa2640fd94daa906366c2fe1c",
+      "step_1000_crop_2.npz": "159d2d475442283c774e523802fa6d2872482c472e471d16dbea13e5b6699c5d",
+      "step_1000_crop_3.npz": "306a7a544aac27c79a9c4cfb48791ecd89ab3442a045e72a9be30cb6f162d288",
+      "step_2000_crop_0.npz": "05094e7d01d9caa8603aed7eba4c27695b411198e8c34115eebc49a6f73eccf8",
+      "step_2000_crop_1.npz": "154bb73c8c4c7c87ed277e40a6debc7ff6f6c577a308299a6ea44ffa3d2d19da",
+      "step_2000_crop_2.npz": "8b28e82494b30bfab66a9e0c36ed234bcac3e39148d06ad4d0665b3a96f05b83",
+      "step_2000_crop_3.npz": "b3b43ae7d6a10218ef60adb13171cf44e8f9da46d4e4a438bdb650569e7827a2",
+      "step_4000_crop_0.npz": "69af66234da5e04d63d7e6e488f4c6f09f5d24b50fe2f405e4753e03b0b69252",
+      "step_4000_crop_1.npz": "fb0053f87ae0932c303f751529bd205e45149694f02d91ec5b7e5c8b7e17a8a9",
+      "step_4000_crop_2.npz": "80fd37934868f998080b3050c3ce6afdfa47c0914f70dfaded334fdc0e1e2be4",
+      "step_4000_crop_3.npz": "c35a56f136c729f01374be9898f1374c0ad115e4b941449602dd856efddafa51"
+    },
+    "checkpoints": [
+      {
+        "step": 0,
+        "sha256": "99107e77cdc81b8a2e9cf5e9090b68d6e18e114824e143957a8a2e79f61e1fff",
+        "resumable": true,
+        "optimizer_parameter_states": 0,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 500,
+        "sha256": "a68e2c7769ac8cbf19ec7923e643636baf41ef7b63551f280d5ca81f2cb84026",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 1000,
+        "sha256": "7047208a605f78dc8cc1da9bbb62b9f3c646bbbebdeb37728a57c9663f7eb4f1",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 2000,
+        "sha256": "a54406b3207f0fe638968cdecfb0b69eff0ab9b6e7163f90449667c0ec56b3a7",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 4000,
+        "sha256": "90d685bd14ba4cf128c7cf5e229103b81abc708bb035385bacfbf1f2fdd4ecef",
+        "resumable": false,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      }
+    ],
+    "rows": [
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 62.720065555478136,
+        "matched_distance_max": 74.97685134963645,
+        "radius_mae_floored_target": 0.008453965187072754,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5184453227931489,
+          "average_precision": 0.014105311572312752,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.26921708251749876,
+            0.27013392263984193,
+            0.27096491629111263,
+            0.2718325319267737,
+            0.2721377303637571
+          ],
+          "unassigned_probability_quantiles": [
+            0.2665507169885435,
+            0.2697404554230851,
+            0.2707432394624289,
+            0.2719154739080226,
+            0.2759362202829464
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.4016125186396772
+        },
+        "balanced_reference_ce": 0.8109544210269479,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 42.740978136071185,
+        "matched_distance_max": 57.58266566147132,
+        "radius_mae_floored_target": 0.005545462016016245,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.46166666666666667,
+          "average_precision": 0.024980501718118032,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.2680315915301718,
+            0.2696395375003935,
+            0.27060126732111084,
+            0.2721169122410683,
+            0.27324129103063255
+          ],
+          "unassigned_probability_quantiles": [
+            0.266521457846619,
+            0.26985214407534097,
+            0.270871881568493,
+            0.2720132215104209,
+            0.276369539373852
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.4755795419177632
+        },
+        "balanced_reference_ce": 0.8113956918448962,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 44.31731899897221,
+        "matched_distance_max": 60.21903432985002,
+        "radius_mae_floored_target": 0.6293798089027405,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5871975806451613,
+          "average_precision": 0.04487927002666095,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.0625,
+          "matched_probability_quantiles": [
+            0.26807856258514046,
+            0.2703751089592611,
+            0.2719083454413122,
+            0.272443661435015,
+            0.27388421980084804
+          ],
+          "unassigned_probability_quantiles": [
+            0.26670330314903,
+            0.27005915014009696,
+            0.2709821871848367,
+            0.27212469487572677,
+            0.27632962007743933
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.5188201733595569
+        },
+        "balanced_reference_ce": 0.8101024823769473,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 41.76334540705687,
+        "matched_distance_max": 73.90034516552875,
+        "radius_mae_floored_target": 3.089439630508423,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5715412806678204,
+          "average_precision": 0.858061592474283,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8301435406698564,
+          "matched_probability_quantiles": [
+            0.26637666045005665,
+            0.26990594532908563,
+            0.27090411141423926,
+            0.2720909381619846,
+            0.2761704789691107
+          ],
+          "unassigned_probability_quantiles": [
+            0.2674272695584458,
+            0.2696543002401456,
+            0.270647417156581,
+            0.2714287488726347,
+            0.2746058993370251
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 1.2786887969268523
+        },
+        "balanced_reference_ce": 0.8106408354638094,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 1.435253508924392,
+        "matched_distance_max": 1.9145661076695002,
+        "radius_mae_floored_target": 0.061603009700775146,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.1320816864295125,
+          "average_precision": 0.007474755773718615,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.10195636569387602,
+            0.10290627066958993,
+            0.1087065118164027,
+            0.12170259553801749,
+            0.13724862023475684
+          ],
+          "unassigned_probability_quantiles": [
+            0.09815286935184846,
+            0.12496562497493896,
+            0.1478742448280309,
+            0.1779114840489256,
+            0.2688680492769781
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.343015151127281
+        },
+        "balanced_reference_ce": 1.173648697145295,
+        "assignment_changes_since_previous_snapshot": 6,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 17034,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 17029,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 31748,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 31743,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 4,
+        "accepted_unassigned": 80,
+        "accepted_trusted_assigned": 4,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.6008432125018066,
+        "matched_distance_mean": 1.1506190715514446,
+        "matched_distance_max": 2.1584256765980605,
+        "radius_mae_floored_target": 0.6365603804588318,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 11,
+        "confidence": {
+          "roc_auc": 0.7013333333333334,
+          "average_precision": 0.04436252174435478,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.36873573493130174,
+            0.3785512380262577,
+            0.4715338461332368,
+            0.5136739931822144,
+            0.5460026192991517
+          ],
+          "unassigned_probability_quantiles": [
+            0.16284178787730136,
+            0.3036614831881048,
+            0.3859202926348357,
+            0.45668422674613707,
+            0.652187362723518
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.5503785876456672
+        },
+        "balanced_reference_ce": 0.6505504794404603,
+        "assignment_changes_since_previous_snapshot": 12,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4925,
+            "positive": 7,
+            "negative": 0,
+            "unknown": 4918,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.7,
+            "edges_after_cutoff": 2,
+            "edge_ceiling_after_cutoff": 0.2
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 6635,
+            "positive": 9,
+            "negative": 2,
+            "unknown": 6624,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.9,
+            "edges_after_cutoff": 3,
+            "edge_ceiling_after_cutoff": 0.3
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 0.7817324820380152,
+        "matched_distance_max": 1.5121351761158968,
+        "radius_mae_floored_target": 0.6137884259223938,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.5589717741935484,
+          "average_precision": 0.03484591750269772,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.16919881089537595,
+            0.20886537124034613,
+            0.2319808632286293,
+            0.2413065283571791,
+            0.2693339186430082
+          ],
+          "unassigned_probability_quantiles": [
+            0.11924178407459175,
+            0.18121364473719734,
+            0.21564465971915095,
+            0.2507319546227264,
+            0.3543255518466177
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.5052351504188177
+        },
+        "balanced_reference_ce": 0.8737105481594261,
+        "assignment_changes_since_previous_snapshot": 16,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 7922,
+            "positive": 10,
+            "negative": 7,
+            "unknown": 7905,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.6666666666666666,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18128,
+            "positive": 15,
+            "negative": 23,
+            "unknown": 18090,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 228,
+        "accepted_unassigned": 47,
+        "accepted_trusted_assigned": 39,
+        "trusted_visible_junctions": 19,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.4764104181734671,
+        "matched_distance_mean": 4.81215434537272,
+        "matched_distance_max": 34.808381822317976,
+        "radius_mae_floored_target": 2.5301077365875244,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 86,
+        "confidence": {
+          "roc_auc": 0.5106382978723404,
+          "average_precision": 0.8159724409635565,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8157894736842105,
+          "matched_probability_quantiles": [
+            0.21398878656846923,
+            0.38421303021506253,
+            0.5208199261913281,
+            0.639263915076547,
+            0.7698989204271492
+          ],
+          "unassigned_probability_quantiles": [
+            0.23600049810999604,
+            0.3623012763087105,
+            0.5037759731793423,
+            0.6335364972218445,
+            0.762527350814719
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.7141610799714803
+        },
+        "balanced_reference_ce": 0.7390368263926703,
+        "assignment_changes_since_previous_snapshot": 412,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4793,
+            "positive": 25,
+            "negative": 156,
+            "unknown": 4612,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.06188118811881188,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.019801980198019802
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4807,
+            "positive": 25,
+            "negative": 156,
+            "unknown": 4626,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.06188118811881188,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.019801980198019802
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 1.2361300961558417,
+        "matched_distance_max": 1.6457940381214844,
+        "radius_mae_floored_target": 0.047886211425065994,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.3000658761528327,
+          "average_precision": 0.009172125250060108,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.10583361626540987,
+            0.11887997059257603,
+            0.12338856627762579,
+            0.12856967857423404,
+            0.1359203984503353
+          ],
+          "unassigned_probability_quantiles": [
+            0.08475364774183615,
+            0.12090029989933036,
+            0.13460651086201297,
+            0.15693575825063993,
+            0.2534842620392127
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.3214701350853448
+        },
+        "balanced_reference_ce": 1.1268649643929292,
+        "assignment_changes_since_previous_snapshot": 5,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 15722,
+            "positive": 4,
+            "negative": 0,
+            "unknown": 15718,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 29597,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 29592,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 1,
+        "accepted_unassigned": 12,
+        "accepted_trusted_assigned": 1,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.34797200583578247,
+        "matched_distance_mean": 1.6726532433343244,
+        "matched_distance_max": 2.556215946033362,
+        "radius_mae_floored_target": 0.49778690934181213,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 7,
+        "confidence": {
+          "roc_auc": 0.869,
+          "average_precision": 0.10201284854829412,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.08333333333333333,
+          "matched_probability_quantiles": [
+            0.3933865405672656,
+            0.4179988983241981,
+            0.4572981315144603,
+            0.4718081933039457,
+            0.5077077749432338
+          ],
+          "unassigned_probability_quantiles": [
+            0.12307505438153091,
+            0.26244981176610893,
+            0.3241898020391013,
+            0.4009276748708164,
+            0.6306917786455716
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.4779924300849111
+        },
+        "balanced_reference_ce": 0.6095091376207605,
+        "assignment_changes_since_previous_snapshot": 12,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 6050,
+            "positive": 4,
+            "negative": 1,
+            "unknown": 6045,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.4,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 13328,
+            "positive": 4,
+            "negative": 2,
+            "unknown": 13322,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.4,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 0.95780865733079,
+        "matched_distance_max": 2.253711725853679,
+        "radius_mae_floored_target": 0.6077585816383362,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 15,
+        "confidence": {
+          "roc_auc": 0.7329889112903226,
+          "average_precision": 0.11502936002791755,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.125,
+          "matched_probability_quantiles": [
+            0.1350025905881757,
+            0.1897067996794508,
+            0.21294252310497924,
+            0.22697390686306665,
+            0.24382504882529424
+          ],
+          "unassigned_probability_quantiles": [
+            0.09661315384010406,
+            0.14728781524397513,
+            0.17069432359615888,
+            0.19855023001618338,
+            0.28996527052376486
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.4828245329654548
+        },
+        "balanced_reference_ce": 0.9026671585431846,
+        "assignment_changes_since_previous_snapshot": 15,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 19357,
+            "positive": 12,
+            "negative": 8,
+            "unknown": 19337,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 42748,
+            "positive": 14,
+            "negative": 23,
+            "unknown": 42711,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.9333333333333333,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 221,
+        "accepted_unassigned": 55,
+        "accepted_trusted_assigned": 17,
+        "trusted_visible_junctions": 8,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.47113104548058105,
+        "matched_distance_mean": 4.885278052519799,
+        "matched_distance_max": 25.98285761616706,
+        "radius_mae_floored_target": 2.560380220413208,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 34,
+        "confidence": {
+          "roc_auc": 0.5057772574569886,
+          "average_precision": 0.827598267108872,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8229665071770335,
+          "matched_probability_quantiles": [
+            0.1943080000520543,
+            0.3776449257387473,
+            0.5285213065866823,
+            0.7033758838043193,
+            0.83897494616835
+          ],
+          "unassigned_probability_quantiles": [
+            0.1905572228765338,
+            0.35666204924243117,
+            0.5682051910857875,
+            0.6987643244860933,
+            0.8191658665271023
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.6976882226573095
+        },
+        "balanced_reference_ce": 0.7686179412916914,
+        "assignment_changes_since_previous_snapshot": 297,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4813,
+            "positive": 6,
+            "negative": 26,
+            "unknown": 4781,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.01485148514851485,
+            "edges_after_cutoff": 3,
+            "edge_ceiling_after_cutoff": 0.007425742574257425
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4816,
+            "positive": 6,
+            "negative": 26,
+            "unknown": 4784,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.01485148514851485,
+            "edges_after_cutoff": 3,
+            "edge_ceiling_after_cutoff": 0.007425742574257425
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 0.7521425761962851,
+        "matched_distance_max": 1.590109135251397,
+        "radius_mae_floored_target": 0.06053358316421509,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.8586956521739131,
+          "average_precision": 0.08304118873351073,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+          "matched_probability_quantiles": [
+            0.09964065148148599,
+            0.10502652740761124,
+            0.12567422394027253,
+            0.1728251484693036,
+            0.24158625580175067
+          ],
+          "unassigned_probability_quantiles": [
+            0.04578315715149586,
+            0.06529068341787872,
+            0.0798247874127049,
+            0.10184211400809313,
+            0.3067494180521013
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.25842893466167544
+        },
+        "balanced_reference_ce": 1.0357121990256508,
+        "assignment_changes_since_previous_snapshot": 6,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 27146,
+            "positive": 3,
+            "negative": 0,
+            "unknown": 27143,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.6,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 48811,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 48806,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 11,
+        "accepted_unassigned": 97,
+        "accepted_trusted_assigned": 11,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 1.0739030174268696,
+        "matched_distance_max": 1.6555573648240638,
+        "radius_mae_floored_target": 0.5053161382675171,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 12,
+        "confidence": {
+          "roc_auc": 0.893,
+          "average_precision": 0.1582988024469104,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+          "matched_probability_quantiles": [
+            0.48240271142026375,
+            0.5233300588191312,
+            0.5437251056051013,
+            0.5768187064833599,
+            0.6894246646434914
+          ],
+          "unassigned_probability_quantiles": [
+            0.06472029736665118,
+            0.23082524043681296,
+            0.3219420889536313,
+            0.46558279762810856,
+            0.7210242213482412
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.4741753008847269
+        },
+        "balanced_reference_ce": 0.5197852975652648,
+        "assignment_changes_since_previous_snapshot": 11,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 5535,
+            "positive": 9,
+            "negative": 0,
+            "unknown": 5526,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.9,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.8
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 11297,
+            "positive": 10,
+            "negative": 2,
+            "unknown": 11285,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 9,
+            "edge_ceiling_after_cutoff": 0.9
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 0.8374945194420553,
+        "matched_distance_max": 1.5246053500402426,
+        "radius_mae_floored_target": 0.6153305768966675,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.7550403225806451,
+          "average_precision": 0.25095928286750724,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.25,
+          "matched_probability_quantiles": [
+            0.09599976695314762,
+            0.1644461305248755,
+            0.2303696971119513,
+            0.27013227911882043,
+            0.3881650404110974
+          ],
+          "unassigned_probability_quantiles": [
+            0.056746162995757805,
+            0.11708362012629026,
+            0.15290063250526204,
+            0.19185689426478125,
+            0.34922535139062316
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.45576302410784447
+        },
+        "balanced_reference_ce": 0.8575252010125161,
+        "assignment_changes_since_previous_snapshot": 14,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 20589,
+            "positive": 14,
+            "negative": 8,
+            "unknown": 20567,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.9333333333333333,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 46617,
+            "positive": 15,
+            "negative": 23,
+            "unknown": 46579,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 316,
+        "accepted_unassigned": 66,
+        "accepted_trusted_assigned": 226,
+        "trusted_visible_junctions": 52,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.7601091173832012,
+        "matched_distance_mean": 1.8241646533839562,
+        "matched_distance_max": 13.425878036521887,
+        "radius_mae_floored_target": 2.3733890056610107,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 305,
+        "confidence": {
+          "roc_auc": 0.49694594319454344,
+          "average_precision": 0.8206144995327639,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8325358851674641,
+          "matched_probability_quantiles": [
+            0.19196044708614576,
+            0.5038495914974225,
+            0.6944554394512101,
+            0.8637668324420984,
+            0.9850754483521108
+          ],
+          "unassigned_probability_quantiles": [
+            0.17023100275036793,
+            0.46083329248768934,
+            0.7067301927001624,
+            0.8812180097922835,
+            0.9718237705403684
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.4743730470571647
+        },
+        "balanced_reference_ce": 0.9324788465946676,
+        "assignment_changes_since_previous_snapshot": 252,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4871,
+            "positive": 226,
+            "negative": 1561,
+            "unknown": 3084,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.5594059405940595,
+            "edges_after_cutoff": 156,
+            "edge_ceiling_after_cutoff": 0.38613861386138615
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4871,
+            "positive": 226,
+            "negative": 1561,
+            "unknown": 3084,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.5594059405940595,
+            "edges_after_cutoff": 156,
+            "edge_ceiling_after_cutoff": 0.38613861386138615
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 0.6683933992140093,
+        "matched_distance_max": 1.0074455882869882,
+        "radius_mae_floored_target": 0.07391795516014099,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.6350461133069829,
+          "average_precision": 0.029045821153644,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.04249302844298031,
+            0.04516478910451177,
+            0.06829175236838697,
+            0.11687308344649396,
+            0.2511651745492442
+          ],
+          "unassigned_probability_quantiles": [
+            0.010910771207099922,
+            0.03300719043068971,
+            0.053437398784278584,
+            0.09009991873415765,
+            0.44537054013261135
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.29097536513913985
+        },
+        "balanced_reference_ce": 1.305887327927303,
+        "assignment_changes_since_previous_snapshot": 6,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 31998,
+            "positive": 4,
+            "negative": 0,
+            "unknown": 31994,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 55934,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 55929,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 0,
+          "within_2_of_reference_curve": 0,
+          "within_6_of_reference_curve": 0,
+          "within_2_of_a_set_target": 0,
+          "within_4_of_a_set_target": 0
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 8,
+        "accepted_unassigned": 25,
+        "accepted_trusted_assigned": 8,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.8680096627749574,
+        "matched_distance_max": 1.7324161110297471,
+        "radius_mae_floored_target": 0.3179640471935272,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 12,
+        "confidence": {
+          "roc_auc": 0.9598333333333333,
+          "average_precision": 0.2948476105297108,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.3333333333333333,
+          "matched_probability_quantiles": [
+            0.37085017638981643,
+            0.4764984094841762,
+            0.5462624208038316,
+            0.6664050807746819,
+            0.8346597896072113
+          ],
+          "unassigned_probability_quantiles": [
+            0.005972641808804382,
+            0.03902330365636218,
+            0.07970711999508631,
+            0.18249324341994994,
+            0.9040843705439494
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.2444079725950724
+        },
+        "balanced_reference_ce": 0.3793200414783775,
+        "assignment_changes_since_previous_snapshot": 9,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 6415,
+            "positive": 9,
+            "negative": 3,
+            "unknown": 6403,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.9,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 0.5
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 14658,
+            "positive": 10,
+            "negative": 4,
+            "unknown": 14644,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 0.5
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 25,
+          "within_2_of_reference_curve": 9,
+          "within_6_of_reference_curve": 18,
+          "within_2_of_a_set_target": 7,
+          "within_4_of_a_set_target": 12
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 6,
+        "accepted_unassigned": 17,
+        "accepted_trusted_assigned": 6,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.6204306308879936,
+        "matched_distance_mean": 0.7591607139921958,
+        "matched_distance_max": 1.2484346106111466,
+        "radius_mae_floored_target": 0.5723761320114136,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.8736139112903226,
+          "average_precision": 0.30918995218322826,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.3125,
+          "matched_probability_quantiles": [
+            0.08648809197561587,
+            0.24676296278200066,
+            0.44962492809942833,
+            0.5765569591592941,
+            0.8392061880376401
+          ],
+          "unassigned_probability_quantiles": [
+            0.00504458357567442,
+            0.039216388588270056,
+            0.08932812659457666,
+            0.1731836515688378,
+            0.7828535865177132
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.3402843658023063
+        },
+        "balanced_reference_ce": 0.598858881883363,
+        "assignment_changes_since_previous_snapshot": 13,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 19499,
+            "positive": 13,
+            "negative": 11,
+            "unknown": 19475,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.8666666666666667,
+            "edges_after_cutoff": 4,
+            "edge_ceiling_after_cutoff": 0.26666666666666666
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 42085,
+            "positive": 15,
+            "negative": 25,
+            "unknown": 42045,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 4,
+            "edge_ceiling_after_cutoff": 0.26666666666666666
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 17,
+          "within_2_of_reference_curve": 11,
+          "within_6_of_reference_curve": 17,
+          "within_2_of_a_set_target": 9,
+          "within_4_of_a_set_target": 11
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 418,
+        "accepted_unassigned": 94,
+        "accepted_trusted_assigned": 384,
+        "trusted_visible_junctions": 74,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.9997760316852883,
+        "matched_distance_mean": 1.0976802871055735,
+        "matched_distance_max": 5.871207513643364,
+        "radius_mae_floored_target": 1.7347469329833984,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 384,
+        "confidence": {
+          "roc_auc": 0.5139977603583427,
+          "average_precision": 0.8203399099662935,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8301435406698564,
+          "matched_probability_quantiles": [
+            0.5356950016659683,
+            0.930123624246013,
+            0.9624393654837979,
+            0.9882997898365755,
+            0.9992131682404337
+          ],
+          "unassigned_probability_quantiles": [
+            0.7099853026043728,
+            0.9152874047356359,
+            0.9620695694344954,
+            0.9881691615242201,
+            0.9977513783802249
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.1497730133983245
+        },
+        "balanced_reference_ce": 1.781341666930609,
+        "assignment_changes_since_previous_snapshot": 239,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4877,
+            "positive": 353,
+            "negative": 2387,
+            "unknown": 2137,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.8737623762376238,
+            "edges_after_cutoff": 353,
+            "edge_ceiling_after_cutoff": 0.8737623762376238
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4877,
+            "positive": 353,
+            "negative": 2387,
+            "unknown": 2137,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.8737623762376238,
+            "edges_after_cutoff": 353,
+            "edge_ceiling_after_cutoff": 0.8737623762376238
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 94,
+          "within_2_of_reference_curve": 15,
+          "within_6_of_reference_curve": 65,
+          "within_2_of_a_set_target": 6,
+          "within_4_of_a_set_target": 33
+        },
+        "poorly_placed_targets": [
+          {
+            "target_index": 105,
+            "query_index": 20,
+            "distance": 2.2653540819762137,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9385661933263034,
+            "nearest_input_distance": 4.898979485566356
+          },
+          {
+            "target_index": 132,
+            "query_index": 26,
+            "distance": 4.929484889637412,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.8568836466204933,
+            "nearest_input_distance": 3.0
+          },
+          {
+            "target_index": 408,
+            "query_index": 34,
+            "distance": 3.7133573963566198,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9546974572833277,
+            "nearest_input_distance": 2.0123296086267604
+          },
+          {
+            "target_index": 170,
+            "query_index": 35,
+            "distance": 5.871207513643364,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9580717654793247,
+            "nearest_input_distance": 2.865619103297732
+          },
+          {
+            "target_index": 111,
+            "query_index": 37,
+            "distance": 2.246323543486598,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.919017850399906,
+            "nearest_input_distance": 2.23606797749979
+          },
+          {
+            "target_index": 291,
+            "query_index": 43,
+            "distance": 2.812255675932502,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.970810190811514,
+            "nearest_input_distance": 1.857404973155664
+          },
+          {
+            "target_index": 252,
+            "query_index": 45,
+            "distance": 2.1735906496284074,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9942958455557201,
+            "nearest_input_distance": 1.2849334720448633
+          },
+          {
+            "target_index": 146,
+            "query_index": 52,
+            "distance": 3.2518648853015018,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9470653043349763,
+            "nearest_input_distance": 4.054838314410149
+          },
+          {
+            "target_index": 220,
+            "query_index": 59,
+            "distance": 2.0812962398214063,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9955816604867826,
+            "nearest_input_distance": 1.4059342604311802
+          },
+          {
+            "target_index": 177,
+            "query_index": 64,
+            "distance": 2.4449679152306336,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9935276776220849,
+            "nearest_input_distance": 2.3208514400177487
+          },
+          {
+            "target_index": 152,
+            "query_index": 67,
+            "distance": 2.2932951892212907,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.6462284447827755,
+            "nearest_input_distance": 1.6036379295205794
+          },
+          {
+            "target_index": 33,
+            "query_index": 119,
+            "distance": 2.5923861046835386,
+            "is_junction": true,
+            "accepted": true,
+            "used_probability": 0.9878346782125373,
+            "nearest_input_distance": 1.9803373393975594
+          },
+          {
+            "target_index": 416,
+            "query_index": 140,
+            "distance": 3.3600858267976803,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9988086723737026,
+            "nearest_input_distance": 37.09966684888561
+          },
+          {
+            "target_index": 213,
+            "query_index": 164,
+            "distance": 2.198577107417759,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9717972757700993,
+            "nearest_input_distance": 5.3725183122838445
+          },
+          {
+            "target_index": 237,
+            "query_index": 166,
+            "distance": 2.9062832050476892,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9951853833195703,
+            "nearest_input_distance": 1.9785225569881855
+          },
+          {
+            "target_index": 81,
+            "query_index": 169,
+            "distance": 3.2683027572216474,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9344911048899679,
+            "nearest_input_distance": 1.7320508075688772
+          },
+          {
+            "target_index": 85,
+            "query_index": 180,
+            "distance": 2.004690908194059,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9869623285754081,
+            "nearest_input_distance": 1.7320508075688772
+          },
+          {
+            "target_index": 384,
+            "query_index": 230,
+            "distance": 3.8445590209648928,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9167114724827384,
+            "nearest_input_distance": 1.2715053663053717
+          },
+          {
+            "target_index": 16,
+            "query_index": 236,
+            "distance": 2.563677313300951,
+            "is_junction": true,
+            "accepted": true,
+            "used_probability": 0.989160471682527,
+            "nearest_input_distance": 0.46206985946426754
+          },
+          {
+            "target_index": 355,
+            "query_index": 248,
+            "distance": 2.4306577211825466,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.7800233282155064,
+            "nearest_input_distance": 6.073885189109478
+          },
+          {
+            "target_index": 203,
+            "query_index": 271,
+            "distance": 4.552531330407789,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9712303796021411,
+            "nearest_input_distance": 2.4156135173962054
+          },
+          {
+            "target_index": 145,
+            "query_index": 290,
+            "distance": 2.997018942297244,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9072769269263262,
+            "nearest_input_distance": 2.436392323346227
+          },
+          {
+            "target_index": 176,
+            "query_index": 333,
+            "distance": 2.518107490470687,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9914473278630805,
+            "nearest_input_distance": 3.5885406871298797
+          },
+          {
+            "target_index": 270,
+            "query_index": 351,
+            "distance": 3.9086152619781824,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9866821226767216,
+            "nearest_input_distance": 1.5677857499200811
+          },
+          {
+            "target_index": 311,
+            "query_index": 356,
+            "distance": 2.148583430839408,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9241115954897466,
+            "nearest_input_distance": 1.8220936406821975
+          },
+          {
+            "target_index": 219,
+            "query_index": 358,
+            "distance": 2.831570521903682,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9948295238143431,
+            "nearest_input_distance": 3.4396988731964577
+          },
+          {
+            "target_index": 253,
+            "query_index": 370,
+            "distance": 2.014912084725781,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9972908053624873,
+            "nearest_input_distance": 3.6850051934975654
+          },
+          {
+            "target_index": 25,
+            "query_index": 389,
+            "distance": 3.002421265337743,
+            "is_junction": true,
+            "accepted": true,
+            "used_probability": 0.9766833846457816,
+            "nearest_input_distance": 1.2974639257000105
+          },
+          {
+            "target_index": 114,
+            "query_index": 391,
+            "distance": 2.068535798350086,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.8989652235640665,
+            "nearest_input_distance": 2.23606797749979
+          },
+          {
+            "target_index": 169,
+            "query_index": 394,
+            "distance": 2.0835064316170815,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9717760311499757,
+            "nearest_input_distance": 1.7935775028445693
+          },
+          {
+            "target_index": 242,
+            "query_index": 450,
+            "distance": 2.3901827788791605,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9983558463985396,
+            "nearest_input_distance": 2.1880901083847792
+          },
+          {
+            "target_index": 371,
+            "query_index": 454,
+            "distance": 5.289507724083516,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9179742126724142,
+            "nearest_input_distance": 2.06161374682226
+          },
+          {
+            "target_index": 417,
+            "query_index": 470,
+            "distance": 3.0797370674648072,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9989971892998332,
+            "nearest_input_distance": 35.42422385350357
+          },
+          {
+            "target_index": 309,
+            "query_index": 511,
+            "distance": 3.1495435146246056,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9711480713529663,
+            "nearest_input_distance": 1.3860159288383138
+          }
+        ]
+      }
+    ]
+  },
+  "balanced": {
+    "fit_report_sha256": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+    "elapsed_seconds": 1180.8163495000008,
+    "checkpoint_reload_max_delta_reported_by_fit": 0.0,
+    "source_cache_snapshot_checks_passed": true,
+    "independent_metrics_checks_passed": true,
+    "prediction_files_sha256": {
+      "step_0000_crop_0.npz": "9645c0a191ea5b9c3bf60f7708ba81cd1a3c69b94ec1945da2d3806d73292064",
+      "step_0000_crop_1.npz": "969057b34db5b773713d8c4d12ca56e173fe8f4280cf46a77699fbe0df66f729",
+      "step_0000_crop_2.npz": "ed350325a73b7a0797e5d94377bddb46086c3f251d2b32df4607edfa1242407b",
+      "step_0000_crop_3.npz": "7cc297f6fc36e78fb34d4711d0ea3e906e137220c7c30492143d5f0ad825f712",
+      "step_0500_crop_0.npz": "cc0e05489656fc1660abd365cc1543d22bd6eb9debcdd0cc32471ecd2a44cadb",
+      "step_0500_crop_1.npz": "18f6af16a36b1f01057e15cad546940ff8e23c922a6876713caffca47411fa4d",
+      "step_0500_crop_2.npz": "3e5ac21ad5ec719d84da1ec828b757f537fdd5949236efdb89a9a56548a746a2",
+      "step_0500_crop_3.npz": "2d672133f3503ad29b264822cf23fdba55b166dc41704f38918c0ae59a19910b",
+      "step_1000_crop_0.npz": "d28cfefb1db5c3c66bfdb2f9a3db16bf5ee30752a261bddc75b91a823024a62b",
+      "step_1000_crop_1.npz": "cc54ffd8a1dcf3570ccee97b68f6d8db143bdecd40fe234f6f47400e7efae920",
+      "step_1000_crop_2.npz": "a570b05a59826e5b33e2e0e8f312a41621ce1ca3fc6368a430a9ee815704f3fd",
+      "step_1000_crop_3.npz": "81c7d330c9165c62d5ab1fd3b28e5be8406384845c46b1b5434df39688472499",
+      "step_2000_crop_0.npz": "2b725ae39eeba630c43f1328d7674fa924f3f5bc1dd3767b61e7149d48873838",
+      "step_2000_crop_1.npz": "c186ba82e67f80a58124067896285a064671a734b6bded3db1068807eb3e5412",
+      "step_2000_crop_2.npz": "da9130849ee8a5ce0b085de46f781dcf8ef368072969133efca3b39f971cc686",
+      "step_2000_crop_3.npz": "cb2644c6e6393240cde18a9c7a7b7df445f480f224347541d88f43e0d219b8cd",
+      "step_4000_crop_0.npz": "1974bf445e829ce84e44f106c77aaa6418ac07296441b803cd2dbfb88c7b3538",
+      "step_4000_crop_1.npz": "ae994e94dbead4f0d1b3bf7ce7af45d7d271d960cce972e8dfc385bdb356fb34",
+      "step_4000_crop_2.npz": "4c978931cce6eb439631595bb29d5e0c141ff788a93467b4d93c41a811151622",
+      "step_4000_crop_3.npz": "40194c3eb0e7f373088b35cc185e8f255e13779f6d927016e8b3ccb1a358f3de"
+    },
+    "checkpoints": [
+      {
+        "step": 0,
+        "sha256": "821924176d2a2bea9f69738c22080b7fea1cbbec7fd40f82dccd4995e5b75abb",
+        "resumable": true,
+        "optimizer_parameter_states": 0,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 500,
+        "sha256": "907435d6f1df8f28dc0a6441c72ea959c29ea63774f4988ad59717e44c10961a",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 1000,
+        "sha256": "c68702546fccc60207e819238ec82c7982baffc04c18b417cf09721ad944b999",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 2000,
+        "sha256": "3d5a730a936fd6d6089b02a4a0761144efd04c19ac455a4654192737d3b6b67e",
+        "resumable": true,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      },
+      {
+        "step": 4000,
+        "sha256": "62892ad332259dab76896ff16bb71294d87166c7ad274e6813d12ab9dcc1e58a",
+        "resumable": false,
+        "optimizer_parameter_states": 123,
+        "cuda_rng_states": 1
+      }
+    ],
+    "rows": [
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 62.720065555478136,
+        "matched_distance_max": 74.97685134963645,
+        "radius_mae_floored_target": 0.008453965187072754,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5184453227931489,
+          "average_precision": 0.014105311572312752,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.26921708251749876,
+            0.27013392263984193,
+            0.27096491629111263,
+            0.2718325319267737,
+            0.2721377303637571
+          ],
+          "unassigned_probability_quantiles": [
+            0.2665507169885435,
+            0.2697404554230851,
+            0.2707432394624289,
+            0.2719154739080226,
+            0.2759362202829464
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.4016125186396772
+        },
+        "balanced_reference_ce": 0.8109544210269479,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 42.740978136071185,
+        "matched_distance_max": 57.58266566147132,
+        "radius_mae_floored_target": 0.005545462016016245,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.46166666666666667,
+          "average_precision": 0.024980501718118032,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.2680315915301718,
+            0.2696395375003935,
+            0.27060126732111084,
+            0.2721169122410683,
+            0.27324129103063255
+          ],
+          "unassigned_probability_quantiles": [
+            0.266521457846619,
+            0.26985214407534097,
+            0.270871881568493,
+            0.2720132215104209,
+            0.276369539373852
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.4755795419177632
+        },
+        "balanced_reference_ce": 0.8113956918448962,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 44.31731899897221,
+        "matched_distance_max": 60.21903432985002,
+        "radius_mae_floored_target": 0.6293798089027405,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5871975806451613,
+          "average_precision": 0.04487927002666095,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.0625,
+          "matched_probability_quantiles": [
+            0.26807856258514046,
+            0.2703751089592611,
+            0.2719083454413122,
+            0.272443661435015,
+            0.27388421980084804
+          ],
+          "unassigned_probability_quantiles": [
+            0.26670330314903,
+            0.27005915014009696,
+            0.2709821871848367,
+            0.27212469487572677,
+            0.27632962007743933
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.5188201733595569
+        },
+        "balanced_reference_ce": 0.8101024823769473,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 0,
+        "accepted_unassigned": 0,
+        "accepted_trusted_assigned": 0,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.0,
+        "matched_distance_mean": 41.76334540705687,
+        "matched_distance_max": 73.90034516552875,
+        "radius_mae_floored_target": 3.089439630508423,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 0,
+        "trusted_matches": 0,
+        "confidence": {
+          "roc_auc": 0.5715412806678204,
+          "average_precision": 0.858061592474283,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8301435406698564,
+          "matched_probability_quantiles": [
+            0.26637666045005665,
+            0.26990594532908563,
+            0.27090411141423926,
+            0.2720909381619846,
+            0.2761704789691107
+          ],
+          "unassigned_probability_quantiles": [
+            0.2674272695584458,
+            0.2696543002401456,
+            0.270647417156581,
+            0.2714287488726347,
+            0.2746058993370251
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 1.2786887969268523
+        },
+        "balanced_reference_ce": 0.8106408354638094,
+        "assignment_changes_since_previous_snapshot": null,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 130816,
+            "positive": 0,
+            "negative": 0,
+            "unknown": 130816,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.0,
+            "edges_after_cutoff": 0,
+            "edge_ceiling_after_cutoff": 0.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 6,
+        "accepted_unassigned": 217,
+        "accepted_trusted_assigned": 6,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.8668312392942895,
+        "matched_distance_max": 1.701500678097664,
+        "radius_mae_floored_target": 0.048032086342573166,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.8316864295125165,
+          "average_precision": 0.21582842312008976,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+          "matched_probability_quantiles": [
+            0.5276474736910944,
+            0.5441034096356242,
+            0.5944700957327671,
+            0.6504540706487412,
+            0.6973743170743798
+          ],
+          "unassigned_probability_quantiles": [
+            0.2681923426791151,
+            0.37866084044708764,
+            0.48186656474312595,
+            0.5638979983971707,
+            0.6760210945866293
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.6496485073742853
+        },
+        "balanced_reference_ce": 0.5880133106506382,
+        "assignment_changes_since_previous_snapshot": 6,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 9364,
+            "positive": 4,
+            "negative": 0,
+            "unknown": 9360,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 4,
+            "edge_ceiling_after_cutoff": 0.8
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18198,
+            "positive": 5,
+            "negative": 1,
+            "unknown": 18192,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 1.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 9,
+        "accepted_unassigned": 214,
+        "accepted_trusted_assigned": 8,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 0.8857845466629329,
+        "matched_distance_mean": 1.370057687909469,
+        "matched_distance_max": 2.8760993560926758,
+        "radius_mae_floored_target": 0.5511924624443054,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 11,
+        "confidence": {
+          "roc_auc": 0.7418333333333333,
+          "average_precision": 0.05336056295621217,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.08333333333333333,
+          "matched_probability_quantiles": [
+            0.4692166166847178,
+            0.5264945278946422,
+            0.5531493442902372,
+            0.5909428514627149,
+            0.645966469464298
+          ],
+          "unassigned_probability_quantiles": [
+            0.278320522598846,
+            0.3964791160185136,
+            0.4798212944925511,
+            0.5564663761099904,
+            0.6683156794428451
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.651109095940771
+        },
+        "balanced_reference_ce": 0.6271606133912485,
+        "assignment_changes_since_previous_snapshot": 12,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 5024,
+            "positive": 8,
+            "negative": 2,
+            "unknown": 5014,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 6,
+            "edge_ceiling_after_cutoff": 0.6
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 7264,
+            "positive": 8,
+            "negative": 3,
+            "unknown": 7253,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 6,
+            "edge_ceiling_after_cutoff": 0.6
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 9,
+        "accepted_unassigned": 133,
+        "accepted_trusted_assigned": 9,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.7832572142034873,
+        "matched_distance_mean": 1.023609726712737,
+        "matched_distance_max": 1.6054679167130725,
+        "radius_mae_floored_target": 0.6078304648399353,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.7048891129032258,
+          "average_precision": 0.08821640704262834,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.0625,
+          "matched_probability_quantiles": [
+            0.3813294599193521,
+            0.4706417063994274,
+            0.5063921472553146,
+            0.5377259466519997,
+            0.6172065444881937
+          ],
+          "unassigned_probability_quantiles": [
+            0.2724165751122042,
+            0.3757348088247089,
+            0.4454837381914504,
+            0.505278443005567,
+            0.6201304590128791
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.6188060475122104
+        },
+        "balanced_reference_ce": 0.6487872306975537,
+        "assignment_changes_since_previous_snapshot": 16,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 8059,
+            "positive": 13,
+            "negative": 7,
+            "unknown": 8039,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.8666666666666667,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.5333333333333333
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18564,
+            "positive": 15,
+            "negative": 25,
+            "unknown": 18524,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.5333333333333333
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 169,
+        "accepted_unassigned": 57,
+        "accepted_trusted_assigned": 17,
+        "trusted_visible_junctions": 15,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.36333962977124784,
+        "matched_distance_mean": 4.106892424181752,
+        "matched_distance_max": 29.326388592782475,
+        "radius_mae_floored_target": 2.5819263458251953,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 500,
+        "trusted_matches": 77,
+        "confidence": {
+          "roc_auc": 0.38860327802097117,
+          "average_precision": 0.7663341721405578,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.80622009569378,
+          "matched_probability_quantiles": [
+            0.25405548202560796,
+            0.38002929231437627,
+            0.4620034365208675,
+            0.5579251665484615,
+            0.693046670271088
+          ],
+          "unassigned_probability_quantiles": [
+            0.256056073058566,
+            0.4236832495090861,
+            0.5348246132065229,
+            0.6115889317585216,
+            0.7129646248807265
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.791262943575109
+        },
+        "balanced_reference_ce": 0.7678238287877361,
+        "assignment_changes_since_previous_snapshot": 413,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4768,
+            "positive": 23,
+            "negative": 150,
+            "unknown": 4595,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.05693069306930693,
+            "edges_after_cutoff": 1,
+            "edge_ceiling_after_cutoff": 0.0024752475247524753
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4768,
+            "positive": 23,
+            "negative": 150,
+            "unknown": 4595,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.05693069306930693,
+            "edges_after_cutoff": 1,
+            "edge_ceiling_after_cutoff": 0.0024752475247524753
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 6,
+        "accepted_unassigned": 82,
+        "accepted_trusted_assigned": 5,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 1.1020428407977791,
+        "matched_distance_max": 2.3141164543880395,
+        "radius_mae_floored_target": 0.07107064872980118,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 5,
+        "confidence": {
+          "roc_auc": 0.9828722002635046,
+          "average_precision": 0.557936507936508,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.5,
+          "matched_probability_quantiles": [
+            0.6447038736880119,
+            0.6722840207514705,
+            0.7458686273903306,
+            0.8050751863447151,
+            0.8470342060730236
+          ],
+          "unassigned_probability_quantiles": [
+            0.11919691437187499,
+            0.19235701301447122,
+            0.3035489141014211,
+            0.4388232501322389,
+            0.7917350475444209
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.42175810659645563
+        },
+        "balanced_reference_ce": 0.36792551372924764,
+        "assignment_changes_since_previous_snapshot": 5,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 8577,
+            "positive": 3,
+            "negative": 2,
+            "unknown": 8572,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.6,
+            "edges_after_cutoff": 3,
+            "edge_ceiling_after_cutoff": 0.6
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 16813,
+            "positive": 3,
+            "negative": 2,
+            "unknown": 16808,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.6,
+            "edges_after_cutoff": 3,
+            "edge_ceiling_after_cutoff": 0.6
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 11,
+        "accepted_unassigned": 203,
+        "accepted_trusted_assigned": 11,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.8660336749868311,
+        "matched_distance_max": 1.7335011329754122,
+        "radius_mae_floored_target": 0.47010788321495056,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 12,
+        "confidence": {
+          "roc_auc": 0.8128333333333333,
+          "average_precision": 0.07642620726961864,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.0,
+          "matched_probability_quantiles": [
+            0.49338788344503676,
+            0.5768793902216574,
+            0.6408817233271612,
+            0.7150376629021626,
+            0.7550268812782431
+          ],
+          "unassigned_probability_quantiles": [
+            0.15089119119810435,
+            0.291990058875864,
+            0.4535709008329666,
+            0.5837106994199835,
+            0.8187496014476012
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.619706986286672
+        },
+        "balanced_reference_ce": 0.5561121222768589,
+        "assignment_changes_since_previous_snapshot": 8,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 5028,
+            "positive": 8,
+            "negative": 2,
+            "unknown": 5018,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 6,
+            "edge_ceiling_after_cutoff": 0.6
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 7123,
+            "positive": 10,
+            "negative": 3,
+            "unknown": 7110,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.8
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 11,
+        "accepted_unassigned": 118,
+        "accepted_trusted_assigned": 11,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.8653509304745479,
+        "matched_distance_mean": 0.8272878369457145,
+        "matched_distance_max": 1.4403417667647773,
+        "radius_mae_floored_target": 0.6102479696273804,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.8009072580645161,
+          "average_precision": 0.1785689514987468,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.125,
+          "matched_probability_quantiles": [
+            0.32018932432197156,
+            0.47662616122245316,
+            0.5783578615565907,
+            0.6236136402521822,
+            0.7475452971438664
+          ],
+          "unassigned_probability_quantiles": [
+            0.1257658633735311,
+            0.2554312105533644,
+            0.3787569245200275,
+            0.49461386904780774,
+            0.7172935900152296
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.5393320435016161
+        },
+        "balanced_reference_ce": 0.5698824839204719,
+        "assignment_changes_since_previous_snapshot": 13,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 7855,
+            "positive": 11,
+            "negative": 5,
+            "unknown": 7839,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.7333333333333333,
+            "edges_after_cutoff": 7,
+            "edge_ceiling_after_cutoff": 0.4666666666666667
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18346,
+            "positive": 15,
+            "negative": 22,
+            "unknown": 18309,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 10,
+            "edge_ceiling_after_cutoff": 0.6666666666666666
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 149,
+        "accepted_unassigned": 49,
+        "accepted_trusted_assigned": 104,
+        "trusted_visible_junctions": 56,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.35434328810979854,
+        "matched_distance_mean": 1.8910104815776416,
+        "matched_distance_max": 22.361099363462657,
+        "radius_mae_floored_target": 2.568657159805298,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 1000,
+        "trusted_matches": 326,
+        "confidence": {
+          "roc_auc": 0.42082357731853814,
+          "average_precision": 0.7809309071451433,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8110047846889952,
+          "matched_probability_quantiles": [
+            0.1307618751535805,
+            0.27142093745077944,
+            0.4178362826401902,
+            0.568969431139341,
+            0.8439253935103588
+          ],
+          "unassigned_probability_quantiles": [
+            0.14182009197036355,
+            0.31685238080605876,
+            0.5110708769768187,
+            0.6549000202782795,
+            0.8211642721198834
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.9357237185853023
+        },
+        "balanced_reference_ce": 0.8446151410983481,
+        "assignment_changes_since_previous_snapshot": 178,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4834,
+            "positive": 259,
+            "negative": 1852,
+            "unknown": 2723,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.6410891089108911,
+            "edges_after_cutoff": 62,
+            "edge_ceiling_after_cutoff": 0.15346534653465346
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4834,
+            "positive": 259,
+            "negative": 1852,
+            "unknown": 2723,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.6410891089108911,
+            "edges_after_cutoff": 62,
+            "edge_ceiling_after_cutoff": 0.15346534653465346
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 6,
+        "accepted_unassigned": 110,
+        "accepted_trusted_assigned": 6,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.8537957988231052,
+        "matched_distance_max": 1.4598754989830032,
+        "radius_mae_floored_target": 0.05537788197398186,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.941699604743083,
+          "average_precision": 0.3178647568470935,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+          "matched_probability_quantiles": [
+            0.6275046473510024,
+            0.6632767311699085,
+            0.7666472459599403,
+            0.843543877330692,
+            0.8789860805034622
+          ],
+          "unassigned_probability_quantiles": [
+            0.03393431156959723,
+            0.09409484356993837,
+            0.22331292737011862,
+            0.4491656811286177,
+            0.8715093058210749
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.4201613262038859
+        },
+        "balanced_reference_ce": 0.36042162968862645,
+        "assignment_changes_since_previous_snapshot": 5,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 9323,
+            "positive": 4,
+            "negative": 0,
+            "unknown": 9319,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 4,
+            "edge_ceiling_after_cutoff": 0.8
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18638,
+            "positive": 5,
+            "negative": 0,
+            "unknown": 18633,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 1.0
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 12,
+        "accepted_unassigned": 182,
+        "accepted_trusted_assigned": 11,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 1.0479973028494631,
+        "matched_distance_max": 2.136153450803662,
+        "radius_mae_floored_target": 0.46192917227745056,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 11,
+        "confidence": {
+          "roc_auc": 0.9005,
+          "average_precision": 0.20423844184356454,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.16666666666666666,
+          "matched_probability_quantiles": [
+            0.6140947336213027,
+            0.7104097045297504,
+            0.7310627646756105,
+            0.7819996039231868,
+            0.89409481757211
+          ],
+          "unassigned_probability_quantiles": [
+            0.06194262212699262,
+            0.17945451964806194,
+            0.37987228218393543,
+            0.5942211905022786,
+            0.8924750408369908
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.5590340235316698
+        },
+        "balanced_reference_ce": 0.454055138253768,
+        "assignment_changes_since_previous_snapshot": 8,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 5039,
+            "positive": 8,
+            "negative": 0,
+            "unknown": 5031,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.8,
+            "edges_after_cutoff": 8,
+            "edge_ceiling_after_cutoff": 0.8
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 7306,
+            "positive": 9,
+            "negative": 2,
+            "unknown": 7295,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 0.9,
+            "edges_after_cutoff": 9,
+            "edge_ceiling_after_cutoff": 0.9
+          }
+        ]
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 11,
+        "accepted_unassigned": 111,
+        "accepted_trusted_assigned": 11,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 0.9676903606179736,
+        "matched_distance_mean": 1.0538868920099609,
+        "matched_distance_max": 1.7882689420035771,
+        "radius_mae_floored_target": 0.6413444876670837,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.8560987903225806,
+          "average_precision": 0.27051361355173503,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.3125,
+          "matched_probability_quantiles": [
+            0.3058094017928793,
+            0.4490440492548639,
+            0.6702272479792188,
+            0.7499443071774656,
+            0.8499156357871958
+          ],
+          "unassigned_probability_quantiles": [
+            0.047993102714091754,
+            0.12986288113113215,
+            0.26781185123408713,
+            0.46912159713485957,
+            0.8223627136990227
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.4563594735775665
+        },
+        "balanced_reference_ce": 0.48727687924410124,
+        "assignment_changes_since_previous_snapshot": 11,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 7903,
+            "positive": 13,
+            "negative": 7,
+            "unknown": 7883,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 0.8666666666666667,
+            "edges_after_cutoff": 9,
+            "edge_ceiling_after_cutoff": 0.6
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 18543,
+            "positive": 15,
+            "negative": 23,
+            "unknown": 18505,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 10,
+            "edge_ceiling_after_cutoff": 0.6666666666666666
+          }
+        ]
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 154,
+        "accepted_unassigned": 33,
+        "accepted_trusted_assigned": 124,
+        "trusted_visible_junctions": 66,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.36708199185368884,
+        "matched_distance_mean": 1.337007188066865,
+        "matched_distance_max": 11.180158487117628,
+        "radius_mae_floored_target": 2.3751168251037598,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 2000,
+        "trusted_matches": 371,
+        "confidence": {
+          "roc_auc": 0.5258831314262445,
+          "average_precision": 0.8322786353398097,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.8110047846889952,
+          "matched_probability_quantiles": [
+            0.07606122030329401,
+            0.20742985069923225,
+            0.39212323918267744,
+            0.6255573205766541,
+            0.9334612341496119
+          ],
+          "unassigned_probability_quantiles": [
+            0.08805971537582309,
+            0.21382416827218675,
+            0.30746104790816225,
+            0.5789198666294741,
+            0.9424349766494305
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 1.026663045552865
+        },
+        "balanced_reference_ce": 0.8277770283307655,
+        "assignment_changes_since_previous_snapshot": 133,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4884,
+            "positive": 326,
+            "negative": 2316,
+            "unknown": 2242,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.806930693069307,
+            "edges_after_cutoff": 86,
+            "edge_ceiling_after_cutoff": 0.21287128712871287
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4884,
+            "positive": 326,
+            "negative": 2316,
+            "unknown": 2242,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.806930693069307,
+            "edges_after_cutoff": 86,
+            "edge_ceiling_after_cutoff": 0.21287128712871287
+          }
+        ]
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_assigned": 6,
+        "accepted_unassigned": 11,
+        "accepted_trusted_assigned": 6,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.951658616785355,
+        "matched_distance_max": 1.1557304392847858,
+        "radius_mae_floored_target": 0.06306007504463196,
+        "geometry_gate_passed": true,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 6,
+        "confidence": {
+          "roc_auc": 0.9990118577075099,
+          "average_precision": 0.9305555555555556,
+          "positive_fraction": 0.01171875,
+          "oracle_known_target_count_top_k_recall": 0.8333333333333334,
+          "matched_probability_quantiles": [
+            0.9414444700800713,
+            0.9680111899247839,
+            0.9858026468019222,
+            0.9897463957972246,
+            0.9955432670249907
+          ],
+          "unassigned_probability_quantiles": [
+            0.0003691540400228004,
+            0.0009941911580200315,
+            0.002207944468144914,
+            0.012211496270031532,
+            0.9704484739893967
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.08664259927797834,
+          "weighted_constant_minimum_ce": 0.294700421073933,
+          "actual_weighted_ce": 0.05740866674833846
+        },
+        "balanced_reference_ce": 0.042064083008681204,
+        "assignment_changes_since_previous_snapshot": 5,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 13581,
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13568,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 1.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 29180,
+            "positive": 5,
+            "negative": 8,
+            "unknown": 29167,
+            "required_target_edges": 5,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 5,
+            "edge_ceiling_after_cutoff": 1.0
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 11,
+          "within_2_of_reference_curve": 2,
+          "within_6_of_reference_curve": 8,
+          "within_2_of_a_set_target": 0,
+          "within_4_of_a_set_target": 4
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_assigned": 12,
+        "accepted_unassigned": 32,
+        "accepted_trusted_assigned": 12,
+        "trusted_visible_junctions": 0,
+        "visible_junctions": 0,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.6879397829348681,
+        "matched_distance_max": 1.2977024698088149,
+        "radius_mae_floored_target": 0.4517587125301361,
+        "geometry_gate_passed": true,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 12,
+        "confidence": {
+          "roc_auc": 0.9766666666666667,
+          "average_precision": 0.36980874642358913,
+          "positive_fraction": 0.0234375,
+          "oracle_known_target_count_top_k_recall": 0.3333333333333333,
+          "matched_probability_quantiles": [
+            0.8395231270043755,
+            0.9363797538883016,
+            0.9553675312794659,
+            0.9659077656956663,
+            0.9806680310506605
+          ],
+          "unassigned_probability_quantiles": [
+            0.000668670158530589,
+            0.010640372131870746,
+            0.026607645790697108,
+            0.05716333990191359,
+            0.994686474377096
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.1610738255033557,
+          "weighted_constant_minimum_ce": 0.44144624493110796,
+          "actual_weighted_ce": 0.1888151953706847
+        },
+        "balanced_reference_ce": 0.13721366584268344,
+        "assignment_changes_since_previous_snapshot": 7,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 5083,
+            "positive": 10,
+            "negative": 9,
+            "unknown": 5064,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 10,
+            "edge_ceiling_after_cutoff": 1.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 7591,
+            "positive": 10,
+            "negative": 9,
+            "unknown": 7572,
+            "required_target_edges": 10,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 10,
+            "edge_ceiling_after_cutoff": 1.0
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 32,
+          "within_2_of_reference_curve": 9,
+          "within_6_of_reference_curve": 16,
+          "within_2_of_a_set_target": 6,
+          "within_4_of_a_set_target": 13
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_assigned": 16,
+        "accepted_unassigned": 17,
+        "accepted_trusted_assigned": 16,
+        "trusted_visible_junctions": 2,
+        "visible_junctions": 2,
+        "accepted_curve_support_6": 1.0,
+        "matched_distance_mean": 0.39530222560161854,
+        "matched_distance_max": 0.761135262998036,
+        "radius_mae_floored_target": 0.6042516827583313,
+        "geometry_gate_passed": true,
+        "selection_gate_passed": false,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 16,
+        "confidence": {
+          "roc_auc": 0.9957157258064516,
+          "average_precision": 0.8659522141823344,
+          "positive_fraction": 0.03125,
+          "oracle_known_target_count_top_k_recall": 0.75,
+          "matched_probability_quantiles": [
+            0.8406221303170464,
+            0.9288663771168729,
+            0.9614996956197572,
+            0.9752624011141497,
+            0.9838829542372158
+          ],
+          "unassigned_probability_quantiles": [
+            0.0005610018471073105,
+            0.0018145218215711177,
+            0.004529583079980252,
+            0.017926315591937074,
+            0.9737099940864379
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.20512820512820512,
+          "weighted_constant_minimum_ce": 0.5074299622199485,
+          "actual_weighted_ce": 0.07769970298162433
+        },
+        "balanced_reference_ce": 0.06978365780377044,
+        "assignment_changes_since_previous_snapshot": 9,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 10958,
+            "positive": 15,
+            "negative": 33,
+            "unknown": 10910,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 15,
+            "edge_ceiling_after_cutoff": 1.0
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 24955,
+            "positive": 15,
+            "negative": 33,
+            "unknown": 24907,
+            "required_target_edges": 15,
+            "edge_ceiling_before_cutoff": 1.0,
+            "edges_after_cutoff": 15,
+            "edge_ceiling_after_cutoff": 1.0
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 17,
+          "within_2_of_reference_curve": 6,
+          "within_6_of_reference_curve": 12,
+          "within_2_of_a_set_target": 6,
+          "within_4_of_a_set_target": 8
+        },
+        "poorly_placed_targets": []
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_assigned": 411,
+        "accepted_unassigned": 4,
+        "accepted_trusted_assigned": 397,
+        "trusted_visible_junctions": 76,
+        "visible_junctions": 77,
+        "accepted_curve_support_6": 0.9968427272330194,
+        "matched_distance_mean": 1.0051745817102173,
+        "matched_distance_max": 2.5958265129209788,
+        "radius_mae_floored_target": 1.958162784576416,
+        "geometry_gate_passed": false,
+        "selection_gate_passed": true,
+        "combined_learnability_gate_passed": false,
+        "step": 4000,
+        "trusted_matches": 404,
+        "confidence": {
+          "roc_auc": 0.9778071872136822,
+          "average_precision": 0.9915360931154446,
+          "positive_fraction": 0.81640625,
+          "oracle_known_target_count_top_k_recall": 0.9904306220095693,
+          "matched_probability_quantiles": [
+            0.040585823908945565,
+            0.845809794124134,
+            0.9210802485322415,
+            0.9669220411102186,
+            0.9983577449272543
+          ],
+          "unassigned_probability_quantiles": [
+            0.0030548992664779363,
+            0.02127301952662599,
+            0.04059692423999933,
+            0.0764035123642881,
+            0.9761731187005468
+          ],
+          "all_labels_separable_by_some_cutoff": false,
+          "weighted_constant_probability_optimum": 0.9726585223967423,
+          "weighted_constant_minimum_ce": 0.12537580395514555,
+          "actual_weighted_ce": 0.14542656221777653
+        },
+        "balanced_reference_ce": 0.1580064277726798,
+        "assignment_changes_since_previous_snapshot": 83,
+        "candidate_arms": [
+          {
+            "radius": 8.0,
+            "candidate_edges": 4907,
+            "positive": 384,
+            "negative": 2804,
+            "unknown": 1719,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.9504950495049505,
+            "edges_after_cutoff": 371,
+            "edge_ceiling_after_cutoff": 0.9183168316831684
+          },
+          {
+            "radius": 12.0,
+            "candidate_edges": 4911,
+            "positive": 384,
+            "negative": 2804,
+            "unknown": 1723,
+            "required_target_edges": 404,
+            "edge_ceiling_before_cutoff": 0.9504950495049505,
+            "edges_after_cutoff": 371,
+            "edge_ceiling_after_cutoff": 0.9183168316831684
+          }
+        ],
+        "accepted_unassigned_geometry": {
+          "count": 4,
+          "within_2_of_reference_curve": 1,
+          "within_6_of_reference_curve": 2,
+          "within_2_of_a_set_target": 0,
+          "within_4_of_a_set_target": 1
+        },
+        "poorly_placed_targets": [
+          {
+            "target_index": 24,
+            "query_index": 1,
+            "distance": 2.4026082196294785,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9802928325190859,
+            "nearest_input_distance": 3.0
+          },
+          {
+            "target_index": 191,
+            "query_index": 49,
+            "distance": 2.162599407110498,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9665519833318207,
+            "nearest_input_distance": 1.0778252662079761
+          },
+          {
+            "target_index": 25,
+            "query_index": 79,
+            "distance": 2.091011132642202,
+            "is_junction": true,
+            "accepted": true,
+            "used_probability": 0.9869466361769004,
+            "nearest_input_distance": 1.2974639257000105
+          },
+          {
+            "target_index": 382,
+            "query_index": 104,
+            "distance": 2.090463773732886,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.638936600294498,
+            "nearest_input_distance": 2.028775273174526
+          },
+          {
+            "target_index": 301,
+            "query_index": 122,
+            "distance": 2.011304827118181,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9783597956903681,
+            "nearest_input_distance": 3.2431503706169837
+          },
+          {
+            "target_index": 417,
+            "query_index": 198,
+            "distance": 2.5318977068750854,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9800237089919022,
+            "nearest_input_distance": 35.42422385350357
+          },
+          {
+            "target_index": 187,
+            "query_index": 203,
+            "distance": 2.1556699761907248,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.991519938368536,
+            "nearest_input_distance": 1.896754482802648
+          },
+          {
+            "target_index": 386,
+            "query_index": 232,
+            "distance": 2.0499059380985973,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9707794071182024,
+            "nearest_input_distance": 0.7907381316064939
+          },
+          {
+            "target_index": 202,
+            "query_index": 234,
+            "distance": 2.2964086460192688,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9887282922437443,
+            "nearest_input_distance": 3.2242691678666784
+          },
+          {
+            "target_index": 111,
+            "query_index": 257,
+            "distance": 2.0330411285813477,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.8566328262669636,
+            "nearest_input_distance": 2.23606797749979
+          },
+          {
+            "target_index": 190,
+            "query_index": 326,
+            "distance": 2.262922273392243,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9730839744228593,
+            "nearest_input_distance": 4.075820952934935
+          },
+          {
+            "target_index": 416,
+            "query_index": 397,
+            "distance": 2.527451501457193,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9757537592326243,
+            "nearest_input_distance": 37.09966684888561
+          },
+          {
+            "target_index": 388,
+            "query_index": 424,
+            "distance": 2.5958265129209788,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.9039398815123125,
+            "nearest_input_distance": 2.3226492870167617
+          },
+          {
+            "target_index": 199,
+            "query_index": 503,
+            "distance": 2.0934643628981924,
+            "is_junction": false,
+            "accepted": true,
+            "used_probability": 0.8892824634450123,
+            "nearest_input_distance": 3.395847749246771
+          }
+        ]
+      }
+    ]
+  }
+}

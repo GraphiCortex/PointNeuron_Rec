@@ -1,10 +1,18 @@
 # PointNeuron 2.0 development
 
+**Completed comparison, 18 October:** [balanced confidence results](balanced_query_results.md).
+The paired 4,000-update fit improves ranking on all four training crops. Smaller
+crops accept all assigned targets but retain 11/32/17 extras; the dense crop
+improves 384 → 404 trusted targets and 94 → 4 extras, with one junction still
+outside tolerance. All combined gates fail. Keep the useful objective result,
+stop at the cap and discuss proposal-selection supervision before another fit.
+No GATv2 training, cutoff change or production promotion is started.
+
 **Prepared, 18 October:** [matched class-normalization comparison](balanced_query_ready.md).
 The exact four-crop cache and fresh initialization match the completed baseline;
 18 tests and a zero-update CPU reload check pass. User-launched GPU timing also
 passes, with zero reload difference and a 22.6–33.8 minute fit estimate; training
-has not started. A saved-prediction radius-eight/twelve check
+subsequently completed and is reviewed above. A saved-prediction radius-eight/twelve check
 recovers smaller-crop candidate omissions without fixing confidence or dense-crop
 placement. Radius eight remains the primary gate; radius twelve is diagnostic.
 
@@ -15,7 +23,7 @@ confidence accepts 0/6, 8/12 and 6/16 with 0/25/17 extras. The dense crop has
 384/418 trusted matches, 74/77 junctions and accepts all 512 queries. Candidate
 availability is also below the gate. Stop at the cap; no GATv2 fit or extension.
 The subsequently agreed class-normalized confidence comparison and candidate
-margin check are prepared above; no new GPU fit has started.
+margin check subsequently completed and are reviewed above.
 
 **Evaluation repair, 17 October:** the first four-crop fit failed at update 500
 on two empty JSON probe arrays in dense-crop scoring. The

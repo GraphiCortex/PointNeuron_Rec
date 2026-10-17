@@ -6,14 +6,21 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Prepared: [matched confidence normalization and candidate-margin comparison](../../docs/pointneuron2/balanced_query_ready.md).
+Latest: [completed matched confidence comparison](../../docs/pointneuron2/balanced_query_results.md).
+`review_balanced_query_fit.py` checks both fits' saved predictions/checkpoints on
+CPU, including initialization/cache/backend identity, independent distances,
+class losses, candidate labels, curve support and original gates. It makes no
+model forwards, updates, GPU calls or cutoff search. Ranking improves, but all
+combined gates fail; no further fit or graph training is prepared.
+
+Previous preparation: [matched confidence normalization and candidate-margin comparison](../../docs/pointneuron2/balanced_query_ready.md).
 `run_balanced_query.ps1` provides separate prepare/check/timing/train/resume actions;
 `balanced_query_experiment.py` changes only classification normalization in the
 matched four-crop fit. Exact cache/initialization, 18 tests and CPU reload pass.
 `compare_candidate_margin.py` compares radii eight/twelve on saved predictions
 without model forwards. User-launched GPU timing passes with zero reload delta
-and a 22.6–33.8 minute fit estimate; the capped fit remains user-launched and has
-not started. Original gates and baseline sources are preserved.
+and a 22.6–33.8 minute fit estimate; the user completed the capped fit, reviewed
+above. Original gates and baseline sources are preserved.
 
 Previous: [completed four-crop fit and research decision](../../docs/pointneuron2/branched_query_results.md).
 `review_branched_query_fit.py` checks cached predictions/checkpoints on CPU and

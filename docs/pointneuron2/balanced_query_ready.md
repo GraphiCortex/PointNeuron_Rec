@@ -1,7 +1,9 @@
 # Matched confidence normalization comparison
 
 18 October 2026. Prepared after agreement to examine class normalization and a
-candidate distance margin. **GPU timing is complete; training has not started.** The
+candidate distance margin. **GPU timing and the bounded fit are now complete.**
+See the [paired results](balanced_query_results.md); all combined gates fail and
+no further fit is prepared. The protocol below records the original comparison. The
 completed four-crop baseline remains preserved. This is a training-set
 learnability comparison, not validation of reconstruction quality.
 
