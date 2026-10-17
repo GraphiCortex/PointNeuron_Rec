@@ -1,23 +1,31 @@
 # Four-crop proposal learnability fit prepared
 
-**GPU timing reviewed, 17 October:** the user completed the eight throwaway
+**Evaluation repair, 17 October:** the first fit failed during its 500-update
+dense-crop evaluation on an empty cached probe array. The
+[repair and restart report](branched_query_evaluation_repair.md) records the exact
+cause, ten passing tests and the preserved partial evidence. No step-500 state
+was saved; the runner now checkpoints before evaluation. The launcher defaults
+to `branched_query_restart_20261017`, whose byte-identical cache and repaired CPU
+check are ready. GPU timing and the fresh retry remain user-launched.
+
+**Original GPU timing reviewed, 17 October:** the user completed the eight throwaway
 updates on the RTX 3070 Ti Laptop GPU. The source/cache/snapshot hashes match;
 initial weights match the CPU seed-zero check; saved prediction reload delta is
 0.0. No trained timing checkpoint remains. Estimated fit time is **76–114
 minutes**, plus checkpoint IO/system variability, from one timed four-crop
 cycle. PyTorch peak allocated/reserved memory is **93.1/118 MiB**; this excludes
 GPU context and other memory outside PyTorch tracking. The eight-update gates
-fail as expected this early; no learnability conclusion follows. The separate
-full-fit command below is ready for the user to launch. See the
+fail as expected this early; no learnability conclusion follows. That first fit
+subsequently failed as described above; repeat timing for the repaired runner. See the
 [saved timing review](branched_query_ready_seed0/timing_review.json).
 
 17 October 2026. The user agreed to the bounded experiment proposed in the
 [upstream audit](upstream_connectivity_results.md). The separate trainer,
 configuration, exact frozen-cloud cache, CPU checks and visible launch commands
 are prepared. CPU preparation used no real-neuron optimizer updates or GPU
-workloads. The user subsequently completed the throwaway GPU timing above;
-the full fit has not started. CPU unit tests use discarded synthetic updates
-to verify continuation.
+workloads. The user subsequently completed timing and the interrupted first
+fit described above. The repaired retry has not started. CPU unit tests use
+discarded synthetic updates to verify continuation.
 
 This experiment trains PointNeXt and the Transformer together. Phase 1 stays
 frozen; no field inference or manual edits are needed. GATv2 is not trained by
@@ -136,7 +144,7 @@ The console prints progress every 50 updates plus four-crop snapshot results.
 Runtime execution can pass while the combined learnability gate fails.
 
 Default output root:
-`C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2\tmp\pointneuron2\local_runs\branched_query_20261017`
+`C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2\tmp\pointneuron2\local_runs\branched_query_restart_20261017`
 
 Cache is in `cache/`; CPU evidence in `cpu_check/`; GPU estimate in
 `timing/report.json`; fit snapshots/report in `model/`. Timestamped action
@@ -157,7 +165,7 @@ For an interrupted run, explicitly select a saved checkpoint, for example:
 
 ```powershell
 & .\scripts\pointneuron2\run_branched_query.ps1 -Action resume `
-  -Checkpoint .\tmp\pointneuron2\local_runs\branched_query_20261017\model\step_1000.pt
+  -Checkpoint .\tmp\pointneuron2\local_runs\branched_query_restart_20261017\model\step_1000.pt
 ```
 
 This writes a separate `resume_step_1000/` folder, restores optimizer/RNG/cursor,

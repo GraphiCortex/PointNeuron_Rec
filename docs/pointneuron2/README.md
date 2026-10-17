@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Evaluation repair, 17 October:** the first four-crop fit failed at update 500
+on two empty JSON probe arrays in dense-crop scoring. The
+[repair report](branched_query_evaluation_repair.md) documents the cause and
+ten passing tests. Checkpoints now precede evaluation and native stderr is fully
+logged. The original attempt is preserved; fresh retry cache/CPU checks pass.
+The launcher defaults to `branched_query_restart_20261017`; no retry GPU work
+has started. Model/loss/settings/criteria are unchanged.
+
 **GPU timing reviewed, 17 October:** the [four-crop fit](branched_query_ready.md)
 has matching source/cache contracts and zero reload delta. The eight throwaway
 GPU updates estimate 76–114 minutes for the capped fit; no trained timing

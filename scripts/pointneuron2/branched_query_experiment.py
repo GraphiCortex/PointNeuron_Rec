@@ -9,6 +9,7 @@ import random
 import shutil
 import sys
 import time
+import traceback
 
 import numpy as np
 import torch
@@ -153,6 +154,22 @@ def prepare(args, recipe):
         raise
 
 
+def restore_scoring_geometry(saved):
+    """Restore coordinate dimensions lost when empty arrays round-trip via JSON."""
+    geometry = unpack_geometry(saved)
+    critical = geometry["critical_points"]
+    geometry["critical_points"] = critical.reshape(0, 3) if critical.size == 0 else critical
+    if geometry["critical_points"].ndim != 2 or geometry["critical_points"].shape[1] != 3:
+        raise ValueError("Invalid cached critical-point dimensions")
+    for chain in geometry["chains"]:
+        probe = chain["probe"]
+        if probe["points"].size == 0:
+            probe["points"] = probe["points"].reshape(0, 3)
+        if probe["points"].shape != (len(probe["weights"]), 3):
+            raise ValueError("Cached curve-probe points and weights disagree")
+    return geometry
+
+
 def load_records(args, recipe):
     path = args.experiment_dir / "cache/manifest.json"
     manifest = read(path)
@@ -168,7 +185,7 @@ def load_records(args, recipe):
         with np.load(path, allow_pickle=False) as z:
             record = {k: z[k].copy() for k in ("points", "nodes", "target_edges", "target_components", "junction_mask")}
             record["meta"] = json.loads(str(z["metadata"]))
-            record["geometry"] = unpack_geometry(json.loads(str(z["geometry"])))
+            record["geometry"] = restore_scoring_geometry(json.loads(str(z["geometry"])))
         if (record["points"].shape != (recipe["expected_input_counts"][i], 4)
                 or record["nodes"].shape != (recipe["expected_target_counts"][i], 6)
                 or tensor_digest(torch.from_numpy(record["points"])) != row["point_tensor_sha256"]
@@ -301,6 +318,23 @@ def check_reload(model, checkpoint, records, recipe, device):
     return maximum
 
 
+def evaluate_snapshot(model, optimizer, records, recipe, device, directory, step, provenance, backend, report):
+    """Persist complete update state atomically BEFORE any fallible metrics."""
+    path = directory / f"step_{step:04d}.pt"
+    temporary = path.with_suffix(".pt.writing")
+    if path.exists() or temporary.exists():
+        raise FileExistsError("Preserve existing checkpoint or interrupted write")
+    checkpoint = fit_checkpoint(model, optimizer, step=step, recipe=recipe, provenance=provenance, backend=backend)
+    torch.save(checkpoint, temporary)
+    temporary.replace(path)
+    report.update(last_checkpoint=path.name, last_checkpoint_sha256=file_digest(path),
+                  last_checkpoint_step=step, checkpoint_saved_before_evaluation=True)
+    write(directory / "report.json", report)
+    evaluation = evaluate(model, records, recipe, device, directory, step)
+    report["evaluations"].append(evaluation)
+    write(directory / "report.json", report)
+
+
 def run(args):
     recipe = recipe_at(args.recipe)
     args.experiment_dir = args.experiment_dir.resolve()
@@ -409,11 +443,7 @@ def run(args):
                         print(f"UPDATE={current}/{recipe['updates']} crop={crop} loss={metrics['total']:.5f} "
                               f"class={metrics['classification']:.5f} center={metrics['center']:.5f} elapsed={time.perf_counter()-started:.1f}s", flush=True)
                 if current in recipe["snapshots"] and (args.action != "resume" or current > start_step):
-                    evaluation = evaluate(model, records, recipe, args.device, directory, current)
-                    report["evaluations"].append(evaluation)
-                    checkpoint = fit_checkpoint(model, optimizer, step=current, recipe=recipe, provenance=provenance, backend=backend)
-                    torch.save(checkpoint, directory / f"step_{current:04d}.pt")
-                    write(directory / "report.json", report)
+                    evaluate_snapshot(model, optimizer, records, recipe, args.device, directory, current, provenance, backend, report)
             final = directory / "step_4000.pt"
             loaded = torch.load(final, map_location="cpu", weights_only=True)
             report["checkpoint_reload_max_delta"] = check_reload(model, loaded, records, recipe, args.device)
@@ -429,7 +459,10 @@ def run(args):
         print(f"COMPLETED {args.action}; report={directory / 'report.json'}", flush=True)
         return report
     except BaseException as exc:
-        report.update(status="interrupted" if isinstance(exc, KeyboardInterrupt) else "failed", error=str(exc), elapsed_seconds=time.perf_counter()-started)
+        trace_path = directory / "error_traceback.txt"
+        trace_path.write_text(traceback.format_exc(), encoding="utf-8")
+        report.update(status="interrupted" if isinstance(exc, KeyboardInterrupt) else "failed", error=str(exc),
+                      error_type=type(exc).__name__, traceback_path=trace_path.name, elapsed_seconds=time.perf_counter()-started)
         write(directory / "report.json", report)
         raise
 

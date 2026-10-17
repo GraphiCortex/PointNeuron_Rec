@@ -7,7 +7,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
 if (-not $Python) { $Python = Join-Path $projectRoot 'tmp/pointneuron2/sampling_env/Scripts/python.exe' }
-if (-not $ExperimentDirectory) { $ExperimentDirectory = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/branched_query_20261017' }
+if (-not $ExperimentDirectory) { $ExperimentDirectory = Join-Path $projectRoot 'tmp/pointneuron2/local_runs/branched_query_restart_20261017' }
 if (-not (Test-Path -LiteralPath $Python -PathType Leaf)) { throw 'Supply the existing local environment with -Python.' }
 $device = if ($Action -in @('prepare','check')) { 'cpu' } else { 'cuda' }
 $arguments = @('-u',(Join-Path $PSScriptRoot 'branched_query_experiment.py'),'--action',$Action,
@@ -29,5 +29,14 @@ $logPath = "$ExperimentDirectory.$Action.$(Get-Date -Format 'yyyyMMdd_HHmmss_fff
 $env:PYTHONIOENCODING = 'utf-8'
 $env:OMP_NUM_THREADS = '2'
 $env:MKL_NUM_THREADS = '2'
-& $Python @arguments 2>&1 | Tee-Object -FilePath $logPath
-if ($LASTEXITCODE -ne 0) { throw "Branched query $Action failed with exit code $LASTEXITCODE. Preserve logs; no automatic retry." }
+$taskPreviousErrorAction = $ErrorActionPreference
+try {
+    # Windows PowerShell wraps native stderr as ErrorRecord. Let the full stream
+    # drain, then decide failure from the native exit code instead of its first line.
+    $ErrorActionPreference = 'Continue'
+    & $Python @arguments 2>&1 | ForEach-Object { $_.ToString() } | Tee-Object -FilePath $logPath
+    $taskNativeExitCode = $LASTEXITCODE
+} finally {
+    $ErrorActionPreference = $taskPreviousErrorAction
+}
+if ($taskNativeExitCode -ne 0) { throw "Branched query $Action failed with exit code $taskNativeExitCode. Preserve logs; no automatic retry." }

@@ -6,6 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [500-update evaluation repair and restart](../../docs/pointneuron2/branched_query_evaluation_repair.md).
+The four-crop runner restores empty probe array dimensions, saves complete
+checkpoints before evaluation and writes full Python tracebacks. The launcher
+preserves full native stderr and now defaults to `branched_query_restart_20261017`.
+Ten tests and repaired CPU checks pass; the original failed run is preserved.
+The model, loss and training protocol remain unchanged. GPU timing/retry remain
+separate user-launched actions.
+
 Ready: [four-crop branched proposal fit](../../docs/pointneuron2/branched_query_ready.md).
 `run_branched_query.ps1` exposes separate prepare/check/timing/train/resume
 actions through `branched_query_experiment.py`. Exact clouds and CPU checks
