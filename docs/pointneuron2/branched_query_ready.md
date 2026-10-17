@@ -1,10 +1,23 @@
 # Four-crop proposal learnability fit prepared
 
+**GPU timing reviewed, 17 October:** the user completed the eight throwaway
+updates on the RTX 3070 Ti Laptop GPU. The source/cache/snapshot hashes match;
+initial weights match the CPU seed-zero check; saved prediction reload delta is
+0.0. No trained timing checkpoint remains. Estimated fit time is **76–114
+minutes**, plus checkpoint IO/system variability, from one timed four-crop
+cycle. PyTorch peak allocated/reserved memory is **93.1/118 MiB**; this excludes
+GPU context and other memory outside PyTorch tracking. The eight-update gates
+fail as expected this early; no learnability conclusion follows. The separate
+full-fit command below is ready for the user to launch. See the
+[saved timing review](branched_query_ready_seed0/timing_review.json).
+
 17 October 2026. The user agreed to the bounded experiment proposed in the
 [upstream audit](upstream_connectivity_results.md). The separate trainer,
 configuration, exact frozen-cloud cache, CPU checks and visible launch commands
-are prepared. **No real-neuron optimizer updates or GPU workloads have run.**
-The CPU unit tests perform discarded synthetic updates to verify continuation.
+are prepared. CPU preparation used no real-neuron optimizer updates or GPU
+workloads. The user subsequently completed the throwaway GPU timing above;
+the full fit has not started. CPU unit tests use discarded synthetic updates
+to verify continuation.
 
 This experiment trains PointNeXt and the Transformer together. Phase 1 stays
 frozen; no field inference or manual edits are needed. GATv2 is not trained by
@@ -106,9 +119,9 @@ This performs eight throwaway updates on the local NVIDIA GeForce RTX 3070 Ti
 Laptop GPU: one warm-up cycle and one timed cycle over all four crops, followed
 by evaluation and checkpoint-state/reload checks. It retains no trained
 checkpoint. It prints a duration range and peak allocated/reserved memory.
-TF32 and cuDNN benchmarking are off. Estimated time is **unknown until this
-timing action completes**; the estimate includes measured update and evaluation
-costs, with a 1.5x planning upper range, and excludes checkpoint IO/system variation.
+TF32 and cuDNN benchmarking are off. The completed first timing action estimates
+76–114 minutes. The estimate includes measured update and evaluation costs,
+with a 1.5x planning upper range, and excludes checkpoint IO/system variation.
 
 Inspect its report before the full fit. The separate full-fit command is:
 

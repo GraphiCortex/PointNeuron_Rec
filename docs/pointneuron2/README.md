@@ -1,5 +1,10 @@
 # PointNeuron 2.0 development
 
+**GPU timing reviewed, 17 October:** the [four-crop fit](branched_query_ready.md)
+has matching source/cache contracts and zero reload delta. The eight throwaway
+GPU updates estimate 76–114 minutes for the capped fit; no trained timing
+checkpoint remains. The full fit is ready for the user to launch separately.
+
 **Ready, 17 October:** the agreed [four-crop branched proposal fit](branched_query_ready.md)
 is prepared with fresh seed-zero weights, fixed clouds and a 4,000-update cap.
 CPU data/inference/checkpoint checks pass; the visible GPU timing and training
