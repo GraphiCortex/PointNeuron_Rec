@@ -1,0 +1,11 @@
+{
+  "schema": "pointneuron2-balanced-query-comparison-v1",
+  "classification_policy": "per_crop_equal_positive_negative_class_means_v1",
+  "baseline_experiment": "tmp/pointneuron2/local_runs/branched_query_restart_20261017",
+  "baseline_report_sha256": "3e023316978632587f7b9d0b2798cbb6964aa0dacb1ce158e2c04647bb667def",
+  "baseline_recipe": "configs/pointneuron2/branched_query_fit.json",
+  "candidate_radii_for_reporting": [8.0, 12.0],
+  "candidate_neighbors": 16,
+  "primary_candidate_radius": 8.0,
+  "decision": "Original gates stay primary; radius twelve is a separate diagnostic on both models. No automatic promotion."
+}

@@ -1,13 +1,20 @@
 # PointNeuron 2.0 development
 
+**Prepared, 18 October:** [matched class-normalization comparison](balanced_query_ready.md).
+The exact four-crop cache and fresh initialization match the completed baseline;
+18 tests and a zero-update CPU reload check pass. Separate GPU timing/training
+commands are ready but have not run. A saved-prediction radius-eight/twelve check
+recovers smaller-crop candidate omissions without fixing confidence or dense-crop
+placement. Radius eight remains the primary gate; radius twelve is diagnostic.
+
 **Completed fit, 17 October:** the [four-crop results](branched_query_results.md)
 verify successful 4,000-update execution and zero reload delta, but every
 learnability gate fails. Sparse crops place 6/6, 12/12 and 16/16 targets;
 confidence accepts 0/6, 8/12 and 6/16 with 0/25/17 extras. The dense crop has
 384/418 trusted matches, 74/77 junctions and accepts all 512 queries. Candidate
 availability is also below the gate. Stop at the cap; no GATv2 fit or extension.
-Class-normalized confidence and a candidate error margin are proposed for
-discussion; neither is implemented or launched.
+The subsequently agreed class-normalized confidence comparison and candidate
+margin check are prepared above; no new GPU fit has started.
 
 **Evaluation repair, 17 October:** the first four-crop fit failed at update 500
 on two empty JSON probe arrays in dense-crop scoring. The
