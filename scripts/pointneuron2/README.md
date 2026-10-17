@@ -6,7 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [connectivity implementation and CPU execution checks](../../docs/pointneuron2/gatv2_connectivity_implementation.md).
+Latest: [real upstream connectivity audit](../../docs/pointneuron2/upstream_connectivity_results.md).
+`audit_upstream_connectivity.py` performs four training-crop CPU forwards with
+pinned source weights and image-only clouds, then measures trusted node/edge
+availability. No optimizer/GATv2/GPU workload is created. Both branched cases
+fail frozen-upstream feasibility; the proposed next learning experiment is
+documented for discussion, with no training command prepared or launched.
+
+Previous: [connectivity implementation and CPU execution checks](../../docs/pointneuron2/gatv2_connectivity_implementation.md).
 `check_connectivity.py` verifies native GATv2/control gradients and strict reload
 on identical synthetic proposals, then tests forest decoding with reference
 edge scores. No optimizer updates or upstream/image forwards occur. The runner

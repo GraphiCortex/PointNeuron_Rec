@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Latest, 17 October:** the [real upstream connectivity audit](upstream_connectivity_results.md)
+rules out freezing the existing two-crop query checkpoint for the declared
+branched fit. Trusted matches are 0/16 and 0/418 despite 94.74%/98.72% selected
+cloud support at six voxels; both crops supply zero known edge labels. The two
+fitted controls reproduce saved predictions exactly. No training was launched.
+A capped branched proposal learnability experiment is proposed for discussion;
+GATv2-versus-pairwise fitting and the 4,000-update confidence replay stay deferred.
+
 **Latest, 17 October:** [per-crop connectivity implementation](gatv2_connectivity_implementation.md)
 is complete: native GATv2, matched pairwise control, masked edge labels and
 score-to-forest/SWC decoding. 42 targeted tests and fixed CPU execution checks
