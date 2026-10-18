@@ -6,12 +6,17 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Ready: [four-crop frozen confidence stage](../../docs/pointneuron2/four_crop_frozen_confidence_ready.md).
+Completed: [four-crop frozen confidence results](../../docs/pointneuron2/four_crop_frozen_confidence_results.md).
+All strict gates fail after the user-launched 4,000-update CPU stage. Six saved
+checkpoints replay exactly; frozen tensors/sources match. No extension or new
+fit is prepared. The head is not promoted into reconstruction.
+
+Preparation: [four-crop frozen confidence stage](../../docs/pointneuron2/four_crop_frozen_confidence_ready.md).
 `run_four_crop_frozen_confidence.ps1` exposes separate CPU prepare/check/train/
 resume actions through `four_crop_frozen_confidence.py`. Only the saved 258
 confidence parameters train; geometry and fixed features/labels stay unchanged.
-Thirteen tests and eight throwaway readiness updates pass. The retained fit is
-user-launched, capped at 4,000 new-stage updates; no GPU workload is involved.
+Thirteen tests and eight throwaway readiness updates pass. The retained fit was
+user-launched and capped at 4,000 new-stage updates; no GPU workload is involved.
 Fresh optimizer and all-four-crop updates are explicit training-stage changes.
 
 Latest capacity result: [four-crop fixed-feature oracle](../../docs/pointneuron2/four_crop_confidence_capacity_results.md).

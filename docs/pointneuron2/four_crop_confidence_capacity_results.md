@@ -5,7 +5,8 @@ correctly separates all 2,048 fixed query labels from the completed balanced
 fit**. Its predictions are verified in float32 classifier arithmetic at cutoff
 .5. No neural training, new model checkpoint or inference policy is introduced.
 The subsequently agreed [frozen-confidence control](four_crop_frozen_confidence_ready.md)
-is now prepared separately; its retained fit has not started.
+is reviewed separately: its retained 4,000-update fit
+[completed but failed the strict gate](four_crop_frozen_confidence_results.md).
 
 This answers the [proposed capacity question](query_assignment_contract_review.md):
 the existing final linear function class can represent the desired assignment
@@ -103,10 +104,9 @@ queries because those are its fixed positive labels. It is not a geometry-qualit
 classifier, learned connectivity result, test evaluation or matched PN 1.0 gain.
 
 Keep the balanced fit as the stronger incomplete reference; keep the hard-negative
-variant rejected. The next discussion can focus on whether ordinary confidence
-optimization reaches a separator when features/geometry/labels are held fixed,
-before changing joint training. That subsequent control is linked above; no
-retained fit has started and the LP witness is not promoted into reconstruction.
+variant rejected. The subsequent fixed-feature training control is reviewed
+above; it fails its declared strict gate. Neither classifier is promoted into
+reconstruction, and no extension or new fit is prepared.
 
 Evidence: [full oracle result](four_crop_confidence_capacity_results_seed0/summary.json)
 and [test/source verification](four_crop_confidence_capacity_results_seed0/validation.json).

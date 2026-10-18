@@ -1,5 +1,10 @@
 # Frozen four-crop confidence stage: ready for a visible CPU fit
 
+Subsequent outcome: the user-launched fit completed and failed its strict gate.
+See [results and interpretation](four_crop_frozen_confidence_results.md).
+The preparation record below describes the state before that launch; its command
+must not be rerun over completed outputs.
+
 18 October 2026. The user agreed to test staged confidence learning after the
 [capacity oracle](four_crop_confidence_capacity_results.md) verified a shared
 separator. Preparation, tests and an eight-update throwaway CPU check pass.
