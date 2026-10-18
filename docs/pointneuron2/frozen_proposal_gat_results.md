@@ -1,5 +1,10 @@
 # GATv2 learns all four fixed graphs with oracle-selected learned proposals
 
+Subsequent integration result, 19 October: the agreed
+[automatic-selection comparison](gat_automatic_selection_results.md) is complete
+without retraining and exposes the node-selection gap. The conditional success
+reported here remains valid; no further fit or production promotion follows.
+
 18 October 2026. The user-launched 4,000-update connectivity fit **passes the
 declared graph gate on every training crop**. The first evaluated passing
 snapshot is update 500; updates 1,000, 2,000 and 4,000 also pass. Both independent
@@ -134,6 +139,6 @@ declare a distribution-shift failure proof that GATv2 cannot work.
 
 GATv2's current decoder retains accepted isolated nodes, so simply removing
 edges is not a supervised node-cleanup mechanism. The comparison must not
-silently add pruning, a new node head or a different cutoff. Discuss the precise
-comparison and interpretation before implementing it; this report does not
-launch that additional evaluation or change the architecture.
+silently add pruning, a new node head or a different cutoff. The user subsequently
+agreed to that comparison; its outcome is linked above. It does not change the
+architecture or deploy either model.

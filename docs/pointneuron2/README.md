@@ -1,5 +1,14 @@
 # PointNeuron 2.0 development
 
+**Completed inference integration check, 19 October:** [oracle versus automatic node selection](gat_automatic_selection_results.md).
+The same successful GAT checkpoint is evaluated without retraining. Automatic
+selection reduces small-crop arclength precision at two voxels to 57.11%, 45.12%
+and 67.21%; dense recall becomes 95.79%. All surviving required pairs are present
+in candidates; dense losses originate in seven confidence-rejected nodes.
+Direct-pair mismatches are distinguished from paths through unmatched nodes.
+Eighteen tests, eight exact CPU score replays and eight SWCs are verified.
+No pruning, threshold change, node head, new training or production promotion.
+
 **Completed connectivity control, 18 October:** [frozen-proposal GATv2 results](frozen_proposal_gat_results.md).
 All four oracle-selected training graphs pass at terminal update 4,000 and every
 evaluated snapshot from 500 onward: 434/434 required edges, zero wrong edges,

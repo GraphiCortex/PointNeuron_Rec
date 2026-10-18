@@ -6,11 +6,19 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Completed: [automatic-selection GAT integration comparison](../../docs/pointneuron2/gat_automatic_selection_results.md).
+`evaluate_gat_automatic_selection.py` uses CPU inference only, with the unchanged
+successful GAT checkpoint and balanced cached proposals. It pairs oracle versus
+the existing .5 automatic selection, rebuilds candidates, exports SWCs and
+separates node/candidate/edge-score/forest losses. No reference data enter the
+automatic selector or scorer. Eighteen targeted tests pass; all eight saved
+scores replay exactly and SWCs verify. No pruning, fit or policy change.
+
 Completed: [frozen-proposal GATv2 results](../../docs/pointneuron2/frozen_proposal_gat_results.md).
 The user-launched fit passes all four conditional training graph gates from
 evaluated update 500 onward, including terminal 4,000. Five checkpoints and 20
-SWCs are verified; source/cache hashes match. No automatic-selection evaluation,
-new fit or production promotion is prepared.
+SWCs are verified; source/cache hashes match. The subsequent automatic-selection
+evaluation is reviewed above; no new fit or production promotion is prepared.
 
 Preparation: [frozen-proposal GATv2 control](../../docs/pointneuron2/frozen_proposal_gat_ready.md).
 `run_frozen_proposal_gat.ps1` exposes prepare/check/timing/train/resume actions.

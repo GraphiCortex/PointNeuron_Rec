@@ -1,0 +1,16 @@
+{
+  "schema": "pointneuron2-gat-automatic-selection-evaluation-v1",
+  "gat_experiment": "tmp/pointneuron2/local_runs/frozen_proposal_gat_20261018",
+  "gat_checkpoint_sha256": "25b052286165a52fbf20bf7ca34f5bd404571ad2da2f70c53f0852123db88c9a",
+  "gat_report_sha256": "2afba2359646eb0a1d9524fa5589f3aacec7ec852ebe7546243871fd0a9ada8c",
+  "balanced_experiment": "tmp/pointneuron2/local_runs/balanced_query_20261018",
+  "balanced_report_sha256": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+  "node_cutoff": 0.5,
+  "edge_cutoff": 0.5,
+  "device": "cpu",
+  "torch_threads": 2,
+  "expected_automatic_assigned": [6, 12, 16, 411],
+  "expected_automatic_unmatched": [11, 32, 17, 4],
+  "training_crops": [[0, 0], [0, 1], [92, 4], [86, 3]],
+  "optimizer_updates": 0
+}
