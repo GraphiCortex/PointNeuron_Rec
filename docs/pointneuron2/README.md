@@ -1,12 +1,21 @@
 # PointNeuron 2.0 development
 
+**Capacity result, 18 October:** [four-crop confidence oracle](four_crop_confidence_capacity_results.md)
+verifies one shared linear separator for all 2,048 fixed balanced-fit labels:
+452/452 matched positives, zero unmatched acceptances, zero float32 label errors.
+Actual post-hidden-ReLU inputs reproduce saved logits first. Eight known-case
+tests pass. This establishes frozen training-feature/head capacity, not learned
+selection, generalization or reconstruction. No classifier is saved/deployed,
+and no new training or matching change is prepared.
+
 **Design audit, 18 October:** [assignment and confidence contract](query_assignment_contract_review.md).
 Saved target/query changes and binary confidence-label flips are counted
 separately. In the failed dense fit, 267 changed target matches include only
 62 positive-query replacements (124 binary flips); 205 queries stay positive
 and switch targets. This does not diagnose harmful instability. The next proposed
-question is fixed four-crop feature/head separability, using the actual hidden
-classifier inputs. No solver, new loss, matcher change or fit is prepared.
+question was fixed four-crop feature/head separability, using the actual hidden
+classifier inputs; the subsequent result is reviewed above. No new loss, matcher
+change or fit is prepared.
 
 **Completed failed comparison, 18 October:** [hard-negative results](hard_negative_query_results.md).
 The matched 4,000-update fit regresses: sparse extras 11/32/17 → 260/151/116;

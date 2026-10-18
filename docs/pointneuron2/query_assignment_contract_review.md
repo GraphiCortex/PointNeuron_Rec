@@ -1,6 +1,8 @@
 # Assignment and confidence: design audit before another fit
 
 18 October 2026. Read-only review after rejection of the hard-negative variant.
+The subsequently agreed [four-crop capacity check](four_crop_confidence_capacity_results.md)
+finds a verified shared separator; that result is separate from this assignment audit.
 No model/loss/matcher/inference policy is changed. No training run or replacement
 architecture is prepared. The balanced fit remains the stronger incomplete
 reference. This note separates the current contract, observed label changes and
@@ -129,8 +131,8 @@ reported; ambiguous numerical results remain inconclusive.
 This is a training-label capacity oracle, not automatic inference, a replacement
 classifier to deploy, generalization or reconstruction improvement. It has a
 specific decision purpose: distinguish feature/head representability from joint
-learning before spending another GPU fit. The check is proposed for discussion;
-no implementation or solver run is prepared by this note.
+learning before spending another GPU fit. The check subsequently completed and
+is linked above; no new learning experiment is prepared.
 
 The broader milestone is unchanged: useful, selected skeleton nodes followed by
 learned connectivity and matched PN 1.0/PN 2.0 reconstruction evaluation. No

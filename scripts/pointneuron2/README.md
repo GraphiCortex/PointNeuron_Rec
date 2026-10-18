@@ -6,12 +6,19 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest capacity result: [four-crop fixed-feature oracle](../../docs/pointneuron2/four_crop_confidence_capacity_results.md).
+`audit_four_crop_confidence_capacity.py` reconstructs actual hidden classifier
+inputs, verifies saved logits, then solves one CPU affine feasibility problem
+for all four crops together. Float32 verification gives zero errors on 2,048
+cached labels. Eight known-case tests pass. No neural training, GPU work,
+classifier checkpoint, inference-policy change or reconstruction evaluation.
+
 Design audit: [assignment/selection contract](../../docs/pointneuron2/query_assignment_contract_review.md).
 `audit_query_assignment_contract.py` checks saved target-to-query map changes
 separately from binary positive/negative label changes across both fits' five
 snapshots. It performs no matching, forwards, updates, GPU calls or dev/test
-access. The suggested feature-capacity question remains a discussion proposal;
-no new learning experiment or solver is prepared.
+access. The subsequently agreed feature-capacity oracle is reviewed above;
+no new learning experiment is prepared.
 
 Latest result: [failed hard-negative comparison](../../docs/pointneuron2/hard_negative_query_results.md).
 `review_hard_negative_query_fit.py` audits both saved fits on CPU, reusing the
