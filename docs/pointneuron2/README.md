@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Prepared joint prototype, 19 October:** [joint proposal/connectivity contract](joint_query_graph_ready.md).
+Existing proposal and edge heads share a loss, warm-started from the completed
+balanced proposal and conditional GAT fits with a fresh optimizer. All 512 queries
+reach GAT before final automatic selection. The strict gate includes automatic
+nodes, decoded topology and 99% arclength precision/recall at two voxels on every
+training crop. Separate CPU checks, GPU timing and capped training actions;
+no new node head, topology loss or broader-data claim.
+
 **Design recommendation, 19 October:** [node-selection/connectivity responsibility](node_graph_design_decision.md).
 The proposal calls for joint proposal/connectivity training; the saved fits have
 not tested that integration. Its GAT role is edge scoring, so a node head would

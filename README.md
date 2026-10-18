@@ -7,6 +7,9 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Prepared: bounded joint proposal/GATv2 prototype with strict automatic reconstruction gates](docs/pointneuron2/joint_query_graph_ready.md)
+- [Design review: node selection, graph responsibility and missing joint training](docs/pointneuron2/node_graph_design_decision.md)
+- [Automatic-selection integration: conditional graph success does not survive realistic nodes](docs/pointneuron2/gat_automatic_selection_results.md)
 - [Latest: per-crop GATv2/control, edge labels and forest decoder implemented; CPU checks pass without training](docs/pointneuron2/gatv2_connectivity_implementation.md)
 - [Reviewed design: GATv2 inputs, edge supervision, scorer and forest decoder](docs/pointneuron2/gatv2_connectivity_design.md)
 - [Latest: training-only node/graph/SWC representation check passes; learned connectivity remains open](docs/pointneuron2/representation_oracle_results.md)

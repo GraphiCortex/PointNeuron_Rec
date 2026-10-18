@@ -6,6 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Prepared: [bounded joint proposal/GATv2 stage](../../docs/pointneuron2/joint_query_graph_ready.md).
+`run_joint_query_graph.ps1` separates CPU prepare/check, throwaway GPU timing,
+capped train and exact intermediate resume. Existing heads, frozen Phase 1,
+all 512 queries before final .5 node selection; combined proposal/edge loss and
+fresh joint optimizer from two completed warm starts. The automatic node, graph,
+geometry and SWC gate replaces conditional success as the outcome of this stage.
+GPU actions remain user-launched.
+
 Completed: [automatic-selection GAT integration comparison](../../docs/pointneuron2/gat_automatic_selection_results.md).
 `evaluate_gat_automatic_selection.py` uses CPU inference only, with the unchanged
 successful GAT checkpoint and balanced cached proposals. It pairs oracle versus
