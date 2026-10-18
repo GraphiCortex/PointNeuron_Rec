@@ -1,12 +1,20 @@
 # PointNeuron 2.0 development
 
+**Prepared CPU control, 18 October:** [frozen four-crop confidence stage](four_crop_frozen_confidence_ready.md).
+Only 258 confidence parameters train from the balanced source head, with a fresh
+AdamW optimizer, balanced loss, all four crops per update and a 4,000-stage-update
+cap. Thirteen tests and an eight-throwaway-update CPU readiness check pass.
+Features/labels/geometry remain fixed; no retained fit or GPU work has started.
+The visible retained-fit command is ready. This is a new training stage, not
+continuation of the completed joint run or reconstruction improvement.
+
 **Capacity result, 18 October:** [four-crop confidence oracle](four_crop_confidence_capacity_results.md)
 verifies one shared linear separator for all 2,048 fixed balanced-fit labels:
 452/452 matched positives, zero unmatched acceptances, zero float32 label errors.
 Actual post-hidden-ReLU inputs reproduce saved logits first. Eight known-case
 tests pass. This establishes frozen training-feature/head capacity, not learned
 selection, generalization or reconstruction. No classifier is saved/deployed,
-and no new training or matching change is prepared.
+and the subsequently agreed frozen-head control is prepared separately above.
 
 **Design audit, 18 October:** [assignment and confidence contract](query_assignment_contract_review.md).
 Saved target/query changes and binary confidence-label flips are counted

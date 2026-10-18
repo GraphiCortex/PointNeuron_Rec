@@ -1,0 +1,182 @@
+{
+  "schema": "pointneuron2-four-crop-frozen-confidence-readiness-v1",
+  "date": "2026-10-18",
+  "status": "ready_retained_fit_not_started",
+  "recipe": {
+    "schema": "pointneuron2-four-crop-frozen-confidence-v1",
+    "source_experiment": "tmp/pointneuron2/local_runs/balanced_query_20261018",
+    "source_fit_sha256": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+    "source_checkpoint_sha256": "62892ad332259dab76896ff16bb71294d87166c7ad274e6813d12ab9dcc1e58a",
+    "training_crops": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        92,
+        4
+      ],
+      [
+        86,
+        3
+      ]
+    ],
+    "expected_positive_counts": [
+      6,
+      12,
+      16,
+      418
+    ],
+    "feature_tensor_sha256": "b44de955deeaa05177c35397e02c289363bc31cbb09a24e00c44e913f30f7b4e",
+    "updates": 4000,
+    "snapshots": [
+      0,
+      100,
+      500,
+      1000,
+      2000,
+      4000
+    ],
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 10.0,
+    "score_threshold": 0.5,
+    "torch_threads": 2,
+    "update_scope": "mean_of_four_per_crop_balanced_CE_losses_times_two",
+    "initialization": "saved_balanced_step_4000_confidence_rows_fresh_optimizer",
+    "device": "cpu",
+    "check_throwaway_updates": 8
+  },
+  "source_joint_updates": 4000,
+  "retained_stage_updates": 0,
+  "trainable_parameters": 258,
+  "source_fit_sha256": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+  "source_checkpoint_sha256": "62892ad332259dab76896ff16bb71294d87166c7ad274e6813d12ab9dcc1e58a",
+  "raw_check_report": "tmp/pointneuron2/local_runs/four_crop_frozen_confidence_20261018/check/report.json",
+  "raw_check_report_sha256": "bb9529c712b3b3bad1e8be4a0b3b7c2df67e52c47cdf222e4b0054b0ad2e19a8",
+  "cache_manifest_sha256": "a050d8a1deea219d8ef582d98dccbbad8090e0643aef2e4b7e68fa2cceed5372",
+  "cache_sha256": "85991ce84dfe5f1b7def3ce2b292abc74e6913108d031b3b1c0121c8cc894a2e",
+  "feature_bytes_sha256": "b44de955deeaa05177c35397e02c289363bc31cbb09a24e00c44e913f30f7b4e",
+  "frozen_tensor_sha256": {
+    "candidate_edges_0": "08404b894f78506d68bc5a5b1565c94e37bcc97cd8cb1cb770ff6bb973669830",
+    "edge_labels_0": "510fbdaf84ae2dba22bb077dcc045b81215d482d4e2324ea73fc7a49f338a615",
+    "candidate_edges_1": "c523f010b454ef59d70ed68932216b635c4f2875a654389b14166bd27be785d9",
+    "edge_labels_1": "a918660ff5c8af58debbbcf5c04819242d66990ed6bd55793e31c917825965a1",
+    "candidate_edges_2": "3ab5a2c8ea36bb37a211ae77f2f16b4223135eafaee0332bbd21e73f1893b4e6",
+    "edge_labels_2": "2e5325931921527e7241a61ee8bca97789f6b88b95739b1541e66bc616fa4744",
+    "candidate_edges_3": "8dae6466f8a59b723b5af7dd6f8d3a077bd8b14d68cba651b1ddc4e27fa97b3a",
+    "edge_labels_3": "ab992b2df75f180465b20afdbc993811a78b3b598ce843595a1a4fb9f3984a9c",
+    "features": "4a6656a1596214fb3de408fdd348d00315048d9a892f5989ca1e9862612a1d3e",
+    "labels": "c041adde61720b5517165444406ad2cdc663aa0968c441c279ceb30580ed8025",
+    "centers": "f45a73a91c80935efea742e8ea5c03388711e319ff1bc9d464b837d79e0faa6d",
+    "radii": "8f065748e47d842794997631c28d079e0c34177778366cbd112334a97982cae8",
+    "baseline_logits": "152aa3a0f239e0296fdc6c4f45f4f6692ff5ad85910b287383b3a647da0c5890",
+    "decoder_features": "67ece91f5896dd53dc8888b4c38f13c76c56e7ff64622032fec572f681f570e6",
+    "initial_weight": "4958e8b6f67907998ab49e5ba9e12e72450b956c30ad69dbb409141c8f6005f3",
+    "initial_bias": "1a6e915be6b24403574386284955dc0d65576de871c8f54e73d6ea2df86d6da4"
+  },
+  "verification": {
+    "targeted_tests_passed": 13,
+    "test_failures": 0,
+    "test_errors": 0,
+    "test_xml": "tmp/pointneuron2/four_crop_frozen_confidence_tests_final_20261018.xml",
+    "test_xml_sha256": "c6d09db4fc176e913381fb8598c7f143b95ffc86273982df71b136007c8d142e",
+    "powershell_parse_errors": 0,
+    "checked_current_sources": 50,
+    "checked_protected_sources": 85,
+    "throwaway_optimizer_updates": 8,
+    "trained_checkpoint_retained": false,
+    "source_model_forwards": 0,
+    "initial_replay_max_delta": 9.5367431640625E-07,
+    "reload_max_delta": 0.0,
+    "cached_features_labels_geometry_unchanged": true,
+    "backend": {
+      "device": "cpu",
+      "torch": "2.12.1+cu130",
+      "threads": 2
+    }
+  },
+  "initial_evaluation": {
+    "stage_step": 0,
+    "optimization_loss": 0.20353391766548157,
+    "crops": [
+      {
+        "sample_index": 0,
+        "patch_index": 0,
+        "targets": 6,
+        "accepted_matched": 6,
+        "accepted_unmatched": 11,
+        "balanced_classification_loss": 0.04206409305334091,
+        "minimum_matched_probability": 0.941444456577301,
+        "maximum_unmatched_probability": 0.9704484939575195,
+        "strict_fixed_label_gate": false,
+        "accepted_curve_support_6": 1.0,
+        "required_edge_recall_after_cutoff": 1.0,
+        "frozen_trusted_targets": 6,
+        "frozen_trusted_junctions": 0
+      },
+      {
+        "sample_index": 0,
+        "patch_index": 1,
+        "targets": 12,
+        "accepted_matched": 12,
+        "accepted_unmatched": 32,
+        "balanced_classification_loss": 0.13721366226673126,
+        "minimum_matched_probability": 0.8395230770111084,
+        "maximum_unmatched_probability": 0.994686484336853,
+        "strict_fixed_label_gate": false,
+        "accepted_curve_support_6": 1.0,
+        "required_edge_recall_after_cutoff": 1.0,
+        "frozen_trusted_targets": 12,
+        "frozen_trusted_junctions": 0
+      },
+      {
+        "sample_index": 92,
+        "patch_index": 4,
+        "targets": 16,
+        "accepted_matched": 16,
+        "accepted_unmatched": 17,
+        "balanced_classification_loss": 0.06978365778923035,
+        "minimum_matched_probability": 0.840622067451477,
+        "maximum_unmatched_probability": 0.9737100005149841,
+        "strict_fixed_label_gate": false,
+        "accepted_curve_support_6": 1.0,
+        "required_edge_recall_after_cutoff": 1.0,
+        "frozen_trusted_targets": 16,
+        "frozen_trusted_junctions": 2
+      },
+      {
+        "sample_index": 86,
+        "patch_index": 3,
+        "targets": 418,
+        "accepted_matched": 411,
+        "accepted_unmatched": 4,
+        "balanced_classification_loss": 0.1580064296722412,
+        "minimum_matched_probability": 0.04058583453297615,
+        "maximum_unmatched_probability": 0.9761731028556824,
+        "strict_fixed_label_gate": false,
+        "accepted_curve_support_6": 0.9968427272330194,
+        "required_edge_recall_after_cutoff": 0.9183168316831684,
+        "frozen_trusted_targets": 404,
+        "frozen_trusted_junctions": 76
+      }
+    ],
+    "strict_fixed_label_gate": false
+  },
+  "timing": {
+    "check_elapsed_seconds": 8.924695699999575,
+    "estimated_4000_update_loop_seconds": 36.22110000287648,
+    "planning_range_seconds": [
+      36.22110000287648,
+      64.33165000431472
+    ],
+    "caveat": "Plus startup, checkpoint and evaluation IO; short-check estimate, not a guarantee."
+  },
+  "success_criterion": "At terminal stage update 4000: all 452 fixed positives accepted and all 1596 fixed negatives rejected at threshold 0.5, on all four crops simultaneously; frozen tensors unchanged and exact reload.",
+  "interpretation": "Fixed training-label staged learnability only. Fresh optimizer and all-four-crop batching differ from the joint fit. Frozen geometry errors remain; no generalization, GATv2 training or reconstruction claim.",
+  "stopping_rule": "No automatic extension, LR sweep, threshold change, deployment, model unfreezing or GATv2 fit. Review the declared terminal result."
+}
