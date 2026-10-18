@@ -6,15 +6,24 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Prepared: [hard-negative confidence comparison](../../docs/pointneuron2/hard_negative_query_ready.md).
+Latest: [failed hard-negative comparison](../../docs/pointneuron2/hard_negative_query_results.md).
+`review_hard_negative_query_fit.py` audits both saved fits on CPU, reusing the
+preserved paired reviewer with an explicit read-only weighted-CE name adapter.
+It checks hard-set membership/objective, all original gates, sources, cache,
+initialization, predictions and checkpoints. No forwards, updates, GPU work,
+cutoff search or development/test access. The variant fails its predeclared
+tradeoff; no new learning experiment is prepared.
+
+Previous preparation: [hard-negative confidence comparison](../../docs/pointneuron2/hard_negative_query_ready.md).
 `run_hard_negative_query.ps1` separates prepare/check/timing/train/resume through
 `hard_negative_query_experiment.py`. The new loss changes only confidence
 redistribution, keeping all geometry, matching and primary candidate gates.
 Twenty-eight targeted tests pass. Exact-cache CPU checks and fresh initialization
 are recorded in the linked report. User-launched GPU timing passes with zero
 reload delta and unchanged memory, estimating 85–128 minutes under those measured
-conditions. The capped retained fit has not started; timing retains no trained
-checkpoint. No additional GPU work was launched during review.
+conditions. The user subsequently completed the capped fit in 18.94 minutes;
+results are reviewed above. Timing retains no trained checkpoint. No additional
+GPU work was launched during review.
 
 Design: [hard-negative objective specification](../../docs/pointneuron2/hard_negative_objective_proposal.md).
 `audit_hard_negative_objective.py` computes proposed CE and analytic score-margin

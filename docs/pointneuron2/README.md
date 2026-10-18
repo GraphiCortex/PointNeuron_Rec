@@ -1,11 +1,20 @@
 # PointNeuron 2.0 development
 
+**Completed failed comparison, 18 October:** [hard-negative results](hard_negative_query_results.md).
+The matched 4,000-update fit regresses: sparse extras 11/32/17 → 260/151/116;
+dense trusted targets 404 → 349, accepted assigned 411 → 158 and junctions
+76 → 60. Execution/source/checkpoint checks pass, but all selection/combined
+gates fail. Reject this variant for the current protocol; retain balanced as the
+stronger incomplete reference. Stop loss sweeps and return to the assignment/
+selection contract discussion. No further fit, cutoff change or GATv2 run is queued.
+
 **Prepared, 18 October:** [hard-negative comparison and CPU checks](hard_negative_query_ready.md).
 The agreed 50/25/25 objective is isolated from the completed fits. Twenty-eight
 targeted tests pass; the exact-cache/fresh-model CPU check is reviewed in the
 linked evidence. User-launched GPU timing passes with zero reload difference;
 its estimate is 85–128 minutes, substantially slower than the prior fit for an
-unestablished reason. Retained training has not started. Same four crops, seed, architecture, optimizer, original gates
+unestablished reason. The retained fit subsequently completed in 18.94 minutes
+and is reviewed above. Same four crops, seed, architecture, optimizer, original gates
 and 4,000-update cap; no development/test evaluation or automatic GATv2 fit.
 
 **Design discussion, 18 October:** [hard-negative objective proposal](hard_negative_objective_proposal.md)
@@ -13,7 +22,7 @@ specifies one candidate loss: retain half the negative mass on all unmatched
 queries and put half on the highest-scoring subset, K=min(P,N). Saved-score
 algebra confirms the intended sparse-crop emphasis and exact dense-crop equality.
 The subsequently agreed implementation and preparation are linked above.
-No new GPU fit has started.
+The completed GPU fit is reviewed above; no additional fit is prepared.
 
 **Completed comparison, 18 October:** [balanced confidence results](balanced_query_results.md).
 The paired 4,000-update fit improves ranking on all four training crops. Smaller

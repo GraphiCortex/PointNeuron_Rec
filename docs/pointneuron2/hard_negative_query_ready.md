@@ -2,7 +2,10 @@
 
 18 October 2026. The user agreed to the [specified 50/25/25 comparison](hard_negative_objective_proposal.md).
 It is implemented as a separate loss, recipe, runner and launcher. **User-launched
-GPU timing is complete; retained training has not started.** All completed balanced/weighted-loss sources
+GPU timing and the 4,000-update fit are complete.** The
+[paired results](hard_negative_query_results.md) reject this variant for the
+current protocol; no further learning experiment is prepared. The protocol below
+records the agreed run. All completed balanced/weighted-loss sources
 and outputs remain preserved. This is a four-training-crop learnability
 experiment, not a reconstruction benchmark or a change to the architecture.
 
