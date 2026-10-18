@@ -1,13 +1,22 @@
 # PointNeuron 2.0 development
 
+**Completed connectivity control, 18 October:** [frozen-proposal GATv2 results](frozen_proposal_gat_results.md).
+All four oracle-selected training graphs pass at terminal update 4,000 and every
+evaluated snapshot from 500 onward: 434/434 required edges, zero wrong edges,
+correct degree/junction incidence and components. All 3,735 negative candidates
+are rejected. Five checkpoints, 20 CPU score replays and 20 SWCs are verified.
+This establishes conditional training learnability; automatic node selection,
+extra/missing-node robustness and generalization remain open. No new fit or
+production promotion follows automatically.
+
 **Prepared connectivity control, 18 October:** [frozen-proposal GATv2 protocol](frozen_proposal_gat_ready.md).
 The agreed training-only control freezes balanced proposals and uses saved
 assignments to select nodes. Only the existing 119,041-parameter GATv2 scorer
 trains; this diagnostic bypasses confidence selection and the placement mask,
 without changing production behavior. All required pairs are candidates.
 Twenty-eight tests and the zero-update CPU check pass, with exact reload and
-unchanged frozen tensors. GPU timing and the capped 4,000-update fit remain
-separate user-launched commands. No retained fit or GPU work has started.
+unchanged frozen tensors. The user subsequently launched GPU timing and the
+capped 4,000-update fit; their completed result is reviewed above.
 
 **Completed CPU control, 18 October:** [frozen four-crop confidence results](four_crop_frozen_confidence_results.md).
 The 4,000-update confidence-only stage completes with exact six-snapshot replay

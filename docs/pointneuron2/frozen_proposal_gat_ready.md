@@ -1,5 +1,10 @@
 # Frozen-proposal GATv2 control: prepared, no retained fit started
 
+Subsequent outcome: the user-launched timing and retained fit completed.
+All four terminal graph gates pass; see [verified results](frozen_proposal_gat_results.md).
+The preparation record below describes the prelaunch state. Preserve completed
+outputs and do not rerun commands over them.
+
 18 October 2026. The user agreed to a bounded connectivity learnability test on
 the existing four training crops, with balanced proposals frozen and reference
 assignments supplying node selection. Implementation, 28 targeted tests, CPU
