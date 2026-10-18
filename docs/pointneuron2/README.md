@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Design audit, 18 October:** [assignment and confidence contract](query_assignment_contract_review.md).
+Saved target/query changes and binary confidence-label flips are counted
+separately. In the failed dense fit, 267 changed target matches include only
+62 positive-query replacements (124 binary flips); 205 queries stay positive
+and switch targets. This does not diagnose harmful instability. The next proposed
+question is fixed four-crop feature/head separability, using the actual hidden
+classifier inputs. No solver, new loss, matcher change or fit is prepared.
+
 **Completed failed comparison, 18 October:** [hard-negative results](hard_negative_query_results.md).
 The matched 4,000-update fit regresses: sparse extras 11/32/17 → 260/151/116;
 dense trusted targets 404 → 349, accepted assigned 411 → 158 and junctions

@@ -1,0 +1,621 @@
+{
+  "schema": "pointneuron2-assignment-contract-audit-v1",
+  "status": "completed",
+  "scope": "saved training assignments only; no forwards, gradients, updates, GPU, relabeling, cutoff search or dev/test access",
+  "fit_report_sha256": {
+    "balanced": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+    "hard_negative": "95503d46bcfab5ecdf4d7933235ff18980bfdb402b9621be972cba54f1ff3dcc"
+  },
+  "audit_source_sha256": "b3975721752d29c39e64db925f8378b74730e6467bd256c6f4305a7cc4af85c2",
+  "rows": [
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 6,
+      "queries_changing_negative_to_positive": 6,
+      "queries_changing_positive_to_negative": 6,
+      "binary_confidence_label_flips": 12,
+      "binary_label_flip_fraction_of_all_queries": 0.0234375,
+      "positive_queries_retained": 0,
+      "positive_retention_fraction": 0.0,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 12,
+      "queries_changing_negative_to_positive": 12,
+      "queries_changing_positive_to_negative": 12,
+      "binary_confidence_label_flips": 24,
+      "binary_label_flip_fraction_of_all_queries": 0.046875,
+      "positive_queries_retained": 0,
+      "positive_retention_fraction": 0.0,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 16,
+      "queries_changing_negative_to_positive": 15,
+      "queries_changing_positive_to_negative": 15,
+      "binary_confidence_label_flips": 30,
+      "binary_label_flip_fraction_of_all_queries": 0.05859375,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.0625,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 413,
+      "queries_changing_negative_to_positive": 83,
+      "queries_changing_positive_to_negative": 83,
+      "binary_confidence_label_flips": 166,
+      "binary_label_flip_fraction_of_all_queries": 0.32421875,
+      "positive_queries_retained": 335,
+      "positive_retention_fraction": 0.8014354066985646,
+      "retained_positive_queries_reassigned_to_other_target": 330
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 5,
+      "queries_changing_negative_to_positive": 5,
+      "queries_changing_positive_to_negative": 5,
+      "binary_confidence_label_flips": 10,
+      "binary_label_flip_fraction_of_all_queries": 0.01953125,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 8,
+      "queries_changing_negative_to_positive": 7,
+      "queries_changing_positive_to_negative": 7,
+      "binary_confidence_label_flips": 14,
+      "binary_label_flip_fraction_of_all_queries": 0.02734375,
+      "positive_queries_retained": 5,
+      "positive_retention_fraction": 0.4166666666666667,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 13,
+      "queries_changing_negative_to_positive": 12,
+      "queries_changing_positive_to_negative": 12,
+      "binary_confidence_label_flips": 24,
+      "binary_label_flip_fraction_of_all_queries": 0.046875,
+      "positive_queries_retained": 4,
+      "positive_retention_fraction": 0.25,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 178,
+      "queries_changing_negative_to_positive": 42,
+      "queries_changing_positive_to_negative": 42,
+      "binary_confidence_label_flips": 84,
+      "binary_label_flip_fraction_of_all_queries": 0.1640625,
+      "positive_queries_retained": 376,
+      "positive_retention_fraction": 0.8995215311004785,
+      "retained_positive_queries_reassigned_to_other_target": 136
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 5,
+      "queries_changing_negative_to_positive": 5,
+      "queries_changing_positive_to_negative": 5,
+      "binary_confidence_label_flips": 10,
+      "binary_label_flip_fraction_of_all_queries": 0.01953125,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 8,
+      "queries_changing_negative_to_positive": 8,
+      "queries_changing_positive_to_negative": 8,
+      "binary_confidence_label_flips": 16,
+      "binary_label_flip_fraction_of_all_queries": 0.03125,
+      "positive_queries_retained": 4,
+      "positive_retention_fraction": 0.3333333333333333,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 11,
+      "queries_changing_negative_to_positive": 11,
+      "queries_changing_positive_to_negative": 11,
+      "binary_confidence_label_flips": 22,
+      "binary_label_flip_fraction_of_all_queries": 0.04296875,
+      "positive_queries_retained": 5,
+      "positive_retention_fraction": 0.3125,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 133,
+      "queries_changing_negative_to_positive": 32,
+      "queries_changing_positive_to_negative": 32,
+      "binary_confidence_label_flips": 64,
+      "binary_label_flip_fraction_of_all_queries": 0.125,
+      "positive_queries_retained": 386,
+      "positive_retention_fraction": 0.9234449760765551,
+      "retained_positive_queries_reassigned_to_other_target": 101
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 5,
+      "queries_changing_negative_to_positive": 5,
+      "queries_changing_positive_to_negative": 5,
+      "binary_confidence_label_flips": 10,
+      "binary_label_flip_fraction_of_all_queries": 0.01953125,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 7,
+      "queries_changing_negative_to_positive": 7,
+      "queries_changing_positive_to_negative": 7,
+      "binary_confidence_label_flips": 14,
+      "binary_label_flip_fraction_of_all_queries": 0.02734375,
+      "positive_queries_retained": 5,
+      "positive_retention_fraction": 0.4166666666666667,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 9,
+      "queries_changing_negative_to_positive": 9,
+      "queries_changing_positive_to_negative": 9,
+      "binary_confidence_label_flips": 18,
+      "binary_label_flip_fraction_of_all_queries": 0.03515625,
+      "positive_queries_retained": 7,
+      "positive_retention_fraction": 0.4375,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "balanced",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 83,
+      "queries_changing_negative_to_positive": 30,
+      "queries_changing_positive_to_negative": 30,
+      "binary_confidence_label_flips": 60,
+      "binary_label_flip_fraction_of_all_queries": 0.1171875,
+      "positive_queries_retained": 388,
+      "positive_retention_fraction": 0.9282296650717703,
+      "retained_positive_queries_reassigned_to_other_target": 53
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 6,
+      "queries_changing_negative_to_positive": 5,
+      "queries_changing_positive_to_negative": 5,
+      "binary_confidence_label_flips": 10,
+      "binary_label_flip_fraction_of_all_queries": 0.01953125,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 12,
+      "queries_changing_negative_to_positive": 12,
+      "queries_changing_positive_to_negative": 12,
+      "binary_confidence_label_flips": 24,
+      "binary_label_flip_fraction_of_all_queries": 0.046875,
+      "positive_queries_retained": 0,
+      "positive_retention_fraction": 0.0,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 16,
+      "queries_changing_negative_to_positive": 15,
+      "queries_changing_positive_to_negative": 15,
+      "binary_confidence_label_flips": 30,
+      "binary_label_flip_fraction_of_all_queries": 0.05859375,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.0625,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 0,
+      "to_step": 500,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 416,
+      "queries_changing_negative_to_positive": 77,
+      "queries_changing_positive_to_negative": 77,
+      "binary_confidence_label_flips": 154,
+      "binary_label_flip_fraction_of_all_queries": 0.30078125,
+      "positive_queries_retained": 341,
+      "positive_retention_fraction": 0.8157894736842105,
+      "retained_positive_queries_reassigned_to_other_target": 339
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 6,
+      "queries_changing_negative_to_positive": 5,
+      "queries_changing_positive_to_negative": 5,
+      "binary_confidence_label_flips": 10,
+      "binary_label_flip_fraction_of_all_queries": 0.01953125,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 11,
+      "queries_changing_negative_to_positive": 11,
+      "queries_changing_positive_to_negative": 11,
+      "binary_confidence_label_flips": 22,
+      "binary_label_flip_fraction_of_all_queries": 0.04296875,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.08333333333333333,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 14,
+      "queries_changing_negative_to_positive": 14,
+      "queries_changing_positive_to_negative": 14,
+      "binary_confidence_label_flips": 28,
+      "binary_label_flip_fraction_of_all_queries": 0.0546875,
+      "positive_queries_retained": 2,
+      "positive_retention_fraction": 0.125,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 500,
+      "to_step": 1000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 270,
+      "queries_changing_negative_to_positive": 56,
+      "queries_changing_positive_to_negative": 56,
+      "binary_confidence_label_flips": 112,
+      "binary_label_flip_fraction_of_all_queries": 0.21875,
+      "positive_queries_retained": 362,
+      "positive_retention_fraction": 0.8660287081339713,
+      "retained_positive_queries_reassigned_to_other_target": 214
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 6,
+      "queries_changing_negative_to_positive": 6,
+      "queries_changing_positive_to_negative": 6,
+      "binary_confidence_label_flips": 12,
+      "binary_label_flip_fraction_of_all_queries": 0.0234375,
+      "positive_queries_retained": 0,
+      "positive_retention_fraction": 0.0,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 11,
+      "queries_changing_negative_to_positive": 10,
+      "queries_changing_positive_to_negative": 10,
+      "binary_confidence_label_flips": 20,
+      "binary_label_flip_fraction_of_all_queries": 0.0390625,
+      "positive_queries_retained": 2,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 1
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 15,
+      "queries_changing_negative_to_positive": 15,
+      "queries_changing_positive_to_negative": 15,
+      "binary_confidence_label_flips": 30,
+      "binary_label_flip_fraction_of_all_queries": 0.05859375,
+      "positive_queries_retained": 1,
+      "positive_retention_fraction": 0.0625,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 1000,
+      "to_step": 2000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 243,
+      "queries_changing_negative_to_positive": 63,
+      "queries_changing_positive_to_negative": 63,
+      "binary_confidence_label_flips": 126,
+      "binary_label_flip_fraction_of_all_queries": 0.24609375,
+      "positive_queries_retained": 355,
+      "positive_retention_fraction": 0.8492822966507177,
+      "retained_positive_queries_reassigned_to_other_target": 180
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        0
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 6,
+      "queries": 512,
+      "targets_changing_matched_query": 6,
+      "queries_changing_negative_to_positive": 6,
+      "queries_changing_positive_to_negative": 6,
+      "binary_confidence_label_flips": 12,
+      "binary_label_flip_fraction_of_all_queries": 0.0234375,
+      "positive_queries_retained": 0,
+      "positive_retention_fraction": 0.0,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        0,
+        1
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 12,
+      "queries": 512,
+      "targets_changing_matched_query": 10,
+      "queries_changing_negative_to_positive": 10,
+      "queries_changing_positive_to_negative": 10,
+      "binary_confidence_label_flips": 20,
+      "binary_label_flip_fraction_of_all_queries": 0.0390625,
+      "positive_queries_retained": 2,
+      "positive_retention_fraction": 0.16666666666666666,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        92,
+        4
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 16,
+      "queries": 512,
+      "targets_changing_matched_query": 14,
+      "queries_changing_negative_to_positive": 14,
+      "queries_changing_positive_to_negative": 14,
+      "binary_confidence_label_flips": 28,
+      "binary_label_flip_fraction_of_all_queries": 0.0546875,
+      "positive_queries_retained": 2,
+      "positive_retention_fraction": 0.125,
+      "retained_positive_queries_reassigned_to_other_target": 0
+    },
+    {
+      "arm": "hard_negative",
+      "crop": [
+        86,
+        3
+      ],
+      "from_step": 2000,
+      "to_step": 4000,
+      "targets": 418,
+      "queries": 512,
+      "targets_changing_matched_query": 267,
+      "queries_changing_negative_to_positive": 62,
+      "queries_changing_positive_to_negative": 62,
+      "binary_confidence_label_flips": 124,
+      "binary_label_flip_fraction_of_all_queries": 0.2421875,
+      "positive_queries_retained": 356,
+      "positive_retention_fraction": 0.8516746411483254,
+      "retained_positive_queries_reassigned_to_other_target": 205
+    }
+  ],
+  "interpretation": "Target/query map changes and binary confidence-label changes differ. Neither sparse-snapshot count establishes per-update instability or causation."
+}

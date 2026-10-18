@@ -6,7 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Latest: [failed hard-negative comparison](../../docs/pointneuron2/hard_negative_query_results.md).
+Design audit: [assignment/selection contract](../../docs/pointneuron2/query_assignment_contract_review.md).
+`audit_query_assignment_contract.py` checks saved target-to-query map changes
+separately from binary positive/negative label changes across both fits' five
+snapshots. It performs no matching, forwards, updates, GPU calls or dev/test
+access. The suggested feature-capacity question remains a discussion proposal;
+no new learning experiment or solver is prepared.
+
+Latest result: [failed hard-negative comparison](../../docs/pointneuron2/hard_negative_query_results.md).
 `review_hard_negative_query_fit.py` audits both saved fits on CPU, reusing the
 preserved paired reviewer with an explicit read-only weighted-CE name adapter.
 It checks hard-set membership/objective, all original gates, sources, cache,
