@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Ready: [frozen-proposal GATv2 control](../../docs/pointneuron2/frozen_proposal_gat_ready.md).
+`run_frozen_proposal_gat.ps1` exposes prepare/check/timing/train/resume actions.
+The existing scorer learns connections on four frozen, oracle-selected TRAINING
+graphs. CPU preparation and zero-update checks pass; 28 targeted tests pass.
+GPU timing and the fresh 4,000-update fit are separate commands. Production
+selection, proposal supervision and existing checkpoints remain unchanged.
+
 Completed: [four-crop frozen confidence results](../../docs/pointneuron2/four_crop_frozen_confidence_results.md).
 All strict gates fail after the user-launched 4,000-update CPU stage. Six saved
 checkpoints replay exactly; frozen tensors/sources match. No extension or new

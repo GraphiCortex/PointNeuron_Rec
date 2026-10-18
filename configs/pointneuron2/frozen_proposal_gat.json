@@ -1,0 +1,23 @@
+{
+  "schema": "pointneuron2-frozen-proposal-gat-fit-v1",
+  "source_experiment": "tmp/pointneuron2/local_runs/balanced_query_20261018",
+  "source_report_sha256": "06781fee1d01b8e8b19d80d82b2791b1cfc46ee56fd921c86c0f54d35e223775",
+  "source_checkpoint_sha256": "62892ad332259dab76896ff16bb71294d87166c7ad274e6813d12ab9dcc1e58a",
+  "training_crops": [[0, 0], [0, 1], [92, 4], [86, 3]],
+  "expected_nodes": [6, 12, 16, 418],
+  "expected_required_edges": [5, 10, 15, 404],
+  "model": {"mode": "gatv2", "hidden_channels": 128, "heads": 4, "layers": 2, "seed": 0},
+  "candidate_neighbors": 16,
+  "candidate_radius": 8.0,
+  "updates": 4000,
+  "snapshots": [0, 500, 1000, 2000, 4000],
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "gradient_clip": 10.0,
+  "edge_cutoff": 0.5,
+  "torch_threads": 2,
+  "batching": "one_crop_cyclic_in_declared_order",
+  "selection": "oracle_saved_assignment_membership_only",
+  "supervision": "oracle_correspondence_no_placement_mask_same_tree_negatives_unknown_other_trees",
+  "timing_updates": 8
+}
