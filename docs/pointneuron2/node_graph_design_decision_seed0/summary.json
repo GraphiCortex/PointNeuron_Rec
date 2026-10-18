@@ -1,0 +1,46 @@
+{
+  "schema": "pointneuron2-node-graph-design-review-v1",
+  "date": "2026-10-19",
+  "status": "recommendation_only_no_experiment_implemented",
+  "source_commit": "79cc6fa",
+  "proposal_path": "C:/Users/Seywe/Desktop/Research/R-Arij/Proposal.pdf",
+  "proposal_sha256": "60e12b8907b23bb1903d5a3668c76d430173ecad5baa373cc3c266f69958b5b8",
+  "proposal_total_pages": 10,
+  "proposal_text_pages_read": "1-10",
+  "proposal_rendered_pages_inspected": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "implementation_and_evidence_sha256": {
+    "src/pointneuron/models/query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "src/pointneuron/models/balanced_query_loss.py": "a4e12f74f6c229f7873e24a975709326943f5e4ff5c3304db229e14e6129ca31",
+    "src/pointneuron/data/connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1",
+    "src/pointneuron/models/gatv2_connectivity.py": "4b6f380292b0afe7f93d67ac4ad1b1e7c31f48d9f5d549c995d37a6f0410d937",
+    "src/pointneuron/graph/proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "src/pointneuron/graph/connectivity_decoder.py": "6394ebddb8af434ee471ea38b10d5120430a776130bb396f0d985fb78e5ea082",
+    "scripts/pointneuron2/branched_query_experiment.py": "be950b3275763b6308a11c0ffad3bb2ad0724181d4aba2e8d29e71b2cf3191a1",
+    "scripts/pointneuron2/frozen_proposal_gat.py": "2bf60e20ad843f3c9cfa492c129d82008f53f61614459c46fea34e3ca21a76e4",
+    "tests/test_gatv2_connectivity.py": "837bae5df9759991da8ff07ade2a4731fff693c99b4b3e4cb07b7ece18de4fea",
+    "docs/pointneuron2/balanced_query_results.md": "7ff5517c3f069eb8c1388124e503917914b6e5ca6a8ddfdb1ea1ad5a59c74cf4",
+    "docs/pointneuron2/four_crop_confidence_capacity_results.md": "dfcc0d9d6ad1d4db8a83a30db39772ccd3c980cf1d0f2703c89f87064b6bb5c1",
+    "docs/pointneuron2/four_crop_frozen_confidence_results.md": "ab2c5f5faccd6fb7894face8c9928b5a38179efd3b83ab996c2c66b56461da38",
+    "docs/pointneuron2/frozen_proposal_gat_results.md": "b399deacaa6111f4aef3a323892e52e0baeab5a99bec3c58336f1f8f311b4466",
+    "docs/pointneuron2/gat_automatic_selection_results.md": "73515fd41a1ca782e0c5d7386b2b9d44fc2fa2a9b6fdeea757bd060d74681c93"
+  },
+  "unchanged_runtime_sources_verified": 50,
+  "model_code_changed": false,
+  "training_config_changed": false,
+  "optimizer_updates": 0,
+  "gpu_work": false,
+  "new_model_created": false,
+  "recommendation": "Specify a minimal joint proposal/edge prototype with existing heads and realistic candidate context before adding graph node classification. This is not a proven fix or a launched experiment.",
+  "key_gaps": [
+    "Joint proposal/connectivity fitting has not been evaluated in the saved runs.",
+    "Hard selection/gradient/masking behavior must be specified.",
+    "Topology penalties must preserve crop forests and unknown annotations.",
+    "A graph node head would be an explicit extension of proposal section 4."
+  ]
+}

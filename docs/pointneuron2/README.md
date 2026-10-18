@@ -1,5 +1,14 @@
 # PointNeuron 2.0 development
 
+**Design recommendation, 19 October:** [node-selection/connectivity responsibility](node_graph_design_decision.md).
+The proposal calls for joint proposal/connectivity training; the saved fits have
+not tested that integration. Its GAT role is edge scoring, so a node head would
+be an explicit extension. Recommend specifying a minimal joint variant with the
+existing heads and realistic proposal context before changing stage roles.
+Hard selection, gradient/masking rules, forest-aware topology and automatic
+reconstruction gates remain decisions to make concrete. No model/configuration
+change or new fit is implemented by this review.
+
 **Completed inference integration check, 19 October:** [oracle versus automatic node selection](gat_automatic_selection_results.md).
 The same successful GAT checkpoint is evaluated without retraining. Automatic
 selection reduces small-crop arclength precision at two voxels to 57.11%, 45.12%
