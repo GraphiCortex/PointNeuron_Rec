@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Ready: two 64-update controls for partial supervision and geometry stability; CPU checks passed](docs/pointneuron2/joint_partial_stability_ready.md)
 - [Proposal for discussion: partial-supervision handling and one short geometry-stability comparison](docs/pointneuron2/joint_partial_supervision_proposal.md)
 - [Latest: joint fit stops at update 1,014 on moving edge supervision; automatic gates remain unmet](docs/pointneuron2/joint_saved_adam_fit_stop_results.md)
 - [Current: joint fit stopped after 148 updates; Windows I/O repair and recovery from checkpoint eight](docs/pointneuron2/joint_saved_adam_fit_io_recovery.md)

@@ -1,8 +1,9 @@
 # Proposed partial-supervision contract and one short stability comparison
 
 20 October 2026. For discussion after the [joint-fit supervision stop](joint_saved_adam_fit_stop_results.md).
-**Design only: no trainer, model, loss or run configuration is changed; no GPU
-run is prepared or launched by this document.**
+**Historical design proposal, now accepted for implementation.** The isolated
+controller and CPU checks are complete; see the [ready GPU command](joint_partial_stability_ready.md).
+The historical trainer is unchanged and the GPU comparison has not been launched.
 
 The destination remains an automatic per-crop reconstruction model that passes
 the original four-crop learnability gate, followed by broader evaluation and a

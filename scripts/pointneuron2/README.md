@@ -6,6 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Ready: [partial-supervision stability controls](../../docs/pointneuron2/joint_partial_stability_ready.md).
+`run_joint_partial_stability.ps1 -Action compare` runs two CUDA arms, at most
+64 updates each, from identical saved checkpoint-1,000 weights/Adam/RNG.
+`-Action check` is CPU-only with zero updates; it is already complete. New loss
+and controller preserve old source behavior, verify historical replay/probe
+noninterference, track separate active optimizer clocks and assess automatic
+endpoints. No resume or long-fit action. Forty-three tests pass; GPU unlaunched.
+
 Latest: [joint-fit supervision-stop review](../../docs/pointneuron2/joint_saved_adam_fit_stop_results.md).
 `review_joint_saved_adam_fit_stop.py` validates saved output/SWC metrics and the
 failed packet, with zero model forwards or optimizer updates. The recovered fit

@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Ready for user launch, 20 October:** [two 64-update partial-supervision controls](joint_partial_stability_ready.md).
+New check/compare launcher imports the same checkpoint/moments for both arms;
+only LR differs. Tests validate partial labels, inactive GAT Adam state and a
+complete synthetic controller. All 43 targeted tests and real-model zero-update
+CPU checks pass. Historical trainer unchanged; GPU control unlaunched.
+
 **Proposed next contract, 20 October:** [partial supervision and a bounded stability comparison](joint_partial_supervision_proposal.md).
 Defines positive-only/negative-only/proposal-only updates and inactive GAT Adam
 handling. Proposes two matched 64-update forks from update 1,000, differing only
