@@ -2,7 +2,9 @@
 
 20 October 2026. The user agreed to prepare this fit after the [passed GPU timing
 and mixed automatic-output review](joint_saved_adam_timing_results.md).
-**Prepared and locally checked; GPU fitting has not been launched.**
+**Historical preparation status:** prepared and locally checked before GPU launch.
+The subsequent fit stopped on Windows JSON replacement after 148 updates; see
+the [I/O repair and checkpoint-eight recovery](joint_saved_adam_fit_io_recovery.md).
 
 The decision question is whether the existing PointNeXt/Transformer/GATv2
 formulation can learn clean **automatic per-crop reconstruction** on four fixed
@@ -137,7 +139,9 @@ available, for example:
 Use resume to recover a saved state after interruption/system/metric failure;
 a deterministic supervision/policy stop needs interpretation, not an automatic
 retry. The example checkpoint does not exist until the user-launched fit creates
-it. The current preparation has created only `check/`; no fit is launched.
+it. The original preparation created only `check/`. After the I/O repair,
+current-source CPU checking uses `check_io_repair_v1/`; the recovery report above
+gives the existing checkpoint and current command.
 
 Visible implementation:
 [joint_saved_adam_fit.py](../../scripts/pointneuron2/joint_saved_adam_fit.py) and

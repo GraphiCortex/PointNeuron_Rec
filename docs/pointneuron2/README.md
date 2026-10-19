@@ -1,11 +1,18 @@
 # PointNeuron 2.0 development
 
+**Joint fit I/O recovery, 20 October:** [Windows JSON replacement repair](joint_saved_adam_fit_io_recovery.md).
+The GPU fit completed 148 updates, then stopped before update 149's forward pass.
+The last full checkpoint is eight. Bounded replacement retries and strictly
+limited controller provenance migration are tested; 22 tests and zero-update CPU
+checks pass. User-visible recovery from eight is prepared, not launched.
+
 **Prepared retained fit, 20 October:** [capped saved-proposal-Adam joint fit](joint_saved_adam_fit_ready.md).
 The new check/train/resume launcher caps at 4,000 new updates, retains the tested
 optimizer initialization and requires automatic terminal reconstruction gates.
 Mixed-state checkpoints precede evaluation; the first eight GPU updates must
 replay the passed timing before continuing. Fifteen tests and a zero-update
-real-model CPU reload check pass. No GPU fit has been launched.
+real-model CPU reload check passed at preparation. The subsequent GPU interruption
+and recovery are described above.
 
 **Completed GPU timing, 20 October:** [readiness and automatic-output review](joint_saved_adam_timing_results.md).
 Eight saved-Adam joint updates complete, exact mixed-state reload passes and

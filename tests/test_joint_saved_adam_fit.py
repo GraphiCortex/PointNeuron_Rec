@@ -122,3 +122,73 @@ def test_prefix_requires_same_discrete_decisions_even_inside_float_tolerance(tmp
     with pytest.raises(ValueError,match='cutoff'):fit.compare_prefix(actual,expected,records,original)
     changed=copy.deepcopy(saved);changed['target_indices']=np.array([1,0,2]);np.savez(actual/'step_0008_crop_0.npz',**changed)
     with pytest.raises(ValueError,match='mapping'):fit.compare_prefix(actual,expected,records,original)
+
+
+def windows_permission(code):
+    error=PermissionError('simulated Windows replacement denial');error.winerror=code
+    return error
+
+
+def test_json_retry_keeps_old_document_until_atomic_replace(monkeypatch,tmp_path):
+    path=tmp_path/'active.json';path.write_text('{"old":true}')
+    original=Path.replace;attempts=[];delays=[]
+    def blocked(source,target):
+        attempts.append(1)
+        if len(attempts)<3:
+            assert json.loads(target.read_text())=={'old':True}
+            assert json.loads(source.read_text())=={'new':True}
+            raise windows_permission(5 if len(attempts)==1 else 32)
+        return original(source,target)
+    monkeypatch.setattr(Path,'replace',blocked);monkeypatch.setattr(fit.time,'sleep',delays.append)
+    fit.write(path,{'new':True})
+    assert len(attempts)==3 and delays==[.05,.1]
+    assert json.loads(path.read_text())=={'new':True} and not path.with_suffix('.json.writing').exists()
+
+
+@pytest.mark.parametrize('code,retries',[(5,5),(33,5),(13,0),(None,0)])
+def test_json_retry_is_bounded_and_preserves_evidence(monkeypatch,tmp_path,code,retries):
+    path=tmp_path/'active.json';path.write_text('{"old":true}');delays=[];attempts=[]
+    def blocked(source,target):
+        attempts.append(1);raise windows_permission(code)
+    monkeypatch.setattr(Path,'replace',blocked);monkeypatch.setattr(fit.time,'sleep',delays.append)
+    with pytest.raises(PermissionError):fit.write(path,{'new':True})
+    assert len(delays)==retries and len(attempts)==retries+1
+    assert json.loads(path.read_text())=={'old':True}
+    assert json.loads(path.with_suffix('.json.writing').read_text())=={'new':True}
+
+
+def test_legacy_io_source_transition_restores_state_but_rejects_other_changes():
+    model,optimizer=fresh();update(model,optimizer,0)
+    controller=str(Path(fit.__file__).resolve())
+    old={'sources':{controller:fit.LEGACY_CONTROLLER_SHA256,'unchanged_model.py':'same'},'backend':'cpu'}
+    current=copy.deepcopy(old);current['sources'][controller]=fit.runner.base.file_digest(Path(controller))
+    cp=fit.checkpoint(model,optimizer,1,config(),RECIPE,old)
+    expected=update(model,optimizer,1);other=Model()
+    restored,step,_=fit.restore(cp,other,config(),RECIPE,current,resume=True)
+    assert step==1 and torch.equal(expected,update(other,restored,1))
+    assert fit.runner.state_hashes(model)==fit.runner.state_hashes(other)
+    assert fit.timing.stability.control.optimizer_digests(optimizer)==fit.timing.stability.control.optimizer_digests(restored)
+    assert fit.source_transition(old,current)['before_sha256']==fit.LEGACY_CONTROLLER_SHA256
+    for mutate in (lambda p:p['sources'].update({'unchanged_model.py':'different'}),
+                   lambda p:p['sources'].update({'new_file.py':'different'}),lambda p:p.update(backend='cuda')):
+        bad=copy.deepcopy(current);mutate(bad)
+        with pytest.raises(ValueError,match='beyond approved I/O repair'):fit.source_transition(old,bad)
+    bad=copy.deepcopy(old);bad['sources'][controller]='unreviewed'
+    with pytest.raises(ValueError,match='beyond approved I/O repair'):fit.source_transition(bad,current)
+
+
+@pytest.mark.skipif(sys.platform!='win32',reason='Windows sharing-mode regression')
+def test_real_windows_reader_lock_is_retried(tmp_path):
+    import ctypes
+    from ctypes import wintypes
+    import threading
+    api=ctypes.WinDLL('kernel32',use_last_error=True)
+    api.CreateFileW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,wintypes.LPVOID,wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
+    api.CreateFileW.restype=wintypes.HANDLE;api.CloseHandle.argtypes=[wintypes.HANDLE];api.CloseHandle.restype=wintypes.BOOL
+    path=tmp_path/'active.json';path.write_text('{"old":true}')
+    handle=api.CreateFileW(str(path),0x80000000,3,None,3,0,None)
+    assert handle!=wintypes.HANDLE(-1).value
+    timer=threading.Timer(.12,lambda:api.CloseHandle(handle));timer.start()
+    try:fit.write(path,{'new':True})
+    finally:timer.join()
+    assert json.loads(path.read_text())=={'new':True}

@@ -20,6 +20,36 @@ from pointneuron.graph.connectivity_decoder import decode_forest
 runner=timing.runner
 CONFIG=ROOT/'configs/pointneuron2/joint_saved_adam_fit.json'
 SCHEMA='pointneuron2-joint-saved-adam-fit-v1'
+LEGACY_CONTROLLER_SHA256='2e9030270ec558846c7ec328d1912c5762b28c7e0d51264fd943212f78082c66'
+CHECK_DIRECTORY='check_io_repair_v1'
+
+
+def write(path,value):
+    """Keep atomic JSON replacement; retry only bounded Windows sharing/access errors."""
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temporary=path.with_suffix(path.suffix+'.writing')
+    temporary.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+    delays=(.05,.1,.2,.4,.8)
+    for attempt in range(len(delays)+1):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError as exc:
+            if getattr(exc,'winerror',None) not in (5,32,33) or attempt==len(delays):raise
+            time.sleep(delays[attempt])
+
+
+def source_transition(saved,current):
+    """Permit only the documented legacy controller -> I/O repair transition."""
+    if saved==current:return None
+    controller=str(Path(__file__).resolve())
+    old=saved.get('sources',{});new=current.get('sources',{})
+    if (old.get(controller)!=LEGACY_CONTROLLER_SHA256 or new.get(controller)!=runner.base.file_digest(Path(controller))
+        or set(old)!=set(new) or {k:v for k,v in old.items() if k!=controller}!={k:v for k,v in new.items() if k!=controller}
+        or {k:v for k,v in saved.items() if k!='sources'}!={k:v for k,v in current.items() if k!='sources'}):
+        raise ValueError('Checkpoint experiment/model/backend/source differs beyond approved I/O repair')
+    return {'policy':'legacy_controller_to_windows_json_retry_v1','path':controller,
+        'before_sha256':old[controller],'after_sha256':new[controller]}
 
 
 def validate_config(config):
@@ -59,7 +89,8 @@ def checkpoint(model,optimizer,step,config,recipe,provenance,*,purpose='fit',pre
 
 def restore(cp,model,config,recipe,provenance,*,resume):
     validate_config(config);step=cp.get('stage_step')
-    if (cp.get('schema')!=SCHEMA or cp.get('config')!=config or cp.get('training_recipe')!=recipe or cp.get('provenance')!=provenance
+    source_transition(cp.get('provenance',{}),provenance)
+    if (cp.get('schema')!=SCHEMA or cp.get('config')!=config or cp.get('training_recipe')!=recipe
         or type(step) is not int or not 0<=step<=4000 or cp.get('next_crop')!=step%4
         or cp.get('purpose') not in ('fit','check') or cp.get('resumable')!=(cp['purpose']=='fit' and step<4000)
         or type(cp.get('prefix_verified')) is not bool or (step>8 and not cp['prefix_verified']) or (step<8 and cp['prefix_verified'])
@@ -80,7 +111,7 @@ def save_state(model,optimizer,step,config,recipe,provenance,report,directory):
     torch.save(checkpoint(model,optimizer,step,config,recipe,provenance,prefix_verified=report['prefix_verified']),temporary)
     temporary.replace(path)
     report.update(last_checkpoint=str(path),last_checkpoint_step=step,last_checkpoint_sha256=runner.base.file_digest(path))
-    runner.base.write(directory/'report.json',report)
+    write(directory/'report.json',report)
     return path
 
 
@@ -88,7 +119,7 @@ def snapshot(model,optimizer,step,config,recipe,provenance,report,directory,reco
     save_state(model,optimizer,step,config,recipe,provenance,report,directory)
     # Fallible graph/geometry/SWC evaluation happens only after complete state is safe.
     report['evaluations'].append(runner.evaluate(model,records,oracle,original,recipe,device,step,directory))
-    runner.base.write(directory/'report.json',report)
+    write(directory/'report.json',report)
 
 
 def compare_prefix(directory,timed_directory,records,original):
@@ -116,7 +147,7 @@ def prefix_check(model,optimizer,config,recipe,provenance,report,directory,recor
     target=directory/'prefix_replay';target.mkdir()
     report['prefix_evaluation']=runner.evaluate(model,records,oracle,original,recipe,device,8,target)
     report['prefix_replay']=compare_prefix(target,timed_directory,records,original)
-    report['prefix_verified']=True;runner.base.write(directory/'report.json',report)
+    report['prefix_verified']=True;write(directory/'report.json',report)
     print(f"PREFIX stage=8 matched passed GPU timing; deltas={report['prefix_replay']['maximum_float_deltas']}",flush=True)
 
 
@@ -168,11 +199,11 @@ def run(args):
     provenance={'sources':sources,'timing_report_sha256':runner.base.file_digest(timed_path),'backend':runner.backend(device),'experiment_root':str(root)}
     if device.type=='cuda' and provenance['backend']!=timed['provenance']['backend']:raise ValueError('Backend differs from passed GPU timing')
     if args.action!='check':
-        checked=runner.base.read(root/'check/report.json')
+        checked=runner.base.read(root/CHECK_DIRECTORY/'report.json')
         if (checked['status']!='completed' or not checked['cpu_check_passed'] or checked['config']!=config
             or checked['provenance']['sources']!=sources or checked['provenance']['timing_report_sha256']!=provenance['timing_report_sha256']):
             raise ValueError('Matching completed CPU fit-state check required')
-    directory=root/('check' if args.action=='check' else 'model')
+    directory=root/(CHECK_DIRECTORY if args.action=='check' else 'model')
     if args.action=='resume':
         if args.checkpoint is None:raise ValueError('Resume needs an explicit intermediate checkpoint')
         args.checkpoint=args.checkpoint.resolve()
@@ -183,8 +214,9 @@ def run(args):
     if directory.exists():raise FileExistsError('Preserve existing action output')
     directory.mkdir(parents=True);started=time.perf_counter()
     report={'schema':SCHEMA,'status':'running','action':args.action,'config':config,'provenance':provenance,'completed_updates':0,
-        'prefix_verified':False,'evaluations':[],'scope':'four fixed TRAINING crops; automatic joint reconstruction; frozen Phase 1'}
-    runner.base.write(directory/'report.json',report)
+        'prefix_verified':False,'evaluations':[],'scope':'four fixed TRAINING crops; automatic joint reconstruction; frozen Phase 1',
+        'io_policy':{'windows_replace_retries':5,'total_backoff_seconds':1.55,'checkpoint_migration':'only pinned legacy controller; all other sources/backend/config identical'}}
+    write(directory/'report.json',report)
     try:
         model=runner.warm_start(recipe,device)
         cp=torch.load(ROOT/recipe['proposal_experiment']/'model/step_4000.pt',map_location='cpu',weights_only=True)
@@ -192,6 +224,7 @@ def run(args):
         validate_optimizer(model,optimizer,0,recipe)
         if args.action=='resume':
             saved=torch.load(args.checkpoint,map_location='cpu',weights_only=True)
+            report['source_transition']=source_transition(saved.get('provenance',{}),provenance)
             optimizer,start,report['prefix_verified']=restore(saved,model,config,recipe,provenance,resume=True)
             report.update(completed_updates=start,resumed_from=str(args.checkpoint),source_checkpoint_sha256=runner.base.file_digest(args.checkpoint))
         print(f"ACTION={args.action} device={provenance['backend']['name']} stage={start}/4000 | saved proposal Adam + fresh-stage GAT Adam | automatic gates fixed",flush=True)
@@ -206,7 +239,7 @@ def run(args):
             for step in range(start+1,4001):
                 attempt={'stage_update':step,'crop':config['training_crops'][(step-1)%4],'optimizer_step_returned':False}
                 report['attempted_update']=step
-                persist=lambda:runner.base.write(directory/'active_update.json',attempt)
+                persist=lambda:write(directory/'active_update.json',attempt)
                 timing.instrumented_update(model,optimizer,records[(step-1)%4],original,recipe,device,attempt,persist,directory)
                 report['completed_updates']=step;attempt['cursors_after']=timing.stability.cursors(model,optimizer)
                 if attempt['cursors_after']!=timing.expected_cursors(step):raise ValueError('Mixed update cursor differs')
@@ -218,7 +251,7 @@ def run(args):
                 report['maximum_preclip_norm_this_invocation']=max(report['maximum_preclip_norm_this_invocation'],attempt['preclip_norm'])
                 if step%config['log_every']==0:
                     x=attempt['incoming'];print(f"UPDATE stage={step}/4000 crop={attempt['crop']} loss={x['loss']:.5f} proposal={x['proposal_loss']:.5f} edge={x['edge_loss']:.5f} trusted={x['edge_supervision']['trusted_matches']}/{x['edge_supervision']['targets']} pos/neg={x['edge_supervision']['positive']}/{x['edge_supervision']['negative']} candidates={x['candidate_edges']} elapsed={time.perf_counter()-started:.1f}s",flush=True)
-                    runner.base.write(directory/'report.json',report)
+                    write(directory/'report.json',report)
                 if step==8:
                     prefix_check(model,optimizer,config,recipe,provenance,report,directory,records,oracle,original,device,timed_path.parent)
                 if step in config['snapshots']:
@@ -232,10 +265,10 @@ def run(args):
                 terminal_cursors=timing.stability.cursors(model,loaded),next_step='Review terminal automatic gates. Stop at cap; no extension, threshold change or production promotion.')
         runner.base.verify_hashes(protected);runner.base.verify_hashes(sources)
         report.update(status='completed',original_sources_unchanged=True,elapsed_seconds=time.perf_counter()-started)
-        runner.base.write(directory/'report.json',report);print(f"COMPLETED {args.action}; stage={report['completed_updates']} automatic_gate={report.get('automatic_gate')} report={directory/'report.json'}",flush=True)
+        write(directory/'report.json',report);print(f"COMPLETED {args.action}; stage={report['completed_updates']} automatic_gate={report.get('automatic_gate')} report={directory/'report.json'}",flush=True)
     except BaseException as exc:
         report.update(status='interrupted' if isinstance(exc,KeyboardInterrupt) else 'failed',error=str(exc),elapsed_seconds=time.perf_counter()-started)
-        runner.base.write(directory/'report.json',report);(directory/'error_traceback.txt').write_text(traceback.format_exc(),encoding='utf-8');raise
+        write(directory/'report.json',report);(directory/'error_traceback.txt').write_text(traceback.format_exc(),encoding='utf-8');raise
 
 
 if __name__=='__main__':

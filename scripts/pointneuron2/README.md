@@ -6,6 +6,14 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Current: [joint-fit Windows I/O recovery](../../docs/pointneuron2/joint_saved_adam_fit_io_recovery.md).
+The same launcher can resume the existing update-eight checkpoint after the
+148-update interruption. The controller retries bounded Windows replacement
+errors and logs the narrowly allowed source transition. Repaired zero-update
+checking uses `check_io_repair_v1/`; 22 tests pass. `check_joint_fit_io_recovery.py`
+audits saved evidence/checkpoint state on CPU without restoring CUDA RNG or
+performing model forwards/updates. GPU recovery remains user-launched.
+
 Prepared: [capped retained joint fit](../../docs/pointneuron2/joint_saved_adam_fit_ready.md).
 `run_joint_saved_adam_fit.ps1` exposes check/train/resume with saved proposal Adam
 and fresh GAT Adam. New-stage cap 4,000; state saved before metrics; mixed counters,
