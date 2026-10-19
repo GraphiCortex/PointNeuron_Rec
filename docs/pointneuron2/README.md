@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Prepared retained fit, 20 October:** [capped saved-proposal-Adam joint fit](joint_saved_adam_fit_ready.md).
+The new check/train/resume launcher caps at 4,000 new updates, retains the tested
+optimizer initialization and requires automatic terminal reconstruction gates.
+Mixed-state checkpoints precede evaluation; the first eight GPU updates must
+replay the passed timing before continuing. Fifteen tests and a zero-update
+real-model CPU reload check pass. No GPU fit has been launched.
+
 **Completed GPU timing, 20 October:** [readiness and automatic-output review](joint_saved_adam_timing_results.md).
 Eight saved-Adam joint updates complete, exact mixed-state reload passes and
 PyTorch peak allocation is 0.279 GiB. Eight saved outputs/SWCs independently

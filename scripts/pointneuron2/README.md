@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Prepared: [capped retained joint fit](../../docs/pointneuron2/joint_saved_adam_fit_ready.md).
+`run_joint_saved_adam_fit.ps1` exposes check/train/resume with saved proposal Adam
+and fresh GAT Adam. New-stage cap 4,000; state saved before metrics; mixed counters,
+backend/provenance and exact crop/RNG resume are validated. First-eight replay
+checks the passed GPU timing; terminal automatic gates are unchanged. Fifteen
+tests and zero-update CPU checking pass; GPU fitting remains user-launched.
+
 Completed: [GPU saved-Adam timing review](../../docs/pointneuron2/joint_saved_adam_timing_results.md).
 `review_joint_saved_adam_timing.py` reads saved artifacts only, verifying eight
 selection/score mappings, decoded/geometry metrics and SWCs. No model forwards

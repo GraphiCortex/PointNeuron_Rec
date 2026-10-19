@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Prepared: capped joint fit with saved proposal Adam state and mixed-state resume](docs/pointneuron2/joint_saved_adam_fit_ready.md)
 - [Completed: GPU timing/reload passes; automatic reconstruction remains unsolved](docs/pointneuron2/joint_saved_adam_timing_results.md)
 - [Prepared: GPU timing with saved proposal Adam state, per-step diagnostics and exact reload](docs/pointneuron2/joint_saved_adam_timing_ready.md)
 - [Completed: eight-update joint CPU stability check passes with saved proposal Adam state](docs/pointneuron2/joint_saved_adam_stability_results.md)

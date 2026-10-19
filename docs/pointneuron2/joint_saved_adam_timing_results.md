@@ -1,5 +1,9 @@
 # GPU timing passes readiness; automatic reconstruction remains unsolved
 
+**Agreed follow-up:** the [capped retained fit is now prepared](joint_saved_adam_fit_ready.md)
+with saved proposal Adam, fresh GAT Adam and mixed-state checkpoint/resume.
+Local checks pass; no GPU fit has been launched as part of preparation.
+
 20 October 2026. The user-launched saved-proposal-Adam timing action completes
 eight throwaway GPU updates and passes its declared short stability/reload gate.
 **All four automatic reconstruction gates still fail.** The timing result clears
