@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Prepared GPU timing, 19 October:** [saved-proposal-Adam timing command](joint_saved_adam_timing_ready.md).
+New check/timing-only launcher preserves proposal Adam history, starts GAT Adam
+fresh, records eight-update diagnostics and peak memory, and verifies exact
+mixed-state disk reload. Twelve targeted tests pass. CPU zero-update preparation
+is separate from the still-unlaunched GPU timing; no full trainer or resume action.
+
 **Completed joint stability check, 19 October:** [eight CPU updates with saved proposal Adam state](joint_saved_adam_stability_results.md).
 All eight joint updates complete; crop 0/0 retains 6/6 trusted matches at updates
 four/eight, and every crop retains both edge classes at the end. Proposal Adam

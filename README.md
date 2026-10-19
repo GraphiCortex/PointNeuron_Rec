@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Prepared: GPU timing with saved proposal Adam state, per-step diagnostics and exact reload](docs/pointneuron2/joint_saved_adam_timing_ready.md)
 - [Completed: eight-update joint CPU stability check passes with saved proposal Adam state](docs/pointneuron2/joint_saved_adam_stability_results.md)
 - [Completed: saved optimizer state preserves crop-0 geometry in the four-update CPU restart comparison](docs/pointneuron2/proposal_optimizer_state_results.md)
 - [Stopped: joint GPU timing; proposal-only CPU control also shows early geometry drift](docs/pointneuron2/joint_query_graph_timing_results.md)

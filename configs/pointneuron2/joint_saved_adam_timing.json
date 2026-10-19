@@ -1,0 +1,18 @@
+{
+  "schema": "pointneuron2-joint-saved-adam-timing-v1",
+  "source_recipe": "configs/pointneuron2/joint_query_graph.json",
+  "cpu_stability_summary": "docs/pointneuron2/joint_saved_adam_stability_results_seed0/summary.json",
+  "output": "tmp/pointneuron2/local_runs/joint_saved_adam_timing_20261019",
+  "training_crops": [[0, 0], [0, 1], [92, 4], [86, 3]],
+  "updates": 8,
+  "proposal_initial_cursor": 4000,
+  "gat_initial_cursor": 0,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_clip": 10.0,
+  "seed": 0,
+  "torch_threads": 2,
+  "planning_updates_only": 4000,
+  "retained_trained_checkpoint": false,
+  "full_training_action": false
+}

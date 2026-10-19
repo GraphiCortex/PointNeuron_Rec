@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Prepared: [saved-proposal-Adam GPU timing](../../docs/pointneuron2/joint_saved_adam_timing_ready.md).
+`run_joint_saved_adam_timing.ps1` exposes only `check` (CPU, zero updates) and
+`timing` (CUDA, eight throwaway updates). New device-safe incoming diagnostics,
+per-crop probes, peak memory and exact mixed-history checkpoint reload; temporary
+checkpoints are discarded. Full fitting/resume is not available. GPU timing
+remains a separate user-launched command after the completed CPU check.
+
 Completed: [saved-proposal-Adam joint stability](../../docs/pointneuron2/joint_saved_adam_stability_results.md).
 `check_joint_saved_adam_stability.py` performs exactly eight throwaway CPU joint
 updates, with incoming/failure diagnostics and all-four-crop probes after each
