@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Completed GPU timing, 20 October:** [readiness and automatic-output review](joint_saved_adam_timing_results.md).
+Eight saved-Adam joint updates complete, exact mixed-state reload passes and
+PyTorch peak allocation is 0.279 GiB. Eight saved outputs/SWCs independently
+verify. All automatic gates fail: sparse quality regresses while two other crops
+improve arclength metrics. Recommend the declared bounded joint learnability fit;
+mixed-state full-trainer integration remains unimplemented and no fit is launched.
+
 **Prepared GPU timing, 19 October:** [saved-proposal-Adam timing command](joint_saved_adam_timing_ready.md).
 New check/timing-only launcher preserves proposal Adam history, starts GAT Adam
 fresh, records eight-update diagnostics and peak memory, and verifies exact

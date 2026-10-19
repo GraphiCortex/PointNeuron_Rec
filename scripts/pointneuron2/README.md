@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Completed: [GPU saved-Adam timing review](../../docs/pointneuron2/joint_saved_adam_timing_results.md).
+`review_joint_saved_adam_timing.py` reads saved artifacts only, verifying eight
+selection/score mappings, decoded/geometry metrics and SWCs. No model forwards
+or updates. Timing/stability/reload pass; all automatic reconstruction gates
+fail, with mixed early quality changes. A capped full fit is recommended for
+discussion; no mixed-state full trainer or training command is implemented here.
+
 Prepared: [saved-proposal-Adam GPU timing](../../docs/pointneuron2/joint_saved_adam_timing_ready.md).
 `run_joint_saved_adam_timing.ps1` exposes only `check` (CPU, zero updates) and
 `timing` (CUDA, eight throwaway updates). New device-safe incoming diagnostics,

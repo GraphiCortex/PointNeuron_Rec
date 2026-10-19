@@ -1,7 +1,12 @@
 # GPU timing command with saved proposal Adam state
 
+**Completed outcome, 20 October:** [GPU timing and automatic-output review](joint_saved_adam_timing_results.md).
+The user-launched timing action passes stability/reload readiness; all automatic
+reconstruction gates still fail. The report is preserved; do not overwrite it.
+
 19 October 2026. Prepared after the agreed [eight-update CPU joint stability
-check](joint_saved_adam_stability_results.md). **GPU timing has not been launched.**
+check](joint_saved_adam_stability_results.md). GPU timing was not launched during
+that preparation; the subsequent user-launched result is reviewed above.
 The new entry point exposes only `check` and `timing`; it cannot start or resume
 a full fit. The original fresh-optimizer joint launcher remains unchanged.
 
@@ -89,7 +94,7 @@ for `timing`. Default output root:
 `tmp/pointneuron2/local_runs/joint_saved_adam_timing_20261019`.
 Generated reports, predictions, SWCs and console logs remain ignored; existing
 action folders cannot be overwritten. The already-completed CPU check lives in
-`check/`; the future GPU report will be `timing/report.json`. Review its stability
+`check/`; the completed GPU report is `timing/report.json`. Review its stability
 gate, reload, memory, estimate and automatic outputs before planning a retained
 fit. The launcher accepts no `train` or `resume` action.
 
