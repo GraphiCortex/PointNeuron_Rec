@@ -1,5 +1,9 @@
 # Saved proposal optimizer state prevents the early crop-zero collapse
 
+**Follow-up:** the agreed [eight-update CPU joint check](joint_saved_adam_stability_results.md)
+also passes its declared stability criteria with saved proposal Adam and fresh
+GAT Adam state. This does not complete GPU readiness or the retained joint fit.
+
 19 October 2026. The agreed four-update CPU comparison is complete. **Restored
 AdamW state passes the declared crop-0 stability criterion; fresh state fails.**
 This isolates a consequential optimizer-restart effect in this bounded control.

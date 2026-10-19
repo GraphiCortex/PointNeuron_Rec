@@ -1,0 +1,1545 @@
+{
+  "schema": "pointneuron2-joint-saved-adam-stability-results-v1",
+  "date": "2026-10-19",
+  "status": "completed",
+  "scope": "eight throwaway CPU joint updates on four fixed TRAINING crops; no retained trained checkpoint, GPU run or full fit",
+  "report": "tmp\\pointneuron2\\local_runs\\joint_saved_adam_stability_20261019\\report.json",
+  "report_sha256": "4015ac92f240ed836140b480d682f8f2c6a1aa1220d01270af5bdad1744b2b23",
+  "config": {
+    "schema": "pointneuron2-joint-saved-adam-stability-v1",
+    "source_recipe": "configs/pointneuron2/joint_query_graph.json",
+    "failed_fresh_timing": "tmp/pointneuron2/local_runs/joint_query_graph_ready_20261019/timing/report.json",
+    "optimizer_control_summary": "docs/pointneuron2/proposal_optimizer_state_results_seed0/summary.json",
+    "output": "tmp/pointneuron2/local_runs/joint_saved_adam_stability_20261019",
+    "training_crops": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        92,
+        4
+      ],
+      [
+        86,
+        3
+      ]
+    ],
+    "device": "cpu",
+    "seed": 0,
+    "torch_threads": 2,
+    "updates": 8,
+    "proposal_adam_initial_cursor": 4000,
+    "gat_adam_initial_cursor": 0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 10.0,
+    "criteria": [
+      "complete_eight_with_original_supervision_guard",
+      "six_trusted_crop_zero_matches_after_four_and_eight",
+      "both_edge_classes_on_all_four_crops_after_eight"
+    ],
+    "retained_trained_checkpoint": false
+  },
+  "gate": {
+    "completed_eight": true,
+    "crop_zero_six_at_four_and_eight": true,
+    "terminal_edge_classes_all_crops": true,
+    "passed": true
+  },
+  "completed_updates": 8,
+  "original_sources_unchanged": true,
+  "parameter_changes": {
+    "proposal_model": true,
+    "graph_model": true
+  },
+  "sources": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\configs\\pointneuron2\\joint_saved_adam_stability.json": "b3dcba75db8f3fdf94ba2e6e78d4fc9bd5f2cc893c2ca76989969cf67ab5105b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\audit_field_centerpaths.py": "b57858b2b86259d1301685cebfda192818345ed99973f7f7557cb965d8cd700e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\audit_joint_timing_stop.py": "44f5240df7ba120682d832b1cf770689a9fe71c4c9a93b668626d7af831b96e7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\balanced_query_experiment.py": "b991152e0ff15feb9246347e98d957dfac26094d50db5454ba34625ff491e710",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\branched_query_experiment.py": "be950b3275763b6308a11c0ffad3bb2ad0724181d4aba2e8d29e71b2cf3191a1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_duration_comparison.py": "23648ed7dcf9883605f535f9c7d258f2dba3ae656a3cad84f844cc74394b6a34",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_loss_comparison.py": "2562e49d55a95aefdd7bb51072682e255ebb014c0c6f4a2ddbf3307cb9ab6134",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\check_joint_saved_adam_stability.py": "a754868b6adff2758a4bc8ef8691a40a28b2549d347eaabf16e0e36479766372",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_candidate_margin.py": "a5d49ed7551e9095f45c5284b6f1d1c1d48f01e0f8b8ecfeedaec87fa18823b8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_field_sampling.py": "9f4aa06ea75e501ea2b181c7dfc088dc9a778bb825ca9cc34883453dca71c52b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_proposal_optimizer_state.py": "86c835ec34f2f9ff5db168cf26b9185774aeaee23961509de5248ad0e3e68372",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\evaluate_gat_automatic_selection.py": "28e0e34b8264a91bbc5ccce828ad1b0161a3055a810ee751ba84c06ff745823d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\field_sampling_metrics.py": "06315b3630a550d216ed834b39657f7f88d5bd7acc1599e19245e20640442659",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\frozen_proposal_gat.py": "2bf60e20ad843f3c9cfa492c129d82008f53f61614459c46fea34e3ca21a76e4",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\joint_query_graph_experiment.py": "e073871c59af70a0761e7d642c6963355abdcd5c6ef671dcd01500249e0c6760",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\pointnext_query_experiment.py": "941ac3017ffbb8b18f29b290eee76eb53ae70cedf6bd5481042c5faf8549428d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\prepare_centerline_fit.py": "e8a80418b321e279a0c9b0eeff123ac27ce0351d930125d3d404f8a8be45e61e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\reference_gaps.py": "ecf21a724f865494ffcadde1b9a8fb993e40e366e7b566e375870a682a2b4e2c",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\run_branched_query.ps1": "e386c67a86c20bb1fe7d0435ea4d4ae0858f57da1e742a36dfb1e3b7ab726274",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_centerline_fit.py": "2d5d6fb08c48c15ecbb93d99e34667888d57cf3d39fff592dae34a8c9ea403a9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_query_comparison.py": "873de0f5bab577a627c75c4d50e6e02e9bc6d378ce17d9d715793a05930aaf0b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\__init__.py": "a31860a986c9884e5d009c43704e2b796bc305cb14cf2be62719152ed65a4f3b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\__init__.py": "81ebaafb32adbe7441155741c0382bb1bc3d5568364c04827921901d88aa13c3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\alignment.py": "45e8640337304ee06c33f8f76d07e910c7103f9f4437bcf06b8eeb2bf4d2b6af",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\centerline_field.py": "8988fd0a3689957e86e89d0b1c6a3816b56fe080fe6e5b02cc78da4e91fc9055",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_guided_sampling.py": "adb6229324bfe099c525b9d6f9652723136d953349354b4f0a39002d073210d5",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_pilot.py": "6c781ac92bb287b817e153fc5c71941b1fb52feb4531165e1811da5cc9e926f9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\gold166.py": "0add9008789e01cebf6075b4dc899a2b3a6ddba09df8fdd2a8001b72dbc4dd51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\medial_sampling.py": "3039cbafb46d212a28fca7d0b5c45f4001537564244f1da55e416e9d57bd022b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\point_cloud.py": "d6e4a210746e1678c0d756e1886892788a2828f4eb22b6d00cb03837714def31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\query_cache.py": "f3393bd221014637fd6738a54122e2284d6079ce9b59ecdf54712689f52df476",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\torch_dataset.py": "1aa57dc14374022a04d0cb454e2a17ff083ab56a70f2cb4a2716bf34087bbb92",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\training_cache.py": "04632851884e749dd7d66edbf036b4b510e4cbcb992dab02a1a391946753e699",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\vaa3d_raw.py": "8f77dab6acbddd9f6e46afac1236c941a938d6fb7684ce9dbc397620d679eea8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\__init__.py": "7ed5157b514f4f7dc2a638f7519b11178dea314285867f87f440357399105dc6",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\connectivity_decoder.py": "6394ebddb8af434ee471ea38b10d5120430a776130bb396f0d985fb78e5ea082",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\initialization.py": "4729914abe8fde8b30567e68c14fcec18f5653007b75ea719b1f4ce641f79b07",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\representation_oracle.py": "83618f4b7aa84ed1ce99e8756f7bb63bfe50320266d6ab712400895d4b98074d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\__init__.py": "af7a6d48f573c733895e2e353e18802b2a6ba26ade68c981a12a7107b303caaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\balanced_query_loss.py": "a4e12f74f6c229f7873e24a975709326943f5e4ff5c3304db229e14e6129ca31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\centerline_unet.py": "b0351948c06c6836926035ebf4bcf3840498ce3498bf2d7259cfffd966ae5df1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\dgcnn.py": "876bca0862c3e7a3d7eb746aac9cbebdec55dac57cda712327cf5fe5aaefdfb7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\gatv2_connectivity.py": "4b6f380292b0afe7f93d67ac4ad1b1e7c31f48d9f5d549c995d37a6f0410d937",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\joint_query_graph.py": "50dcc524baf9253106dcd97a1d04e59faba884935f7d3481b38ed4e0feef49f7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query.py": "2dad14d35a54015403e9cd2e78f0946c09597134849d3b78e683081cdcb2bab3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query_cropnorm.py": "d00150124060db147f9f7a188506bd4323df236da1ea0cc80c2677540ce10ebc",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal.py": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal_loss.py": "256340c2ebb05f500e12b199a1633767835d9eb4bf5bae8c6997dda1580ac207",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_fit_state.py": "6a6b1ef03785b374e96eccfb68aa43c94e381c9613c4f00754da705786583009",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_pipeline.py": "6ee740c7748e2a0caac6391c01b09497cda4387ecb3ff43d3e8cb11027a5eaaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_proposal.py": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "protected_manifest_digest": "897fda256a62c78b9d4c7dae04a186584f4f947b2de2ef67b1b334762b2f6d6b",
+  "initial_optimizer_state_digest": "9f4c6de9474a91b60a5f011595cbd9f20f6c9ad694fa3e0e075a06b78c06ec96",
+  "final_optimizer_state_digest": "3d512c3fb9946fdf43fd5c67c43015623c214919a7e5161398018fc7c2b6cf10",
+  "final_optimizer_cursors": {
+    "proposal": [
+      4008.0
+    ],
+    "gat": [
+      8.0
+    ]
+  },
+  "optimizer_options": [
+    {
+      "lr": 0.0001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": true
+    }
+  ],
+  "optimizer_parameter_counts": [
+    143
+  ],
+  "elapsed_seconds": 55.814835299999686,
+  "tests": {
+    "count": 15,
+    "failures": 0,
+    "errors": 0,
+    "report": "tmp\\pointneuron2\\joint_saved_adam_checks_20261019\\tests_complete.xml",
+    "sha256": "26cc340f8c4666005e9a17e10438b767f1d723e6639bf2d51c9f9343764b8405",
+    "duration_seconds": 20.256,
+    "test_script_sha256": "826d8e0955b5794d9d1f6d2a3a9360e0e139ae4dd6ae0350ce58c4634c4fc56a"
+  },
+  "snapshots": [
+    {
+      "after_updates": 0,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.9561815362387415,
+          "matched_distance_max": 1.1622782785385528,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13575,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.688310059493307,
+          "matched_distance_max": 1.2996020296123985,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 9,
+            "unknown": 5064,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.39530248234560306,
+          "matched_distance_max": 0.7611265044426657,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 33,
+            "unknown": 10910,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 1.005730842409877,
+          "matched_distance_max": 2.595842268930466,
+          "accepted_assigned": 411,
+          "accepted_unmatched": 4,
+          "edge_supervision": {
+            "positive": 381,
+            "negative": 2790,
+            "unknown": 1736,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 403,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 15,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 381,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 23,
+            "attainable_recall_all_target_edges": 0.943069306930693,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        }
+      ]
+    },
+    {
+      "after_updates": 1,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.8356055227228997,
+          "matched_distance_max": 0.9878102040428317,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13806,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.9939535471265097,
+          "matched_distance_max": 2.003524843215956,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 8,
+            "negative": 8,
+            "unknown": 5084,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 11,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 1,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 8,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 2,
+            "attainable_recall_all_target_edges": 0.8,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.6001581266348377,
+          "matched_distance_max": 0.8795139090664251,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 34,
+            "unknown": 11151,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 1
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 0.9679792635185727,
+          "matched_distance_max": 2.600314535089169,
+          "accepted_assigned": 411,
+          "accepted_unmatched": 4,
+          "edge_supervision": {
+            "positive": 400,
+            "negative": 2947,
+            "unknown": 1566,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 414,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 4,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 400,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 4,
+            "attainable_recall_all_target_edges": 0.9900990099009901,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 10
+        }
+      ]
+    },
+    {
+      "after_updates": 2,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.7582767388399523,
+          "matched_distance_max": 0.8538562476422394,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13848,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.745256749024422,
+          "matched_distance_max": 1.7261854338933504,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 10,
+            "unknown": 5072,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.5613694825769753,
+          "matched_distance_max": 0.9778560034552649,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 34,
+            "unknown": 11149,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 1
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 1.071052854895792,
+          "matched_distance_max": 2.713816448577185,
+          "accepted_assigned": 412,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 378,
+            "negative": 2726,
+            "unknown": 1806,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 395,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 23,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 378,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 26,
+            "attainable_recall_all_target_edges": 0.9356435643564357,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 13
+        }
+      ]
+    },
+    {
+      "after_updates": 3,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.6997140364269533,
+          "matched_distance_max": 0.7831795615712578,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13900,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.5976572397839361,
+          "matched_distance_max": 1.2341787210120516,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 12,
+            "unknown": 5068,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 1
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.32172856567732855,
+          "matched_distance_max": 0.746425015334507,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 33,
+            "unknown": 11139,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 1
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 1.2877701299794315,
+          "matched_distance_max": 3.049385154560361,
+          "accepted_assigned": 411,
+          "accepted_unmatched": 4,
+          "edge_supervision": {
+            "positive": 340,
+            "negative": 2462,
+            "unknown": 2104,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 365,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 53,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 340,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 64,
+            "attainable_recall_all_target_edges": 0.8415841584158416,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 14
+        }
+      ]
+    },
+    {
+      "after_updates": 4,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.6033163187686229,
+          "matched_distance_max": 0.7508817000569062,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13780,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.7388580624168591,
+          "matched_distance_max": 1.3275436395570728,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 12,
+            "unknown": 5058,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 3
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.48949341193436924,
+          "matched_distance_max": 1.0872491401949331,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 32,
+            "unknown": 11018,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 3
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 0.9894869201164594,
+          "matched_distance_max": 2.104347653650518,
+          "accepted_assigned": 412,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 399,
+            "negative": 2971,
+            "unknown": 1550,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 415,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 3,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 399,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.9876237623762376,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 15
+        }
+      ]
+    },
+    {
+      "after_updates": 5,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.3182377345830457,
+          "matched_distance_max": 0.47539311869360223,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13900,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.9334373146942142,
+          "matched_distance_max": 1.7524990623574932,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 11,
+            "unknown": 5057,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 5
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.8107419891170651,
+          "matched_distance_max": 1.5041450537359897,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 32,
+            "unknown": 10969,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 3
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 0.9153865288087631,
+          "matched_distance_max": 2.0798019333308013,
+          "accepted_assigned": 412,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 402,
+            "negative": 2967,
+            "unknown": 1552,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 416,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 2,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 402,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 2,
+            "attainable_recall_all_target_edges": 0.995049504950495,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 15
+        }
+      ]
+    },
+    {
+      "after_updates": 6,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.5863798466973589,
+          "matched_distance_max": 0.8109949913509744,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 14196,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.8185438117854549,
+          "matched_distance_max": 1.558769273148558,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 10,
+            "unknown": 5064,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 5
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.9423116517110097,
+          "matched_distance_max": 1.6999527633216946,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 32,
+            "unknown": 11152,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 3
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 1.0020944686907465,
+          "matched_distance_max": 2.5253474689121567,
+          "accepted_assigned": 411,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 397,
+            "negative": 2903,
+            "unknown": 1633,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 411,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 7,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 397,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 7,
+            "attainable_recall_all_target_edges": 0.9826732673267327,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 13
+        }
+      ]
+    },
+    {
+      "after_updates": 7,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 0.9732100241020215,
+          "matched_distance_max": 1.2501380401811566,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 14628,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.7228235449958301,
+          "matched_distance_max": 1.1969781796745163,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 10,
+            "unknown": 5082,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 5
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.7036563006563346,
+          "matched_distance_max": 1.4896977410806393,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 17,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 33,
+            "unknown": 11545,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 2
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 1.0845143353972202,
+          "matched_distance_max": 2.7417185097413372,
+          "accepted_assigned": 409,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 387,
+            "negative": 2842,
+            "unknown": 1701,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 403,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 15,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 387,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 17,
+            "attainable_recall_all_target_edges": 0.9579207920792079,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 15
+        }
+      ]
+    },
+    {
+      "after_updates": 8,
+      "crops": [
+        {
+          "crop": [
+            0,
+            0
+          ],
+          "matched_distance_mean": 1.2629525878837429,
+          "matched_distance_max": 1.5208986739898487,
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 14831,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            0,
+            1
+          ],
+          "matched_distance_mean": 0.7603468935953049,
+          "matched_distance_max": 1.3507541852920957,
+          "accepted_assigned": 12,
+          "accepted_unmatched": 32,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 12,
+            "unknown": 5079,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 1
+        },
+        {
+          "crop": [
+            92,
+            4
+          ],
+          "matched_distance_mean": 0.5325235149368521,
+          "matched_distance_max": 1.4527710723867016,
+          "accepted_assigned": 16,
+          "accepted_unmatched": 16,
+          "edge_supervision": {
+            "positive": 15,
+            "negative": 34,
+            "unknown": 11739,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 16,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 15,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 0
+        },
+        {
+          "crop": [
+            86,
+            3
+          ],
+          "matched_distance_mean": 0.7000202503403528,
+          "matched_distance_max": 2.6351211462547575,
+          "accepted_assigned": 409,
+          "accepted_unmatched": 3,
+          "edge_supervision": {
+            "positive": 399,
+            "negative": 2961,
+            "unknown": 1571,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 414,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 4,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 399,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.9876237623762376,
+            "trusted_match_tolerance": 2.0
+          },
+          "targets_assigned_to_different_queries": 17
+        }
+      ]
+    }
+  ],
+  "updates": [
+    {
+      "stage_update": 1,
+      "crop": [
+        0,
+        0
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 472.320087685815,
+      "gat_gradient_l2": 21.472174249251754,
+      "preclip_norm": 472.8078918457031,
+      "clip_factor": 0.02115023913795664,
+      "cursors_after": {
+        "proposal": [
+          4001.0
+        ],
+        "gat": [
+          1.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 5,
+          "negative": 8,
+          "unknown": 13575,
+          "targets": 6,
+          "assigned": 6,
+          "trusted_matches": 6,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 0,
+          "required_target_edges": 5,
+          "edges_with_trusted_endpoints": 5,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 0,
+          "attainable_recall_all_target_edges": 1.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 0.5149580240249634,
+        "proposal_loss": 0.4337593913078308,
+        "class_loss": 0.04211495444178581,
+        "center_loss": 0.11618351936340332,
+        "radius_loss": 0.00489455834031105,
+        "edge_loss": 0.08119865506887436,
+        "candidate_edges": 13588
+      }
+    },
+    {
+      "stage_update": 2,
+      "crop": [
+        0,
+        1
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 439.6338170422896,
+      "gat_gradient_l2": 28.020771246571215,
+      "preclip_norm": 440.52587890625,
+      "clip_factor": 0.02270014193519831,
+      "cursors_after": {
+        "proposal": [
+          4002.0
+        ],
+        "gat": [
+          2.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 8,
+          "negative": 8,
+          "unknown": 5084,
+          "targets": 12,
+          "assigned": 12,
+          "trusted_matches": 11,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 1,
+          "required_target_edges": 10,
+          "edges_with_trusted_endpoints": 8,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 2,
+          "attainable_recall_all_target_edges": 0.8,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 1.516638994216919,
+        "proposal_loss": 0.7208366394042969,
+        "class_loss": 0.13582664728164673,
+        "center_loss": 0.14210252463817596,
+        "radius_loss": 0.11437907814979553,
+        "edge_loss": 0.7958022952079773,
+        "candidate_edges": 5100
+      }
+    },
+    {
+      "stage_update": 3,
+      "crop": [
+        92,
+        4
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 205.8342009526821,
+      "gat_gradient_l2": 47.96970255986056,
+      "preclip_norm": 211.34994506835938,
+      "clip_factor": 0.04731489260359491,
+      "cursors_after": {
+        "proposal": [
+          4003.0
+        ],
+        "gat": [
+          3.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 15,
+          "negative": 34,
+          "unknown": 11149,
+          "targets": 16,
+          "assigned": 16,
+          "trusted_matches": 16,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 0,
+          "required_target_edges": 15,
+          "edges_with_trusted_endpoints": 15,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 0,
+          "attainable_recall_all_target_edges": 1.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 2.255959987640381,
+        "proposal_loss": 0.32210975885391235,
+        "class_loss": 0.06828022003173828,
+        "center_loss": 0.043713394552469254,
+        "radius_loss": 0.272045761346817,
+        "edge_loss": 1.9338502883911133,
+        "candidate_edges": 11198
+      }
+    },
+    {
+      "stage_update": 4,
+      "crop": [
+        86,
+        3
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 505.33299528327035,
+      "gat_gradient_l2": 3.9304395298608856,
+      "preclip_norm": 505.3482360839844,
+      "clip_factor": 0.0197883345902285,
+      "cursors_after": {
+        "proposal": [
+          4004.0
+        ],
+        "gat": [
+          4.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 340,
+          "negative": 2462,
+          "unknown": 2104,
+          "targets": 418,
+          "assigned": 418,
+          "trusted_matches": 365,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 53,
+          "required_target_edges": 404,
+          "edges_with_trusted_endpoints": 340,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 64,
+          "attainable_recall_all_target_edges": 0.8415841584158416,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 1.5339832305908203,
+        "proposal_loss": 1.3726930618286133,
+        "class_loss": 0.16106809675693512,
+        "center_loss": 0.2502709627151489,
+        "radius_loss": 1.4987198114395142,
+        "edge_loss": 0.16129019856452942,
+        "candidate_edges": 4906
+      }
+    },
+    {
+      "stage_update": 5,
+      "crop": [
+        0,
+        0
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 263.7409687616004,
+      "gat_gradient_l2": 0.0027810034889759892,
+      "preclip_norm": 263.7409973144531,
+      "clip_factor": 0.037915986001073675,
+      "cursors_after": {
+        "proposal": [
+          4005.0
+        ],
+        "gat": [
+          5.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 5,
+          "negative": 8,
+          "unknown": 13780,
+          "targets": 6,
+          "assigned": 6,
+          "trusted_matches": 6,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 0,
+          "required_target_edges": 5,
+          "edges_with_trusted_endpoints": 5,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 0,
+          "attainable_recall_all_target_edges": 1.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 0.22422721982002258,
+        "proposal_loss": 0.22421905398368835,
+        "class_loss": 0.04166405275464058,
+        "center_loss": 0.04663875326514244,
+        "radius_loss": 0.0048734392039477825,
+        "edge_loss": 8.15889234218048e-06,
+        "candidate_edges": 13793
+      }
+    },
+    {
+      "stage_update": 6,
+      "crop": [
+        0,
+        1
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 248.9781394000707,
+      "gat_gradient_l2": 15.196955974230985,
+      "preclip_norm": 249.44139099121094,
+      "clip_factor": 0.040089577436099096,
+      "cursors_after": {
+        "proposal": [
+          4006.0
+        ],
+        "gat": [
+          6.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 10,
+          "negative": 11,
+          "unknown": 5057,
+          "targets": 12,
+          "assigned": 12,
+          "trusted_matches": 12,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 0,
+          "required_target_edges": 10,
+          "edges_with_trusted_endpoints": 10,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 0,
+          "attainable_recall_all_target_edges": 1.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 1.6969118118286133,
+        "proposal_loss": 0.6874403357505798,
+        "class_loss": 0.14128051698207855,
+        "center_loss": 0.12709301710128784,
+        "radius_loss": 0.11800146847963333,
+        "edge_loss": 1.0094715356826782,
+        "candidate_edges": 5078
+      }
+    },
+    {
+      "stage_update": 7,
+      "crop": [
+        92,
+        4
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 377.6439394715901,
+      "gat_gradient_l2": 31.097581570600273,
+      "preclip_norm": 378.9221496582031,
+      "clip_factor": 0.026390645103828308,
+      "cursors_after": {
+        "proposal": [
+          4007.0
+        ],
+        "gat": [
+          7.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 15,
+          "negative": 32,
+          "unknown": 11152,
+          "targets": 16,
+          "assigned": 16,
+          "trusted_matches": 16,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 0,
+          "required_target_edges": 15,
+          "edges_with_trusted_endpoints": 15,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 0,
+          "attainable_recall_all_target_edges": 1.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 1.6990776062011719,
+        "proposal_loss": 0.5900371670722961,
+        "class_loss": 0.07002779841423035,
+        "center_loss": 0.13191907107830048,
+        "radius_loss": 0.2711218595504761,
+        "edge_loss": 1.109040379524231,
+        "candidate_edges": 11199
+      }
+    },
+    {
+      "stage_update": 8,
+      "crop": [
+        86,
+        3
+      ],
+      "optimizer_step_executed": true,
+      "proposal_gradient_l2": 360.92948421936313,
+      "gat_gradient_l2": 3.3700032874930343,
+      "preclip_norm": 360.9452209472656,
+      "clip_factor": 0.027705034980241426,
+      "cursors_after": {
+        "proposal": [
+          4008.0
+        ],
+        "gat": [
+          8.0
+        ]
+      },
+      "incoming": {
+        "edge_supervision": {
+          "positive": 387,
+          "negative": 2842,
+          "unknown": 1701,
+          "targets": 418,
+          "assigned": 418,
+          "trusted_matches": 403,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 15,
+          "required_target_edges": 404,
+          "edges_with_trusted_endpoints": 387,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 17,
+          "attainable_recall_all_target_edges": 0.9579207920792079,
+          "trusted_match_tolerance": 2.0
+        },
+        "loss": 1.2831006050109863,
+        "proposal_loss": 1.123266339302063,
+        "class_loss": 0.15542152523994446,
+        "center_loss": 0.17011326551437378,
+        "radius_loss": 1.5104174613952637,
+        "edge_loss": 0.15983423590660095,
+        "candidate_edges": 4930
+      }
+    }
+  ],
+  "next_step_implemented": false,
+  "full_trainer_changed": false
+}

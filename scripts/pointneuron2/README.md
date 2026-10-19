@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Completed: [saved-proposal-Adam joint stability](../../docs/pointneuron2/joint_saved_adam_stability_results.md).
+`check_joint_saved_adam_stability.py` performs exactly eight throwaway CPU joint
+updates, with incoming/failure diagnostics and all-four-crop probes after each
+step. All declared short stability criteria pass; the proposal/GAT Adam counters
+are 4,008/8. No trained checkpoint, new GPU action or retained fit. The original
+joint launcher and full-training checkpoint policy remain unchanged.
+
 Completed: [proposal optimizer-state control](../../docs/pointneuron2/proposal_optimizer_state_results.md).
 `compare_proposal_optimizer_state.py` pairs exactly four CPU updates with fresh
 versus saved AdamW moments/counters, copying identical optimizer group options.

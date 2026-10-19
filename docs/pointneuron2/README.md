@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Completed joint stability check, 19 October:** [eight CPU updates with saved proposal Adam state](joint_saved_adam_stability_results.md).
+All eight joint updates complete; crop 0/0 retains 6/6 trusted matches at updates
+four/eight, and every crop retains both edge classes at the end. Proposal Adam
+history is restored and GAT Adam is fresh. Confidence extras and intermediate
+geometry drift remain; no reconstruction-quality or GPU-readiness claim. The
+old joint trainer remains unchanged and cannot be treated as this initialization.
+
 **Completed restart control, 19 October:** [fresh versus saved proposal AdamW state](proposal_optimizer_state_results.md).
 Identical weights/loss/LR/crops and four CPU updates per arm: saved optimizer
 state preserves 6/6 trusted crop-0 proposals; fresh state leaves 0/6. Final dense
