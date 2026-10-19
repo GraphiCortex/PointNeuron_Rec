@@ -6,6 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Completed: [proposal optimizer-state control](../../docs/pointneuron2/proposal_optimizer_state_results.md).
+`compare_proposal_optimizer_state.py` pairs exactly four CPU updates with fresh
+versus saved AdamW moments/counters, copying identical optimizer group options.
+Saved state passes the declared 6/6 crop-0 trust criterion; fresh state fails.
+All four crops are probed at every update. Three transfer tests pass. No source
+fit is extended, no new trained checkpoint retained and no joint/GPU run launched.
+
 Stopped: [joint timing failure and CPU comparison](../../docs/pointneuron2/joint_query_graph_timing_results.md).
 `audit_joint_timing_stop.py` makes at most four throwaway CPU updates; its
 `--proposal-only` arm omits graph loss at the same restart settings. Both show

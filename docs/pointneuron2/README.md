@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Completed restart control, 19 October:** [fresh versus saved proposal AdamW state](proposal_optimizer_state_results.md).
+Identical weights/loss/LR/crops and four CPU updates per arm: saved optimizer
+state preserves 6/6 trusted crop-0 proposals; fresh state leaves 0/6. Final dense
+trusted counts are 413/418 versus 343/418, with intermediate drift still present.
+Confidence extras remain. Three transfer tests pass; no joint policy change,
+GPU run, retained training or reconstruction-improvement claim.
+
 **Stopped timing, 19 October:** [joint timing failure and matched CPU control](joint_query_graph_timing_results.md).
 Four GPU throwaway updates complete; missing graph-label classes stop update five.
 Historical GPU proposal replay is exact. Four-update CPU joint and proposal-only

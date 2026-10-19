@@ -1,0 +1,1200 @@
+{
+  "schema": "pointneuron2-proposal-optimizer-state-results-v1",
+  "date": "2026-10-19",
+  "status": "completed",
+  "scope": "four fixed TRAINING crops; four CPU proposal-only updates per arm; no retained trained checkpoint or GPU run",
+  "config": {
+    "schema": "pointneuron2-proposal-optimizer-state-control-v1",
+    "source_recipe": "configs/pointneuron2/joint_query_graph.json",
+    "source_failed_timing": "tmp/pointneuron2/local_runs/joint_query_graph_ready_20261019/timing/report.json",
+    "fresh_reference": "tmp/pointneuron2/local_runs/joint_timing_stop_proposal_only_cpu_20261019/report.json",
+    "output": "tmp/pointneuron2/local_runs/proposal_optimizer_state_20261019",
+    "training_crops": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        92,
+        4
+      ],
+      [
+        86,
+        3
+      ]
+    ],
+    "arms": [
+      "fresh",
+      "restored"
+    ],
+    "updates_per_arm": 4,
+    "device": "cpu",
+    "torch_threads": 2,
+    "seed": 0,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 10.0,
+    "objective": "unchanged_balanced_proposal_only",
+    "primary_criterion": "all_six_crop_zero_matches_trusted_after_four_updates",
+    "retained_trained_checkpoint": false
+  },
+  "report": "tmp\\pointneuron2\\local_runs\\proposal_optimizer_state_20261019\\report.json",
+  "report_sha256": "1e759a59906c05d645d371bf1d1eba7e3c633a2e51ccbdfc91aecd5d77c94e80",
+  "sources": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\configs\\pointneuron2\\proposal_optimizer_state_control.json": "58aac7b478beefe76b88d2e5852f17a66ce0410817be3431a359c3b2ef6fee3f",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\audit_field_centerpaths.py": "b57858b2b86259d1301685cebfda192818345ed99973f7f7557cb965d8cd700e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\audit_joint_timing_stop.py": "44f5240df7ba120682d832b1cf770689a9fe71c4c9a93b668626d7af831b96e7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\balanced_query_experiment.py": "b991152e0ff15feb9246347e98d957dfac26094d50db5454ba34625ff491e710",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\branched_query_experiment.py": "be950b3275763b6308a11c0ffad3bb2ad0724181d4aba2e8d29e71b2cf3191a1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_duration_comparison.py": "23648ed7dcf9883605f535f9c7d258f2dba3ae656a3cad84f844cc74394b6a34",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_loss_comparison.py": "2562e49d55a95aefdd7bb51072682e255ebb014c0c6f4a2ddbf3307cb9ab6134",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_candidate_margin.py": "a5d49ed7551e9095f45c5284b6f1d1c1d48f01e0f8b8ecfeedaec87fa18823b8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_field_sampling.py": "9f4aa06ea75e501ea2b181c7dfc088dc9a778bb825ca9cc34883453dca71c52b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_proposal_optimizer_state.py": "86c835ec34f2f9ff5db168cf26b9185774aeaee23961509de5248ad0e3e68372",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\evaluate_gat_automatic_selection.py": "28e0e34b8264a91bbc5ccce828ad1b0161a3055a810ee751ba84c06ff745823d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\field_sampling_metrics.py": "06315b3630a550d216ed834b39657f7f88d5bd7acc1599e19245e20640442659",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\frozen_proposal_gat.py": "2bf60e20ad843f3c9cfa492c129d82008f53f61614459c46fea34e3ca21a76e4",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\joint_query_graph_experiment.py": "e073871c59af70a0761e7d642c6963355abdcd5c6ef671dcd01500249e0c6760",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\pointnext_query_experiment.py": "941ac3017ffbb8b18f29b290eee76eb53ae70cedf6bd5481042c5faf8549428d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\prepare_centerline_fit.py": "e8a80418b321e279a0c9b0eeff123ac27ce0351d930125d3d404f8a8be45e61e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\reference_gaps.py": "ecf21a724f865494ffcadde1b9a8fb993e40e366e7b566e375870a682a2b4e2c",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\run_branched_query.ps1": "e386c67a86c20bb1fe7d0435ea4d4ae0858f57da1e742a36dfb1e3b7ab726274",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_centerline_fit.py": "2d5d6fb08c48c15ecbb93d99e34667888d57cf3d39fff592dae34a8c9ea403a9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_query_comparison.py": "873de0f5bab577a627c75c4d50e6e02e9bc6d378ce17d9d715793a05930aaf0b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\__init__.py": "a31860a986c9884e5d009c43704e2b796bc305cb14cf2be62719152ed65a4f3b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\__init__.py": "81ebaafb32adbe7441155741c0382bb1bc3d5568364c04827921901d88aa13c3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\alignment.py": "45e8640337304ee06c33f8f76d07e910c7103f9f4437bcf06b8eeb2bf4d2b6af",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\centerline_field.py": "8988fd0a3689957e86e89d0b1c6a3816b56fe080fe6e5b02cc78da4e91fc9055",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_guided_sampling.py": "adb6229324bfe099c525b9d6f9652723136d953349354b4f0a39002d073210d5",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_pilot.py": "6c781ac92bb287b817e153fc5c71941b1fb52feb4531165e1811da5cc9e926f9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\gold166.py": "0add9008789e01cebf6075b4dc899a2b3a6ddba09df8fdd2a8001b72dbc4dd51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\medial_sampling.py": "3039cbafb46d212a28fca7d0b5c45f4001537564244f1da55e416e9d57bd022b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\point_cloud.py": "d6e4a210746e1678c0d756e1886892788a2828f4eb22b6d00cb03837714def31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\query_cache.py": "f3393bd221014637fd6738a54122e2284d6079ce9b59ecdf54712689f52df476",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\torch_dataset.py": "1aa57dc14374022a04d0cb454e2a17ff083ab56a70f2cb4a2716bf34087bbb92",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\training_cache.py": "04632851884e749dd7d66edbf036b4b510e4cbcb992dab02a1a391946753e699",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\vaa3d_raw.py": "8f77dab6acbddd9f6e46afac1236c941a938d6fb7684ce9dbc397620d679eea8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\__init__.py": "7ed5157b514f4f7dc2a638f7519b11178dea314285867f87f440357399105dc6",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\connectivity_decoder.py": "6394ebddb8af434ee471ea38b10d5120430a776130bb396f0d985fb78e5ea082",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\initialization.py": "4729914abe8fde8b30567e68c14fcec18f5653007b75ea719b1f4ce641f79b07",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\representation_oracle.py": "83618f4b7aa84ed1ce99e8756f7bb63bfe50320266d6ab712400895d4b98074d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\__init__.py": "af7a6d48f573c733895e2e353e18802b2a6ba26ade68c981a12a7107b303caaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\balanced_query_loss.py": "a4e12f74f6c229f7873e24a975709326943f5e4ff5c3304db229e14e6129ca31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\centerline_unet.py": "b0351948c06c6836926035ebf4bcf3840498ce3498bf2d7259cfffd966ae5df1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\dgcnn.py": "876bca0862c3e7a3d7eb746aac9cbebdec55dac57cda712327cf5fe5aaefdfb7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\gatv2_connectivity.py": "4b6f380292b0afe7f93d67ac4ad1b1e7c31f48d9f5d549c995d37a6f0410d937",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\joint_query_graph.py": "50dcc524baf9253106dcd97a1d04e59faba884935f7d3481b38ed4e0feef49f7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query.py": "2dad14d35a54015403e9cd2e78f0946c09597134849d3b78e683081cdcb2bab3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query_cropnorm.py": "d00150124060db147f9f7a188506bd4323df236da1ea0cc80c2677540ce10ebc",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal.py": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal_loss.py": "256340c2ebb05f500e12b199a1633767835d9eb4bf5bae8c6997dda1580ac207",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_fit_state.py": "6a6b1ef03785b374e96eccfb68aa43c94e381c9613c4f00754da705786583009",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_pipeline.py": "6ee740c7748e2a0caac6391c01b09497cda4387ecb3ff43d3e8cb11027a5eaaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_proposal.py": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "source_failed_timing_sha256": "0535463f19ec4600e0fb787a70f3a4ceb7d23a436f6bce2c986242a1cf325e96",
+  "same_initial_weights_and_predictions": true,
+  "same_optimizer_options": true,
+  "original_sources_unchanged": true,
+  "elapsed_seconds": 53.39541180001106,
+  "tests": {
+    "count": 3,
+    "failures": 0,
+    "errors": 0,
+    "xml": "tmp\\pointneuron2\\optimizer_state_checks_20261019\\tests.xml",
+    "sha256": "abf4d225cdeefb76727b14f2aa0e3ace3e129cfeef183d1c31410bb0d93696e3"
+  },
+  "arms": [
+    {
+      "arm": "fresh",
+      "completed_updates": 4,
+      "optimizer_cursor": [
+        4.0
+      ],
+      "graph_weights_unchanged": true,
+      "primary_pass": false,
+      "prior_fresh_cpu_probes_identical": true,
+      "optimizer_options": [
+        {
+          "lr": 0.0001,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0001,
+          "amsgrad": false,
+          "maximize": false,
+          "foreach": null,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null,
+          "decoupled_weight_decay": true,
+          "params": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122
+          ]
+        }
+      ],
+      "initial_optimizer_state_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "final_optimizer_state_digest": "a056a0c5da5e03f9ae655da61a5f94832225153640a60d22382bf3e50a9729a3",
+      "snapshots": [
+        {
+          "after_updates": 0,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.9561815362387415,
+              "maximum_matched_distance": 1.1622782785385528,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 12,
+              "targets": 12,
+              "known_positive_edges": 10,
+              "known_negative_edges": 9,
+              "mean_matched_distance": 0.688310059493307,
+              "maximum_matched_distance": 1.2996020296123985,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 33,
+              "mean_matched_distance": 0.39530248234560306,
+              "maximum_matched_distance": 0.7611265044426657,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 403,
+              "targets": 418,
+              "known_positive_edges": 381,
+              "known_negative_edges": 2790,
+              "mean_matched_distance": 1.005730842409877,
+              "maximum_matched_distance": 2.595842268930466,
+              "accepted_assigned": 411,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 0
+            }
+          ]
+        },
+        {
+          "after_updates": 1,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 0,
+              "targets": 6,
+              "known_positive_edges": 0,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 2.4953501769660096,
+              "maximum_matched_distance": 3.2505953646698322,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 8,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 11,
+              "targets": 12,
+              "known_positive_edges": 8,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 1.4160083012659552,
+              "maximum_matched_distance": 2.0494083047099245,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 35,
+              "mean_matched_distance": 0.6671737585686518,
+              "maximum_matched_distance": 1.1239064884752747,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 15,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 294,
+              "targets": 418,
+              "known_positive_edges": 250,
+              "known_negative_edges": 1929,
+              "mean_matched_distance": 1.5563447797104681,
+              "maximum_matched_distance": 3.464728353788477,
+              "accepted_assigned": 408,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 12
+            }
+          ]
+        },
+        {
+          "after_updates": 2,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 0,
+              "targets": 6,
+              "known_positive_edges": 0,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 3.995715179568297,
+              "maximum_matched_distance": 5.578674708222277,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 5,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 7,
+              "targets": 12,
+              "known_positive_edges": 3,
+              "known_negative_edges": 1,
+              "mean_matched_distance": 1.6572603119035272,
+              "maximum_matched_distance": 2.508710553578679,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 34,
+              "targets_assigned_to_different_queries": 7
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 15,
+              "targets": 16,
+              "known_positive_edges": 14,
+              "known_negative_edges": 27,
+              "mean_matched_distance": 1.4104751893306733,
+              "maximum_matched_distance": 2.0228617684583923,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 4
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 138,
+              "targets": 418,
+              "known_positive_edges": 93,
+              "known_negative_edges": 632,
+              "mean_matched_distance": 2.3557802139356436,
+              "maximum_matched_distance": 5.523299250693212,
+              "accepted_assigned": 412,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 10
+            }
+          ]
+        },
+        {
+          "after_updates": 3,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 0,
+              "targets": 6,
+              "known_positive_edges": 0,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 5.072322433824077,
+              "maximum_matched_distance": 6.720179500281095,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 5,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 3,
+              "targets": 12,
+              "known_positive_edges": 1,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 2.6693720132644234,
+              "maximum_matched_distance": 4.212679322977846,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 33,
+              "targets_assigned_to_different_queries": 6
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 34,
+              "mean_matched_distance": 0.7567636996247384,
+              "maximum_matched_distance": 1.1676268821059128,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 15,
+              "targets_assigned_to_different_queries": 4
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 61,
+              "targets": 418,
+              "known_positive_edges": 32,
+              "known_negative_edges": 126,
+              "mean_matched_distance": 2.8226444612855244,
+              "maximum_matched_distance": 6.368949478737413,
+              "accepted_assigned": 410,
+              "accepted_unmatched": 5,
+              "targets_assigned_to_different_queries": 21
+            }
+          ]
+        },
+        {
+          "after_updates": 4,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 0,
+              "targets": 6,
+              "known_positive_edges": 0,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 5.747331500449069,
+              "maximum_matched_distance": 7.237187387025332,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 5,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 4,
+              "targets": 12,
+              "known_positive_edges": 2,
+              "known_negative_edges": 0,
+              "mean_matched_distance": 2.449859616967567,
+              "maximum_matched_distance": 4.212863355816122,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 7
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 32,
+              "mean_matched_distance": 0.9207144243219734,
+              "maximum_matched_distance": 1.651324330715222,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 14,
+              "targets_assigned_to_different_queries": 2
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 343,
+              "targets": 418,
+              "known_positive_edges": 302,
+              "known_negative_edges": 2123,
+              "mean_matched_distance": 1.4022671741849664,
+              "maximum_matched_distance": 5.749270207952501,
+              "accepted_assigned": 408,
+              "accepted_unmatched": 3,
+              "targets_assigned_to_different_queries": 10
+            }
+          ]
+        }
+      ],
+      "update_metrics": [
+        {
+          "new_stage_update": 1,
+          "crop": [
+            0,
+            0
+          ],
+          "metrics": {
+            "total": 0.4337593913078308,
+            "classification": 0.04211495444178581,
+            "center": 0.11618351936340332,
+            "radius": 0.00489455834031105,
+            "gradient_norm_before_clip": 467.1667175292969
+          }
+        },
+        {
+          "new_stage_update": 2,
+          "crop": [
+            0,
+            1
+          ],
+          "metrics": {
+            "total": 1.079498052597046,
+            "classification": 0.13497662544250488,
+            "center": 0.2627643644809723,
+            "radius": 0.10625859349966049,
+            "gradient_norm_before_clip": 638.8366088867188
+          }
+        },
+        {
+          "new_stage_update": 3,
+          "crop": [
+            92,
+            4
+          ],
+          "metrics": {
+            "total": 0.9937028884887695,
+            "classification": 0.07266440987586975,
+            "center": 0.26437294483184814,
+            "radius": 0.27627623081207275,
+            "gradient_norm_before_clip": 619.947265625
+          }
+        },
+        {
+          "new_stage_update": 4,
+          "crop": [
+            86,
+            3
+          ],
+          "metrics": {
+            "total": 3.8713316917419434,
+            "classification": 0.16688187420368195,
+            "center": 1.0783178806304932,
+            "radius": 1.5130705833435059,
+            "gradient_norm_before_clip": 1024.9378662109375
+          }
+        }
+      ]
+    },
+    {
+      "arm": "restored",
+      "completed_updates": 4,
+      "optimizer_cursor": [
+        4004.0
+      ],
+      "graph_weights_unchanged": true,
+      "primary_pass": true,
+      "prior_fresh_cpu_probes_identical": null,
+      "optimizer_options": [
+        {
+          "lr": 0.0001,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0001,
+          "amsgrad": false,
+          "maximize": false,
+          "foreach": null,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null,
+          "decoupled_weight_decay": true,
+          "params": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122
+          ]
+        }
+      ],
+      "initial_optimizer_state_digest": "9f4c6de9474a91b60a5f011595cbd9f20f6c9ad694fa3e0e075a06b78c06ec96",
+      "final_optimizer_state_digest": "875c7ac01c4223a04f026d687a1958b08b664d2c36e4ba371bea7d4d6c3f9594",
+      "snapshots": [
+        {
+          "after_updates": 0,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.9561815362387415,
+              "maximum_matched_distance": 1.1622782785385528,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 12,
+              "targets": 12,
+              "known_positive_edges": 10,
+              "known_negative_edges": 9,
+              "mean_matched_distance": 0.688310059493307,
+              "maximum_matched_distance": 1.2996020296123985,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 33,
+              "mean_matched_distance": 0.39530248234560306,
+              "maximum_matched_distance": 0.7611265044426657,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 403,
+              "targets": 418,
+              "known_positive_edges": 381,
+              "known_negative_edges": 2790,
+              "mean_matched_distance": 1.005730842409877,
+              "maximum_matched_distance": 2.595842268930466,
+              "accepted_assigned": 411,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 0
+            }
+          ]
+        },
+        {
+          "after_updates": 1,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.838154041194407,
+              "maximum_matched_distance": 1.0138345810430163,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 11,
+              "targets": 12,
+              "known_positive_edges": 8,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 1.008568140757601,
+              "maximum_matched_distance": 2.016914242269306,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 34,
+              "mean_matched_distance": 0.614510237898804,
+              "maximum_matched_distance": 0.8926315932727494,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 413,
+              "targets": 418,
+              "known_positive_edges": 399,
+              "known_negative_edges": 2934,
+              "mean_matched_distance": 0.9766349399418025,
+              "maximum_matched_distance": 2.6647498208047304,
+              "accepted_assigned": 411,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 12
+            }
+          ]
+        },
+        {
+          "after_updates": 2,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.7612172051255603,
+              "maximum_matched_distance": 0.9080048706261936,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 12,
+              "targets": 12,
+              "known_positive_edges": 10,
+              "known_negative_edges": 11,
+              "mean_matched_distance": 0.7703344302980351,
+              "maximum_matched_distance": 1.7482231521599616,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 33,
+              "mean_matched_distance": 0.583253320211934,
+              "maximum_matched_distance": 0.9708058014926381,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 399,
+              "targets": 418,
+              "known_positive_edges": 383,
+              "known_negative_edges": 2773,
+              "mean_matched_distance": 1.0908765795974031,
+              "maximum_matched_distance": 2.830988619269767,
+              "accepted_assigned": 412,
+              "accepted_unmatched": 3,
+              "targets_assigned_to_different_queries": 15
+            }
+          ]
+        },
+        {
+          "after_updates": 3,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.6979121892136652,
+              "maximum_matched_distance": 0.7769092659047817,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 12,
+              "targets": 12,
+              "known_positive_edges": 10,
+              "known_negative_edges": 12,
+              "mean_matched_distance": 0.6029528337364654,
+              "maximum_matched_distance": 1.1518511432739922,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 32,
+              "mean_matched_distance": 0.30991343219988543,
+              "maximum_matched_distance": 0.6948569394451827,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 1
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 364,
+              "targets": 418,
+              "known_positive_edges": 339,
+              "known_negative_edges": 2460,
+              "mean_matched_distance": 1.3188057383233327,
+              "maximum_matched_distance": 3.1755374290505447,
+              "accepted_assigned": 411,
+              "accepted_unmatched": 4,
+              "targets_assigned_to_different_queries": 12
+            }
+          ]
+        },
+        {
+          "after_updates": 4,
+          "crops": [
+            {
+              "crop": [
+                0,
+                0
+              ],
+              "trusted": 6,
+              "targets": 6,
+              "known_positive_edges": 5,
+              "known_negative_edges": 8,
+              "mean_matched_distance": 0.5581768969540623,
+              "maximum_matched_distance": 0.5760912871172337,
+              "accepted_assigned": 6,
+              "accepted_unmatched": 11,
+              "targets_assigned_to_different_queries": 0
+            },
+            {
+              "crop": [
+                0,
+                1
+              ],
+              "trusted": 12,
+              "targets": 12,
+              "known_positive_edges": 10,
+              "known_negative_edges": 12,
+              "mean_matched_distance": 0.8088514808143473,
+              "maximum_matched_distance": 1.4188022936540363,
+              "accepted_assigned": 12,
+              "accepted_unmatched": 32,
+              "targets_assigned_to_different_queries": 4
+            },
+            {
+              "crop": [
+                92,
+                4
+              ],
+              "trusted": 16,
+              "targets": 16,
+              "known_positive_edges": 15,
+              "known_negative_edges": 32,
+              "mean_matched_distance": 0.6111998268324329,
+              "maximum_matched_distance": 1.2483854594064174,
+              "accepted_assigned": 16,
+              "accepted_unmatched": 17,
+              "targets_assigned_to_different_queries": 3
+            },
+            {
+              "crop": [
+                86,
+                3
+              ],
+              "trusted": 413,
+              "targets": 418,
+              "known_positive_edges": 397,
+              "known_negative_edges": 2956,
+              "mean_matched_distance": 1.0454508460271306,
+              "maximum_matched_distance": 2.276730991330244,
+              "accepted_assigned": 412,
+              "accepted_unmatched": 3,
+              "targets_assigned_to_different_queries": 13
+            }
+          ]
+        }
+      ],
+      "update_metrics": [
+        {
+          "new_stage_update": 1,
+          "crop": [
+            0,
+            0
+          ],
+          "metrics": {
+            "total": 0.4337593913078308,
+            "classification": 0.04211495444178581,
+            "center": 0.11618351936340332,
+            "radius": 0.00489455834031105,
+            "gradient_norm_before_clip": 467.1667175292969
+          }
+        },
+        {
+          "new_stage_update": 2,
+          "crop": [
+            0,
+            1
+          ],
+          "metrics": {
+            "total": 0.7306906580924988,
+            "classification": 0.1355619728565216,
+            "center": 0.1455579400062561,
+            "radius": 0.11446432024240494,
+            "gradient_norm_before_clip": 436.0574645996094
+          }
+        },
+        {
+          "new_stage_update": 3,
+          "crop": [
+            92,
+            4
+          ],
+          "metrics": {
+            "total": 0.33078116178512573,
+            "classification": 0.06834736466407776,
+            "center": 0.046571921557188034,
+            "radius": 0.27185335755348206,
+            "gradient_norm_before_clip": 209.03904724121094
+          }
+        },
+        {
+          "new_stage_update": 4,
+          "crop": [
+            86,
+            3
+          ],
+          "metrics": {
+            "total": 1.4025475978851318,
+            "classification": 0.16133078932762146,
+            "center": 0.26005759835243225,
+            "radius": 1.4985655546188354,
+            "gradient_norm_before_clip": 517.8070068359375
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "pointneuron2-proposal-optimizer-state-control-v1",
+  "source_recipe": "configs/pointneuron2/joint_query_graph.json",
+  "source_failed_timing": "tmp/pointneuron2/local_runs/joint_query_graph_ready_20261019/timing/report.json",
+  "fresh_reference": "tmp/pointneuron2/local_runs/joint_timing_stop_proposal_only_cpu_20261019/report.json",
+  "output": "tmp/pointneuron2/local_runs/proposal_optimizer_state_20261019",
+  "training_crops": [[0, 0], [0, 1], [92, 4], [86, 3]],
+  "arms": ["fresh", "restored"],
+  "updates_per_arm": 4,
+  "device": "cpu",
+  "torch_threads": 2,
+  "seed": 0,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_clip": 10.0,
+  "objective": "unchanged_balanced_proposal_only",
+  "primary_criterion": "all_six_crop_zero_matches_trusted_after_four_updates",
+  "retained_trained_checkpoint": false
+}

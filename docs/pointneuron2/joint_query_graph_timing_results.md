@@ -1,5 +1,9 @@
 # Joint timing stops before the second crop cycle
 
+**Follow-up:** the agreed [four-update optimizer-state comparison](proposal_optimizer_state_results.md)
+now passes the crop-0 criterion with saved AdamW state and fails with fresh state.
+It tests proposal-only optimization; the current joint fit remains stopped.
+
 19 October 2026. **Do not launch the 4,000-update joint fit with this recipe.**
 The user-launched GPU timing action completed four throwaway updates and stopped
 before update five on training crop 0/0. The declared requirement for both known
