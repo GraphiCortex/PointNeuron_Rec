@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Proposed next contract, 20 October:** [partial supervision and a bounded stability comparison](joint_partial_supervision_proposal.md).
+Defines positive-only/negative-only/proposal-only updates and inactive GAT Adam
+handling. Proposes two matched 64-update forks from update 1,000, differing only
+in LR, with geometry and automatic-output criteria. Design only; no trainer or
+run configuration is changed and no training is launched.
+
 **Joint-fit supervision stop, 20 October:** [verified results and interpretation](joint_saved_adam_fit_stop_results.md).
 Recovery exactly repeats updates 9–148, then reaches 1,013 completed updates.
 At 1,014 only two of 12 matched centers are trusted, leaving one known positive
