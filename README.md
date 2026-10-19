@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Stopped: joint GPU timing; proposal-only CPU control also shows early geometry drift](docs/pointneuron2/joint_query_graph_timing_results.md)
 - [Prepared: bounded joint proposal/GATv2 prototype with strict automatic reconstruction gates](docs/pointneuron2/joint_query_graph_ready.md)
 - [Design review: node selection, graph responsibility and missing joint training](docs/pointneuron2/node_graph_design_decision.md)
 - [Automatic-selection integration: conditional graph success does not survive realistic nodes](docs/pointneuron2/gat_automatic_selection_results.md)

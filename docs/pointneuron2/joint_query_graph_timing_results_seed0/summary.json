@@ -1,0 +1,1317 @@
+{
+  "schema": "pointneuron2-joint-timing-stop-review-v1",
+  "date": "2026-10-19",
+  "status": "reviewed_stop",
+  "runtime_models_losses_recipe_unchanged": true,
+  "gpu": {
+    "report": "tmp\\pointneuron2\\local_runs\\joint_query_graph_ready_20261019\\timing\\report.json",
+    "sha256": "0535463f19ec4600e0fb787a70f3a4ceb7d23a436f6bce2c986242a1cf325e96",
+    "status": "failed",
+    "completed_throwaway_updates_from_console": 4,
+    "failed_before_update": 5,
+    "missing_class_identity_saved": false,
+    "historical_warm_replay": [
+      {
+        "crop_index": 0,
+        "max_center_coordinate_delta": 0.0,
+        "max_logit_delta": 0.0,
+        "node_decision_changes": 0,
+        "comparison": "same_GPU_saved_prediction_tolerance_1e-5"
+      },
+      {
+        "crop_index": 1,
+        "max_center_coordinate_delta": 0.0,
+        "max_logit_delta": 0.0,
+        "node_decision_changes": 0,
+        "comparison": "same_GPU_saved_prediction_tolerance_1e-5"
+      },
+      {
+        "crop_index": 2,
+        "max_center_coordinate_delta": 0.0,
+        "max_logit_delta": 0.0,
+        "node_decision_changes": 0,
+        "comparison": "same_GPU_saved_prediction_tolerance_1e-5"
+      },
+      {
+        "crop_index": 3,
+        "max_center_coordinate_delta": 0.0,
+        "max_logit_delta": 0.0,
+        "node_decision_changes": 0,
+        "comparison": "same_GPU_saved_prediction_tolerance_1e-5"
+      }
+    ],
+    "retained_trained_checkpoint": false,
+    "timing_estimate_available": false
+  },
+  "cpu_arms": [
+    {
+      "arm": "joint",
+      "report": "tmp\\pointneuron2\\local_runs\\joint_timing_stop_cpu_20261019\\report.json",
+      "sha256": "66f8cc9d0a9ea2859c261e3d2cf1ebd2112012bbb73029e2b2e4d8c2800e6ea3",
+      "throwaway_updates": 4,
+      "retained_trained_checkpoint": false,
+      "gpu_trajectory_reproduced": false,
+      "original_sources_unchanged": true,
+      "graph_weights_unchanged": null,
+      "crop_zero_probes": [
+        {
+          "after_updates": 0,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13575,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": false,
+          "missing_classes": [],
+          "proposal_loss": 0.4337593913078308,
+          "matched_distance_mean": 0.9561815362387415,
+          "matched_distance_max": 1.1622782785385528,
+          "matched_distances": [
+            0.9350728296663464,
+            0.890542793035334,
+            1.0680338466971624,
+            1.1622782785385528,
+            0.7924040753438564,
+            0.8887573941511961
+          ],
+          "matched_centers": [
+            [
+              360.95538330078125,
+              171.6404571533203,
+              46.3267707824707
+            ],
+            [
+              353.2755126953125,
+              171.12924194335938,
+              45.2652587890625
+            ],
+            [
+              374.11273193359375,
+              177.02520751953125,
+              47.28040313720703
+            ],
+            [
+              381.3244323730469,
+              178.44992065429688,
+              47.499454498291016
+            ],
+            [
+              346.67987060546875,
+              173.68740844726562,
+              45.22998046875
+            ],
+            [
+              366.21978759765625,
+              176.49322509765625,
+              47.26001739501953
+            ]
+          ],
+          "matched_target_indices": [
+            3,
+            4,
+            1,
+            5,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            62,
+            94,
+            149,
+            198,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11
+        },
+        {
+          "after_updates": 1,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 2,
+            "negative": 1,
+            "unknown": 15793,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 3,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 3,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 2,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 3,
+            "attainable_recall_all_target_edges": 0.4,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": false,
+          "missing_classes": [],
+          "proposal_loss": 1.9450007677078247,
+          "matched_distance_mean": 2.184650469821922,
+          "matched_distance_max": 3.0349307702176436,
+          "matched_distances": [
+            1.9630517677568462,
+            1.7718974728192065,
+            2.339234423277603,
+            3.0349307702176436,
+            1.7833291241800138,
+            2.2154592606802175
+          ],
+          "matched_centers": [
+            [
+              361.675537109375,
+              169.02511596679688,
+              45.310508728027344
+            ],
+            [
+              353.6388244628906,
+              168.69436645507812,
+              44.30574417114258
+            ],
+            [
+              376.3951721191406,
+              174.77911376953125,
+              46.28057861328125
+            ],
+            [
+              384.07470703125,
+              175.55072021484375,
+              46.27879333496094
+            ],
+            [
+              347.691650390625,
+              171.452880859375,
+              44.44474792480469
+            ],
+            [
+              368.458251953125,
+              174.62753295898438,
+              46.38123321533203
+            ]
+          ],
+          "matched_target_indices": [
+            3,
+            4,
+            1,
+            5,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            62,
+            94,
+            149,
+            198,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10
+        },
+        {
+          "after_updates": 2,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 15377,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 1,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 5,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 5.131430625915527,
+          "matched_distance_mean": 3.540973708215048,
+          "matched_distance_max": 5.220563880628997,
+          "matched_distances": [
+            2.994548192953428,
+            4.199196515079892,
+            5.220563880628997,
+            1.945186162296973,
+            2.8933823868061226,
+            3.9929651115248737
+          ],
+          "matched_centers": [
+            [
+              353.8693542480469,
+              167.71951293945312,
+              43.554874420166016
+            ],
+            [
+              377.710693359375,
+              173.83355712890625,
+              45.31318664550781
+            ],
+            [
+              385.5042724609375,
+              174.34274291992188,
+              45.07697677612305
+            ],
+            [
+              360.22747802734375,
+              169.4622802734375,
+              44.984580993652344
+            ],
+            [
+              348.1295471191406,
+              170.6852569580078,
+              43.6817626953125
+            ],
+            [
+              369.9078063964844,
+              173.9136962890625,
+              45.595306396484375
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11
+        },
+        {
+          "after_updates": 3,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 15798,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 7.854440212249756,
+          "matched_distance_mean": 4.531534303274911,
+          "matched_distance_max": 6.347602910867664,
+          "matched_distances": [
+            3.9334718046439754,
+            5.368052634623888,
+            6.347602910867664,
+            2.4356909884699625,
+            3.9010866665279273,
+            5.203300814516045
+          ],
+          "matched_centers": [
+            [
+              354.1419677734375,
+              166.8829803466797,
+              43.18709945678711
+            ],
+            [
+              378.4125671386719,
+              172.98214721679688,
+              44.862632751464844
+            ],
+            [
+              386.01470947265625,
+              173.37388610839844,
+              44.644920349121094
+            ],
+            [
+              360.6953430175781,
+              168.82623291015625,
+              44.675140380859375
+            ],
+            [
+              348.7361755371094,
+              169.93446350097656,
+              43.32469177246094
+            ],
+            [
+              370.81060791015625,
+              173.19635009765625,
+              45.196083068847656
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11
+        },
+        {
+          "after_updates": 4,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 16643,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 9.768942832946777,
+          "matched_distance_mean": 5.198257844822869,
+          "matched_distance_max": 6.892356957935824,
+          "matched_distances": [
+            4.670073898148179,
+            6.010817904851505,
+            6.892356957935824,
+            2.968461622705065,
+            4.777341744934419,
+            5.870494940362226
+          ],
+          "matched_centers": [
+            [
+              354.3238525390625,
+              166.15618896484375,
+              43.03895568847656
+            ],
+            [
+              378.6285400390625,
+              172.2733154296875,
+              44.71266174316406
+            ],
+            [
+              386.0452880859375,
+              172.60874938964844,
+              44.64192199707031
+            ],
+            [
+              360.92510986328125,
+              168.2205810546875,
+              44.56332778930664
+            ],
+            [
+              349.3433532714844,
+              169.2321319580078,
+              43.22944641113281
+            ],
+            [
+              371.1598205566406,
+              172.55648803710938,
+              45.01927185058594
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 10
+        }
+      ],
+      "update_metrics": [
+        {
+          "loss": 0.5149580240249634,
+          "proposal_loss": 0.4337593913078308,
+          "edge_loss": 0.08119865506887436,
+          "preclip_norm": 472.8078918457031,
+          "candidate_edges": 13588,
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13575,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          }
+        },
+        {
+          "loss": 1.3940625190734863,
+          "proposal_loss": 0.7053302526473999,
+          "edge_loss": 0.6887322664260864,
+          "preclip_norm": 458.2806396484375,
+          "candidate_edges": 5142,
+          "edge_supervision": {
+            "positive": 10,
+            "negative": 10,
+            "unknown": 5122,
+            "targets": 12,
+            "assigned": 12,
+            "trusted_matches": 12,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 10,
+            "edges_with_trusted_endpoints": 10,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          }
+        },
+        {
+          "loss": 4.336199760437012,
+          "proposal_loss": 1.5054012537002563,
+          "edge_loss": 2.830798387527466,
+          "preclip_norm": 791.0366821289062,
+          "candidate_edges": 10874,
+          "edge_supervision": {
+            "positive": 7,
+            "negative": 14,
+            "unknown": 10853,
+            "targets": 16,
+            "assigned": 16,
+            "trusted_matches": 10,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 15,
+            "edges_with_trusted_endpoints": 7,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 8,
+            "attainable_recall_all_target_edges": 0.4666666666666667,
+            "trusted_match_tolerance": 2.0
+          }
+        },
+        {
+          "loss": 4.55175256729126,
+          "proposal_loss": 4.301251411437988,
+          "edge_loss": 0.25050127506256104,
+          "preclip_norm": 1040.6444091796875,
+          "candidate_edges": 4892,
+          "edge_supervision": {
+            "positive": 33,
+            "negative": 178,
+            "unknown": 4681,
+            "targets": 418,
+            "assigned": 418,
+            "trusted_matches": 67,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 351,
+            "required_target_edges": 404,
+            "edges_with_trusted_endpoints": 33,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 371,
+            "attainable_recall_all_target_edges": 0.08168316831683169,
+            "trusted_match_tolerance": 2.0
+          }
+        }
+      ],
+      "fifth_update_inspection": {
+        "crop": [
+          0,
+          0
+        ],
+        "edge_supervision": {
+          "positive": 0,
+          "negative": 0,
+          "unknown": 16643,
+          "targets": 6,
+          "assigned": 6,
+          "trusted_matches": 0,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 6,
+          "required_target_edges": 5,
+          "edges_with_trusted_endpoints": 0,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 5,
+          "attainable_recall_all_target_edges": 0.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "guard_would_stop": true,
+        "missing_classes": [
+          "positive",
+          "negative"
+        ],
+        "proposal_loss": 9.768942832946777,
+        "matched_distance_mean": 5.198257844822869,
+        "matched_distance_max": 6.892356957935824,
+        "matched_distances": [
+          4.670073898148179,
+          6.010817904851505,
+          6.892356957935824,
+          2.968461622705065,
+          4.777341744934419,
+          5.870494940362226
+        ],
+        "matched_centers": [
+          [
+            354.3238525390625,
+            166.15618896484375,
+            43.03895568847656
+          ],
+          [
+            378.6285400390625,
+            172.2733154296875,
+            44.71266174316406
+          ],
+          [
+            386.0452880859375,
+            172.60874938964844,
+            44.64192199707031
+          ],
+          [
+            360.92510986328125,
+            168.2205810546875,
+            44.56332778930664
+          ],
+          [
+            349.3433532714844,
+            169.2321319580078,
+            43.22944641113281
+          ],
+          [
+            371.1598205566406,
+            172.55648803710938,
+            45.01927185058594
+          ]
+        ],
+        "matched_target_indices": [
+          4,
+          1,
+          5,
+          3,
+          0,
+          2
+        ],
+        "matched_query_ids": [
+          94,
+          149,
+          198,
+          279,
+          441,
+          470
+        ],
+        "accepted_assigned": 6,
+        "accepted_unmatched": 10
+      },
+      "elapsed_seconds": 24.59034409999731
+    },
+    {
+      "arm": "proposal_only",
+      "report": "tmp\\pointneuron2\\local_runs\\joint_timing_stop_proposal_only_cpu_20261019\\report.json",
+      "sha256": "1e0fb3491236b238523003ef7fe3db51c87f8d0f678e38c8442303ce93673816",
+      "throwaway_updates": 4,
+      "retained_trained_checkpoint": false,
+      "gpu_trajectory_reproduced": false,
+      "original_sources_unchanged": true,
+      "graph_weights_unchanged": true,
+      "crop_zero_probes": [
+        {
+          "after_updates": 0,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 5,
+            "negative": 8,
+            "unknown": 13575,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 6,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 0,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 5,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 0,
+            "attainable_recall_all_target_edges": 1.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": false,
+          "missing_classes": [],
+          "proposal_loss": 0.4337593913078308,
+          "matched_distance_mean": 0.9561815362387415,
+          "matched_distance_max": 1.1622782785385528,
+          "matched_distances": [
+            0.9350728296663464,
+            0.890542793035334,
+            1.0680338466971624,
+            1.1622782785385528,
+            0.7924040753438564,
+            0.8887573941511961
+          ],
+          "matched_centers": [
+            [
+              360.95538330078125,
+              171.6404571533203,
+              46.3267707824707
+            ],
+            [
+              353.2755126953125,
+              171.12924194335938,
+              45.2652587890625
+            ],
+            [
+              374.11273193359375,
+              177.02520751953125,
+              47.28040313720703
+            ],
+            [
+              381.3244323730469,
+              178.44992065429688,
+              47.499454498291016
+            ],
+            [
+              346.67987060546875,
+              173.68740844726562,
+              45.22998046875
+            ],
+            [
+              366.21978759765625,
+              176.49322509765625,
+              47.26001739501953
+            ]
+          ],
+          "matched_target_indices": [
+            3,
+            4,
+            1,
+            5,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            62,
+            94,
+            149,
+            198,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 11
+        },
+        {
+          "after_updates": 1,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 16504,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 2.4692344665527344,
+          "matched_distance_mean": 2.4953501769660096,
+          "matched_distance_max": 3.2505953646698322,
+          "matched_distances": [
+            2.519377072151093,
+            2.1942391415202818,
+            2.495478926084998,
+            3.2505953646698322,
+            2.271639010540704,
+            2.2407715468291487
+          ],
+          "matched_centers": [
+            [
+              361.8670654296875,
+              168.45494079589844,
+              45.351776123046875
+            ],
+            [
+              354.1435546875,
+              168.29600524902344,
+              44.40973663330078
+            ],
+            [
+              375.95721435546875,
+              174.11672973632812,
+              46.37025833129883
+            ],
+            [
+              383.85418701171875,
+              174.96429443359375,
+              46.5394287109375
+            ],
+            [
+              348.05426025390625,
+              171.02099609375,
+              44.63610076904297
+            ],
+            [
+              367.82354736328125,
+              173.93099975585938,
+              46.45293045043945
+            ]
+          ],
+          "matched_target_indices": [
+            3,
+            4,
+            1,
+            5,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            62,
+            94,
+            149,
+            198,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 8
+        },
+        {
+          "after_updates": 2,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 16349,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 6.185327529907227,
+          "matched_distance_mean": 3.995715179568297,
+          "matched_distance_max": 5.578674708222277,
+          "matched_distances": [
+            3.59457504999973,
+            4.376929386282054,
+            5.578674708222277,
+            3.132885167744763,
+            3.461148907728377,
+            3.830077857432582
+          ],
+          "matched_centers": [
+            [
+              354.6335754394531,
+              167.1466064453125,
+              43.71687316894531
+            ],
+            [
+              377.11474609375,
+              172.8612823486328,
+              45.49274444580078
+            ],
+            [
+              385.3773498535156,
+              173.49728393554688,
+              45.41572570800781
+            ],
+            [
+              360.1450500488281,
+              168.04197692871094,
+              44.94007873535156
+            ],
+            [
+              348.6061096191406,
+              170.10305786132812,
+              43.99616241455078
+            ],
+            [
+              368.9229431152344,
+              172.93856811523438,
+              45.752899169921875
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 5
+        },
+        {
+          "after_updates": 3,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 17050,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 9.347885131835938,
+          "matched_distance_mean": 5.072322433824077,
+          "matched_distance_max": 6.720179500281095,
+          "matched_distances": [
+            4.662358370351656,
+            5.576574334629113,
+            6.720179500281095,
+            3.9310088162917056,
+            4.582662183769688,
+            4.961151397621205
+          ],
+          "matched_centers": [
+            [
+              355.1343078613281,
+              166.24351501464844,
+              43.39754104614258
+            ],
+            [
+              377.6550598144531,
+              171.8446044921875,
+              45.11647033691406
+            ],
+            [
+              385.84527587890625,
+              172.45849609375,
+              45.116912841796875
+            ],
+            [
+              360.6724853515625,
+              167.15408325195312,
+              44.61906433105469
+            ],
+            [
+              349.3772888183594,
+              169.293701171875,
+              43.7301025390625
+            ],
+            [
+              369.543212890625,
+              172.05319213867188,
+              45.41376495361328
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 5
+        },
+        {
+          "after_updates": 4,
+          "crop": [
+            0,
+            0
+          ],
+          "edge_supervision": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 18056,
+            "targets": 6,
+            "assigned": 6,
+            "trusted_matches": 0,
+            "unmatched_targets": 0,
+            "poorly_placed_matches": 6,
+            "required_target_edges": 5,
+            "edges_with_trusted_endpoints": 0,
+            "missing_candidate_positive_edges": 0,
+            "unrepresented_target_edges": 5,
+            "attainable_recall_all_target_edges": 0.0,
+            "trusted_match_tolerance": 2.0
+          },
+          "guard_would_stop": true,
+          "missing_classes": [
+            "positive",
+            "negative"
+          ],
+          "proposal_loss": 11.381659507751465,
+          "matched_distance_mean": 5.747331500449069,
+          "matched_distance_max": 7.237187387025332,
+          "matched_distances": [
+            5.402508492856888,
+            6.177599712592488,
+            7.237187387025332,
+            4.59072457211474,
+            5.465876804355158,
+            5.610092033749808
+          ],
+          "matched_centers": [
+            [
+              355.35321044921875,
+              165.53688049316406,
+              43.26532745361328
+            ],
+            [
+              377.6391906738281,
+              171.11669921875,
+              45.0162467956543
+            ],
+            [
+              385.757568359375,
+              171.70944213867188,
+              45.183204650878906
+            ],
+            [
+              360.84649658203125,
+              166.47152709960938,
+              44.499900817871094
+            ],
+            [
+              349.9613037109375,
+              168.6074676513672,
+              43.653839111328125
+            ],
+            [
+              369.6236877441406,
+              171.33424377441406,
+              45.25408172607422
+            ]
+          ],
+          "matched_target_indices": [
+            4,
+            1,
+            5,
+            3,
+            0,
+            2
+          ],
+          "matched_query_ids": [
+            94,
+            149,
+            198,
+            279,
+            441,
+            470
+          ],
+          "accepted_assigned": 6,
+          "accepted_unmatched": 5
+        }
+      ],
+      "update_metrics": [
+        {
+          "total": 0.4337593913078308,
+          "classification": 0.04211495444178581,
+          "center": 0.11618351936340332,
+          "radius": 0.00489455834031105,
+          "preclip_norm": 467.1667175292969
+        },
+        {
+          "total": 1.079498052597046,
+          "classification": 0.13497662544250488,
+          "center": 0.2627643644809723,
+          "radius": 0.10625859349966049,
+          "preclip_norm": 638.8366088867188
+        },
+        {
+          "total": 0.9937028884887695,
+          "classification": 0.07266440987586975,
+          "center": 0.26437294483184814,
+          "radius": 0.27627623081207275,
+          "preclip_norm": 619.947265625
+        },
+        {
+          "total": 3.8713316917419434,
+          "classification": 0.16688187420368195,
+          "center": 1.0783178806304932,
+          "radius": 1.5130705833435059,
+          "preclip_norm": 1024.9378662109375
+        }
+      ],
+      "fifth_update_inspection": {
+        "crop": [
+          0,
+          0
+        ],
+        "edge_supervision": {
+          "positive": 0,
+          "negative": 0,
+          "unknown": 18056,
+          "targets": 6,
+          "assigned": 6,
+          "trusted_matches": 0,
+          "unmatched_targets": 0,
+          "poorly_placed_matches": 6,
+          "required_target_edges": 5,
+          "edges_with_trusted_endpoints": 0,
+          "missing_candidate_positive_edges": 0,
+          "unrepresented_target_edges": 5,
+          "attainable_recall_all_target_edges": 0.0,
+          "trusted_match_tolerance": 2.0
+        },
+        "guard_would_stop": true,
+        "missing_classes": [
+          "positive",
+          "negative"
+        ],
+        "proposal_loss": 11.381659507751465,
+        "matched_distance_mean": 5.747331500449069,
+        "matched_distance_max": 7.237187387025332,
+        "matched_distances": [
+          5.402508492856888,
+          6.177599712592488,
+          7.237187387025332,
+          4.59072457211474,
+          5.465876804355158,
+          5.610092033749808
+        ],
+        "matched_centers": [
+          [
+            355.35321044921875,
+            165.53688049316406,
+            43.26532745361328
+          ],
+          [
+            377.6391906738281,
+            171.11669921875,
+            45.0162467956543
+          ],
+          [
+            385.757568359375,
+            171.70944213867188,
+            45.183204650878906
+          ],
+          [
+            360.84649658203125,
+            166.47152709960938,
+            44.499900817871094
+          ],
+          [
+            349.9613037109375,
+            168.6074676513672,
+            43.653839111328125
+          ],
+          [
+            369.6236877441406,
+            171.33424377441406,
+            45.25408172607422
+          ]
+        ],
+        "matched_target_indices": [
+          4,
+          1,
+          5,
+          3,
+          0,
+          2
+        ],
+        "matched_query_ids": [
+          94,
+          149,
+          198,
+          279,
+          441,
+          470
+        ],
+        "accepted_assigned": 6,
+        "accepted_unmatched": 5
+      },
+      "elapsed_seconds": 20.529626100003952
+    }
+  ],
+  "runtime_source_hashes": {
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\configs\\pointneuron2\\joint_query_graph.json": "64669f846c0afeab12e940455106148ba04b9ad233923b4e81a6e64312494d09",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\audit_field_centerpaths.py": "b57858b2b86259d1301685cebfda192818345ed99973f7f7557cb965d8cd700e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\branched_query_experiment.py": "be950b3275763b6308a11c0ffad3bb2ad0724181d4aba2e8d29e71b2cf3191a1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_duration_comparison.py": "23648ed7dcf9883605f535f9c7d258f2dba3ae656a3cad84f844cc74394b6a34",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\centerline_loss_comparison.py": "2562e49d55a95aefdd7bb51072682e255ebb014c0c6f4a2ddbf3307cb9ab6134",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\compare_field_sampling.py": "9f4aa06ea75e501ea2b181c7dfc088dc9a778bb825ca9cc34883453dca71c52b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\evaluate_gat_automatic_selection.py": "28e0e34b8264a91bbc5ccce828ad1b0161a3055a810ee751ba84c06ff745823d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\field_sampling_metrics.py": "06315b3630a550d216ed834b39657f7f88d5bd7acc1599e19245e20640442659",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\frozen_proposal_gat.py": "2bf60e20ad843f3c9cfa492c129d82008f53f61614459c46fea34e3ca21a76e4",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\joint_query_graph_experiment.py": "e073871c59af70a0761e7d642c6963355abdcd5c6ef671dcd01500249e0c6760",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\pointnext_query_experiment.py": "941ac3017ffbb8b18f29b290eee76eb53ae70cedf6bd5481042c5faf8549428d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\prepare_centerline_fit.py": "e8a80418b321e279a0c9b0eeff123ac27ce0351d930125d3d404f8a8be45e61e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\reference_gaps.py": "ecf21a724f865494ffcadde1b9a8fb993e40e366e7b566e375870a682a2b4e2c",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\run_branched_query.ps1": "e386c67a86c20bb1fe7d0435ea4d4ae0858f57da1e742a36dfb1e3b7ab726274",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_centerline_fit.py": "2d5d6fb08c48c15ecbb93d99e34667888d57cf3d39fff592dae34a8c9ea403a9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\train_query_comparison.py": "873de0f5bab577a627c75c4d50e6e02e9bc6d378ce17d9d715793a05930aaf0b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\__init__.py": "a31860a986c9884e5d009c43704e2b796bc305cb14cf2be62719152ed65a4f3b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\__init__.py": "81ebaafb32adbe7441155741c0382bb1bc3d5568364c04827921901d88aa13c3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\alignment.py": "45e8640337304ee06c33f8f76d07e910c7103f9f4437bcf06b8eeb2bf4d2b6af",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\centerline_field.py": "8988fd0a3689957e86e89d0b1c6a3816b56fe080fe6e5b02cc78da4e91fc9055",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_guided_sampling.py": "adb6229324bfe099c525b9d6f9652723136d953349354b4f0a39002d073210d5",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\field_pilot.py": "6c781ac92bb287b817e153fc5c71941b1fb52feb4531165e1811da5cc9e926f9",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\gold166.py": "0add9008789e01cebf6075b4dc899a2b3a6ddba09df8fdd2a8001b72dbc4dd51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\medial_sampling.py": "3039cbafb46d212a28fca7d0b5c45f4001537564244f1da55e416e9d57bd022b",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\point_cloud.py": "d6e4a210746e1678c0d756e1886892788a2828f4eb22b6d00cb03837714def31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\query_cache.py": "f3393bd221014637fd6738a54122e2284d6079ce9b59ecdf54712689f52df476",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\swc.py": "5eede014cd7ea6a67c59c4a7b2543fa36a3cf9cfa9fe39a5ee190c8ac9714f51",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\torch_dataset.py": "1aa57dc14374022a04d0cb454e2a17ff083ab56a70f2cb4a2716bf34087bbb92",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\training_cache.py": "04632851884e749dd7d66edbf036b4b510e4cbcb992dab02a1a391946753e699",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\data\\vaa3d_raw.py": "8f77dab6acbddd9f6e46afac1236c941a938d6fb7684ce9dbc397620d679eea8",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\__init__.py": "7ed5157b514f4f7dc2a638f7519b11178dea314285867f87f440357399105dc6",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\connectivity_decoder.py": "6394ebddb8af434ee471ea38b10d5120430a776130bb396f0d985fb78e5ea082",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\initialization.py": "4729914abe8fde8b30567e68c14fcec18f5653007b75ea719b1f4ce641f79b07",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\graph\\representation_oracle.py": "83618f4b7aa84ed1ce99e8756f7bb63bfe50320266d6ab712400895d4b98074d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\__init__.py": "af7a6d48f573c733895e2e353e18802b2a6ba26ade68c981a12a7107b303caaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\balanced_query_loss.py": "a4e12f74f6c229f7873e24a975709326943f5e4ff5c3304db229e14e6129ca31",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\centerline_unet.py": "b0351948c06c6836926035ebf4bcf3840498ce3498bf2d7259cfffd966ae5df1",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\dgcnn.py": "876bca0862c3e7a3d7eb746aac9cbebdec55dac57cda712327cf5fe5aaefdfb7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\gatv2_connectivity.py": "4b6f380292b0afe7f93d67ac4ad1b1e7c31f48d9f5d549c995d37a6f0410d937",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\joint_query_graph.py": "50dcc524baf9253106dcd97a1d04e59faba884935f7d3481b38ed4e0feef49f7",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query.py": "2dad14d35a54015403e9cd2e78f0946c09597134849d3b78e683081cdcb2bab3",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\pointnext_query_cropnorm.py": "d00150124060db147f9f7a188506bd4323df236da1ea0cc80c2677540ce10ebc",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal.py": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\proposal_loss.py": "256340c2ebb05f500e12b199a1633767835d9eb4bf5bae8c6997dda1580ac207",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_fit_state.py": "6a6b1ef03785b374e96eccfb68aa43c94e381c9613c4f00754da705786583009",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_loss.py": "dc39ac580fa769326b7a804b54bfc1c031dcfcc5c3fbe37c36a8b4ddbd931661",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_pipeline.py": "6ee740c7748e2a0caac6391c01b09497cda4387ecb3ff43d3e8cb11027a5eaaa",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\src\\pointneuron\\models\\query_proposal.py": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\scripts\\pointneuron2\\run_joint_query_graph.ps1": "eeafe754f9febd4a205dc47ffb9250e21e7f99f95d0680a6b7c1ac1f78f83ef8"
+  },
+  "diagnostic_script_sha256": "44f5240df7ba120682d832b1cf770689a9fe71c4c9a93b668626d7af831b96e7",
+  "diagnostic_script_note": "Proposal-only CLI option added after the joint arm; joint branch math unchanged. Original experiment runtime hashes verify in both arms.",
+  "inference": "Graph loss is not necessary for the observed early CPU drift. Fresh optimizer state as the cause is an untested hypothesis; a saved-state matched control is proposed, not run.",
+  "next_control_implemented": false,
+  "new_gpu_runs": 0,
+  "retained_training_runs": 0
+}

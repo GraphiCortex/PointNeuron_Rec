@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Stopped timing, 19 October:** [joint timing failure and matched CPU control](joint_query_graph_timing_results.md).
+Four GPU throwaway updates complete; missing graph-label classes stop update five.
+Historical GPU proposal replay is exact. Four-update CPU joint and proposal-only
+arms both move crop-0 geometry outside the trust mask, so graph loss is not
+necessary for that drift. Preserve the guard and current artifacts; no retained
+joint fit. Recommend isolating fresh versus saved proposal optimizer state next.
+
 **Prepared joint prototype, 19 October:** [joint proposal/connectivity contract](joint_query_graph_ready.md).
 Existing proposal and edge heads share a loss, warm-started from the completed
 balanced proposal and conditional GAT fits with a fresh optimizer. All 512 queries

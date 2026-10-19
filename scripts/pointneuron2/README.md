@@ -6,6 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Stopped: [joint timing failure and CPU comparison](../../docs/pointneuron2/joint_query_graph_timing_results.md).
+`audit_joint_timing_stop.py` makes at most four throwaway CPU updates; its
+`--proposal-only` arm omits graph loss at the same restart settings. Both show
+early geometry drift; the current GPU timing stop remains in force. Original
+runtime sources, trust masks, losses and output thresholds are unchanged.
+
 Prepared: [bounded joint proposal/GATv2 stage](../../docs/pointneuron2/joint_query_graph_ready.md).
 `run_joint_query_graph.ps1` separates CPU prepare/check, throwaway GPU timing,
 capped train and exact intermediate resume. Existing heads, frozen Phase 1,

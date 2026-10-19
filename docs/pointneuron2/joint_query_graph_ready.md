@@ -1,5 +1,10 @@
 # Bounded joint proposal/connectivity prototype
 
+**Later outcome:** [GPU timing stopped before update five](joint_query_graph_timing_results.md).
+The current fresh-optimizer recipe is not ready for the retained fit. A bounded
+CPU joint replay and proposal-only control both show early geometry drift.
+The preparation below records the original protocol, not a completed GPU check.
+
 19 October 2026. Following the [node/graph responsibility review](node_graph_design_decision.md),
 the user agreed to prepare this joint-learning comparison with the existing
 heads. GPU timing and retained training are separate user-launched actions.
