@@ -7,6 +7,7 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Latest: joint fit stops at update 1,014 on moving edge supervision; automatic gates remain unmet](docs/pointneuron2/joint_saved_adam_fit_stop_results.md)
 - [Current: joint fit stopped after 148 updates; Windows I/O repair and recovery from checkpoint eight](docs/pointneuron2/joint_saved_adam_fit_io_recovery.md)
 - [Prepared: capped joint fit with saved proposal Adam state and mixed-state resume](docs/pointneuron2/joint_saved_adam_fit_ready.md)
 - [Completed: GPU timing/reload passes; automatic reconstruction remains unsolved](docs/pointneuron2/joint_saved_adam_timing_results.md)

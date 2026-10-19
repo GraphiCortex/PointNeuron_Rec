@@ -6,6 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Latest: [joint-fit supervision-stop review](../../docs/pointneuron2/joint_saved_adam_fit_stop_results.md).
+`review_joint_saved_adam_fit_stop.py` validates saved output/SWC metrics and the
+failed packet, with zero model forwards or optimizer updates. The recovered fit
+stopped before update 1,014's backward pass; do not resume unchanged. Twelve
+saved output pairs verify, but all automatic gates at 1,000 remain unmet.
+
 Current: [joint-fit Windows I/O recovery](../../docs/pointneuron2/joint_saved_adam_fit_io_recovery.md).
 The same launcher can resume the existing update-eight checkpoint after the
 148-update interruption. The controller retries bounded Windows replacement

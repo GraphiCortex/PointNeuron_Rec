@@ -5,6 +5,10 @@ updates**, while attempting update 149. Its first eight updates exactly matched
 the reviewed GPU timing, including continuous predictions and discrete graph
 decisions. No retained fit has reached the terminal reconstruction gate.
 
+Subsequent recovery reached 1,013 updates, then stopped on the edge-supervision
+guard. See the [latest verified results](joint_saved_adam_fit_stop_results.md);
+the recovery command below is historical, not a recommendation to retry that stop.
+
 ## What failed and what is recoverable
 
 `Path.replace` raised `PermissionError: [WinError 5]` when replacing

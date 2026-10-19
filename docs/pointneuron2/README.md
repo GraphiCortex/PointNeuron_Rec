@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Joint-fit supervision stop, 20 October:** [verified results and interpretation](joint_saved_adam_fit_stop_results.md).
+Recovery exactly repeats updates 9–148, then reaches 1,013 completed updates.
+At 1,014 only two of 12 matched centers are trusted, leaving one known positive
+edge and no known negatives. All automatic gates still fail at 1,000 despite
+useful dense-crop progress. Twelve saved outputs/SWCs independently verify.
+Stop unchanged training and discuss the partial-supervision/stability contract;
+no model/training policy is changed and no new run is launched.
+
 **Joint fit I/O recovery, 20 October:** [Windows JSON replacement repair](joint_saved_adam_fit_io_recovery.md).
 The GPU fit completed 148 updates, then stopped before update 149's forward pass.
 The last full checkpoint is eight. Bounded replacement retries and strictly
