@@ -6,3 +6,6 @@ src/pointneuron/data/canonical_curve_targets.py text eol=lf
 scripts/pointneuron2/prepare_canonical_targets.py text eol=lf
 scripts/pointneuron2/review_canonical_targets.py text eol=lf
 configs/pointneuron2/canonical_targets.json text eol=lf
+scripts/pointneuron2/canonical_joint_fit.py text eol=lf
+scripts/pointneuron2/run_canonical_joint_fit.ps1 text eol=lf
+configs/pointneuron2/canonical_joint_fit.json text eol=lf

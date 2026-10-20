@@ -1,5 +1,13 @@
 # PointNeuron 2.0 development
 
+**Ready for user timing, 21 October:** [matched canonical-target fit](canonical_joint_fit_ready.md).
+New explicit preparation eligibility uses absolute missed/extra arclength and
+the unchanged 99% precision/recall floor; the earlier failed preparation flag is
+preserved. Same stage-1,000 model/Adam/RNG, only targets change. Forty-five tests
+and the native zero-update CPU check pass. Eight throwaway GPU updates are next;
+no GPU timing or training has been launched. Learnability and paired geometric
+improvement are separate terminal verdicts; cap remains 3,000 new updates.
+
 **CPU preparation completed, 21 October:** [branch-aware canonical targets](canonical_targets_results.md).
 New opt-in target module removes 215 optional samples across 262 training crops,
 preserving structural incidence and candidate coverage. The four crop counts

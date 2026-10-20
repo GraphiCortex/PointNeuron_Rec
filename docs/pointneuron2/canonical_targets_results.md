@@ -5,6 +5,10 @@ launched.** The strict preparation gate remains failed on a tiny normalized
 precision decrease, explained below. The separate cache is explicitly marked
 `training_ready: false`. No new GPU launcher or automatic promotion is included.
 
+Subsequent preparation is recorded in the [matched-fit contract](canonical_joint_fit_ready.md).
+That separate runner uses a prospective absolute-geometry eligibility policy;
+the failed gate documented here is preserved.
+
 This implements the agreed direction for future inputs: remove redundant
 optional samples using branch identity, while preserving the intended
 PointNeXt → Transformer → GATv2 architecture. Reference SWCs are used only for
@@ -154,5 +158,7 @@ These document the completed actions; existing outputs refuse overwrite. To
 repeat preparation, supply a fresh ignored `--output` directory. The reviewer
 checks the default configured output. Raw summaries and the separate four-crop
 cache are under `tmp/pointneuron2/local_runs/canonical_targets_incremental_20261021/`.
-No new training launcher exists yet. The existing stable-fit launcher still
-belongs to its historical target contract and should not be reused for this cache.
+At this target-preparation checkpoint no new training launcher existed. The
+subsequent matched-fit contract above supplies a separate launcher. The existing
+stable-fit launcher belongs to its historical target contract and should not be
+reused for this cache.

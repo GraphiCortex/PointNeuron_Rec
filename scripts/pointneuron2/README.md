@@ -1,11 +1,20 @@
 # PointNeuron 2.0 scripts
 
+Ready: [matched canonical joint fit and command](../../docs/pointneuron2/canonical_joint_fit_ready.md).
+`run_canonical_joint_fit.ps1 -Action timing` performs eight throwaway GPU updates
+after the completed CPU prerequisite. `-Action train` is separate and requires
+matching successful timing; the first eight updates must replay exactly. The
+new runner preserves the old preparation failure and uses an explicit absolute
+geometry eligibility policy. Forty-five targeted tests and zero-update native
+CPU validation pass; no GPU run has been launched.
+
 CPU preparation completed: [canonical target policy and results](../../docs/pointneuron2/canonical_targets_results.md).
 `prepare_canonical_targets.py` audits all 262 existing training crops and writes
 a separate four-crop cache with exact input clouds. `review_canonical_targets.py`
 verifies saved evidence and the dense-crop precision denominator effect. Both
 perform zero model forwards/updates. The strict preparation gate remains failed;
-no new GPU launcher is prepared and the legacy fitting recipe is unchanged.
+at that preparation checkpoint no GPU launcher was prepared. The later matched-fit
+entry above supplies a separate runner, preserving the legacy fitting recipe.
 
 These scripts and their dependencies are local files on your computer. This is
 the permanent folder for PN 2.0 entry scripts; new stage-specific runners belong

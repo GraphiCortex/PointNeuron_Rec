@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Latest: canonical targets implemented and CPU-audited; strict preparation flag retained, no GPU fit launched](docs/pointneuron2/canonical_targets_results.md)
+- [Ready: matched canonical-target fit; CPU check passed, eight-update GPU timing next](docs/pointneuron2/canonical_joint_fit_ready.md)
+- [Canonical targets: implemented and CPU-audited; historical strict preparation flag retained](docs/pointneuron2/canonical_targets_results.md)
 - [Stable joint fit: two full crop passes, residual spur and endpoint/sample identity errors](docs/pointneuron2/stable_joint_learnability_results.md)
 - [Previous: smaller LR stabilizes geometry in the short paired control](docs/pointneuron2/joint_partial_stability_results.md)
 - [Ready: two 64-update controls for partial supervision and geometry stability; CPU checks passed](docs/pointneuron2/joint_partial_stability_ready.md)
