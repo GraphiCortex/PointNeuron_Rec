@@ -1,0 +1,321 @@
+{
+  "schema": "pointneuron2-canonical-joint-timing-review-v1",
+  "date": "2026-10-21",
+  "status": "completed",
+  "scope": "CPU saved-output audit; zero model forwards/optimizer updates/CUDA initialization",
+  "source_report": "tmp\\pointneuron2\\local_runs\\canonical_joint_fit_20261021\\timing\\report.json",
+  "source_report_sha256": "dc9669425565585d0c62854b3eb836b9359f742f838a5c0e1b288d9f39a64722",
+  "reviewer_sha256": "f0c4b49a7c23dac548aec8101a3efc3a0e893462fcc5cf8f92d91e1c83dc8d90",
+  "validated_output_pairs": 8,
+  "timing_gate": true,
+  "initial_inference_exactly_matches_saved_baseline": true,
+  "runtime_reload_prediction_delta": 0.0,
+  "runtime_model_optimizer_rng_fingerprint": "4b05d028be19349ede1a94e08c6ebc45061b1cf1e73cc135f8a5a9fe16f27160",
+  "fingerprint_limitation": "Runtime checks exact full-state reload; the throwaway state is not retained for independent recomputation.",
+  "terminal_optimizer_clocks": {
+    "proposal": [
+      5008.0
+    ],
+    "gat": [
+      1008.0
+    ]
+  },
+  "both_known_edge_classes_on_all_updates": true,
+  "trusted_fraction_all_incoming_and_probes": 1.0,
+  "peak_allocated_gib": 0.30378007888793945,
+  "update_only_estimate_minutes": 75.64542874997642,
+  "elapsed_action_seconds": 49.30852099999902,
+  "rows": [
+    {
+      "new_updates": 0,
+      "crop": [
+        0,
+        0
+      ],
+      "metrics": {
+        "assigned_nodes": 6,
+        "unmatched_nodes": 1,
+        "trusted_assigned_nodes": 6,
+        "decoded_required_edges": 5,
+        "required_reference_edges": 5,
+        "decoded_nonreference_edges": 1,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 0,
+          "forest_decode": 0
+        },
+        "retained_trusted_junctions": 0,
+        "geometry_at_2": {
+          "recall": 1.0,
+          "precision": 0.9414584144917106
+        },
+        "absolute_bad_lengths": {
+          "extra": 2.4518645245926165,
+          "missed": 0.0
+        },
+        "components": 1,
+        "reference_components": 1,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "a0780b9c0620efc3bfecc319efc5dddf7f8fd5776eaf8e0f73a87d91cc81c805",
+      "swc_sha256": "c1eb8e12cca1c26c526b98bc4593d505986bea2d4d8b22e03e051bbe184953f5"
+    },
+    {
+      "new_updates": 0,
+      "crop": [
+        0,
+        1
+      ],
+      "metrics": {
+        "assigned_nodes": 11,
+        "unmatched_nodes": 19,
+        "trusted_assigned_nodes": 11,
+        "decoded_required_edges": 5,
+        "required_reference_edges": 9,
+        "decoded_nonreference_edges": 21,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 0,
+          "forest_decode": 4
+        },
+        "retained_trusted_junctions": 0,
+        "geometry_at_2": {
+          "recall": 0.927083767454819,
+          "precision": 0.510684222339722
+        },
+        "absolute_bad_lengths": {
+          "extra": 74.8892390636965,
+          "missed": 4.760625822288716
+        },
+        "components": 4,
+        "reference_components": 2,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "88f59e573a98c8f7f69fb9bc003eb4ac5b005a882cf1c1a91bbd54bbc8824a15",
+      "swc_sha256": "6b1eea3e5d9ac5a4052b9954ddb4c89e71f1681301f15000e615a98d2b69caa1"
+    },
+    {
+      "new_updates": 0,
+      "crop": [
+        92,
+        4
+      ],
+      "metrics": {
+        "assigned_nodes": 15,
+        "unmatched_nodes": 6,
+        "trusted_assigned_nodes": 15,
+        "decoded_required_edges": 13,
+        "required_reference_edges": 14,
+        "decoded_nonreference_edges": 7,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 1,
+          "forest_decode": 0
+        },
+        "retained_trusted_junctions": 2,
+        "geometry_at_2": {
+          "recall": 1.0,
+          "precision": 0.8418635492383149
+        },
+        "absolute_bad_lengths": {
+          "extra": 20.005634434638267,
+          "missed": 0.0
+        },
+        "components": 1,
+        "reference_components": 1,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "9a758bf48d3fe9f02b845983f8e522a3d13dcbeb8a25775391034828ba4ac5bc",
+      "swc_sha256": "296b01ac47535f3bc789a4c3c2d31373f625776f3178dff81ab7813720d9e7d3"
+    },
+    {
+      "new_updates": 0,
+      "crop": [
+        86,
+        3
+      ],
+      "metrics": {
+        "assigned_nodes": 408,
+        "unmatched_nodes": 10,
+        "trusted_assigned_nodes": 408,
+        "decoded_required_edges": 378,
+        "required_reference_edges": 394,
+        "decoded_nonreference_edges": 26,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 6,
+          "forest_decode": 10
+        },
+        "retained_trusted_junctions": 77,
+        "geometry_at_2": {
+          "recall": 0.9916393940544799,
+          "precision": 0.9971223697470758
+        },
+        "absolute_bad_lengths": {
+          "extra": 6.793796855480183,
+          "missed": 20.747429727383995
+        },
+        "components": 14,
+        "reference_components": 14,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "9a3b2bfde7a1f763510b9093bd53e5d07bff6dc26c2b1dff8d36e1493674252f",
+      "swc_sha256": "7a06ebf9369f65db20c6a05082904f9118b6040549b3242cb3b633f2bab96b73"
+    },
+    {
+      "new_updates": 8,
+      "crop": [
+        0,
+        0
+      ],
+      "metrics": {
+        "assigned_nodes": 6,
+        "unmatched_nodes": 1,
+        "trusted_assigned_nodes": 6,
+        "decoded_required_edges": 5,
+        "required_reference_edges": 5,
+        "decoded_nonreference_edges": 1,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 0,
+          "forest_decode": 0
+        },
+        "retained_trusted_junctions": 0,
+        "geometry_at_2": {
+          "recall": 1.0,
+          "precision": 0.9405065846485052
+        },
+        "absolute_bad_lengths": {
+          "extra": 2.486988160127482,
+          "missed": 0.0
+        },
+        "components": 1,
+        "reference_components": 1,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "37242b5ca537dc2fe23b43b9d1103f71de046b70f04fd5dc74a6ea813bce699c",
+      "swc_sha256": "73c5970d9f8c3993c1ead88de0be4b8227c3f3665f0916066b3ab0940a4111d1"
+    },
+    {
+      "new_updates": 8,
+      "crop": [
+        0,
+        1
+      ],
+      "metrics": {
+        "assigned_nodes": 11,
+        "unmatched_nodes": 19,
+        "trusted_assigned_nodes": 11,
+        "decoded_required_edges": 3,
+        "required_reference_edges": 9,
+        "decoded_nonreference_edges": 23,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 1,
+          "forest_decode": 5
+        },
+        "retained_trusted_junctions": 0,
+        "geometry_at_2": {
+          "recall": 0.904840817122318,
+          "precision": 0.47613639031844807
+        },
+        "absolute_bad_lengths": {
+          "extra": 80.5459389501837,
+          "missed": 6.212845170719493
+        },
+        "components": 4,
+        "reference_components": 2,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "d5735d22ab248f086a18a176e15f944d27ba0c2094cb39ed632910b2cfca434a",
+      "swc_sha256": "0e19763bf2d69f78b06de3f0017d2e6d3ea4c1270561d7561b71e643021dcdd7"
+    },
+    {
+      "new_updates": 8,
+      "crop": [
+        92,
+        4
+      ],
+      "metrics": {
+        "assigned_nodes": 15,
+        "unmatched_nodes": 6,
+        "trusted_assigned_nodes": 15,
+        "decoded_required_edges": 13,
+        "required_reference_edges": 14,
+        "decoded_nonreference_edges": 7,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 1,
+          "forest_decode": 0
+        },
+        "retained_trusted_junctions": 2,
+        "geometry_at_2": {
+          "recall": 1.0,
+          "precision": 0.8171247991958637
+        },
+        "absolute_bad_lengths": {
+          "extra": 22.889631313388342,
+          "missed": 0.0
+        },
+        "components": 1,
+        "reference_components": 1,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "4b07c89dc7bda8d34bc57e7feebfa57749760c0e2be55ac1f358b50d723badaf",
+      "swc_sha256": "fd0e8eb4e93214d5bafbcd70390dd35fc111241eee3b99a10eecef62b5e27f9b"
+    },
+    {
+      "new_updates": 8,
+      "crop": [
+        86,
+        3
+      ],
+      "metrics": {
+        "assigned_nodes": 408,
+        "unmatched_nodes": 10,
+        "trusted_assigned_nodes": 408,
+        "decoded_required_edges": 379,
+        "required_reference_edges": 394,
+        "decoded_nonreference_edges": 25,
+        "missing_edge_decomposition": {
+          "node_filter": 0,
+          "candidate_graph": 0,
+          "edge_score": 3,
+          "forest_decode": 12
+        },
+        "retained_trusted_junctions": 77,
+        "geometry_at_2": {
+          "recall": 0.9964244480512839,
+          "precision": 0.9983648449789693
+        },
+        "absolute_bad_lengths": {
+          "extra": 3.8636700592956776,
+          "missed": 8.872982804834523
+        },
+        "components": 14,
+        "reference_components": 14,
+        "full_gate": false,
+        "paired_geometry_noninferior": false
+      },
+      "prediction_sha256": "fcb448ec38a2b212ceb7502a958267a4e1ebffa60a6e858c9323dd5477af6d85",
+      "swc_sha256": "677eb769402cea06b82bcd86379e9587c32cf057c1673a686f437a1a0c71f29b"
+    }
+  ],
+  "training_launched": false,
+  "cuda_initialized": false,
+  "decision": "Execution timing passes; proceed only with the existing capped matched-fit contract. No reconstruction improvement established."
+}

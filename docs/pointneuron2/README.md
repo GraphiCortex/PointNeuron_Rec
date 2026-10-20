@@ -1,11 +1,19 @@
 # PointNeuron 2.0 development
 
-**Ready for user timing, 21 October:** [matched canonical-target fit](canonical_joint_fit_ready.md).
+**GPU timing verified, 21 October:** [canonical-target execution results and fit command](canonical_joint_timing_results.md).
+All eight saved outputs/SWCs verify; initial inference matches the old baseline
+exactly, runtime reload delta is zero, and placement remains fully trusted.
+Peak PyTorch allocation is 0.304 GiB; update-only extrapolation is 75.65 minutes.
+Sparse quality regresses in the short timing window; all crop gates still fail.
+Timing passes execution readiness only. The unchanged 3,000-new-update matched
+fit is next, with separate learnability and paired geometry verdicts.
+
+**Preparation protocol, 21 October:** [matched canonical-target fit](canonical_joint_fit_ready.md).
 New explicit preparation eligibility uses absolute missed/extra arclength and
 the unchanged 99% precision/recall floor; the earlier failed preparation flag is
 preserved. Same stage-1,000 model/Adam/RNG, only targets change. Forty-five tests
-and the native zero-update CPU check pass. Eight throwaway GPU updates are next;
-no GPU timing or training has been launched. Learnability and paired geometric
+and the native zero-update CPU check pass. The subsequent GPU timing is reviewed
+above; full training is unlaunched. Learnability and paired geometric
 improvement are separate terminal verdicts; cap remains 3,000 new updates.
 
 **CPU preparation completed, 21 October:** [branch-aware canonical targets](canonical_targets_results.md).

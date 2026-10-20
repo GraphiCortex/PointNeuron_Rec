@@ -1,8 +1,9 @@
-# Matched canonical-target joint fit: prepared, CPU-checked, GPU timing next
+# Matched canonical-target joint fit: prepared contract
 
 21 October 2026. **45 targeted tests and the real-model zero-update CPU check
-pass. No GPU timing or fit has been launched.** The next action is a separate
-eight-update timing check, followed by review of that result before a full fit.
+pass. The user-run GPU timing has now passed and been reviewed; full fitting
+is still unlaunched.** See the [timing results and next command](canonical_joint_timing_results.md).
+The timing command below documents the completed prerequisite, not a rerun request.
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
@@ -141,7 +142,8 @@ fingerprints, cap/options/source checks and initial inference replay independent
 of changed assignments. The native CPU check exports four initial SWCs, probes
 the four actual caches, performs zero updates, verifies noninterference and an
 exact state/prediction reload, and confirms no CUDA initialization. GPU timing
-and sustained fitting remain unexecuted.
+has subsequently passed as recorded in the linked results; sustained fitting
+remains unexecuted.
 
 At the initial CPU state all 440 canonical targets are trusted within two voxels
 and every one of the 422 required edges is present among the actual 512-query

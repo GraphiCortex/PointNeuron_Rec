@@ -1,12 +1,13 @@
 # PointNeuron 2.0 scripts
 
-Ready: [matched canonical joint fit and command](../../docs/pointneuron2/canonical_joint_fit_ready.md).
-`run_canonical_joint_fit.ps1 -Action timing` performs eight throwaway GPU updates
-after the completed CPU prerequisite. `-Action train` is separate and requires
-matching successful timing; the first eight updates must replay exactly. The
+Ready for the capped fit: [verified canonical timing and command](../../docs/pointneuron2/canonical_joint_timing_results.md).
+`review_canonical_joint_timing.py` verifies the completed eight-update timing's
+eight prediction/SWC pairs on CPU. `run_canonical_joint_fit.ps1 -Action train`
+is separate and requires matching successful timing; the first eight updates
+must replay exactly. The
 new runner preserves the old preparation failure and uses an explicit absolute
 geometry eligibility policy. Forty-five targeted tests and zero-update native
-CPU validation pass; no GPU run has been launched.
+CPU validation pass; GPU timing has passed and full fitting is unlaunched.
 
 CPU preparation completed: [canonical target policy and results](../../docs/pointneuron2/canonical_targets_results.md).
 `prepare_canonical_targets.py` audits all 262 existing training crops and writes
