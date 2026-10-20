@@ -1,5 +1,12 @@
 # PointNeuron 2.0 scripts
 
+CPU preparation completed: [canonical target policy and results](../../docs/pointneuron2/canonical_targets_results.md).
+`prepare_canonical_targets.py` audits all 262 existing training crops and writes
+a separate four-crop cache with exact input clouds. `review_canonical_targets.py`
+verifies saved evidence and the dense-crop precision denominator effect. Both
+perform zero model forwards/updates. The strict preparation gate remains failed;
+no new GPU launcher is prepared and the legacy fitting recipe is unchanged.
+
 These scripts and their dependencies are local files on your computer. This is
 the permanent folder for PN 2.0 entry scripts; new stage-specific runners belong
 here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.

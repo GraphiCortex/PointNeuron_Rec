@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**CPU preparation completed, 21 October:** [branch-aware canonical targets](canonical_targets_results.md).
+New opt-in target module removes 215 optional samples across 262 training crops,
+preserving structural incidence and candidate coverage. The four crop counts
+become 6/11/15/408. Thirty-six tests pass. A strict precision nonregression gate
+remains failed due to a verified denominator effect; the separate cache is not
+marked training-ready. No GPU fit or model threshold change follows automatically.
+
 **Completed, 20 October:** [stable-LR learnability results](stable_joint_learnability_results.md).
 The capped fit completes with stable placement and two full crop passes. All
 452 assigned targets survive; one extra spur and two subvoxel endpoint/sample

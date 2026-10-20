@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve the byte hashes recorded by the canonical-target preparation audit.
+src/pointneuron/data/canonical_curve_targets.py text eol=lf
+scripts/pointneuron2/prepare_canonical_targets.py text eol=lf
+scripts/pointneuron2/review_canonical_targets.py text eol=lf
+configs/pointneuron2/canonical_targets.json text eol=lf

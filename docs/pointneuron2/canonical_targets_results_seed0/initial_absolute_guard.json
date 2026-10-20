@@ -1,0 +1,64 @@
+{
+  "schema": "pointneuron2-initial-absolute-canonical-guard-evidence-v1",
+  "source_report": "tmp\\pointneuron2\\local_runs\\canonical_targets_20261021\\summary.json",
+  "source_report_sha256": "dde4ab46ea0b441f2579bed3ec7976911c5c477ab5f9709323f43e818dbdcee8",
+  "totals": {
+    "training_neurons": 33,
+    "training_crops": 262,
+    "legacy_targets": 9559,
+    "canonical_targets": 9516,
+    "changed_crops": 32,
+    "empty_unknown_crops": 51,
+    "guarded_global_candidates": 616
+  },
+  "preparation_gate": {
+    "structural_topology_all_crops": true,
+    "no_new_candidate_losses": true,
+    "four_crop_candidate_recall_complete": true,
+    "four_crop_no_precision_recall_decline_at_2": true,
+    "all_targets_fit_capacity": true,
+    "exact_input_clouds_preserved": true,
+    "passed": true
+  },
+  "source_files_sha256": {
+    "scripts\\pointneuron2\\prepare_canonical_targets.py": "3f19da1a35c106cb504d1e5e74ba91f5851f3d1853e4aec40bfdaa0693ab3e4a",
+    "configs\\pointneuron2\\canonical_targets.json": "cadb845f3c5533ad86bbc67447ef03887a8a2a67a89c50fea91e63d13737ba1f",
+    "src\\pointneuron\\data\\canonical_curve_targets.py": "58efe16a2c7c70b845fd3607cf425bbdac0a4f62cee41a3f6304619d3682e927",
+    "src\\pointneuron\\data\\curve_targets.py": "596f7d4b0c224bece8e7c5fb0c557261faf1e806fac755051d899b8e4dcc73cb",
+    "src\\pointneuron\\graph\\representation_oracle.py": "83618f4b7aa84ed1ce99e8756f7bb63bfe50320266d6ab712400895d4b98074d",
+    "src\\pointneuron\\graph\\proposal_graph.py": "76b73ae8cef054d772233b25bb6db2d993b76858ac428e5c526cb4e239326c94",
+    "src\\pointneuron\\data\\connectivity_targets.py": "87d69092ee54a3f22cd8547494d8dbb5981ca6a8d3716ccf224337d903910ce1"
+  },
+  "interpretation": "First absolute-source guard prototype; superseded by the added-representation-error guard. No models trained.",
+  "source_snapshots": {
+    "canonical_curve_targets.py": "58efe16a2c7c70b845fd3607cf425bbdac0a4f62cee41a3f6304619d3682e927",
+    "canonical_targets.json": "cadb845f3c5533ad86bbc67447ef03887a8a2a67a89c50fea91e63d13737ba1f",
+    "prepare_canonical_targets.py": "3f19da1a35c106cb504d1e5e74ba91f5851f3d1853e4aec40bfdaa0693ab3e4a"
+  },
+  "four_crop_counts": [
+    [
+      0,
+      0,
+      6,
+      6
+    ],
+    [
+      0,
+      1,
+      12,
+      12
+    ],
+    [
+      86,
+      3,
+      418,
+      418
+    ],
+    [
+      92,
+      4,
+      16,
+      15
+    ]
+  ]
+}
