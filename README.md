@@ -7,7 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready for capped fit: canonical-target GPU timing verified; reconstruction verdicts remain untested](docs/pointneuron2/canonical_joint_timing_results.md)
+- [Latest: canonical fit completed; three full crop passes, exact required connectivity, one remaining confidence spur](docs/pointneuron2/canonical_joint_fit_results.md)
+- [Completed prerequisite: canonical-target GPU timing verified](docs/pointneuron2/canonical_joint_timing_results.md)
 - [Canonical targets: implemented and CPU-audited; historical strict preparation flag retained](docs/pointneuron2/canonical_targets_results.md)
 - [Stable joint fit: two full crop passes, residual spur and endpoint/sample identity errors](docs/pointneuron2/stable_joint_learnability_results.md)
 - [Previous: smaller LR stabilizes geometry in the short paired control](docs/pointneuron2/joint_partial_stability_results.md)

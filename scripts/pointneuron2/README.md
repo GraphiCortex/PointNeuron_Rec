@@ -1,13 +1,19 @@
 # PointNeuron 2.0 scripts
 
-Ready for the capped fit: [verified canonical timing and command](../../docs/pointneuron2/canonical_joint_timing_results.md).
+Completed: [canonical joint fit results](../../docs/pointneuron2/canonical_joint_fit_results.md).
+`review_canonical_joint_fit.py` audits 28 saved outputs/SWCs, seven checkpoints,
+the complete update ledger and exact eight-update replay on CPU, without model
+forwards. Three crop gates pass; one extra node/spur fails the combined criteria.
+No extension, new fit or confidence-cutoff change is prepared.
+
+Completed prerequisite: [verified canonical timing and command](../../docs/pointneuron2/canonical_joint_timing_results.md).
 `review_canonical_joint_timing.py` verifies the completed eight-update timing's
 eight prediction/SWC pairs on CPU. `run_canonical_joint_fit.ps1 -Action train`
 is separate and requires matching successful timing; the first eight updates
 must replay exactly. The
 new runner preserves the old preparation failure and uses an explicit absolute
 geometry eligibility policy. Forty-five targeted tests and zero-update native
-CPU validation pass; GPU timing has passed and full fitting is unlaunched.
+CPU validation pass; GPU timing and the subsequent capped fit have completed.
 
 CPU preparation completed: [canonical target policy and results](../../docs/pointneuron2/canonical_targets_results.md).
 `prepare_canonical_targets.py` audits all 262 existing training crops and writes

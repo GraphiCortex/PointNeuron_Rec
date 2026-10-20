@@ -1,12 +1,20 @@
 # PointNeuron 2.0 development
 
+**Capped fit reviewed, 21 October:** [canonical joint results](canonical_joint_fit_results.md).
+All 440 assigned targets and 422 required canonical connections are retained;
+three crops pass completely. Crop 0/1 retains one spur (confidence 0.67917,
+precision 93.81%), so both declared terminal verdicts fail. Absolute extra/missed
+lengths are no worse than the matched baseline and slightly improve. All 28
+outputs/SWCs, seven checkpoints and 3,000 updates verify. Stop this capped fit;
+discuss confidence selection before another experiment. No extension or cutoff edit.
+
 **GPU timing verified, 21 October:** [canonical-target execution results and fit command](canonical_joint_timing_results.md).
 All eight saved outputs/SWCs verify; initial inference matches the old baseline
 exactly, runtime reload delta is zero, and placement remains fully trusted.
 Peak PyTorch allocation is 0.304 GiB; update-only extrapolation is 75.65 minutes.
 Sparse quality regresses in the short timing window; all crop gates still fail.
-Timing passes execution readiness only. The unchanged 3,000-new-update matched
-fit is next, with separate learnability and paired geometry verdicts.
+Timing passes execution readiness only. The subsequent 3,000-new-update matched
+fit has now completed and is reviewed above, with both terminal verdicts failed.
 
 **Preparation protocol, 21 October:** [matched canonical-target fit](canonical_joint_fit_ready.md).
 New explicit preparation eligibility uses absolute missed/extra arclength and

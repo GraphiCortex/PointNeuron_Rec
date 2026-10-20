@@ -10,3 +10,4 @@ scripts/pointneuron2/canonical_joint_fit.py text eol=lf
 scripts/pointneuron2/run_canonical_joint_fit.ps1 text eol=lf
 configs/pointneuron2/canonical_joint_fit.json text eol=lf
 scripts/pointneuron2/review_canonical_joint_timing.py text eol=lf
+scripts/pointneuron2/review_canonical_joint_fit.py text eol=lf

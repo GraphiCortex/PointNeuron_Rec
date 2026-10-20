@@ -1,8 +1,9 @@
-# Canonical-target GPU timing: execution passes; capped fit is next
+# Canonical-target GPU timing: verified prerequisite for the completed fit
 
 21 October 2026. **The user-run eight-update timing check passes.** The separate
-CPU saved-output audit verifies all eight prediction/SWC pairs. No full training
-run has been launched. The [prospective matched-fit contract](canonical_joint_fit_ready.md)
+CPU saved-output audit verifies all eight prediction/SWC pairs. At this timing
+checkpoint, the full fit was unlaunched; it has since [completed](canonical_joint_fit_results.md).
+The [prospective matched-fit contract](canonical_joint_fit_ready.md)
 is unchanged; no model, loss, cutoff, budget or executable source was changed.
 
 | Check | Result |
@@ -53,6 +54,9 @@ timing does not turn either verdict into a pass.
 
 ## Next command and stopping rules
 
+**Subsequent status:** the [capped fit has completed and been reviewed](canonical_joint_fit_results.md).
+The command below records the original next step; it is not a new rerun request.
+
 The existing prepared launcher is ready for the agreed matched fit:
 
 ```powershell
@@ -82,7 +86,7 @@ pass remains a four-crop training result, not unseen or whole-neuron performance
 
 Raw timing evidence:
 `tmp/pointneuron2/local_runs/canonical_joint_fit_20261021/timing/`.
-The full fit will create a separate `model/` directory at the same experiment root.
+The subsequent full fit created a separate `model/` directory at the same experiment root.
 
 [CPU audit script](../../scripts/pointneuron2/review_canonical_joint_timing.py)
 and [verified timing summary/provenance](canonical_joint_timing_results_seed0/summary.json).

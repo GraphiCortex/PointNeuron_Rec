@@ -1,9 +1,10 @@
 # Matched canonical-target joint fit: prepared contract
 
-21 October 2026. **45 targeted tests and the real-model zero-update CPU check
-pass. The user-run GPU timing has now passed and been reviewed; full fitting
-is still unlaunched.** See the [timing results and next command](canonical_joint_timing_results.md).
-The timing command below documents the completed prerequisite, not a rerun request.
+21 October 2026. **Historical prospective protocol; the capped fit is now
+complete.** See the [reviewed terminal results](canonical_joint_fit_results.md):
+three full crop passes, one remaining confidence spur, both original verdicts
+failed. No rerun or extension is requested. The commands below document the
+completed CPU, timing and fitting workflow.
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\pointneuron2"
@@ -142,8 +143,8 @@ fingerprints, cap/options/source checks and initial inference replay independent
 of changed assignments. The native CPU check exports four initial SWCs, probes
 the four actual caches, performs zero updates, verifies noninterference and an
 exact state/prediction reload, and confirms no CUDA initialization. GPU timing
-has subsequently passed as recorded in the linked results; sustained fitting
-remains unexecuted.
+and the capped GPU fit have subsequently completed as recorded in the linked
+results. Both terminal fit verdicts remain failed.
 
 At the initial CPU state all 440 canonical targets are trusted within two voxels
 and every one of the 422 required edges is present among the actual 512-query
@@ -151,7 +152,7 @@ candidates. The initial failures are selection and edge scoring/forest decisions
 not an already missing candidate connection. This does not guarantee that these
 properties remain true during fitting; probes and failure decomposition continue.
 
-After timing is reviewed, the separate bounded fit command is:
+The separate bounded fit was launched with:
 
 ```powershell
 & .\scripts\pointneuron2\run_canonical_joint_fit.ps1 -Action train
