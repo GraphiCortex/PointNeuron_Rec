@@ -4,6 +4,10 @@
 **43 targeted tests and real-model zero-update CPU checking pass. GPU comparison
 has not been launched.** The historical guarded joint trainer is unchanged.
 
+This is the historical readiness record. The user has since completed both arms;
+see the [results and interpretation](joint_partial_stability_results.md). No
+extension or rerun is recommended by the command below.
+
 Run this new command, rather than the old train/resume command:
 
 ```powershell

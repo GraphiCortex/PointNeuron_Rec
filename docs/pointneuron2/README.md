@@ -1,5 +1,11 @@
 # PointNeuron 2.0 development
 
+**Completed paired control, 20 October:** [stable geometry, unresolved automatic selection/topology](joint_partial_stability_results.md).
+Both 64-update arms complete. Smaller LR retains every target within two voxels
+at every probe and passes one full automatic training-crop gate. It still fails
+combined diagnostic qualification on a narrow crop-0/1 precision decline; three
+full crop gates fail. Sixteen saved outputs/SWCs verify. No extension or new run.
+
 **Ready for user launch, 20 October:** [two 64-update partial-supervision controls](joint_partial_stability_ready.md).
 New check/compare launcher imports the same checkpoint/moments for both arms;
 only LR differs. Tests validate partial labels, inactive GAT Adam state and a

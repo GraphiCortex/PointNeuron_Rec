@@ -6,6 +6,12 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
+Completed: [paired partial-supervision results](../../docs/pointneuron2/joint_partial_stability_results.md).
+`review_joint_partial_stability.py` checks 16 saved output/SWC pairs, transferred
+labels, checkpoints and qualification on CPU without model forwards or updates.
+`plot_joint_partial_stability.py` plots recorded probes only. Smaller LR stabilizes
+geometry but residual node/edge ranking errors remain; no new fit is prepared.
+
 Ready: [partial-supervision stability controls](../../docs/pointneuron2/joint_partial_stability_ready.md).
 `run_joint_partial_stability.ps1 -Action compare` runs two CUDA arms, at most
 64 updates each, from identical saved checkpoint-1,000 weights/Adam/RNG.
