@@ -6,6 +6,11 @@ diagnostic qualification.** Preserve that distinction. The lower LR gives
 useful local geometry evidence and one full automatic crop pass, not a complete
 PN 2.0 reconstruction result. No additional training is launched or prepared.
 
+Subsequent decision: after reviewing earlier failed loss changes and the short
+exposure at the stable LR, the user explicitly chose to prepare one prospective
+[stable-LR learnability trial](stable_joint_learnability_ready.md) before a new
+loss. This leaves the short comparison's failed qualification unchanged.
+
 ## Comparison integrity and execution
 
 Both arms import identical update-1,000 model weights, Adam moments/counters and

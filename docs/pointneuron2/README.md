@@ -1,5 +1,12 @@
 # PointNeuron 2.0 development
 
+**Ready for user launch, 20 October:** [capped stable-LR learnability trial](stable_joint_learnability_ready.md).
+The user chose to test the current objective at demonstrated stable LR before
+changing the loss. New controller imports historical stage 1,000 with Adam/RNG,
+reproduces the reduced-LR 64-update control, and caps at 3,000 new updates ending
+at stage 4,000. Original automatic gates plus terminal stability remain required.
+Fifty-five tests and zero-update real-model CPU checks pass; GPU fit unlaunched.
+
 **Completed paired control, 20 October:** [stable geometry, unresolved automatic selection/topology](joint_partial_stability_results.md).
 Both 64-update arms complete. Smaller LR retains every target within two voxels
 at every probe and passes one full automatic training-crop gate. It still fails
