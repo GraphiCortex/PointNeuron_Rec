@@ -7,8 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
-- [Ready: one stable-LR learnability trial, 3,000 new updates to historical stage 4,000](docs/pointneuron2/stable_joint_learnability_ready.md)
-- [Latest: smaller LR stabilizes geometry; node selection and topology remain incomplete](docs/pointneuron2/joint_partial_stability_results.md)
+- [Latest: stable joint fit completes; two full crop passes, residual spur and endpoint/sample identity errors](docs/pointneuron2/stable_joint_learnability_results.md)
+- [Previous: smaller LR stabilizes geometry in the short paired control](docs/pointneuron2/joint_partial_stability_results.md)
 - [Ready: two 64-update controls for partial supervision and geometry stability; CPU checks passed](docs/pointneuron2/joint_partial_stability_ready.md)
 - [Proposal for discussion: partial-supervision handling and one short geometry-stability comparison](docs/pointneuron2/joint_partial_supervision_proposal.md)
 - [Latest: joint fit stops at update 1,014 on moving edge supervision; automatic gates remain unmet](docs/pointneuron2/joint_saved_adam_fit_stop_results.md)

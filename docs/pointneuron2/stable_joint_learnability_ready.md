@@ -1,6 +1,11 @@
 # One capped learnability trial at the demonstrated stable learning rate
 
-20 October 2026. **Prepared and CPU-checked; GPU fitting has not been launched.**
+20 October 2026. **Historical preparation protocol; the GPU fit is now complete.**
+See the [completed results](stable_joint_learnability_results.md): stable placement,
+two full crop passes, original combined gate failed. The preparation and launch
+instructions below document the original contract; they are not a new rerun request.
+
+At preparation, the controller was CPU-checked and GPU fitting was unlaunched.
 The user chose this direction after reviewing the residual selection errors and
 the earlier failed hard-negative objective. No new objective, head, architecture,
 point-cloud preparation or inference threshold is introduced.

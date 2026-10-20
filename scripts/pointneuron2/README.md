@@ -6,13 +6,13 @@ here. Generated caches, checkpoints and logs stay in ignored `tmp/pointneuron2`.
 Development snapshots are kept on the `pointneuron2` branch. Generated caches,
 environments, logs and checkpoints remain outside those snapshots.
 
-Ready: [stable-LR capped learnability trial](../../docs/pointneuron2/stable_joint_learnability_ready.md).
-`run_stable_joint_learnability.ps1 -Action train` starts the user-selected new
-trial from historical stage 1,000: 3,000 new updates, LR .00001, existing partial
-loss, original reconstruction gates. Check/resume actions are separate. Exact
-64-update replay, full-state checkpoints, distinct optimizer clocks and geometry
-monitoring are required. Fifty-five tests and the real-model zero-update check
-pass; no full GPU fitting or GPU resume has been launched during preparation.
+Completed: [stable-LR learnability results](../../docs/pointneuron2/stable_joint_learnability_results.md).
+`review_stable_joint_learnability.py` checks all 24 saved outputs/SWCs, six
+checkpoint states, replay and the 3,000-update ledger without model forwards.
+`inspect_stable_joint_residuals.py` interprets the two endpoint/sample order
+reversals using reference identities; it changes no output or gate. Stable
+placement and two full crop passes are established; the combined gate fails.
+The completed capped fit is not a request to rerun or extend training.
 
 Completed: [paired partial-supervision results](../../docs/pointneuron2/joint_partial_stability_results.md).
 `review_joint_partial_stability.py` checks 16 saved output/SWC pairs, transferred
