@@ -71,7 +71,9 @@ repairs are part of R's identity and must be versioned together:
    tiling, crop aggregation, selection and export. Handle empty/short clouds,
    capacity limits and failures automatically, without reference access. A
    budget that prevents full declared coverage is disclosed as unsupported or
-   failed, not hidden by a capped crop cache.
+   failed, not hidden by a capped crop cache. Ordinary proposal/anchor pruning
+   is instead part of the algorithm: disclose its counts and score the resulting
+   reconstruction, including any branches lost to that selection.
 
 The [input investigation](../../pointneuron2/docs/pointneuron2/root_cause_findings.md)
 contains the independent evidence for the first three repairs. Reuse verified
@@ -121,6 +123,11 @@ evaluator does not itself settle the two architectures' training labels.
   relevant upstream inputs and downstream control.
 - The common [benchmark contract](benchmark_contract.md), structural review
   procedure and prospective advancement margins, before N's decisive results.
+
+The [source inspection and integration draft](baseline_integration_plan.md)
+identifies reusable operations, reference-coupled runners, the vertex-only crop
+label issue and the next bounded port. The [explicit training inventory](../configs/training_inventory.json)
+records the provisional 33 training identities without reading source contents.
 
 The existing five-epoch repaired control is historical evidence, not the fresh
 R recipe or a sufficient training budget by default. Both arms need meaningful

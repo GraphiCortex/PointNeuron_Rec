@@ -1,0 +1,747 @@
+{
+  "schema_version": 1,
+  "inventory_kind": "training_source_inventory_not_evaluation_benchmark",
+  "status": "metadata_only_no_cache_or_run",
+  "dataset": {
+    "name": "gold166",
+    "task": "automatic single-neuron whole-volume reconstruction",
+    "source_inventory": {
+      "path": "../../tmp/gold166_manifest.json",
+      "sha256": "a56d890e66ba218df52132832cdd5b87bf8195e68dd321b70060b06e3d2615df"
+    },
+    "identity_partition": {
+      "path": "../../pointneuron2/configs/pointneuron2/partition_seed0.json",
+      "sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b"
+    },
+    "creation_scope": "Existing metadata joined by stable sample_id; 33 listed image/reference existence checks. No source image/SWC contents, cache creation, reserved annotations, inference or training.",
+    "independence": "Same provisionally retained 33 training identities; disjoint from seven development and eight reserved identities. Acquisition/duplicate grouping remains unverified."
+  },
+  "cases": [
+    {
+      "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1/09-2902-04R-01C-60x_merge_c1.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1/09-2902-04R-01C-60x_merge_c1.v3dpbd.ano_stamp_2015_06_15_15_16.swc_sorted.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_chick_uw",
+      "metadata": {
+        "historical_sample_index": 0,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "sorted",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0/10-2900-control-cell-05.oif-C0.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0/10-2900-control-cell-05.oif-C0.v3dpbd.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_chick_uw",
+      "metadata": {
+        "historical_sample_index": 1,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "base",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2/fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2/fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd.ano_stamp_2015_06_16_16_25.swc_sorted.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_chick_uw",
+      "metadata": {
+        "historical_sample_index": 7,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "sorted",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8/1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8/1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_32.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 9,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8/1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8/1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8.v3dpbd_stamp_2015_06_15_15_39.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 10,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8/1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8/1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_54.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 11,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8/14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8/14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_16_52.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 14,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked7_utokyo_fly/err_AL_GNG_LH_neuron/AL_GNG_LH_neuron.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked7_utokyo_fly/err_AL_GNG_LH_neuron/AL_GNG_LH_neuron.v3dpbd.ano_stamp_2015_06_16_16_59.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked7_utokyo_fly",
+      "metadata": {
+        "historical_sample_index": 15,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron/mushroom_body_ab_cell_neuron.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron/mushroom_body_ab_cell_neuron.v3dpbd.ano_stamp_2015_06_16_17_52.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked7_utokyo_fly",
+      "metadata": {
+        "historical_sample_index": 18,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+      "partition": "training",
+      "image_path": "../../data/gold166/e_checked7_utokyo_fly/WED_SLP_PN_neuron/WED_SLP_PN_neuron.v3dpbd",
+      "reference_swc": "../../data/gold166/e_checked7_utokyo_fly/WED_SLP_PN_neuron/WED_SLP_PN_neuron.v3dpbd.ano_stamp_2015_06_16_18_08.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked7_utokyo_fly",
+      "metadata": {
+        "historical_sample_index": 20,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_frog_scrippts/done_Recon112012no3-2/Recon112012no3-2.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_frog_scrippts/done_Recon112012no3-2/Recon112012no3-2.v3dpbd.ano_stamp_2015_06_16_13_51.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_frog_scrippts",
+      "metadata": {
+        "historical_sample_index": 22,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP/1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP/1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd.ano_stamp_2015_06_16_12_16.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "metadata": {
+        "historical_sample_index": 23,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1/1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1/1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1.tif_uint8.v3dpbd.ano_stamp_2015_06_15_14_48.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "metadata": {
+        "historical_sample_index": 25,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1/3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1/3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd.ano_stamp_2015_06_16_13_05.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "metadata": {
+        "historical_sample_index": 32,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31/Image31.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31/Image31.v3dpbd_stamp_2015_06_15_17_28.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "metadata": {
+        "historical_sample_index": 39,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5/Image5.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5/Image5.v3dpbd_stamp_2015_06_15_17_13.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "metadata": {
+        "historical_sample_index": 41,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021/Series021.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021/Series021.v3dpbd_stamp_2015_06_15_17_52.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "metadata": {
+        "historical_sample_index": 46,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5.v3dpbd.ano_stamp_2015_06_17_12_22.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_janelia_flylight_part2",
+      "metadata": {
+        "historical_sample_index": 53,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_mouse_RGC_uw/HO_140921c14/140921c14.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_mouse_RGC_uw/HO_140921c14/140921c14.tif.v3dpbd.ano_stamp_2015_06_17_11_07.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "metadata": {
+        "historical_sample_index": 66,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140918c8/140918c8.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140918c8/140918c8.tif.v3dpbd.ano_stamp_2015_06_16_13_46.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "metadata": {
+        "historical_sample_index": 75,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg/0984_seg.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg/0984_seg.v3dpbd.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_silkmoth_utokyo",
+      "metadata": {
+        "historical_sample_index": 85,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "base",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg/0986_seg.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg/0986_seg.v3dpbd.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_silkmoth_utokyo",
+      "metadata": {
+        "historical_sample_index": 86,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "base",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2/1_6_Ch2.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2/1_6_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_18_12.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 92,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2/1_9_Ch2.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2/1_9_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_18_11.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 93,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2/1_10_Ch2.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2/1_10_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_03.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 95,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2/1_a_Ch2.tif_uint8.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2/1_a_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_13_16_02.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_zebrafish_horizontal_cells_UW",
+      "metadata": {
+        "historical_sample_index": 96,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1.v3dpbd.ano_stamp_2015_06_16_13_37.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "metadata": {
+        "historical_sample_index": 102,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9.v3dpbd.ano_stamp_2015_06_17_12_57.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "metadata": {
+        "historical_sample_index": 108,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0.v3dpbd.ano_stamp_2015_06_17_10_27.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "metadata": {
+        "historical_sample_index": 126,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_07_14_12_02.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "metadata": {
+        "historical_sample_index": 143,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif.v3dpbd_stamp_2015_06_15_15_41.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "metadata": {
+        "historical_sample_index": 149,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_06_15_17_13.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "metadata": {
+        "historical_sample_index": 158,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif.v3dpbd",
+      "reference_swc": "../../data/gold166/p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_06_15_17_40.swc",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "metadata": {
+        "historical_sample_index": 162,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "image_and_reference_paths_exist": true,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "calibration_status": "unverified",
+        "historical_pn1_training_exposure": true
+      }
+    }
+  ]
+}
