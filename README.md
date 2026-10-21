@@ -1,3 +1,12 @@
+# Historical PointNeuron 2.0 reference
+
+Active fresh development is in the sibling **[PN2 folder](../PN2/README.md)**,
+on branch `pointneuron2`. This checkout is retained on `pointneuron2-history`
+for previous source, reports, runtime and evidence. The notes below describe
+the previous workspace state and do not authorize an old experiment restart.
+
+---
+
 # PointNeuron 2.0 — fresh research start
 
 We are starting the next development cycle from the [revised proposal](docs/pointneuron2/revised_proposal.md).
