@@ -7,6 +7,8 @@ stored here. The original parent checkout remains on `main`.
 
 Start here:
 
+- [Research reset: revised PN 2.0 proposal and bounded path forward](docs/pointneuron2/revised_proposal.md)
+- [What PN 1.0 and PN 2.0 actually establish, including comparison and test-exposure gaps](docs/pointneuron2/research_reset_evidence.md)
 - [Latest: canonical fit completed; three full crop passes, exact required connectivity, one remaining confidence spur](docs/pointneuron2/canonical_joint_fit_results.md)
 - [Completed prerequisite: canonical-target GPU timing verified](docs/pointneuron2/canonical_joint_timing_results.md)
 - [Canonical targets: implemented and CPU-audited; historical strict preparation flag retained](docs/pointneuron2/canonical_targets_results.md)

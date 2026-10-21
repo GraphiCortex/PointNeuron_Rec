@@ -1,5 +1,14 @@
 # PointNeuron 2.0 development
 
+**Research reset, 21 October:** [revised proposal and development path](revised_proposal.md)
+and [evidence audit](research_reset_evidence.md). Preserve the intended architecture
+and useful implementations; establish a repaired PN1-style reference and common
+whole-neuron scorecard before another performance claim. The historical PN1
+weights saw all current development/reserved neurons; the eight are PN2-reserved,
+not project-wide untouched data. No runtime source or training policy is changed
+and no model inference/training is launched by the revision. This is a discussion
+draft for review before implementation.
+
 **Capped fit reviewed, 21 October:** [canonical joint results](canonical_joint_fit_results.md).
 All 440 assigned targets and 422 required canonical connections are retained;
 three crops pass completely. Crop 0/1 retains one spur (confidence 0.67917,
