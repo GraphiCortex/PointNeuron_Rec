@@ -9,3 +9,6 @@ __pycache__/
 .venv/
 configs/local.json
 .agents/
+/output/pdf/*.aux
+/output/pdf/*.log
+/output/pdf/*.out
