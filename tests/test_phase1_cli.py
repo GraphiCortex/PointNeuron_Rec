@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import shutil
 
 import numpy as np
 
@@ -51,3 +52,20 @@ def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path):
         assert hashlib.sha256(path.read_bytes()).hexdigest() == before
     assert image.read_bytes() == payload
     assert (output / "case_00/reference_cloud_overlay.png").is_file()
+    assert "SCORE case_id=synthetic-training-control" in evaluation.stdout
+    # Unsupported reference metadata must remain visible, not become a score
+    # or a passed one-case denominator. Point preparation remains unchanged.
+    reference.write_text("1 3 0 6 4 1 -1\n2 -73 16 6 4 1 1\n")
+    second = tmp_path / "unscorable_control"
+    shutil.copytree(output, second, ignore=shutil.ignore_patterns(
+        "evaluation", "matplotlib_cache", "reference_cloud_overlay.png"))
+    invalid = subprocess.run([sys.executable, str(repo / "scripts/evaluate_phase1_sampling.py"),
+        "--clouds", str(second / "clouds.json"), "--training-inventory", str(inventory)],
+        capture_output=True, text=True)
+    assert invalid.returncode == 0, invalid.stdout + invalid.stderr
+    recorded = json.loads((second / "evaluation/report.json").read_text())
+    assert recorded["decision"]["outcome"] == "incomplete"
+    assert recorded["decision"]["case_accounting"] == {"declared": 1, "scored": 0, "unscorable_reference": 1}
+    assert not recorded["rows"] and not recorded["decision"]["promising_for_replication"]
+    assert recorded["failures"][0]["reference_sha256"] == hashlib.sha256(reference.read_bytes()).hexdigest()
+    assert "UNSCORABLE case_id=synthetic-training-control" in invalid.stdout

@@ -147,7 +147,10 @@ def evaluate(cloud_manifest, inventory_path):
             if metric.index is None:
                 raise ValueError("No positive reference curve length")
         except (OSError, ValueError) as error:
-            failures.append({"case_id": case, "status": "unscorable_reference", "reason": str(error)})
+            failures.append({"case_id": case, "status": "unscorable_reference", "reason": str(error),
+                             "reference_path": str(reference),
+                             "reference_sha256": digest(reference) if reference.is_file() else None})
+            print(f"UNSCORABLE case_id={case} reason={error}", flush=True)
             continue
         references.append({"case_id": case, "path": str(reference), "sha256": digest(reference),
                            "annotation_status": row["annotation_status"]})
@@ -174,7 +177,7 @@ def evaluate(cloud_manifest, inventory_path):
                           - finer["tolerances"][tolerance]["curve_support"]),
                       "evaluation_seconds": time.perf_counter() - start}
             case_rows.append(result)
-            print(f"SCORE case={len(references)} {output['method']} cell={output['cell_side_voxel']} seed={output['seed']} "
+            print(f"SCORE case_id={case} {output['method']} cell={output['cell_side_voxel']} seed={output['seed']} "
                   f"support@2={metrics['tolerances'][tolerance]['curve_support']:.4f} "
                   f"seconds={result['evaluation_seconds']:.2f}", flush=True)
         rows.extend(case_rows)
@@ -185,6 +188,10 @@ def evaluate(cloud_manifest, inventory_path):
     verdict = decision(summary, rows, recipe)
     if failures or len(references) != len(clouds["cases"]):
         verdict["promising_for_replication"] = False
+    verdict["outcome"] = "incomplete" if failures else (
+        "promising_for_replication" if verdict["promising_for_replication"] else "criteria_not_met")
+    verdict["case_accounting"] = {"declared": len(clouds["cases"]), "scored": len(references),
+                                  "unscorable_reference": len(failures)}
     result = {"schema_version": 1, "cloud_manifest_sha256": digest(cloud_manifest),
               "evaluation_script_sha256": digest(__file__),
               "support_code_sha256": digest(Path(__file__).resolve().parents[1] / "src/pn2/evaluation/cloud_support.py"),

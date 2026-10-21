@@ -14,12 +14,16 @@ does not establish correct wiring.
 native XYZ provenance and deterministic covering tile inventories. It imports
 no historical package, SWC parser or model. Physical spacing is declared
 metadata; array/tile boxes remain native voxel coordinates. This interface
-does not yet select point clouds or implement reconstruction.
+now also contains a reference-free three-control CPU sampling probe. It does
+not implement reconstruction or select a validated product sampling policy.
 
 22 October scope correction: PN1-only `clouds.py` and `reference/` were removed
 from active source and are recoverable at pushed commit `48519ff`. Current
-source contains no PN1 model or foreground/sampling default. The next PN2
-preparation design is [under review](../docs/pn2_phase1_design.md); no new
-sampling policy, encoder, training loss or graph model is installed by that draft.
+source contains no PN1 model or foreground/sampling default. The approved
+bounded [sampling protocol](../docs/phase1_sampling_protocol.md) tests uniform,
+intensity and published Sato weights without reference input. A separate
+`evaluation/cloud_support.py` measures saved point support and gaps using SWCs.
+Neither execution nor those support proxies validate an encoder, training loss,
+graph model or end-to-end reconstruction.
 
 The working design is the [revised proposal](../docs/revised_proposal.md).

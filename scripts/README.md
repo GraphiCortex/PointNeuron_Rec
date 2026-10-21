@@ -32,6 +32,17 @@ directory; evaluation requires a fresh `evaluation` subdirectory. Console logs
 are timestamped under `tmp/phase1_console`. Use `-OutputDirectory tmp\a_new_run`
 only for an explicitly justified replay, not to select favorable draws.
 
+The [first results](../docs/phase1_sampling_results.md) preserve an incomplete
+two-case comparison: one scored reference, one nonstandard type-code issue.
+Do not rerun preparation to resolve a reference policy. To reproduce the
+one-scorable-case figure from its saved report:
+
+```powershell
+& .\tmp\phase1_cpu_env\Scripts\python.exe .\scripts\plot_phase1_sampling.py `
+  --report .\tmp\phase1_sampling_20261022\evaluation\report.json `
+  --output .\tmp\phase1_sampling_20261022\comparison_figure.png
+```
+
 ## Other commands
 
 `inspect_raw_images.py` starts with explicit original image files. It writes

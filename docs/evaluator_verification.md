@@ -1,5 +1,15 @@
 # Initial evaluator verification
 
+**22 October update:** the initial record below remains historical. The complete
+current synthetic suite passes **138 tests** in the isolated Phase 1 CPU runtime.
+A new analytic branch fixture exposed a rounded KD-tree search boundary that
+could omit even the nearest segment fragment. The search now includes a
+coordinate-scaled roundoff margin and always retains the known nearest fragment.
+This expands candidate search only; exact projections and scoring tolerances
+are unchanged. No biological score was used to choose this correction.
+PN1 rebuild recommendations at the end of the original record are superseded
+by the user's scope clarification in the revised proposal.
+
 21 October 2026. This verifies the fresh measurement implementation, not a
 model or reconstruction improvement. No image, dataset SWC, reserved reference,
 training or model inference was used in these checks.

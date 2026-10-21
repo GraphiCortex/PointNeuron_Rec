@@ -48,6 +48,11 @@ agreed to the three controls. The CPU probe is implemented and tested, without
 promoting a guide to the product. Keep execution, representation retention,
 training learnability and genuine reconstruction evidence distinct.
 
+[First results](docs/phase1_sampling_results.md): both raw-image cloud generations
+completed. Structural weighting improved support on the one scored training
+image; a nonstandard reference type code leaves the two-image comparison
+incomplete. No model was trained or sampling policy promoted.
+
 ## Working directory and runtime
 
 ```powershell
