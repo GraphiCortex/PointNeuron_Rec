@@ -3,6 +3,14 @@
 Fresh benchmark manifests and reviewed experiment configurations belong here.
 No fresh training recipe is selected yet.
 
+[phase1_sampling_probe.json](phase1_sampling_probe.json) freezes the three-arm
+CPU input diagnostic, not a training/product policy. Its
+[protocol](../docs/phase1_sampling_protocol.md) explains the scales, count budgets,
+controls, measurements and stopping rules.
+[phase1_cpu_requirements.txt](phase1_cpu_requirements.txt) declares direct runtime
+pins; [phase1_cpu_lock.txt](phase1_cpu_lock.txt) records the complete installed
+dependency set for Python 3.11 on Windows. Both belong to the isolated new runtime.
+
 [development_benchmark.json](development_benchmark.json) lists seven existing
 development identities, explicit image/reference paths, native voxel units and
 training-exposure metadata. Identity joins use stable sample IDs. Its source

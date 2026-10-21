@@ -1,7 +1,10 @@
 # PN2 Phase 1: start at the original image
 
 22 October 2026. **Design proposal for discussion, not an implemented or
-validated sampling policy.** PN1 contributes conceptual lessons only. Rebuilding
+validated sampling policy.** The user subsequently agreed to the bounded
+three-control CPU probe in [the fixed protocol](phase1_sampling_protocol.md).
+That is permission to test the candidate, not product promotion.
+PN1 contributes conceptual lessons only. Rebuilding
 a PN1 reference and repairing DGCNN singleton handling are outside this plan.
 
 ## Product path and Phase 1 responsibility
@@ -155,10 +158,11 @@ important traced structure. Do not call a high all-grid candidate ceiling a
 successful point representation. The final question remains PN2 reconstruction,
 not an endless attempt to perfect a local sampling metric.
 
-Runtime preparation is still pending for the proposed filter. The retained
+Runtime preparation was pending at the design review. The retained
 environment previously exposed a scikit-image/NumPy ABI mismatch through pytest
 plugin loading; the bundled document runtime has no scikit-image installed.
-Use a compatible isolated image-processing runtime before the candidate run,
+The approved probe now uses a compatible isolated image-processing runtime,
 without changing the historical environment or silently rewriting a published
-operator to avoid the dependency. No package was installed and no structural
-filter was executed in this review.
+operator to avoid the dependency. Packages and synthetic operator checks now
+live in the new ignored runtime. The original raw-image review itself used no
+structural filter. See the fixed protocol for subsequent probe execution.

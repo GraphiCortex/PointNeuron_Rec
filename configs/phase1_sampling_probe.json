@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sigmas_voxel": [1.0, 2.0, 4.0],
+  "tile_side_voxel": 128,
+  "cell_sides_voxel": [4, 8],
+  "uniform_mass": 0.1,
+  "seeds": [0, 1, 2, 3, 4],
+  "methods": ["uniform", "intensity", "sato"],
+  "evaluation": {
+    "tolerances_voxel": [2.0, 6.0],
+    "quadrature_step_voxel": 0.5,
+    "primary_tolerance_voxel": 2.0,
+    "minimum_mean_gain": 0.05,
+    "maximum_local_coverage_drop": 0.02,
+    "maximum_gap_increase_voxel": 2.0
+  }
+}

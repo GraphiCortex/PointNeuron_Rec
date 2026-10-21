@@ -13,17 +13,23 @@ tests cover the retained evaluator and image interface, without a model
 dependency. Raw inspection is checked by running its two explicit inputs and
 visually reviewing its saved figures, not by adding tests for plotting layout.
 
-From the PN2 root:
+Phase 1 adds analytic 3D Gaussian tubes, scale/polarity/axis/boundary and junction
+checks; unique count/source recovery and sampling distribution controls; analytic
+curve support and branch gaps; and a two-command integration fixture in which the
+reference does not exist until clouds are saved. A rounded spatial-index boundary
+regression was found and fixed before real cloud generation. Candidate search is
+expanded conservatively; measured distances and scoring tolerances are unchanged.
+
+From the PN2 root, use the isolated CPU runtime for the complete suite:
 
 ```powershell
-$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
-& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -m pytest -q
-Remove-Item Env:\PYTEST_DISABLE_PLUGIN_AUTOLOAD
+& .\tmp\phase1_cpu_env\Scripts\python.exe -m pytest -q
 ```
 
-The retained environment contains an unrelated incompatible napari/skimage
-pytest plugin. Disabling automatic third-party plugin loading isolates these
-tests; it does not change project dependencies. No dataset is opened by them.
+The retained historical environment has an incompatible napari/skimage plugin;
+do not use it for the new image-filter tests or repair it in place. The isolated
+runtime and lock are documented in scripts/README.md. No real dataset is opened
+by the tests.
 
 Retained historical tests remain useful evidence for reused components. No broad
 test or training run is started by creating this folder.

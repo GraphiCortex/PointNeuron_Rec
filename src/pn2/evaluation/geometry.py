@@ -135,10 +135,18 @@ class _CurveIndex:
                                 / self.length2[nearest], 0, 1)
             residual = self._residual(vectors, fractions, self.delta[nearest])
             best = np.einsum("ij,ij->i", residual, residual)
-            radii = np.nextafter(np.sqrt(best) + self.half_length, np.inf)
+            radii = np.sqrt(best) + self.half_length
+            # Rounded fragment midpoints/lengths and KD-tree distances can differ
+            # by more than one ulp at an endpoint. Expand only the candidate
+            # search (never the measured distance or scoring tolerance).
+            margin = 64 * np.finfo(float).eps * (
+                np.linalg.norm(batch, axis=1) + np.linalg.norm(self.tree.data[nearest], axis=1) + radii)
+            radii = np.nextafter(radii + margin, np.inf)
             candidates = self.tree.query_ball_point(batch, radii)
             for index, candidate_ids in enumerate(candidates):
-                ids = np.asarray(candidate_ids, dtype=np.int64)
+                # Retain the fragment furnishing the known upper bound even
+                # under an unexpectedly empty spatial-index boundary query.
+                ids = np.union1d(candidate_ids, [nearest[index]]).astype(np.int64)
                 vectors = batch[index] - self.starts[ids]
                 fractions = np.clip(np.einsum("ij,ij->i", vectors, self.delta[ids])
                                     / self.length2[ids], 0, 1)

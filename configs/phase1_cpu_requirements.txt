@@ -1,0 +1,7 @@
+# Isolated Python 3.11 CPU diagnostic runtime; historical environment is unchanged.
+numpy==2.2.6
+scipy==1.15.3
+scikit-image==0.25.2
+matplotlib==3.10.3
+pytest==8.4.2
+psutil==7.0.0

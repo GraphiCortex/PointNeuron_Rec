@@ -2,6 +2,7 @@
 
 - [Revised research proposal and development path](revised_proposal.md)
 - [PN2 Phase 1 design draft and original raw-image inspection](pn2_phase1_design.md)
+- [First CPU sampling comparison: fixed protocol and stopping rules](phase1_sampling_protocol.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

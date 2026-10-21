@@ -1,5 +1,39 @@
 # New commands
 
+## Phase 1 CPU sampling probe
+
+Read the [fixed comparison protocol](../docs/phase1_sampling_protocol.md) first.
+`probe_phase1_sampling.py` reads only the two original training images, generating
+three count-matched controls at two densities and five seeds. It computes one
+whole-image guide, then samples disjoint image-defined tiles. It never reads a
+reference. `evaluate_phase1_sampling.py` subsequently reads the saved clouds and
+the two explicit training SWCs; it verifies source coordinates/intensities and
+reports spatial support, local gaps and reference disagreement, not reconstruction
+quality. No training or automatic extension follows a failed gate.
+
+The isolated CPU runtime is under ignored `tmp/`; the historical environment is
+unchanged. To recreate it in a new installation (network access required):
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -m venv .\tmp\phase1_cpu_env
+& .\tmp\phase1_cpu_env\Scripts\python.exe -m pip install --only-binary=:all: -r .\configs\phase1_cpu_lock.txt
+```
+
+From the PN2 root, run each command separately and inspect its result:
+
+```powershell
+& .\scripts\run_phase1_sampling.ps1 -Action check
+& .\scripts\run_phase1_sampling.ps1 -Action generate
+& .\scripts\run_phase1_sampling.ps1 -Action evaluate
+```
+
+Default output: `tmp/phase1_sampling_20261022`. Generation requires a fresh run
+directory; evaluation requires a fresh `evaluation` subdirectory. Console logs
+are timestamped under `tmp/phase1_console`. Use `-OutputDirectory tmp\a_new_run`
+only for an explicitly justified replay, not to select favorable draws.
+
+## Other commands
+
 `inspect_raw_images.py` starts with explicit original image files. It writes
 linear/log-display projections, one native source slice, raw histograms and
 byte/range provenance. No mask, reference, sampling or model is used.

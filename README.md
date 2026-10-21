@@ -42,8 +42,10 @@ The PN1-only cloud/model detour has been removed from active source. Reports
 and pushed commit `48519ff` preserve it. Its DGCNN singleton issue is not the
 next PN2 task. No PN1 cutoff, weights or point budget become PN2 defaults.
 
-The next decision is the proposed soft structural guide and finite-budget cloud
-construction, before implementing it. Keep execution, representation retention,
+The first bounded [Phase 1 sampling protocol](docs/phase1_sampling_protocol.md)
+compares uniform, intensity-weighted and Sato-weighted source points. The user
+agreed to the three controls. The CPU probe is implemented and tested, without
+promoting a guide to the product. Keep execution, representation retention,
 training learnability and genuine reconstruction evidence distinct.
 
 ## Working directory and runtime
@@ -52,10 +54,11 @@ training learnability and genuine reconstruction evidence distinct.
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
 ```
 
-Reuse the retained environment at
-`..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe`. It has not been moved or
-reinstalled. Original images, PN1 assets and the historical evidence archive
-remain outside this fresh folder. New generated outputs belong in this folder's ignored `tmp/`.
+The Phase 1 CPU probe uses an isolated environment at
+`tmp\phase1_cpu_env\Scripts\python.exe`, with its pinned installation and commands
+in [scripts/README.md](scripts/README.md). The historical runtime is unchanged.
+Original images, PN1 assets and the historical evidence archive remain outside
+this fresh folder. New generated outputs belong in this folder's ignored `tmp/`.
 
 The parent collaboration instructions still apply: discuss substantive changes,
 use visible commands for agreed GPU runs, and distinguish execution from
