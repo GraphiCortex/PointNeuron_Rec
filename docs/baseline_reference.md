@@ -1,5 +1,10 @@
 # The PN1 reference for the fresh PN2 comparison
 
+**Historical scope detour, superseded 22 October 2026.** The user clarified
+that PN1 is a conceptual reference only. No rebuilding/retraining of R is
+required. Preserve this specification as history; use the active
+[PN2 Phase 1 plan](pn2_phase1_design.md). It does not schedule a future fit.
+
 21 October 2026. Milestone A specification, supporting the
 [revised proposal](revised_proposal.md). This defines the comparison's lineage
 and necessary repairs. It is **not a ready training recipe** or evidence that

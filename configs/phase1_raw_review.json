@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1/3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021/Series021.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    }
+  ]
+}

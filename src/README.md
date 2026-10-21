@@ -16,11 +16,10 @@ no historical package, SWC parser or model. Physical spacing is declared
 metadata; array/tile boxes remain native voxel coordinates. This interface
 does not yet select point clouds or implement reconstruction.
 
-`pn2/inputs/clouds.py` adds an explicit PN1 reference input control with distinct
-image-voxel selection and short-input accounting. `pn2/reference/` contains the
-retained encoder/proposal operators, a local-head adapter and a fresh untrained
-CPU forward audit. Model code requires the optional PyTorch dependency already
-present in the retained runtime. The base image/evaluation interfaces remain
-independent of it. No training loss or graph/export implementation is ported yet.
+22 October scope correction: PN1-only `clouds.py` and `reference/` were removed
+from active source and are recoverable at pushed commit `48519ff`. Current
+source contains no PN1 model or foreground/sampling default. The next PN2
+preparation design is [under review](../docs/pn2_phase1_design.md); no new
+sampling policy, encoder, training loss or graph model is installed by that draft.
 
 The working design is the [revised proposal](../docs/revised_proposal.md).

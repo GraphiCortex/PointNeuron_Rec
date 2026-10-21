@@ -1,0 +1,106 @@
+{
+  "scope": "Raw image inspection; no segmentation, point selection, reference or model",
+  "display": "Full native range, linear and log1p display; no clipping or source transformation",
+  "cases": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "image": {
+        "image_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1\\3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd",
+        "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+        "source_bytes": 11264952,
+        "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+        "decoded_bytes": 11779911,
+        "reader_version": "vaa3d-pbd-v2",
+        "encoding": "v3d_volume_pkbitdf_encod",
+        "endian": "L",
+        "datatype": 1,
+        "dimensions_xyzc": [
+          1017,
+          429,
+          27,
+          1
+        ],
+        "array_axes": "ZYX",
+        "coordinate_axes": "XYZ",
+        "coordinate_origin_xyz": [
+          0,
+          0,
+          0
+        ],
+        "voxel_centers": "integer indices",
+        "native_coordinates_units": "voxel",
+        "declared_metric_units": "voxel",
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "metric_transform": "metric_xyz = native_xyz * spacing_xyz; not applied to array or tile boxes",
+        "intensity_transform": "none",
+        "spatial_resampling": "none",
+        "padding": "none"
+      },
+      "figure": "training_32_raw.png",
+      "minimum": 0,
+      "maximum": 255,
+      "mean": 5.334277992422863,
+      "zero_fraction": 0.06393409933232942,
+      "quantiles": {
+        "0.5": 4.0,
+        "0.9": 10.0,
+        "0.99": 25.0,
+        "0.999": 211.0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "image": {
+        "image_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Series021\\Series021.v3dpbd",
+        "source_sha256": "de7ac6b7d4f3a6770888568cc7bc2f91fd99d646657bd6f15d2f1faa70353317",
+        "source_bytes": 21686215,
+        "decoded_sha256": "e0229a0ef907679915ae8a814049cefea43a792f3ef0eb8645a62d9e7265f58f",
+        "decoded_bytes": 31457280,
+        "reader_version": "vaa3d-pbd-v2",
+        "encoding": "v3d_volume_pkbitdf_encod",
+        "endian": "L",
+        "datatype": 2,
+        "dimensions_xyzc": [
+          512,
+          512,
+          60,
+          1
+        ],
+        "array_axes": "ZYX",
+        "coordinate_axes": "XYZ",
+        "coordinate_origin_xyz": [
+          0,
+          0,
+          0
+        ],
+        "voxel_centers": "integer indices",
+        "native_coordinates_units": "voxel",
+        "declared_metric_units": "voxel",
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "metric_transform": "metric_xyz = native_xyz * spacing_xyz; not applied to array or tile boxes",
+        "intensity_transform": "none",
+        "spatial_resampling": "none",
+        "padding": "none"
+      },
+      "figure": "training_46_raw.png",
+      "minimum": 15,
+      "maximum": 4095,
+      "mean": 73.55321636199952,
+      "zero_fraction": 0.0,
+      "quantiles": {
+        "0.5": 37.0,
+        "0.9": 155.0,
+        "0.99": 388.0,
+        "0.999": 741.0
+      }
+    }
+  ]
+}

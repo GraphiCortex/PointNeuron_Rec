@@ -1,5 +1,11 @@
 # Research reset: the evidence we should build on
 
+22 October scope note: this preserves the 21 October evidence audit. Its facts
+and historical verdicts are unchanged. Recommendations to rebuild/retrain PN1
+are superseded by the user's clarification that PN1 is a conceptual reference.
+The [active proposal](revised_proposal.md) and [Phase 1 draft](pn2_phase1_design.md)
+now start with original raw images; no PN1 training is a prerequisite.
+
 Active document for the [fresh PN2 workspace](../README.md).
 New source, scripts, configs, tests and reports belong under `PN2/`.
 

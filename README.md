@@ -22,26 +22,29 @@ All new work goes here. The sibling historical worktree's sources, reports and s
 retained reference material; reusing them will be explicit. No old experiment
 or checkpoint is adopted automatically.
 
-Milestone A has started: the shared SWC evaluator, an explicit seven-neuron
-development manifest and the repaired PN1-style reference specification are
-implemented. Read the [benchmark contract](docs/benchmark_contract.md),
-[reference specification](docs/baseline_reference.md) and
-[verification record](docs/evaluator_verification.md).
+## Active direction: original raw images to PN2
 
-The first [image-only input interface](docs/image_input_interface.md) now reuses
-the verified decoder and inventories complete covering tiles. It has passed
-synthetic checks and one real training-image CPU compatibility check. It does
-not yet select model points or produce reconstructions.
+Scope clarified 22 October 2026: PN1 informs conceptual design. Rebuilding,
+training or fixing a PN1 reference is not a prerequisite for the product.
 
-The [reference-cloud/model interface](docs/reference_forward_interface.md) now
-connects explicit image clouds to fresh PN1-style proposal operators. The real
-CPU check accounted for every tile and exposed unsupported singleton clouds;
-that whole-case forward check remains unsupported. No learned reconstruction
-result or training run is implied.
+```text
+Original raw image -> automatic PN2 point preparation -> PointNeXt
+-> Transformer proposals -> consolidation -> GATv2 -> graph/SWC
+```
 
-This establishes measurement infrastructure. The fresh PN1 reference and PN2
-candidate still need reviewed recipes and automatic whole-volume integration
-before training. Structural correctness is not inferred from curve geometry.
+Start with the [PN2 Phase 1 design draft and original-image views](docs/pn2_phase1_design.md).
+The verified decoder, coordinate/tiling interface, source inventories and common
+SWC evaluator remain useful infrastructure. Two original training files have now
+been inspected directly, without segmentation, reference content or model input
+selection. No PN2 foreground method, guide or sampler is promoted by those views.
+
+The PN1-only cloud/model detour has been removed from active source. Reports
+and pushed commit `48519ff` preserve it. Its DGCNN singleton issue is not the
+next PN2 task. No PN1 cutoff, weights or point budget become PN2 defaults.
+
+The next decision is the proposed soft structural guide and finite-budget cloud
+construction, before implementing it. Keep execution, representation retention,
+training learnability and genuine reconstruction evidence distinct.
 
 ## Working directory and runtime
 
@@ -60,5 +63,5 @@ reconstruction quality. No training or inference is launched by this setup.
 
 To evaluate saved reconstructions, use the [evaluation command](scripts/README.md).
 The command reads explicit development/synthetic SWC paths and never runs a
-model. The standalone package uses NumPy and SciPy; the retained model library
-is not imported.
+model. The base package uses NumPy and SciPy. Raw inspection uses the existing
+Matplotlib runtime. No model library is imported by image/evaluation commands.

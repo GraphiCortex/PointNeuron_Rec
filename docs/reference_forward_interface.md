@@ -1,5 +1,11 @@
 # Reference clouds and read-only proposal execution
 
+**Historical scope detour, closed 22 October 2026.** The user clarified PN1's
+conceptual role. No singleton correction or further PN1 run is scheduled.
+Associated source/config/tests are preserved at pushed commit `48519ff` and
+removed from active PN2. The unsupported result below is unchanged. Active work
+starts at [original raw images and PN2 Phase 1](pn2_phase1_design.md).
+
 22 October 2026. Continuation of the [baseline integration plan](baseline_integration_plan.md).
 The repaired PN1 reference now has image-to-cloud-to-proposal interfaces. The
 real-file whole-case forward check is **unsupported**, because singleton clouds
@@ -11,7 +17,7 @@ no threshold, padding or retry was used to turn it into a pass.
 This is R, the PN1-style reference, not a replacement for N's planned
 PointNeXt/Transformer/GATv2 stages. The encoder and pointwise proposal modules
 were copied from the historical checkout with LF normalization only. Their
-source/destination hashes are in [reused_components.json](../configs/reused_components.json).
+source/destination hashes are in [reused_components.json at the historical commit](https://github.com/GraphiCortex/PointNeuron_Rec/blob/48519ff/configs/reused_components.json).
 The local implementation's neighborhood search uses XYZ at the first block and
 the first three learned feature channels at later blocks; this port preserves
 that behavior and does not claim an official DGCNN reproduction.
@@ -25,7 +31,7 @@ dependency; the existing environment was reused without installation changes.
 
 ## Explicit input control, not a universal PN2 foreground rule
 
-[reference_cloud_control.example.json](../configs/reference_cloud_control.example.json)
+[reference_cloud_control.example.json at the historical commit](https://github.com/GraphiCortex/PointNeuron_Rec/blob/48519ff/configs/reference_cloud_control.example.json)
 uses the inherited image-only reference cutoff:
 
 ```text

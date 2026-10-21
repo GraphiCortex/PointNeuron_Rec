@@ -1,23 +1,19 @@
 # New commands
 
-`audit_reference_forward.py` runs a fresh, untrained PN1-style model on CPU
-after explicit image-only cloud preparation. It accounts for every tile and
-records unsupported singleton clouds rather than padding or skipping them.
-It saves raw proposals, not SWCs or trained checkpoints. See the
-[control and observed limitation](../docs/reference_forward_interface.md).
+`inspect_raw_images.py` starts with explicit original image files. It writes
+linear/log-display projections, one native source slice, raw histograms and
+byte/range provenance. No mask, reference, sampling or model is used.
 
 ```powershell
-& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe .\scripts\audit_reference_forward.py `
-  --cases .\tmp\my_input_check\images.json `
-  --tiling .\configs\input_tiling.example.json `
-  --clouds .\configs\reference_cloud_control.example.json `
-  --output-dir .\tmp\my_input_check\reference_forward
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe .\scripts\inspect_raw_images.py `
+  --cases .\configs\phase1_raw_review.json `
+  --output-dir .\tmp\my_raw_review
 ```
 
-The image manifest is an input to prepare. This command executes all its tiles
-with CPU inference and may take substantial time on larger images; it does not
-launch training. The example settings are a reference control, not a universal
-PN2 foreground recipe. Output directories must be new.
+The case list contains two explicit training raw images, chosen by decoded size
+within uint8/uint16 storage for initial inspection. They are not a representative
+benchmark. Output directories must be new. See the
+[Phase 1 design and inspected views](../docs/pn2_phase1_design.md).
 
 `audit_image_inputs.py` decodes strict image-only cases and inventories every
 spatial tile on CPU. It reads no reference, chooses no foreground threshold and
@@ -35,14 +31,14 @@ From the PN2 root, after creating manifests for actual saved outputs:
 ```powershell
 & ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe .\scripts\evaluate_reconstructions.py `
   --benchmark .\configs\development_benchmark.json `
-  --predictions .\tmp\comparison\R_outputs.json `
-  --predictions .\tmp\comparison\N_outputs.json `
+  --predictions .\tmp\comparison\PN2_control_outputs.json `
+  --predictions .\tmp\comparison\PN2_candidate_outputs.json `
   --output .\tmp\comparison\report.json `
   --csv .\tmp\comparison\report.csv `
   --tolerances 2 6 --maximum-step 0.5 --check-convergence
 ```
 
-`R_outputs.json` and `N_outputs.json` above are paths to prepare, not existing
+The two prediction manifests above are paths to prepare, not existing
 model results. Reports require fresh paths and are never overwritten.
 The half-step convergence check reports numerical differences; the requested
 step remains primary and there is no automatic convergence pass gate.
@@ -55,3 +51,7 @@ tolerances. Structural support does not establish topology accuracy.
 See the [manifest and scoring contract](../docs/benchmark_contract.md) and
 [verification record](../docs/evaluator_verification.md). No new training
 command exists yet. Generated artifacts belong in `PN2/tmp/`.
+
+The PN1-only `audit_reference_forward.py` has been removed from active source.
+Its [historical report](../docs/reference_forward_interface.md) and pushed commit
+`48519ff` preserve the detour; no PN1 rebuild is scheduled.

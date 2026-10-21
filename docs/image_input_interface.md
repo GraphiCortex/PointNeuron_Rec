@@ -4,6 +4,10 @@
 [baseline integration plan](baseline_integration_plan.md). This is an input
 execution interface. It does not prepare model clouds, train or reconstruct.
 
+22 October scope note: the PN1 integration plan is now archived. The verified
+image-only decoder/tiler remains reusable for PN2's original-raw-image start;
+it does not imply that PN1 reconstruction must be rebuilt.
+
 ## Implemented behavior
 
 The standalone `pn2.inputs` package accepts explicit image paths, decodes a
@@ -153,8 +157,8 @@ Tile enumeration streams to disk, but image decoding is not out-of-core.
 Decoded byte count is reported; peak process memory has not been measured and
 can exceed that count because compressed/decoded buffers coexist.
 
-Point-cloud preparation, short-cloud behavior, model normalization/reload,
-proposal aggregation, geodesic memory/path integration and SWC export remain
-to be ported and checked. The segment-based supervision proposal remains a
-separate design decision before cache creation. There is no new learned
+PN2 point preparation, short-cloud behavior, PointNeXt/Transformer/GATv2,
+normalization, consolidation and graph/SWC decoding remain to be specified
+and integrated under the active proposal. No PN1 geodesic port is required.
+Supervision remains a separate design decision before cache creation. There is no new learned
 sampler, topology loss, foreground rule or training recipe in this port.

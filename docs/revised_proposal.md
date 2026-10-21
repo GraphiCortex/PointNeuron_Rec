@@ -3,7 +3,11 @@
 Active document for the [fresh PN2 workspace](../README.md).
 New source, scripts, configs, tests and reports belong under `PN2/`.
 
-21 October 2026. **Discussion draft, prepared at the user's request.**
+21 October 2026; scope corrected 22 October 2026. **Discussion draft.**
+The user clarified that PN1 serves conceptual comparison, not a required
+reimplementation or fresh training arm. Work starts with original raw images
+and PN2 Phase 1. The former R/N milestone plan is superseded below. Historical
+findings remain unchanged. See the [raw-first Phase 1 draft](pn2_phase1_design.md).
 This revises the research specification; it does not authorize an unreviewed
 implementation, replace the original PDF, promote the current prototypes, or
 launch training. The [evidence audit](research_reset_evidence.md) explains what
@@ -13,8 +17,8 @@ is established, uncertain and newly corrected in our interpretation.
 
 Develop fully automatic reconstruction of a single labeled neuron from a 3D
 microscopy volume into a geometrically faithful skeleton/forest and valid SWC.
-Improve branch retention and connection accuracy over the actual working
-PN 1.0 system while retaining its useful geometric foundation. Robust software
+Use PN1's successes and failures to motivate better branch retention and
+connection accuracy, while testing PN2 in its actual input context. Robust software
 and commercialization remain goals to be earned through broader evidence.
 
 The main candidate retains the intended essence:
@@ -39,8 +43,9 @@ or that a fragmented reference should be forced into one connected tree.
 
 **Central hypothesis:** informative automatic point representations plus
 learned global proposal context and learned local connectivity can preserve
-more true branches and avoid more wrong connections than PN 1.0's promoted
-proposal/geodesic system, within a declared computation budget. Each claimed
+true branches and avoid wrong connections within a declared computation budget.
+PN1 motivates this hypothesis; differing contexts prevent a direct performance
+ranking without a separate matched protocol. Each claimed
 advantage must appear in final whole-neuron outputs, not only component losses.
 
 ## 2. What changes from the original proposal
@@ -102,7 +107,7 @@ cache. No fixed four-crop task can settle generalization.
 | Stage | Required output | Training/evidence obligation |
 |---|---|---|
 | Automatic point preparation | Image-derived XYZ/intensity with broad thin-branch support and recorded actual counts | Compare candidate support before/after sampling; guides must not depend on reference access at inference |
-| PointNeXt | Useful per-point descriptors with consistent coordinates and normalization | Audit native/reference wiring, operators and train/eval behavior; compare the complete candidate with R and isolate encoder benefit only in a matched ablation if warranted |
+| PointNeXt | Useful per-point descriptors with consistent coordinates and normalization | Audit declared wiring, operators and train/eval behavior; establish useful downstream features in PN2; isolate encoder benefit only in a named ablation if warranted |
 | Transformer | A compact, reproducibly defined graph discretization: centers, radii, used-slot scores and features | Match canonical training targets; evaluate continuous geometry and structural coverage separately from exact target assignment |
 | Consolidation | One spatially coherent proposal set across overlapping crops | Deterministic image-only policy; test duplication, junctions and crop boundaries before the whole-neuron comparison |
 | Candidate graph | Possible connections containing the relevant true branches without an undisclosed cap | Measure candidate ceilings and scale/memory; distinguish missing nodes from missing candidate pairs |
@@ -171,41 +176,33 @@ graph memory require explicit automatic behavior before broad use. Resolve
 the prototype's supported-input policy before a broader run; preserve all
 declared cases in its results, including unsupported ones.
 
-## 5. The reference systems and fair comparison
+## 5. PN1 as conceptual reference; PN2 as the product under development
 
-Maintain three clearly named records:
+PN1 supplies useful lessons: preserve image-supported geometry, retain weak
+branches, inspect final SWCs and avoid assuming learned connectivity must beat
+a geometric method. Its source, checkpoints and reports remain historical
+evidence with their actual preprocessing and training exposure disclosed.
 
-1. **H: historical PN 1.0.** Preserve the promoted guarded30/geodesic artifacts
-   and measured outputs. Record original decoding, absolute-coordinate policy,
-   training exposure and selected-node metric limitations. This is the working
-   historical reference, not the unseen-data baseline.
-2. **R: repaired PN 1.0-style reference.** DGCNN/pointwise proposals and the
-   promoted style of geodesic reconstruction, using verified decoding, explicit
-   range/local coordinates and fresh training on only the shared training
-   neurons. Version normalization and other necessary repairs. Loading old
-   weights into a corrected reader is a compatibility diagnostic, not this
-   controlled retraining comparison.
-3. **N: revised PN 2.0 candidate.** The retained PointNeXt/query/GAT architecture
-   under the agreed data and interface contract, with all automatic transitions
-   and final SWC outputs. The four-crop warm-start checkpoint is a diagnostic
-   reference, not the starting proof of a reproducible from-scratch model.
+Fresh PN1-style retraining, DGCNN integration and the proposed singleton fix
+are outside the active PN2 plan. The reference port undertaken on 21-22 October
+was a scope detour, not a required product stage. Its results are preserved,
+not promoted or reclassified as PN2 results.
 
-Use identical neuron identities, image bytes, references, coordinate transforms,
-image coverage and evaluator for R and N. Declare augmentation, train/eval
-normalization, data order, optimizer history, updates, wall time and memory.
-Architecture-specific losses can differ; record the difference rather than
-claiming identical objectives. Report learning curves and budgets so a weak
-undertrained reference is not made to lose by construction.
+The active product is original image -> automatic point preparation ->
+PointNeXt -> Transformer proposals -> consolidation -> GATv2 -> graph/SWC.
+No historical checkpoint, fixed intensity fraction or PN1 sampling rule becomes
+a PN2 default because it was implemented earlier.
 
-For a full-system comparison, internal point/node budgets may differ if their
-quality/resource tradeoff is disclosed. For a component ablation, fix the
-relevant input/proposal pools and other stages. Do not confuse a matched
-component experiment with a product-level resource comparison.
+Assess PN2's own complete outputs, failures and resource behavior under its
+declared context. A future claim that it improves PN1 needs a separately agreed
+comparison with compatible inputs, coordinates, exposure and metrics. Existing
+cross-context headline scores cannot establish that claim, and such a comparison
+does not require rebuilding PN1 now.
 
-The geodesic reference is also a useful fixed downstream control for testing
-whether new skeleton proposals help. That controlled temporary bypass of GAT
-does not promote a different final PN2 architecture. A new image-field/tracer
-pipeline is not a prerequisite of this reset.
+For a named PN2 component comparison, hold relevant input pools, downstream
+controls and resources fixed. Record data order, normalization, initialization,
+augmentation, optimizer history and selection policy. No temporary bypass of
+an intended product stage is adopted without discussing its architecture impact.
 
 ## 6. Common whole-neuron scorecard
 
@@ -242,8 +239,9 @@ The advancement decision must require a useful paired geometric gain at an
 agreed precision tradeoff, with no extra execution failures or structural
 regression concealed by the mean. Define observable structural errors and
 freeze quantitative improvement/regression margins in milestone A after
-reviewing the evaluator, PN1 behavior and the user's quality priorities, before
-N's decisive results. Earlier query plans suggested +0.02 mean F1, -0.01 mean
+reviewing the evaluator, PN2's input context and the user's quality priorities,
+before decisive results. A paired claim requires a declared comparison; it
+does not mandate a freshly trained PN1 arm. Earlier query plans suggested +0.02 mean F1, -0.01 mean
 precision and -0.05 worst-case F1 margins; those numbers are not empirically
 or biologically justified by this reset and are not silently adopted here.
 Report two-voxel errors and branch findings regardless of the aggregate result.
@@ -255,13 +253,13 @@ themselves support statistical or commercial reliability claims.
 
 | Milestone | Concrete deliverable | Decision before proceeding |
 |---|---|---|
-| A. Freeze the reset contract | Reviewed proposal, source/exposure manifest, shared scorecard and repaired-PN1 reference recipe | Agree which observations define success and which data remain eligible; no architecture training yet |
-| B. Certify interfaces and automatic integration | One focused implementation audit plus image-to-SWC execution across declared cases; explicit tiling/merge/normalization/label/capacity behavior | Resolve proven implementation defects and unsupported inputs; do not demand perfect four-crop selection before asking the reconstruction question |
-| C. Establish R and test one N candidate | Fresh shared-data R and N training, then paired whole-neuron development SWCs under frozen policies | Answer "up or down" with per-neuron geometry, structure, failures and resources; four-crop memorization is secondary |
-| D. Explain the outcome once | One named ablation at the measured bottleneck, if the result warrants it | Retain, simplify or redesign the component; do not append another loss or budget extension automatically |
-| E. Confirm a frozen candidate | A second training seed, then the PN2-reserved internal set and new compatible external/source-held-out data under a locked policy | Distinguish internal improvement, independent generalization and product readiness |
+| A. Start at original raw images | Verified decoding/coordinates, raw-image inspection and reviewed PN2 Phase 1 design | Agree what the point representation must preserve; no inherited PN1 mask or model |
+| B. Qualify automatic point preparation | Image-only candidates, fallible guide and finite-budget clouds with stage-by-stage retention/resource accounting | Locate losses before the encoder; keep SWCs outside inference decisions |
+| C. Integrate the intended PN2 stages | PointNeXt/Transformer/GATv2, consolidation and final SWC path with explicit labels, normalization and capacity behavior | Resolve proven interface defects before an expensive fit; no PN1 rebuild prerequisite |
+| D. Test one complete candidate | One agreed bounded training recipe and whole-neuron development outputs under frozen policies | Assess geometry, structure, failures and resources; use one named ablation only if the result warrants it |
+| E. Confirm a frozen candidate | A second training seed, then PN2-reserved internal cases and new compatible external/source-held-out data | Distinguish development improvement, independent generalization and product readiness |
 
-Milestone B uses the current code as a starting asset. The native/reference
+Milestone C may reuse current code as an explicitly reviewed starting asset. The native/reference
 operator and decoder evidence should be reused, not reimplemented from zero.
 Audit meaningful invariants: format decoding, translation/unit transforms,
 point-order behavior under declared tie rules, train/eval normalization,
@@ -272,17 +270,18 @@ official DETR/3DETR. Document its identity; do not call it a failed reproduction
 or silently replace its mechanism. A reference-aligned control is justified
 only if that mechanism is the hypothesis being tested.
 
-Milestone C must have a runnable whole-neuron inference path before an expensive
+Milestone D must have a runnable whole-neuron inference path before an expensive
 fit. Use the existing four-crop case only as a short execution/gradient sanity
 check; the present near-exact fit already supplies substantial local capacity
 evidence. No further 4,000-update confidence-only or canonical-target extension
 is the next milestone.
 
-At C, prepare one broader candidate, not a combinatorial grid. If diagnosis
+At D, prepare one broader candidate, not a combinatorial grid. If diagnosis
 needs an ablation, use a shared downstream control to locate whether input/
 proposal retention or connectivity loses the benefit. Then choose one relevant
-comparison: DGCNN versus PointNeXt, pointwise versus query proposals, or GAT
-versus the initialized/simple edge scorer. Do not train every permutation.
+comparison within the approved PN2 design. A different backbone or a simple
+edge scorer would be a separately discussed ablation, not another automatic
+product path. Do not train every permutation.
 
 ### Budget and failure discipline
 
@@ -295,10 +294,9 @@ not invent a reliable duration or finalize a fresh-training LR from the tiny
 warm-start fits.
 
 A completed negative experiment ends that hypothesis under its recipe. Permit
-one bounded corrective comparison only for an independently demonstrated bug
-or named causal explanation. This and milestone D's ablation are the same
-single post-C experimental allowance, not two extra runs. If that comparison fails, retain the reference
-and revise the proposal at a decision point. Infrastructure failure may resume
+one bounded corrective comparison for an independently demonstrated bug or
+named causal explanation. If that comparison fails, stop that hypothesis and
+revise the design at a decision point. Infrastructure failure may resume
 the same run with complete optimizer/RNG state and unchanged cap. Neither kind
 of failure automatically authorizes a threshold, loss, architecture or cap change.
 
@@ -308,8 +306,8 @@ another open-ended sequence.
 
 ## 8. Implementation impact and immediate next action
 
-**Proposed for retention:** verified reader/range/coordinate repairs; PN1's
-working reference; native PointNeXt/query/GAT implementations and operator
+**Proposed for retention:** verified decoding and coordinate handling; PN1's
+conceptual lessons and historical evidence; native PointNeXt/query/GAT implementations and operator
 audits; useful field/sampling experiments; canonical geometry utilities;
 checkpoint/provenance and final-SWC audit tools.
 
@@ -323,11 +321,12 @@ silently installed by this document.
 top-k, per-neuron cutoffs, new topology penalties, another representation,
 unbounded training extensions, or a new field/tracer replacement pipeline.
 
-The immediate implementation proposal after review is the **common explicit-ID
-evaluator and repaired-PN1 baseline specification**, with exposure manifests and
-failure accounting. It does not start another training run. The first resulting
-GPU comparison must be tied to the whole-neuron question in milestone C rather
-than another attempt to perfect the four training crops.
+The immediate work is **original raw-image inspection and PN2 Phase 1 design**.
+The common evaluator and image-only decoder/tiler are reusable infrastructure.
+The PN1-only port is archived; neither its cutoff nor its singleton behavior
+defines PN2's next task. No new sampling method or image field is promoted by
+this scope correction, and no training starts. See the
+[Phase 1 design draft](pn2_phase1_design.md) before implementation.
 
 ## 9. Research grounding
 
@@ -357,5 +356,6 @@ Primary references, supporting mechanisms rather than guaranteeing transfer:
 
 See the [evidence audit](research_reset_evidence.md) for local source/report
 links and the provenance of every claimed project result. The first revision
-keeps the intended architecture while requiring it to demonstrate an advantage
-over the actual working PN1 reference.
+keeps the intended architecture while requiring measured reconstruction quality
+in PN2's declared input context. Cross-system superiority remains a separate
+claim requiring a valid comparison.

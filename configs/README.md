@@ -20,11 +20,13 @@ voxel-grid example for input audits; it is not a frozen model-preparation
 recipe. [reused_components.json](reused_components.json) pins the reused decoder
 source and destination hashes, including explicit LF normalization.
 
-[reference_cloud_control.example.json](reference_cloud_control.example.json)
-names the inherited image-max-fraction/uniform-selection reference control.
-It binds cloud behavior explicitly and contains no supervision or optimizer
-settings. The [real forward check](../docs/reference_forward_interface.md)
-remains unsupported on singleton clouds; this is not a promoted PN2 policy.
+[phase1_raw_review.json](phase1_raw_review.json) lists two original training
+images without reference fields for the raw inspection script. No segmentation
+or sampling policy is selected by this file.
+
+The PN1 cloud-control config is removed from active source, preserved in commit
+`48519ff` with its [historical result](../docs/reference_forward_interface.md).
+Its fixed cutoff and point budget are not PN2 defaults.
 
 The retained [historical neuron partition](../../pointneuron2/configs/pointneuron2/partition_seed0.json)
 is reference metadata for the next benchmark specification. Its 33/7/8 groups

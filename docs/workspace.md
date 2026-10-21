@@ -19,6 +19,8 @@ From the fresh root, the retained Python executable is
 New generated artifacts belong in ignored `PN2/tmp/`. Parent/sibling source
 reuse must be explicit; the shared evaluator is a standalone `pn2` package.
 
-The user authorized starting Milestone A: a common reconstruction evaluator,
-explicit development manifest and repaired-PN1 reference specification.
-This is not authorization to launch a new GPU training run automatically.
+22 October clarification: PN1 serves conceptual comparison only. Original raw
+images and the PN2 Phase 1 design are the active starting point. The initial
+PN1-reference milestone was a scope detour; its reports/history remain, and
+its source port has been removed from the active tree. The image-only I/O,
+tiling and evaluator are reusable. No GPU training is authorized by setup.

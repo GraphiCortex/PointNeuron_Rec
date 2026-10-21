@@ -3,17 +3,18 @@
 21 October 2026. Initial milestone A contract for the
 [revised proposal](revised_proposal.md). It fixes the intended input/output and
 failure accounting for a shared evaluator. Structural correspondence and
-quantitative advancement margins remain to be agreed before the decisive R/N
-comparison. The new evaluator is a research tool, not a certified external
+quantitative advancement margins remain to be agreed for a declared PN2
+evaluation. **22 October scope correction:** a fresh PN1 arm is not required.
+The new evaluator is a research tool, not a certified external
 neuronal-reconstruction benchmark.
 
 ## Question and evaluation population
 
-Does a fresh PN2 candidate N reconstruct new whole neurons more accurately
-than a freshly trained, repaired PN1-style reference R under disclosed resource
-budgets? [H, R and N](baseline_reference.md) have distinct roles. H supplies
-historical context; its training exposure prevents calling it an unseen-data
-comparator on the present development/reserved partition.
+How well does automatic PN2 reconstruct whole neurons in its declared image
+context, and where does its output lose geometry or structure? PN1 supplies
+conceptual/historical context. The earlier [H/R/N specification](baseline_reference.md)
+is preserved as history, not an active retraining requirement. Its exposure
+limitations still prevent cross-context headline scores from proving superiority.
 
 The first explicit [development inventory](../configs/development_benchmark.json)
 contains exactly seven existing development identities: historical aliases
@@ -170,8 +171,9 @@ equivalents.
 
 ## Comparison and advancement decision
 
-Use the same explicit identities, image bytes, references, coordinate policy,
-declared volume and evaluator for R and N. Final decisions are automatic:
+For any later approved model comparison, use the same explicit identities,
+image bytes, references, coordinate policy, declared volume and evaluator.
+This does not schedule a PN1 rebuild. Final decisions are automatic:
 references never determine accepted-node counts, roots, candidates or output
 edges. A single development-selected operating policy may be frozen with its
 selection history disclosed; no per-neuron cutoffs or oracle top-k.

@@ -1,5 +1,11 @@
 # Repaired PN1: implementation plan before a fresh fit
 
+**Archived direction, superseded 22 October 2026.** PN1 is for conceptual
+comparison; its reconstruction port and singleton correction are not active
+PN2 tasks. The PN1-only code is preserved at pushed commit `48519ff` and removed
+from active source. The reusable decoder/tiler remain. Proceed from the
+[original-image Phase 1 design](pn2_phase1_design.md), not the port below.
+
 21 October 2026. Source inspection following the common evaluator milestone.
 This is a concrete integration draft, not a runnable training recipe. No model
 code, loss, threshold or checkpoint was changed. No image/reference contents,
