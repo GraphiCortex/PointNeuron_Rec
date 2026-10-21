@@ -4,6 +4,9 @@ The fresh project's `pyproject.toml` configures local source/test discovery.
 Synthetic checks cover analytic curve distances, arclength/subdivision behavior,
 spacing, SWC forests and validation, explicit manifests, failure denominators,
 paired reporting, CLI output and preservation of existing reports.
+Image-input checks additionally cover independent raw/PBD format fixtures,
+byte order/axes, explicit image-only manifests, native/physical metadata,
+whole-volume tile boundaries, small images and failed/unsupported cases.
 
 From the PN2 root:
 

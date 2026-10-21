@@ -151,6 +151,11 @@ a successful full-volume result. These are different failure mechanisms.
 
 ## Next bounded implementation and stopping point
 
+**Port status:** the decoder, strict image-case interface and complete tile
+inventory are now implemented. The [input interface verification](image_input_interface.md)
+records 123 passing tests and one real training-image CPU check. Point clouds,
+models, geodesic reconstruction and training are not part of that port.
+
 The first port should contain only the verified decoder, explicit image-case
 interface, deterministic tile inventory and provenance/count reporting. Use
 independent format fixtures and analytic boundary/short-input checks. Then

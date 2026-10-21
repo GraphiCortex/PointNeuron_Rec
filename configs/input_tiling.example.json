@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "tile_size_xyz": [97, 97, 97],
+  "stride_xyz": [48, 48, 48]
+}

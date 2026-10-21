@@ -1,5 +1,10 @@
 # New commands
 
+`audit_image_inputs.py` decodes strict image-only cases and inventories every
+spatial tile on CPU. It reads no reference, chooses no foreground threshold and
+runs no model. See its [schema, command and verification](../docs/image_input_interface.md).
+Output directories must be fresh and generated outputs belong under `tmp/`.
+
 `evaluate_reconstructions.py` compares saved SWCs using explicit benchmark and
 model-output JSON manifests. It never launches training or inference. The first
 prediction manifest is the paired baseline. Each declared case remains visible,

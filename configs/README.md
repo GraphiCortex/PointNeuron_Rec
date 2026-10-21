@@ -15,6 +15,11 @@ training identities and explicit source paths. It is source metadata, not a
 cache or executable training recipe. The development-only evaluator rejects its
 training partition. No image/reference contents were read to create it.
 
+[input_tiling.example.json](input_tiling.example.json) declares a complete
+voxel-grid example for input audits; it is not a frozen model-preparation
+recipe. [reused_components.json](reused_components.json) pins the reused decoder
+source and destination hashes, including explicit LF normalization.
+
 The retained [historical neuron partition](../../pointneuron2/configs/pointneuron2/partition_seed0.json)
 is reference metadata for the next benchmark specification. Its 33/7/8 groups
 are disjoint within PN2, but all 48 neurons appeared in historical PN1 training.

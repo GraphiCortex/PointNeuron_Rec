@@ -28,6 +28,11 @@ implemented. Read the [benchmark contract](docs/benchmark_contract.md),
 [reference specification](docs/baseline_reference.md) and
 [verification record](docs/evaluator_verification.md).
 
+The first [image-only input interface](docs/image_input_interface.md) now reuses
+the verified decoder and inventories complete covering tiles. It has passed
+synthetic checks and one real training-image CPU compatibility check. It does
+not yet select model points or produce reconstructions.
+
 This establishes measurement infrastructure. The fresh PN1 reference and PN2
 candidate still need reviewed recipes and automatic whole-volume integration
 before training. Structural correctness is not inferred from curve geometry.

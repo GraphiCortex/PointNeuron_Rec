@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "component": "Vaa3D decoder",
+      "historical_checkout": "pointneuron2-history",
+      "historical_revision": "35bfae9a4d0fcc6004e39e08b06833c2de5a746a",
+      "source_path": "../../pointneuron2/src/pointneuron/data/vaa3d_raw.py",
+      "destination_path": "../src/pn2/inputs/vaa3d.py",
+      "source_sha256": "8f77dab6acbddd9f6e46afac1236c941a938d6fb7684ce9dbc397620d679eea8",
+      "port": "Module copied with CRLF normalized to LF for repository policy; decoder code and operators unchanged. Image-only wrapper added separately.",
+      "reader_version": "vaa3d-pbd-v2",
+      "limitations": "PBD16 four/five-bit extensions remain explicitly unsupported.",
+      "destination_lf_sha256": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9"
+    }
+  ]
+}
