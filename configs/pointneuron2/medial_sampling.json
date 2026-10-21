@@ -1,9 +1,0 @@
-{
-  "spacing_xyz": [1.0, 1.0, 1.0],
-  "alpha": 0.25,
-  "uniform_fraction": 0.25,
-  "teasar_scale": 1.5,
-  "teasar_const": 2.0,
-  "dust_threshold": 8,
-  "max_crop_voxels": 16000000
-}

@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "name": "gold166",
+    "task": "automatic single-neuron whole-volume reconstruction",
+    "role": "development",
+    "source_inventory": {
+      "path": "../../tmp/gold166_manifest.json",
+      "sha256": "a56d890e66ba218df52132832cdd5b87bf8195e68dd321b70060b06e3d2615df",
+      "records": 163
+    },
+    "identity_partition": {
+      "path": "../../pointneuron2/configs/pointneuron2/partition_seed0.json",
+      "sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b",
+      "selected_partition": "val"
+    },
+    "creation_scope": "Existing metadata joined by sample_id; seven development image/reference path existence checks only. No dataset scan, image decoding, SWC parsing, reserved-data access, training or inference.",
+    "calibration_policy": "Native voxel geometry only; listed pixel-size metadata is unverified and is not a physical calibration claim.",
+    "independence": "Repeatedly inspected development cases; all seven were exposed to historical PN1 training. Not independent product confirmation.",
+    "content_provenance_status": "Image/reference content hashes pending approved-case audit before decisive comparison."
+  },
+  "cases": [
+    {
+      "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/e_checked7_utokyo_fly/SLP_PN_neuron/SLP_PN_neuron.v3dpbd.ano_stamp_2015_06_16_17_57.swc",
+      "image_path": "../../data/gold166/e_checked7_utokyo_fly/SLP_PN_neuron/SLP_PN_neuron.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "e_checked7_utokyo_fly",
+      "metadata": {
+        "historical_sample_index": 19,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": null,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked6_frog_scrippts/done_err_Recon112012no2-2/Recon112012no2-2.v3dpbd.ano_stamp_2015_06_17_12_15.swc",
+      "image_path": "../../data/gold166/p_checked6_frog_scrippts/done_err_Recon112012no2-2/Recon112012no2-2.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_frog_scrippts",
+      "metadata": {
+        "historical_sample_index": 21,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": null,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked6_human_allen_confocal/in_house1",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked6_human_allen_confocal/in_house1/Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd_stamp_2015_06_16_13_31.swc",
+      "image_path": "../../data/gold166/p_checked6_human_allen_confocal/in_house1/Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_human_allen_confocal",
+      "metadata": {
+        "historical_sample_index": 35,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": "../../data/gold166/p_checked6_human_allen_confocal/in_house1/Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd.pixelsize.txt",
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017/Series017.v3dpbd_stamp_2015_06_15_17_40.swc",
+      "image_path": "../../data/gold166/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017/Series017.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "metadata": {
+        "historical_sample_index": 44,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": null,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140921c4/140921c4.tif.v3dpbd.ano_stamp_2015_06_16_18_14.swc",
+      "image_path": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140921c4/140921c4.tif.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "metadata": {
+        "historical_sample_index": 79,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140921c4/140921c4.tif.v3dpbd.pixelsize.txt",
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2/1_8_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_15_14_41.swc",
+      "image_path": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2/1_8_Ch2.tif_uint8.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "metadata": {
+        "historical_sample_index": 94,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": "../../data/gold166/p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2/1_8_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+      "partition": "development",
+      "reference_swc": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4.v3dpbd.ano_stamp_2015_06_17_11_48.swc",
+      "image_path": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      },
+      "annotation_status": "reference_agreement",
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "metadata": {
+        "historical_sample_index": 135,
+        "identity_join": "partition.sample_id == source_inventory.sample_id",
+        "swc_selection_recorded": "stamped",
+        "calibration_status": "unverified",
+        "pixel_size_metadata_path": null,
+        "image_content_sha256": null,
+        "reference_content_sha256": null,
+        "source_files_opened_for_inventory": false,
+        "image_and_reference_paths_exist": true,
+        "historical_pn1_training_exposure": true,
+        "repeatedly_inspected_pn2_development": true,
+        "new_gradient_training_eligible": false
+      }
+    }
+  ]
+}

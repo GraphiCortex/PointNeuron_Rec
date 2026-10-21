@@ -1,5 +1,0 @@
-{
-  "schema": "pointneuron2-centerline-loss-control-v1",
-  "negative_aggregation": "topk",
-  "negative_to_positive_ratio": 3
-}
