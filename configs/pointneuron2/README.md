@@ -1,5 +1,8 @@
 # Configuration status after the research reset
 
+New configurations belong in **[PN2/configs](../../PN2/configs/README.md)**.
+This parent folder retains historical recipes and identity metadata.
+
 The active plan is [the revised proposal](../../docs/pointneuron2/revised_proposal.md).
 The existing experiment JSON files are historical recipes, not current training
 defaults. Their generated dependencies may have been removed by the cleanup.

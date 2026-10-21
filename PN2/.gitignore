@@ -1,0 +1,4 @@
+/tmp/
+/.venv/
+/.pytest_cache/
+/configs/local.json

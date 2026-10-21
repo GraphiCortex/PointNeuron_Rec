@@ -1,5 +1,8 @@
 # PointNeuron 2.0 — scripts for the fresh development cycle
 
+New scripts belong in **[PN2/scripts](../../PN2/scripts/README.md)**.
+This parent folder retains historical utilities and the completed cleanup tools.
+
 The active direction is the [revised proposal](../../docs/pointneuron2/revised_proposal.md).
 The next implementation milestone is a common explicit-ID whole-neuron evaluator
 and a repaired PN1-style baseline specification. No new training entry point or

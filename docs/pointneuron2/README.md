@@ -1,11 +1,15 @@
 # PointNeuron 2.0 — current research plan
 
+Fresh work now lives under **[PN2](../../PN2/README.md)**. Its active documents
+are in [PN2/docs](../../PN2/docs/README.md). This parent folder holds historical
+reports, provenance and the completed cleanup record.
+
 21 October 2026. The old local-experiment cycle is closed. The fresh development
-cycle starts from the [revised proposal](revised_proposal.md).
+cycle starts from the [revised proposal](../../PN2/docs/revised_proposal.md).
 
 - [Fresh-start status and verified cleanup](fresh_start.md)
-- [Revised research proposal and milestones](revised_proposal.md)
-- [Evidence audit: PN1 strengths, PN2 findings and comparison gaps](research_reset_evidence.md)
+- [Revised research proposal and milestones](../../PN2/docs/revised_proposal.md)
+- [Evidence audit: PN1 strengths, PN2 findings and comparison gaps](../../PN2/docs/research_reset_evidence.md)
 - [Historical experiment index](HISTORY.md)
 
 Current milestone: specify the shared whole-neuron evaluator, data/exposure

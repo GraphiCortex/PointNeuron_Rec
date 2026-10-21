@@ -1,5 +1,9 @@
 # Fresh start: status and retained assets
 
+**Workspace location:** all fresh work is now under [PN2](../../PN2/README.md),
+including its active [proposal](../../PN2/docs/revised_proposal.md) and new
+ignored `PN2/tmp/` outputs. This document records the earlier completed cleanup.
+
 21 October 2026. The user requested a fresh PN2 start and deletion of obsolete
 remnants for storage and clarity. Cleanup is complete. The [revised proposal](revised_proposal.md)
 is the working research direction; model changes and substantial runs still need
