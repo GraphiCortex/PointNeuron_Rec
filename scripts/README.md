@@ -1,5 +1,24 @@
 # New commands
 
+`audit_reference_forward.py` runs a fresh, untrained PN1-style model on CPU
+after explicit image-only cloud preparation. It accounts for every tile and
+records unsupported singleton clouds rather than padding or skipping them.
+It saves raw proposals, not SWCs or trained checkpoints. See the
+[control and observed limitation](../docs/reference_forward_interface.md).
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe .\scripts\audit_reference_forward.py `
+  --cases .\tmp\my_input_check\images.json `
+  --tiling .\configs\input_tiling.example.json `
+  --clouds .\configs\reference_cloud_control.example.json `
+  --output-dir .\tmp\my_input_check\reference_forward
+```
+
+The image manifest is an input to prepare. This command executes all its tiles
+with CPU inference and may take substantial time on larger images; it does not
+launch training. The example settings are a reference control, not a universal
+PN2 foreground recipe. Output directories must be new.
+
 `audit_image_inputs.py` decodes strict image-only cases and inventories every
 spatial tile on CPU. It reads no reference, chooses no foreground threshold and
 runs no model. See its [schema, command and verification](../docs/image_input_interface.md).

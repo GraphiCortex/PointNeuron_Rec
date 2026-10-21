@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "purpose": "repaired_pn1_input_control",
+  "foreground": {"mode": "image_max_fraction", "fraction": 0.2},
+  "max_input_points": 512,
+  "seed": 0
+}

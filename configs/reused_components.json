@@ -12,6 +12,26 @@
       "reader_version": "vaa3d-pbd-v2",
       "limitations": "PBD16 four/five-bit extensions remain explicitly unsupported.",
       "destination_lf_sha256": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9"
+    },
+    {
+      "component": "Retained local PN1 DGCNN-style encoder",
+      "historical_checkout": "pointneuron2-history",
+      "historical_revision": "35bfae9a4d0fcc6004e39e08b06833c2de5a746a",
+      "source_path": "../../pointneuron2/src/pointneuron/models/dgcnn.py",
+      "destination_path": "../src/pn2/reference/dgcnn.py",
+      "source_sha256": "876bca0862c3e7a3d7eb746aac9cbebdec55dac57cda712327cf5fe5aaefdfb7",
+      "destination_lf_sha256": "855630e383b120b4a31e1ade802997675d48a1a428f829d9275ecede9800323b",
+      "port": "Module copied with CRLF normalized to LF; operators and defaults unchanged. Fresh wrapper explicitly selects local coordinates."
+    },
+    {
+      "component": "Retained local PN1 pointwise proposal head",
+      "historical_checkout": "pointneuron2-history",
+      "historical_revision": "35bfae9a4d0fcc6004e39e08b06833c2de5a746a",
+      "source_path": "../../pointneuron2/src/pointneuron/models/proposal.py",
+      "destination_path": "../src/pn2/reference/proposal.py",
+      "source_sha256": "0161b933f36e3d5740d6be4ba90207051edc9bbe2e892ddcb769683aa2d39794",
+      "destination_lf_sha256": "8982900794df20eda608b98c8ca61290ae0ca9da349190a07ea03f0a558040d8",
+      "port": "Module copied with CRLF normalized to LF; operators and defaults unchanged. Fresh wrapper explicitly selects local coordinates."
     }
   ]
 }

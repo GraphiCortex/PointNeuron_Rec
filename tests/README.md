@@ -7,6 +7,11 @@ paired reporting, CLI output and preservation of existing reports.
 Image-input checks additionally cover independent raw/PBD format fixtures,
 byte order/axes, explicit image-only manifests, native/physical metadata,
 whole-volume tile boundaries, small images and failed/unsupported cases.
+Reference checks cover distinct voxel sampling, global coordinates/intensities,
+short clouds and CPU model behavior with nonzero proposal weights, BatchNorm
+buffers, batched/single inputs, translation and state replay. Model tests need
+PyTorch and are skipped if that optional dependency is absent; all 150 tests
+passed in the retained environment.
 
 From the PN2 root:
 

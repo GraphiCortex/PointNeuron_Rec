@@ -33,6 +33,12 @@ the verified decoder and inventories complete covering tiles. It has passed
 synthetic checks and one real training-image CPU compatibility check. It does
 not yet select model points or produce reconstructions.
 
+The [reference-cloud/model interface](docs/reference_forward_interface.md) now
+connects explicit image clouds to fresh PN1-style proposal operators. The real
+CPU check accounted for every tile and exposed unsupported singleton clouds;
+that whole-case forward check remains unsupported. No learned reconstruction
+result or training run is implied.
+
 This establishes measurement infrastructure. The fresh PN1 reference and PN2
 candidate still need reviewed recipes and automatic whole-volume integration
 before training. Structural correctness is not inferred from curve geometry.

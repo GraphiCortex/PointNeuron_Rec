@@ -156,6 +156,12 @@ inventory are now implemented. The [input interface verification](image_input_in
 records 123 passing tests and one real training-image CPU check. Point clouds,
 models, geodesic reconstruction and training are not part of that port.
 
+22 October update: the [cloud/model execution interface](reference_forward_interface.md)
+is also implemented with unchanged retained operators. Its real whole-case
+check remains unsupported because eight tiles contain singleton clouds. An
+explicit neighborhood-boundary correction is proposed there, not applied;
+no threshold, loss, learned checkpoint or training change was made.
+
 The first port should contain only the verified decoder, explicit image-case
 interface, deterministic tile inventory and provenance/count reporting. Use
 independent format fixtures and analytic boundary/short-input checks. Then
