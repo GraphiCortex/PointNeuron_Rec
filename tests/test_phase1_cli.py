@@ -51,7 +51,7 @@ def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path):
     for path, before in hashes.items():
         assert hashlib.sha256(path.read_bytes()).hexdigest() == before
     assert image.read_bytes() == payload
-    assert (output / "case_00/reference_cloud_overlay.png").is_file()
+    assert (output / "evaluation/overlays/case_00/reference_cloud_overlay.png").is_file()
     assert "SCORE case_id=synthetic-training-control" in evaluation.stdout
     # Unsupported reference metadata must remain visible, not become a score
     # or a passed one-case denominator. Point preparation remains unchanged.
@@ -69,3 +69,21 @@ def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path):
     assert not recorded["rows"] and not recorded["decision"]["promising_for_replication"]
     assert recorded["failures"][0]["reference_sha256"] == hashlib.sha256(reference.read_bytes()).hexdigest()
     assert "UNSCORABLE case_id=synthetic-training-control" in invalid.stdout
+    # A named, opt-in geometry interpretation retains the signed metadata;
+    # strict reports and clouds remain immutable.
+    adapted = second / "evaluation_opaque_integer"
+    compatible = subprocess.run([sys.executable, str(repo / "scripts/evaluate_phase1_sampling.py"),
+        "--clouds", str(second / "clouds.json"), "--training-inventory", str(inventory),
+        "--reference-type-policy", "opaque_integer", "--output-dir", str(adapted)],
+        capture_output=True, text=True)
+    assert compatible.returncode == 0, compatible.stdout + compatible.stderr
+    preserved = json.loads((adapted / "report.json").read_text())
+    assert len(preserved["rows"]) == 12 and not preserved["failures"]
+    assert preserved["references"][0]["type_counts"] == {"-73": 1, "3": 1}
+    assert preserved["references"][0]["nodes_retained"] == 2
+    assert preserved["reference_type_policy"] == "opaque_integer"
+    # Type metadata cannot change any geometry score on this identical curve.
+    assert [r["metrics"] for r in preserved["rows"]] == [r["metrics"] for r in result["rows"]]
+    for path, before in hashes.items():
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == before
+    assert json.loads((second / "evaluation/report.json").read_text()) == recorded

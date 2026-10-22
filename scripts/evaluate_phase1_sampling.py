@@ -14,7 +14,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from pn2.evaluation.cloud_support import CloudSupport
-from pn2.evaluation.swc import parse_swc
+from pn2.evaluation.swc import TYPE_POLICIES, parse_swc
 from pn2.inputs.cases import ImageCase, read_object
 from pn2.inputs.image import decode_image
 from pn2.inputs.sampling import partition_tiles, selection_count
@@ -85,7 +85,7 @@ def decision(summary, rows, recipe):
             "checks": checks, "automatic_training_authorized": False}
 
 
-def overlay(folder, item, raw, morphology):
+def overlay(folder, cloud_root, item, raw, morphology):
     os.environ.setdefault("MPLCONFIGDIR", str(folder / "matplotlib_cache"))
     import matplotlib
     matplotlib.use("Agg")
@@ -96,7 +96,7 @@ def overlay(folder, item, raw, morphology):
     for column, method in enumerate(("reference", "uniform", "intensity", "sato")):
         selected = next((o for o in item["outputs"] if o["method"] == method
                          and o["seed"] == 0 and o["cell_side_voxel"] == lean), None)
-        xyz = np.load(folder.parent / selected["path"])["xyz_native"] if selected else None
+        xyz = np.load(cloud_root / selected["path"])["xyz_native"] if selected else None
         for row, (projection, pair, labels) in enumerate(((raw.max(axis=0), (0, 1), ("X", "Y")),
                                                          (raw.max(axis=1), (0, 2), ("X", "Z")))):
             ax = axes[row, column]
@@ -113,11 +113,20 @@ def overlay(folder, item, raw, morphology):
     plt.close(fig)
 
 
-def evaluate(cloud_manifest, inventory_path):
+def evaluate(cloud_manifest, inventory_path, *, reference_type_policy="nonnegative", output_dir=None):
     cloud_manifest, inventory_path = Path(cloud_manifest).resolve(), Path(inventory_path).resolve()
     root = cloud_manifest.parent
-    target = root / "evaluation"
-    target.mkdir(exist_ok=False)
+    if reference_type_policy not in TYPE_POLICIES:
+        raise ValueError("Unknown reference type policy")
+    if reference_type_policy != "nonnegative" and output_dir is None:
+        raise ValueError("Geometry-only reference mode requires an explicit fresh output directory")
+    target = Path(output_dir).resolve() if output_dir is not None else root / "evaluation"
+    target.mkdir(parents=True, exist_ok=False)
+    source_root = Path(__file__).resolve().parents[1]
+    code_hashes = {"evaluation_script_sha256": digest(__file__),
+                   "support_code_sha256": digest(source_root / "src/pn2/evaluation/cloud_support.py"),
+                   "distance_code_sha256": digest(source_root / "src/pn2/evaluation/geometry.py"),
+                   "swc_reader_sha256": digest(source_root / "src/pn2/evaluation/swc.py")}
     clouds, inventory = read_object(cloud_manifest), read_object(inventory_path)
     if digest(root / "recipe.json") != clouds["frozen_recipe_sha256"]:
         raise ValueError("Frozen comparison recipe changed before evaluation")
@@ -126,7 +135,7 @@ def evaluate(cloud_manifest, inventory_path):
     tolerance = str(float(settings["primary_tolerance_voxel"]))
     rows, references, failures = [], [], []
     started = time.perf_counter()
-    for item in clouds["cases"]:
+    for case_number, item in enumerate(clouds["cases"]):
         case = item["case_id"]
         matches = [c for c in inventory["cases"] if c["case_id"] == case and c["partition"] == "training"]
         if len(matches) != 1:
@@ -141,7 +150,7 @@ def evaluate(cloud_manifest, inventory_path):
         raw = decoded.array_zyx
         reference = (inventory_path.parent / row["reference_swc"]).resolve()
         try:
-            morphology = parse_swc(reference)
+            morphology = parse_swc(reference, type_policy=reference_type_policy)
             metric = CloudSupport(morphology, settings["quadrature_step_voxel"], decoded.dimensions_xyz)
             refined = CloudSupport(morphology, settings["quadrature_step_voxel"] / 2, decoded.dimensions_xyz)
             if metric.index is None:
@@ -152,8 +161,14 @@ def evaluate(cloud_manifest, inventory_path):
                              "reference_sha256": digest(reference) if reference.is_file() else None})
             print(f"UNSCORABLE case_id={case} reason={error}", flush=True)
             continue
+        codes, counts = np.unique(morphology.types, return_counts=True)
         references.append({"case_id": case, "path": str(reference), "sha256": digest(reference),
-                           "annotation_status": row["annotation_status"]})
+                           "annotation_status": row["annotation_status"],
+                           "type_policy": reference_type_policy,
+                           "type_counts": {str(int(k)): int(v) for k, v in zip(codes, counts)},
+                           "negative_type_rows": int(np.count_nonzero(morphology.types < 0)),
+                           "nodes_retained": morphology.node_count,
+                           "type_interpretation": "opaque metadata; no anatomical labels inferred; no nodes filtered"})
         case_rows = []
         for output in item["outputs"]:
             start = time.perf_counter()
@@ -181,9 +196,10 @@ def evaluate(cloud_manifest, inventory_path):
                   f"support@2={metrics['tolerances'][tolerance]['curve_support']:.4f} "
                   f"seconds={result['evaluation_seconds']:.2f}", flush=True)
         rows.extend(case_rows)
-        write(target / f"case_{len(references):02d}.json", {"case_id": case, "rows": case_rows})
-        overlay_folder = root / Path(item["outputs"][0]["path"]).parent
-        overlay(overlay_folder, item, raw, morphology)
+        write(target / f"case_{case_number:02d}.json", {"case_id": case, "rows": case_rows})
+        overlay_folder = target / "overlays" / f"case_{case_number:02d}"
+        overlay_folder.mkdir(parents=True, exist_ok=False)
+        overlay(overlay_folder, root, item, raw, morphology)
     summary = summarize(rows, recipe)
     verdict = decision(summary, rows, recipe)
     if failures or len(references) != len(clouds["cases"]):
@@ -193,8 +209,7 @@ def evaluate(cloud_manifest, inventory_path):
     verdict["case_accounting"] = {"declared": len(clouds["cases"]), "scored": len(references),
                                   "unscorable_reference": len(failures)}
     result = {"schema_version": 1, "cloud_manifest_sha256": digest(cloud_manifest),
-              "evaluation_script_sha256": digest(__file__),
-              "support_code_sha256": digest(Path(__file__).resolve().parents[1] / "src/pn2/evaluation/cloud_support.py"),
+              **code_hashes, "reference_type_policy": reference_type_policy,
               "recipe": recipe, "references": references, "failures": failures,
               "rows": rows, "summary": summary, "decision": verdict,
               "evaluation_seconds": time.perf_counter() - started}
@@ -207,5 +222,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--clouds", required=True, type=Path)
     parser.add_argument("--training-inventory", required=True, type=Path)
+    parser.add_argument("--reference-type-policy", choices=TYPE_POLICIES, default="nonnegative")
+    parser.add_argument("--output-dir", type=Path, help="Fresh evaluation directory; required for opaque reference metadata")
     args = parser.parse_args()
-    evaluate(args.clouds, args.training_inventory)
+    evaluate(args.clouds, args.training_inventory, reference_type_policy=args.reference_type_policy,
+             output_dir=args.output_dir)

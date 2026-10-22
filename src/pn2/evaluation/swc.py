@@ -13,6 +13,9 @@ import re
 import numpy as np
 
 
+TYPE_POLICIES = ("nonnegative", "opaque_integer")
+
+
 class SwcValidationError(ValueError):
     """The supplied artifact cannot be interpreted as an SWC forest."""
 
@@ -74,13 +77,18 @@ def _integer(token: str, where: str) -> int:
     return value
 
 
-def parse_swc(path: str | Path) -> Morphology:
+def parse_swc(path: str | Path, *, type_policy: str = "nonnegative") -> Morphology:
     """Read unordered rows; reject malformed data rather than silently repair it.
 
-    Positive node IDs and integer nonnegative type codes are required. Roots
+    Positive node IDs and integer nonnegative type codes are required by default.
+    Explicit opaque_integer mode preserves signed type metadata for geometry-only
+    reference agreement; it does not assign anatomical meaning, remove nodes,
+    or change any other validation. Output readers keep the strict default. Roots
     have parent -1; multiple roots and zero radii are allowed and reported.
     Inline comments are accepted. Coordinates may be negative but must be finite.
     """
+    if type_policy not in TYPE_POLICIES:
+        raise SwcValidationError(f"Unknown SWC type policy: {type_policy!r}")
     path = Path(path)
     ids, types, coordinates, radii, parent_ids = [], [], [], [], []
     try:
@@ -96,7 +104,7 @@ def parse_swc(path: str | Path) -> Morphology:
         if len(parts) != 7:
             raise SwcValidationError(f"{where}: expected 7 columns, received {len(parts)}")
         node_id, node_type, parent_id = (_integer(parts[i], where) for i in (0, 1, 6))
-        if node_id <= 0 or node_type < 0:
+        if node_id <= 0 or (type_policy == "nonnegative" and node_type < 0):
             raise SwcValidationError(f"{where}: node IDs must be positive and types nonnegative")
         try:
             x, y, z, radius = map(float, parts[2:6])
