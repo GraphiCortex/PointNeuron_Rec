@@ -56,6 +56,12 @@ large local gaps. No model was trained or product sampling policy promoted.
 The [original strict-reader result](docs/phase1_sampling_results.md) remains
 preserved as an incomplete comparison.
 
+The [next four-context qualification](docs/phase1_qualification_plan.md) is
+prepared with unchanged settings. Its header-only preflight flags whole-volume
+filter memory scaling on this 16 GB laptop. Generation is held pending a reviewed
+memory-bounded implementation; the four cases remain fixed and no model fit is
+launched.
+
 ## Working directory and runtime
 
 ```powershell

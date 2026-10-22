@@ -58,6 +58,12 @@ one-scorable-case figure from its saved report:
 
 ## Other commands
 
+`preflight_phase1_resources.py` reads explicit image headers and completed-run
+metadata to estimate resource costs without decoding images, reading references
+or launching generation. The [four-context qualification plan](../docs/phase1_qualification_plan.md)
+records its command, rough-projection limits and current memory hold. It does
+not change the filter or sampler.
+
 `inspect_raw_images.py` starts with explicit original image files. It writes
 linear/log-display projections, one native source slice, raw histograms and
 byte/range provenance. No mask, reference, sampling or model is used.

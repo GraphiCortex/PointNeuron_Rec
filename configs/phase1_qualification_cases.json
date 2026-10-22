@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_frog_scrippts/done_Recon112012no3-2/Recon112012no3-2.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_mouse_RGC_uw/sv_140918c8/140918c8.tif.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg/0984_seg.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "partition": "training",
+      "image_path": "../../data/gold166/p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0.v3dpbd",
+      "coordinates": {
+        "mode": "native",
+        "units": "voxel"
+      }
+    }
+  ]
+}

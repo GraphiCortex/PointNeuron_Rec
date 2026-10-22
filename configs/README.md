@@ -11,6 +11,12 @@ controls, measurements and stopping rules.
 pins; [phase1_cpu_lock.txt](phase1_cpu_lock.txt) records the complete installed
 dependency set for Python 3.11 on Windows. Both belong to the isolated new runtime.
 
+[phase1_qualification_cases.json](phase1_qualification_cases.json) fixes four
+additional image-only training cases, aliases 22/75/85/126, using the unchanged
+sampling recipe. The [qualification plan and resource preflight](../docs/phase1_qualification_plan.md)
+record why whole-volume generation is currently held. No clouds or training are
+created by this configuration.
+
 [development_benchmark.json](development_benchmark.json) lists seven existing
 development identities, explicit image/reference paths, native voxel units and
 training-exposure metadata. Identity joins use stable sample IDs. Its source
