@@ -10,6 +10,12 @@ by geometry. Distances use continuous segments, with arclength-weighted midpoint
 quadrature for length statistics. Endpoint/junction support is geometric and
 does not establish correct wiring.
 
+The common evaluator and predicted SWC validation keep nonnegative type codes
+by default. The sampling probe's separately declared
+[reference-only policy](../docs/reference_type_policy.md) can preserve signed
+integer type metadata verbatim for geometry agreement. It retains every node
+and all structural checks; no anatomical type labels are inferred or changed.
+
 `pn2/inputs/` adds explicit image-only cases, the retained verified Vaa3D decoder,
 native XYZ provenance and deterministic covering tile inventories. It imports
 no historical package, SWC parser or model. Physical spacing is declared

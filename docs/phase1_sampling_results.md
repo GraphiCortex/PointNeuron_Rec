@@ -1,5 +1,9 @@
 # First raw-image sampling probe
 
+The [subsequent explicit-policy rescore](phase1_geometry_rescore_results.md)
+evaluates both frozen inputs without editing tags or geometry. This page and
+the original raw report retain the strict-reader result and its limitations.
+
 22 October 2026. **Cloud generation succeeded for both original images; the
 two-image retention comparison is incomplete.** One training image was scored.
 On it, Sato weighting improved spatial support over intensity weighting at

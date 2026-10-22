@@ -1,5 +1,9 @@
 # Geometry-only reference types: policy declared before rescoring
 
+The bounded rescore is now complete; see the
+[two-image results and integrity checks](phase1_geometry_rescore_results.md).
+The prospective policy below was committed before those scores.
+
 22 October 2026. The user authorized one bounded CPU rescore of the frozen
 two-image sampling probe after this compatibility investigation. No new point
 selection, filters, training, coordinate alignment or parameter search belongs
@@ -69,7 +73,8 @@ Reference byte hashes:
 - Fruitfly: `d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b`
 - Series021: `e4f72445f008af58dbaee2504f4cfaa40d2fc6200345a359ea60cac89c98a121`
 
-The full pre-score audit is saved under ignored
+The [full pre-score audit](phase1/reference_type_audit_20261022.json) is retained
+in visible source, with the raw copy under ignored
 `tmp/reference_type_audit_20261022/audit.json`. This is structural/syntax evidence,
 not certification of the reference anatomy.
 

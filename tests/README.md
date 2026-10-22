@@ -31,5 +31,12 @@ do not use it for the new image-filter tests or repair it in place. The isolated
 runtime and lock are documented in scripts/README.md. No real dataset is opened
 by the tests.
 
+The explicit geometry-only reference mode adds signed-type preservation,
+unchanged strict defaults, rejection of malformed geometry under either mode,
+and a CLI control proving that changing only type metadata cannot change curve
+support. The integration check also preserves the original strict report and
+cloud packets during an opt-in rescore. The complete suite passes **149 tests**
+as of the 22 October reference-policy change; no real dataset is opened.
+
 Retained historical tests remain useful evidence for reused components. No broad
 test or training run is started by creating this folder.

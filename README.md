@@ -48,10 +48,13 @@ agreed to the three controls. The CPU probe is implemented and tested, without
 promoting a guide to the product. Keep execution, representation retention,
 training learnability and genuine reconstruction evidence distinct.
 
-[First results](docs/phase1_sampling_results.md): both raw-image cloud generations
-completed. Structural weighting improved support on the one scored training
-image; a nonstandard reference type code leaves the two-image comparison
-incomplete. No model was trained or sampling policy promoted.
+[Current results](docs/phase1_geometry_rescore_results.md): the frozen two-image
+rescore passes the comparative input-support gate under an explicit policy
+preserving unknown reference type metadata. Structural weighting improves
+support over intensity weighting in both contexts; lean clouds still have
+large local gaps. No model was trained or product sampling policy promoted.
+The [original strict-reader result](docs/phase1_sampling_results.md) remains
+preserved as an incomplete comparison.
 
 ## Working directory and runtime
 

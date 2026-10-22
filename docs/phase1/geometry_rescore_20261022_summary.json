@@ -1,0 +1,1173 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-22",
+  "executed_source_commit": "23cbb6f",
+  "reference_type_policy": "opaque_integer",
+  "scope": "Geometry agreement with all supplied reference nodes, types preserved as uninterpreted metadata; no reconstruction or anatomical type claims",
+  "case_accounting": {
+    "declared": 2,
+    "scored": 2,
+    "unscorable_reference": 0
+  },
+  "recipe": {
+    "schema_version": 1,
+    "sigmas_voxel": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "tile_side_voxel": 128,
+    "cell_sides_voxel": [
+      4,
+      8
+    ],
+    "uniform_mass": 0.1,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "methods": [
+      "uniform",
+      "intensity",
+      "sato"
+    ],
+    "evaluation": {
+      "tolerances_voxel": [
+        2.0,
+        6.0
+      ],
+      "quadrature_step_voxel": 0.5,
+      "primary_tolerance_voxel": 2.0,
+      "minimum_mean_gain": 0.05,
+      "maximum_local_coverage_drop": 0.02,
+      "maximum_gap_increase_voxel": 2.0
+    }
+  },
+  "references": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1\\3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd.ano_stamp_2015_06_16_13_05.swc",
+      "sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "annotation_status": "reference_agreement",
+      "type_policy": "opaque_integer",
+      "type_counts": {
+        "-73": 46,
+        "3": 271,
+        "18": 59,
+        "21": 5,
+        "24": 4,
+        "25": 7,
+        "28": 8,
+        "76": 21,
+        "77": 20,
+        "82": 25
+      },
+      "negative_type_rows": 46,
+      "nodes_retained": 466,
+      "type_interpretation": "opaque metadata; no anatomical labels inferred; no nodes filtered"
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Series021\\Series021.v3dpbd_stamp_2015_06_15_17_52.swc",
+      "sha256": "e4f72445f008af58dbaee2504f4cfaa40d2fc6200345a359ea60cac89c98a121",
+      "annotation_status": "reference_agreement",
+      "type_policy": "opaque_integer",
+      "type_counts": {
+        "3": 164,
+        "18": 179,
+        "20": 12,
+        "27": 58,
+        "52": 34,
+        "80": 62
+      },
+      "negative_type_rows": 0,
+      "nodes_retained": 509,
+      "type_interpretation": "opaque metadata; no anatomical labels inferred; no nodes filtered"
+    }
+  ],
+  "summary": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 4,
+      "method": "uniform",
+      "seed_count": 5,
+      "unique_count": 184062,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.4055322670467989,
+          "median": 0.4090405316908201,
+          "minimum": 0.39364366532698647,
+          "maximum": 0.41472006191817085
+        },
+        "worst_branch_support": {
+          "mean": 0.023529717498828616,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.09148033565637058
+        },
+        "branch_p10_support": {
+          "mean": 0.21929663923863996,
+          "median": 0.22482856965783457,
+          "minimum": 0.17929949651065327,
+          "maximum": 0.2634678241975599
+        },
+        "longest_unsupported_run": {
+          "mean": 35.28830999103576,
+          "median": 31.232082675381335,
+          "minimum": 24.92101766233227,
+          "maximum": 60.23792267126436
+        },
+        "endpoint_support": {
+          "mean": 0.4444444444444445,
+          "median": 0.4444444444444444,
+          "minimum": 0.3333333333333333,
+          "maximum": 0.5555555555555556
+        },
+        "junction_support": {
+          "mean": 0.425,
+          "median": 0.4375,
+          "minimum": 0.375,
+          "maximum": 0.5
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.0027001771142332476,
+          "median": 0.002754506633634319,
+          "minimum": 0.0025915180754311046,
+          "maximum": 0.0027762384413947475
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 8,
+      "method": "uniform",
+      "seed_count": 5,
+      "unique_count": 23011,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.06525581829245597,
+          "median": 0.06364554276721278,
+          "minimum": 0.05923872497895846,
+          "maximum": 0.07606495234096296
+        },
+        "worst_branch_support": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "branch_p10_support": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "longest_unsupported_run": {
+          "mean": 139.78629572666378,
+          "median": 128.37080852584552,
+          "minimum": 116.24679503924801,
+          "maximum": 184.57734160244402
+        },
+        "endpoint_support": {
+          "mean": 0.06666666666666667,
+          "median": 0.05555555555555555,
+          "minimum": 0.0,
+          "maximum": 0.2222222222222222
+        },
+        "junction_support": {
+          "mean": 0.1125,
+          "median": 0.125,
+          "minimum": 0.0625,
+          "maximum": 0.1875
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.0028247359958280824,
+          "median": 0.002737821042110295,
+          "minimum": 0.0026943635652514016,
+          "maximum": 0.003172395810699231
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 4,
+      "method": "intensity",
+      "seed_count": 5,
+      "unique_count": 184062,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.9625950601846502,
+          "median": 0.9628943656097353,
+          "minimum": 0.9600080247946452,
+          "maximum": 0.9647279471089253
+        },
+        "worst_branch_support": {
+          "mean": 0.8123342013510537,
+          "median": 0.8300369130816321,
+          "minimum": 0.7337507704215283,
+          "maximum": 0.8823142979354512
+        },
+        "branch_p10_support": {
+          "mean": 0.9043912557219528,
+          "median": 0.9114373017964401,
+          "minimum": 0.8598569779666003,
+          "maximum": 0.9469209620601569
+        },
+        "longest_unsupported_run": {
+          "mean": 6.798177972505203,
+          "median": 6.965645119487646,
+          "minimum": 5.71652559592701,
+          "maximum": 8.600519468613548
+        },
+        "endpoint_support": {
+          "mean": 0.7555555555555556,
+          "median": 0.7222222222222222,
+          "minimum": 0.6666666666666666,
+          "maximum": 0.8333333333333334
+        },
+        "junction_support": {
+          "mean": 0.975,
+          "median": 1.0,
+          "minimum": 0.9375,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.02813943127859091,
+          "median": 0.028213319424976367,
+          "minimum": 0.027289717595158153,
+          "maximum": 0.028713151003466223
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 8,
+      "method": "intensity",
+      "seed_count": 5,
+      "unique_count": 23011,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.5197866119008909,
+          "median": 0.5163015617947861,
+          "minimum": 0.5079219913239196,
+          "maximum": 0.5371375344014006
+        },
+        "worst_branch_support": {
+          "mean": 0.1491188060800262,
+          "median": 0.20072100808541934,
+          "minimum": 0.0,
+          "maximum": 0.2534470448463186
+        },
+        "branch_p10_support": {
+          "mean": 0.2810685896848606,
+          "median": 0.2870377690324797,
+          "minimum": 0.22991297088093587,
+          "maximum": 0.3423863838594661
+        },
+        "longest_unsupported_run": {
+          "mean": 31.668476754611344,
+          "median": 28.754269746005274,
+          "minimum": 25.995889336801774,
+          "maximum": 45.457778613015215
+        },
+        "endpoint_support": {
+          "mean": 0.24444444444444446,
+          "median": 0.2222222222222222,
+          "minimum": 0.1111111111111111,
+          "maximum": 0.3888888888888889
+        },
+        "junction_support": {
+          "mean": 0.625,
+          "median": 0.625,
+          "minimum": 0.5,
+          "maximum": 0.75
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.032019468949632784,
+          "median": 0.03198470296814567,
+          "minimum": 0.031202468384685586,
+          "maximum": 0.03333188475077137
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 4,
+      "method": "sato",
+      "seed_count": 5,
+      "unique_count": 184062,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.9970475577238942,
+          "median": 0.9971891796384686,
+          "minimum": 0.9949769367151017,
+          "maximum": 0.999261053706616
+        },
+        "worst_branch_support": {
+          "mean": 0.9033987865507693,
+          "median": 0.8823142979354512,
+          "minimum": 0.8430857305806017,
+          "maximum": 0.9877367410120421
+        },
+        "branch_p10_support": {
+          "mean": 0.9895483959788942,
+          "median": 0.9942724230088704,
+          "minimum": 0.9651183459405438,
+          "maximum": 1.0
+        },
+        "longest_unsupported_run": {
+          "mean": 1.8130066894029109,
+          "median": 1.5,
+          "minimum": 0.952754265987835,
+          "maximum": 2.9375374093362634
+        },
+        "endpoint_support": {
+          "mean": 0.9555555555555555,
+          "median": 0.9444444444444444,
+          "minimum": 0.8888888888888888,
+          "maximum": 1.0
+        },
+        "junction_support": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.04908128782692789,
+          "median": 0.049103019634688314,
+          "minimum": 0.04876617661440167,
+          "maximum": 0.0493963990394541
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "cell_side_voxel": 8,
+      "method": "sato",
+      "seed_count": 5,
+      "unique_count": 23011,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.7068301059065111,
+          "median": 0.7031397204437874,
+          "minimum": 0.6783418883330266,
+          "maximum": 0.7260834536307652
+        },
+        "worst_branch_support": {
+          "mean": 0.2605343687971577,
+          "median": 0.2915870531461873,
+          "minimum": 0.12497393746043908,
+          "maximum": 0.344640396682112
+        },
+        "branch_p10_support": {
+          "mean": 0.44209386262667516,
+          "median": 0.4496918761817687,
+          "minimum": 0.38679624349642827,
+          "maximum": 0.5060167493033101
+        },
+        "longest_unsupported_run": {
+          "mean": 20.280287777729008,
+          "median": 19.0381236169624,
+          "minimum": 17.026116083526055,
+          "maximum": 26.605265284738266
+        },
+        "endpoint_support": {
+          "mean": 0.4,
+          "median": 0.3888888888888889,
+          "minimum": 0.2777777777777778,
+          "maximum": 0.5
+        },
+        "junction_support": {
+          "mean": 0.75,
+          "median": 0.75,
+          "minimum": 0.5625,
+          "maximum": 0.875
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.056355655990613186,
+          "median": 0.05558211290252488,
+          "minimum": 0.05479987831906479,
+          "maximum": 0.058059189083481816
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 4,
+      "method": "uniform",
+      "seed_count": 5,
+      "unique_count": 245760,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.40699732921114096,
+          "median": 0.41891524952192677,
+          "minimum": 0.3659137084069282,
+          "maximum": 0.43049759347414435
+        },
+        "worst_branch_support": {
+          "mean": 0.06994661445983898,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.2106699458890692
+        },
+        "branch_p10_support": {
+          "mean": 0.1641321352048831,
+          "median": 0.14882911567467239,
+          "minimum": 0.0,
+          "maximum": 0.28114143272216313
+        },
+        "longest_unsupported_run": {
+          "mean": 25.45974959216373,
+          "median": 25.071355401387905,
+          "minimum": 23.82241329421862,
+          "maximum": 27.974965898131746
+        },
+        "endpoint_support": {
+          "mean": 0.38181818181818183,
+          "median": 0.36363636363636365,
+          "minimum": 0.2727272727272727,
+          "maximum": 0.45454545454545453
+        },
+        "junction_support": {
+          "mean": 0.3555555555555555,
+          "median": 0.3333333333333333,
+          "minimum": 0.2222222222222222,
+          "maximum": 0.4444444444444444
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.0005891927083333333,
+          "median": 0.0005859375,
+          "minimum": 0.0005411783854166667,
+          "maximum": 0.0006429036458333333
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 8,
+      "method": "uniform",
+      "seed_count": 5,
+      "unique_count": 30720,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.06950206534565061,
+          "median": 0.07654938950983241,
+          "minimum": 0.036086586626665924,
+          "maximum": 0.08006232038226453
+        },
+        "worst_branch_support": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "branch_p10_support": {
+          "mean": 0.0,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.0
+        },
+        "longest_unsupported_run": {
+          "mean": 84.66537715109689,
+          "median": 72.6952015535251,
+          "minimum": 66.66209130568403,
+          "maximum": 127.68904337375858
+        },
+        "endpoint_support": {
+          "mean": 0.09090909090909091,
+          "median": 0.09090909090909091,
+          "minimum": 0.0,
+          "maximum": 0.18181818181818182
+        },
+        "junction_support": {
+          "mean": 0.04444444444444444,
+          "median": 0.0,
+          "minimum": 0.0,
+          "maximum": 0.1111111111111111
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.0006510416666666666,
+          "median": 0.00068359375,
+          "minimum": 0.00042317708333333335,
+          "maximum": 0.00078125
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 4,
+      "method": "intensity",
+      "seed_count": 5,
+      "unique_count": 245760,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.9796327040713362,
+          "median": 0.9794496233092761,
+          "minimum": 0.9725450735773012,
+          "maximum": 0.9901081977293089
+        },
+        "worst_branch_support": {
+          "mean": 0.8126424729696587,
+          "median": 0.7929419816077973,
+          "minimum": 0.6812958584948515,
+          "maximum": 0.9353964742882821
+        },
+        "branch_p10_support": {
+          "mean": 0.9405742345603514,
+          "median": 0.9467196969755071,
+          "minimum": 0.9097461827367309,
+          "maximum": 0.952398612301393
+        },
+        "longest_unsupported_run": {
+          "mean": 4.2198714401276245,
+          "median": 4.301396140380414,
+          "minimum": 2.3622304486031176,
+          "maximum": 6.4532612757241266
+        },
+        "endpoint_support": {
+          "mean": 0.9272727272727274,
+          "median": 0.9090909090909091,
+          "minimum": 0.8181818181818182,
+          "maximum": 1.0
+        },
+        "junction_support": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.006568196614583334,
+          "median": 0.006559244791666667,
+          "minimum": 0.00640869140625,
+          "maximum": 0.006783040364583334
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 8,
+      "method": "intensity",
+      "seed_count": 5,
+      "unique_count": 30720,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.5801797908277216,
+          "median": 0.5793501180641751,
+          "minimum": 0.5601755485563545,
+          "maximum": 0.5996464759294544
+        },
+        "worst_branch_support": {
+          "mean": 0.2191459432906401,
+          "median": 0.1716428684660002,
+          "minimum": 0.1379049337831191,
+          "maximum": 0.31933210693614267
+        },
+        "branch_p10_support": {
+          "mean": 0.39516061068409736,
+          "median": 0.40293584339875443,
+          "minimum": 0.36541197411449206,
+          "maximum": 0.4269115812275719
+        },
+        "longest_unsupported_run": {
+          "mean": 22.799035378881314,
+          "median": 22.675155078920195,
+          "minimum": 20.102370009748512,
+          "maximum": 26.86843402641067
+        },
+        "endpoint_support": {
+          "mean": 0.47272727272727266,
+          "median": 0.45454545454545453,
+          "minimum": 0.45454545454545453,
+          "maximum": 0.5454545454545454
+        },
+        "junction_support": {
+          "mean": 0.9111111111111111,
+          "median": 0.8888888888888888,
+          "minimum": 0.7777777777777778,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.008014322916666667,
+          "median": 0.0080078125,
+          "minimum": 0.00732421875,
+          "maximum": 0.008854166666666666
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 4,
+      "method": "sato",
+      "seed_count": 5,
+      "unique_count": 245760,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.9953565230484382,
+          "median": 0.9949973898285847,
+          "minimum": 0.9936171783241313,
+          "maximum": 0.9979719316679747
+        },
+        "worst_branch_support": {
+          "mean": 0.9162883235463093,
+          "median": 0.9124684507519575,
+          "minimum": 0.8783959522760205,
+          "maximum": 0.9752429448892759
+        },
+        "branch_p10_support": {
+          "mean": 0.9888245935748998,
+          "median": 0.9901877182062784,
+          "minimum": 0.9689385966296947,
+          "maximum": 0.998961358272185
+        },
+        "longest_unsupported_run": {
+          "mean": 2.328872818935396,
+          "median": 2.6648067375129347,
+          "minimum": 0.7715892689767013,
+          "maximum": 3.523190633877024
+        },
+        "endpoint_support": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "junction_support": {
+          "mean": 1.0,
+          "median": 1.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.012362467447916668,
+          "median": 0.012410481770833334,
+          "minimum": 0.0122314453125,
+          "maximum": 0.012459309895833333
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "cell_side_voxel": 8,
+      "method": "sato",
+      "seed_count": 5,
+      "unique_count": 30720,
+      "metrics": {
+        "curve_support": {
+          "mean": 0.7818816692265094,
+          "median": 0.7779254943993645,
+          "minimum": 0.7638426655415463,
+          "maximum": 0.8084987823427873
+        },
+        "worst_branch_support": {
+          "mean": 0.3610893258936909,
+          "median": 0.3650162170936653,
+          "minimum": 0.18505803202661966,
+          "maximum": 0.4819917945603361
+        },
+        "branch_p10_support": {
+          "mean": 0.5772288046553745,
+          "median": 0.5960791402379395,
+          "minimum": 0.5044651333344529,
+          "maximum": 0.6074316315194821
+        },
+        "longest_unsupported_run": {
+          "mean": 17.44274904037398,
+          "median": 16.41094765240832,
+          "minimum": 14.778757826697854,
+          "maximum": 23.61102251492691
+        },
+        "endpoint_support": {
+          "mean": 0.6181818181818183,
+          "median": 0.6363636363636364,
+          "minimum": 0.45454545454545453,
+          "maximum": 0.8181818181818182
+        },
+        "junction_support": {
+          "mean": 0.9555555555555555,
+          "median": 1.0,
+          "minimum": 0.8888888888888888,
+          "maximum": 1.0
+        },
+        "selected_point_reference_agreement": {
+          "mean": 0.015950520833333336,
+          "median": 0.015755208333333333,
+          "minimum": 0.01484375,
+          "maximum": 0.016927083333333332
+        }
+      }
+    }
+  ],
+  "decision": {
+    "scope": "Promising for broader training-input replication only; no reconstruction/generalization verdict",
+    "promising_for_replication": true,
+    "maximum_refinement_change": 0.003073622441393087,
+    "reference_outside_image_samples": 0,
+    "coordinate_review": "manual diagnostic overlay review still required; no alignment fitted",
+    "checks": [
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "curve_support",
+        "sato_minus_control": 0.5915152906770953,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.8798690690519407,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.7702517567402543,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.5111111111111111,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "junction_support",
+        "sato_minus_control": 0.575,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -33.47530330163285,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "curve_support",
+        "sato_minus_control": 0.034452497539243954,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.09106458519971561,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.08515714025694143,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.19999999999999984,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "junction_support",
+        "sato_minus_control": 0.025000000000000022,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -4.985171283102293,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "curve_support",
+        "sato_minus_control": 0.6415742876140551,
+        "required": ">= 0.05",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.2605343687971577,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.44209386262667516,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.33333333333333337,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "junction_support",
+        "sato_minus_control": 0.6375,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -119.50600794893478,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "curve_support",
+        "sato_minus_control": 0.18704349400562015,
+        "required": ">= 0.05",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.11141556271713149,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.16102527294181457,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.15555555555555556,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "junction_support",
+        "sato_minus_control": 0.125,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -11.388188976882336,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "curve_support",
+        "sato_minus_control": 0.5883591938372973,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.8463417090864703,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.8246924583700167,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.6181818181818182,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "junction_support",
+        "sato_minus_control": 0.6444444444444445,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "uniform",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -23.130876773228334,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "curve_support",
+        "sato_minus_control": 0.015723818977102066,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.10364585057665054,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.04825035901454844,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.07272727272727264,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "junction_support",
+        "sato_minus_control": 0.0,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 4,
+        "control": "intensity",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -1.8909986211922285,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "curve_support",
+        "sato_minus_control": 0.7123796038808587,
+        "required": ">= 0.05",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.3610893258936909,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.5772288046553745,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.5272727272727273,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "junction_support",
+        "sato_minus_control": 0.9111111111111111,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "uniform",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -67.22262811072291,
+        "required": "<= 2.0",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "curve_support",
+        "sato_minus_control": 0.20170187839878773,
+        "required": ">= 0.05",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "worst_branch_support",
+        "sato_minus_control": 0.1419433826030508,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "branch_p10_support",
+        "sato_minus_control": 0.18206819397127716,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "endpoint_support",
+        "sato_minus_control": 0.14545454545454561,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "junction_support",
+        "sato_minus_control": 0.0444444444444444,
+        "required": ">= -0.02",
+        "passed": true
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+        "cell_side_voxel": 8,
+        "control": "intensity",
+        "metric": "longest_unsupported_run",
+        "sato_minus_control": -5.356286338507335,
+        "required": "<= 2.0",
+        "passed": true
+      }
+    ],
+    "automatic_training_authorized": false,
+    "outcome": "promising_for_replication",
+    "case_accounting": {
+      "declared": 2,
+      "scored": 2,
+      "unscorable_reference": 0
+    }
+  },
+  "failures": [],
+  "evaluation_seconds": 1001.5908919000067,
+  "integrity": {
+    "original_run_artifact_hashes_unchanged": true,
+    "all_60_cloud_file_hashes_unchanged": true,
+    "reference_bytes_unchanged": true,
+    "recipe_unchanged": true,
+    "previously_scored_outputs_replayed": 30,
+    "all_replayed_metrics_exactly_equal": true
+  },
+  "code_hashes": {
+    "cloud_manifest_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+    "evaluation_script_sha256": "068e4cb00df08ce975b1564ab0e2396fbd190765e27925ea7b66175cbd2b7f4d",
+    "support_code_sha256": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "distance_code_sha256": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "swc_reader_sha256": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed"
+  },
+  "artifact_hashes": {
+    "evaluation_opaque_integer/report.json": "32318da0cb14d275d187950cda0c11fab5522fe3bc8b140bb8a29f17586a0a1f"
+  }
+}

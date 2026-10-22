@@ -1,0 +1,47 @@
+{
+  "scope": "Read-only reference structure and byte-preservation audit, before geometry-only rescore",
+  "type_policy": "opaque_integer",
+  "type_semantics": "unknown; no anatomical interpretation or node exclusion",
+  "cases": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "reference_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "nodes": 466,
+      "components": 1,
+      "length_voxel": 2636.6202941205092,
+      "endpoints": 18,
+      "junctions": 16,
+      "type_counts": {
+        "-73": 46,
+        "3": 271,
+        "18": 59,
+        "21": 5,
+        "24": 4,
+        "25": 7,
+        "28": 8,
+        "76": 21,
+        "77": 20,
+        "82": 25
+      },
+      "all_columns_preserved": true
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "reference_sha256": "e4f72445f008af58dbaee2504f4cfaa40d2fc6200345a359ea60cac89c98a121",
+      "nodes": 509,
+      "components": 1,
+      "length_voxel": 789.7097737780333,
+      "endpoints": 11,
+      "junctions": 9,
+      "type_counts": {
+        "3": 164,
+        "18": 179,
+        "20": 12,
+        "27": 58,
+        "52": 34,
+        "80": 62
+      },
+      "all_columns_preserved": true
+    }
+  ]
+}
