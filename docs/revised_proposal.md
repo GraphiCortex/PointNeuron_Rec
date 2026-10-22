@@ -63,6 +63,14 @@ advantage must appear in final whole-neuron outputs, not only component losses.
 These are prospective revisions for discussion. Historical gates and numerical
 results are preserved. No failed experiment is relabeled a success.
 
+23 October input evidence: the [fixed four-context qualification](phase1_qualification_results.md)
+completed without meeting all comparative checks. It supports conditional
+guide benefit, not a mandatory Sato policy or reconstruction claim. The
+[training-reference audit](training_reference_contract_audit.md) also identifies
+a bounded graph-encoding ambiguity to resolve before connectivity labels are
+derived. These reports inform the next design discussion; they do not implement
+a new sampler, change the intended stages or authorize training.
+
 ## 3. Input, data and supervision contract
 
 ### Acquisition and coordinates

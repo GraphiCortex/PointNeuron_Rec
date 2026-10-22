@@ -48,7 +48,7 @@ agreed to the three controls. The CPU probe is implemented and tested, without
 promoting a guide to the product. Keep execution, representation retention,
 training learnability and genuine reconstruction evidence distinct.
 
-[Current results](docs/phase1_geometry_rescore_results.md): the frozen two-image
+[Initial results](docs/phase1_geometry_rescore_results.md): the frozen two-image
 rescore passes the comparative input-support gate under an explicit policy
 preserving unknown reference type metadata. Structural weighting improves
 support over intensity weighting in both contexts; lean clouds still have
@@ -56,14 +56,26 @@ large local gaps. No model was trained or product sampling policy promoted.
 The [original strict-reader result](docs/phase1_sampling_results.md) remains
 preserved as an incomplete comparison.
 
-The [next four-context qualification](docs/phase1_qualification_plan.md) is
-prepared with unchanged settings. Its memory preflight led to an explicit
+The [four-context qualification](docs/phase1_qualification_plan.md) is now
+[complete](docs/phase1_qualification_results.md), with all 120 clouds scored
+and unchanged settings. Its memory preflight led to an explicit
 [disk-backed guide](docs/phase1_disk_guide.md): both original guide files and all
 20 ordered Sato selections replay exactly. Resident memory is substantially
 smaller in these observations, with extra runtime and disk costs; whole-volume
 decoding/normalization and end-to-end hardware requirements remain separate.
-The fixed qualification is ready for CPU execution. No four-case comparison
-or model fit has been launched by this implementation check.
+The disk backend completed generation with a 0.939-GiB process peak working set
+and 2.22-GiB peak commit/pagefile counter. Generation and reference scoring took
+about 4 hours 22 minutes; these are research-comparison costs, not model
+inference requirements. The comparison did not meet all preset criteria:
+Sato helps strongly on frog, but offers mixed incremental benefit over
+intensity weighting across the four inputs. Local losses and sparse-image
+budget use require discussion before promoting a Phase 1 policy. No model fit
+followed the comparison.
+
+A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
+finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
+across components. Their graph-label interpretation needs verification; the
+audit makes no repairs and does not explain all historical fitting failures.
 
 ## Working directory and runtime
 

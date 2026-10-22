@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only interpretation of existing failed metric; original gate and every path retained; no rescore or label change",
+  "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+  "encoded_positive_length_paths": 80,
+  "rows": [
+    {
+      "seed": 0,
+      "worst_sato_encoded_path_index": 15,
+      "path_length_voxel": 10.991346538512367,
+      "bbox_xyz": [
+        [
+          372.9934285714286,
+          482.4337857142857,
+          24.8878125
+        ],
+        [
+          376.83353124999996,
+          491.11521875,
+          28.92064285714286
+        ]
+      ],
+      "sato_support_2": 0.608404174150601,
+      "intensity_same_path_support_2": 1.0,
+      "sato_support_6": 1.0,
+      "intensity_same_path_support_6": 1.0
+    },
+    {
+      "seed": 1,
+      "worst_sato_encoded_path_index": 0,
+      "path_length_voxel": 0.15970284906662105,
+      "bbox_xyz": [
+        [
+          372.895,
+          482.209,
+          28.9755
+        ],
+        [
+          372.895,
+          482.209,
+          28.9755
+        ]
+      ],
+      "sato_support_2": 0.0,
+      "intensity_same_path_support_2": 1.0,
+      "sato_support_6": 1.0,
+      "intensity_same_path_support_6": 1.0
+    },
+    {
+      "seed": 2,
+      "worst_sato_encoded_path_index": 0,
+      "path_length_voxel": 0.15970284906662105,
+      "bbox_xyz": [
+        [
+          372.895,
+          482.209,
+          28.9755
+        ],
+        [
+          372.895,
+          482.209,
+          28.9755
+        ]
+      ],
+      "sato_support_2": 0.0,
+      "intensity_same_path_support_2": 1.0,
+      "sato_support_6": 1.0,
+      "intensity_same_path_support_6": 1.0
+    },
+    {
+      "seed": 3,
+      "worst_sato_encoded_path_index": 0,
+      "path_length_voxel": 0.15970284906662105,
+      "bbox_xyz": [
+        [
+          372.895,
+          482.209,
+          28.9755
+        ],
+        [
+          372.895,
+          482.209,
+          28.9755
+        ]
+      ],
+      "sato_support_2": 0.0,
+      "intensity_same_path_support_2": 1.0,
+      "sato_support_6": 1.0,
+      "intensity_same_path_support_6": 1.0
+    },
+    {
+      "seed": 4,
+      "worst_sato_encoded_path_index": 15,
+      "path_length_voxel": 10.991346538512367,
+      "bbox_xyz": [
+        [
+          372.9934285714286,
+          482.4337857142857,
+          24.8878125
+        ],
+        [
+          376.83353124999996,
+          491.11521875,
+          28.92064285714286
+        ]
+      ],
+      "sato_support_2": 0.522041819151299,
+      "intensity_same_path_support_2": 1.0,
+      "sato_support_6": 1.0,
+      "intensity_same_path_support_6": 1.0
+    }
+  ]
+}

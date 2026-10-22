@@ -58,6 +58,14 @@ one-scorable-case figure from its saved report:
 
 ## Other commands
 
+`audit_training_references.py` inventories only explicitly declared training
+SWCs, preserving source bytes and unknown type metadata. It reports encoded
+components, junctions, cross-component exact-coordinate coincidences and
+reported radii; it does not repair graphs or construct labels. The
+[33-reference audit](../docs/training_reference_contract_audit.md) records
+the command, checks and limits. It never reads images or development/test
+references.
+
 The [disk-backed guide](../docs/phase1_disk_guide.md) is an explicit alternate
 execution backend for the same operator. `verify_disk_guide.py` compares it
 against saved guides and ordered selected voxel IDs on the two original cases,
@@ -70,7 +78,9 @@ already fixed four-case comparison. No training follows these commands.
 `preflight_phase1_resources.py` reads explicit image headers and completed-run
 metadata to estimate resource costs without decoding images, reading references
 or launching generation. The [four-context qualification plan](../docs/phase1_qualification_plan.md)
-records its command, rough-projection limits and current memory hold. It does
+records its command and rough-projection limits. The subsequent
+[complete qualification](../docs/phase1_qualification_results.md) records actual
+disk-backend costs and the unchanged failed comparative gate. The preflight does
 not change the filter or sampler.
 
 `inspect_raw_images.py` starts with explicit original image files. It writes

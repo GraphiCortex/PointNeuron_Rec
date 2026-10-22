@@ -122,9 +122,11 @@ Raw reports, arrays and logs are under `tmp/disk_guide_parity_20261022/`.
 The backend is ready to use for the **already fixed four-case qualification**.
 Numerical parity on these two images does not establish neuronal
 generalization, reconstruction improvement, or a minimum RAM specification.
-The large qualification image still needs an actual execution measurement.
-No four-case generation, reference scoring, GPU run or training was launched
-as part of this implementation check.
+The subsequent [four-context qualification](phase1_qualification_results.md)
+records actual large-image execution and support results. No four-case
+generation, reference scoring, GPU run or training was launched as part of the
+implementation checks described here; the separate fixed CPU comparison
+followed user authorization.
 
 ## Commands
 

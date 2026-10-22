@@ -1,9 +1,11 @@
 # Phase 1: four additional training contexts
 
-22 October 2026. The user agreed to prepare this fixed comparison and check
-resources. **Preparation is complete; generation and scoring have not started.**
-The resource preflight advises against launching the existing whole-volume
-implementation on this laptop. No sampling setting or model has changed.
+22 October 2026; completion update 23 October. The user authorized the fixed
+comparison using the verified disk backend. **Generation and all 120 scores are
+complete:** [results and unchanged verdict](phase1_qualification_results.md).
+The criteria were not met. No sampling setting or model changed, no case was
+excluded, and no training followed. The original preflight below concerns the
+whole-volume implementation and remains preserved as a planning projection.
 
 Follow-up: the [disk-backed implementation and parity checks](phase1_disk_guide.md)
 address this resource finding. The header projections below describe the
@@ -129,7 +131,7 @@ pass. No shorter halo, downsampling or replacement case was introduced.
 This supports executing the fixed cohort with the explicit disk backend. It
 changes how Phase 1 is computed, not the intended learned architecture.
 Additional disk use and runtime are part of the comparison's resource verdict;
-actual large-volume execution remains to be measured. Whole-image decoding and
+actual large-volume execution is now recorded in the linked results. Whole-image decoding and
 initial normalization remain full-volume operations. No large-volume run or
 model fit was launched by the implementation checks.
 

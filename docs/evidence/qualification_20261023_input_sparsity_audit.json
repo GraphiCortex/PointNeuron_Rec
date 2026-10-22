@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "scope": "Post-generation descriptive source/cloud audit; no source edits, masking, threshold selection, resampling or altered criteria. Numerical minima/zeros are not biological foreground/background labels. Upstream acquisition processing is unverified.",
+  "cases": [
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "voxels": 21233664,
+      "observed_min": 5,
+      "observed_max": 4095,
+      "fraction_raw_zero": 0.0,
+      "fraction_raw_at_observed_min": 4.709502797067901e-08,
+      "tile_count": 16,
+      "tiles_constant_at_observed_min": 0,
+      "tiles_whose_above_min_voxels_fit_dense_count": 0,
+      "tiles_whose_above_min_voxels_fit_lean_count": 0,
+      "selected_intensity_profiles": {
+        "uniform_cell4": {
+          "records": 1658880,
+          "at_observed_min": 0,
+          "fraction_at_observed_min": 0.0
+        },
+        "uniform_cell8": {
+          "records": 207360,
+          "at_observed_min": 0,
+          "fraction_at_observed_min": 0.0
+        },
+        "intensity_cell4": {
+          "records": 1658880,
+          "at_observed_min": 0,
+          "fraction_at_observed_min": 0.0
+        },
+        "intensity_cell8": {
+          "records": 207360,
+          "at_observed_min": 0,
+          "fraction_at_observed_min": 0.0
+        },
+        "sato_cell4": {
+          "records": 1658880,
+          "at_observed_min": 5,
+          "fraction_at_observed_min": 3.0140817901234566e-06
+        },
+        "sato_cell8": {
+          "records": 207360,
+          "at_observed_min": 1,
+          "fraction_at_observed_min": 4.822530864197531e-06
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "source_sha256": "9cb2c060d9c200429c0dfc08ed7bba337d1ad0b1daf7fff2a1c471c12e85f26a",
+      "voxels": 19840000,
+      "observed_min": 0,
+      "observed_max": 255,
+      "fraction_raw_zero": 0.07185564516129032,
+      "fraction_raw_at_observed_min": 0.07185564516129032,
+      "tile_count": 49,
+      "tiles_constant_at_observed_min": 0,
+      "tiles_whose_above_min_voxels_fit_dense_count": 0,
+      "tiles_whose_above_min_voxels_fit_lean_count": 0,
+      "selected_intensity_profiles": {
+        "uniform_cell4": {
+          "records": 1550000,
+          "at_observed_min": 111319,
+          "fraction_at_observed_min": 0.07181870967741935
+        },
+        "uniform_cell8": {
+          "records": 193750,
+          "at_observed_min": 13919,
+          "fraction_at_observed_min": 0.07184
+        },
+        "intensity_cell4": {
+          "records": 1550000,
+          "at_observed_min": 11995,
+          "fraction_at_observed_min": 0.007738709677419355
+        },
+        "intensity_cell8": {
+          "records": 193750,
+          "at_observed_min": 1463,
+          "fraction_at_observed_min": 0.007550967741935484
+        },
+        "sato_cell4": {
+          "records": 1550000,
+          "at_observed_min": 39716,
+          "fraction_at_observed_min": 0.025623225806451613
+        },
+        "sato_cell8": {
+          "records": 193750,
+          "at_observed_min": 4496,
+          "fraction_at_observed_min": 0.02320516129032258
+        }
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "source_sha256": "81b46abab11ef42be7084be251bda03cb379df7514e288df397fead5d9a18ea2",
+      "voxels": 42991616,
+      "observed_min": 0,
+      "observed_max": 253,
+      "fraction_raw_zero": 0.9997547661385885,
+      "fraction_raw_at_observed_min": 0.9997547661385885,
+      "tile_count": 32,
+      "tiles_constant_at_observed_min": 27,
+      "tiles_whose_above_min_voxels_fit_dense_count": 32,
+      "tiles_whose_above_min_voxels_fit_lean_count": 31,
+      "selected_intensity_profiles": {
+        "uniform_cell4": {
+          "records": 3358720,
+          "at_observed_min": 3357883,
+          "fraction_at_observed_min": 0.9997507979230182
+        },
+        "uniform_cell8": {
+          "records": 419840,
+          "at_observed_min": 419746,
+          "fraction_at_observed_min": 0.9997761051829268
+        },
+        "intensity_cell4": {
+          "records": 3358720,
+          "at_observed_min": 3306005,
+          "fraction_at_observed_min": 0.9843050328696646
+        },
+        "intensity_cell8": {
+          "records": 419840,
+          "at_observed_min": 391040,
+          "fraction_at_observed_min": 0.9314024390243902
+        },
+        "sato_cell4": {
+          "records": 3358720,
+          "at_observed_min": 3308991,
+          "fraction_at_observed_min": 0.985194062023628
+        },
+        "sato_cell8": {
+          "records": 419840,
+          "at_observed_min": 404179,
+          "fraction_at_observed_min": 0.962697694359756
+        }
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "source_sha256": "d8817946dbe7f3e44d905c841345dbb6248e52110e8c0a0ba5cd8a7672e6c666",
+      "voxels": 109670820,
+      "observed_min": 0,
+      "observed_max": 255,
+      "fraction_raw_zero": 0.9876364378418981,
+      "fraction_raw_at_observed_min": 0.9876364378418981,
+      "tile_count": 64,
+      "tiles_constant_at_observed_min": 47,
+      "tiles_whose_above_min_voxels_fit_dense_count": 55,
+      "tiles_whose_above_min_voxels_fit_lean_count": 51,
+      "selected_intensity_profiles": {
+        "uniform_cell4": {
+          "records": 8568035,
+          "at_observed_min": 8462201,
+          "fraction_at_observed_min": 0.9876478095619358
+        },
+        "uniform_cell8": {
+          "records": 1071020,
+          "at_observed_min": 1057905,
+          "fraction_at_observed_min": 0.9877546637784542
+        },
+        "intensity_cell4": {
+          "records": 8568035,
+          "at_observed_min": 6984182,
+          "fraction_at_observed_min": 0.8151439624137856
+        },
+        "intensity_cell8": {
+          "records": 1071020,
+          "at_observed_min": 816971,
+          "fraction_at_observed_min": 0.7627971466452541
+        },
+        "sato_cell4": {
+          "records": 8568035,
+          "at_observed_min": 7315211,
+          "fraction_at_observed_min": 0.853779308791339
+        },
+        "sato_cell8": {
+          "records": 1071020,
+          "at_observed_min": 861010,
+          "fraction_at_observed_min": 0.8039158932606301
+        }
+      }
+    }
+  ]
+}

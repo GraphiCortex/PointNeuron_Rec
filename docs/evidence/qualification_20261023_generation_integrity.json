@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "scope": "All saved guide/cloud hashes and frozen settings checked before reference access; actual coordinates/intensities will be independently checked by evaluator",
+  "cloud_manifest_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+  "cases": 4,
+  "clouds": 120,
+  "point_records": 51082815,
+  "complete": true
+}
