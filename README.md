@@ -57,10 +57,13 @@ The [original strict-reader result](docs/phase1_sampling_results.md) remains
 preserved as an incomplete comparison.
 
 The [next four-context qualification](docs/phase1_qualification_plan.md) is
-prepared with unchanged settings. Its header-only preflight flags whole-volume
-filter memory scaling on this 16 GB laptop. Generation is held pending a reviewed
-memory-bounded implementation; the four cases remain fixed and no model fit is
-launched.
+prepared with unchanged settings. Its memory preflight led to an explicit
+[disk-backed guide](docs/phase1_disk_guide.md): both original guide files and all
+20 ordered Sato selections replay exactly. Resident memory is substantially
+smaller in these observations, with extra runtime and disk costs; whole-volume
+decoding/normalization and end-to-end hardware requirements remain separate.
+The fixed qualification is ready for CPU execution. No four-case comparison
+or model fit has been launched by this implementation check.
 
 ## Working directory and runtime
 

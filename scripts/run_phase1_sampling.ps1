@@ -1,7 +1,10 @@
 param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('check','generate','evaluate','evaluate-geometry')][string]$Action,
-    [string]$OutputDirectory = 'tmp\phase1_sampling_20261022'
+    [string]$OutputDirectory = 'tmp\phase1_sampling_20261022',
+    [string]$CasesManifest = 'configs\phase1_raw_review.json',
+    [ValidateSet('whole','disk')][string]$GuideBackend = 'whole',
+    [ValidateRange(1,512)][int]$BlockSide = 64
 )
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $PSScriptRoot
@@ -13,14 +16,15 @@ $LogFolder = Join-Path $Root 'tmp\phase1_console'
 New-Item -ItemType Directory -Path $LogFolder -Force | Out-Null
 $Log = Join-Path $LogFolder ((Get-Date -Format 'yyyyMMdd_HHmmss_fff') + '_' + $Action + '.log')
 Write-Host 'CPU input diagnostic only. No GPU, model training or PN1 inference.'
-Write-Host 'Two original TRAINING images; three controls; two densities; five fixed seeds.'
+Write-Host 'Explicit TRAINING images; three controls; two densities; five fixed seeds.'
 if ($Action -eq 'check') {
     & $Python -m pytest -q 2>&1 | Tee-Object -FilePath $Log
 } elseif ($Action -eq 'generate') {
     Write-Host 'Image-only cloud generation; references are not read. Output directory must be fresh.'
-    & $Python scripts\probe_phase1_sampling.py --cases configs\phase1_raw_review.json --recipe configs\phase1_sampling_probe.json --output-dir $Run 2>&1 | Tee-Object -FilePath $Log
+    Write-Host "Manifest: $CasesManifest | Guide backend: $GuideBackend | Block side: $BlockSide"
+    & $Python scripts\probe_phase1_sampling.py --cases $CasesManifest --recipe configs\phase1_sampling_probe.json --output-dir $Run --guide-backend $GuideBackend --block-side $BlockSide 2>&1 | Tee-Object -FilePath $Log
 } elseif ($Action -eq 'evaluate') {
-    Write-Host 'Score frozen clouds against the two explicit training references; no cloud changes.'
+    Write-Host 'Score frozen clouds against their explicit training references; no cloud changes.'
     & $Python scripts\evaluate_phase1_sampling.py --clouds (Join-Path $Run 'clouds.json') --training-inventory configs\training_inventory.json 2>&1 | Tee-Object -FilePath $Log
 } else {
     Write-Host 'Explicit geometry-only reference mode: preserve all signed type metadata and nodes.'

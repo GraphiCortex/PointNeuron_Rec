@@ -3,7 +3,7 @@
 ## Phase 1 CPU sampling probe
 
 Read the [fixed comparison protocol](../docs/phase1_sampling_protocol.md) first.
-`probe_phase1_sampling.py` reads only the two original training images, generating
+By default, `probe_phase1_sampling.py` reads the two original training images, generating
 three count-matched controls at two densities and five seeds. It computes one
 whole-image guide, then samples disjoint image-defined tiles. It never reads a
 reference. `evaluate_phase1_sampling.py` subsequently reads the saved clouds and
@@ -57,6 +57,15 @@ one-scorable-case figure from its saved report:
 ```
 
 ## Other commands
+
+The [disk-backed guide](../docs/phase1_disk_guide.md) is an explicit alternate
+execution backend for the same operator. `verify_disk_guide.py` compares it
+against saved guides and ordered selected voxel IDs on the two original cases,
+without reference access. `run_phase1_sampling.ps1` now accepts `-CasesManifest`,
+`-GuideBackend disk` and `-BlockSide` (default 64); the historical defaults still
+use the original two cases and whole-volume backend. The implementation document
+records parity evidence, resource limits and fresh-directory commands for the
+already fixed four-case comparison. No training follows these commands.
 
 `preflight_phase1_resources.py` reads explicit image headers and completed-run
 metadata to estimate resource costs without decoding images, reading references

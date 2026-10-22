@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "scope": "Two-case implementation parity and resource observations, not biological/reconstruction improvement or a hardware minimum",
+  "cases": [
+    {
+      "schema_version": 1,
+      "scope": "Implementation parity only; no reference, biological score, GPU or training",
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-image": "0.25.2",
+        "psutil": "7.0.0"
+      },
+      "baseline_manifest_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+      "script_sha256": "27064e2e7da59d2a527b501dea554a77d8385214ffdb9a8085dab759c872c95f",
+      "backend_code_sha256": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+      "source_image_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "execution": {
+        "backend": "disk_separable_v1",
+        "block_side": 64,
+        "kernel_radii_per_axis_pass": [
+          71,
+          11,
+          23
+        ],
+        "dtype": "float32",
+        "boundary_mode": "reflect",
+        "normalization": "unchanged external whole-image transform",
+        "scratch_removed_after_success": true
+      },
+      "normalization": {
+        "minimum": 0.0,
+        "maximum": 255.0,
+        "constant": false
+      },
+      "shape_zyx": [
+        27,
+        429,
+        1017
+      ],
+      "unequal_guide_voxels": 0,
+      "maximum_absolute_guide_error": 0.0,
+      "baseline_guide_sha256": "e2a6d430b6135dd6fa378edf46aa78c2ca3fa913d7fc77a941ed16e0abafd6f5",
+      "disk_guide_sha256": "e2a6d430b6135dd6fa378edf46aa78c2ca3fa913d7fc77a941ed16e0abafd6f5",
+      "selections": [
+        {
+          "seed": 0,
+          "cell_side_voxel": 4,
+          "count": 184062,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "5d2ca3332e70bc6cd21741d402115b29df37a86f8773a4e4de2b766c00495d57"
+        },
+        {
+          "seed": 0,
+          "cell_side_voxel": 8,
+          "count": 23011,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "29e7f157e7ecee665408d4ce150b181092e17aa0d0a8c5fcd663318e4d760714"
+        },
+        {
+          "seed": 1,
+          "cell_side_voxel": 4,
+          "count": 184062,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "9a3542c2cf1f83ac1add72639194705f0fc368ef24ada58e8605ade0b0f8899e"
+        },
+        {
+          "seed": 1,
+          "cell_side_voxel": 8,
+          "count": 23011,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "cd56705f7fc51072c955a0d392e36e9fe2fb02b0b2598a36f450ce7023493930"
+        },
+        {
+          "seed": 2,
+          "cell_side_voxel": 4,
+          "count": 184062,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "a9ef61dc5745b74c29f7bbf936daff93ca6fcfeba24a80df316c7536b7dee1e6"
+        },
+        {
+          "seed": 2,
+          "cell_side_voxel": 8,
+          "count": 23011,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "1b4a17d09ce44db15aaffe16e395a835905a74a47a4cb02b9f67cb4687f30007"
+        },
+        {
+          "seed": 3,
+          "cell_side_voxel": 4,
+          "count": 184062,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "0b4cc60b25918793cb988a65081d64173a22355cf4c4e63e1d79106c9b05d277"
+        },
+        {
+          "seed": 3,
+          "cell_side_voxel": 8,
+          "count": 23011,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "bee0ec7023b81db877618e754f36da3ff52f0c0cbf7da93b30dc1c5049ff2797"
+        },
+        {
+          "seed": 4,
+          "cell_side_voxel": 4,
+          "count": 184062,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "85b937d8a7c81b6008437c1e7441b273ab70dd7fcb2c3a05c0ce29377352aa08"
+        },
+        {
+          "seed": 4,
+          "cell_side_voxel": 8,
+          "count": 23011,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "eba2f7fd48988728abef7995cfb22fc64ab1475f22d3fc3f8cd83766f003279d"
+        }
+      ],
+      "prepare_seconds": 1.7679687999770977,
+      "filter_seconds": 564.7851277000154,
+      "total_seconds": 573.935510499985,
+      "process_peak_working_set_bytes": 143958016,
+      "process_peak_pagefile_bytes": 1406033920,
+      "baseline_cumulative_peak_working_set_bytes": 2239459328,
+      "memory_comparison_limit": "Fresh replay process includes decoding/normalization/filtering/selection. Historical per-case peaks were cumulative in a two-case process; this is not a controlled filter-only memory benchmark or a product minimum specification.",
+      "passed": true,
+      "raw_report_path": "tmp/disk_guide_parity_20261022/fruitfly/report.json",
+      "raw_report_sha256": "79ef7cacfc4a3df91eecf367c4809f2288520d801c34d049d4a11589fdc496f5",
+      "source_capture_limit": "Initial replay collected code hashes at report-writing time while optional output destination handling and an unused import were edited; no change to filtering arithmetic. No start-of-run source snapshot. Original raw report is preserved."
+    },
+    {
+      "schema_version": 1,
+      "scope": "Implementation parity only; no reference, biological score, GPU or training",
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-image": "0.25.2",
+        "psutil": "7.0.0"
+      },
+      "baseline_manifest_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+      "script_sha256": "088dbead3796b4088cedfc44a0470227b4889d04faa4e27ec72973fe7f359c73",
+      "backend_code_sha256": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+      "code_hash_capture": "source snapshots before decoding/filtering",
+      "source_image_sha256": "de7ac6b7d4f3a6770888568cc7bc2f91fd99d646657bd6f15d2f1faa70353317",
+      "execution": {
+        "backend": "disk_separable_v1",
+        "block_side": 64,
+        "kernel_radii_per_axis_pass": [
+          71,
+          11,
+          23
+        ],
+        "dtype": "float32",
+        "boundary_mode": "reflect",
+        "normalization": "unchanged external whole-image transform",
+        "scratch_removed_after_success": true
+      },
+      "normalization": {
+        "minimum": 15.0,
+        "maximum": 4095.0,
+        "constant": false
+      },
+      "shape_zyx": [
+        60,
+        512,
+        512
+      ],
+      "unequal_guide_voxels": 0,
+      "maximum_absolute_guide_error": 0.0,
+      "baseline_guide_sha256": "f563ec82617fcc83de0d34eaf8b38cba5b82d77f3c0c024734f10c8d38e5dad0",
+      "disk_guide_sha256": "f563ec82617fcc83de0d34eaf8b38cba5b82d77f3c0c024734f10c8d38e5dad0",
+      "selections": [
+        {
+          "seed": 0,
+          "cell_side_voxel": 4,
+          "count": 245760,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "0159ab7108c5483f828de0ce5901e49fec5c3305c7c5bf29041261dc7a0c50e1"
+        },
+        {
+          "seed": 0,
+          "cell_side_voxel": 8,
+          "count": 30720,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "057ff0ea5166cd4746501aee9dae48f66fed634cbc3988a28ad3617151e0053b"
+        },
+        {
+          "seed": 1,
+          "cell_side_voxel": 4,
+          "count": 245760,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "eff049e23acc165e74e96b901dbbf8693c0d6a35d0d9368dedcbe2cc718f7050"
+        },
+        {
+          "seed": 1,
+          "cell_side_voxel": 8,
+          "count": 30720,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "95a39b45cb5a10fb8537ef458fca759d1af1ae604d0abe5fac02836894e473ce"
+        },
+        {
+          "seed": 2,
+          "cell_side_voxel": 4,
+          "count": 245760,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "be2c1e07a9cb9fa0f94699149e366f2283cd55c07b721b8b5bf1bbb681db4967"
+        },
+        {
+          "seed": 2,
+          "cell_side_voxel": 8,
+          "count": 30720,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "b7dfd07468fc9d7a85321a0544d9619fb9f9d3f2d16bf3a509f87b0c53dd215e"
+        },
+        {
+          "seed": 3,
+          "cell_side_voxel": 4,
+          "count": 245760,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "465d85fae153f9c0e54fba46741d81d4c793078cf0b29e160339730c1af0db52"
+        },
+        {
+          "seed": 3,
+          "cell_side_voxel": 8,
+          "count": 30720,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "fc2961bee48459c94d8c336e65f9f897ec2641929d23f10c6533d82c83efbf70"
+        },
+        {
+          "seed": 4,
+          "cell_side_voxel": 4,
+          "count": 245760,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "705e972afa142737e5ab90f5545a10921b7736befa1bc718923933909a528e72"
+        },
+        {
+          "seed": 4,
+          "cell_side_voxel": 8,
+          "count": 30720,
+          "exact_ordered_source_indices": true,
+          "baseline_cloud_sha256": "2507dc5f1e9ad4e343e756437c30bac346865c7e98fcce7b897d7afe5bad0b39"
+        }
+      ],
+      "prepare_seconds": 13.084828799997922,
+      "filter_seconds": 462.28039269999135,
+      "total_seconds": 483.132738699991,
+      "process_peak_working_set_bytes": 195510272,
+      "process_peak_pagefile_bytes": 1432702976,
+      "memory_samples": {
+        "before_decode": {
+          "rss": 38129664,
+          "peak_wset": 40210432,
+          "private": 664076288,
+          "peak_pagefile": 665206784
+        },
+        "after_normalization_save": {
+          "rss": 38236160,
+          "peak_wset": 195510272,
+          "private": 664076288,
+          "peak_pagefile": 821710848
+        },
+        "after_filter": {
+          "rss": 74452992,
+          "peak_wset": 195510272,
+          "private": 1381830656,
+          "peak_pagefile": 1427226624
+        },
+        "after_sampling": {
+          "rss": 93974528,
+          "peak_wset": 195510272,
+          "private": 1401114624,
+          "peak_pagefile": 1432702976
+        }
+      },
+      "baseline_cumulative_peak_working_set_bytes": 2841513984,
+      "memory_comparison_limit": "Fresh replay process includes decoding/normalization/filtering/selection. Historical per-case peaks were cumulative in a two-case process; this is not a controlled filter-only memory benchmark or a product minimum specification.",
+      "passed": true,
+      "raw_report_path": "tmp/disk_guide_parity_20261022/series021/report.json",
+      "raw_report_sha256": "6a086c272acae9f48c7fa9e5022ae8ea6a1d04d7e463f555b558b1bb3980360b"
+    }
+  ],
+  "checks": {
+    "exact_saved_guide_files": 2,
+    "exact_ordered_sato_clouds": 20,
+    "operator_tests": 8,
+    "unique_regression_and_operator_tests_passed": 158,
+    "test_record": "149 passed / 1 failed in regression excluding operator tests; Windows output rename repaired; 9 targeted tests passed, then both CLI variants passed after memory metadata addition. Operator/remaining regression results are retained; no scientific threshold relaxed."
+  },
+  "decision": "Disk backend suitable for the fixed four-case CPU qualification; large-volume execution and reconstruction remain unmeasured",
+  "automatic_training_authorized": false
+}

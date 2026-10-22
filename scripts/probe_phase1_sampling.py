@@ -16,12 +16,17 @@ import psutil
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from pn2.inputs.cases import load_image_cases, read_object, require_keys
 from pn2.inputs.image import decode_image
+from pn2.inputs.disk_guide import disk_sato_guide, read_block
 from pn2.inputs.sampling import (normalized_image, partition_tiles, probabilities,
                                  ranked_selection, sato_guide, selection_count, source_indices)
 
 
 def sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    result = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024**2), b""):
+            result.update(chunk)
+    return result.hexdigest()
 
 
 def write(path, data):
@@ -51,10 +56,17 @@ def load_recipe(path):
 def peak_memory():
     info = psutil.Process().memory_info()
     return {"bytes": int(getattr(info, "peak_wset", info.rss)),
-            "kind": "process_peak_working_set" if hasattr(info, "peak_wset") else "current_RSS_not_peak"}
+            "kind": "process_peak_working_set" if hasattr(info, "peak_wset") else "current_RSS_not_peak",
+            "current_RSS_bytes": int(info.rss),
+            "peak_pagefile_bytes": int(info.peak_pagefile) if hasattr(info, "peak_pagefile") else None,
+            "current_private_bytes": int(info.private) if hasattr(info, "private") else None}
 
 
-def generate(cases_path, recipe_path, output_dir):
+def generate(cases_path, recipe_path, output_dir, *, guide_backend="whole", block_side=64):
+    if guide_backend not in {"whole", "disk"}:
+        raise ValueError("Unknown guide backend")
+    if type(block_side) is not int or block_side <= 0:
+        raise ValueError("block_side must be a positive integer")
     cases, recipe = load_image_cases(cases_path), load_recipe(recipe_path)
     if any(c.partition != "training" or c.units != "voxel" for c in cases):
         raise ValueError("This bounded native-voxel probe accepts explicit training images only")
@@ -68,6 +80,9 @@ def generate(cases_path, recipe_path, output_dir):
                            ("numpy", "scipy", "scikit-image", "psutil")},
               "source_code_sha256": sha256(Path(__file__).resolve().parents[1] / "src/pn2/inputs/sampling.py"),
               "generation_script_sha256": sha256(__file__),
+              "guide_backend": guide_backend,
+              "disk_guide_code_sha256": sha256(Path(__file__).resolve().parents[1] / "src/pn2/inputs/disk_guide.py")
+                  if guide_backend == "disk" else None,
               "cases": []}
     began = time.perf_counter()
     for case_number, case in enumerate(cases):
@@ -78,16 +93,40 @@ def generate(cases_path, recipe_path, output_dir):
         raw = decoded.array_zyx
         decode_seconds = time.perf_counter() - start
         normalized, transform = normalized_image(raw)
+        normalized_path = folder / "normalized.npy"
+        guide_path = folder / "sato_guide.npy"
+        if guide_backend == "disk":
+            np.save(normalized_path, normalized, allow_pickle=False)
+            normalized = None
         print(f"GUIDE start case={case.case_id} XYZ={decoded.dimensions_xyz} CPU only", flush=True)
         start = time.perf_counter()
-        guide = sato_guide(normalized, recipe["sigmas_voxel"])
-        guide_seconds = time.perf_counter() - start
-        np.save(folder / "sato_guide.npy", guide, allow_pickle=False)
+        execution = {"backend": "whole_skimage_0.25.2"}
+        if guide_backend == "disk":
+            _, execution = disk_sato_guide(normalized_path, recipe["sigmas_voxel"],
+                folder / "guide_work", block_side=block_side,
+                progress=lambda s: print(s, flush=True), output_path=guide_path)
+            guide_seconds = time.perf_counter() - start
+            execution["timing_scope"] = "disk filtering including intermediate and guide IO; excludes input normalization/save"
+            (folder / "guide_work").rmdir()
+            guide = None
+        else:
+            guide = sato_guide(normalized, recipe["sigmas_voxel"])
+            guide_seconds = time.perf_counter() - start
+            execution["timing_scope"] = "in-memory filtering only; excludes guide save"
+            np.save(guide_path, guide, allow_pickle=False)
+        if guide_backend == "disk":
+            guide_range = [float("inf"), 0.]
+            for core in partition_tiles(raw.shape, block_side):
+                block = read_block(guide_path, core)
+                guide_range = [min(guide_range[0], float(block.min())), max(guide_range[1], float(block.max()))]
+            del block
+        else:
+            guide_range = [float(guide.min()), float(guide.max())]
         tiles = list(partition_tiles(raw.shape, recipe["tile_side_voxel"]))
         item = {"case_id": case.case_id, "image": decoded.provenance,
                 "normalization": transform, "decode_seconds": decode_seconds,
-                "guide_seconds": guide_seconds, "guide_sha256": sha256(folder / "sato_guide.npy"),
-                "guide_range": [float(guide.min()), float(guide.max())],
+                "guide_seconds": guide_seconds, "guide_sha256": sha256(guide_path),
+                "guide_execution": execution, "guide_range": guide_range,
                 "tile_count": len(tiles), "tiles": [
                     {"start_xyz": [s.start for s in tile][::-1], "stop_xyz": [s.stop for s in tile][::-1]}
                     for tile in tiles], "outputs": []}
@@ -98,7 +137,8 @@ def generate(cases_path, recipe_path, output_dir):
             fallbacks = defaultdict(int)
             for tile_id, tile in enumerate(tiles):
                 fields = {"uniform": np.ones(raw[tile].size),
-                          "intensity": normalized[tile], "sato": guide[tile]}
+                          "intensity": read_block(normalized_path, tile) if guide_backend == "disk" else normalized[tile],
+                          "sato": read_block(guide_path, tile) if guide_backend == "disk" else guide[tile]}
                 counts = {d: selection_count(int(raw[tile].size), d) for d in recipe["cell_sides_voxel"]}
                 for method, values in fields.items():
                     probability, fallback = probabilities(values, recipe["uniform_mass"])
@@ -123,6 +163,8 @@ def generate(cases_path, recipe_path, output_dir):
         item["process_memory"] = peak_memory()
         write(folder / "provenance.json", item)
         report["cases"].append(item)
+        if guide_backend == "disk":
+            normalized_path.unlink()
         del decoded, raw, normalized, guide, selected, chunks, fields, values
     report["total_seconds"] = time.perf_counter() - began
     report["process_memory"] = peak_memory()
@@ -135,5 +177,8 @@ if __name__ == "__main__":
     parser.add_argument("--cases", required=True, type=Path)
     parser.add_argument("--recipe", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--guide-backend", choices=["whole", "disk"], default="whole")
+    parser.add_argument("--block-side", type=int, default=64)
     args = parser.parse_args()
-    generate(args.cases, args.recipe, args.output_dir)
+    generate(args.cases, args.recipe, args.output_dir, guide_backend=args.guide_backend,
+             block_side=args.block_side)

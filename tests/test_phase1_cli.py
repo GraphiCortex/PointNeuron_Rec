@@ -7,9 +7,11 @@ import sys
 import shutil
 
 import numpy as np
+import pytest
 
 
-def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path):
+@pytest.mark.parametrize("guide_backend", ["whole", "disk"])
+def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path, guide_backend):
     repo = Path(__file__).resolve().parents[1]
     z, y, x = np.indices((9, 13, 17))
     values = np.rint(200 * np.exp(-((z - 4)**2 + (y - 6)**2) / 8)).astype(np.uint8)
@@ -28,9 +30,16 @@ def test_two_separate_commands_preserve_source_and_frozen_clouds(tmp_path):
     config.write_text(json.dumps(recipe))
     output = tmp_path / "clouds"
     generation = subprocess.run([sys.executable, str(repo / "scripts/probe_phase1_sampling.py"),
-        "--cases", str(manifest), "--recipe", str(config), "--output-dir", str(output)],
+        "--cases", str(manifest), "--recipe", str(config), "--output-dir", str(output),
+        "--guide-backend", guide_backend],
         capture_output=True, text=True)
     assert generation.returncode == 0, generation.stdout + generation.stderr
+    generated = json.loads((output / "clouds.json").read_text())
+    assert generated["guide_backend"] == guide_backend
+    if guide_backend == "disk":
+        assert generated["disk_guide_code_sha256"]
+        assert not (output / "case_00/normalized.npy").exists()
+        assert not (output / "case_00/guide_work").exists()
     # Create the reference only after generation succeeds: no reference could
     # have been used to choose its domain, point counts or source points.
     reference = tmp_path / "reference.swc"

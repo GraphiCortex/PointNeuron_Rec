@@ -5,6 +5,12 @@ resources. **Preparation is complete; generation and scoring have not started.**
 The resource preflight advises against launching the existing whole-volume
 implementation on this laptop. No sampling setting or model has changed.
 
+Follow-up: the [disk-backed implementation and parity checks](phase1_disk_guide.md)
+address this resource finding. The header projections below describe the
+original whole-volume backend and remain preserved. A successful parity check
+can support proceeding with the fixed cohort using the explicit disk backend;
+it does not turn these projections into measurements of the large image.
+
 ## Fixed selection and comparison
 
 The image-only [case manifest](../configs/phase1_qualification_cases.json)
@@ -112,21 +118,20 @@ Raw report: `tmp/phase1_qualification_20261022/resource_preflight.json`, SHA-256
 `ecefeafd97cfaecc2e24c281d4b03a8789694f37e83095a35ac0e5a4bdd53605`.
 It records case/config/baseline/script hashes and all counts/projections.
 
-## Next engineering decision
+## Engineering response
 
-Prepare a memory-bounded implementation of the same guide before launching this
-cohort. Explain and review its numerical equivalence checks first. Blocking
-must preserve normalization, scale combination, global boundary behavior and
-the filter's actual spatial dependencies; the current disjoint selection boxes
-are not automatically valid filtering blocks. Do not silently substitute a
-shorter halo, downsample the image or replace the large case.
+The [disk-backed implementation](phase1_disk_guide.md) now preserves the same
+normalization, scale combination, global boundary behavior and full finite
+kernel dependencies. Both original saved guide files and all 20 ordered Sato
+selections replay exactly; seam/boundary operator and command integration checks
+pass. No shorter halo, downsampling or replacement case was introduced.
 
-Validate against the existing whole-volume operator on manageable fixtures and
-saved inputs, including boundaries and seams, before collecting new biological
-scores. If numerical differences can alter sampling, disclose them and agree
-how the updated implementation is compared. This changes how Phase 1 is
-computed, not the intended learned architecture. No new implementation is
-adopted or large-volume run launched by this planning document.
+This supports executing the fixed cohort with the explicit disk backend. It
+changes how Phase 1 is computed, not the intended learned architecture.
+Additional disk use and runtime are part of the comparison's resource verdict;
+actual large-volume execution remains to be measured. Whole-image decoding and
+initial normalization remain full-volume operations. No large-volume run or
+model fit was launched by the implementation checks.
 
 ## Reproduce the small preflight
 
@@ -140,6 +145,6 @@ From the PN2 root, with a fresh output filename:
   --output .\tmp\phase1_qualification_20261022\resource_preflight.json
 ```
 
-The resource verdict is advisory and does not launch another command. Existing
-generation/evaluation entry points remain unchanged; no expensive run command
-is scheduled while the resource issue remains unresolved.
+The resource verdict above describes the original whole-volume implementation
+and does not launch another command. The generator now supports the explicit
+disk backend; see the [reviewed execution commands and limits](phase1_disk_guide.md#commands).

@@ -7,6 +7,7 @@
 - [Explicit geometry-only reference type policy and source investigation](reference_type_policy.md)
 - [Complete frozen-cloud rescore: two contexts, comparative gate and remaining gaps](phase1_geometry_rescore_results.md)
 - [Four-context qualification plan and memory-scaling preflight](phase1_qualification_plan.md)
+- [Disk-backed guide implementation, parity checks and resource limits](phase1_disk_guide.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)
