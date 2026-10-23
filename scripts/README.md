@@ -146,3 +146,26 @@ command exists yet. Generated artifacts belong in `PN2/tmp/`.
 The PN1-only `audit_reference_forward.py` has been removed from active source.
 Its [historical report](../docs/reference_forward_interface.md) and pushed commit
 `48519ff` preserve the detour; no PN1 rebuild is scheduled.
+
+## Untrained PointNeXt capacity check, 23 October 2026
+
+See [input/encoder contract](../docs/pointnext_input_contract.md). The standalone
+diagnostic explicitly reads the hash-pinned historical native encoder; fresh
+weights only, no checkpoint. The existing Torch runtime is used for Torch-only
+work; image-filter checks continue to use the isolated Phase 1 runtime.
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_pointnext_capacity.ps1 -Action check
+& .\scripts\run_pointnext_capacity.ps1 -Action sweep
+```
+
+`check` is a small CPU execution/operator check. `sweep` is a separate manual GPU
+command: synthetic unique voxel points, N=8192/16384/32768/65536, batch 1, FP32,
+one warmup and two measured iterations per forward or forward/backward mode,
+no optimizer. A fresh process per budget has a 300-second cap. Stop on first
+timeout/OOM/failure; no automatic retry or budget change. At most 20 minutes
+plus overhead. Outputs default to a new timestamped ignored `tmp` directory;
+`-Output` can name another **new** directory. No SWC or real-image path is read.
+Reports cover this encoder backend only, not Transformer/GAT/full inference or
+thin/dim branch quality. Preparation does not mean the GPU sweep has been run.

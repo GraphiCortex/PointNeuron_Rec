@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "purpose": "Untrained encoder execution only; no production adoption or feature-quality claim",
+  "historical_source": "../pointneuron2/src",
+  "source_sha256": {
+    "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+  },
+  "budgets": [8192, 16384, 32768, 65536],
+  "box_side": 128,
+  "coordinate_scale": 64.0,
+  "seed": 0,
+  "warmups": 1,
+  "repeats": 2,
+  "worker_timeout_seconds": 300
+}

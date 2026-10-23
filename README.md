@@ -83,6 +83,12 @@ is complete: exact repeated-value encoding helps sparse inputs, but only
 finite-cloud/encoder-capacity decision remains. No replacement sampler or
 training follows this result automatically.
 
+The [input/PointNeXt contract audit](docs/pointnext_input_contract.md) now separates
+that accounting from model capacity. A pinned historical encoder has passed a
+small CPU execution check; a visible untrained GPU budget sweep is prepared.
+The [branch-evidence protocol](docs/branch_retention_protocol.md) specifies the
+next retention and learned-feature questions. No GPU sweep or training has run.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the
