@@ -72,6 +72,12 @@ intensity weighting across the four inputs. Local losses and sparse-image
 budget use require discussion before promoting a Phase 1 policy. No model fit
 followed the comparison.
 
+The next [input-retention revision](docs/phase1_input_retention_draft.md) is a
+discussion draft. It separates exact source representation from the finite
+PointNeXt view, proposes explicit context and conditional detail selection, and
+defines a bounded accounting check. No replacement sampler or model adapter
+has been implemented from that draft.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

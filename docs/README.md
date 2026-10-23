@@ -8,6 +8,7 @@
 - [Complete frozen-cloud rescore: two contexts, comparative gate and remaining gaps](phase1_geometry_rescore_results.md)
 - [Four-context qualification plan and memory-scaling preflight](phase1_qualification_plan.md)
 - [Complete four-context qualification: mixed guide benefit, local losses and budget use](phase1_qualification_results.md)
+- [Proposed Phase 1 input-retention and encoder-budget contract](phase1_input_retention_draft.md)
 - [Disk-backed guide implementation, parity checks and resource limits](phase1_disk_guide.md)
 - [Training-reference graph encoding and radius contract audit](training_reference_contract_audit.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
