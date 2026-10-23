@@ -77,6 +77,11 @@ discussion draft. It separates exact source representation from the finite
 PointNeXt view, proposes explicit context and conditional detail selection, and
 defines a bounded accounting check. No replacement sampler or model adapter
 has been implemented from that draft.
+Its [six-source accounting check](docs/input_retention_accounting_results.md)
+is complete: exact repeated-value encoding helps sparse inputs, but only
+13/135 nonconstant boxes fit the old dense quota before context. The main
+finite-cloud/encoder-capacity decision remains. No replacement sampler or
+training follows this result automatically.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

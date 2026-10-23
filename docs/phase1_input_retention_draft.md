@@ -6,6 +6,12 @@ is implemented by this document.** It follows the completed
 remain unchanged. The proposed change is to Phase 1 selection and point-count
 behavior; PointNeXt, Transformer proposals and GATv2 retain their intended roles.
 
+Follow-up: the [six-source accounting check](input_retention_accounting_results.md)
+is complete. Only 13/135 nonconstant boxes fit the dense exception-count bound,
+before context. The retain-all branch is a conditional opportunity, not a
+general replacement for finite-cloud selection. No new source cache, cloud
+policy or encoder adapter has been promoted.
+
 ## Decision to review
 
 Replace an unconditional volume-proportional point quota with a maximum encoder

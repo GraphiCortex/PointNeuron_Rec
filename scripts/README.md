@@ -58,6 +58,14 @@ one-scorable-case figure from its saved report:
 
 ## Other commands
 
+`audit_input_retention.py` performs the bounded image-only accounting specified
+in the [input-retention draft](../docs/phase1_input_retention_draft.md). It reads
+six explicit existing training sources and frozen image provenance, counts
+modal-value exceptions in each existing box, estimates decoded payload sizes,
+and verifies exact in-memory round trips. It creates no clouds, guides or model
+inputs and opens no SWCs. The [completed results and exact command](../docs/input_retention_accounting_results.md)
+separate storage arithmetic from encoder capacity and reconstruction quality.
+
 `audit_training_references.py` inventories only explicitly declared training
 SWCs, preserving source bytes and unknown type metadata. It reports encoded
 components, junctions, cross-component exact-coordinate coincidences and
