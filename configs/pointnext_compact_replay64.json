@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "purpose": "Untrained 64k replay: only compact interpolation index storage changes; CPU exact parity gate required",
+  "historical_source": "../pointneuron2/src",
+  "source_sha256": {
+    "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+    "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+  },
+  "budgets": [
+    65536
+  ],
+  "box_side": 128,
+  "coordinate_scale": 64.0,
+  "seed": 0,
+  "warmups": 1,
+  "repeats": 2,
+  "worker_timeout_seconds": 300,
+  "interpolation_variant": "compact_indices_v1",
+  "additional_source_sha256": {
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/check_pointnext_compact_interpolation.py": "297ff74ac0e9ed9db84245b9de4ba9ffaaf4ffcd90384a86b0c7c3f1bebdfc15"
+  }
+}

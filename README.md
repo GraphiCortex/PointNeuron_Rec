@@ -91,7 +91,11 @@ next retention and learned-feature questions. The user-launched GPU sweep is now
 [reviewed](docs/pointnext_capacity_results.md): forward/backward completed through
 32k, and 64k inference completed before training-forward OOM. A CPU audit confirms
 that three-neighbor index views retain full-sort backing storage in this native
-backend. No encoder correction or learned fit has been launched from this finding.
+backend. The original model and run are preserved; no learned fit has begun.
+
+A [compact-index correction](docs/pointnext_compact_replay64.md) is now explicitly
+implemented for the standalone diagnostic and passes exact CPU parity/storage
+checks. A manual 64k-only GPU replay is prepared; it has not been launched.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

@@ -153,9 +153,10 @@ No GPU sweep or training has been launched by the agent.
 
 ## Decision sequence
 
-1. Review the completed untrained sweep and correct/validate the identified native
-   index-storage artifact before treating 32k as a capacity ceiling. No automatic
-   GPU replay. Interpret backend failures separately from biological loss.
+1. Review the completed untrained sweep and the
+   [CPU-validated compact-index correction](pointnext_compact_replay64.md).
+   A manual 64k GPU replay is prepared before treating 32k as a capacity ceiling.
+   Interpret backend failures separately from biological loss.
 2. Implement the [stratified retention and learning protocol](branch_retention_protocol.md)
    after agreeing its measurement definitions. Use existing frozen clouds first;
    inspect actual neighborhoods before regenerating guides or redesigning Phase 1.

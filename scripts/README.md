@@ -173,3 +173,17 @@ thin/dim branch quality. The user-launched 29 October sweep is now
 failure led to a CPU-only saved-index-storage audit, with the unchanged historical
 operator. Reproduction command and interpretation are in that report. No encoder
 correction or automatic GPU retry is included in the audit.
+
+The [compact-index correction and CPU validation](../docs/pointnext_compact_replay64.md)
+are now complete. To replay only the previously failing 64k budget:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_pointnext_capacity.ps1 -Action replay64
+```
+
+This repeats the CPU exact-equivalence/storage gate before starting a fresh
+five-minute-capped GPU process. The only encoder computation change is compact
+index storage; the recipe, point count and model settings are fixed. It is not
+a training fit. Outputs are new timestamped ignored `tmp` directories. Original
+`check`/`sweep` actions retain the historical implementation for reproducibility.

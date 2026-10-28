@@ -33,17 +33,29 @@ def load(config_path):
         actual = hashlib.sha256((source / relative).read_bytes()).hexdigest()
         if actual != expected:
             raise RuntimeError(f"Historical diagnostic source changed: {relative}")
+    variant = config.get("interpolation_variant", "historical")
+    if variant not in ("historical", "compact_indices_v1"):
+        raise ValueError(f"Unknown interpolation variant: {variant}")
+    if variant == "compact_indices_v1" and not config.get("additional_source_sha256"):
+        raise ValueError("Corrected interpolation requires explicit source hashes")
+    for relative, expected in config.get("additional_source_sha256", {}).items():
+        if hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() != expected:
+            raise RuntimeError(f"PN2 diagnostic source changed: {relative}")
     return config, source
 
 
-def imports(source):
+def imports(source, variant="historical"):
     # Read-only source reuse is explicit; suppress bytecode writes in history.
     sys.dont_write_bytecode = True
     sys.path.insert(0, str(source))
     import torch
-    from pointneuron.models.pointnext_native import PointNextNativeEncoder
-    from pointneuron.models.pointnext_ops import ball_query_indices
-    return torch, PointNextNativeEncoder, ball_query_indices
+    from pointneuron.models import pointnext_native as native, pointnext_ops as ops
+    native.interpolate_features = ops.interpolate_features
+    if variant == "compact_indices_v1":
+        from pointnext_compact_interpolation import make_interpolator
+        # Process-local binding only; files and the baseline ops function stay intact.
+        native.interpolate_features = make_interpolator(ops)
+    return torch, native.PointNextNativeEncoder, ops.ball_query_indices
 
 
 def pack(torch, xyz, intensity, *, center, scale, image_min, image_max):
@@ -124,6 +136,9 @@ def worker(args, config, torch, Encoder):
               "device": torch.cuda.get_device_name(device), "torch": torch.__version__,
               "cuda_build": torch.version.cuda, "free_bytes_after_setup": free, "total_bytes": total,
               "parameter_count": sum(p.numel() for p in model.parameters()), "modes": {}}
+    report["interpolation_variant"] = config.get("interpolation_variant", "historical")
+    report["source_sha256"] = config["source_sha256"]
+    report["additional_source_sha256"] = config.get("additional_source_sha256", {})
     n = args.points
     report["hierarchy_points"] = [n // 4**i for i in range(5)]
     for mode in ("eval_forward", "train_forward_backward"):
@@ -232,12 +247,14 @@ def main():
     config, source = load(args.config)
     if args.action == "sweep":
         return sweep(args, config)
-    torch, Encoder, ball = imports(source)
+    torch, Encoder, ball = imports(source, config.get("interpolation_variant", "historical"))
     if args.action == "check":
         directory = Path(args.output)
         directory.mkdir(parents=True, exist_ok=False)
         result = check(torch, Encoder, ball, config)
         result["source_sha256"] = config["source_sha256"]
+        result["interpolation_variant"] = config.get("interpolation_variant", "historical")
+        result["additional_source_sha256"] = config.get("additional_source_sha256", {})
         write(directory / "report.json", result)
         print(json.dumps(result, indent=2))
         return 0

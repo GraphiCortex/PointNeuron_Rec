@@ -104,6 +104,10 @@ the correction's execution effect; full model capacity and biological quality
 would still need their separate checks. Do not start a learned fit or change
 sampling, radius, K, normalization or precision to make this memory gate pass.
 
+Subsequent preparation: the [compact correction and CPU validation](pointnext_compact_replay64.md)
+are now complete, with a manual 64k-only replay command. The original results
+above remain unchanged; the corrected GPU replay is not yet run.
+
 After resolving this backend artifact, continue the agreed real-cloud
 neighborhood/contrast retention measurements before choosing the trained
 comparison. The current data do not select a biological point budget.

@@ -155,6 +155,7 @@ examples. Expand only after the comparison answers its predeclared question.
 29 October update: the user-launched untrained capacity sweep is
 [reviewed](pointnext_capacity_results.md). Before interpreting the 64k training
 failure as a capacity ceiling, address the confirmed native index-storage artifact
-through an explicitly validated implementation correction. No correction or GPU
-replay has yet run. The metric and trained fit remain specifications with
+through an explicitly validated implementation correction. The
+[compact correction now passes CPU validation](pointnext_compact_replay64.md);
+its manual 64k GPU replay has not yet run. The metric and trained fit remain specifications with
 unresolved measurement choices, not an automatically launched sequence of fits.
