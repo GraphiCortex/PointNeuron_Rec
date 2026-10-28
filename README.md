@@ -87,7 +87,11 @@ The [input/PointNeXt contract audit](docs/pointnext_input_contract.md) now separ
 that accounting from model capacity. A pinned historical encoder has passed a
 small CPU execution check; a visible untrained GPU budget sweep is prepared.
 The [branch-evidence protocol](docs/branch_retention_protocol.md) specifies the
-next retention and learned-feature questions. No GPU sweep or training has run.
+next retention and learned-feature questions. The user-launched GPU sweep is now
+[reviewed](docs/pointnext_capacity_results.md): forward/backward completed through
+32k, and 64k inference completed before training-forward OOM. A CPU audit confirms
+that three-neighbor index views retain full-sort backing storage in this native
+backend. No encoder correction or learned fit has been launched from this finding.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

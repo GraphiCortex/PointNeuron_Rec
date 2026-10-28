@@ -168,4 +168,8 @@ timeout/OOM/failure; no automatic retry or budget change. At most 20 minutes
 plus overhead. Outputs default to a new timestamped ignored `tmp` directory;
 `-Output` can name another **new** directory. No SWC or real-image path is read.
 Reports cover this encoder backend only, not Transformer/GAT/full inference or
-thin/dim branch quality. Preparation does not mean the GPU sweep has been run.
+thin/dim branch quality. The user-launched 29 October sweep is now
+[reviewed](../docs/pointnext_capacity_results.md). Its 64k training-forward memory
+failure led to a CPU-only saved-index-storage audit, with the unchanged historical
+operator. Reproduction command and interpretation are in that report. No encoder
+correction or automatic GPU retry is included in the audit.

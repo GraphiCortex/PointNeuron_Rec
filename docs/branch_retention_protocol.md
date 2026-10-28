@@ -152,6 +152,9 @@ examples. Expand only after the comparison answers its predeclared question.
   universal-product claim. Require held-out neuron/context evidence and final
   graph/SWC evaluation in later milestones.
 
-The immediate prepared action is the untrained capacity sweep. The metric and
-trained fit are intentionally specifications with unresolved measurement choices,
-not hidden new constraints or another automatically launched sequence of fits.
+29 October update: the user-launched untrained capacity sweep is
+[reviewed](pointnext_capacity_results.md). Before interpreting the 64k training
+failure as a capacity ceiling, address the confirmed native index-storage artifact
+through an explicitly validated implementation correction. No correction or GPU
+replay has yet run. The metric and trained fit remain specifications with
+unresolved measurement choices, not an automatically launched sequence of fits.

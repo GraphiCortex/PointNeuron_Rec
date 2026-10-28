@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-29",
+  "experiment_commit": "82f32eb",
+  "raw_directory": "tmp/pointnext_capacity_sweep_20261029_005401",
+  "raw_report_sha256": "e7ca7de79a947b473f1b44757cedbcfc8abe1f61fa8ab7519bf86cada1c9e76b",
+  "config": {
+    "schema_version": 1,
+    "purpose": "Untrained encoder execution only; no production adoption or feature-quality claim",
+    "historical_source": "../pointneuron2/src",
+    "source_sha256": {
+      "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+      "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+    },
+    "budgets": [
+      8192,
+      16384,
+      32768,
+      65536
+    ],
+    "box_side": 128,
+    "coordinate_scale": 64.0,
+    "seed": 0,
+    "warmups": 1,
+    "repeats": 2,
+    "worker_timeout_seconds": 300
+  },
+  "rows": [
+    {
+      "points": 8192,
+      "raw_status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 36.81733179999901,
+      "completed_modes": {
+        "eval_forward": {
+          "seconds": [
+            2.8170734000004813,
+            3.5280373000005056
+          ],
+          "mean_seconds": 3.1725553500004935,
+          "output_shape": [
+            1,
+            8192,
+            32
+          ],
+          "peak_allocated_bytes": 80606208,
+          "peak_reserved_bytes": 109051904
+        },
+        "train_forward_backward": {
+          "seconds": [
+            3.7232775000011316,
+            5.139849199998935
+          ],
+          "mean_seconds": 4.431563350000033,
+          "output_shape": [
+            1,
+            8192,
+            32
+          ],
+          "peak_allocated_bytes": 252332544,
+          "peak_reserved_bytes": 281018368
+        }
+      }
+    },
+    {
+      "points": 16384,
+      "raw_status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 32.6095222999993,
+      "completed_modes": {
+        "eval_forward": {
+          "seconds": [
+            5.499554899999566,
+            5.718706999999995
+          ],
+          "mean_seconds": 5.609130949999781,
+          "output_shape": [
+            1,
+            16384,
+            32
+          ],
+          "peak_allocated_bytes": 158012416,
+          "peak_reserved_bytes": 184549376
+        },
+        "train_forward_backward": {
+          "seconds": [
+            2.3445338000001357,
+            2.4376291999997193
+          ],
+          "mean_seconds": 2.3910814999999275,
+          "output_shape": [
+            1,
+            16384,
+            32
+          ],
+          "peak_allocated_bytes": 785068032,
+          "peak_reserved_bytes": 960495616
+        }
+      }
+    },
+    {
+      "points": 32768,
+      "raw_status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 54.693499099999826,
+      "completed_modes": {
+        "eval_forward": {
+          "seconds": [
+            5.657427699999971,
+            9.30558369999926
+          ],
+          "mean_seconds": 7.481505699999616,
+          "output_shape": [
+            1,
+            32768,
+            32
+          ],
+          "peak_allocated_bytes": 312824832,
+          "peak_reserved_bytes": 373293056
+        },
+        "train_forward_backward": {
+          "seconds": [
+            6.617452899999989,
+            6.142503000000943
+          ],
+          "mean_seconds": 6.379977950000466,
+          "output_shape": [
+            1,
+            32768,
+            32
+          ],
+          "peak_allocated_bytes": 2737509888,
+          "peak_reserved_bytes": 4129292288
+        }
+      }
+    },
+    {
+      "points": 65536,
+      "raw_status": "failed",
+      "exit_code": 1,
+      "wall_seconds": 89.72059290000107,
+      "completed_modes": {
+        "eval_forward": {
+          "seconds": [
+            14.012654799998927,
+            18.86852920000092
+          ],
+          "mean_seconds": 16.440591999999924,
+          "output_shape": [
+            1,
+            65536,
+            32
+          ],
+          "peak_allocated_bytes": 622449664,
+          "peak_reserved_bytes": 851443712
+        }
+      }
+    }
+  ],
+  "failure_interpretation": {
+    "points": 65536,
+    "raw_status": "failed",
+    "error_class": "torch.AcceleratorError",
+    "reported_error": "CUDA error: out of memory",
+    "failed_operation_phase": "first train-mode forward, before backward",
+    "completed_inference_mode_preserved_separately": true
+  },
+  "cpu_storage_audit": {
+    "status": "confirmed_full_sort_storage_retained",
+    "device": "cpu",
+    "torch": "2.12.1+cu130",
+    "source_sha256": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d",
+    "queries": 1024,
+    "supports": 256,
+    "channels": 8,
+    "chunk_size": 64,
+    "output_shape": [
+      1,
+      1024,
+      8
+    ],
+    "finite_output_and_gradient": true,
+    "saved_index_tensors": 16,
+    "unique_index_storages": 16,
+    "logical_index_bytes": 24576,
+    "backing_index_storage_bytes": 2097152,
+    "one_saved_index_tensor": {
+      "shape": [
+        1,
+        64,
+        3
+      ],
+      "dtype": "torch.int64",
+      "logical_bytes": 1536,
+      "storage_bytes": 131072
+    },
+    "final_restoration_full_sort_storage_bytes_by_input_budget": {
+      "8192": 134217728,
+      "16384": 536870912,
+      "32768": 2147483648,
+      "65536": 8589934592
+    },
+    "scope": "CPU storage behavior verified; large-budget values are source-derived extrapolations, not GPU measurements"
+  }
+}

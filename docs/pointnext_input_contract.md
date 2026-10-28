@@ -1,7 +1,9 @@
 # Input and PointNeXt audit, 23 October 2026
 
-Status: source audit and CPU execution check complete; GPU capacity sweep prepared,
-not launched. Real-cloud neighborhood measurements and trained comparisons have
+Initial status on 23 October: source audit and CPU execution check complete; GPU
+capacity sweep prepared, not launched. **29 October update:** the user-launched
+sweep is [reviewed](pointnext_capacity_results.md), including a confirmed native
+index-storage issue. Real-cloud neighborhood measurements and trained comparisons have
 not been run. No product encoder, replacement sampler or learned normalization
 policy is adopted by this diagnostic. The intended architecture is unchanged.
 
@@ -145,13 +147,15 @@ first-K ordering, finite `[1,256,32]` forward and all parameter gradients passed
 Raw verified launcher report: `tmp/pointnext_capacity_cpu_verified_20261023/report.json`.
 The three CPU-only controller tests also pass: success-report preservation,
 timeout cleanup/log preservation, and missing-report rejection without continuing
-to larger budgets. The CUDA measurement path remains unexecuted.
+to larger budgets. The subsequent user-launched CUDA sweep and separate CPU
+storage audit are recorded in the [results](pointnext_capacity_results.md).
 No GPU sweep or training has been launched by the agent.
 
 ## Decision sequence
 
-1. Run the prepared untrained capacity sweep. Interpret failed budgets by their
-   actual failure (memory, time cap, operator exception), not as biological loss.
+1. Review the completed untrained sweep and correct/validate the identified native
+   index-storage artifact before treating 32k as a capacity ceiling. No automatic
+   GPU replay. Interpret backend failures separately from biological loss.
 2. Implement the [stratified retention and learning protocol](branch_retention_protocol.md)
    after agreeing its measurement definitions. Use existing frozen clouds first;
    inspect actual neighborhoods before regenerating guides or redesigning Phase 1.
