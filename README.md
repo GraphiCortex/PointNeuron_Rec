@@ -109,6 +109,14 @@ Only six windows fall jointly in the apparent-thin/dim stratum, so broad thin/di
 adequacy is not established. No sampler policy, model change or learned fit
 follows automatically.
 
+The user-requested [PN1 versus PN2 input comparison](docs/pn1_input_comparison_results.md)
+is complete: seven preparation arms, matched 2048/dense slot budgets and five
+seeds on the same four boxes. Reader repairs, source-range controls and duplicate
+counts are separated. PN2 Sato preserves evidence excluded by the hard gate in
+frog regions, but thresholded PN1-style controls beat it in both fruitfly boxes
+at 2048 slots. Phase 1 is not established as a universal input improvement.
+This is a component comparison; no PN1 model rebuild or PN2 training occurred.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

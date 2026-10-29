@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "Matched input components of current PN1 reimplementation and PN2, not a model benchmark",
+  "window_report": "tmp/real_branch_evidence_20261029/report.json",
+  "window_report_sha256": "fb50a6262cbf034e7f4eb0a642611ca9e32f13491c573f914b4a1f60f6634ab7",
+  "pn1_source_sha256": {
+    "src/pointneuron/data/vaa3d_raw.py": "2449a03b9c6bf73e157550d47bc3ae8989ba00ea8f3d2faac565ed358612fada",
+    "src/pointneuron/data/training_cache.py": "92d12f18b2cf5018ac6adde0cbf2e91821b417826d5ed7735dd5637aedb96c69",
+    "scripts/aggregate_proposals.py": "0a5c428b97a5bb8cf2da9c2e9635fa971373e0b07137a97fe61898129f53a240"
+  },
+  "threshold_fraction": 0.2,
+  "source_range_control": "round(0.2 * verified whole-source observed maximum), explicitly counterfactual PN1 rule",
+  "primary_slots": 2048,
+  "secondary_slots": "Each box existing dense distinct-point count, matched across all arms",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "radii_voxel": [
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "half_length_voxel": 2.0,
+  "curve_tolerances_voxel": [
+    2.0,
+    6.0
+  ],
+  "curve_quadrature_step_voxel": 0.5,
+  "arms": [
+    "pn1_native",
+    "pn1_decode_only",
+    "pn1_range_random",
+    "pn1_range_spatial",
+    "pn2_uniform",
+    "pn2_intensity",
+    "pn2_sato"
+  ],
+  "sampling": "PN1 native helper functions, independent RNG per box/seed/budget; PN2 nested prefixes of frozen PPS ranking. No historical RNG replay claim.",
+  "minimum_foreground_policy": "Record whether 256 eligible voxels exist, but do not apply full-pipeline crop scheduling in this point-selection-only comparison. Empty pools are explicit.",
+  "duplicate_policy": "Keep PN1 native slot sampling, score unique source IDs once, record duplicates; never claim duplicate observations add information."
+}

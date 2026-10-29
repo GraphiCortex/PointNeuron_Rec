@@ -216,3 +216,25 @@ fractions from saved point attributes and adds `point_counts.json` (new file onl
 `plot_real_branch_evidence.py <report.json>` renders the saved report to a new
 `summary.png`; it does not rescore or decode images. The figure, visible report
 and all-radius evidence summary are linked from the results document.
+
+## PN1 versus PN2 voxel-input components
+
+The user specifically requested the [matched comparison](../docs/pn1_input_comparison_results.md).
+It uses the [fixed plan](../docs/pn1_input_comparison_plan.md) and configuration,
+not the earlier closed PN1 model-integration detour. Hash-pinned PN1 decoder and
+pure sampler functions are read from the original `main` checkout without edits.
+No model or GPU is imported or run.
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe `
+  .\scripts\compare_pn1_input_evidence.py --output .\tmp\a_new_pn1_input_comparison
+```
+
+The completed run is `tmp/pn1_input_comparison_20261029`; no repeat is needed.
+It contains 280 fixed records, explicit empty pools and repeated PN1 slot draws,
+scored once per unique source voxel. Frozen PN2 rankings supply nested lower-budget
+views; no guide is regenerated. `plot_pn1_input_comparison.py <report.json>`
+renders saved results only, writing a new `comparison_2048.png`. Existing output
+directories/files are preserved. The runtime and original/main baseline layout
+are local dependencies; no PN1 training or full reconstruction is performed.

@@ -10,6 +10,12 @@ an ordering control. It does not complete the broader trained comparison or
 establish thin/dim adequacy; only six sampled windows occupy that joint stratum.
 The [implementation plan](real_branch_evidence_plan.md) records the fixed scope.
 
+The subsequent user-requested [PN1 component comparison](pn1_input_comparison_results.md)
+is also complete. It includes decoder/range and spatial controls. The next
+learned comparison should retain a strong thresholded reference arm: current
+PN2 Sato has weak-region benefits and matched-budget counterexamples, rather
+than an established universal selection advantage.
+
 ## Questions and attribution
 
 At a fixed distinct-point budget, does the cloud retain useful evidence for
