@@ -105,8 +105,10 @@ would still need their separate checks. Do not start a learned fit or change
 sampling, radius, K, normalization or precision to make this memory gate pass.
 
 Subsequent preparation: the [compact correction and CPU validation](pointnext_compact_replay64.md)
-are now complete, with a manual 64k-only replay command. The original results
-above remain unchanged; the corrected GPU replay is not yet run.
+are now complete. The user-launched corrected 64k GPU replay also passes both
+modes, at 0.580/0.858 GiB allocated peaks (eval/forward-backward). The original
+results above remain unchanged; the linked report records the correction and
+successful replay separately.
 
 After resolving this backend artifact, continue the agreed real-cloud
 neighborhood/contrast retention measurements before choosing the trained

@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-29",
+  "experiment_commit": "091c3b1",
+  "run_directory": "tmp/pointnext_capacity_replay64_20261029_011603",
+  "raw_report_sha256": {
+    "gpu/report.json": "3343821bc21e31ba4bfda6e17da2e7ef9a980156dcd6fa70c8ba49742a0a1ec1",
+    "cpu/report.json": "e01a9399d386382b9404838df818dbc4b0bf11aea0cdc98231dc92ee842c72cc",
+    "gpu/config.json": "1068d27d1daea8b035fa8675beb08f5b5cd5d8388f26ebfcc962cf64b4bb256d"
+  },
+  "cpu_preflight": {
+    "status": "passed",
+    "device": "cpu",
+    "torch": "2.12.1+cu130",
+    "operator_fixtures": [
+      {
+        "fixture": "random",
+        "neighbors_equal": true,
+        "outputs_exact": true,
+        "feature_gradients_exact": true,
+        "baseline_backing_bytes": 2097152,
+        "corrected_backing_bytes": 24576
+      },
+      {
+        "fixture": "tied",
+        "neighbors_equal": true,
+        "outputs_exact": true,
+        "feature_gradients_exact": true
+      },
+      {
+        "fixture": "one_support",
+        "neighbors_equal": true,
+        "outputs_exact": true,
+        "feature_gradients_exact": true
+      },
+      {
+        "fixture": "two_supports",
+        "neighbors_equal": true,
+        "outputs_exact": true,
+        "feature_gradients_exact": true
+      },
+      {
+        "fixture": "three_supports",
+        "neighbors_equal": true,
+        "outputs_exact": true,
+        "feature_gradients_exact": true
+      }
+    ],
+    "whole_encoder_256_points": {
+      "train_outputs_exact": true,
+      "all_parameter_gradients_exact": true,
+      "state_and_bn_buffers_exact": true,
+      "eval_outputs_exact": true
+    },
+    "historical_source_sha256": {
+      "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+      "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+    },
+    "corrected_source_sha256": {
+      "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+      "scripts/check_pointnext_compact_interpolation.py": "297ff74ac0e9ed9db84245b9de4ba9ffaaf4ffcd90384a86b0c7c3f1bebdfc15"
+    },
+    "scope": "No GPU or optimizer; exact CPU parity and retained-index storage only"
+  },
+  "configuration": {
+    "schema_version": 1,
+    "purpose": "Untrained 64k replay: only compact interpolation index storage changes; CPU exact parity gate required",
+    "historical_source": "../pointneuron2/src",
+    "source_sha256": {
+      "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+      "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+    },
+    "budgets": [
+      65536
+    ],
+    "box_side": 128,
+    "coordinate_scale": 64.0,
+    "seed": 0,
+    "warmups": 1,
+    "repeats": 2,
+    "worker_timeout_seconds": 300,
+    "interpolation_variant": "compact_indices_v1",
+    "additional_source_sha256": {
+      "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+      "scripts/check_pointnext_compact_interpolation.py": "297ff74ac0e9ed9db84245b9de4ba9ffaaf4ffcd90384a86b0c7c3f1bebdfc15"
+    }
+  },
+  "gpu_report": {
+    "scope": "Untrained native encoder only",
+    "rows": [
+      {
+        "status": "completed",
+        "points": 65536,
+        "batch": 1,
+        "dtype": "float32",
+        "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+        "torch": "2.12.1+cu130",
+        "cuda_build": "13.0",
+        "free_bytes_after_setup": 7423918080,
+        "total_bytes": 8589410304,
+        "parameter_count": 790720,
+        "modes": {
+          "eval_forward": {
+            "seconds": [
+              13.440816899999845,
+              13.667876699999397
+            ],
+            "mean_seconds": 13.554346799999621,
+            "output_shape": [
+              1,
+              65536,
+              32
+            ],
+            "peak_allocated_bytes": 622449664,
+            "peak_reserved_bytes": 851443712
+          },
+          "train_forward_backward": {
+            "seconds": [
+              15.779047699999865,
+              14.14898230000108
+            ],
+            "mean_seconds": 14.964015000000472,
+            "output_shape": [
+              1,
+              65536,
+              32
+            ],
+            "peak_allocated_bytes": 921549824,
+            "peak_reserved_bytes": 1272971264
+          }
+        },
+        "interpolation_variant": "compact_indices_v1",
+        "source_sha256": {
+          "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+          "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+        },
+        "additional_source_sha256": {
+          "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+          "scripts/check_pointnext_compact_interpolation.py": "297ff74ac0e9ed9db84245b9de4ba9ffaaf4ffcd90384a86b0c7c3f1bebdfc15"
+        },
+        "hierarchy_points": [
+          65536,
+          16384,
+          4096,
+          1024,
+          256
+        ],
+        "observed_abstraction_shapes": {
+          "1": [
+            [
+              1,
+              16384,
+              3
+            ],
+            [
+              1,
+              16384,
+              64
+            ]
+          ],
+          "2": [
+            [
+              1,
+              4096,
+              3
+            ],
+            [
+              1,
+              4096,
+              128
+            ]
+          ],
+          "3": [
+            [
+              1,
+              1024,
+              3
+            ],
+            [
+              1,
+              1024,
+              256
+            ]
+          ],
+          "4": [
+            [
+              1,
+              256,
+              3
+            ],
+            [
+              1,
+              256,
+              512
+            ]
+          ]
+        },
+        "exit_code": 0,
+        "wall_seconds": 98.03664930000014
+      }
+    ],
+    "status": "completed"
+  },
+  "scope": "Untrained encoder execution at 64k, not a training fit or reconstruction improvement"
+}

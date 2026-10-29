@@ -156,6 +156,6 @@ examples. Expand only after the comparison answers its predeclared question.
 [reviewed](pointnext_capacity_results.md). Before interpreting the 64k training
 failure as a capacity ceiling, address the confirmed native index-storage artifact
 through an explicitly validated implementation correction. The
-[compact correction now passes CPU validation](pointnext_compact_replay64.md);
-its manual 64k GPU replay has not yet run. The metric and trained fit remain specifications with
+[compact correction now passes CPU validation and the user-launched 64k GPU replay](pointnext_compact_replay64.md).
+No additional capacity replay is needed for this milestone. The metric and trained fit remain specifications with
 unresolved measurement choices, not an automatically launched sequence of fits.

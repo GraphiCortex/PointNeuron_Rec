@@ -187,3 +187,8 @@ five-minute-capped GPU process. The only encoder computation change is compact
 index storage; the recipe, point count and model settings are fixed. It is not
 a training fit. Outputs are new timestamped ignored `tmp` directories. Original
 `check`/`sweep` actions retain the historical implementation for reproducibility.
+
+The user-launched corrected 64k replay is now complete and passes both modes;
+[results and memory figures](../docs/pointnext_compact_replay64.md) are saved.
+No repeat is needed for this execution milestone. Real-cloud retention and
+learned reconstruction are separate next questions.

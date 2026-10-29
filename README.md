@@ -95,7 +95,10 @@ backend. The original model and run are preserved; no learned fit has begun.
 
 A [compact-index correction](docs/pointnext_compact_replay64.md) is now explicitly
 implemented for the standalone diagnostic and passes exact CPU parity/storage
-checks. A manual 64k-only GPU replay is prepared; it has not been launched.
+checks. The user-launched 64k-only GPU replay now passes both modes: inference
+averages 13.55 seconds and forward/backward 14.96 seconds, with 0.58/0.86 GiB peak
+allocated CUDA memory. This closes the bounded encoder execution check through
+64k; real-cloud branch evidence and learned reconstruction remain untested here.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

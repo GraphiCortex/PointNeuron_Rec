@@ -3,7 +3,9 @@
 Initial status on 23 October: source audit and CPU execution check complete; GPU
 capacity sweep prepared, not launched. **29 October update:** the user-launched
 sweep is [reviewed](pointnext_capacity_results.md), including a confirmed native
-index-storage issue. Real-cloud neighborhood measurements and trained comparisons have
+index-storage issue. Its [CPU-validated compact correction and user-launched 64k
+GPU replay](pointnext_compact_replay64.md) now pass both forward and backward
+execution. Real-cloud neighborhood measurements and trained comparisons have
 not been run. No product encoder, replacement sampler or learned normalization
 policy is adopted by this diagnostic. The intended architecture is unchanged.
 
@@ -153,10 +155,10 @@ No GPU sweep or training has been launched by the agent.
 
 ## Decision sequence
 
-1. Review the completed untrained sweep and the
-   [CPU-validated compact-index correction](pointnext_compact_replay64.md).
-   A manual 64k GPU replay is prepared before treating 32k as a capacity ceiling.
-   Interpret backend failures separately from biological loss.
+1. The [compact-index correction and 64k replay](pointnext_compact_replay64.md)
+   pass. Close this bounded execution milestone; 32k is not the demonstrated
+   ceiling. Interpret execution capacity separately from biological retention
+   and from unmeasured whole-pipeline costs.
 2. Implement the [stratified retention and learning protocol](branch_retention_protocol.md)
    after agreeing its measurement definitions. Use existing frozen clouds first;
    inspect actual neighborhoods before regenerating guides or redesigning Phase 1.

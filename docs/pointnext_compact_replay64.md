@@ -1,7 +1,7 @@
 # Compact interpolation indices: validated correction and 64k replay
 
 29 October 2026. Correction implemented for the explicit execution diagnostic;
-CPU validation passed. **GPU replay not launched.** No production model, training
+CPU validation passed. **User-launched GPU replay completed successfully.** No production model, training
 fit, sampling change or normalization change is introduced.
 
 The [original sweep review](pointnext_capacity_results.md) identified that native
@@ -41,7 +41,45 @@ Visible [CPU parity/storage evidence](evidence/pointnext_compact_cpu_20261029.js
 Original CPU outputs: `tmp/pointnext_compact_cpu_20261029/` and
 `tmp/pointnext_compact_loader_cpu_20261029/`.
 
-## Manual GPU command
+## Completed GPU replay
+
+The user launched the command below on the RTX 3070 Ti Laptop GPU. The repeated
+CPU preflight passed. Both 65,536-point modes completed, with finite outputs and
+parameter gradients, expected `[1,65536,32]` descriptors and observed hierarchy
+counts `[65536,16384,4096,1024,256]`. The GPU process finished in 98.0 seconds,
+within the unchanged 300-second cap, with exit code zero.
+
+| Mode | Measured mean seconds | Peak allocated GiB | Peak reserved GiB |
+|---|---:|---:|---:|
+| Eval forward | 13.554 | 0.580 | 0.793 |
+| Training-mode forward/backward, no optimizer | 14.964 | 0.858 | 1.186 |
+
+These means exclude the single warmup and use two measured iterations. They are
+coarse execution timings, not a production performance benchmark. The peaks are
+PyTorch allocator counters, not total device usage. The original 64k inference
+peak was also 622,449,664 bytes; the original failed training mode saved no peak.
+Do not invent a before/after percentage memory reduction for that failed mode.
+
+Saved configuration matches the original sweep on all shared fields except the
+single-budget selection and purpose description. Historical/corrected source
+hashes match the CPU preflight and current files. Per-mode result files agree
+with the aggregate; actual hierarchy shapes were checked against the recipe.
+
+Raw run: `tmp/pointnext_capacity_replay64_20261029_011603/`.
+Visible [replay evidence](evidence/pointnext_compact_replay64_results_20261029.json)
+includes raw-file hashes, CPU preflight, configuration and GPU results. No GPU
+retry or further training was launched during the result review.
+
+This closes the bounded encoder capacity question through 64k for this corrected
+backend and recipe. It confirms a successful implementation correction without
+changing sampling, point count, features, architecture or learned parameters.
+It does not establish whole-pipeline capacity or branch preservation. There is
+no need to repeat this run or extend the budget before the real-cloud evidence
+question. Continue the [branch retention protocol](branch_retention_protocol.md),
+starting with retained image contrast and actual neighborhood access on fixed
+training clouds; a learned fit remains a separate, specified next experiment.
+
+## Manual command used and replay protocol
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -58,8 +96,8 @@ measured iterations: eval forward, then training-mode forward/backward without
 an optimizer. No learned checkpoint is loaded or retained.
 
 GPU process cap: **300 seconds**, plus CPU preflight/process overhead. The prior
-64k process lasted about 90 seconds before failing, so budget a few minutes; the
-corrected runtime is unmeasured. No retry, automatic extension, mixed precision
+64k process lasted about 90 seconds before failing; the corrected GPU process
+completed in about 98 seconds. No retry, automatic extension, mixed precision
 or budget reduction. Fresh timestamped output under
 `tmp/pointnext_capacity_replay64_*/`, with `cpu/report.json`, per-mode GPU files
 and `gpu/report.json`. Existing output directories are rejected.
@@ -73,5 +111,5 @@ The predicted index-storage reduction is distinct from the new GPU measurement.
 
 If another failure occurs, preserve its phase/trace and inspect the remaining
 allocation issue before changing point counts or architectural settings. A pass
-would establish 64k encoder execution for this backend, not whole-pipeline
+establishes 64k encoder execution for this backend, not whole-pipeline
 capacity, learned feature usefulness or a new biological sampling budget.
