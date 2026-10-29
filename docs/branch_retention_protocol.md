@@ -4,6 +4,12 @@
 training recipe. Complements the [audited input/encoder contract](pointnext_input_contract.md).
 No reference-guided inference sampler is proposed.
 
+29 October progress: the bounded [four-box real-cloud pass](real_branch_evidence_results.md)
+is complete, with contrast profiles, input evidence, actual hierarchy access and
+an ordering control. It does not complete the broader trained comparison or
+establish thin/dim adequacy; only six sampled windows occupy that joint stratum.
+The [implementation plan](real_branch_evidence_plan.md) records the fixed scope.
+
 ## Questions and attribution
 
 At a fixed distinct-point budget, does the cloud retain useful evidence for

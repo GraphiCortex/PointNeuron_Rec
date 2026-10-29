@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "scope": "Four fixed training boxes; no sampling/filter/optimizer; CPU geometry only",
+  "case_selection": "Median positive-reference-length box and maximum-length box per source, based on 0.5-voxel reference quadrature before selector scoring",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "cell_side_voxel": 4,
+  "arc_step_voxel": 4.0,
+  "radii_voxel": [
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "half_length_voxel": 2.0,
+  "background_shell_voxel": [
+    8.0,
+    12.0
+  ],
+  "profile_bin_voxel": 0.5,
+  "width_bins_voxel": {
+    "thin_maximum": 3.0,
+    "broad_minimum": 5.0
+  },
+  "contrast_bins": "Within-source positive-profile contrast terciles across the four fixed boxes, before cloud scoring",
+  "ordering": "Fixed invertible source-flat-index hash, seed zero; sampler rank ignored",
+  "encoder_geometry": "Pinned historical FPS/first32-ball only; scale64; radii6.4/12.8/25.6/51.2; seed0 all four stages",
+  "order_control": "Frog tile5 Sato seed0: same first-stage centroids, original race ordering vs fixed hash",
+  "cases": [
+    {
+      "alias": "fruitfly32",
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "frozen_run": "tmp/phase1_sampling_20261022",
+      "manifest_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+      "reference_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "tile_ids": [
+        27,
+        20
+      ]
+    },
+    {
+      "alias": "frog22",
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "frozen_run": "tmp/phase1_qualification_disk_20261022",
+      "manifest_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+      "reference_sha256": "1de779286618b4c393c03f339c3c9acaa68ac3f67b15de66daac133b8e9986d4",
+      "tile_ids": [
+        2,
+        5
+      ]
+    }
+  ]
+}

@@ -5,8 +5,9 @@ capacity sweep prepared, not launched. **29 October update:** the user-launched
 sweep is [reviewed](pointnext_capacity_results.md), including a confirmed native
 index-storage issue. Its [CPU-validated compact correction and user-launched 64k
 GPU replay](pointnext_compact_replay64.md) now pass both forward and backward
-execution. Real-cloud neighborhood measurements and trained comparisons have
-not been run. No product encoder, replacement sampler or learned normalization
+execution. A [bounded real-cloud contrast/neighborhood pass](real_branch_evidence_results.md)
+is also complete; trained comparisons have not been run. No product encoder,
+replacement sampler or learned normalization
 policy is adopted by this diagnostic. The intended architecture is unchanged.
 
 ## Correct the interpretation first
@@ -159,9 +160,10 @@ No GPU sweep or training has been launched by the agent.
    pass. Close this bounded execution milestone; 32k is not the demonstrated
    ceiling. Interpret execution capacity separately from biological retention
    and from unmeasured whole-pipeline costs.
-2. Implement the [stratified retention and learning protocol](branch_retention_protocol.md)
-   after agreeing its measurement definitions. Use existing frozen clouds first;
-   inspect actual neighborhoods before regenerating guides or redesigning Phase 1.
+2. The [first bounded real-cloud measurement](real_branch_evidence_results.md)
+   is complete on frozen clouds. Preserve the broader
+   [stratified protocol](branch_retention_protocol.md); do not infer a universal
+   selector, thin/dim adequacy or learned feature loss from the current proxy.
 3. Freeze a few-box supervised task, normalization policy, head and training cap.
    Establish learnability, then run matched selectors and budgets. A capacity pass
    alone is insufficient permission to begin another long fit.

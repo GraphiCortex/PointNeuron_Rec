@@ -192,3 +192,27 @@ The user-launched corrected 64k replay is now complete and passes both modes;
 [results and memory figures](../docs/pointnext_compact_replay64.md) are saved.
 No repeat is needed for this execution milestone. Real-cloud retention and
 learned reconstruction are separate next questions.
+
+## Frozen real-cloud evidence audit
+
+The [four-box plan](../docs/real_branch_evidence_plan.md) and
+[completed results](../docs/real_branch_evidence_results.md) cover two explicit
+training sources. Image/reference/cloud hashes, exact counts and point attributes
+are checked. No guide, sampling, GPU model or training is rerun.
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe `
+  .\scripts\audit_real_branch_evidence.py --output .\tmp\a_new_real_evidence_run
+```
+
+The completed run is `tmp/real_branch_evidence_20261029`. Repetition is not needed
+for the current milestone. It scored 60 input arms and traced twelve seed-zero
+hierarchies in about six minutes on CPU. The underlying source-ID point clouds
+are unchanged; trace arrays and generated reports belong under ignored `tmp`.
+
+`validate_real_branch_counts.py <report.json>` independently reconstructs contrast
+fractions from saved point attributes and adds `point_counts.json` (new file only).
+`plot_real_branch_evidence.py <report.json>` renders the saved report to a new
+`summary.png`; it does not rescore or decode images. The figure, visible report
+and all-radius evidence summary are linked from the results document.

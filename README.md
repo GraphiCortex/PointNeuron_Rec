@@ -98,7 +98,16 @@ implemented for the standalone diagnostic and passes exact CPU parity/storage
 checks. The user-launched 64k-only GPU replay now passes both modes: inference
 averages 13.55 seconds and forward/backward 14.96 seconds, with 0.58/0.86 GiB peak
 allocated CUDA memory. This closes the bounded encoder execution check through
-64k; real-cloud branch evidence and learned reconstruction remain untested here.
+64k; it does not establish branch preservation or learned reconstruction quality.
+
+The [first real-cloud evidence audit](docs/real_branch_evidence_results.md) is now
+complete: four fixed training boxes, all three frozen selectors/five seeds, and
+actual seed-zero neighborhood traces. Sato retains substantially more local
+contrast in the frog boxes; intensity retains more in the fruitfly boxes.
+Finite grouping restricts one route of access, while fine-level skips remain.
+Only six windows fall jointly in the apparent-thin/dim stratum, so broad thin/dim
+adequacy is not established. No sampler policy, model change or learned fit
+follows automatically.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
