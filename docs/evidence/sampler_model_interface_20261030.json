@@ -1,0 +1,856 @@
+{
+  "scope": "CPU-only target audit and untrained PointNeXt-Transformer interface; no optimizer or fit",
+  "status": "execution_passed_training_recipe_unresolved",
+  "script_sha256": "584dc9bb3ad0785cadb9f4712ebb43f8110c0ed9226b6a9bc65b46e256822afc",
+  "target_source_sha256": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+  "config_sha256": "1c090ad50e6d2bf78b8f1fd931f2aa7aa88be4eee942306af23a98855abc3bd9",
+  "target_records": [
+    {
+      "alias": "fruitfly32",
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "tile_id": 27,
+      "reference_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "reference_components": 1,
+      "box": {
+        "start_xyz": [
+          384,
+          384,
+          0
+        ],
+        "stop_xyz": [
+          512,
+          429,
+          27
+        ]
+      },
+      "target_count": 18,
+      "query_count": 512,
+      "target_edges": 15,
+      "positive_reference_runs": 3,
+      "role_counts": {
+        "arc_sample": 12,
+        "crop_boundary": 4,
+        "leaf": 2
+      },
+      "minimum_target_separation": 0.22549674635603503,
+      "targets_with_another_within_0_25_voxel": 2,
+      "targets_with_another_within_2_voxel": 4,
+      "reference_radius_range": [
+        1.0,
+        3.3722689075630123
+      ],
+      "maximum_reference_to_target_chord_bound": 1.4666187956859142,
+      "maximum_parametric_deviation_bound": 1.4684565818820203,
+      "target_node_support": {
+        "2.0": {
+          "curve_to_target_node_support": 0.5434501595587126,
+          "longest_unsupported_run": 4.467412651064832
+        },
+        "6.0": {
+          "curve_to_target_node_support": 1.0,
+          "longest_unsupported_run": 0.0
+        }
+      },
+      "target_polyline_geometry": {
+        "status": "scorable",
+        "prediction_has_curve": true,
+        "reference_length": 97.02399720025205,
+        "predicted_length": 95.89359388470841,
+        "directed": {
+          "reference_to_prediction": {
+            "distance_status": "finite",
+            "mean_distance": 0.16295056864371663,
+            "maximum_distance": 1.3773681392716588,
+            "quadrature_samples": 203
+          },
+          "prediction_to_reference": {
+            "distance_status": "finite",
+            "mean_distance": 0.15440452235622884,
+            "maximum_distance": 1.2484082830785779,
+            "quadrature_samples": 195
+          }
+        },
+        "tolerances": {
+          "2": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          },
+          "6": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          }
+        },
+        "isolated": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "zero_length_edges": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "structural_support": {
+          "interpretation": "One-to-one geometric support; does not establish degree agreement or correct wiring",
+          "endpoints": {
+            "reference_count": 6,
+            "predicted_count": 6,
+            "tolerances": {
+              "2": {
+                "matched": 6,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0
+              },
+              "6": {
+                "matched": 6,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0
+              }
+            }
+          },
+          "junctions": {
+            "reference_count": 0,
+            "predicted_count": 0,
+            "tolerances": {
+              "2": {
+                "matched": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "6": {
+                "matched": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            }
+          }
+        },
+        "numerical": {
+          "method": "arclength_weighted_midpoint_quadrature",
+          "distance_method": "exact_point_to_segments_with_conservative_midpoint_index",
+          "maximum_step": 0.5,
+          "index_fragment_length": 8.0,
+          "maximum_distance_is_sampled": true,
+          "thresholded_lengths_are_quadrature_estimates": true,
+          "collinear_degree_two_subdivisions_merged": true,
+          "spacing_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "packet": "fruitfly32_tile27_targets.npz",
+      "packet_sha256": "654b090590268f176cc9e75857da3e2969b4ceaaa10cea6b080bd7816bb8c4d4"
+    },
+    {
+      "alias": "fruitfly32",
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "tile_id": 20,
+      "reference_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "reference_components": 1,
+      "box": {
+        "start_xyz": [
+          512,
+          256,
+          0
+        ],
+        "stop_xyz": [
+          640,
+          384,
+          27
+        ]
+      },
+      "target_count": 85,
+      "query_count": 512,
+      "target_edges": 83,
+      "positive_reference_runs": 18,
+      "role_counts": {
+        "arc_sample": 65,
+        "crop_boundary": 9,
+        "junction": 8,
+        "leaf": 3
+      },
+      "minimum_target_separation": 0.19026915118418541,
+      "targets_with_another_within_0_25_voxel": 2,
+      "targets_with_another_within_2_voxel": 18,
+      "reference_radius_range": [
+        1.0,
+        2.0
+      ],
+      "maximum_reference_to_target_chord_bound": 3.261648321790014,
+      "maximum_parametric_deviation_bound": 3.3689599621206656,
+      "target_node_support": {
+        "2.0": {
+          "curve_to_target_node_support": 0.5326418827189451,
+          "longest_unsupported_run": 4.488969355542536
+        },
+        "6.0": {
+          "curve_to_target_node_support": 1.0,
+          "longest_unsupported_run": 0.0
+        }
+      },
+      "target_polyline_geometry": {
+        "status": "scorable",
+        "prediction_has_curve": true,
+        "reference_length": 576.0288701000025,
+        "predicted_length": 567.988874133835,
+        "directed": {
+          "reference_to_prediction": {
+            "distance_status": "finite",
+            "mean_distance": 0.13274627879840473,
+            "maximum_distance": 1.7900879238171892,
+            "quadrature_samples": 1174
+          },
+          "prediction_to_reference": {
+            "distance_status": "finite",
+            "mean_distance": 0.12049819765870119,
+            "maximum_distance": 1.493224651736891,
+            "quadrature_samples": 1158
+          }
+        },
+        "tolerances": {
+          "2": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          },
+          "6": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          }
+        },
+        "isolated": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "zero_length_edges": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "structural_support": {
+          "interpretation": "One-to-one geometric support; does not establish degree agreement or correct wiring",
+          "endpoints": {
+            "reference_count": 36,
+            "predicted_count": 12,
+            "tolerances": {
+              "2": {
+                "matched": 12,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              },
+              "6": {
+                "matched": 12,
+                "precision": 1.0,
+                "recall": 0.3333333333333333,
+                "f1": 0.5
+              }
+            }
+          },
+          "junctions": {
+            "reference_count": 0,
+            "predicted_count": 8,
+            "tolerances": {
+              "2": {
+                "matched": 0,
+                "precision": 0.0,
+                "recall": null,
+                "f1": 0.0
+              },
+              "6": {
+                "matched": 0,
+                "precision": 0.0,
+                "recall": null,
+                "f1": 0.0
+              }
+            }
+          }
+        },
+        "numerical": {
+          "method": "arclength_weighted_midpoint_quadrature",
+          "distance_method": "exact_point_to_segments_with_conservative_midpoint_index",
+          "maximum_step": 0.5,
+          "index_fragment_length": 8.0,
+          "maximum_distance_is_sampled": true,
+          "thresholded_lengths_are_quadrature_estimates": true,
+          "collinear_degree_two_subdivisions_merged": true,
+          "spacing_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "packet": "fruitfly32_tile20_targets.npz",
+      "packet_sha256": "71105da25e61544c0a7dc50d02197619cbcdc65649fb581d574d834d2fbd0a7c"
+    },
+    {
+      "alias": "frog22",
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "tile_id": 2,
+      "reference_sha256": "1de779286618b4c393c03f339c3c9acaa68ac3f67b15de66daac133b8e9986d4",
+      "reference_components": 1,
+      "box": {
+        "start_xyz": [
+          256,
+          0,
+          0
+        ],
+        "stop_xyz": [
+          384,
+          128,
+          81
+        ]
+      },
+      "target_count": 7,
+      "query_count": 512,
+      "target_edges": 6,
+      "positive_reference_runs": 1,
+      "role_counts": {
+        "arc_sample": 5,
+        "crop_boundary": 1,
+        "leaf": 1
+      },
+      "minimum_target_separation": 1.5046065847545358,
+      "targets_with_another_within_0_25_voxel": 0,
+      "targets_with_another_within_2_voxel": 2,
+      "reference_radius_range": [
+        1.0,
+        1.0
+      ],
+      "maximum_reference_to_target_chord_bound": 0.9821249526717716,
+      "maximum_parametric_deviation_bound": 0.9827401462514767,
+      "target_node_support": {
+        "2.0": {
+          "curve_to_target_node_support": 0.5558102596788607,
+          "longest_unsupported_run": 3.939426900920007
+        },
+        "6.0": {
+          "curve_to_target_node_support": 1.0,
+          "longest_unsupported_run": 0.0
+        }
+      },
+      "target_polyline_geometry": {
+        "status": "scorable",
+        "prediction_has_curve": true,
+        "reference_length": 39.13450048736277,
+        "predicted_length": 38.32774102035953,
+        "directed": {
+          "reference_to_prediction": {
+            "distance_status": "finite",
+            "mean_distance": 0.3308404309951276,
+            "maximum_distance": 0.928965097044239,
+            "quadrature_samples": 83
+          },
+          "prediction_to_reference": {
+            "distance_status": "finite",
+            "mean_distance": 0.32356240119601404,
+            "maximum_distance": 0.8956433974414737,
+            "quadrature_samples": 79
+          }
+        },
+        "tolerances": {
+          "2": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          },
+          "6": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          }
+        },
+        "isolated": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "zero_length_edges": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "structural_support": {
+          "interpretation": "One-to-one geometric support; does not establish degree agreement or correct wiring",
+          "endpoints": {
+            "reference_count": 2,
+            "predicted_count": 2,
+            "tolerances": {
+              "2": {
+                "matched": 2,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0
+              },
+              "6": {
+                "matched": 2,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0
+              }
+            }
+          },
+          "junctions": {
+            "reference_count": 0,
+            "predicted_count": 0,
+            "tolerances": {
+              "2": {
+                "matched": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "6": {
+                "matched": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            }
+          }
+        },
+        "numerical": {
+          "method": "arclength_weighted_midpoint_quadrature",
+          "distance_method": "exact_point_to_segments_with_conservative_midpoint_index",
+          "maximum_step": 0.5,
+          "index_fragment_length": 8.0,
+          "maximum_distance_is_sampled": true,
+          "thresholded_lengths_are_quadrature_estimates": true,
+          "collinear_degree_two_subdivisions_merged": true,
+          "spacing_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "packet": "frog22_tile2_targets.npz",
+      "packet_sha256": "8c3702b90496ee9b319b5da63ef36467801161c0959ccf7b66ad88ab4a66e7ca"
+    },
+    {
+      "alias": "frog22",
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "tile_id": 5,
+      "reference_sha256": "1de779286618b4c393c03f339c3c9acaa68ac3f67b15de66daac133b8e9986d4",
+      "reference_components": 1,
+      "box": {
+        "start_xyz": [
+          128,
+          128,
+          0
+        ],
+        "stop_xyz": [
+          256,
+          256,
+          81
+        ]
+      },
+      "target_count": 68,
+      "query_count": 512,
+      "target_edges": 66,
+      "positive_reference_runs": 14,
+      "role_counts": {
+        "arc_sample": 52,
+        "crop_boundary": 6,
+        "junction": 6,
+        "leaf": 3,
+        "root": 1
+      },
+      "minimum_target_separation": 0.021682492104170226,
+      "targets_with_another_within_0_25_voxel": 4,
+      "targets_with_another_within_2_voxel": 16,
+      "reference_radius_range": [
+        1.0,
+        12.0
+      ],
+      "maximum_reference_to_target_chord_bound": 1.8722451614696018,
+      "maximum_parametric_deviation_bound": 1.9516565636564314,
+      "target_node_support": {
+        "2.0": {
+          "curve_to_target_node_support": 0.536666259165428,
+          "longest_unsupported_run": 4.32552805619932
+        },
+        "6.0": {
+          "curve_to_target_node_support": 1.0,
+          "longest_unsupported_run": 0.0
+        }
+      },
+      "target_polyline_geometry": {
+        "status": "scorable",
+        "prediction_has_curve": true,
+        "reference_length": 449.17472121752695,
+        "predicted_length": 429.45805668213984,
+        "directed": {
+          "reference_to_prediction": {
+            "distance_status": "finite",
+            "mean_distance": 0.41400814735732705,
+            "maximum_distance": 1.7961364286785886,
+            "quadrature_samples": 1034
+          },
+          "prediction_to_reference": {
+            "distance_status": "finite",
+            "mean_distance": 0.38468238284852463,
+            "maximum_distance": 1.6947130500170533,
+            "quadrature_samples": 883
+          }
+        },
+        "tolerances": {
+          "2": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          },
+          "6": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "extra_length": 0.0,
+            "missed_length": 0.0
+          }
+        },
+        "isolated": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "zero_length_edges": {
+          "reference": 0,
+          "predicted": 0
+        },
+        "structural_support": {
+          "interpretation": "One-to-one geometric support; does not establish degree agreement or correct wiring",
+          "endpoints": {
+            "reference_count": 28,
+            "predicted_count": 10,
+            "tolerances": {
+              "2": {
+                "matched": 10,
+                "precision": 1.0,
+                "recall": 0.35714285714285715,
+                "f1": 0.5263157894736842
+              },
+              "6": {
+                "matched": 10,
+                "precision": 1.0,
+                "recall": 0.35714285714285715,
+                "f1": 0.5263157894736842
+              }
+            }
+          },
+          "junctions": {
+            "reference_count": 0,
+            "predicted_count": 6,
+            "tolerances": {
+              "2": {
+                "matched": 0,
+                "precision": 0.0,
+                "recall": null,
+                "f1": 0.0
+              },
+              "6": {
+                "matched": 0,
+                "precision": 0.0,
+                "recall": null,
+                "f1": 0.0
+              }
+            }
+          }
+        },
+        "numerical": {
+          "method": "arclength_weighted_midpoint_quadrature",
+          "distance_method": "exact_point_to_segments_with_conservative_midpoint_index",
+          "maximum_step": 0.5,
+          "index_fragment_length": 8.0,
+          "maximum_distance_is_sampled": true,
+          "thresholded_lengths_are_quadrature_estimates": true,
+          "collinear_degree_two_subdivisions_merged": true,
+          "spacing_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "packet": "frog22_tile5_targets.npz",
+      "packet_sha256": "d9813e07025dbf31721f658725e285df629f4ac264b39327dd631c8a37549c09"
+    }
+  ],
+  "model": {
+    "torch": "2.12.1+cu130",
+    "device": "cpu",
+    "seed": 0,
+    "initial_state_sha256": "ddc46be801c81c9ae2691af49fcb574f040037e4699004e6713505a1c06587db",
+    "encoder_source_sha256": {
+      "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+      "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+    },
+    "interpolation_source_sha256": {
+      "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+      "scripts/check_pointnext_compact_interpolation.py": "297ff74ac0e9ed9db84245b9de4ba9ffaaf4ffcd90384a86b0c7c3f1bebdfc15"
+    },
+    "head_source_sha256": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "records": [
+      {
+        "alias": "fruitfly32",
+        "tile_id": 27,
+        "method": "pn1_range_random",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.409027099609375,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008100897073745728,
+        "seconds": 4.041591300001528,
+        "prediction_packet": "fruitfly32_tile27_pn1_range_random_untrained.npz",
+        "prediction_packet_sha256": "b00e8d86a97bb142111771fa623d5d97c0b9c97a7a0152944912d0b672a22c8c"
+      },
+      {
+        "alias": "fruitfly32",
+        "tile_id": 27,
+        "method": "pn2_sato",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.419189453125,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008141636848449707,
+        "seconds": 3.8147692999991705,
+        "prediction_packet": "fruitfly32_tile27_pn2_sato_untrained.npz",
+        "prediction_packet_sha256": "16fe7800182a9c54607a11ce15ffaa459210fda04b9f233fa4faa0b5ac3965b1"
+      },
+      {
+        "alias": "fruitfly32",
+        "tile_id": 20,
+        "method": "pn1_range_random",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.390228271484375,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008379131555557251,
+        "seconds": 3.820211800000834,
+        "prediction_packet": "fruitfly32_tile20_pn1_range_random_untrained.npz",
+        "prediction_packet_sha256": "b5a2ed0298a1b918dc9c8c80fd1d747b0cc29b0d72eb9adbc9ec7f76c8d272d1"
+      },
+      {
+        "alias": "fruitfly32",
+        "tile_id": 20,
+        "method": "pn2_sato",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.4111328125,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008237600326538086,
+        "seconds": 3.5652726000007533,
+        "prediction_packet": "fruitfly32_tile20_pn2_sato_untrained.npz",
+        "prediction_packet_sha256": "d7ccd632d9e764a482ab634583dc76003476d25662d49139091126abc6c2a3ca"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 2,
+        "method": "pn1_range_random",
+        "slots": 2048,
+        "distinct_points": 195,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.3837776184082031,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008074432611465454,
+        "seconds": 3.414226700000654,
+        "prediction_packet": "frog22_tile2_pn1_range_random_untrained.npz",
+        "prediction_packet_sha256": "d5afbbb1c8c550ec41104e444d54619c8bd79a6b5bdc5daf058ae29f5841b576"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 2,
+        "method": "pn2_sato",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.42159271240234375,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.00818529725074768,
+        "seconds": 3.394999000000098,
+        "prediction_packet": "frog22_tile2_pn2_sato_untrained.npz",
+        "prediction_packet_sha256": "8af4a6f50c74d4b52846ae02d5f27c847bc85976841b525f009fa87bd6eb843d"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 5,
+        "method": "pn1_range_random",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.403411865234375,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008148342370986938,
+        "seconds": 3.588044699999955,
+        "prediction_packet": "frog22_tile5_pn1_range_random_untrained.npz",
+        "prediction_packet_sha256": "e5815ee9e2fb92f0c3db35354c8d2a4b09efc63a5054460b4a56a7e8861f3879"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 5,
+        "method": "pn2_sato",
+        "slots": 2048,
+        "distinct_points": 2048,
+        "parameter_count": 1688518,
+        "all_parameter_gradients_finite": true,
+        "parameters_unchanged": true,
+        "center_shape": [
+          1,
+          512,
+          3
+        ],
+        "decoder_feature_shape": [
+          1,
+          512,
+          128
+        ],
+        "maximum_train_vs_eval_after_one_bn_center_delta_voxel": 0.4197235107421875,
+        "maximum_train_vs_eval_after_one_bn_logit_delta": 0.008053719997406006,
+        "seconds": 3.478103600000395,
+        "prediction_packet": "frog22_tile5_pn2_sato_untrained.npz",
+        "prediction_packet_sha256": "54f686ba8666e0d75e41a74d4e5f6c7f82b45a0117112ec4d982d82df28b28f3"
+      }
+    ]
+  },
+  "limitations": [
+    "No optimizer or training; fresh parameters and untrained BN buffers",
+    "Eight-voxel unpruned targets are an audited candidate, not an adopted training recipe",
+    "No sampler superiority or learned reconstruction quality measured"
+  ],
+  "date": "2026-10-30",
+  "raw_directory": "tmp\\sampler_model_interface_verified_20261030",
+  "raw_report_sha256": "1e0b8d78b7317e9183da0d5ee5545544c0e8453baff0d1f8db75ead2315bb6b4",
+  "tests_passed": 51,
+  "cube_domain_control": {
+    "scope": "Same unpruned eight-voxel policy; only cubic versus actual rectangular clipping differs; not an audit of old experiment predictions",
+    "records": [
+      {
+        "alias": "fruitfly32",
+        "tile_id": 27,
+        "cube_target_count": 44,
+        "actual_box_target_count": 18,
+        "cube_targets_outside_actual_box": 28
+      },
+      {
+        "alias": "fruitfly32",
+        "tile_id": 20,
+        "cube_target_count": 85,
+        "actual_box_target_count": 85,
+        "cube_targets_outside_actual_box": 0
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 2,
+        "cube_target_count": 7,
+        "actual_box_target_count": 7,
+        "cube_targets_outside_actual_box": 0
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 5,
+        "cube_target_count": 68,
+        "actual_box_target_count": 68,
+        "cube_targets_outside_actual_box": 0
+      }
+    ]
+  },
+  "verification": "Four target packets and eight prediction packets match hashes; current script/target source match executed hashes; initial parameter/buffer state exactly matches the preceding retained CPU check"
+}

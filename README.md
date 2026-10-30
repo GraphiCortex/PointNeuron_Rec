@@ -124,6 +124,14 @@ thresholded pool remains visible as 195 distinct voxels in 2048 sampled slots.
 The model/target recipe still needs explicit rectangular clipping, normalization
 and supervision checks; no learned fit or GPU command is ready yet.
 
+The [CPU target/model interface check](docs/sampler_model_interface_results.md)
+is now complete: all eight inputs pass full PointNeXt/Transformer forward and
+backward execution with fresh weights and no optimizer. Actual rectangular
+targets fit 512 queries (18/85/7/68 nodes). The fixed eight-voxel grid also creates
+some nearly coincident regular/required nodes; this is a target-policy finding,
+not a Phase 1 failure or justification for silently adding suppression rules.
+The bounded fit recipe remains to be discussed before training.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

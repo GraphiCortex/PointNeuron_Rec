@@ -5,6 +5,11 @@
 is implemented; the learned runner and final training recipe are not yet ready.**
 No model is trained by this document or the preparation command.
 
+The [real-box target audit and CPU model interface check](sampler_model_interface_results.md)
+now pass on all eight inputs. The reference-only rectangular clipper and
+untrained diagnostic wrapper are implemented. Target/loss/normalization choices
+for the actual fit remain a discussion point; the diagnostic does not select them.
+
 ## Decision this experiment must inform
 
 Does the current Sato-selected cloud help the intended encoder/proposal model

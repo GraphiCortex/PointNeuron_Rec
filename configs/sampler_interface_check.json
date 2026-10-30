@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "CPU-only target audit and untrained PointNeXt-Transformer interface; no optimizer or fit",
+  "inputs": "tmp/sampler_learnability_inputs_20261030/inputs.json",
+  "inputs_sha256": "ecc835b566378c73006c4db4e681dca5aa7fa222a8d37605b5ccfcbc394a9dcb",
+  "reference_evidence": "tmp/real_branch_evidence_20261029/report.json",
+  "reference_evidence_sha256": "fb50a6262cbf034e7f4eb0a642611ca9e32f13491c573f914b4a1f60f6634ab7",
+  "training_inventory": "configs/training_inventory.json",
+  "training_inventory_sha256": "90b46f6983c6be2f5d742549832b1837246dd7a95686db0c1def0bb8736cac58",
+  "encoder_config": "configs/pointnext_compact_replay64.json",
+  "head_source": "../pointneuron2/src/pointneuron/models/query_proposal.py",
+  "head_source_sha256": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+  "seed": 0,
+  "cpu_threads": 1,
+  "query_count": 512,
+  "target_step_voxel": 8.0,
+  "target_policy": "Audit unpruned full-chain grid in actual rectangular voxel-cell bounds; no automatic promotion of historical canonical pruning",
+  "normalization": "Unchanged ordinary BatchNorm; fresh untrained buffers; differences are diagnostic, not a learned normalization verdict",
+  "gradient_objective": "Synthetic sum of squared local centers, logits and radii for execution only; not a training loss"
+}

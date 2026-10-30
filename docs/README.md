@@ -13,6 +13,7 @@
 - [Disk-backed guide implementation, parity checks and resource limits](phase1_disk_guide.md)
 - [Training-reference graph encoding and radius contract audit](training_reference_contract_audit.md)
 - [Two-sampler learned comparison: fixed inputs, model review and stopping rules](sampler_learnability_protocol.md)
+- [Real-box target audit and completed CPU PointNeXt-Transformer integration](sampler_model_interface_results.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

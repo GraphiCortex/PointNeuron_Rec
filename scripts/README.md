@@ -257,3 +257,21 @@ It opens no reference and imports no model. It does not generate training target
 The completed preparation does not need repeating. A new directory is required
 for a repeat. Target clipping, normalization, supervision and the final paired
 training recipe must pass the protocol's review before a GPU command is ready.
+
+## CPU target and model integration check
+
+`check_sampler_model_interface.py` uses the prepared packets, two explicit
+training references and hash-pinned historical encoder/head sources. It audits
+the eight-voxel grid in actual rectangular bounds, then checks eval/train
+forward and synthetic backward on CPU with fresh weights. It has no optimizer,
+training action or GPU path. See the [completed results](../docs/sampler_model_interface_results.md).
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B `
+  .\scripts\check_sampler_model_interface.py --output .\tmp\a_new_sampler_interface_check
+```
+
+The verified run is `tmp/sampler_model_interface_verified_20261030`; no repeat is
+needed. The target graph has reference edges solely for auditing representation;
+it is not an oracle-assisted inference path or GAT output. The candidate target
+module is under `src/pn2/supervision/`, separate from image-only preparation.
