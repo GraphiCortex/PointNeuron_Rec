@@ -281,7 +281,9 @@ module is under `src/pn2/supervision/`, separate from image-only preparation.
 The [fixed recipe, verification and stopping rules](../docs/sampler_node_fit.md)
 are prepared. The actual position/used-slot loss passed backward on all eight
 inputs without optimizer updates. Twenty-nine focused tests pass across the
-retained Torch runtime and isolated CPU runtime. No GPU has been launched.
+retained Torch runtime and isolated CPU runtime. The
+[user-launched paired GPU timing now passes](../docs/sampler_node_timing_results.md);
+the agent has not launched GPU work. That review records the exact capped-fit command.
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"

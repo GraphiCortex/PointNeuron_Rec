@@ -1,0 +1,330 @@
+{
+  "date": "2026-10-30",
+  "scope": "User-launched paired timing; execution/reload evidence only, no learnability or sampler-superiority verdict",
+  "raw_directory": "tmp\\sampler_node_timing_20261030_215037",
+  "raw_report_sha256": "d0ff21da32dc1e35acd161fbc65c992c1a68e6050d6b50709bf0ffad97fc994d",
+  "status": "completed",
+  "recipe_fingerprint": "145be10503b54c66fbfacc1bb53136171e3ed32a748c7684a960e5fbd3e51f7c",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "estimated_paired_update_minutes": [
+    55.510358000028646,
+    83.26553700004297
+  ],
+  "verification": {
+    "current_preflight_and_timing_accepted": true,
+    "same_initial_model_across_arms": true,
+    "all_16_update_rows_complete_and_finite": true,
+    "all_4_prediction_packets_hash_checked_and_finite": true,
+    "evaluation_preserved_prefix_state": true,
+    "retained_checkpoints": 0
+  },
+  "arms": [
+    {
+      "method": "pn1_range_random",
+      "status": "completed",
+      "updates": 8,
+      "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+      "torch": "2.12.1+cu130",
+      "parameter_count": 1688518,
+      "checkpoint_reload_passed": true,
+      "prefix_identity": {
+        "model_state_sha256": "2b88b18161f55bdd92bc19a9f72594da1b9f46ee34eb53a93ff12dbd887f92b9",
+        "optimizer_state_sha256": "fa9fdccff9026643394d432256e2a27daebf913d915f59b7e1d8138a07cab6cf",
+        "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+      },
+      "peak_allocated_bytes": 250605056,
+      "peak_reserved_bytes": 281018368,
+      "estimated_update_minutes_for_one_arm": [
+        27.3290940000273,
+        40.99364100004095
+      ],
+      "warm_cycle_mean_update_seconds": 1.0248410250010238,
+      "same_box_loss_first_and_second_exposure": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "first": 116.1930923461914,
+          "second": 113.63228607177734
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "first": 157.35177612304688,
+          "second": 155.24855041503906
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "first": 192.2436065673828,
+          "second": 186.8009490966797
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "first": 152.18601989746094,
+          "second": 151.57183837890625
+        }
+      ],
+      "ordinary_step8": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.2787328064441681,
+            0.2853334844112396
+          ],
+          "strongest_assigned_unused_score": 0.2873252034187317,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.27767235040664673,
+            0.28744783997535706
+          ],
+          "strongest_assigned_unused_score": 0.2866887152194977,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.2795254588127136,
+            0.28715890645980835
+          ],
+          "strongest_assigned_unused_score": 0.2864636182785034,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.27337178587913513,
+            0.28520095348358154
+          ],
+          "strongest_assigned_unused_score": 0.28683245182037354,
+          "diagnostic_accepted": 0
+        }
+      ],
+      "raw_files_sha256": {
+        "console.log": "67f61b5a6886c7dc7e98a02313410196d56987a788c08d4ce9e524693deffac4",
+        "evaluation_step000000.json": "12bfbb29b401d180f72e1fd81c150f414a98f951d23cdfecf47b2f0a2771ca2c",
+        "evaluation_step000008.json": "38da7f15b65c7dee20685800ca2829b66e9f4662524adbe16847502d544a2bb3",
+        "predictions_step000000.npz": "330214f2c1a2f411cbdc16dcc648428a23d7bc220e55be0bd5484f7e131c0584",
+        "predictions_step000008.npz": "8912239dc6f25b819109b4e40c24098fae571fc1926572f6d080af4c2eb59526",
+        "report.json": "11d1897ec04ea61cd47fa135e25951582c8612785e678eb0b514f7ab4f81b692",
+        "updates.jsonl": "cbd33b1e9e66a19a4f17bae0872bbf9bf3e867479e71152f7a3bde720e777ffc"
+      }
+    },
+    {
+      "method": "pn2_sato",
+      "status": "completed",
+      "updates": 8,
+      "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+      "torch": "2.12.1+cu130",
+      "parameter_count": 1688518,
+      "checkpoint_reload_passed": true,
+      "prefix_identity": {
+        "model_state_sha256": "e0264524d15245b104ceee63238485678bf1cf4466001df3a5dfb70777b5cf6d",
+        "optimizer_state_sha256": "0a6add1b7e1d9f446e531c4a0aae8fff2b6ee44f453bf30389231f340bad86e3",
+        "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+      },
+      "peak_allocated_bytes": 250605056,
+      "peak_reserved_bytes": 281018368,
+      "estimated_update_minutes_for_one_arm": [
+        28.181264000001345,
+        42.271896000002016
+      ],
+      "warm_cycle_mean_update_seconds": 1.0567974000000504,
+      "same_box_loss_first_and_second_exposure": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "first": 116.184814453125,
+          "second": 113.63658905029297
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "first": 157.32688903808594,
+          "second": 155.2451629638672
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "first": 192.06626892089844,
+          "second": 186.79661560058594
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "first": 152.1475067138672,
+          "second": 151.5295867919922
+        }
+      ],
+      "ordinary_step8": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.27863726019859314,
+            0.28546541929244995
+          ],
+          "strongest_assigned_unused_score": 0.28750529885292053,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.2769555449485779,
+            0.2875727713108063
+          ],
+          "strongest_assigned_unused_score": 0.28697484731674194,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.2796034812927246,
+            0.28739264607429504
+          ],
+          "strongest_assigned_unused_score": 0.2868775725364685,
+          "diagnostic_accepted": 0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          },
+          "all_query_recall_2": 0.0,
+          "assigned_positive_score_range": [
+            0.27354535460472107,
+            0.28525295853614807
+          ],
+          "strongest_assigned_unused_score": 0.28729048371315,
+          "diagnostic_accepted": 0
+        }
+      ],
+      "raw_files_sha256": {
+        "console.log": "956378b452b901931e332c0f94311e7445bca1a0f4d216e4ba406ac303529e68",
+        "evaluation_step000000.json": "2e642ced3f2d6649967dd650c174317fa9391065a05ff571cebbafd975948855",
+        "evaluation_step000008.json": "5fe9c8d06c32aeccb51186bbe08df88ce222ad1564d5ffdef43b7072aade13d8",
+        "predictions_step000000.npz": "29d3111b6b68d6b1ca1c3020114df4d11963bcea2d18b3cb133f9c4ec4604fe8",
+        "predictions_step000008.npz": "4f46c23170e8459af2e742de885a467787df105be36692e03031e317dc7f6e03",
+        "report.json": "15eabd675a465b42fb11efc308af437e44112375f9f337c5f44fa63b67a50c16",
+        "updates.jsonl": "ba920e5a45fbd567a409cb5efba77861c4b6098737b3ae7a69cb7830d6c8256b"
+      }
+    }
+  ]
+}

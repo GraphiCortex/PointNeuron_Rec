@@ -141,6 +141,14 @@ checks pass; no optimizer was applied to real data. GPU timing is the next manua
 action. Training requires a passed current-source paired timing run and exact
 eight-update model/Adam/RNG replay; no GPU run has been launched by the agent.
 
+The [user-launched paired GPU timing](docs/sampler_node_timing_results.md) now
+passes on both methods, including exact model/Adam/RNG serialization reload.
+Measured second-cycle update times are 1.025/1.057 seconds and peak allocated
+memory is 0.233 GiB in this small component experiment. Estimated paired fit
+update time is 55.5-83.3 minutes plus overhead. Initial node accuracy is still
+unestablished; no sampler is selected. The unchanged bounded fit is ready for
+the user's manual launch using the reviewed timing directory.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

@@ -15,6 +15,7 @@
 - [Two-sampler learned comparison: fixed inputs, model review and stopping rules](sampler_learnability_protocol.md)
 - [Real-box target audit and completed CPU PointNeXt-Transformer integration](sampler_model_interface_results.md)
 - [Fixed node-learning recipe, CPU verification and manual GPU timing command](sampler_node_fit.md)
+- [Completed paired GPU timing, evidence review and exact bounded-fit command](sampler_node_timing_results.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

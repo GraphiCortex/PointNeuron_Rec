@@ -1,7 +1,8 @@
 # New configurations
 
 Fresh benchmark manifests and reviewed experiment configurations belong here.
-The first bounded node-learning recipe is prepared; GPU timing/training remain unrun.
+The first bounded node-learning recipe is prepared and user-launched GPU timing
+passes. Full training has not been launched by the agent.
 
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the
@@ -17,8 +18,9 @@ supervised training loss or optimizer and does not expose a GPU action.
 [sampler_node_fit.json](sampler_node_fit.json) fixes the user-approved node-only
 comparison following that audit. The [fit instructions](../docs/sampler_node_fit.md)
 declare the loss, ordinary-BN inference, diagnostic policy, optimizer, 2000-update
-per-arm cap and fixed acceptance gate. The CPU preflight passed; GPU timing is
-unrun. The separate train action requires passed paired timing, preserving exact
+per-arm cap and fixed acceptance gate. The CPU preflight and
+[user-launched paired timing](../docs/sampler_node_timing_results.md) pass.
+The separate train action requires passed paired timing, preserving exact
 model/optimizer/RNG state and the four declared boxes throughout.
 
 [phase1_sampling_probe.json](phase1_sampling_probe.json) freezes the three-arm
