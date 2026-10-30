@@ -117,6 +117,13 @@ frog regions, but thresholded PN1-style controls beat it in both fruitfly boxes
 at 2048 slots. Phase 1 is not established as a universal input improvement.
 This is a component comparison; no PN1 model rebuild or PN2 training occurred.
 
+The next [controlled learned comparison](docs/sampler_learnability_protocol.md)
+is now specified. Eight frozen inputs (two selectors, four training boxes) have
+been verified and packed into the audited PointNeXt interface on CPU. The short
+thresholded pool remains visible as 195 distinct voxels in 2048 sampled slots.
+The model/target recipe still needs explicit rectangular clipping, normalization
+and supervision checks; no learned fit or GPU command is ready yet.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

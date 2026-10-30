@@ -3,6 +3,12 @@
 Fresh benchmark manifests and reviewed experiment configurations belong here.
 No fresh training recipe is selected yet.
 
+[sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
+two-arm, four-training-box input preparation for the
+[learned comparison protocol](../docs/sampler_learnability_protocol.md).
+It preserves existing 2048-slot packets and discloses repeated control points.
+It is not an executable model/optimizer recipe and does not authorize training.
+
 [phase1_sampling_probe.json](phase1_sampling_probe.json) freezes the three-arm
 CPU input diagnostic, not a training/product policy. Its
 [protocol](../docs/phase1_sampling_protocol.md) explains the scales, count budgets,

@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "scope": "Frozen inputs for a two-sampler training-set learnability comparison; no training action",
+  "status": "inputs_verified_not_model_ready",
+  "config_sha256": "27825fac73930109f51385dcce202ab3f9b0a435c450ec1b595af9d89f6cbfd7",
+  "script_sha256": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+  "numpy": "2.4.4",
+  "records": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "alias": "fruitfly32",
+      "partition": "training",
+      "tile_id": 27,
+      "method": "pn1_range_random",
+      "box": {
+        "start_xyz": [
+          384,
+          384,
+          0
+        ],
+        "stop_xyz": [
+          512,
+          429,
+          27
+        ]
+      },
+      "center_xyz": [
+        447.5,
+        406.0,
+        13.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 0.0,
+      "image_maximum": 255.0,
+      "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\fruitfly32\\tile27_pn1_range_random_slots2048_seed0.npz",
+      "source_packet_sha256": "3ba9d15c076206bcf37c57346c06170a8b066a222221e6643c65071c8b95a543",
+      "packet": "fruitfly32_tile27_pn1_range_random_slots2048_seed0.npz",
+      "packet_sha256": "b4ef870f4f03f350b0591650ba3ed62cc96cab3b54bbacace4f23b5d46da0b42",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "alias": "fruitfly32",
+      "partition": "training",
+      "tile_id": 27,
+      "method": "pn2_sato",
+      "box": {
+        "start_xyz": [
+          384,
+          384,
+          0
+        ],
+        "stop_xyz": [
+          512,
+          429,
+          27
+        ]
+      },
+      "center_xyz": [
+        447.5,
+        406.0,
+        13.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 0.0,
+      "image_maximum": 255.0,
+      "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\fruitfly32\\tile27_pn2_sato_slots2048_seed0.npz",
+      "source_packet_sha256": "a2a24221516ad80b8d14c68d952a32be12f01cb62a1c10d74b834ad6c508c6c6",
+      "packet": "fruitfly32_tile27_pn2_sato_slots2048_seed0.npz",
+      "packet_sha256": "90c2cacd2d01501590b59a53a4208e5da0e1a1b5266a68c43101fe2331e56e87",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "alias": "fruitfly32",
+      "partition": "training",
+      "tile_id": 20,
+      "method": "pn1_range_random",
+      "box": {
+        "start_xyz": [
+          512,
+          256,
+          0
+        ],
+        "stop_xyz": [
+          640,
+          384,
+          27
+        ]
+      },
+      "center_xyz": [
+        575.5,
+        319.5,
+        13.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 0.0,
+      "image_maximum": 255.0,
+      "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\fruitfly32\\tile20_pn1_range_random_slots2048_seed0.npz",
+      "source_packet_sha256": "b23dcdcba222a891b465d56e5578b3a7d336e4181d0a635f92b0b563d4d37864",
+      "packet": "fruitfly32_tile20_pn1_range_random_slots2048_seed0.npz",
+      "packet_sha256": "832f3ac5385f07cb2768f3cc66403b96a79340debb7a449bb223383ccc7e72ed",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "alias": "fruitfly32",
+      "partition": "training",
+      "tile_id": 20,
+      "method": "pn2_sato",
+      "box": {
+        "start_xyz": [
+          512,
+          256,
+          0
+        ],
+        "stop_xyz": [
+          640,
+          384,
+          27
+        ]
+      },
+      "center_xyz": [
+        575.5,
+        319.5,
+        13.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 0.0,
+      "image_maximum": 255.0,
+      "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\fruitfly32\\tile20_pn2_sato_slots2048_seed0.npz",
+      "source_packet_sha256": "47ccd7c9257e889e4a91077933278dd275f64bb2ae5158c91e936d72d7ca20e3",
+      "packet": "fruitfly32_tile20_pn2_sato_slots2048_seed0.npz",
+      "packet_sha256": "ad28365ba804fea9862ca41e40dc6c102d56b27cad0295d5ac50d371a8a466c8",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "alias": "frog22",
+      "partition": "training",
+      "tile_id": 2,
+      "method": "pn1_range_random",
+      "box": {
+        "start_xyz": [
+          256,
+          0,
+          0
+        ],
+        "stop_xyz": [
+          384,
+          128,
+          81
+        ]
+      },
+      "center_xyz": [
+        319.5,
+        63.5,
+        40.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 5.0,
+      "image_maximum": 4095.0,
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "decoded_sha256": "f3e6233d937d69d1c21be22d25071654ce8a591d6544360be511f98bf3b1aef1",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\frog22\\tile2_pn1_range_random_slots2048_seed0.npz",
+      "source_packet_sha256": "17674dceb212a89a3136b9e173c61d87eb63c8060c9652fa9dcdce5bb795442a",
+      "packet": "frog22_tile2_pn1_range_random_slots2048_seed0.npz",
+      "packet_sha256": "bcf18bf0beec7883c10ef331b1eea1a2ee7bc48f7134d92f6d0fde75c5b1da5d",
+      "slots": 2048,
+      "distinct_points": 195,
+      "duplicate_slots": 1853,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "alias": "frog22",
+      "partition": "training",
+      "tile_id": 2,
+      "method": "pn2_sato",
+      "box": {
+        "start_xyz": [
+          256,
+          0,
+          0
+        ],
+        "stop_xyz": [
+          384,
+          128,
+          81
+        ]
+      },
+      "center_xyz": [
+        319.5,
+        63.5,
+        40.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 5.0,
+      "image_maximum": 4095.0,
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "decoded_sha256": "f3e6233d937d69d1c21be22d25071654ce8a591d6544360be511f98bf3b1aef1",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\frog22\\tile2_pn2_sato_slots2048_seed0.npz",
+      "source_packet_sha256": "377d5cc5927a9ca96cbf518af89a90aff268a0634de6904ad0397e6e6baa7879",
+      "packet": "frog22_tile2_pn2_sato_slots2048_seed0.npz",
+      "packet_sha256": "7e2709480018576a9636a5b6f9747ea11c1babb5debc186146217250dc21e74c",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "alias": "frog22",
+      "partition": "training",
+      "tile_id": 5,
+      "method": "pn1_range_random",
+      "box": {
+        "start_xyz": [
+          128,
+          128,
+          0
+        ],
+        "stop_xyz": [
+          256,
+          256,
+          81
+        ]
+      },
+      "center_xyz": [
+        191.5,
+        191.5,
+        40.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 5.0,
+      "image_maximum": 4095.0,
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "decoded_sha256": "f3e6233d937d69d1c21be22d25071654ce8a591d6544360be511f98bf3b1aef1",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\frog22\\tile5_pn1_range_random_slots2048_seed0.npz",
+      "source_packet_sha256": "52f136688588fb0959a193a4e7453f88648e9d949b6c5703fc2dc6748b770884",
+      "packet": "frog22_tile5_pn1_range_random_slots2048_seed0.npz",
+      "packet_sha256": "0688d27e1b108e4534b5d9043be2da3bcbb1f925c9cc44d8e151fb56e43f5748",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "alias": "frog22",
+      "partition": "training",
+      "tile_id": 5,
+      "method": "pn2_sato",
+      "box": {
+        "start_xyz": [
+          128,
+          128,
+          0
+        ],
+        "stop_xyz": [
+          256,
+          256,
+          81
+        ]
+      },
+      "center_xyz": [
+        191.5,
+        191.5,
+        40.0
+      ],
+      "coordinate_scale_voxel": 64.0,
+      "image_minimum": 5.0,
+      "image_maximum": 4095.0,
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "decoded_sha256": "f3e6233d937d69d1c21be22d25071654ce8a591d6544360be511f98bf3b1aef1",
+      "source_packet": "tmp\\pn1_input_comparison_20261029\\frog22\\tile5_pn2_sato_slots2048_seed0.npz",
+      "source_packet_sha256": "cf060190706aac2f143432a8ccdedd3de4a15bd87e74f5b4ad1c36e17a66bf81",
+      "packet": "frog22_tile5_pn2_sato_slots2048_seed0.npz",
+      "packet_sha256": "080c33e6e0b7329a9c810dd9cef1c6ce41ca18e8c6653a827c9f62649e84eb85",
+      "slots": 2048,
+      "distinct_points": 2048,
+      "duplicate_slots": 0,
+      "attributes_shape": [
+        2048,
+        4
+      ]
+    }
+  ],
+  "date": "2026-10-30",
+  "raw_directory": "tmp\\sampler_learnability_inputs_20261030",
+  "raw_manifest_sha256": "ecc835b566378c73006c4db4e681dca5aa7fa222a8d37605b5ccfcbc394a9dcb",
+  "independent_verification": "All eight packet hashes, source-ID/intensity multisets, XYZ inversion, attribute alignment and complete arm pairing passed; no model or references opened by verification"
+}

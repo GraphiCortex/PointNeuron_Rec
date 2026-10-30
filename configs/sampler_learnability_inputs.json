@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "Frozen inputs for a two-sampler training-set learnability comparison; no training action",
+  "comparison_report": "tmp/pn1_input_comparison_20261029/report.json",
+  "comparison_report_sha256": "eb8de5cdc6fe7ac102ec48f3207066ef0721e638f10488a85f18a1beb755ce46",
+  "training_inventory": "configs/training_inventory.json",
+  "training_inventory_sha256": "90b46f6983c6be2f5d742549832b1837246dd7a95686db0c1def0bb8736cac58",
+  "cloud_seed": 0,
+  "requested_slots": 2048,
+  "methods": ["pn1_range_random", "pn2_sato"],
+  "cases": [
+    {"alias": "fruitfly32", "tile_ids": [27, 20]},
+    {"alias": "frog22", "tile_ids": [2, 5]}
+  ],
+  "coordinate_scale_voxel": 64.0,
+  "ordering_seed": 0,
+  "ordering": "Fixed source-ID hash order independent of sampling race; repeated source IDs remain repeated",
+  "short_pool_policy": "Preserve the existing control's sampled slots, including replacement; disclose distinct counts; never add or jitter points",
+  "intensity_normalization": "Verified whole-source (I-min)/(max-min), constant image maps to zero",
+  "model_status": "No model, targets, optimizer or training recipe selected by this input-preparation config"
+}

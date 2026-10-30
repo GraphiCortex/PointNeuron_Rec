@@ -238,3 +238,22 @@ views; no guide is regenerated. `plot_pn1_input_comparison.py <report.json>`
 renders saved results only, writing a new `comparison_2048.png`. Existing output
 directories/files are preserved. The runtime and original/main baseline layout
 are local dependencies; no PN1 training or full reconstruction is performed.
+
+## Inputs for the controlled learned comparison
+
+The [protocol](../docs/sampler_learnability_protocol.md) fixes two samplers and
+four training boxes. Input preparation is complete at
+`tmp/sampler_learnability_inputs_20261030/inputs.json`: eight verified packets,
+2048 slots each, with 195 distinct observations in the thresholded frog tile 2
+control. The CPU command verifies source image/packet hashes and attributes,
+applies the audited coordinate/intensity adapter and changes only point order.
+It opens no reference and imports no model. It does not generate training targets.
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B `
+  .\scripts\prepare_sampler_comparison.py --output .\tmp\a_new_sampler_input_preparation
+```
+
+The completed preparation does not need repeating. A new directory is required
+for a repeat. Target clipping, normalization, supervision and the final paired
+training recipe must pass the protocol's review before a GPU command is ready.
