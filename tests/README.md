@@ -57,3 +57,10 @@ tests mock all workers, checking timeout/report failures without Torch or GPU.
 Together with twelve rectangular target tests, the focused preparation checks
 pass **29 tests**. The separate real-input CPU preflight checks actual supervised
 loss/backward without an optimizer; it is execution evidence, not learnability.
+
+The GN8 control adds fourteen Torch tests in `test_groupnorm_node.py`, including
+fresh-layer replacement, rejection of trained BN, same-input batch independence,
+exact mode behavior, recipe-bound checkpoints, explicit consistency failure and
+box/target pairing for the saved baseline. Together with the twelve shared node
+tests, **26 pass** in the retained runtime. The real-input GN CPU preflight has
+no optimizer and is recorded separately from those synthetic tests.

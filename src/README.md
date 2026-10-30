@@ -43,3 +43,9 @@ SciPy. `supervision/curve_nodes.py` supplies reference-only rectangular targets.
 The model factory in the visible experiment script reuses hash-pinned historical
 encoder/head source read-only with fresh weights; this is not a vendored product
 backend or a trained whole-neuron inference implementation.
+
+`models/groupnorm_encoder.py` is the explicit normalization-only variant: replace
+exactly sixteen fresh encoder BN layers by GN(8,C), preserving all parameter
+values and rejecting trained BN state. It is applied only by the separate GN
+control factory. The baseline prototype/source files are unchanged, and GroupNorm
+is not silently adopted for any historical checkpoint or other experiment.

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "baseline_recipe": "configs/sampler_node_fit.json",
+  "baseline_recipe_fingerprint": "145be10503b54c66fbfacc1bb53136171e3ed32a748c7684a960e5fbd3e51f7c",
+  "baseline_report": "tmp/sampler_node_train_20261030/report.json",
+  "baseline_report_sha256": "8e8591aebc9a99e3ac05df2cccbd6783c2c8d6a565772f3ce564ae95460ec5e0",
+  "method": "pn2_sato",
+  "normalization": {
+    "kind": "GroupNorm",
+    "groups": 8,
+    "eps": 1e-05,
+    "layers": 16
+  },
+  "initial_state_sha256": "60bb11feb0c220bf23ad92d77815b53b9f443298426a9fcdc174e42dc085ac97",
+  "cpu_preflight": "tmp/groupnorm_node_cpu_20261030/report.json",
+  "variant_source_sha256": {
+    "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+    "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688"
+  }
+}

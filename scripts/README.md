@@ -324,3 +324,22 @@ The completed review is `tmp/sampler_node_review_verified_20261030` and does not
 need repeating. Two terminal figures are exported under `docs/learning/`. The
 earlier review and all training checkpoints/logs remain unchanged. This outcome
 does not schedule a retry, extension or another sampler fit.
+
+## Normalization-only GN8 control
+
+The [separate GN8 control](../docs/groupnorm_node_control.md) retains the fixed
+Sato clouds, targets, Transformer and node-learning recipe. CPU mode equality
+and supervised gradient checks pass. Baseline scripts/configuration remain
+unchanged; `groupnorm_node_experiment.py` reuses the verified common helpers and
+adds an explicit GN factory and consistency checks.
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_groupnorm_node_fit.ps1 -Action timing
+```
+
+One worker runs eight throwaway GPU updates, checks exact train/eval consistency
+and full model/Adam/RNG reload, retaining no trained checkpoint. It does not run
+the later 2000-update fit, which requires its own passed GN timing. The completed
+CPU preflight is `tmp/groupnorm_node_cpu_20261030/report.json`; there is no reason
+to rerun it for current source. Generated outputs remain under `tmp`.

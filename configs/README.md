@@ -5,6 +5,13 @@ The first bounded node-learning recipe and user-launched fits are complete.
 Both fits failed the frozen learnability gate; see the
 [saved-fit review](../docs/sampler_node_fit_results.md) before scheduling more training.
 
+[groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
+approved normalization-only control against the saved Sato/BN fit. It derives
+unchanged learning/data settings from the original recipe and pins its baseline
+and two variant source files. The [GN8 control report](../docs/groupnorm_node_control.md)
+records CPU equality/gradient checks, fixed eight-group policy and the next manual
+GPU timing command. No new optimizer/LR/query/target policy is included.
+
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the
 [learned comparison protocol](../docs/sampler_learnability_protocol.md).

@@ -158,6 +158,15 @@ nor adopting the diagnostic mode alone can satisfy the frozen gate. The read-onl
 review exports saved-proposal figures and preserves all failures; no further
 training, normalizer/query change or Phase 1 policy selection has been made.
 
+The user-approved [normalization-only GN8 revision](docs/groupnorm_node_control.md)
+is now implemented separately. All sixteen encoder BatchNorm layers become
+eight-group GroupNorm, retaining exactly the same initial parameter values and
+parameter count. Queries, clouds, targets, loss and update cap are unchanged.
+CPU train/eval predictions are bitwise identical on all four real Sato clouds
+and synthetic 256/4096-point grids; supervised gradients are finite without an
+optimizer update. Twenty-six focused tests pass. The next action is a manual
+one-worker GN GPU timing check; no GPU or fresh learned fit has been launched.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

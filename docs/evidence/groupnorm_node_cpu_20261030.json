@@ -1,0 +1,465 @@
+{
+  "status": "passed",
+  "device": "cpu",
+  "torch": "2.12.1+cu130",
+  "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+    "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "normalizer_manifest": [
+    {
+      "name": "abstraction.0.local.0.1",
+      "channels": 32,
+      "groups": 8,
+      "channels_per_group": 4,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.0.local.1.1",
+      "channels": 64,
+      "groups": 8,
+      "channels_per_group": 8,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.1.local.0.1",
+      "channels": 64,
+      "groups": 8,
+      "channels_per_group": 8,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.1.local.1.1",
+      "channels": 128,
+      "groups": 8,
+      "channels_per_group": 16,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.2.local.0.1",
+      "channels": 128,
+      "groups": 8,
+      "channels_per_group": 16,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.2.local.1.1",
+      "channels": 256,
+      "groups": 8,
+      "channels_per_group": 32,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.3.local.0.1",
+      "channels": 256,
+      "groups": 8,
+      "channels_per_group": 32,
+      "eps": 1e-05
+    },
+    {
+      "name": "abstraction.3.local.1.1",
+      "channels": 512,
+      "groups": 8,
+      "channels_per_group": 64,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.0.mlp.0.1",
+      "channels": 32,
+      "groups": 8,
+      "channels_per_group": 4,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.0.mlp.1.1",
+      "channels": 32,
+      "groups": 8,
+      "channels_per_group": 4,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.1.mlp.0.1",
+      "channels": 64,
+      "groups": 8,
+      "channels_per_group": 8,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.1.mlp.1.1",
+      "channels": 64,
+      "groups": 8,
+      "channels_per_group": 8,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.2.mlp.0.1",
+      "channels": 128,
+      "groups": 8,
+      "channels_per_group": 16,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.2.mlp.1.1",
+      "channels": 128,
+      "groups": 8,
+      "channels_per_group": 16,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.3.mlp.0.1",
+      "channels": 256,
+      "groups": 8,
+      "channels_per_group": 32,
+      "eps": 1e-05
+    },
+    {
+      "name": "restoration.3.mlp.1.1",
+      "channels": 256,
+      "groups": 8,
+      "channels_per_group": 32,
+      "eps": 1e-05
+    }
+  ],
+  "parameter_count": 1688518,
+  "records": [
+    {
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "targets": 18,
+      "loss": 116.18533325195312,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_parameter_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true
+    },
+    {
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "targets": 85,
+      "loss": 157.6656036376953,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_parameter_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 2,
+      "targets": 7,
+      "loss": 193.75332641601562,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_parameter_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 5,
+      "targets": 68,
+      "loss": 151.72312927246094,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_parameter_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true
+    }
+  ],
+  "synthetic_budget_checks": [
+    {
+      "points": 256,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      }
+    },
+    {
+      "points": 4096,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "real_data_optimizer_updates": 0,
+  "normalization_consistency_passed": true,
+  "initial_state_sha256": "60bb11feb0c220bf23ad92d77815b53b9f443298426a9fcdc174e42dc085ac97",
+  "date": "2026-10-31",
+  "raw_directory": "tmp\\groupnorm_node_cpu_20261030",
+  "raw_report_sha256": "f138dda16be24b2430f406981c3d0e21baec546cf5dbb9d9384fe94ecbc3ba90",
+  "derived_recipe": {
+    "schema_version": 1,
+    "scope": "GN8 normalization-only node learnability control against saved Sato/BN",
+    "inputs": "tmp/sampler_learnability_inputs_20261030/inputs.json",
+    "inputs_sha256": "ecc835b566378c73006c4db4e681dca5aa7fa222a8d37605b5ccfcbc394a9dcb",
+    "target_audit": "tmp/sampler_model_interface_verified_20261030/report.json",
+    "target_audit_sha256": "1e0b8d78b7317e9183da0d5ee5545544c0e8453baff0d1f8db75ead2315bb6b4",
+    "target_source_sha256": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "training_inventory": "configs/training_inventory.json",
+    "training_inventory_sha256": "90b46f6983c6be2f5d742549832b1837246dd7a95686db0c1def0bb8736cac58",
+    "encoder_config": "configs/pointnext_compact_replay64.json",
+    "head_source": "../pointneuron2/src/pointneuron/models/query_proposal.py",
+    "head_source_sha256": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "initial_state_sha256": "60bb11feb0c220bf23ad92d77815b53b9f443298426a9fcdc174e42dc085ac97",
+    "methods": [
+      "pn2_sato"
+    ],
+    "box_order": [
+      [
+        "fruitfly32",
+        27
+      ],
+      [
+        "fruitfly32",
+        20
+      ],
+      [
+        "frog22",
+        2
+      ],
+      [
+        "frog22",
+        5
+      ]
+    ],
+    "seed": 0,
+    "query_count": 512,
+    "input_slots": 2048,
+    "batch_size": 1,
+    "dtype": "float32",
+    "normalization": "groupnorm8_input_statistics_train_and_eval",
+    "diagnostic_normalization": "same_groupnorm_computation_in_both_modes_exact_consistency_required",
+    "attention_backend": "math_sdpa_no_mha_fastpath",
+    "deterministic_algorithms": true,
+    "tf32": false,
+    "dropout": 0.0,
+    "augmentation": "none",
+    "radius_supervision": "none_in_matching_or_loss; output is untrained",
+    "loss": {
+      "classification_weight": 2.0,
+      "center_weight": 3.0,
+      "center_beta_voxel": 4.0,
+      "match_scale_voxel": 6.0
+    },
+    "optimizer": {
+      "kind": "AdamW",
+      "learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "gradient_clip": 10.0,
+    "updates_per_arm": 2000,
+    "evaluation_steps": [
+      0,
+      8,
+      500,
+      1000,
+      2000
+    ],
+    "log_every": 50,
+    "cutoff": 0.5,
+    "gate_tolerance_voxel": 2.0,
+    "gate_precision": 0.95,
+    "gate_recall": 0.95,
+    "timing_updates_per_arm": 8,
+    "timing_worker_timeout_seconds": 300,
+    "train_worker_timeout_seconds": 3600,
+    "cpu_threads": 1,
+    "cpu_preflight": "tmp/groupnorm_node_cpu_20261030/report.json",
+    "resume": "No resume action in this first launcher; complete model/optimizer/RNG state is nevertheless saved",
+    "model_variant": "pointnext_s_native_groupnorm8_query_control_v1",
+    "normalization_control": {
+      "schema_version": 1,
+      "baseline_recipe": "configs/sampler_node_fit.json",
+      "baseline_recipe_fingerprint": "145be10503b54c66fbfacc1bb53136171e3ed32a748c7684a960e5fbd3e51f7c",
+      "baseline_report": "tmp/sampler_node_train_20261030/report.json",
+      "baseline_report_sha256": "8e8591aebc9a99e3ac05df2cccbd6783c2c8d6a565772f3ce564ae95460ec5e0",
+      "method": "pn2_sato",
+      "normalization": {
+        "kind": "GroupNorm",
+        "groups": 8,
+        "eps": 1e-05,
+        "layers": 16
+      },
+      "initial_state_sha256": "60bb11feb0c220bf23ad92d77815b53b9f443298426a9fcdc174e42dc085ac97",
+      "cpu_preflight": "tmp/groupnorm_node_cpu_20261030/report.json",
+      "variant_source_sha256": {
+        "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+        "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688"
+      }
+    }
+  },
+  "changed_recipe_fields": [
+    "cpu_preflight",
+    "diagnostic_normalization",
+    "initial_state_sha256",
+    "methods",
+    "model_variant",
+    "normalization",
+    "normalization_control",
+    "scope"
+  ],
+  "tests": {
+    "groupnorm_tests": 14,
+    "shared_node_tests": 12,
+    "total_passed": 26,
+    "powershell_syntax": "passed"
+  },
+  "gpu_launched": false,
+  "preparation_started": "2026-10-30"
+}
