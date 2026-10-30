@@ -1,14 +1,17 @@
 # Phase 1 through PointNeXt and Transformer: bounded comparison
 
 30 October 2026. The user agreed to a controlled learned comparison after the
-[matched input evidence](pn1_input_comparison_results.md). **Input preparation
-is implemented; the learned runner and final training recipe are not yet ready.**
+[matched input evidence](pn1_input_comparison_results.md). **Input preparation,
+CPU verification and the bounded learned runner are implemented. GPU timing is
+the next manual step; the full fit awaits its results.**
 No model is trained by this document or the preparation command.
 
 The [real-box target audit and CPU model interface check](sampler_model_interface_results.md)
 now pass on all eight inputs. The reference-only rectangular clipper and
-untrained diagnostic wrapper are implemented. Target/loss/normalization choices
-for the actual fit remain a discussion point; the diagnostic does not select them.
+untrained diagnostic wrapper are implemented. The subsequent user-approved
+[node-only fit recipe](sampler_node_fit.md) fixes the audited target grid,
+excludes radius supervision and scores ordinary saved-BN inference. The
+CPU diagnostic itself did not select those policies.
 
 ## Decision this experiment must inform
 

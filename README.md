@@ -132,6 +132,15 @@ some nearly coincident regular/required nodes; this is a target-policy finding,
 not a Phase 1 failure or justification for silently adding suppression rules.
 The bounded fit recipe remains to be discussed before training.
 
+The user-approved [node-learning recipe and manual timing command](docs/sampler_node_fit.md)
+are now prepared: two fresh models, 2000 updates per sampler, fixed clouds and
+targets, position/used-slot loss without radius supervision, and ordinary
+saved-BatchNorm inference as the scored policy. Current-crop statistics are
+diagnostic only. Twenty-nine focused tests and eight real-input CPU loss/backward
+checks pass; no optimizer was applied to real data. GPU timing is the next manual
+action. Training requires a passed current-source paired timing run and exact
+eight-update model/Adam/RNG replay; no GPU run has been launched by the agent.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

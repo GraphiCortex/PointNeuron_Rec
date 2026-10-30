@@ -40,3 +40,20 @@ as of the 22 October reference-policy change; no real dataset is opened.
 
 Retained historical tests remain useful evidence for reused components. No broad
 test or training run is started by creating this folder.
+
+30 October node-learning preparation adds twelve Torch-dependent tests in
+`test_node_learning.py`. Run these in the retained Torch runtime, disabling
+unrelated third-party plugin auto-loading for that command:
+
+```powershell
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B -m pytest tests\test_node_learning.py --basetemp=tmp\node_tests_torch_20261030 -q
+```
+
+The test module skips explicitly when Torch is unavailable in the isolated image
+runtime. Its optimizer updates use only a tiny synthetic fixture to verify exact
+checkpoint continuation; no real neuron is fitted. Five separate controller
+tests mock all workers, checking timeout/report failures without Torch or GPU.
+Together with twelve rectangular target tests, the focused preparation checks
+pass **29 tests**. The separate real-input CPU preflight checks actual supervised
+loss/backward without an optimizer; it is execution evidence, not learnability.

@@ -275,3 +275,27 @@ The verified run is `tmp/sampler_model_interface_verified_20261030`; no repeat i
 needed. The target graph has reference edges solely for auditing representation;
 it is not an oracle-assisted inference path or GAT output. The candidate target
 module is under `src/pn2/supervision/`, separate from image-only preparation.
+
+## Bounded two-sampler node fit: run timing first
+
+The [fixed recipe, verification and stopping rules](../docs/sampler_node_fit.md)
+are prepared. The actual position/used-slot loss passed backward on all eight
+inputs without optimizer updates. Twenty-nine focused tests pass across the
+retained Torch runtime and isolated CPU runtime. No GPU has been launched.
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_sampler_node_fit.ps1 -Action timing
+```
+
+This performs eight throwaway GPU updates per sampler, in separate fresh
+processes, then verifies full model/Adam/RNG serialization reload in memory.
+It saves logs/predictions/reports under a fresh ignored `tmp/sampler_node_timing_*`
+directory and retains no trained checkpoint. It does not launch the 2000-update
+per-arm fit. Review the paired timing report before using the separate train
+action, which requires that passed directory through `-TimingRun`.
+
+The completed CPU preflight is `tmp/sampler_node_cpu_verified_20261030/report.json`.
+If a future source change invalidates it, `-Action check -Output <fresh directory>`
+runs the CPU loss/gradient check; the resulting report can be supplied explicitly
+with `-CpuPreflight <report.json>`. No repeat is needed for current source.

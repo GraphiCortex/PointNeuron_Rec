@@ -1,7 +1,7 @@
 # New configurations
 
 Fresh benchmark manifests and reviewed experiment configurations belong here.
-No fresh training recipe is selected yet.
+The first bounded node-learning recipe is prepared; GPU timing/training remain unrun.
 
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the
@@ -13,6 +13,13 @@ It is not an executable model/optimizer recipe and does not authorize training.
 input manifest, references' prior evidence and encoder/head source for the
 [CPU interface audit](../docs/sampler_model_interface_results.md). It selects no
 supervised training loss or optimizer and does not expose a GPU action.
+
+[sampler_node_fit.json](sampler_node_fit.json) fixes the user-approved node-only
+comparison following that audit. The [fit instructions](../docs/sampler_node_fit.md)
+declare the loss, ordinary-BN inference, diagnostic policy, optimizer, 2000-update
+per-arm cap and fixed acceptance gate. The CPU preflight passed; GPU timing is
+unrun. The separate train action requires passed paired timing, preserving exact
+model/optimizer/RNG state and the four declared boxes throughout.
 
 [phase1_sampling_probe.json](phase1_sampling_probe.json) freezes the three-arm
 CPU input diagnostic, not a training/product policy. Its

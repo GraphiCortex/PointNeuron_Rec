@@ -33,3 +33,13 @@ Neither execution nor those support proxies validate an encoder, training loss,
 graph model or end-to-end reconstruction.
 
 The working design is the [revised proposal](../docs/revised_proposal.md).
+
+The explicit learned component now adds `models/node_objective.py`, a node-only
+one-to-one position/used-slot loss with no radius or topology terms. Torch is
+required only when this optional module or the experiment runner is imported;
+image preparation and the standalone evaluator retain their model-free paths.
+`evaluation/node_proposals.py` supplies one-to-one proposal metrics using NumPy /
+SciPy. `supervision/curve_nodes.py` supplies reference-only rectangular targets.
+The model factory in the visible experiment script reuses hash-pinned historical
+encoder/head source read-only with fresh weights; this is not a vendored product
+backend or a trained whole-neuron inference implementation.

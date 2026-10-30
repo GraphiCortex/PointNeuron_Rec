@@ -1,0 +1,227 @@
+{
+  "status": "passed",
+  "scope": "Actual node loss backward, no optimizer or real-data fit",
+  "recipe_fingerprint": "145be10503b54c66fbfacc1bb53136171e3ed32a748c7684a960e5fbd3e51f7c",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "torch": "2.12.1+cu130",
+  "device": "cpu",
+  "records": [
+    {
+      "method": "pn1_range_random",
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "targets": 18,
+      "distinct_points": 2048,
+      "loss": 116.19309997558594,
+      "classification": 0.8123120665550232,
+      "center": 38.189491271972656,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn1_range_random",
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "targets": 85,
+      "distinct_points": 2048,
+      "loss": 157.51889038085938,
+      "classification": 0.8111921548843384,
+      "center": 51.96549987792969,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn1_range_random",
+      "alias": "frog22",
+      "tile_id": 2,
+      "targets": 7,
+      "distinct_points": 195,
+      "loss": 193.82180786132812,
+      "classification": 0.8109301328659058,
+      "center": 64.066650390625,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn1_range_random",
+      "alias": "frog22",
+      "tile_id": 5,
+      "targets": 68,
+      "distinct_points": 2048,
+      "loss": 151.2185516357422,
+      "classification": 0.8102524876594543,
+      "center": 49.86601638793945,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn2_sato",
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "targets": 18,
+      "distinct_points": 2048,
+      "loss": 116.184814453125,
+      "classification": 0.8123263120651245,
+      "center": 38.18672180175781,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn2_sato",
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "targets": 85,
+      "distinct_points": 2048,
+      "loss": 157.5033721923828,
+      "classification": 0.8111525774002075,
+      "center": 51.960357666015625,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn2_sato",
+      "alias": "frog22",
+      "tile_id": 2,
+      "targets": 7,
+      "distinct_points": 2048,
+      "loss": 193.7097930908203,
+      "classification": 0.8117588758468628,
+      "center": 64.02875518798828,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    },
+    {
+      "method": "pn2_sato",
+      "alias": "frog22",
+      "tile_id": 5,
+      "targets": 68,
+      "distinct_points": 2048,
+      "loss": 151.1796417236328,
+      "classification": 0.8101451992988586,
+      "center": 49.853118896484375,
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "parameters_unchanged": true
+    }
+  ],
+  "date": "2026-10-30",
+  "raw_directory": "tmp\\sampler_node_cpu_verified_20261030",
+  "raw_report_sha256": "a1c98c748cca64f5290233099fe64d67411e81dd722f663e29fb4c217635c5b3",
+  "recipe": {
+    "schema_version": 1,
+    "scope": "Two-sampler four-training-box node learnability control, not reconstruction or generalization",
+    "inputs": "tmp/sampler_learnability_inputs_20261030/inputs.json",
+    "inputs_sha256": "ecc835b566378c73006c4db4e681dca5aa7fa222a8d37605b5ccfcbc394a9dcb",
+    "target_audit": "tmp/sampler_model_interface_verified_20261030/report.json",
+    "target_audit_sha256": "1e0b8d78b7317e9183da0d5ee5545544c0e8453baff0d1f8db75ead2315bb6b4",
+    "target_source_sha256": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "training_inventory": "configs/training_inventory.json",
+    "training_inventory_sha256": "90b46f6983c6be2f5d742549832b1837246dd7a95686db0c1def0bb8736cac58",
+    "encoder_config": "configs/pointnext_compact_replay64.json",
+    "head_source": "../pointneuron2/src/pointneuron/models/query_proposal.py",
+    "head_source_sha256": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e",
+    "initial_state_sha256": "ddc46be801c81c9ae2691af49fcb574f040037e4699004e6713505a1c06587db",
+    "methods": [
+      "pn1_range_random",
+      "pn2_sato"
+    ],
+    "box_order": [
+      [
+        "fruitfly32",
+        27
+      ],
+      [
+        "fruitfly32",
+        20
+      ],
+      [
+        "frog22",
+        2
+      ],
+      [
+        "frog22",
+        5
+      ]
+    ],
+    "seed": 0,
+    "query_count": 512,
+    "input_slots": 2048,
+    "batch_size": 1,
+    "dtype": "float32",
+    "normalization": "ordinary_batchnorm_saved_running_statistics_at_inference",
+    "diagnostic_normalization": "training_mode_with_all_buffers_restored_after_diagnostic_never_used_for_gate",
+    "attention_backend": "math_sdpa_no_mha_fastpath",
+    "deterministic_algorithms": true,
+    "tf32": false,
+    "dropout": 0.0,
+    "augmentation": "none",
+    "radius_supervision": "none_in_matching_or_loss; output is untrained",
+    "loss": {
+      "classification_weight": 2.0,
+      "center_weight": 3.0,
+      "center_beta_voxel": 4.0,
+      "match_scale_voxel": 6.0
+    },
+    "optimizer": {
+      "kind": "AdamW",
+      "learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "gradient_clip": 10.0,
+    "updates_per_arm": 2000,
+    "evaluation_steps": [
+      0,
+      8,
+      500,
+      1000,
+      2000
+    ],
+    "log_every": 50,
+    "cutoff": 0.5,
+    "gate_tolerance_voxel": 2.0,
+    "gate_precision": 0.95,
+    "gate_recall": 0.95,
+    "timing_updates_per_arm": 8,
+    "timing_worker_timeout_seconds": 300,
+    "train_worker_timeout_seconds": 3600,
+    "cpu_threads": 1,
+    "cpu_preflight": "tmp/sampler_node_cpu_verified_20261030/report.json",
+    "resume": "No resume action in this first launcher; complete model/optimizer/RNG state is nevertheless saved"
+  },
+  "tests": {
+    "torch_tests": 12,
+    "controller_tests": 5,
+    "target_tests": 12,
+    "total_passed": 29,
+    "powershell_parser": "passed"
+  },
+  "gpu_launched": false,
+  "real_data_optimizer_updates": 0
+}
