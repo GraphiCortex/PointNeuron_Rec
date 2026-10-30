@@ -1,8 +1,9 @@
 # New configurations
 
 Fresh benchmark manifests and reviewed experiment configurations belong here.
-The first bounded node-learning recipe is prepared and user-launched GPU timing
-passes. Full training has not been launched by the agent.
+The first bounded node-learning recipe and user-launched fits are complete.
+Both fits failed the frozen learnability gate; see the
+[saved-fit review](../docs/sampler_node_fit_results.md) before scheduling more training.
 
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the

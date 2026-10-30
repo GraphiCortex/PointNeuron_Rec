@@ -2,9 +2,9 @@
 
 30 October 2026. The user agreed to a controlled learned comparison after the
 [matched input evidence](pn1_input_comparison_results.md). **Input preparation,
-CPU verification and the bounded learned runner are implemented. The user-launched
-paired GPU timing passes; the capped fit is ready for manual launch.** See the
-[timing review and exact command](sampler_node_timing_results.md).
+CPU verification and the bounded learned runner are implemented. Both user-launched
+capped fits completed and failed learnability.** See the
+[saved-fit review and next design discussion](sampler_node_fit_results.md).
 No model is trained by this document or the preparation command.
 
 The [real-box target audit and CPU model interface check](sampler_model_interface_results.md)

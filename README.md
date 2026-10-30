@@ -149,6 +149,15 @@ update time is 55.5-83.3 minutes plus overhead. Initial node accuracy is still
 unestablished; no sampler is selected. The unchanged bounded fit is ready for
 the user's manual launch using the reviewed timing directory.
 
+Both [user-launched 2000-update node fits](docs/sampler_node_fit_results.md)
+now complete, but both fail learnability substantially. Saved-state inspection
+confirms full optimizer/BatchNorm updates. Identical-parameter diagnostics show
+a large normalization gap; current-crop statistics improve geometric placement
+but leave missing nodes and many accepted extras. Neither a threshold change
+nor adopting the diagnostic mode alone can satisfy the frozen gate. The read-only
+review exports saved-proposal figures and preserves all failures; no further
+training, normalizer/query change or Phase 1 policy selection has been made.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

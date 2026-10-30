@@ -301,3 +301,26 @@ The completed CPU preflight is `tmp/sampler_node_cpu_verified_20261030/report.js
 If a future source change invalidates it, `-Action check -Output <fresh directory>`
 runs the CPU loss/gradient check; the resulting report can be supplied explicitly
 with `-CpuPreflight <report.json>`. No repeat is needed for current source.
+
+## Review completed saved node fits without training or inference
+
+Both user-launched fits completed and failed the frozen learnability gate.
+[Results, geometric/normalization separation and figures](../docs/sampler_node_fit_results.md)
+are saved. `review_sampler_node_fit.py` reads the two declared training references,
+saved predictions and hash-checked state files on CPU. It executes no model
+forward, performs no optimizer update and changes no inference policy or cutoff.
+Independent dense one-to-one assignment reproduces all 80 saved mode/box/step
+count comparisons. The checkpoint audit confirms all sixteen BN counters and
+Adam reach 2000. Continuous-curve proximity is a separate diagnostic, not a
+replacement acceptance metric.
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B `
+  .\scripts\review_sampler_node_fit.py --run .\tmp\sampler_node_train_20261030 `
+  --output .\tmp\a_fresh_saved_fit_review
+```
+
+The completed review is `tmp/sampler_node_review_verified_20261030` and does not
+need repeating. Two terminal figures are exported under `docs/learning/`. The
+earlier review and all training checkpoints/logs remain unchanged. This outcome
+does not schedule a retry, extension or another sampler fit.

@@ -1,10 +1,12 @@
 # Two-sampler node learnability fit: recipe and manual launch
 
 30 October 2026. The user agreed to proceed with the node-only comparison and
-the reviewed target grid. **Preparation and CPU verification complete; the
-user-launched GPU timing now passes. Full training has not been launched by the
-agent.** The [timing review and exact training command](sampler_node_timing_results.md)
-record the next manual action. This fixes the outstanding recipe
+the reviewed target grid. **Both user-launched fits completed 2000 updates and
+failed the learnability gate.** The [saved-fit review](sampler_node_fit_results.md)
+separates the large normalization gap from remaining geometry/selection failures;
+no further fit is recommended automatically. The
+[timing review and historical launch command](sampler_node_timing_results.md)
+record how this control was launched. This fixes the outstanding recipe
 choices in the [comparison protocol](sampler_learnability_protocol.md).
 
 ## Question and scope
