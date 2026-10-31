@@ -1,0 +1,558 @@
+{
+  "status": "passed",
+  "device": "cpu",
+  "torch": "2.12.1+cu130",
+  "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+    "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+    "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+    "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "parameter_count": 1688518,
+  "fresh_parameters_exactly_match_GN": true,
+  "real_data_optimizer_updates": 0,
+  "records": [
+    {
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "targets": 18,
+      "points": 2048,
+      "queries": 512,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true,
+      "metrics": {
+        "raw_starts": {
+          "2.0": {
+            "matched": 5,
+            "predicted": 512,
+            "reference": 18,
+            "precision": 0.009765625,
+            "recall": 0.2777777777777778,
+            "f1": 0.018867924528301886,
+            "extras": 507,
+            "misses": 13
+          },
+          "6.0": {
+            "matched": 18,
+            "predicted": 512,
+            "reference": 18,
+            "precision": 0.03515625,
+            "recall": 1.0,
+            "f1": 0.06792452830188679,
+            "extras": 494,
+            "misses": 0
+          }
+        },
+        "untrained_all_predictions": {
+          "2.0": {
+            "matched": 4,
+            "predicted": 512,
+            "reference": 18,
+            "precision": 0.0078125,
+            "recall": 0.2222222222222222,
+            "f1": 0.01509433962264151,
+            "extras": 508,
+            "misses": 14
+          },
+          "6.0": {
+            "matched": 18,
+            "predicted": 512,
+            "reference": 18,
+            "precision": 0.03515625,
+            "recall": 1.0,
+            "f1": 0.06792452830188679,
+            "extras": 494,
+            "misses": 0
+          }
+        },
+        "untrained_accepted_predictions": {
+          "2.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          },
+          "6.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          }
+        }
+      },
+      "initial_loss": 4.620100498199463,
+      "prediction_packet": "fruitfly32_tile27_untrained.npz",
+      "assignment_mean_distance_voxel": 2.7092809677124023,
+      "prediction_packet_sha256": "e25024831f805a908f875b69d95a896c103eeda75adc096f1c2def8bd9222abd"
+    },
+    {
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "targets": 85,
+      "points": 2048,
+      "queries": 512,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true,
+      "metrics": {
+        "raw_starts": {
+          "2.0": {
+            "matched": 7,
+            "predicted": 512,
+            "reference": 85,
+            "precision": 0.013671875,
+            "recall": 0.08235294117647059,
+            "f1": 0.023450586264656615,
+            "extras": 505,
+            "misses": 78
+          },
+          "6.0": {
+            "matched": 82,
+            "predicted": 512,
+            "reference": 85,
+            "precision": 0.16015625,
+            "recall": 0.9647058823529412,
+            "f1": 0.2747068676716918,
+            "extras": 430,
+            "misses": 3
+          }
+        },
+        "untrained_all_predictions": {
+          "2.0": {
+            "matched": 6,
+            "predicted": 512,
+            "reference": 85,
+            "precision": 0.01171875,
+            "recall": 0.07058823529411765,
+            "f1": 0.020100502512562814,
+            "extras": 506,
+            "misses": 79
+          },
+          "6.0": {
+            "matched": 83,
+            "predicted": 512,
+            "reference": 85,
+            "precision": 0.162109375,
+            "recall": 0.9764705882352941,
+            "f1": 0.2780569514237856,
+            "extras": 429,
+            "misses": 2
+          }
+        },
+        "untrained_accepted_predictions": {
+          "2.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          },
+          "6.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          }
+        }
+      },
+      "initial_loss": 7.258559703826904,
+      "prediction_packet": "fruitfly32_tile20_untrained.npz",
+      "assignment_mean_distance_voxel": 3.742094039916992,
+      "prediction_packet_sha256": "c73f3deced70dbe9a783ad4042e72b3b6e8f4a42f41ba1d09789447e2e357c8c"
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 2,
+      "targets": 7,
+      "points": 2048,
+      "queries": 512,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true,
+      "metrics": {
+        "raw_starts": {
+          "2.0": {
+            "matched": 1,
+            "predicted": 512,
+            "reference": 7,
+            "precision": 0.001953125,
+            "recall": 0.14285714285714285,
+            "f1": 0.0038535645472061657,
+            "extras": 511,
+            "misses": 6
+          },
+          "6.0": {
+            "matched": 6,
+            "predicted": 512,
+            "reference": 7,
+            "precision": 0.01171875,
+            "recall": 0.8571428571428571,
+            "f1": 0.023121387283236993,
+            "extras": 506,
+            "misses": 1
+          }
+        },
+        "untrained_all_predictions": {
+          "2.0": {
+            "matched": 1,
+            "predicted": 512,
+            "reference": 7,
+            "precision": 0.001953125,
+            "recall": 0.14285714285714285,
+            "f1": 0.0038535645472061657,
+            "extras": 511,
+            "misses": 6
+          },
+          "6.0": {
+            "matched": 6,
+            "predicted": 512,
+            "reference": 7,
+            "precision": 0.01171875,
+            "recall": 0.8571428571428571,
+            "f1": 0.023121387283236993,
+            "extras": 506,
+            "misses": 1
+          }
+        },
+        "untrained_accepted_predictions": {
+          "2.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          },
+          "6.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          }
+        }
+      },
+      "initial_loss": 8.084295272827148,
+      "prediction_packet": "frog22_tile2_untrained.npz",
+      "assignment_mean_distance_voxel": 3.971681833267212,
+      "prediction_packet_sha256": "48ec8ea906926de3e3f5c2becc8efb7bdbd55ebf7de9f4dfb9407d8cec6d0abc"
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 5,
+      "targets": 68,
+      "points": 2048,
+      "queries": 512,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      },
+      "all_gradients_finite": true,
+      "radius_row_gradient_zero": true,
+      "state_unchanged": true,
+      "metrics": {
+        "raw_starts": {
+          "2.0": {
+            "matched": 4,
+            "predicted": 512,
+            "reference": 68,
+            "precision": 0.0078125,
+            "recall": 0.058823529411764705,
+            "f1": 0.013793103448275862,
+            "extras": 508,
+            "misses": 64
+          },
+          "6.0": {
+            "matched": 54,
+            "predicted": 512,
+            "reference": 68,
+            "precision": 0.10546875,
+            "recall": 0.7941176470588235,
+            "f1": 0.18620689655172415,
+            "extras": 458,
+            "misses": 14
+          }
+        },
+        "untrained_all_predictions": {
+          "2.0": {
+            "matched": 6,
+            "predicted": 512,
+            "reference": 68,
+            "precision": 0.01171875,
+            "recall": 0.08823529411764706,
+            "f1": 0.020689655172413793,
+            "extras": 506,
+            "misses": 62
+          },
+          "6.0": {
+            "matched": 55,
+            "predicted": 512,
+            "reference": 68,
+            "precision": 0.107421875,
+            "recall": 0.8088235294117647,
+            "f1": 0.1896551724137931,
+            "extras": 457,
+            "misses": 13
+          }
+        },
+        "untrained_accepted_predictions": {
+          "2.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          },
+          "6.0": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          }
+        }
+      },
+      "initial_loss": 9.764616966247559,
+      "prediction_packet": "frog22_tile5_untrained.npz",
+      "assignment_mean_distance_voxel": 4.591104984283447,
+      "prediction_packet_sha256": "b7787f2b75e81f4b1fe4406b8d28e6ca5d63897c753c5becea0f1c8925bff445"
+    }
+  ],
+  "synthetic_budget_checks": [
+    {
+      "points": 256,
+      "queries": 256,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      }
+    },
+    {
+      "points": 4096,
+      "queries": 512,
+      "consistency": {
+        "passed": true,
+        "fields": {
+          "center_proposals": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "local_centers": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "objectness_logits": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "radius": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          },
+          "decoder_features": {
+            "exact": true,
+            "maximum_absolute_difference": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "normalization_consistency_passed": true,
+  "checkpoint_reload_passed": true,
+  "synthetic_throwaway_optimizer_updates": 1,
+  "reload_outputs": {
+    "passed": true,
+    "fields": {
+      "center_proposals": {
+        "exact": true,
+        "maximum_absolute_difference": 0.0
+      },
+      "local_centers": {
+        "exact": true,
+        "maximum_absolute_difference": 0.0
+      },
+      "objectness_logits": {
+        "exact": true,
+        "maximum_absolute_difference": 0.0
+      },
+      "radius": {
+        "exact": true,
+        "maximum_absolute_difference": 0.0
+      },
+      "decoder_features": {
+        "exact": true,
+        "maximum_absolute_difference": 0.0
+      }
+    }
+  },
+  "initial_state_sha256": "60bb11feb0c220bf23ad92d77815b53b9f443298426a9fcdc174e42dc085ac97",
+  "gpu_executed": false,
+  "raw_report": "tmp/geometric_query_cpu_20261031/report.json",
+  "raw_report_sha256": "f00f2f0db7044740075bf2984540871147fe03f9cf711b23ed23280632ce9820",
+  "component_tests": {
+    "passed": 47,
+    "command": "python -B -m pytest tests/test_geometric_queries.py tests/test_groupnorm_node.py tests/test_node_learning.py tests/test_sampler_node_controller.py -q",
+    "seconds": 19.42,
+    "external_pytest_plugin_autoload": false
+  },
+  "powershell_launcher_syntax": "passed"
+}

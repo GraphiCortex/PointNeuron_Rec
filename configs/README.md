@@ -5,6 +5,14 @@ The first bounded node-learning recipe and user-launched fits are complete.
 Both fits failed the frozen learnability gate; see the
 [saved-fit review](../docs/sampler_node_fit_results.md) before scheduling more training.
 
+[geometric_query_fit.json](geometric_query_fit.json) declares the user-approved
+geometric-query candidate against the completed GN fit. It derives the same
+data, loss, optimizer and cap, pinning the GN baseline and candidate code hashes.
+Only query content initialization and position parameterization change. The
+[implementation report](../docs/geometric_query_implementation.md) records the
+passed CPU check and next manual GPU timing command. This does not promote an
+untrained model or change the earlier failed gates.
+
 [groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
 approved normalization-only control against the saved Sato/BN fit. It derives
 unchanged learning/data settings from the original recipe and pins its baseline

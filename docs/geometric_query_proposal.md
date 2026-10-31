@@ -1,9 +1,11 @@
-# Prospective image-conditioned geometric queries
+# Image-conditioned geometric queries: approved design
 
-31 October 2026. **Discussion proposal; not implemented or authorized for a new
-fit by this document.** It follows the [completed GN8 result](groupnorm_node_fit_results.md).
-The next decision concerns a specified Stage 3 mechanism, not another
-normalization or confidence-threshold search.
+31 October 2026. The user has now approved this geometric-query direction. A
+separate [implementation and CPU qualification](geometric_query_implementation.md)
+records the exact candidate and next manual GPU timing command. No GPU work
+has been launched by the agent. The design rationale and bounded comparison
+below follow the [completed GN8 result](groupnorm_node_fit_results.md), rather
+than another normalization or confidence-threshold search.
 
 ## Responsibility and motivation
 
@@ -116,13 +118,15 @@ starting locations; full memory and learned movement are essential. The largest
 assigned starting displacement reaches 13.59 voxels. A small movement clamp
 could exclude real targets and is not proposed.
 
-The start-coordinate prior has smaller mean assignment distances than the
-current untrained model's 40.19/54.01/66.04/52.03 voxels. This is a coordinate-only
-comparison: feature initialization and the actual untrained offset head have
-not been executed. It is neither a learned improvement nor evidence that
+At the proposal's coordinate-only check, the start-coordinate prior had smaller
+mean assignment distances than the old untrained model's
+40.19/54.01/66.04/52.03 voxels. That was a coordinate-only comparison: feature
+initialization and the actual untrained offset head had not yet been executed.
+The subsequent implementation report now measures them
+separately. This prior is neither a learned improvement nor evidence that
 selection, dim-branch retention or generalization will improve.
 
-## Proposed comparison if agreed
+## Agreed comparison and stopping rules
 
 1. Implement a separate, readable candidate while preserving the GN baseline.
    CPU checks cover coordinate translation/scale semantics, exact no-GT FPS
@@ -155,6 +159,6 @@ objects. Geometric queries do not solve that ambiguity by themselves. A
 curve-support or alternative discretization objective would be a separate,
 substantial research decision with its own interface/metric implications.
 
-No new GPU command is issued by this proposal. Phase 1's broad information
-retention, native PointNeXt fidelity beyond the audited prototype, cross-crop
+The implementation report issues the next manual timing command. Phase 1's
+broad information retention, native PointNeXt fidelity beyond the audited prototype, cross-crop
 consolidation, GATv2 and final reconstruction remain separate qualifications.

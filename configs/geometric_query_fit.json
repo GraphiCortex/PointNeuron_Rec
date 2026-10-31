@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "baseline_config": "configs/groupnorm_node_fit.json",
+  "baseline_recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d",
+  "baseline_report": "tmp/groupnorm_node_train_20261031/report.json",
+  "baseline_report_sha256": "89734699f854247105c0dffb68d8fe65080bd552c858ffe6bea53cc89d3589be",
+  "query_policy": {
+    "selection": "native_fps_local_xyz_fixed_input_order",
+    "count": "min_512_N",
+    "initial_content": "learned_token_plus_gathered_projected_features_and_position",
+    "center": "input_start_plus_unbounded_offset_times_64_voxel",
+    "memory": "all_input_points",
+    "public_local_centers": "crop_relative"
+  },
+  "cpu_preflight": "tmp/geometric_query_cpu_20261031/report.json",
+  "variant_source_sha256": {
+    "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+    "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+  }
+}

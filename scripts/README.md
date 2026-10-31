@@ -368,5 +368,28 @@ new inference policy or changed query model is executed.
 
 The completed review is `tmp/groupnorm_node_review_final_20261031`; no replay is
 needed. Read the [results](../docs/groupnorm_node_fit_results.md) and
-[unimplemented geometric-query proposal](../docs/geometric_query_proposal.md)
-before choosing another experiment. No further GPU action is scheduled here.
+[geometric-query design rationale](../docs/geometric_query_proposal.md). The
+next section records the subsequently approved implementation and timing action.
+
+## Approved geometric-query candidate
+
+The [implementation and CPU results](../docs/geometric_query_implementation.md)
+record the new query content/offset mechanism. Baseline modules and parameter
+values, GN8, frozen clouds, node loss, optimizer, cutoff and fit cap are unchanged.
+`geometric_query_experiment.py` reuses the existing data/update/evaluation/state
+helpers without replacing or monkey-patching the GN runner. Its completed CPU
+check is `tmp/geometric_query_cpu_20261031/report.json` and needs no rerun.
+
+Next manual action:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_geometric_query_fit.ps1 -Action timing
+```
+
+This runs eight throwaway GPU updates on the same four training boxes, with
+exact train/eval consistency and full model/Adam/RNG reload checks, a 300-second
+worker cap, and no retained trained checkpoint. It writes a fresh
+`tmp/geometric_query_timing_<timestamp>` directory and does not start training.
+The separate train action requires this candidate's own passed `-TimingRun`;
+review its timing report before a fit. No old GN timing is compatible.

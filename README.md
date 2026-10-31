@@ -182,7 +182,14 @@ geometry also misses targets. No normalization sweep, threshold change or fit
 extension follows. A [prospective geometric-query design](docs/geometric_query_proposal.md)
 specifies image-derived starting locations/features and learned offsets within
 the retained Transformer stage. Its CPU coordinate-only check is disclosed;
-the changed model and any new fit remain unimplemented pending discussion.
+the user has since approved the direction. The separate
+[geometric-query candidate](docs/geometric_query_implementation.md) is now
+implemented and CPU-qualified: same initial parameters/count, exact mode
+consistency, finite real-cloud gradients without optimizer updates, exact
+synthetic state reload and 47 passing focused tests. Its actual untrained
+geometry is scored separately from the raw starting prior. The next action is
+a visible eight-update GPU timing command; no GPU work or new fit was launched
+by the agent. Original GN/BN model sources and failed results remain unchanged.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

@@ -6,6 +6,11 @@ passes; the frozen four-box node-learnability gate fails.** This closes the
 declared normalization comparison. It does not schedule another normalizer,
 threshold adjustment, LR change, extension or connectivity fit.
 
+Subsequent status: the user approved the geometric-query direction. The
+[separate candidate is now implemented and CPU-qualified](geometric_query_implementation.md).
+The result and interpretation below remain the baseline evidence; the
+prospective wording near the end describes the stopping point of this review.
+
 ## What was compared
 
 The saved Sato/BatchNorm fit and fresh Sato/GroupNorm fit use the same four
