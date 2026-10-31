@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "scope": "Image-only guide provenance; no learned field, SWC or target selection",
+  "entries": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "report": "docs/evidence/node_guide_reuse_initial.json",
+      "report_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+      "recipe": "docs/evidence/node_guide_reuse_initial_recipe.json",
+      "case_index": 0,
+      "guide_path": "tmp/phase1_sampling_20261022/case_00/sato_guide.npy"
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "report": "docs/evidence/node_guide_reuse_initial.json",
+      "report_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+      "recipe": "docs/evidence/node_guide_reuse_initial_recipe.json",
+      "case_index": 1,
+      "guide_path": "tmp/phase1_sampling_20261022/case_01/sato_guide.npy"
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "report": "docs/evidence/node_guide_reuse_qualification.json",
+      "report_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+      "recipe": "docs/evidence/node_guide_reuse_qualification_recipe.json",
+      "case_index": 0,
+      "guide_path": "tmp/phase1_qualification_disk_20261022/case_00/sato_guide.npy"
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "report": "docs/evidence/node_guide_reuse_qualification.json",
+      "report_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+      "recipe": "docs/evidence/node_guide_reuse_qualification_recipe.json",
+      "case_index": 1,
+      "guide_path": "tmp/phase1_qualification_disk_20261022/case_01/sato_guide.npy"
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "report": "docs/evidence/node_guide_reuse_qualification.json",
+      "report_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+      "recipe": "docs/evidence/node_guide_reuse_qualification_recipe.json",
+      "case_index": 2,
+      "guide_path": "tmp/phase1_qualification_disk_20261022/case_02/sato_guide.npy"
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "report": "docs/evidence/node_guide_reuse_qualification.json",
+      "report_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+      "recipe": "docs/evidence/node_guide_reuse_qualification_recipe.json",
+      "case_index": 3,
+      "guide_path": "tmp/phase1_qualification_disk_20261022/case_03/sato_guide.npy"
+    }
+  ]
+}

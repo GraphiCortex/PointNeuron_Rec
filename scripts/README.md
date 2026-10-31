@@ -452,6 +452,30 @@ Preserved reproduction commands, from the PN2 root, with fresh output folders:
 
 Both have already completed and need no repeat. Original outputs are
 `tmp/node_cohort_preflight_20261031` and
-`tmp/node_generalization_plan_final_20261031`. These are planning utilities,
+`tmp/node_generalization_plan_cache_stage_20261031`. These are planning utilities,
 not image-cache or training commands. No bulk Sato generation or broader GPU
 fit has been implemented/launched by this step.
+
+## Image-only point cache
+
+The [cache builder and verification report](../docs/node_cloud_cache_builder.md)
+describe the completed synthetic check and two-image real replay. All four
+original Sato model inputs match exactly, with all 48 image boxes prepared.
+No replay repeat is needed. Generated cache: `tmp/node_cloud_cache_20261031`.
+
+Next manual action, fresh CPU preparation of one training image only:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_node_cloud_cache.ps1 -Action timing
+```
+
+Neuron 41 / Image5, about 11.9 million voxels, 25 boxes, disk-backed Sato,
+one-hour wall cap. The completed result is retained in the input cache. Logs
+go to `tmp/node_cloud_cache_timing_<timestamp>`. No targets, references,
+model, GPU, bulk-preparation continuation or training are involved.
+
+The completed `-Action check` report is
+`tmp/node_cloud_cache_cpu_20261031/report.json`; the completed `-Action replay`
+report is `tmp/node_cloud_cache_replay_20261031/report.json`. These entry points
+refuse stale policies/existing cases and do not automatically retry failures.

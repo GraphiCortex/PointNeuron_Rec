@@ -1,0 +1,1272 @@
+{
+  "schema_version": 1,
+  "scope": "Input-support probe; no SWCs, model or training in generation",
+  "cases_manifest_sha256": "756dc4b3d149904acd29746e4af1be08add93647c7f207d495b1f3e33fcc950f",
+  "recipe_sha256": "7ae7f8179eb3cbd29324fe220d6ce612c0127b87e6d58539560ceffa081853bb",
+  "frozen_recipe_sha256": "9c47fa9e9fa5b232e0a51180eb7621a7a415b4fa8af1fd9a5d61fb01632c4690",
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-image": "0.25.2",
+    "psutil": "7.0.0"
+  },
+  "source_code_sha256": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+  "generation_script_sha256": "f511ecac4b1c1a5be814e268fe1f3ef1b63926290b892e0f87f33f3e18a9d0cd",
+  "cases": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "image": {
+        "image_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1\\3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd",
+        "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+        "source_bytes": 11264952,
+        "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+        "decoded_bytes": 11779911,
+        "reader_version": "vaa3d-pbd-v2",
+        "encoding": "v3d_volume_pkbitdf_encod",
+        "endian": "L",
+        "datatype": 1,
+        "dimensions_xyzc": [
+          1017,
+          429,
+          27,
+          1
+        ],
+        "array_axes": "ZYX",
+        "coordinate_axes": "XYZ",
+        "coordinate_origin_xyz": [
+          0,
+          0,
+          0
+        ],
+        "voxel_centers": "integer indices",
+        "native_coordinates_units": "voxel",
+        "declared_metric_units": "voxel",
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "metric_transform": "metric_xyz = native_xyz * spacing_xyz; not applied to array or tile boxes",
+        "intensity_transform": "none",
+        "spatial_resampling": "none",
+        "padding": "none"
+      },
+      "normalization": {
+        "minimum": 0.0,
+        "maximum": 255.0,
+        "constant": false
+      },
+      "decode_seconds": 1.6210045000043465,
+      "guide_seconds": 232.5777487000014,
+      "guide_sha256": "e2a6d430b6135dd6fa378edf46aa78c2ca3fa913d7fc77a941ed16e0abafd6f5",
+      "guide_range": [
+        0.0,
+        0.3130084276199341
+      ],
+      "tile_count": 32,
+      "tiles": [
+        {
+          "start_xyz": [
+            0,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            512,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            640,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            640,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            768,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            768,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            896,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            896,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            1017,
+            128,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            512,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            640,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            640,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            768,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            768,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            896,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            896,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            1017,
+            256,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            512,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            640,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            640,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            768,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            768,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            896,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            896,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            1017,
+            384,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            512,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            640,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            640,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            768,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            768,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            896,
+            429,
+            27
+          ]
+        },
+        {
+          "start_xyz": [
+            896,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            1017,
+            429,
+            27
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell4_seed0.npz",
+          "sha256": "df4beac76fbacc21fa92b0406944fef8bdc5e952810702449204f464f1a4d9a2"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell8_seed0.npz",
+          "sha256": "d3f305b1f1120943fe00c6ab7cf0402f01cb252fd90cc6a3515ca881ad6c467a"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell4_seed0.npz",
+          "sha256": "0467994e1f952952964b310e67482111e320e1d829798bd67d973979a8667826"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell8_seed0.npz",
+          "sha256": "17aeba888fcc6086e9f9c54da12e1c4c3691e991356a0dd10e33227ac7492892"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell4_seed0.npz",
+          "sha256": "5d2ca3332e70bc6cd21741d402115b29df37a86f8773a4e4de2b766c00495d57"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell8_seed0.npz",
+          "sha256": "29e7f157e7ecee665408d4ce150b181092e17aa0d0a8c5fcd663318e4d760714"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell4_seed1.npz",
+          "sha256": "4d92e649bb28e204ee85da64323ae6a7b6cfaf5fc790290189e9b8200355895b"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell8_seed1.npz",
+          "sha256": "c9304e4ff9e3486b8d10eae77ed0cb5389e20c7933690bbca683e2eb0db1db8e"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell4_seed1.npz",
+          "sha256": "a063b9df134309e4a5e6975a0aae2885ec3bf3bdc289770e082dbed90b661181"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell8_seed1.npz",
+          "sha256": "09a09ebf94cf1d5b87c94f651b98e644cbdbb676a1e071cc125b896cd06ae66d"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell4_seed1.npz",
+          "sha256": "9a3542c2cf1f83ac1add72639194705f0fc368ef24ada58e8605ade0b0f8899e"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell8_seed1.npz",
+          "sha256": "cd56705f7fc51072c955a0d392e36e9fe2fb02b0b2598a36f450ce7023493930"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell4_seed2.npz",
+          "sha256": "f9d89fdb0e38db256df44f5ec3f6f36ec000851827a1b3fea247b64a61733ce6"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell8_seed2.npz",
+          "sha256": "c509b3ce5c31da840f364739974f5e8aedc8dac4de8c9db8fd818c17343bebbe"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell4_seed2.npz",
+          "sha256": "00cc14a1411fc699388ef62a6c0f30e2a8ebc94770003fff87d53f18f8f26e08"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell8_seed2.npz",
+          "sha256": "cb1e1297f220815af16a65afbc6f40f96a0426f85a5bc12f6de271c3bbc4098c"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell4_seed2.npz",
+          "sha256": "a9ef61dc5745b74c29f7bbf936daff93ca6fcfeba24a80df316c7536b7dee1e6"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell8_seed2.npz",
+          "sha256": "1b4a17d09ce44db15aaffe16e395a835905a74a47a4cb02b9f67cb4687f30007"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell4_seed3.npz",
+          "sha256": "d340222f957bf7bd4313ed5c28389b8f1b02f693902c664c0e92c8ef95468e34"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell8_seed3.npz",
+          "sha256": "2ea3069f769ea18bc89eb76213df655d73c7ca51451252eb22f6d4b726d8ba9d"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell4_seed3.npz",
+          "sha256": "6233949e4299a6c17bfcc7d36f6520f07911111e67eac545f26f81f5d9eb616c"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell8_seed3.npz",
+          "sha256": "7b7b3b108f3d70e50e019edc8c2247583cc08da1ccf400596d9eb1294db9f4f4"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell4_seed3.npz",
+          "sha256": "0b4cc60b25918793cb988a65081d64173a22355cf4c4e63e1d79106c9b05d277"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell8_seed3.npz",
+          "sha256": "bee0ec7023b81db877618e754f36da3ff52f0c0cbf7da93b30dc1c5049ff2797"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell4_seed4.npz",
+          "sha256": "0da4711556eca232974821ef9bc120d46a99d8d3af6e25c672614676c7b22f60"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\uniform_cell8_seed4.npz",
+          "sha256": "d05251a477047d9135ca915dfeb9e5e34bdcaecba20e49d2b084cc830cc8883f"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell4_seed4.npz",
+          "sha256": "21c0ffd4a3b4ce7f11afedbd8072a4d5be23a8f7753cc895d0a9070d2aff3548"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\intensity_cell8_seed4.npz",
+          "sha256": "d3e0d94dfb88f1d7f152a377e0160975ab8491ddd078bbb30f58b9c372689e8a"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 184062,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell4_seed4.npz",
+          "sha256": "85b937d8a7c81b6008437c1e7441b273ab70dd7fcb2c3a05c0ce29377352aa08"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 23011,
+          "zero_response_tiles": 0,
+          "path": "case_00\\sato_cell8_seed4.npz",
+          "sha256": "eba2f7fd48988728abef7995cfb22fc64ab1475f22d3fc3f8cd83766f003279d"
+        }
+      ],
+      "selection_seconds_by_seed": {
+        "0": 3.27413209999213,
+        "1": 3.3890121000004,
+        "2": 3.4187117999972543,
+        "3": 3.3607182999985525,
+        "4": 3.2529738000012003
+      },
+      "process_memory": {
+        "bytes": 2239459328,
+        "kind": "process_peak_working_set"
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "image": {
+        "image_path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Series021\\Series021.v3dpbd",
+        "source_sha256": "de7ac6b7d4f3a6770888568cc7bc2f91fd99d646657bd6f15d2f1faa70353317",
+        "source_bytes": 21686215,
+        "decoded_sha256": "e0229a0ef907679915ae8a814049cefea43a792f3ef0eb8645a62d9e7265f58f",
+        "decoded_bytes": 31457280,
+        "reader_version": "vaa3d-pbd-v2",
+        "encoding": "v3d_volume_pkbitdf_encod",
+        "endian": "L",
+        "datatype": 2,
+        "dimensions_xyzc": [
+          512,
+          512,
+          60,
+          1
+        ],
+        "array_axes": "ZYX",
+        "coordinate_axes": "XYZ",
+        "coordinate_origin_xyz": [
+          0,
+          0,
+          0
+        ],
+        "voxel_centers": "integer indices",
+        "native_coordinates_units": "voxel",
+        "declared_metric_units": "voxel",
+        "spacing_xyz": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "metric_transform": "metric_xyz = native_xyz * spacing_xyz; not applied to array or tile boxes",
+        "intensity_transform": "none",
+        "spatial_resampling": "none",
+        "padding": "none"
+      },
+      "normalization": {
+        "minimum": 15.0,
+        "maximum": 4095.0,
+        "constant": false
+      },
+      "decode_seconds": 21.834242700002505,
+      "guide_seconds": 333.81387630000245,
+      "guide_sha256": "f563ec82617fcc83de0d34eaf8b38cba5b82d77f3c0c024734f10c8d38e5dad0",
+      "guide_range": [
+        0.0,
+        0.29684412479400635
+      ],
+      "tile_count": 16,
+      "tiles": [
+        {
+          "start_xyz": [
+            0,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            128,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            128,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            128,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            0,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            128,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            256,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            256,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            256,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            128,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            256,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            384,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            384,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            384,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            256,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            384,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            0,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            128,
+            512,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            128,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            256,
+            512,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            256,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            384,
+            512,
+            60
+          ]
+        },
+        {
+          "start_xyz": [
+            384,
+            384,
+            0
+          ],
+          "stop_xyz": [
+            512,
+            512,
+            60
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell4_seed0.npz",
+          "sha256": "49b03d9ec617a7e2072f0cea6f4a797987a2deac838e081aac1d4f28b7b85a26"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell8_seed0.npz",
+          "sha256": "c7d20174842992cbb2d9c4fe968f97a5a1173c3d18f998ab0f585b760b671237"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell4_seed0.npz",
+          "sha256": "1ff38051c7433312df60fa0383e271d01b871d496d135f91c0573fc6be90c978"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell8_seed0.npz",
+          "sha256": "82033eaa7d1ba95d29f9c0742f73b3be3aa866a9f670739ccc62ca46abf6770c"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 0,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell4_seed0.npz",
+          "sha256": "0159ab7108c5483f828de0ce5901e49fec5c3305c7c5bf29041261dc7a0c50e1"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 0,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell8_seed0.npz",
+          "sha256": "057ff0ea5166cd4746501aee9dae48f66fed634cbc3988a28ad3617151e0053b"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell4_seed1.npz",
+          "sha256": "0839f874221c509088a64647f0ac82733a11554d783d4777285506f5dd52bbf5"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell8_seed1.npz",
+          "sha256": "267382fdbba33d3d0775dc2a070649079333bc91c0d24d670bd89fa0cb791cc8"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell4_seed1.npz",
+          "sha256": "6aab60ce437136f1923e3e046d5c58b1e8c8daba90bda5395793ececd09d6c74"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell8_seed1.npz",
+          "sha256": "ed35dea2dadde04f93d5e72e50c83fd1e5de369d7a0c54140b1f5d29e367b8ce"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 1,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell4_seed1.npz",
+          "sha256": "eff049e23acc165e74e96b901dbbf8693c0d6a35d0d9368dedcbe2cc718f7050"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 1,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell8_seed1.npz",
+          "sha256": "95a39b45cb5a10fb8537ef458fca759d1af1ae604d0abe5fac02836894e473ce"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell4_seed2.npz",
+          "sha256": "dbebea869c6692cc7c2476cc3e0d5347fbf91e5b8e3db77088e945a2644e1df7"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell8_seed2.npz",
+          "sha256": "8367535877937fd57846c89ee93f963d1bd4ceff4f208021dab71b390a002648"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell4_seed2.npz",
+          "sha256": "4f991668a6b33319be290521dd8e13b643bb68e93ab8e1129ffdf21a55de19cd"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell8_seed2.npz",
+          "sha256": "05bb69d549796e48a401ae7e97c9683694457104b95795cf5c66249ec5229cbe"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 2,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell4_seed2.npz",
+          "sha256": "be2c1e07a9cb9fa0f94699149e366f2283cd55c07b721b8b5bf1bbb681db4967"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 2,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell8_seed2.npz",
+          "sha256": "b7dfd07468fc9d7a85321a0544d9619fb9f9d3f2d16bf3a509f87b0c53dd215e"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell4_seed3.npz",
+          "sha256": "b9ac8b7f034a3fb5b43557111e3df4032d872edc793d1da505d2f9d2d53b9071"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell8_seed3.npz",
+          "sha256": "74f14e4b8a4c28fc2bc764698a6b90a71bc0c4c17ea4887b123dbf5bf3467e8d"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell4_seed3.npz",
+          "sha256": "499475fb6b4e6b112e515dc452268c0c1d2263031da39d9c4b8248c28f3e0a31"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell8_seed3.npz",
+          "sha256": "e1bf90ee64bdd855d5c2ac452c58d223b196764e873cbfb2cfe30a4c9dcd160e"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 3,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell4_seed3.npz",
+          "sha256": "465d85fae153f9c0e54fba46741d81d4c793078cf0b29e160339730c1af0db52"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 3,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell8_seed3.npz",
+          "sha256": "fc2961bee48459c94d8c336e65f9f897ec2641929d23f10c6533d82c83efbf70"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell4_seed4.npz",
+          "sha256": "992cddeda6cab60dfc2d6ca006296fabd40baba84de2079b2799a39d0e93a5e1"
+        },
+        {
+          "method": "uniform",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\uniform_cell8_seed4.npz",
+          "sha256": "51ac28b3cd3d09bab95327c7c720b4cb39b8f0eefabd25e28fa07756601e25b9"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell4_seed4.npz",
+          "sha256": "bf3e9b81887f94851bb970cdc2eff42c2b0e99c3cf0ce38642ec7e9a31fc2c0e"
+        },
+        {
+          "method": "intensity",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\intensity_cell8_seed4.npz",
+          "sha256": "2061d7a14d9a8440be44549aa2b4ff7e4256d9427e43e541f16d5c6170ff2f90"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 4,
+          "seed": 4,
+          "unique_count": 245760,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell4_seed4.npz",
+          "sha256": "705e972afa142737e5ab90f5545a10921b7736befa1bc718923933909a528e72"
+        },
+        {
+          "method": "sato",
+          "cell_side_voxel": 8,
+          "seed": 4,
+          "unique_count": 30720,
+          "zero_response_tiles": 0,
+          "path": "case_01\\sato_cell8_seed4.npz",
+          "sha256": "2507dc5f1e9ad4e343e756437c30bac346865c7e98fcce7b897d7afe5bad0b39"
+        }
+      ],
+      "selection_seconds_by_seed": {
+        "0": 4.2581414000014775,
+        "1": 4.652144800013048,
+        "2": 4.7034969000087585,
+        "3": 4.5541520999977365,
+        "4": 4.676211799989687
+      },
+      "process_memory": {
+        "bytes": 2841513984,
+        "kind": "process_peak_working_set"
+      }
+    }
+  ],
+  "total_seconds": 671.6363016999967,
+  "process_memory": {
+    "bytes": 2841513984,
+    "kind": "process_peak_working_set"
+  }
+}

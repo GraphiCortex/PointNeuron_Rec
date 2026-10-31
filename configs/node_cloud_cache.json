@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "image_manifest": {
+    "path": "configs/node_generalization_images.json",
+    "sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358"
+  },
+  "settings": {
+    "tile_side_voxel": 128,
+    "points_per_box": 2048,
+    "coordinate_scale_voxel": 64.0,
+    "sigmas_voxel": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "uniform_mass": 0.1,
+    "cloud_seed": 0,
+    "ordering_seed": 0
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-image": "0.25.2",
+    "psutil": "7.0.0"
+  },
+  "source_sha256": {
+    "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+    "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+    "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+    "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+    "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+    "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+    "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+  },
+  "guide_registry": {
+    "path": "configs/node_guide_reuse.json",
+    "sha256": "1099cdcafd6701fb23532b2f18f805f15b3f4c59dee65bb576c062b141219af4"
+  },
+  "regression_packets": [
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "tile_id": 27,
+      "path": "tmp/sampler_learnability_inputs_20261030/fruitfly32_tile27_pn2_sato_slots2048_seed0.npz",
+      "sha256": "90c2cacd2d01501590b59a53a4208e5da0e1a1b5266a68c43101fe2331e56e87"
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "tile_id": 20,
+      "path": "tmp/sampler_learnability_inputs_20261030/fruitfly32_tile20_pn2_sato_slots2048_seed0.npz",
+      "sha256": "ad28365ba804fea9862ca41e40dc6c102d56b27cad0295d5ac50d371a8a466c8"
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "tile_id": 2,
+      "path": "tmp/sampler_learnability_inputs_20261030/frog22_tile2_pn2_sato_slots2048_seed0.npz",
+      "sha256": "7e2709480018576a9636a5b6f9747ea11c1babb5debc186146217250dc21e74c"
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "tile_id": 5,
+      "path": "tmp/sampler_learnability_inputs_20261030/frog22_tile5_pn2_sato_slots2048_seed0.npz",
+      "sha256": "080c33e6e0b7329a9c810dd9cef1c6ce41ca18e8c6653a827c9f62649e84eb85"
+    }
+  ],
+  "benchmark_case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+  "cpu_preflight": "tmp/node_cloud_cache_cpu_20261031/report.json"
+}

@@ -26,6 +26,7 @@
 - [Passed geometric-query four-box fit: 178/178 nodes, zero extras, matched baseline comparison and saved-evidence audit](geometric_query_fit_results.md)
 - [Broader cohort preflight: 33/7 neurons, target capacity, unknown supervision and resource arithmetic](node_cohort_preflight_results.md)
 - [Proposed broader node-study protocol: 9200 updates, all-image development scoring, milestones and implementation sequence](node_generalization_protocol.md)
+- [Implemented image-only cache builder: exact input replay, retained guide provenance, 2/40 cache progress and one-case CPU timing command](node_cloud_cache_builder.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

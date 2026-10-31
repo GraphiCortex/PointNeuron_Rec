@@ -149,5 +149,5 @@
     "no target truncation, GT-conditioned inference tiles or automatic alternate sampler",
     "fixed 20-epoch terminal verdict; no automatic extension, threshold search, checkpoint selection or GAT handoff"
   ],
-  "implementation_status": "cohort audit and exposure plan only; broader cache builder, loader, metrics and training runner are not yet implemented"
+  "implementation_status": "image-only single-case cache builder and CPU checks implemented; 2/40 images cached with exact four-box replay; fresh preparation timing pending; bulk preparation, reference-target cache, broader loader/metrics/training runner not yet implemented"
 }

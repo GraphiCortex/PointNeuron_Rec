@@ -38,6 +38,14 @@ geometric-query model/loss, and full-grid development evaluation. Pilot screenin
 milestones are explicit proposals for review before learned results. Cache/
 loader/metric implementation and real resource timing remain subsequent work.
 
+`node_cloud_cache.json` freezes only the image-point preparation policy and
+approved image manifest, runtime/source identities and synthetic preflight.
+`node_guide_reuse.json` names six verified existing image guides with visible
+receipt snapshots; they supply no SWCs or learned field. The
+[builder report](../docs/node_cloud_cache_builder.md) records 2/40 cached images,
+exact four-input parity and the next bounded CPU preparation timing. No model
+or loss setting changes through these cache configurations.
+
 [groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
 approved normalization-only control against the saved Sato/BN fit. It derives
 unchanged learning/data settings from the original recipe and pins its baseline

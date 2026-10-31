@@ -218,6 +218,15 @@ Explicit image-only/reference manifests and a deterministic exposure plan are
 saved; no broader cache builder, training runner or GPU run is claimed ready.
 Full-image Sato preparation is a separate substantial CPU resource step.
 
+The [image-only cache builder](docs/node_cloud_cache_builder.md) is now
+implemented and checked: synthetic whole/disk/reuse parity, 30 passing tests,
+and exact replay of all four successful Sato inputs. Fruitfly 32 and frog 22
+are cached across all 48 image boxes using verified guide copies; no reference
+or model enters generation. Current input-cache progress is 2/40 images.
+The next visible command times one fresh CPU preparation case, neuron 41;
+it does not launch the cohort or training. Target/cache-loader/metric and
+broader model-run implementation remain subsequent work.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

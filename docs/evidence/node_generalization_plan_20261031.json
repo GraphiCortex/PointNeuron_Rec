@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "planned_not_training_ready",
-  "protocol_sha256": "1eeb21904d7411694f2e89ac5e7a5c19f619ad37636de3d7bf9e64ad9f99f34c",
+  "protocol_sha256": "a1cf4884e7b1358188fcfcb191d53e15ab3509bf0ba9e72910d1cd1f89db6e4d",
   "script_sha256": "ee77f2146b0dfb74fde51559e48b58f629b78a75feb6feb083c39ee6e0313b14",
   "schedule": "training_schedule.npz",
   "schedule_sha256": "1b32dbbcff31384fa958d78d0e73be71b41591de39ae508f6ac66145dd711699",
@@ -249,6 +249,6 @@
     "update_only_hours_at_prior_speed": 3.9886223055469197,
     "limitation": "Arithmetic only, not broader-run timing or a process memory requirement"
   },
-  "raw_report": "tmp/node_generalization_plan_final_20261031/report.json",
-  "raw_report_sha256": "86bb22047258cb87b71282412fde13ead0c890c0253e8d159dd7143dea76fd70"
+  "raw_report": "tmp/node_generalization_plan_cache_stage_20261031/report.json",
+  "raw_report_sha256": "faa0c2e8a6b17564a9c48b386059a65f0448c5125dff6370ac4b045dad3d354c"
 }

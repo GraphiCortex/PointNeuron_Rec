@@ -7,6 +7,12 @@ review, not an implemented broader training runner or a launch command.**
 The model is frozen as a design; the data/supervision/resource policy is made
 explicit before substantial cache/runner implementation.
 
+Current implementation status: the [image-only cache builder](node_cloud_cache_builder.md)
+passes synthetic and real-input replay checks; two of 40 images are cached.
+One fresh CPU preparation timing is the next manual step. The broader loader,
+metrics, reference-target cache and training runner are not yet implemented.
+Scientific settings and proposed pilot milestones below remain unchanged.
+
 ## Research question and scope
 
 Can the current geometric-query PointNeXt/Transformer learn across the retained

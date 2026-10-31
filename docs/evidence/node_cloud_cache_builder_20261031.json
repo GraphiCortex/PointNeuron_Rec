@@ -1,0 +1,266 @@
+{
+  "status": "passed_cpu_checks_and_cached_source_replay",
+  "cache_identity": {
+    "schema": "pn2-node-image-cache-v1",
+    "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+    "settings": {
+      "tile_side_voxel": 128,
+      "points_per_box": 2048,
+      "coordinate_scale_voxel": 64.0,
+      "sigmas_voxel": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "uniform_mass": 0.1,
+      "cloud_seed": 0,
+      "ordering_seed": 0
+    },
+    "versions": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "scikit-image": "0.25.2",
+      "psutil": "7.0.0"
+    },
+    "source_sha256": {
+      "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+      "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+      "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+      "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+      "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+      "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+      "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+    }
+  },
+  "driver_sha256": "5de449caa2c6fe347eecaa173a5dae2840df5f78eb5ed41c6dbf878866be8f50",
+  "raw_reports": {
+    "synthetic": {
+      "path": "tmp/node_cloud_cache_cpu_20261031/report.json",
+      "sha256": "22b889bcf59a20687f2dd3a4a4107a110d6f19e836268f4b28a4fc0f1deaa7f3"
+    },
+    "real_replay": {
+      "path": "tmp/node_cloud_cache_replay_20261031/report.json",
+      "sha256": "e4f8889475a2586d141804d6c17f4711e74fd22e9887f3aa5020e486357cf46a"
+    }
+  },
+  "synthetic_checks": {
+    "exact_whole_vs_disk": true,
+    "exact_reuse_vs_fresh": true,
+    "synthetic_points": 2048,
+    "references_opened": 0,
+    "models_executed": 0,
+    "gpu_executed": false,
+    "torch_imported": false
+  },
+  "real_replay": {
+    "status": "completed",
+    "action": "replay",
+    "cache_identity": {
+      "schema": "pn2-node-image-cache-v1",
+      "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+      "settings": {
+        "tile_side_voxel": 128,
+        "points_per_box": 2048,
+        "coordinate_scale_voxel": 64.0,
+        "sigmas_voxel": [
+          1.0,
+          2.0,
+          4.0
+        ],
+        "uniform_mass": 0.1,
+        "cloud_seed": 0,
+        "ordering_seed": 0
+      },
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-image": "0.25.2",
+        "psutil": "7.0.0"
+      },
+      "source_sha256": {
+        "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+        "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+        "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+        "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+        "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+        "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+        "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+      }
+    },
+    "driver_sha256": "5de449caa2c6fe347eecaa173a5dae2840df5f78eb5ed41c6dbf878866be8f50",
+    "control_fingerprint": "efe8987b41496f76067dfc3f6c7098ed33c36d6cffa7c162a628a027328e4c46",
+    "cache_root": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\node_cloud_cache_20261031",
+    "worker_timeout_seconds": 300,
+    "workers": [
+      {
+        "status": "completed",
+        "cache_identity": {
+          "schema": "pn2-node-image-cache-v1",
+          "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+          "settings": {
+            "tile_side_voxel": 128,
+            "points_per_box": 2048,
+            "coordinate_scale_voxel": 64.0,
+            "sigmas_voxel": [
+              1.0,
+              2.0,
+              4.0
+            ],
+            "uniform_mass": 0.1,
+            "cloud_seed": 0,
+            "ordering_seed": 0
+          },
+          "versions": {
+            "numpy": "2.2.6",
+            "scipy": "1.15.3",
+            "scikit-image": "0.25.2",
+            "psutil": "7.0.0"
+          },
+          "source_sha256": {
+            "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+            "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+            "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+            "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+            "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+            "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+            "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+          }
+        },
+        "driver_sha256": "5de449caa2c6fe347eecaa173a5dae2840df5f78eb5ed41c6dbf878866be8f50",
+        "control_fingerprint": "efe8987b41496f76067dfc3f6c7098ed33c36d6cffa7c162a628a027328e4c46",
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "cache_folder": "training_82e7089936d77c6e",
+        "tiles": 32,
+        "case_json_sha256": "044ff85ceb42fe056c7a38f3a7e21a8e9910fc0b58771334369da1d558510439",
+        "guide_execution": {
+          "kind": "verified_copy",
+          "original_guide": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\phase1_sampling_20261022\\case_00\\sato_guide.npy",
+          "source_receipt_sha256": "c6eb21debc4cf9158f148d5dc8ee25d4c7d9de8c752b6f36a23f6c6fd6cf4ec1",
+          "filter_executed": false
+        },
+        "decode_seconds": 1.4924962999939453,
+        "guide_seconds": 0.22521689999848604,
+        "total_seconds": 4.357682899993961,
+        "memory": {
+          "peak_working_set_bytes": 82755584,
+          "kind": "process_peak_working_set",
+          "peak_pagefile_bytes": 711331840
+        }
+      },
+      {
+        "status": "completed",
+        "cache_identity": {
+          "schema": "pn2-node-image-cache-v1",
+          "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+          "settings": {
+            "tile_side_voxel": 128,
+            "points_per_box": 2048,
+            "coordinate_scale_voxel": 64.0,
+            "sigmas_voxel": [
+              1.0,
+              2.0,
+              4.0
+            ],
+            "uniform_mass": 0.1,
+            "cloud_seed": 0,
+            "ordering_seed": 0
+          },
+          "versions": {
+            "numpy": "2.2.6",
+            "scipy": "1.15.3",
+            "scikit-image": "0.25.2",
+            "psutil": "7.0.0"
+          },
+          "source_sha256": {
+            "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+            "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+            "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+            "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+            "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+            "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+            "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+          }
+        },
+        "driver_sha256": "5de449caa2c6fe347eecaa173a5dae2840df5f78eb5ed41c6dbf878866be8f50",
+        "control_fingerprint": "efe8987b41496f76067dfc3f6c7098ed33c36d6cffa7c162a628a027328e4c46",
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "cache_folder": "training_cdce0c098d137c45",
+        "tiles": 16,
+        "case_json_sha256": "854dcddb1218fd0f82e9831518cf63e0f99e40da3ff0d8d910c1e39ce8112bc9",
+        "guide_execution": {
+          "kind": "verified_copy",
+          "original_guide": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\phase1_qualification_disk_20261022\\case_00\\sato_guide.npy",
+          "source_receipt_sha256": "0106b61fc81875af140af0e8f835e80328e993f85725729ff703fb645e4e751f",
+          "filter_executed": false
+        },
+        "decode_seconds": 17.703962400002638,
+        "guide_seconds": 0.37988530000438914,
+        "total_seconds": 20.805097899996326,
+        "memory": {
+          "peak_working_set_bytes": 143581184,
+          "kind": "process_peak_working_set",
+          "peak_pagefile_bytes": 772280320
+        }
+      }
+    ],
+    "cache_index": {
+      "completed_cases": 2,
+      "expected_cases": 40,
+      "cloud_cache_complete": false,
+      "training_ready": false,
+      "records": [
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "partition": "training",
+          "folder": "training_cdce0c098d137c45",
+          "case_json_sha256": "854dcddb1218fd0f82e9831518cf63e0f99e40da3ff0d8d910c1e39ce8112bc9",
+          "tiles": 16
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "partition": "training",
+          "folder": "training_82e7089936d77c6e",
+          "case_json_sha256": "044ff85ceb42fe056c7a38f3a7e21a8e9910fc0b58771334369da1d558510439",
+          "tiles": 32
+        }
+      ],
+      "cross_split_duplicate_images": [],
+      "within_partition_duplicate_images": []
+    },
+    "references_opened": 0,
+    "models_executed": 0,
+    "gpu_executed": false,
+    "bulk_preparation_launched": false,
+    "regression_comparison": [
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 27,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 20,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 2,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 5,
+        "all_arrays_and_dtypes_exact": true
+      }
+    ]
+  },
+  "tests": {
+    "passed": 30,
+    "seconds": 102.13,
+    "command": "python -B -m pytest tests/test_node_cloud_cache.py tests/test_disk_guide.py tests/test_phase1_sampling.py -q",
+    "powershell_parse": "passed"
+  },
+  "fresh_real_filter_timing_launched": false,
+  "bulk_preparation_launched": false,
+  "training_launched": false
+}
