@@ -20,6 +20,12 @@ can exceed the legacy parent's 60-minute allowance. Its launch manifest records
 that process policy separately; the 2000-update cap and all learning settings
 are unchanged.
 
+The [completed geometric-query fit passes](../docs/geometric_query_fit_results.md)
+the original four-box node gate, with all 178 targets matched and zero extras.
+Keep this configuration frozen as the successful sanity-check reference.
+Broader training/development settings are a separate protocol to discuss;
+this result does not select them automatically.
+
 [groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
 approved normalization-only control against the saved Sato/BN fit. It derives
 unchanged learning/data settings from the original recipe and pins its baseline

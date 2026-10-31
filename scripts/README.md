@@ -413,3 +413,21 @@ could stop the run prematurely. This changes only the parent wall limit:
 remain fixed. `launch.json` and the final report record effective launch policy
 and controller hashes. Controller tests use mocked launches; no GPU fit was
 started by the agent.
+
+## Completed geometric-query fit: read-only review
+
+The user completed the bounded fit and [all four training boxes pass](../docs/geometric_query_fit_results.md).
+No fit repeat or extension is needed. `review_geometric_query_fit.py` independently
+recomputes saved node matches, verifies mode equality, checkpoint hashes and the
+CUDA prefix, and plots terminal accepted nodes against the saved GN baseline.
+It executes no model forward or optimizer and reads no new data.
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B `
+  .\scripts\review_geometric_query_fit.py --run .\tmp\geometric_query_train_20261031 `
+  --output .\tmp\a_fresh_geometric_fit_review
+```
+
+The audit is already complete at `tmp/geometric_query_review_20261031` and its
+portable evidence/figure are under `docs`. The successful training sanity check
+does not schedule a new run or qualify reconstruction on unseen neurons.

@@ -8,6 +8,8 @@ the comparator; its sources, configuration, checkpoints and verdict are unchange
 Subsequent status: the user-launched [GPU timing passes](geometric_query_timing_results.md).
 That review gives the next bounded-fit command and documents the external
 90-minute wall allowance; the model worker and 2000-update recipe are unchanged.
+The user has since completed that fit: [the four-box gate passes](geometric_query_fit_results.md),
+with 178/178 matched nodes and zero extras. No repeat is required.
 
 ## Implemented mechanism
 

@@ -1,5 +1,10 @@
 # Geometric-query CUDA timing: passed, bounded fit ready
 
+Current status: the user subsequently completed the fit below. It
+[passes the four-box learnability gate](geometric_query_fit_results.md), with
+178/178 matched targets and zero extras. The launch command is now a preserved
+execution record, not an instruction to repeat training.
+
 31 October 2026. The user completed
 `tmp/geometric_query_timing_20261031_155707`. **Eight updates, exact mode
 consistency and model/Adam/RNG reload pass.** Current source/recipe and CPU

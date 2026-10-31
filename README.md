@@ -199,6 +199,16 @@ allows 90 minutes of wall time to accommodate that measurement, retaining the
 byte-identical worker/recipe and 2000-update cap. This is execution readiness,
 not learned node or reconstruction quality.
 
+The [user-completed geometric-query fit](docs/geometric_query_fit_results.md)
+now passes the frozen four-box gate: all 178 target nodes match within two
+voxels, zero accepted extras, at the unchanged cutoff 0.5. Exact mode consistency
+and timing-prefix replay hold; independent saved-prediction/checkpoint review
+confirms the result. This is a substantial matched training-task gain over the
+GN learned-token baseline. It establishes learnability on four exposed boxes,
+not held-out quality or a final reconstruction improvement. The candidate should
+be frozen while a broader neuron-disjoint train/development protocol is discussed;
+no extension or automatic downstream-stage handoff is scheduled.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the
