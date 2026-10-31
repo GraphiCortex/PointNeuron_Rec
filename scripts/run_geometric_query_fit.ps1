@@ -31,9 +31,11 @@ if ($Action -eq 'check') {
     if (-not $TimingRun) { throw 'Training needs -TimingRun from this geometric candidate; prior GN timing is incompatible.' }
     Write-Host 'One GPU fit: maximum 2000 updates, 500 per box. No extension, search or automatic resume.'
     Write-Host 'First eight updates must replay candidate timing. State saved before evaluations. Same 95% node P/R gate.'
+    Write-Host 'Measured timing: about 42-62 minutes of updates plus IO/evaluation. External wall allowance: 90 minutes; update cap unchanged.'
 }
 Write-Host "Output: $Output"
-$Arguments = @('-B', (Join-Path $PSScriptRoot 'geometric_query_experiment.py'), '--action', $Mode,
+$EntryPoint = if ($Action -eq 'train') { 'geometric_query_train_controller.py' } else { 'geometric_query_experiment.py' }
+$Arguments = @('-B', (Join-Path $PSScriptRoot $EntryPoint), '--action', $Mode,
     '--config', (Join-Path $Root 'configs\geometric_query_fit.json'), '--output', $Output)
 if ($TimingRun) { $Arguments += @('--timing-run', (Resolve-Path -LiteralPath $TimingRun).Path) }
 if ($CpuPreflight) { $Arguments += @('--cpu-preflight', (Resolve-Path -LiteralPath $CpuPreflight).Path) }

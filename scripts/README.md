@@ -380,7 +380,7 @@ values, GN8, frozen clouds, node loss, optimizer, cutoff and fit cap are unchang
 helpers without replacing or monkey-patching the GN runner. Its completed CPU
 check is `tmp/geometric_query_cpu_20261031/report.json` and needs no rerun.
 
-Next manual action:
+Preserved timing command (now completed by the user):
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -393,3 +393,23 @@ worker cap, and no retained trained checkpoint. It writes a fresh
 `tmp/geometric_query_timing_<timestamp>` directory and does not start training.
 The separate train action requires this candidate's own passed `-TimingRun`;
 review its timing report before a fit. No old GN timing is compatible.
+
+The [geometric timing review](../docs/geometric_query_timing_results.md) confirms
+the current run passes. No timing repeat is needed. Next manual command:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_geometric_query_fit.ps1 -Action train `
+  -TimingRun ".\tmp\geometric_query_timing_20261031_155707" `
+  -Output ".\tmp\geometric_query_train_20261031"
+```
+
+The train action dispatches to `geometric_query_train_controller.py`, which
+validates the unchanged worker/recipe/CPU/timing identity and invokes that same
+worker with an external 90-minute wall allowance. Measured update time is about
+42-62 minutes before evaluation/IO. The original 60-minute parent allowance
+could stop the run prematurely. This changes only the parent wall limit:
+2000 updates, exact timing-prefix replay, model/optimizer settings and gates
+remain fixed. `launch.json` and the final report record effective launch policy
+and controller hashes. Controller tests use mocked launches; no GPU fit was
+started by the agent.

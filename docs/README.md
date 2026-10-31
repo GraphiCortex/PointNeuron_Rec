@@ -22,6 +22,7 @@
 - [Completed GN8 fit: mode consistency corrected, node learnability fails, saved predictions and evidence](groupnorm_node_fit_results.md)
 - [Approved geometric-query design: mechanism, architecture impact, coordinate-only feasibility and stopping rules](geometric_query_proposal.md)
 - [Implemented geometric-query candidate: exact CPU interfaces/gradients/reload, initial geometry and manual GPU timing command](geometric_query_implementation.md)
+- [Passed geometric-query GPU timing: verified execution, measured cost, external wall allowance and exact capped-fit command](geometric_query_timing_results.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

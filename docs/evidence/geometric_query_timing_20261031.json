@@ -1,0 +1,154 @@
+{
+  "status": "completed",
+  "stage": "timing",
+  "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "torch": "2.12.1+cu130",
+  "cuda_build": "13.0",
+  "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+    "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+    "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+    "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "parameter_count": 1688518,
+  "cap": 8,
+  "updates": 8,
+  "checkpoint_reload_passed": true,
+  "normalization_consistency_passed": true,
+  "learnability_gate": null,
+  "prefix_identity": {
+    "model_state_sha256": "2015998c8cdb4653e1b3449de738c166e0e4d62de2df76b127d8a3bf9470c0d1",
+    "optimizer_state_sha256": "11d3ca6385fa421f59d6e42b1f07b9de23acea090b7350032d1710556b09e551",
+    "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+  },
+  "peak_allocated_bytes": 250839552,
+  "peak_reserved_bytes": 283115520,
+  "estimated_update_minutes": [
+    41.62040666657655,
+    62.43060999986483
+  ],
+  "raw_report": "tmp\\geometric_query_timing_20261031_155707\\report.json",
+  "raw_report_sha256": "45c61c6cbca78e087dfc8e56192a61198a3d4d6e9ec0b20badb02e1b8fbae784",
+  "journal_sha256": "75e6363b330d13048547f8b9b2eec55c65b407b4ab919a25c40c34510d3bb8c3",
+  "finite_update_rows": 8,
+  "exact_mode_array_pairs": 24,
+  "no_trained_checkpoints_retained": true,
+  "prefix_model_matches_terminal_evaluation": true,
+  "warm_mean_update_seconds": 1.5607652499966207,
+  "worker_timeout_seconds": 300,
+  "proposed_train_wall_timeout_seconds": 5400,
+  "train_update_cap_unchanged": 2000,
+  "evaluations": [
+    {
+      "step": 0,
+      "prediction_packet_sha256": "7057c2f52f72f1aefc29d847c716353910743ed22b4e11ba1053993ed17f0cd9",
+      "model_state_sha256": "35d1503b7374d87bbe18f8459cc40e9cc7a2b5a9c439ee69f422602a1ec89e89",
+      "records": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "targets": 18,
+          "accepted": 0,
+          "all_query_recall_2": 0.2222222222222222,
+          "all_query_recall_6": 1.0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "targets": 85,
+          "accepted": 0,
+          "all_query_recall_2": 0.07058823529411765,
+          "all_query_recall_6": 0.9764705882352941
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "targets": 7,
+          "accepted": 0,
+          "all_query_recall_2": 0.14285714285714285,
+          "all_query_recall_6": 0.8571428571428571
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "targets": 68,
+          "accepted": 0,
+          "all_query_recall_2": 0.08823529411764706,
+          "all_query_recall_6": 0.8088235294117647
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "prediction_packet_sha256": "d6e738582a5793cbab8e7ee141bbf85f5ccc8e15f88d76054102586f0487dfee",
+      "model_state_sha256": "2015998c8cdb4653e1b3449de738c166e0e4d62de2df76b127d8a3bf9470c0d1",
+      "records": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "targets": 18,
+          "accepted": 0,
+          "all_query_recall_2": 0.1111111111111111,
+          "all_query_recall_6": 1.0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "targets": 85,
+          "accepted": 0,
+          "all_query_recall_2": 0.10588235294117647,
+          "all_query_recall_6": 0.9764705882352941
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "targets": 7,
+          "accepted": 0,
+          "all_query_recall_2": 0.14285714285714285,
+          "all_query_recall_6": 1.0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "targets": 68,
+          "accepted": 0,
+          "all_query_recall_2": 0.10294117647058823,
+          "all_query_recall_6": 0.7941176470588235
+        }
+      ]
+    }
+  ],
+  "train_launch_validation": {
+    "controller": "scripts/geometric_query_train_controller.py",
+    "controller_sha256": "2f47dc58f08dc5867fca05c31e68ca352947fab75fefe0718fbc16638e435714",
+    "powershell_launcher_sha256": "84062b7e25e865da120cf1cc96f1b8201af3b05c94df556777397059381b7fdb",
+    "worker_source_unchanged": true,
+    "worker_recipe_fingerprint_unchanged": true,
+    "cpu_preflight_still_accepted": true,
+    "timing_still_accepted": true,
+    "external_wall_timeout_seconds": 5400,
+    "worker_recipe_legacy_wall_timeout_seconds": 3600,
+    "update_cap": 2000,
+    "tests_passed": 20,
+    "test_seconds": 18.97,
+    "test_command": "python -B -m pytest tests/test_geometric_train_controller.py tests/test_geometric_queries.py -q",
+    "worker_launches_in_tests": "mocked",
+    "powershell_parse": "passed",
+    "gpu_launched_by_agent": false
+  }
+}

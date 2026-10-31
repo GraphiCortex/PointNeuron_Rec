@@ -191,6 +191,14 @@ geometry is scored separately from the raw starting prior. The next action is
 a visible eight-update GPU timing command; no GPU work or new fit was launched
 by the agent. Original GN/BN model sources and failed results remain unchanged.
 
+The [geometric-query GPU timing](docs/geometric_query_timing_results.md) now
+passes on the local RTX 3070 Ti Laptop GPU: eight updates, exact mode consistency
+and state reload. Estimated fit updates take 41.6-62.4 minutes plus overhead.
+The next manual action is the capped four-box fit. A separate training parent
+allows 90 minutes of wall time to accommodate that measurement, retaining the
+byte-identical worker/recipe and 2000-update cap. This is execution readiness,
+not learned node or reconstruction quality.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

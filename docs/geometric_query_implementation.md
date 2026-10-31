@@ -5,6 +5,10 @@ The separate candidate is implemented and CPU-verified. **No GPU timing or
 training has been launched by the agent.** The completed failed GN fit remains
 the comparator; its sources, configuration, checkpoints and verdict are unchanged.
 
+Subsequent status: the user-launched [GPU timing passes](geometric_query_timing_results.md).
+That review gives the next bounded-fit command and documents the external
+90-minute wall allowance; the model worker and 2000-update recipe are unchanged.
+
 ## Implemented mechanism
 
 `src/pn2/models/geometric_queries.py` reuses the fresh native head's named modules.
@@ -112,7 +116,7 @@ starts alone do not cover the skeleton accurately, and low initial confidence
 does not constitute a failure of this execution check. Input retention,
 encoder feature sufficiency and node learnability remain unproven.
 
-## Next manual action: throwaway GPU timing only
+## Preserved timing command: completed by the user
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -123,7 +127,8 @@ One worker on the local RTX 3070 Ti Laptop GPU, eight throwaway updates on the
 same four training boxes, a 300-second hard cap. It checks actual node-loss
 execution, exact mode consistency and model/Adam/RNG reload, saving generated
 reports/predictions/logs under `tmp/geometric_query_timing_<timestamp>`.
-No trained checkpoint is retained and timing does not launch training.
+No trained checkpoint is retained and timing does not launch training. It has
+now completed and needs no repeat; use the timing-results review for the next action.
 
 The CPU check is already complete and current; it does not need repeating.
 If a future source change makes it stale, `-Action check -Output <fresh path>`

@@ -13,6 +13,13 @@ Only query content initialization and position parameterization change. The
 passed CPU check and next manual GPU timing command. This does not promote an
 untrained model or change the earlier failed gates.
 
+The [user-launched geometric timing passes](../docs/geometric_query_timing_results.md).
+The experiment recipe stays byte-identical for the capped fit. The external
+train controller allows 90 minutes of wall time because measured updates alone
+can exceed the legacy parent's 60-minute allowance. Its launch manifest records
+that process policy separately; the 2000-update cap and all learning settings
+are unchanged.
+
 [groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
 approved normalization-only control against the saved Sato/BN fit. It derives
 unchanged learning/data settings from the original recipe and pins its baseline
