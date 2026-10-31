@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "inventories": {
+    "training": {
+      "path": "configs/training_inventory.json",
+      "sha256": "90b46f6983c6be2f5d742549832b1837246dd7a95686db0c1def0bb8736cac58"
+    },
+    "development": {
+      "path": "configs/development_benchmark.json",
+      "sha256": "f906deb6e89546bc57359cd04ab7dab5dd798d91f9df2ace360309e50ff9d61a"
+    }
+  },
+  "partition": {
+    "path": "../pointneuron2/configs/pointneuron2/partition_seed0.json",
+    "sha256": "7c7219f442378a7f0864675d0708580e9af2790308ffbae3825237fc6000f44b"
+  },
+  "expected_counts": {
+    "training": 33,
+    "development": 7,
+    "reserved": 8
+  },
+  "target_source_sha256": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+  "tile_side_voxel": 128,
+  "candidate_input_points": 2048,
+  "query_capacity": 512,
+  "wall_timeout_seconds": 300,
+  "status": "data_and_capacity_audit_only_not_a_training_recipe"
+}

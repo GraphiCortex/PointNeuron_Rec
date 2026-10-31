@@ -209,6 +209,15 @@ not held-out quality or a final reconstruction improvement. The candidate should
 be frozen while a broader neuron-disjoint train/development protocol is discussed;
 no extension or automatic downstream-stage handoff is scheduled.
 
+The [broader node-study protocol](docs/node_generalization_protocol.md) is now
+prepared for review. Its [CPU cohort preflight](docs/node_cohort_preflight_results.md)
+covers 33 training/seven development neurons: 460 supervised training boxes,
+no 512-query overflows, and 20 equal-exposure epochs planned as 9200 updates.
+Reference-empty crops remain unknown and all image boxes remain in inference.
+Explicit image-only/reference manifests and a deterministic exposure plan are
+saved; no broader cache builder, training runner or GPU run is claimed ready.
+Full-image Sato preparation is a separate substantial CPU resource step.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

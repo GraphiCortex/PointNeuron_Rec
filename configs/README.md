@@ -26,6 +26,18 @@ Keep this configuration frozen as the successful sanity-check reference.
 Broader training/development settings are a separate protocol to discuss;
 this result does not select them automatically.
 
+`node_cohort_preflight.json` pins the 33-training/seven-development identity and
+reference-capacity audit. `node_generalization_images.json` is an explicit
+reference-free image manifest; `node_generalization_references.json` is separate
+target/evaluation metadata with training-gradient eligibility. Neither scans the
+dataset or includes reserved sources.
+
+`node_generalization_protocol.json` is the [proposed broader study](../docs/node_generalization_protocol.md),
+not a fit launcher: 20 epochs over 460 supervised boxes, 9200 updates, unchanged
+geometric-query model/loss, and full-grid development evaluation. Pilot screening
+milestones are explicit proposals for review before learned results. Cache/
+loader/metric implementation and real resource timing remain subsequent work.
+
 [groupnorm_node_fit.json](groupnorm_node_fit.json) now declares the separately
 approved normalization-only control against the saved Sato/BN fit. It derives
 unchanged learning/data settings from the original recipe and pins its baseline

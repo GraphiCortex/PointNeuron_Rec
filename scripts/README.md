@@ -431,3 +431,27 @@ It executes no model forward or optimizer and reads no new data.
 The audit is already complete at `tmp/geometric_query_review_20261031` and its
 portable evidence/figure are under `docs`. The successful training sanity check
 does not schedule a new run or qualify reconstruction on unseen neurons.
+
+## Broader node-study data and exposure planning
+
+The [cohort preflight](../docs/node_cohort_preflight_results.md) and
+[proposed protocol](../docs/node_generalization_protocol.md) are complete for
+review. The audit reads only 40 explicit image headers and SWCs, under a
+300-second cap; it neither decodes images nor opens reserved source files.
+The planner reads metadata and creates a deterministic 9200-update schedule,
+with 20 exposures per supervised training box and no development gradients.
+
+Preserved reproduction commands, from the PN2 root, with fresh output folders:
+
+```powershell
+& .\tmp\phase1_cpu_env\Scripts\python.exe -B .\scripts\audit_node_cohort.py `
+  --output .\tmp\a_fresh_node_cohort_preflight
+& .\tmp\phase1_cpu_env\Scripts\python.exe -B .\scripts\plan_node_generalization.py `
+  --output .\tmp\a_fresh_node_exposure_plan
+```
+
+Both have already completed and need no repeat. Original outputs are
+`tmp/node_cohort_preflight_20261031` and
+`tmp/node_generalization_plan_final_20261031`. These are planning utilities,
+not image-cache or training commands. No bulk Sato generation or broader GPU
+fit has been implemented/launched by this step.

@@ -1,0 +1,1164 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "scope": "40 explicit train/development image headers and references; no image payload/filter/cloud/model/training or reserved files",
+  "config_sha256": "888862bc5aa2195cc805fda4e0a58ed5eea3c2746edf747c9887a33413d21d71",
+  "script_sha256": "df3e2650d6a7f70d4dd2f3af4673c9561431f4df4de06eec5c2bcdea3e67233d",
+  "identity_counts": {
+    "train": 33,
+    "val": 7,
+    "test": 8
+  },
+  "summary": {
+    "training": {
+      "completed_cases": 33,
+      "boxes": 1964,
+      "reference_present_boxes": 460,
+      "reference_empty_unknown_boxes": 1504,
+      "overflow_boxes": 0,
+      "encoder_short_boxes": 0,
+      "maximum_targets": 419
+    },
+    "development": {
+      "completed_cases": 7,
+      "boxes": 415,
+      "reference_present_boxes": 151,
+      "reference_empty_unknown_boxes": 264,
+      "overflow_boxes": 0,
+      "encoder_short_boxes": 0,
+      "maximum_targets": 233
+    }
+  },
+  "reserved_files_opened": 0,
+  "duplicate_reference_content_groups": [],
+  "seconds": 107.15064929999062,
+  "raw_report": "tmp/node_cohort_preflight_20261031/report.json",
+  "raw_report_sha256": "23fe208e7b0829caef1f07a44554b3e0f24367fe31ad60ea7a93d90d39aa33ee",
+  "cases": [
+    {
+      "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "partition": "training",
+      "alias": 0,
+      "source_group": "e_checked6_chick_uw",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        62
+      ],
+      "datatype": 1,
+      "image_header_sha256": "a25bf11d2d69d3afda6f8f00c2a78c5f4c0eeb5e2301e47112e199c9d6267be6",
+      "image_payload_read": false,
+      "image_source_bytes": 22206307,
+      "decoded_image_bytes": 65011712,
+      "reference_sha256": "e2d287cb21615c29808c5ddb377f3bd6f636a4ad8c95464530d01e2c05666563",
+      "reference_nodes": 3045,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 26,
+        "reference_empty_unknown_boxes": 38,
+        "overflow_boxes": 0,
+        "maximum_targets": 245,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "partition": "training",
+      "alias": 1,
+      "source_group": "e_checked6_chick_uw",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        113
+      ],
+      "datatype": 1,
+      "image_header_sha256": "0c86f19f303856b53615df2df981d227e4f5f120fdc1dc7c7ac722c3ad87fc2b",
+      "image_payload_read": false,
+      "image_source_bytes": 114008681,
+      "decoded_image_bytes": 118489088,
+      "reference_sha256": "5804431414553e7cda15641b8dbebbcccbe3d6d17d8edf233f10474746b70f5d",
+      "reference_nodes": 1034,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 26,
+        "reference_empty_unknown_boxes": 38,
+        "overflow_boxes": 0,
+        "maximum_targets": 187,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+      "partition": "training",
+      "alias": 7,
+      "source_group": "e_checked6_chick_uw",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        88
+      ],
+      "datatype": 1,
+      "image_header_sha256": "86eb86074bd50cc2f14593390adc09dc0661ae674179e9560642e1d02495eb5a",
+      "image_payload_read": false,
+      "image_source_bytes": 29435922,
+      "decoded_image_bytes": 92274688,
+      "reference_sha256": "82e4e784768d92f6793b6ebdf309e2865355e9c210a945abe08f8f2f4be8519f",
+      "reference_nodes": 2557,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 17,
+        "reference_empty_unknown_boxes": 47,
+        "overflow_boxes": 0,
+        "maximum_targets": 309,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "partition": "training",
+      "alias": 9,
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "dimensions_xyz": [
+        664,
+        508,
+        161
+      ],
+      "datatype": 1,
+      "image_header_sha256": "adc76002c142151032557ea7b237a365e22c220971450d6aba72a72050b1dff1",
+      "image_payload_read": false,
+      "image_source_bytes": 21675270,
+      "decoded_image_bytes": 54307232,
+      "reference_sha256": "151202131ee8c6d5f546ae3b0e18b4e417e62d22ab9a3b434ea9eb4b5cbbeb9d",
+      "reference_nodes": 1706,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 48,
+        "reference_present_boxes": 17,
+        "reference_empty_unknown_boxes": 31,
+        "overflow_boxes": 0,
+        "maximum_targets": 195,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+      "partition": "training",
+      "alias": 10,
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "dimensions_xyz": [
+        728,
+        420,
+        105
+      ],
+      "datatype": 1,
+      "image_header_sha256": "384f4371d7182e2bfb37c2b1832106641a229cac6936de40ba6ed8eb8fd3b1b8",
+      "image_payload_read": false,
+      "image_source_bytes": 9581439,
+      "decoded_image_bytes": 32104800,
+      "reference_sha256": "e9788d82c2fbc0d11bd5fd5560b57174cfebd3b776d981c9c1c4ecc8c311a56f",
+      "reference_nodes": 689,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 24,
+        "reference_present_boxes": 8,
+        "reference_empty_unknown_boxes": 16,
+        "overflow_boxes": 0,
+        "maximum_targets": 126,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "alias": 11,
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "dimensions_xyz": [
+        844,
+        256,
+        118
+      ],
+      "datatype": 1,
+      "image_header_sha256": "24d85e698f6415f2004bd5a112ecc3d251c894e943df57276eebc88416994c02",
+      "image_payload_read": false,
+      "image_source_bytes": 17841880,
+      "decoded_image_bytes": 25495552,
+      "reference_sha256": "399caf41bd3dec64cd1730afd183175b7e3186bcd7ae65a35d4e95abb313cd5d",
+      "reference_nodes": 871,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 14,
+        "reference_present_boxes": 10,
+        "reference_empty_unknown_boxes": 4,
+        "overflow_boxes": 0,
+        "maximum_targets": 92,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "alias": 14,
+      "source_group": "e_checked6_zebrafish_larve_RGC_UW",
+      "dimensions_xyz": [
+        372,
+        508,
+        75
+      ],
+      "datatype": 1,
+      "image_header_sha256": "ea04d8d288473411eca554437e437a66b3158caefead23056ee05c365e5f4036",
+      "image_payload_read": false,
+      "image_source_bytes": 4424266,
+      "decoded_image_bytes": 14173200,
+      "reference_sha256": "fa987eba0b72f07bab2f22a144e048947e3d72487cdf12835adbf4cc55a62a58",
+      "reference_nodes": 509,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 12,
+        "reference_present_boxes": 9,
+        "reference_empty_unknown_boxes": 3,
+        "overflow_boxes": 0,
+        "maximum_targets": 147,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "partition": "training",
+      "alias": 15,
+      "source_group": "e_checked7_utokyo_fly",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        120
+      ],
+      "datatype": 1,
+      "image_header_sha256": "74add3dd2b7adee34d3f8db8805bdfc24d3a829398553bf25258e808fb52f34d",
+      "image_payload_read": false,
+      "image_source_bytes": 13409166,
+      "decoded_image_bytes": 125829120,
+      "reference_sha256": "7edd7a8854133df432613221a8c62f120b8775467f5f287f49e64e526a6640f8",
+      "reference_nodes": 1819,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 14,
+        "reference_empty_unknown_boxes": 50,
+        "overflow_boxes": 0,
+        "maximum_targets": 159,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+      "partition": "training",
+      "alias": 18,
+      "source_group": "e_checked7_utokyo_fly",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        130
+      ],
+      "datatype": 1,
+      "image_header_sha256": "9df62c54dd4722bb56862ce703c3bee995c2b03c106b97b6ef203ff571fd0c02",
+      "image_payload_read": false,
+      "image_source_bytes": 6989745,
+      "decoded_image_bytes": 136314880,
+      "reference_sha256": "f01453bc97d3f46ccadbba665f5155632bf1bf166cc67d929f9bca334021666a",
+      "reference_nodes": 519,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 128,
+        "reference_present_boxes": 4,
+        "reference_empty_unknown_boxes": 124,
+        "overflow_boxes": 0,
+        "maximum_targets": 83,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+      "partition": "training",
+      "alias": 20,
+      "source_group": "e_checked7_utokyo_fly",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        126
+      ],
+      "datatype": 1,
+      "image_header_sha256": "fea4936a09c8bc17e10a4bf188e7075534415af56483c87afeb3d30f59ed15e8",
+      "image_payload_read": false,
+      "image_source_bytes": 10500537,
+      "decoded_image_bytes": 132120576,
+      "reference_sha256": "e3d64d46f8293f0daf54c0e33bb52f248c09a2485b09856d932b87f76d81c356",
+      "reference_nodes": 1401,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 9,
+        "reference_empty_unknown_boxes": 55,
+        "overflow_boxes": 0,
+        "maximum_targets": 105,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "partition": "training",
+      "alias": 22,
+      "source_group": "p_checked6_frog_scrippts",
+      "dimensions_xyz": [
+        512,
+        512,
+        81
+      ],
+      "datatype": 2,
+      "image_header_sha256": "4960c07345516eeef3739af84e63aa03e0265dea8c5084e8c6ce7cc0676dc858",
+      "image_payload_read": false,
+      "image_source_bytes": 11055036,
+      "decoded_image_bytes": 42467328,
+      "reference_sha256": "1de779286618b4c393c03f339c3c9acaa68ac3f67b15de66daac133b8e9986d4",
+      "reference_nodes": 595,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 16,
+        "reference_present_boxes": 5,
+        "reference_empty_unknown_boxes": 11,
+        "overflow_boxes": 0,
+        "maximum_targets": 68,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+      "partition": "training",
+      "alias": 23,
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "dimensions_xyz": [
+        2047,
+        890,
+        23
+      ],
+      "datatype": 1,
+      "image_header_sha256": "5d1735fba4e3a5a1d93146aed081138155e21bc9a0784818cdcde1de7e44ee7d",
+      "image_payload_read": false,
+      "image_source_bytes": 38775300,
+      "decoded_image_bytes": 41902090,
+      "reference_sha256": "dcb39ec889a35c4470cde3b916ec59adefb4813d5e8566f6f2080bf7780fb5b8",
+      "reference_nodes": 1210,
+      "reference_components": 51,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 112,
+        "reference_present_boxes": 35,
+        "reference_empty_unknown_boxes": 77,
+        "overflow_boxes": 0,
+        "maximum_targets": 73,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+      "partition": "training",
+      "alias": 25,
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "dimensions_xyz": [
+        2048,
+        2048,
+        22
+      ],
+      "datatype": 1,
+      "image_header_sha256": "28eed1b6e45a0ea56ecd56b4cee1350119085f0d41ec6db332cbfa4b6f275b65",
+      "image_payload_read": false,
+      "image_source_bytes": 78312011,
+      "decoded_image_bytes": 92274688,
+      "reference_sha256": "c3b247b9e8e89478e7fe1733cdb489f48d0ca368e32e0da40c6f4e6e1ba97c05",
+      "reference_nodes": 4291,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 256,
+        "reference_present_boxes": 80,
+        "reference_empty_unknown_boxes": 176,
+        "overflow_boxes": 0,
+        "maximum_targets": 109,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "partition": "training",
+      "alias": 32,
+      "source_group": "p_checked6_fruitfly_larvae_gmu",
+      "dimensions_xyz": [
+        1017,
+        429,
+        27
+      ],
+      "datatype": 1,
+      "image_header_sha256": "65aae49046f54fef3c2bd84c2027c13e38c8f3db452bd2f6e27916e71bc33a71",
+      "image_payload_read": false,
+      "image_source_bytes": 11264952,
+      "decoded_image_bytes": 11779911,
+      "reference_sha256": "d5d02064d5bc42f27f60270365d46c83e89fa191bab9603af2e7f1d0df651d3b",
+      "reference_nodes": 466,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 32,
+        "reference_present_boxes": 15,
+        "reference_empty_unknown_boxes": 17,
+        "overflow_boxes": 0,
+        "maximum_targets": 85,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+      "partition": "training",
+      "alias": 39,
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "dimensions_xyz": [
+        614,
+        708,
+        60
+      ],
+      "datatype": 1,
+      "image_header_sha256": "aff9deedcd6c291891f91487b45b3abf8628042ca966980524b8450af4185f1f",
+      "image_payload_read": false,
+      "image_source_bytes": 14633882,
+      "decoded_image_bytes": 26082720,
+      "reference_sha256": "33fe02d7694d40b88062f31a2886e495197bae5087271861dbdd46670ace6fb7",
+      "reference_nodes": 368,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 30,
+        "reference_present_boxes": 7,
+        "reference_empty_unknown_boxes": 23,
+        "overflow_boxes": 0,
+        "maximum_targets": 55,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+      "partition": "training",
+      "alias": 41,
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "dimensions_xyz": [
+        640,
+        640,
+        29
+      ],
+      "datatype": 1,
+      "image_header_sha256": "b064cdcc40b965433d2b418bc818ef1ae69bb85ec276825ca66e160ebf8f34c1",
+      "image_payload_read": false,
+      "image_source_bytes": 8678859,
+      "decoded_image_bytes": 11878400,
+      "reference_sha256": "a19b14b04869aae8600858121fd3b0b7a8aea49690e40993da6b2bb9af9a937c",
+      "reference_nodes": 501,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 25,
+        "reference_present_boxes": 7,
+        "reference_empty_unknown_boxes": 18,
+        "overflow_boxes": 0,
+        "maximum_targets": 72,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "partition": "training",
+      "alias": 46,
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "dimensions_xyz": [
+        512,
+        512,
+        60
+      ],
+      "datatype": 2,
+      "image_header_sha256": "ba4876413784ccda00045935fd83b52450d9646247a5aaa106c28bde852ad122",
+      "image_payload_read": false,
+      "image_source_bytes": 21686215,
+      "decoded_image_bytes": 31457280,
+      "reference_sha256": "e4f72445f008af58dbaee2504f4cfaa40d2fc6200345a359ea60cac89c98a121",
+      "reference_nodes": 509,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 16,
+        "reference_present_boxes": 5,
+        "reference_empty_unknown_boxes": 11,
+        "overflow_boxes": 0,
+        "maximum_targets": 62,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+      "partition": "training",
+      "alias": 53,
+      "source_group": "p_checked6_janelia_flylight_part2",
+      "dimensions_xyz": [
+        511,
+        511,
+        421
+      ],
+      "datatype": 1,
+      "image_header_sha256": "f2e6926eebcd99d5417a2bc7c834299654854179a3e0dad509acebeb8d183638",
+      "image_payload_read": false,
+      "image_source_bytes": 2322569,
+      "decoded_image_bytes": 109931941,
+      "reference_sha256": "1b48bbb469a3c357aa7fc440bdeb3236ac1c35c8f3ae519f332ea0814b512a30",
+      "reference_nodes": 1220,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 6,
+        "reference_empty_unknown_boxes": 58,
+        "overflow_boxes": 0,
+        "maximum_targets": 104,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+      "partition": "training",
+      "alias": 66,
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "dimensions_xyz": [
+        800,
+        800,
+        33
+      ],
+      "datatype": 1,
+      "image_header_sha256": "d8ada55429e385525334252dd02f9711957402d44e995ba40835ece2be37e5c9",
+      "image_payload_read": false,
+      "image_source_bytes": 6003671,
+      "decoded_image_bytes": 21120000,
+      "reference_sha256": "f134ded985606c9e9a6bd3dfc84e63d4dbcc72ea2337e92a7cc2e377ca3dd301",
+      "reference_nodes": 2566,
+      "reference_components": 200,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 49,
+        "reference_present_boxes": 26,
+        "reference_empty_unknown_boxes": 23,
+        "overflow_boxes": 0,
+        "maximum_targets": 180,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "partition": "training",
+      "alias": 75,
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "dimensions_xyz": [
+        800,
+        800,
+        31
+      ],
+      "datatype": 1,
+      "image_header_sha256": "a21e9b8e9e3897e39e94296dab5f14192e17185e4dc8ad0282035c4c2e17c00b",
+      "image_payload_read": false,
+      "image_source_bytes": 4985559,
+      "decoded_image_bytes": 19840000,
+      "reference_sha256": "5a19a61de023b65bf991e2e78e3f29155a8f1b143aed915ce342e89e59633b81",
+      "reference_nodes": 1331,
+      "reference_components": 80,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 49,
+        "reference_present_boxes": 19,
+        "reference_empty_unknown_boxes": 30,
+        "overflow_boxes": 0,
+        "maximum_targets": 153,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "partition": "training",
+      "alias": 85,
+      "source_group": "p_checked6_silkmoth_utokyo",
+      "dimensions_xyz": [
+        512,
+        512,
+        164
+      ],
+      "datatype": 1,
+      "image_header_sha256": "28f13f8fbb83a1c85482348ae61fcd0ec45e0b1cb1a6857fc16758e1cb303e3e",
+      "image_payload_read": false,
+      "image_source_bytes": 685318,
+      "decoded_image_bytes": 42991616,
+      "reference_sha256": "914185b2248c213daced68a51fd6138624586e260dbf46eab01dafa343fde79f",
+      "reference_nodes": 1615,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 32,
+        "reference_present_boxes": 5,
+        "reference_empty_unknown_boxes": 27,
+        "overflow_boxes": 0,
+        "maximum_targets": 290,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+      "partition": "training",
+      "alias": 86,
+      "source_group": "p_checked6_silkmoth_utokyo",
+      "dimensions_xyz": [
+        907,
+        560,
+        102
+      ],
+      "datatype": 1,
+      "image_header_sha256": "0134996e77891793b131f77f8813cf04edbd34cc105fa5749dde37697e0d540a",
+      "image_payload_read": false,
+      "image_source_bytes": 924685,
+      "decoded_image_bytes": 51807840,
+      "reference_sha256": "3de5f2fa7aad0895dac89f4a46d86713933240138dd33de4b3c3ca726d55e454",
+      "reference_nodes": 7035,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 40,
+        "reference_present_boxes": 9,
+        "reference_empty_unknown_boxes": 31,
+        "overflow_boxes": 0,
+        "maximum_targets": 419,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+      "partition": "training",
+      "alias": 92,
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "dimensions_xyz": [
+        762,
+        716,
+        89
+      ],
+      "datatype": 1,
+      "image_header_sha256": "7ff629f0be498dc57d5681a64496eb3097c90b64c88f5f21456963b5a59c2ff6",
+      "image_payload_read": false,
+      "image_source_bytes": 11986041,
+      "decoded_image_bytes": 48557688,
+      "reference_sha256": "8485897aeb81627f1af39a1e39ae827b2f4dad17469ecd2540e7d9cda29448fc",
+      "reference_nodes": 1477,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 36,
+        "reference_present_boxes": 11,
+        "reference_empty_unknown_boxes": 25,
+        "overflow_boxes": 0,
+        "maximum_targets": 181,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+      "partition": "training",
+      "alias": 93,
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "dimensions_xyz": [
+        520,
+        585,
+        179
+      ],
+      "datatype": 1,
+      "image_header_sha256": "c6e19796e3dc60e897847ff5049c2bebb4b93fe7c3e2f73fe9c23a835d163f03",
+      "image_payload_read": false,
+      "image_source_bytes": 13925610,
+      "decoded_image_bytes": 54451800,
+      "reference_sha256": "9cba72d734c3fb61380dcffd7f35424b2b509af90e8b743b20cdd23cfed30f00",
+      "reference_nodes": 554,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 50,
+        "reference_present_boxes": 10,
+        "reference_empty_unknown_boxes": 40,
+        "overflow_boxes": 0,
+        "maximum_targets": 71,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+      "partition": "training",
+      "alias": 95,
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "dimensions_xyz": [
+        874,
+        860,
+        135
+      ],
+      "datatype": 1,
+      "image_header_sha256": "1b233729407820855fdcc3d2c163316b5748e2e4a1e4edc104db213978c63a39",
+      "image_payload_read": false,
+      "image_source_bytes": 22505648,
+      "decoded_image_bytes": 101471400,
+      "reference_sha256": "aa0de2377f22c8079000d4e34d77ea6246a704427c42ec60c181ebce98d68931",
+      "reference_nodes": 3036,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 98,
+        "reference_present_boxes": 22,
+        "reference_empty_unknown_boxes": 76,
+        "overflow_boxes": 0,
+        "maximum_targets": 153,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "partition": "training",
+      "alias": 96,
+      "source_group": "p_checked6_zebrafish_horizontal_cells_UW",
+      "dimensions_xyz": [
+        864,
+        840,
+        71
+      ],
+      "datatype": 1,
+      "image_header_sha256": "c84b0cda1aaaff26653025b8cbb126edf1d7b0de930ad2d01dbc326f81bc6c51",
+      "image_payload_read": false,
+      "image_source_bytes": 13613086,
+      "decoded_image_bytes": 51528960,
+      "reference_sha256": "f9cff68046b4771c041178424fccd6762f03afe43c5989f2521c35f7220ccc5a",
+      "reference_nodes": 1279,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 49,
+        "reference_present_boxes": 18,
+        "reference_empty_unknown_boxes": 31,
+        "overflow_boxes": 0,
+        "maximum_targets": 130,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+      "partition": "training",
+      "alias": 102,
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "dimensions_xyz": [
+        511,
+        511,
+        537
+      ],
+      "datatype": 1,
+      "image_header_sha256": "00bfe8206566d244713593748da29cefe529485e7b7fe3a43461f06840ed8ed5",
+      "image_payload_read": false,
+      "image_source_bytes": 2738103,
+      "decoded_image_bytes": 140221977,
+      "reference_sha256": "a08529dd920ed2cc59c753c524a014cf3e6aa2b50d2830c7e41a83529a538888",
+      "reference_nodes": 187,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 80,
+        "reference_present_boxes": 3,
+        "reference_empty_unknown_boxes": 77,
+        "overflow_boxes": 0,
+        "maximum_targets": 56,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+      "partition": "training",
+      "alias": 108,
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "dimensions_xyz": [
+        511,
+        511,
+        422
+      ],
+      "datatype": 1,
+      "image_header_sha256": "2098973cd42f4f48daee7e42f18307c6486fd2c920bbdfd71a51ca5743b057ab",
+      "image_payload_read": false,
+      "image_source_bytes": 1894182,
+      "decoded_image_bytes": 110193062,
+      "reference_sha256": "3fa24b911e37940c082cd6b09fb5bf07cc47a786fbf41846246ba3a44df1509a",
+      "reference_nodes": 498,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 4,
+        "reference_empty_unknown_boxes": 60,
+        "overflow_boxes": 0,
+        "maximum_targets": 60,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "partition": "training",
+      "alias": 126,
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "dimensions_xyz": [
+        511,
+        511,
+        420
+      ],
+      "datatype": 1,
+      "image_header_sha256": "96f20cbdbd2a5275a06b1fd7eac5c3bed5e1840d1bb957814b928e300b80c688",
+      "image_payload_read": false,
+      "image_source_bytes": 3475856,
+      "decoded_image_bytes": 109670820,
+      "reference_sha256": "60a71e049f8179cc1b6e461e1db4af2c12d89ea335e864509208aa603d22d1af",
+      "reference_nodes": 1550,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 11,
+        "reference_empty_unknown_boxes": 53,
+        "overflow_boxes": 0,
+        "maximum_targets": 97,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+      "partition": "training",
+      "alias": 143,
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        125
+      ],
+      "datatype": 1,
+      "image_header_sha256": "10ab6cecc6d0bba5b2a31eedc445a7f04e3595cc387e60e379c238b5bcb41144",
+      "image_payload_read": false,
+      "image_source_bytes": 2057577,
+      "decoded_image_bytes": 131072000,
+      "reference_sha256": "947bbc343bd14f6eb7c0a55195adb792a951728eced3720240d2e862d05655af",
+      "reference_nodes": 831,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 6,
+        "reference_empty_unknown_boxes": 58,
+        "overflow_boxes": 0,
+        "maximum_targets": 95,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "alias": 149,
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        118
+      ],
+      "datatype": 1,
+      "image_header_sha256": "a1d88a8f133908e718e299da9d4976d9b1345ce6781f8d53e11b815537148cc8",
+      "image_payload_read": false,
+      "image_source_bytes": 1942164,
+      "decoded_image_bytes": 123731968,
+      "reference_sha256": "0fe1894352efb8f7b8d6aac5cd0d599151ac91f25fac0973565a920419538bf5",
+      "reference_nodes": 548,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 3,
+        "reference_empty_unknown_boxes": 61,
+        "overflow_boxes": 0,
+        "maximum_targets": 56,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "alias": 158,
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        118
+      ],
+      "datatype": 1,
+      "image_header_sha256": "a1d88a8f133908e718e299da9d4976d9b1345ce6781f8d53e11b815537148cc8",
+      "image_payload_read": false,
+      "image_source_bytes": 1945891,
+      "decoded_image_bytes": 123731968,
+      "reference_sha256": "562c9730bf065ba783d4d47068e1466b83b71fa60480034973ade2fb7e6e7481",
+      "reference_nodes": 1020,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 7,
+        "reference_empty_unknown_boxes": 57,
+        "overflow_boxes": 0,
+        "maximum_targets": 46,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "alias": 162,
+      "source_group": "p_checked7_taiwan_flycirciut",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        114
+      ],
+      "datatype": 1,
+      "image_header_sha256": "58b452fc143fe7e0289ca8565a1561dd54057788ad03bf0b1ac23e84273ba665",
+      "image_payload_read": false,
+      "image_source_bytes": 1881280,
+      "decoded_image_bytes": 119537664,
+      "reference_sha256": "f8e8278cb3206fd6bc23141e1213ba58af0dc459d9c8000c0f54ed17fe05402a",
+      "reference_nodes": 979,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 6,
+        "reference_empty_unknown_boxes": 58,
+        "overflow_boxes": 0,
+        "maximum_targets": 83,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "partition": "development",
+      "alias": 19,
+      "source_group": "e_checked7_utokyo_fly",
+      "dimensions_xyz": [
+        1024,
+        1024,
+        126
+      ],
+      "datatype": 1,
+      "image_header_sha256": "fea4936a09c8bc17e10a4bf188e7075534415af56483c87afeb3d30f59ed15e8",
+      "image_payload_read": false,
+      "image_source_bytes": 6418067,
+      "decoded_image_bytes": 132120576,
+      "reference_sha256": "d21a846df2e427d4f43a5be5a83417047b7d9bd76763687f779e5b4f59c4a6ee",
+      "reference_nodes": 674,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 9,
+        "reference_empty_unknown_boxes": 55,
+        "overflow_boxes": 0,
+        "maximum_targets": 56,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "partition": "development",
+      "alias": 21,
+      "source_group": "p_checked6_frog_scrippts",
+      "dimensions_xyz": [
+        512,
+        512,
+        41
+      ],
+      "datatype": 1,
+      "image_header_sha256": "1cdf453393682175c0c821ced97142843388567b86ac100df87222abbbc1c754",
+      "image_payload_read": false,
+      "image_source_bytes": 295981,
+      "decoded_image_bytes": 10747904,
+      "reference_sha256": "f27aac851be70d3a200f067ed4320ca13838de8f27970f61f30317a85143825f",
+      "reference_nodes": 2733,
+      "reference_components": 91,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 16,
+        "reference_present_boxes": 8,
+        "reference_empty_unknown_boxes": 8,
+        "overflow_boxes": 0,
+        "maximum_targets": 228,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_allen_confocal/in_house1",
+      "partition": "development",
+      "alias": 35,
+      "source_group": "p_checked6_human_allen_confocal",
+      "dimensions_xyz": [
+        1882,
+        1025,
+        85
+      ],
+      "datatype": 1,
+      "image_header_sha256": "584687ae83d0b2470733bd0954eed7f5c293eb74668d9661eb32ebeb35859daf",
+      "image_payload_read": false,
+      "image_source_bytes": 58780738,
+      "decoded_image_bytes": 163969250,
+      "reference_sha256": "66b2fdb623b82c56c0291eb7e5ab10f6ea77267be07a6a2fa7f1cfcc6381c1ad",
+      "reference_nodes": 3199,
+      "reference_components": 110,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 135,
+        "reference_present_boxes": 78,
+        "reference_empty_unknown_boxes": 57,
+        "overflow_boxes": 0,
+        "maximum_targets": 176,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "partition": "development",
+      "alias": 44,
+      "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+      "dimensions_xyz": [
+        512,
+        512,
+        47
+      ],
+      "datatype": 2,
+      "image_header_sha256": "557f2ddafb91acb3d7ebcf8c4fe5449047774d6f0d01213629269de5763826f1",
+      "image_payload_read": false,
+      "image_source_bytes": 19098454,
+      "decoded_image_bytes": 24641536,
+      "reference_sha256": "bc23645c0ae92a7e1dcbbadbfc7f5f6412cf8a65f31e529349f8f4b9477aaac7",
+      "reference_nodes": 661,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 16,
+        "reference_present_boxes": 6,
+        "reference_empty_unknown_boxes": 10,
+        "overflow_boxes": 0,
+        "maximum_targets": 70,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "partition": "development",
+      "alias": 79,
+      "source_group": "p_checked6_mouse_RGC_uw",
+      "dimensions_xyz": [
+        724,
+        1024,
+        33
+      ],
+      "datatype": 1,
+      "image_header_sha256": "5d06d931d5b236e3dc72763718046279946fa30fe5de4636d2d64e6122b1ce25",
+      "image_payload_read": false,
+      "image_source_bytes": 7099669,
+      "decoded_image_bytes": 24465408,
+      "reference_sha256": "97a0fb75788a889428003b519fac08f3b733650ca61c589f8d3da3f67982be3f",
+      "reference_nodes": 3186,
+      "reference_components": 191,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 48,
+        "reference_present_boxes": 31,
+        "reference_empty_unknown_boxes": 17,
+        "overflow_boxes": 0,
+        "maximum_targets": 233,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "partition": "development",
+      "alias": 94,
+      "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+      "dimensions_xyz": [
+        700,
+        732,
+        165
+      ],
+      "datatype": 1,
+      "image_header_sha256": "14aa0b6f6ddc27e952af1ebd5a22800146e96d794346e6cb3ed14c64f99be6ef",
+      "image_payload_read": false,
+      "image_source_bytes": 20742862,
+      "decoded_image_bytes": 84546000,
+      "reference_sha256": "a1b5bc1e7e694b25987ee3db2038ec5ee9ce72d4ce0c4e79e8b52d8d5e2c89d5",
+      "reference_nodes": 1301,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 72,
+        "reference_present_boxes": 9,
+        "reference_empty_unknown_boxes": 63,
+        "overflow_boxes": 0,
+        "maximum_targets": 183,
+        "encoder_short_boxes": 0
+      }
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+      "partition": "development",
+      "alias": 135,
+      "source_group": "p_checked7_janelia_flylight_part1",
+      "dimensions_xyz": [
+        511,
+        511,
+        423
+      ],
+      "datatype": 1,
+      "image_header_sha256": "20eac162cdc2fd1f5e2ebff00465548c620ff0ba1c078f5ba2ecc395d54f6127",
+      "image_payload_read": false,
+      "image_source_bytes": 1899580,
+      "decoded_image_bytes": 110454183,
+      "reference_sha256": "4ad61553a73226de646aaf5fc8a02a49dafb2abc39e2ebba2dd98296cb36d48e",
+      "reference_nodes": 1503,
+      "reference_components": 1,
+      "reference_vertices_outside_image": 0,
+      "summary": {
+        "boxes": 64,
+        "reference_present_boxes": 10,
+        "reference_empty_unknown_boxes": 54,
+        "overflow_boxes": 0,
+        "maximum_targets": 145,
+        "encoder_short_boxes": 0
+      }
+    }
+  ],
+  "tests": {
+    "passed": 11,
+    "seconds": 0.59,
+    "scope": "Synthetic cohort isolation, literal capacity counts and exposure scheduling; no model/GPU"
+  }
+}

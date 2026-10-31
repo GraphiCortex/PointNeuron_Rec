@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "status": "prospective_protocol_not_a_training_launcher",
+  "question": "Does the fixed geometric-query model learn across 33 neurons and transfer to seven gradient-disjoint development neurons?",
+  "cohort_preflight": {
+    "path": "tmp/node_cohort_preflight_20261031/report.json",
+    "sha256": "23fe208e7b0829caef1f07a44554b3e0f24367fe31ad60ea7a93d90d39aa33ee"
+  },
+  "image_manifest": {
+    "path": "configs/node_generalization_images.json",
+    "sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358"
+  },
+  "reference_manifest": {
+    "path": "configs/node_generalization_references.json",
+    "sha256": "b7cce67eb31b058f49172a883bf2d294403e2babd133834360c0b3bc1808d6aa"
+  },
+  "model_reference": {
+    "config": "configs/geometric_query_fit.json",
+    "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+    "successful_training_report": "tmp/geometric_query_train_20261031/report.json",
+    "successful_training_report_sha256": "3d3608bc85ae093f51c36eb3115183823ae8b34caebc58bc8883ee61b368e034",
+    "initialization": "fresh same encoder seed 0 and head seed 101; no trained weights/Adam transfer",
+    "parameter_count": 1688518
+  },
+  "input": {
+    "tile_side_voxel": 128,
+    "grid": "same disjoint clipped grid; reference independent; all image boxes cached and inferred",
+    "coordinate_scale_voxel": 64.0,
+    "points_per_box": 2048,
+    "query_count": 512,
+    "point_features": "crop-local XYZ plus whole-source affine normalized intensity",
+    "sato_sigmas_voxel": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "uniform_probability_mass": 0.1,
+    "cloud_seed": 0,
+    "source_hash_order_seed": 0,
+    "sampling": "same exponential-race PPS without replacement; no hard foreground mask; no guide feature channel",
+    "guide_execution": "reuse only source/recipe/hash verified PN2 guide; otherwise existing disk-backed exact operator",
+    "reference_empty_crop": "unknown; no negative loss; retained for inference and output accounting"
+  },
+  "training": {
+    "seed": 0,
+    "epochs": 20,
+    "supervised_boxes": 460,
+    "total_updates": 9200,
+    "batch_size": 1,
+    "dtype": "float32",
+    "order": "one deterministic permutation of every supervised box per epoch; no box oversampling",
+    "optimizer": {
+      "kind": "AdamW",
+      "learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08
+    },
+    "loss": {
+      "classification_weight": 2.0,
+      "center_weight": 3.0,
+      "center_beta_voxel": 4.0,
+      "match_scale_voxel": 6.0
+    },
+    "gradient_clip": 10.0,
+    "augmentation": "none",
+    "dropout": 0.0,
+    "scheduler": "none",
+    "radius_supervision": "none",
+    "fresh_optimizer": true,
+    "checkpoint_epochs": [
+      0,
+      5,
+      10,
+      20
+    ],
+    "checkpoint_selection": "fixed terminal checkpoint; no best-dev selection or automatic extension"
+  },
+  "evaluation": {
+    "development_cases": 7,
+    "development_boxes": 415,
+    "all_image_boxes_inference": true,
+    "confidence_cutoff": 0.5,
+    "node_tolerances_voxel": [
+      2.0,
+      6.0
+    ],
+    "primary": "macro per-neuron pooled per-box node precision and recall at two voxels; include all accepted predictions in all image boxes",
+    "diagnostics": [
+      "reference-present-only scores alongside full-grid scores",
+      "point-to-continuous-reference-curve proximity at two voxels",
+      "length-weighted curve-to-node support at two/six voxels and target-grid support baseline",
+      "endpoint/junction support and per-neuron/source-group results",
+      "duplicate/near-duplicate proposals and unmatched outputs in reference-empty unknown boxes",
+      "training-defined apparent-width/contrast strata; SWC radius not treated as verified caliber"
+    ],
+    "metric_status": "reference agreement in native voxels; not biological foreground certification or independent test performance",
+    "stratification": {
+      "implementation_reference": "src/pn2/evaluation/branch_evidence.py",
+      "implementation_reference_sha256": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5",
+      "reference_window_step_voxel": 4.0,
+      "profile_radii_voxel": [
+        1.0,
+        2.0,
+        4.0,
+        8.0
+      ],
+      "profile_half_length_voxel": 2.0,
+      "profile_background_shell_voxel": [
+        8.0,
+        12.0
+      ],
+      "profile_bin_width_voxel": 0.5,
+      "width": "resolved image-profile apparent half-height diameter; native voxels, not anatomical caliber",
+      "contrast": "image-profile inner contrast divided by observed whole-source intensity range; constant/undefined stays unresolved",
+      "thin_dim_percentile": 0.25,
+      "percentile_rule": "training-only arclength-weighted empirical inverse CDF; smallest value reaching 25 percent cumulative weight",
+      "apply_to_development": "same saved training cutoffs, no per-neuron tuning; unresolved retained as its own stratum",
+      "inference_access": false
+    }
+  },
+  "prospective_pilot_milestones_for_review": {
+    "training_reference_present_macro_precision_2": 0.9,
+    "training_reference_present_macro_recall_2": 0.9,
+    "development_full_grid_macro_precision_2": 0.8,
+    "development_full_grid_macro_recall_2": 0.8,
+    "development_minimum_neuron_F1_2": 0.6,
+    "meaning": "engineering screening criteria proposed before learned development results; not universal biological quality requirements",
+    "no_posthoc_relaxation": true,
+    "six_voxel_and_curve_results": "diagnostic explanations, never a retroactive two-voxel pass"
+  },
+  "resources": {
+    "prior_mean_update_seconds": 1.5607652499966207,
+    "planning_target_gpu_hours": [
+      4,
+      6
+    ],
+    "proposed_external_wall_hours": 8,
+    "budget_status": "measure actual training-prefix and full development-evaluation timing before launch; adjust wall allowance explicitly if needed, keep 9200-update cap",
+    "cpu_preprocessing": "separate substantial task; benchmark/reuse exact guides before bulk preparation",
+    "all_float32_guides_GiB": 10.86
+  },
+  "stop_rules": [
+    "no reserved-file access or development gradients",
+    "invalid data, point/target overflow, nonfinite gradients, mode mismatch or incompatible reload stop explicitly",
+    "no target truncation, GT-conditioned inference tiles or automatic alternate sampler",
+    "fixed 20-epoch terminal verdict; no automatic extension, threshold search, checkpoint selection or GAT handoff"
+  ],
+  "implementation_status": "cohort audit and exposure plan only; broader cache builder, loader, metrics and training runner are not yet implemented"
+}
