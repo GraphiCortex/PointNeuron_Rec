@@ -1,0 +1,898 @@
+{
+  "scope": "Saved GN/BN comparison only; no model forward, fitting or policy change",
+  "run": "tmp\\groupnorm_node_train_20261031",
+  "run_report_sha256": "89734699f854247105c0dffb68d8fe65080bd552c858ffe6bea53cc89d3589be",
+  "review_script_sha256": "a9ad2f72c6b5a36861e8dcb4428b6480fb2e2791d17a3f5336b4a5bc9c2ae74a",
+  "normalization_consistency_passed": true,
+  "learnability_gate": false,
+  "checkpoint_verification": {
+    "checkpoints": [
+      {
+        "checkpoint": "checkpoint_step000000.pt",
+        "sha256": "801722394638abf50227ac9dab1b191fd690d5f290bbe017e25ede9e2c6f7d70",
+        "step": 0,
+        "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d"
+      },
+      {
+        "checkpoint": "checkpoint_step000008.pt",
+        "sha256": "074916de5818d9e770a4a6b294693167868aa46f1c0bc80c0b90cb9c9472cc45",
+        "step": 8,
+        "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d"
+      },
+      {
+        "checkpoint": "checkpoint_step000500.pt",
+        "sha256": "52d0e4c57d998181c876a912c003f576eca1fc4c2b2fb3f6fd8b4807691d20f5",
+        "step": 500,
+        "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d"
+      },
+      {
+        "checkpoint": "checkpoint_step001000.pt",
+        "sha256": "aedf8eb3b3a69db35a59a0f3bcc4bd01ad4d4af7a82b9fc864f02794999210dd",
+        "step": 1000,
+        "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d"
+      },
+      {
+        "checkpoint": "checkpoint_step002000.pt",
+        "sha256": "8b86f29b828a7531469b60aed2ac46d34af8b14c4d508f2aa3bd97f2fc51f5ca",
+        "step": 2000,
+        "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d"
+      }
+    ],
+    "terminal_state_matches_evaluation": true,
+    "optimizer_steps": [
+      2000
+    ],
+    "batchnorm_running_buffers": 0,
+    "model_state_finite": true
+  },
+  "score_conditioning": {
+    "pairs": [
+      {
+        "box_a": [
+          "fruitfly32",
+          27
+        ],
+        "box_b": [
+          "fruitfly32",
+          20
+        ],
+        "pearson_query_score_correlation": 0.9885327588478464,
+        "assigned_positive_query_intersection": 3,
+        "assigned_positive_counts": [
+          18,
+          85
+        ]
+      },
+      {
+        "box_a": [
+          "fruitfly32",
+          27
+        ],
+        "box_b": [
+          "frog22",
+          2
+        ],
+        "pearson_query_score_correlation": -0.3379841425677405,
+        "assigned_positive_query_intersection": 0,
+        "assigned_positive_counts": [
+          18,
+          7
+        ]
+      },
+      {
+        "box_a": [
+          "fruitfly32",
+          27
+        ],
+        "box_b": [
+          "frog22",
+          5
+        ],
+        "pearson_query_score_correlation": 0.6342425930421863,
+        "assigned_positive_query_intersection": 2,
+        "assigned_positive_counts": [
+          18,
+          68
+        ]
+      },
+      {
+        "box_a": [
+          "fruitfly32",
+          20
+        ],
+        "box_b": [
+          "frog22",
+          2
+        ],
+        "pearson_query_score_correlation": -0.3241071275998131,
+        "assigned_positive_query_intersection": 1,
+        "assigned_positive_counts": [
+          85,
+          7
+        ]
+      },
+      {
+        "box_a": [
+          "fruitfly32",
+          20
+        ],
+        "box_b": [
+          "frog22",
+          5
+        ],
+        "pearson_query_score_correlation": 0.6438004639532571,
+        "assigned_positive_query_intersection": 10,
+        "assigned_positive_counts": [
+          85,
+          68
+        ]
+      },
+      {
+        "box_a": [
+          "frog22",
+          2
+        ],
+        "box_b": [
+          "frog22",
+          5
+        ],
+        "pearson_query_score_correlation": -0.8445459772122375,
+        "assigned_positive_query_intersection": 1,
+        "assigned_positive_counts": [
+          7,
+          68
+        ]
+      }
+    ],
+    "limitation": "Descriptive same-index score similarity, not proof of image neglect, assignment instability or a causal explanation"
+  },
+  "elapsed_minutes_after_initial_evaluation": 31.347284798333323,
+  "query_location_feasibility": {
+    "scope": "Coordinate-only prospective FPS512 starting locations; no model/offset head or training",
+    "selection_reference_access": false,
+    "selection": "Pinned native FPS on fixed hash-ordered local XYZ only",
+    "limitations": "Locations alone are not skeleton proposals or a reconstruction; all-point encoder/attention memory would remain available; offsets not implemented",
+    "source_sha256": {
+      "pointneuron/models/pointnext_native.py": "0e5851e64079c2edb4f637d29d20287833b889298ff49503d4b3c578e714885e",
+      "pointneuron/models/pointnext_ops.py": "968fd3af88446d92c2dc3295eb462362794910f829ee755a61474b1b3fb7886d"
+    },
+    "records": [
+      {
+        "alias": "fruitfly32",
+        "tile_id": 27,
+        "target_count": 18,
+        "input_points": 2048,
+        "locations": 512,
+        "input_packet_sha256": "90c2cacd2d01501590b59a53a4208e5da0e1a1b5266a68c43101fe2331e56e87",
+        "full_input_matches_2": 14,
+        "location_matches_2": 5,
+        "full_input_matches_6": 18,
+        "location_matches_6": 18,
+        "mean_minimum_assignment_distance_voxel": 2.9086393962752637,
+        "maximum_minimum_assignment_distance_voxel": 5.347814689006727,
+        "packet": "fruitfly32_tile27_prospective_locations.npz",
+        "packet_sha256": "5dc353675201d7797e6ef25a3cbbd5710aa0745e638864bdef9e9f23540088f7"
+      },
+      {
+        "alias": "fruitfly32",
+        "tile_id": 20,
+        "target_count": 85,
+        "input_points": 2048,
+        "locations": 512,
+        "input_packet_sha256": "ad28365ba804fea9862ca41e40dc6c102d56b27cad0295d5ac50d371a8a466c8",
+        "full_input_matches_2": 71,
+        "location_matches_2": 7,
+        "full_input_matches_6": 85,
+        "location_matches_6": 82,
+        "mean_minimum_assignment_distance_voxel": 3.651606885247678,
+        "maximum_minimum_assignment_distance_voxel": 9.53904122929372,
+        "packet": "fruitfly32_tile20_prospective_locations.npz",
+        "packet_sha256": "677a993c587a58a08d12e5bdcf5487c63956ac2d943169c02935600c5eb7fe87"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 2,
+        "target_count": 7,
+        "input_points": 2048,
+        "locations": 512,
+        "input_packet_sha256": "7e2709480018576a9636a5b6f9747ea11c1babb5debc186146217250dc21e74c",
+        "full_input_matches_2": 6,
+        "location_matches_2": 1,
+        "full_input_matches_6": 7,
+        "location_matches_6": 6,
+        "mean_minimum_assignment_distance_voxel": 4.102909793833149,
+        "maximum_minimum_assignment_distance_voxel": 7.114571704345942,
+        "packet": "frog22_tile2_prospective_locations.npz",
+        "packet_sha256": "28f42af08290c2abfa40b28a61a524d557cf2f88d66f70f2690eb8923efeea44"
+      },
+      {
+        "alias": "frog22",
+        "tile_id": 5,
+        "target_count": 68,
+        "input_points": 2048,
+        "locations": 512,
+        "input_packet_sha256": "080c33e6e0b7329a9c810dd9cef1c6ce41ca18e8c6653a827c9f62649e84eb85",
+        "full_input_matches_2": 21,
+        "location_matches_2": 4,
+        "full_input_matches_6": 61,
+        "location_matches_6": 54,
+        "mean_minimum_assignment_distance_voxel": 4.495925164635281,
+        "maximum_minimum_assignment_distance_voxel": 13.593222545342154,
+        "packet": "frog22_tile5_prospective_locations.npz",
+        "packet_sha256": "3fab766efd99f35663d895e094fcf7c8ee0e4ffb1de5132930d9036ed7860bb4"
+      }
+    ]
+  },
+  "review_report": "tmp/groupnorm_node_review_final_20261031/report.json",
+  "review_report_sha256": "695944d1292c40d9a4b4454713d049f083fd4d72976c0a4e8ae0c9ce7e08b361",
+  "verification_counts": {
+    "node_count_comparisons": 40,
+    "mode_array_equalities": 60,
+    "finite_updates": 2000
+  },
+  "terminal": [
+    {
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "ordinary_inference": {
+        "mode": "ordinary_inference",
+        "target_count": 18,
+        "accepted": 181,
+        "matched_2": 10,
+        "extras_2": 171,
+        "precision_2": 0.055248618784530384,
+        "recall_2": 0.5555555555555556,
+        "all_query_matched_2": 12,
+        "all_query_recall_2": 0.6666666666666666,
+        "accepted_farther_than_2_from_every_target_node": 167,
+        "accepted_near_a_target_but_unmatched": 4,
+        "accepted_near_continuous_reference_curve_2": 25,
+        "accepted_near_continuous_reference_curve_6": 44,
+        "accepted_median_distance_to_continuous_reference_curve": 13.530177856988317,
+        "assignment_mean_distance_voxel": 1.7676971213662944,
+        "assignment_median_distance_voxel": 1.7848417474463927,
+        "assignment_p95_distance_voxel": 2.7470013341289055,
+        "assignment_center_loss_beta4": 0.45017575706170326,
+        "assignment_balanced_classification": 0.62662125887859,
+        "assigned_positive_score_range": [
+          0.4676749110221863,
+          0.6907062530517578
+        ],
+        "strongest_assigned_unused_score": 0.7509280443191528,
+        "fixed_gate_passed": false
+      }
+    },
+    {
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "ordinary_inference": {
+        "mode": "ordinary_inference",
+        "target_count": 85,
+        "accepted": 174,
+        "matched_2": 39,
+        "extras_2": 135,
+        "precision_2": 0.22413793103448276,
+        "recall_2": 0.4588235294117647,
+        "all_query_matched_2": 68,
+        "all_query_recall_2": 0.8,
+        "accepted_farther_than_2_from_every_target_node": 127,
+        "accepted_near_a_target_but_unmatched": 8,
+        "accepted_near_continuous_reference_curve_2": 60,
+        "accepted_near_continuous_reference_curve_6": 92,
+        "accepted_median_distance_to_continuous_reference_curve": 5.101519302779592,
+        "assignment_mean_distance_voxel": 1.4570288223135113,
+        "assignment_median_distance_voxel": 1.4048540270132555,
+        "assignment_p95_distance_voxel": 2.650767434470191,
+        "assignment_center_loss_beta4": 0.3311574033410107,
+        "assignment_balanced_classification": 0.6694285436665357,
+        "assigned_positive_score_range": [
+          0.3235505521297455,
+          0.7361298203468323
+        ],
+        "strongest_assigned_unused_score": 0.7803720831871033,
+        "fixed_gate_passed": false
+      }
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 2,
+      "ordinary_inference": {
+        "mode": "ordinary_inference",
+        "target_count": 7,
+        "accepted": 249,
+        "matched_2": 5,
+        "extras_2": 244,
+        "precision_2": 0.020080321285140562,
+        "recall_2": 0.7142857142857143,
+        "all_query_matched_2": 7,
+        "all_query_recall_2": 1.0,
+        "accepted_farther_than_2_from_every_target_node": 158,
+        "accepted_near_a_target_but_unmatched": 86,
+        "accepted_near_continuous_reference_curve_2": 187,
+        "accepted_near_continuous_reference_curve_6": 244,
+        "accepted_median_distance_to_continuous_reference_curve": 1.2657739253579026,
+        "assignment_mean_distance_voxel": 0.4878824216242089,
+        "assignment_median_distance_voxel": 0.49232430923171505,
+        "assignment_p95_distance_voxel": 0.9432977392300863,
+        "assignment_center_loss_beta4": 0.040576079398562635,
+        "assignment_balanced_classification": 0.6592292810051801,
+        "assigned_positive_score_range": [
+          0.4577011466026306,
+          0.598648726940155
+        ],
+        "strongest_assigned_unused_score": 0.6083803176879883,
+        "fixed_gate_passed": false
+      }
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 5,
+      "ordinary_inference": {
+        "mode": "ordinary_inference",
+        "target_count": 68,
+        "accepted": 180,
+        "matched_2": 43,
+        "extras_2": 137,
+        "precision_2": 0.2388888888888889,
+        "recall_2": 0.6323529411764706,
+        "all_query_matched_2": 65,
+        "all_query_recall_2": 0.9558823529411765,
+        "accepted_farther_than_2_from_every_target_node": 127,
+        "accepted_near_a_target_but_unmatched": 10,
+        "accepted_near_continuous_reference_curve_2": 64,
+        "accepted_near_continuous_reference_curve_6": 103,
+        "accepted_median_distance_to_continuous_reference_curve": 5.020097409643499,
+        "assignment_mean_distance_voxel": 0.9477347488712394,
+        "assignment_median_distance_voxel": 0.8174205021805814,
+        "assignment_p95_distance_voxel": 1.904141959008513,
+        "assignment_center_loss_beta4": 0.15209212558864826,
+        "assignment_balanced_classification": 0.6268894285029984,
+        "assigned_positive_score_range": [
+          0.2767487168312073,
+          0.8279852271080017
+        ],
+        "strongest_assigned_unused_score": 0.7798118591308594,
+        "fixed_gate_passed": false
+      }
+    }
+  ],
+  "baseline_comparison": [
+    {
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "baseline_ordinary_inference": {
+        "accepted_count": 66,
+        "target_count": 18,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 2,
+            "predicted": 66,
+            "reference": 18,
+            "precision": 0.030303030303030304,
+            "recall": 0.1111111111111111,
+            "f1": 0.047619047619047616,
+            "extras": 64,
+            "misses": 16
+          },
+          "all_query_node_recall": 0.5,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 2,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "junction": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "crop_boundary": {
+              "reference_count": 4,
+              "matched_in_selected_geometric_matching": 1
+            }
+          },
+          "curve_to_accepted_node_support": 0.03770495526054421,
+          "longest_unsupported_run": 64.44282397875793
+        },
+        "all_query_recall_6": 1.0
+      },
+      "groupnorm_ordinary_inference": {
+        "accepted_count": 181,
+        "target_count": 18,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 10,
+            "predicted": 181,
+            "reference": 18,
+            "precision": 0.055248618784530384,
+            "recall": 0.5555555555555556,
+            "f1": 0.10050251256281408,
+            "extras": 171,
+            "misses": 8
+          },
+          "all_query_node_recall": 0.6666666666666666,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 2,
+              "matched_in_selected_geometric_matching": 1
+            },
+            "junction": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "crop_boundary": {
+              "reference_count": 4,
+              "matched_in_selected_geometric_matching": 2
+            }
+          },
+          "curve_to_accepted_node_support": 0.5514163047003532,
+          "longest_unsupported_run": 16.154065125195395
+        },
+        "all_query_recall_6": 1.0
+      }
+    },
+    {
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "baseline_ordinary_inference": {
+        "accepted_count": 103,
+        "target_count": 85,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 23,
+            "predicted": 103,
+            "reference": 85,
+            "precision": 0.22330097087378642,
+            "recall": 0.27058823529411763,
+            "f1": 0.24468085106382978,
+            "extras": 80,
+            "misses": 62
+          },
+          "all_query_node_recall": 0.49411764705882355,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 3,
+              "matched_in_selected_geometric_matching": 1
+            },
+            "junction": {
+              "reference_count": 8,
+              "matched_in_selected_geometric_matching": 2
+            },
+            "crop_boundary": {
+              "reference_count": 9,
+              "matched_in_selected_geometric_matching": 3
+            }
+          },
+          "curve_to_accepted_node_support": 0.16069199856782881,
+          "longest_unsupported_run": 87.92880898564428
+        },
+        "all_query_recall_6": 0.9647058823529412
+      },
+      "groupnorm_ordinary_inference": {
+        "accepted_count": 174,
+        "target_count": 85,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 39,
+            "predicted": 174,
+            "reference": 85,
+            "precision": 0.22413793103448276,
+            "recall": 0.4588235294117647,
+            "f1": 0.30115830115830117,
+            "extras": 135,
+            "misses": 46
+          },
+          "all_query_node_recall": 0.8,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 3,
+              "matched_in_selected_geometric_matching": 1
+            },
+            "junction": {
+              "reference_count": 8,
+              "matched_in_selected_geometric_matching": 4
+            },
+            "crop_boundary": {
+              "reference_count": 9,
+              "matched_in_selected_geometric_matching": 7
+            }
+          },
+          "curve_to_accepted_node_support": 0.2647138263009371,
+          "longest_unsupported_run": 87.23410579371962
+        },
+        "all_query_recall_6": 1.0
+      }
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 2,
+      "baseline_ordinary_inference": {
+        "accepted_count": 148,
+        "target_count": 7,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 0,
+            "predicted": 148,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 148,
+            "misses": 7
+          },
+          "all_query_node_recall": 0.0,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "junction": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "crop_boundary": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 0
+            }
+          },
+          "curve_to_accepted_node_support": 0.26549893832326854,
+          "longest_unsupported_run": 13.181651794460954
+        },
+        "all_query_recall_6": 1.0
+      },
+      "groupnorm_ordinary_inference": {
+        "accepted_count": 249,
+        "target_count": 7,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 5,
+            "predicted": 249,
+            "reference": 7,
+            "precision": 0.020080321285140562,
+            "recall": 0.7142857142857143,
+            "f1": 0.0390625,
+            "extras": 244,
+            "misses": 2
+          },
+          "all_query_node_recall": 1.0,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "junction": {
+              "reference_count": 0,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "crop_boundary": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 1
+            }
+          },
+          "curve_to_accepted_node_support": 0.7894032071989611,
+          "longest_unsupported_run": 8.241600290509279
+        },
+        "all_query_recall_6": 1.0
+      }
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 5,
+      "baseline_ordinary_inference": {
+        "accepted_count": 126,
+        "target_count": 68,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 2,
+            "predicted": 126,
+            "reference": 68,
+            "precision": 0.015873015873015872,
+            "recall": 0.029411764705882353,
+            "f1": 0.020618556701030927,
+            "extras": 124,
+            "misses": 66
+          },
+          "all_query_node_recall": 0.07352941176470588,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "leaf": {
+              "reference_count": 3,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "junction": {
+              "reference_count": 6,
+              "matched_in_selected_geometric_matching": 0
+            },
+            "crop_boundary": {
+              "reference_count": 6,
+              "matched_in_selected_geometric_matching": 0
+            }
+          },
+          "curve_to_accepted_node_support": 0.02092146582600327,
+          "longest_unsupported_run": 76.25155223824049
+        },
+        "all_query_recall_6": 0.4852941176470588
+      },
+      "groupnorm_ordinary_inference": {
+        "accepted_count": 180,
+        "target_count": 68,
+        "learnability_gate": false,
+        "two_voxel": {
+          "accepted_nodes": {
+            "matched": 43,
+            "predicted": 180,
+            "reference": 68,
+            "precision": 0.2388888888888889,
+            "recall": 0.6323529411764706,
+            "f1": 0.3467741935483871,
+            "extras": 137,
+            "misses": 25
+          },
+          "all_query_node_recall": 0.9558823529411765,
+          "structural_node_support": {
+            "root": {
+              "reference_count": 1,
+              "matched_in_selected_geometric_matching": 1
+            },
+            "leaf": {
+              "reference_count": 3,
+              "matched_in_selected_geometric_matching": 1
+            },
+            "junction": {
+              "reference_count": 6,
+              "matched_in_selected_geometric_matching": 5
+            },
+            "crop_boundary": {
+              "reference_count": 6,
+              "matched_in_selected_geometric_matching": 5
+            }
+          },
+          "curve_to_accepted_node_support": 0.3815106295068231,
+          "longest_unsupported_run": 72.02168249210412
+        },
+        "all_query_recall_6": 1.0
+      }
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 40.187143534582695,
+          "assignment_balanced_classification": 0.8119423844493723
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 54.014171504511644,
+          "assignment_balanced_classification": 0.811534240751416
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 66.04323855763063,
+          "assignment_balanced_classification": 0.811816714468482
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 52.03406342288562,
+          "assignment_balanced_classification": 0.8104723691702573
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 38.87104324560007,
+          "assignment_balanced_classification": 0.8007877247515442
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 52.78349746030292,
+          "assignment_balanced_classification": 0.8005123984182755
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 62.743559210403255,
+          "assignment_balanced_classification": 0.7979622533039918
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "matched_2": 0,
+          "extras_2": 0,
+          "all_query_matched_2": 0,
+          "assignment_mean_distance_voxel": 51.919334977498295,
+          "assignment_balanced_classification": 0.8011393248968489
+        }
+      ]
+    },
+    {
+      "step": 500,
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "matched_2": 1,
+          "extras_2": 158,
+          "all_query_matched_2": 7,
+          "assignment_mean_distance_voxel": 2.4421451817373185,
+          "assignment_balanced_classification": 0.6814800816227273
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "matched_2": 7,
+          "extras_2": 171,
+          "all_query_matched_2": 28,
+          "assignment_mean_distance_voxel": 2.844830320218754,
+          "assignment_balanced_classification": 0.6970584693720678
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "matched_2": 4,
+          "extras_2": 215,
+          "all_query_matched_2": 6,
+          "assignment_mean_distance_voxel": 1.4131434350230232,
+          "assignment_balanced_classification": 0.6850691993995108
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "matched_2": 10,
+          "extras_2": 135,
+          "all_query_matched_2": 22,
+          "assignment_mean_distance_voxel": 2.7773995347773184,
+          "assignment_balanced_classification": 0.6717775954718901
+        }
+      ]
+    },
+    {
+      "step": 1000,
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "matched_2": 5,
+          "extras_2": 189,
+          "all_query_matched_2": 6,
+          "assignment_mean_distance_voxel": 2.199226507222521,
+          "assignment_balanced_classification": 0.6708417585550668
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "matched_2": 17,
+          "extras_2": 174,
+          "all_query_matched_2": 42,
+          "assignment_mean_distance_voxel": 2.2171395503330755,
+          "assignment_balanced_classification": 0.7104575340595569
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "matched_2": 3,
+          "extras_2": 408,
+          "all_query_matched_2": 6,
+          "assignment_mean_distance_voxel": 1.315605673927434,
+          "assignment_balanced_classification": 0.7270062639554589
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "matched_2": 37,
+          "extras_2": 168,
+          "all_query_matched_2": 55,
+          "assignment_mean_distance_voxel": 1.501654346233445,
+          "assignment_balanced_classification": 0.6454791963941318
+        }
+      ]
+    },
+    {
+      "step": 2000,
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "matched_2": 10,
+          "extras_2": 171,
+          "all_query_matched_2": 12,
+          "assignment_mean_distance_voxel": 1.7676971213662944,
+          "assignment_balanced_classification": 0.62662125887859
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "matched_2": 39,
+          "extras_2": 135,
+          "all_query_matched_2": 68,
+          "assignment_mean_distance_voxel": 1.4570288223135113,
+          "assignment_balanced_classification": 0.6694285436665357
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "matched_2": 5,
+          "extras_2": 244,
+          "all_query_matched_2": 7,
+          "assignment_mean_distance_voxel": 0.4878824216242089,
+          "assignment_balanced_classification": 0.6592292810051801
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "matched_2": 43,
+          "extras_2": 137,
+          "all_query_matched_2": 65,
+          "assignment_mean_distance_voxel": 0.9477347488712394,
+          "assignment_balanced_classification": 0.6268894285029984
+        }
+      ]
+    }
+  ],
+  "figure": "docs/learning/groupnorm_vs_batchnorm_terminal_20261031.png",
+  "figure_sha256": "9deba39f721c3a85a40f2ef6baa64543379bffaff7ec1ae338d19995f4c05949"
+}

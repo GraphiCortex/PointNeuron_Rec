@@ -14,7 +14,10 @@ GPU timing command. No new optimizer/LR/query/target policy is included.
 
 The [user-launched GN timing now passes](../docs/groupnorm_node_timing_results.md),
 including exact mode consistency and state reload. The same frozen config is
-ready for the single-model bounded fit; no setting changed after timing.
+used for the completed single-model bounded fit; no setting changed after timing.
+The [fit review](../docs/groupnorm_node_fit_results.md) confirms mode consistency
+but failed node learnability. The configuration remains frozen; no new query,
+loss, threshold or optimizer configuration is adopted by that result.
 
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the

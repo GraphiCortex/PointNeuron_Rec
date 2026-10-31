@@ -19,6 +19,8 @@
 - [Completed node fits: failed learnability, normalization gap, saved-proposal figures and design implications](sampler_node_fit_results.md)
 - [Implemented normalization-only GN8 control: exact CPU mode consistency and manual timing command](groupnorm_node_control.md)
 - [Passed GN8 GPU timing: zero mode discrepancy, resource measurements and bounded-fit command](groupnorm_node_timing_results.md)
+- [Completed GN8 fit: mode consistency corrected, node learnability fails, saved predictions and evidence](groupnorm_node_fit_results.md)
+- [Prospective geometric queries: exact mechanism, architecture impact, coordinate-only feasibility and stopping rules](geometric_query_proposal.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

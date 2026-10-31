@@ -347,4 +347,26 @@ to rerun it for current source. Generated outputs remain under `tmp`.
 The [passed GN GPU timing review](../docs/groupnorm_node_timing_results.md)
 records zero mode differences, measured cost and the exact next training command
 using `tmp/groupnorm_node_timing_20261031_141828`. No timing repeat or source change
-is needed. The agent has not launched the full fit.
+is needed. The user has now completed the full fit; [consistency passes but node
+learnability fails](../docs/groupnorm_node_fit_results.md). Do not rerun the fit
+from these preserved launch instructions.
+
+## Review the completed GN fit
+
+`review_groupnorm_node_fit.py` reads saved predictions and CPU-loaded state,
+recomputes all 40 node-count comparisons and verifies train/eval equality and
+checkpoint hashes. It exports the BN/GN terminal figure and computes a
+prospective FPS512 starting-location diagnostic on the frozen input XYZ.
+References score the locations after selection; no model forward, optimizer,
+new inference policy or changed query model is executed.
+
+```powershell
+& ..\pointneuron2\tmp\pointneuron2\sampling_env\Scripts\python.exe -B `
+  .\scripts\review_groupnorm_node_fit.py --run .\tmp\groupnorm_node_train_20261031 `
+  --output .\tmp\a_fresh_gn_fit_review
+```
+
+The completed review is `tmp/groupnorm_node_review_final_20261031`; no replay is
+needed. Read the [results](../docs/groupnorm_node_fit_results.md) and
+[unimplemented geometric-query proposal](../docs/geometric_query_proposal.md)
+before choosing another experiment. No further GPU action is scheduled here.

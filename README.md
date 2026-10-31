@@ -172,7 +172,17 @@ passes: all eight updates complete, train/eval centers/logits/scores have zero
 differences at steps 0 and 8, and model/Adam/RNG reload is exact. Second-cycle
 update time is 0.948 seconds; estimated one-fit update time is 25.3-37.9 minutes
 plus overhead. This closes the tested consistency check, not node learning.
-The unchanged single-model 2000-update GN fit is ready for manual launch.
+The user subsequently completed the unchanged 2000-update GN fit.
+
+The [completed GN8 fit review](docs/groupnorm_node_fit_results.md) confirms exact
+train/eval consistency at all five evaluation steps, but the frozen node-learning
+gate fails in all four boxes. Ordinary-inference geometry improves relative to
+the saved BN arm; confidence still accepts many extras, and fruitfly proposal
+geometry also misses targets. No normalization sweep, threshold change or fit
+extension follows. A [prospective geometric-query design](docs/geometric_query_proposal.md)
+specifies image-derived starting locations/features and learned offsets within
+the retained Transformer stage. Its CPU coordinate-only check is disclosed;
+the changed model and any new fit remain unimplemented pending discussion.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

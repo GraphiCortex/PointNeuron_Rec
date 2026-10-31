@@ -1,4 +1,9 @@
-# GN8 CUDA timing: consistency verified, bounded fit ready
+# GN8 CUDA timing: consistency verified, subsequent fit completed
+
+Current status: the user completed the fit described below. **Mode consistency
+passes; node learnability fails.** Read the [fit results](groupnorm_node_fit_results.md)
+before further work. The command below is a preserved execution record, not a
+new run request.
 
 31 October 2026. The user launched
 `tmp/groupnorm_node_timing_20261031_141828/`. **All eight updates completed,
