@@ -2,7 +2,9 @@
 
 31 October 2026; preparation begun 30 October. The user agreed to work through the normalization correction
 after the [failed paired node fits](sampler_node_fit_results.md). **GN8 is now
-implemented and CPU-verified. GPU timing and fresh training remain unlaunched.**
+implemented, CPU-verified and passes the user-launched GPU timing.** The
+[timing review and exact fit command](groupnorm_node_timing_results.md) record
+the next manual action. Full training has not been launched by the agent.
 This is one declared model revision; no sampler, query, target or loss revision
 is included. It does not relabel the BatchNorm checkpoints as successful.
 

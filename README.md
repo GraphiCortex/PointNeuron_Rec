@@ -167,6 +167,13 @@ and synthetic 256/4096-point grids; supervised gradients are finite without an
 optimizer update. Twenty-six focused tests pass. The next action is a manual
 one-worker GN GPU timing check; no GPU or fresh learned fit has been launched.
 
+The [user-launched GN8 GPU timing](docs/groupnorm_node_timing_results.md) now
+passes: all eight updates complete, train/eval centers/logits/scores have zero
+differences at steps 0 and 8, and model/Adam/RNG reload is exact. Second-cycle
+update time is 0.948 seconds; estimated one-fit update time is 25.3-37.9 minutes
+plus overhead. This closes the tested consistency check, not node learning.
+The unchanged single-model 2000-update GN fit is ready for manual launch.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

@@ -18,6 +18,7 @@
 - [Completed paired GPU timing, evidence review and exact bounded-fit command](sampler_node_timing_results.md)
 - [Completed node fits: failed learnability, normalization gap, saved-proposal figures and design implications](sampler_node_fit_results.md)
 - [Implemented normalization-only GN8 control: exact CPU mode consistency and manual timing command](groupnorm_node_control.md)
+- [Passed GN8 GPU timing: zero mode discrepancy, resource measurements and bounded-fit command](groupnorm_node_timing_results.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

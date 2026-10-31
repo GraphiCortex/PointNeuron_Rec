@@ -343,3 +343,8 @@ and full model/Adam/RNG reload, retaining no trained checkpoint. It does not run
 the later 2000-update fit, which requires its own passed GN timing. The completed
 CPU preflight is `tmp/groupnorm_node_cpu_20261030/report.json`; there is no reason
 to rerun it for current source. Generated outputs remain under `tmp`.
+
+The [passed GN GPU timing review](../docs/groupnorm_node_timing_results.md)
+records zero mode differences, measured cost and the exact next training command
+using `tmp/groupnorm_node_timing_20261031_141828`. No timing repeat or source change
+is needed. The agent has not launched the full fit.

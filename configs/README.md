@@ -12,6 +12,10 @@ and two variant source files. The [GN8 control report](../docs/groupnorm_node_co
 records CPU equality/gradient checks, fixed eight-group policy and the next manual
 GPU timing command. No new optimizer/LR/query/target policy is included.
 
+The [user-launched GN timing now passes](../docs/groupnorm_node_timing_results.md),
+including exact mode consistency and state reload. The same frozen config is
+ready for the single-model bounded fit; no setting changed after timing.
+
 [sampler_learnability_inputs.json](sampler_learnability_inputs.json) fixes the
 two-arm, four-training-box input preparation for the
 [learned comparison protocol](../docs/sampler_learnability_protocol.md).

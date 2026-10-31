@@ -1,0 +1,375 @@
+{
+  "status": "completed",
+  "stage": "timing",
+  "method": "pn2_sato",
+  "normalization": "groupnorm8_input_statistics_train_and_eval",
+  "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "torch": "2.12.1+cu130",
+  "cuda_build": "13.0",
+  "recipe_fingerprint": "c058a5764540b94989f3ea789af58e6c18cd774b76c5db90e73d232bdefde67d",
+  "code_identity": {
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+    "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+    "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+    "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+    "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688"
+  },
+  "upstream_identity": {
+    "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+    "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+  },
+  "cap": 8,
+  "updates": 8,
+  "prefix_identity": {
+    "model_state_sha256": "f8e7f23174d3ed2675611758f6e1df2a2d66c05760a6fa18983ef1c48dabd390",
+    "optimizer_state_sha256": "5c4d75056a9ec139646db4eac16d9e5d67acf87dfd91a4503d0f4db78c41215f",
+    "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+  },
+  "checkpoint_reload_passed": true,
+  "update_seconds": [
+    1.9009010000008857,
+    1.0779285000025993,
+    0.9810899000003701,
+    0.9527748999971664,
+    0.9386512999917613,
+    1.0013697999966098,
+    0.9220083999971393,
+    0.9309567000018433
+  ],
+  "elapsed_after_initial_evaluation_seconds": 15.226903300004778,
+  "peak_allocated_bytes": 250566144,
+  "peak_reserved_bytes": 281018368,
+  "normalization_consistency_passed": true,
+  "learnability_gate": null,
+  "estimated_update_minutes": [
+    25.286574666582357,
+    37.92986199987354
+  ],
+  "exit_code": 0,
+  "date": "2026-10-31",
+  "scope": "User-launched GN8 timing: CUDA consistency/reload validation only, not learned-node quality",
+  "raw_directory": "tmp\\groupnorm_node_timing_20261031_141828",
+  "raw_report_sha256": "d68152b3985a0b1670957853977a4c5a865cd313456551d6f536d18a5343a0b8",
+  "warm_cycle_mean_update_seconds": 0.9482465499968384,
+  "raw_files_sha256": {
+    "console.log": "4f860e48a2c8351d06fd9b7164ac75f881bc0e998e06b24cf70f0a4aef557ca9",
+    "evaluation_step000000.json": "9ef865cb01c60f027758fd45d589a56981c0e1b59017760d515c36f082ec2e11",
+    "evaluation_step000008.json": "7b332a2dfa4bbac0921db961bee1854030b1c9b9011ae10f0d9f9eb339116218",
+    "normalization_consistency_step000000.json": "7e4ee9dbd7f489ef8b4b482fd2c1b34e3763c5d131ba07dafa46f870fb9e6b37",
+    "normalization_consistency_step000008.json": "7e4ee9dbd7f489ef8b4b482fd2c1b34e3763c5d131ba07dafa46f870fb9e6b37",
+    "predictions_step000000.npz": "9023934a7da07a43402ef8886b1941451ac807874a6ae358162f6eed7bd55a19",
+    "predictions_step000008.npz": "d2ce0f6f5f0bf67e869a06a50c0aa119eccb36c31d5a361081bb559ebaf779ef",
+    "recipe.json": "c39ce18649553d126260405c28b709870e19563b71505faf917b0a83e7596759",
+    "report.json": "d68152b3985a0b1670957853977a4c5a865cd313456551d6f536d18a5343a0b8",
+    "updates.jsonl": "55e2549a97971faaf02ed61fabca8ab76c9ecb652246f8877b32397c5f4c9b56",
+    "worker_report.json": "e9df5b561ef56b186d7963e672907eb3bf7aaa1d6e10df990f770ba7acca2f6f"
+  },
+  "retained_checkpoints": 0,
+  "evaluations": [
+    {
+      "step": 0,
+      "normalization_consistency": {
+        "passed": true,
+        "records": [
+          {
+            "alias": "fruitfly32",
+            "tile_id": 27,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "fruitfly32",
+            "tile_id": 20,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "frog22",
+            "tile_id": 2,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "frog22",
+            "tile_id": 5,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          }
+        ]
+      },
+      "model_state_sha256": "35d1503b7374d87bbe18f8459cc40e9cc7a2b5a9c439ee69f422602a1ec89e89",
+      "prediction_packet": "predictions_step000000.npz",
+      "prediction_packet_sha256": "9023934a7da07a43402ef8886b1941451ac807874a6ae358162f6eed7bd55a19",
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          },
+          "all_query_recall_2": 0.0
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "normalization_consistency": {
+        "passed": true,
+        "records": [
+          {
+            "alias": "fruitfly32",
+            "tile_id": 27,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "fruitfly32",
+            "tile_id": 20,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "frog22",
+            "tile_id": 2,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          {
+            "alias": "frog22",
+            "tile_id": 5,
+            "fields": {
+              "centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "scores": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          }
+        ]
+      },
+      "model_state_sha256": "f8e7f23174d3ed2675611758f6e1df2a2d66c05760a6fa18983ef1c48dabd390",
+      "prediction_packet": "predictions_step000008.npz",
+      "prediction_packet_sha256": "d2ce0f6f5f0bf67e869a06a50c0aa119eccb36c31d5a361081bb559ebaf779ef",
+      "boxes": [
+        {
+          "alias": "fruitfly32",
+          "tile_id": 27,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 18,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 18
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "fruitfly32",
+          "tile_id": 20,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 85,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 85
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 2,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 7
+          },
+          "all_query_recall_2": 0.0
+        },
+        {
+          "alias": "frog22",
+          "tile_id": 5,
+          "accepted": 0,
+          "node_metrics_2": {
+            "matched": 0,
+            "predicted": 0,
+            "reference": 68,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "extras": 0,
+            "misses": 68
+          },
+          "all_query_recall_2": 0.0
+        }
+      ]
+    }
+  ]
+}
