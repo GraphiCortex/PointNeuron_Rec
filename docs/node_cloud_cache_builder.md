@@ -1,5 +1,10 @@
 # Image-only node cache: implemented and parity-verified
 
+Latest status: the later [fresh-image timing and exact-output block comparison](node_cloud_cache_timing_results.md)
+completed, bringing the cache to 3/40 images. A manual bulk launcher is prepared;
+bulk preparation and broader training have not been launched. The initial
+implementation result below is retained as its original evidence snapshot.
+
 31 October 2026. The raw-image point-cache builder is implemented. **Synthetic
 checks pass; two original training images are cached; all four successful
 learnability inputs replay exactly.** No fresh real-image filter timing, bulk

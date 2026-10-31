@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "candidate_block_side": 128,
+  "baseline_block_side": 64,
+  "script_sha256": "f73eafeaebec1b3b32bbd0e2c951ecff5c11721267ce97dd978402842fea968d",
+  "cache_config": "configs/node_cloud_cache.json",
+  "baseline_timing": {
+    "path": "tmp/node_cloud_cache_timing_20261031_201525/report.json",
+    "sha256": "eaf8e1cf9ee450852bbedce179c244be3d13411dc536f90f8e4d3d526feb8187"
+  },
+  "cpu_preflight": "tmp/node_guide_block_cpu_20261031/report.json"
+}

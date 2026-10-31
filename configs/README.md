@@ -122,3 +122,10 @@ The retained [historical neuron partition](../../pointneuron2/configs/pointneuro
 is reference metadata for the next benchmark specification. Its 33/7/8 groups
 are disjoint within PN2, but all 48 neurons appeared in historical PN1 training.
 Old cache paths must not be assumed to be valid fresh-workspace inputs.
+
+[node_guide_block_compare.json](node_guide_block_compare.json) pins the completed
+single-image block64/block128 execution comparison and exact-output CPU gate.
+[node_cloud_cache_bulk.json](node_cloud_cache_bulk.json) binds the qualified
+block128 result, unchanged image-cache policy and sequential CPU wall budgets.
+Neither changes sampling/model settings or starts a run. See the
+[timing result and manual launch](../docs/node_cloud_cache_timing_results.md).

@@ -1,0 +1,312 @@
+{
+  "status": "passed_current_source_cache_verification",
+  "raw_report": "tmp/node_cloud_cache_timing_20261031_201525/report.json",
+  "raw_report_sha256": "eaf8e1cf9ee450852bbedce179c244be3d13411dc536f90f8e4d3d526feb8187",
+  "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+  "cache_identity": {
+    "schema": "pn2-node-image-cache-v1",
+    "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+    "settings": {
+      "tile_side_voxel": 128,
+      "points_per_box": 2048,
+      "coordinate_scale_voxel": 64.0,
+      "sigmas_voxel": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "uniform_mass": 0.1,
+      "cloud_seed": 0,
+      "ordering_seed": 0
+    },
+    "versions": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "scikit-image": "0.25.2",
+      "psutil": "7.0.0"
+    },
+    "source_sha256": {
+      "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+      "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+      "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+      "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+      "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+      "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+      "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+    }
+  },
+  "cache_progress": {
+    "completed_cases": 3,
+    "expected_cases": 40,
+    "cloud_cache_complete": false,
+    "training_ready": false,
+    "records": [
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "partition": "training",
+        "folder": "training_cdce0c098d137c45",
+        "case_json_sha256": "854dcddb1218fd0f82e9831518cf63e0f99e40da3ff0d8d910c1e39ce8112bc9",
+        "tiles": 16
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "partition": "training",
+        "folder": "training_82e7089936d77c6e",
+        "case_json_sha256": "044ff85ceb42fe056c7a38f3a7e21a8e9910fc0b58771334369da1d558510439",
+        "tiles": 32
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+        "partition": "training",
+        "folder": "training_85781c19a5ba0ec2",
+        "case_json_sha256": "ed8f66c99ee069518505b9be1acdd9f16713690a7d3b98eb0b73fcf3598ee8fe",
+        "tiles": 25
+      }
+    ],
+    "cross_split_duplicate_images": [],
+    "within_partition_duplicate_images": []
+  },
+  "measured_case": {
+    "decode_seconds": 2.0926244000002043,
+    "guide_seconds": 685.736891499997,
+    "sampling_and_save_seconds": 4.564536300007603,
+    "total_seconds": 692.4118764000013,
+    "memory": {
+      "peak_working_set_bytes": 143806464,
+      "kind": "process_peak_working_set",
+      "peak_pagefile_bytes": 1415847936
+    }
+  },
+  "guide_sha256": "042ab2be59f9916d417d0faad9bce33cabf5f59d2463dbc8127432e45e89d55a",
+  "point_packets_verified": 25,
+  "references_opened": 0,
+  "models_executed": 0,
+  "gpu_executed": false,
+  "pending": [
+    {
+      "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "partition": "training",
+      "voxels": 65011712,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "partition": "training",
+      "voxels": 118489088,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+      "partition": "training",
+      "voxels": 92274688,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "partition": "training",
+      "voxels": 54307232,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+      "partition": "training",
+      "voxels": 32104800,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "voxels": 25495552,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+      "partition": "training",
+      "voxels": 14173200,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "partition": "training",
+      "voxels": 125829120,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+      "partition": "training",
+      "voxels": 136314880,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+      "partition": "training",
+      "voxels": 132120576,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+      "partition": "training",
+      "voxels": 41902090,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+      "partition": "training",
+      "voxels": 92274688,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+      "partition": "training",
+      "voxels": 26082720,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "partition": "training",
+      "voxels": 15728640,
+      "reuse_guide": true
+    },
+    {
+      "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+      "partition": "training",
+      "voxels": 109931941,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+      "partition": "training",
+      "voxels": 21120000,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "partition": "training",
+      "voxels": 19840000,
+      "reuse_guide": true
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "partition": "training",
+      "voxels": 42991616,
+      "reuse_guide": true
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+      "partition": "training",
+      "voxels": 51807840,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+      "partition": "training",
+      "voxels": 48557688,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+      "partition": "training",
+      "voxels": 54451800,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+      "partition": "training",
+      "voxels": 101471400,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "partition": "training",
+      "voxels": 51528960,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+      "partition": "training",
+      "voxels": 140221977,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+      "partition": "training",
+      "voxels": 110193062,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "partition": "training",
+      "voxels": 109670820,
+      "reuse_guide": true
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+      "partition": "training",
+      "voxels": 131072000,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "voxels": 123731968,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "voxels": 123731968,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "partition": "training",
+      "voxels": 119537664,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+      "partition": "development",
+      "voxels": 132120576,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+      "partition": "development",
+      "voxels": 10747904,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_human_allen_confocal/in_house1",
+      "partition": "development",
+      "voxels": 163969250,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "partition": "development",
+      "voxels": 12320768,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "partition": "development",
+      "voxels": 24465408,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+      "partition": "development",
+      "voxels": 84546000,
+      "reuse_guide": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+      "partition": "development",
+      "voxels": 110454183,
+      "reuse_guide": false
+    }
+  ],
+  "linear_remaining_filter_hours": 43.0144693503135,
+  "estimate_limitation": "Single thin-image, block64 extrapolation only; shape, CPU load, disk and memory effects unmeasured; excludes decoding/sampling/reuse overhead",
+  "next_step": "User approved one block128 exact-output CPU execution comparison; no bulk or scientific change adopted"
+}

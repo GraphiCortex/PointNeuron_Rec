@@ -222,10 +222,14 @@ The [image-only cache builder](docs/node_cloud_cache_builder.md) is now
 implemented and checked: synthetic whole/disk/reuse parity, 30 passing tests,
 and exact replay of all four successful Sato inputs. Fruitfly 32 and frog 22
 are cached across all 48 image boxes using verified guide copies; no reference
-or model enters generation. Current input-cache progress is 2/40 images.
-The next visible command times one fresh CPU preparation case, neuron 41;
-it does not launch the cohort or training. Target/cache-loader/metric and
-broader model-run implementation remain subsequent work.
+or model enters generation. The subsequent [fresh-image timing and block
+comparison](docs/node_cloud_cache_timing_results.md) completed: current progress
+is 3/40 images and 73 boxes. Processing blocks of 128 produced exactly the same
+guide and all 25 point packets, with 29.3% less observed filter time. The
+remaining 37-image CPU preparation has a verified plan and manual launcher;
+the rough estimate is 30.4 filter hours plus overhead. It has not been launched.
+Target/cache-loader/metric and broader model-run implementation remain
+subsequent work.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

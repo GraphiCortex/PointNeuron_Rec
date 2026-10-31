@@ -463,7 +463,7 @@ describe the completed synthetic check and two-image real replay. All four
 original Sato model inputs match exactly, with all 48 image boxes prepared.
 No replay repeat is needed. Generated cache: `tmp/node_cloud_cache_20261031`.
 
-Next manual action, fresh CPU preparation of one training image only:
+Completed single-image timing command, retained for reference; no repeat needed:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -479,3 +479,26 @@ The completed `-Action check` report is
 `tmp/node_cloud_cache_cpu_20261031/report.json`; the completed `-Action replay`
 report is `tmp/node_cloud_cache_replay_20261031/report.json`. These entry points
 refuse stale policies/existing cases and do not automatically retry failures.
+
+## Remaining image preparation after exact-output block comparison
+
+The [completed comparison](../docs/node_cloud_cache_timing_results.md) found
+byte-identical guides and identical point arrays with block128, using 29.3%
+less observed filter time on Image5. The cache now contains 3/40 images.
+The completed read-only bulk plan schedules 33 fresh filters and four verified
+guide copies, roughly 30.4 filter hours plus overhead. No bulk run is launched.
+
+Next manual CPU command:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_node_cloud_cache_bulk.ps1 -Action prepare `
+  -PlanRun ".\tmp\node_cloud_cache_bulk_plan_20261031" `
+  -Output ".\tmp\node_cloud_cache_bulk_prepare_20261031"
+```
+
+The launcher uses the isolated Phase 1 CPU runtime. One worker runs at a time;
+verified completed cases are skipped and partial cases/failures stop without
+automatic retry or deletion. There is a 72-hour outer wall cap and volume-scaled
+per-case allowances. Outputs remain in the shared cache and the named run folder.
+No references, targets, GPU, training or automatic downstream handoff is involved.

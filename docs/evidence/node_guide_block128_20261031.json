@@ -1,0 +1,195 @@
+{
+  "status": "passed_byte_and_point_parity",
+  "comparison_report": "tmp/node_guide_block128_20261031/report.json",
+  "comparison_report_sha256": "bf3292a48bd0906b161d6cb97cc552e96298d6de5149de6c40954f6e70d98665",
+  "comparison": {
+    "status": "completed",
+    "comparison_fingerprint": "decfa2537d90ff25db2ca40c785180a223fac67f80898d245c9af7de89debeba",
+    "script_sha256": "f73eafeaebec1b3b32bbd0e2c951ecff5c11721267ce97dd978402842fea968d",
+    "cache_identity": {
+      "schema": "pn2-node-image-cache-v1",
+      "image_manifest_sha256": "df955890376a91f7abe8eb1c39d6aa888d85937836e56ed48c4e25721ed72358",
+      "settings": {
+        "tile_side_voxel": 128,
+        "points_per_box": 2048,
+        "coordinate_scale_voxel": 64.0,
+        "sigmas_voxel": [
+          1.0,
+          2.0,
+          4.0
+        ],
+        "uniform_mass": 0.1,
+        "cloud_seed": 0,
+        "ordering_seed": 0
+      },
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "scikit-image": "0.25.2",
+        "psutil": "7.0.0"
+      },
+      "source_sha256": {
+        "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+        "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+        "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+        "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+        "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+        "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+        "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5"
+      }
+    },
+    "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+    "baseline_block_side": 64,
+    "candidate_block_side": 128,
+    "guide_bytes_exact": true,
+    "candidate_guide_sha256": "042ab2be59f9916d417d0faad9bce33cabf5f59d2463dbc8127432e45e89d55a",
+    "baseline_guide_sha256": "042ab2be59f9916d417d0faad9bce33cabf5f59d2463dbc8127432e45e89d55a",
+    "point_packets": [
+      {
+        "tile_id": 0,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 1,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 2,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 3,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 4,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 5,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 6,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 7,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 8,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 9,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 10,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 11,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 12,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 13,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 14,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 15,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 16,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 17,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 18,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 19,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 20,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 21,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 22,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 23,
+        "all_arrays_and_dtypes_exact": true
+      },
+      {
+        "tile_id": 24,
+        "all_arrays_and_dtypes_exact": true
+      }
+    ],
+    "decode_seconds": 2.1778997000074014,
+    "guide_seconds": 484.7298911000107,
+    "baseline_guide_seconds": 685.736891499997,
+    "observed_filter_speed_ratio": 1.4146783684906157,
+    "total_seconds": 489.04500630000257,
+    "execution": {
+      "backend": "disk_separable_v1",
+      "block_side": 128,
+      "kernel_radii_per_axis_pass": [
+        71,
+        11,
+        23
+      ],
+      "dtype": "float32",
+      "boundary_mode": "reflect",
+      "normalization": "unchanged external whole-image transform",
+      "scratch_removed_after_success": true
+    },
+    "peak_working_set_bytes": 191492096,
+    "peak_pagefile_bytes": 1480073216,
+    "references_opened": 0,
+    "models_executed": 0,
+    "gpu_executed": false,
+    "original_cache_modified": false,
+    "comparison_limit": "Same source/operator; baseline was measured earlier, not a contemporaneous controlled timing pair",
+    "exit_code": 0,
+    "wall_timeout_seconds": 3600
+  },
+  "bulk_plan": {
+    "path": "tmp/node_cloud_cache_bulk_plan_20261031/plan.json",
+    "sha256": "509c68c5836abf668536344273017feef817bf51dcbca127b8a6b64f0334f30d",
+    "pending_images": 37,
+    "pending_fresh_filters": 33,
+    "pending_guide_copies": 4,
+    "estimated_remaining_filter_hours": 30.40582955700918,
+    "maximum_case_wall_seconds": 13982,
+    "overall_wall_seconds": 259200
+  },
+  "controller_tests": {
+    "passed": 14,
+    "seconds": 0.57,
+    "scope": "Block parity guards, volume-scaled budgets, duplicate detection, partial-cache and failed-worker handling; no real bulk filters",
+    "powershell_parse": "passed"
+  },
+  "bulk_preparation_launched": false,
+  "source_cache_scientific_policy_changed": false
+}

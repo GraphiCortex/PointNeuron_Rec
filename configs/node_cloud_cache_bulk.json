@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "processing_block_side": 128,
+  "driver_sha256": "e3b48c74c950a8e79d871ac87507a8ecd405df9aa2a2c5d32cb97ad24d0182e3",
+  "cache_config": "configs/node_cloud_cache.json",
+  "comparison_config": "configs/node_guide_block_compare.json",
+  "qualified_comparison": {
+    "path": "tmp/node_guide_block128_20261031/report.json",
+    "sha256": "bf3292a48bd0906b161d6cb97cc552e96298d6de5149de6c40954f6e70d98665"
+  },
+  "overall_wall_seconds": 259200,
+  "reuse_case_wall_seconds": 600,
+  "fresh_case_wall": {
+    "minimum_seconds": 3600,
+    "maximum_seconds": 21600,
+    "measured_time_multiplier": 2.0,
+    "extra_seconds": 600
+  },
+  "purpose": "Execution-only sequential image preparation; 40 explicit cases; completed caches verified/skipped; no retry of partial cases; no model/target/GPUs"
+}
