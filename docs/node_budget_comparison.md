@@ -1,5 +1,11 @@
 # Two-budget proposal study and complete-model timing
 
+Latest status: the user subsequently completed the [two-budget GPU timing](node_budget_timing_results.md).
+Both arms pass, with an 8.068-hour paired update/forward projection and a
+provisional 10–14-hour combined-run allowance. The original preparation record
+below is retained; its 12–24-hour estimate is superseded. Broader input/target/
+loader/metric implementation and integrated timing remain subsequent work.
+
 2 November 2026. The user approved preparing a matched input-budget comparison
 after the full image cache completed. This document specifies the comparison
 and records the implemented, CPU-verified resource-timing step. **The broader

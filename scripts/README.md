@@ -512,8 +512,9 @@ views, target/loader/metric checks and full-model timing are subsequent work.
 
 The [paired-study specification](../docs/node_budget_comparison.md) records
 the proposed 2048/8192 comparison and provisional compute allowance. Four-box
-input preparation and complete-model CPU checks have already passed; no repeat
-is needed. Next manual GPU command:
+input preparation and complete-model CPU checks have already passed. The
+subsequent [GPU timing also passes](../docs/node_budget_timing_results.md).
+Command used, retained as an execution record; no repeat is needed:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"

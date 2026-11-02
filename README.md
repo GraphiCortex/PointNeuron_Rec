@@ -235,8 +235,11 @@ The requested [2048/8192 point-budget comparison](docs/node_budget_comparison.md
 now has a visible paired-study specification and a CPU-verified manual GPU
 resource-timing launcher. Four exposed training-box views replay the 2048 cache
 exactly and retain those locations in the 8192 clouds. Complete-model CPU mode,
-gradient, short-count and reload checks pass. No GPU timing or paired fit has
-been launched; the broader training/metric implementation remains subsequent.
+gradient, short-count and reload checks pass. The user subsequently completed
+the [GPU timing at both budgets](docs/node_budget_timing_results.md): both pass,
+with an 8.068-hour paired update/forward projection before broader loading,
+checkpointing and CPU metric costs. No paired fit has been launched; the broader
+training/metric implementation remains subsequent.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
