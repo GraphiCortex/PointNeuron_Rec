@@ -246,8 +246,11 @@ are now built and verified: all 2379 boxes at both budgets, one shared target
 cache and exact 9200-row schedule, actual 419-target/7650-point CPU model checks,
 and 22 passing data/metric/state tests. A manual integrated GPU timing command
 now measures loading/core scoring across all seven development images. Thin/dim
-profile diagnostics and the final fit/resume launcher remain subsequent; no
-broad training or integrated GPU timing has been launched.
+profile diagnostics and the final fit/resume launcher were completed next.
+The [integrated timing and fit-readiness report](docs/node_budget_fit_ready.md)
+now records both passed full-development timing arms, fixed training-only
+profile diagnostics, 30 passing tests and manual bounded fit/resume commands.
+The provisional paired-run allowance is 10–14 hours. No broad fit has launched.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

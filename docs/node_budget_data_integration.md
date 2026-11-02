@@ -1,5 +1,10 @@
 # Paired data, shared targets and core model integration
 
+Latest status: the integrated timing subsequently passed at both budgets.
+The [profile cache and bounded fit/resume launcher](node_budget_fit_ready.md)
+are now verified and ready for manual launch. The initial integration record
+below is retained; its timing command does not need a repeat.
+
 2 November 2026. The full 2048/8192 comparison data are built and independently
 verified. The real-data CPU model checks, core cohort metrics and exact state
 restore checks pass. **No integrated GPU timing or broad fit has been launched.**

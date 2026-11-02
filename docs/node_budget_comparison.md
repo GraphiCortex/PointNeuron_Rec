@@ -4,8 +4,9 @@ Latest status: the user subsequently completed the [two-budget GPU timing](node_
 Both arms pass, with an 8.068-hour paired update/forward projection and a
 provisional 10–14-hour combined-run allowance. The [broader paired data and core
 integration](node_budget_data_integration.md) now pass CPU checks, with a manual
-integrated GPU timing command prepared. Profile diagnostics and the final fit
-launcher remain subsequent. The original preparation record below is retained;
+integrated GPU timing now passed. The [profile diagnostics and final bounded
+fit/resume launcher](node_budget_fit_ready.md) are ready for manual launch;
+no broader fit has run. The original preparation record below is retained;
 its 12–24-hour estimate is superseded.
 
 2 November 2026. The user approved preparing a matched input-budget comparison

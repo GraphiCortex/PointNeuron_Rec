@@ -530,7 +530,8 @@ mode consistency and exact reload; it cannot launch training. Outputs use
 ## Broad paired data and integrated resource timing
 
 The [full paired-data build and CPU integration](../docs/node_budget_data_integration.md)
-are complete; no preparation repeat is needed. The next manual GPU command is:
+are complete; no preparation repeat is needed. The subsequent integrated GPU
+timing passed. Command used, retained as an execution record; do not repeat:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -549,3 +550,26 @@ verification at `tmp/node_budget_data_verify_20261102`, and real-model CPU proof
 at `tmp/node_budget_data_integration_cpu_20261102`. Neither changes the original
 2048 cache or reruns Sato. Reference-empty boxes stay unknown. Thin/dim profile
 diagnostics and the full fit/resume launcher are subsequent work.
+
+## Ready bounded paired node fits
+
+The [integrated timing, profile cache and fit launcher](../docs/node_budget_fit_ready.md)
+are verified. Next manual command:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_node_budget_fit.ps1 -Action train
+```
+
+Sequential fresh 2048/8192 arms, each 20 epochs/9200 updates across 460
+supervised boxes of 33 training neurons. No development gradients; all seven
+development images scored at epochs 0/5/10/20; terminal training scoring covers
+every image box. Unchanged loss/model/cutoff, frozen training-only profile
+labels and fixed terminal verdict. Planning allowance: 10–14 hours combined;
+worker stop limits 6/12 hours. Full epoch checkpoints, strict manual recovery,
+no automatic retry/extension. Output: `tmp/node_budget_fit_train_<timestamp>`.
+No source filtering or GAT/radius/full-SWC training is involved.
+
+See the report for recovery examples and interpretation limits. The image and
+profile preparation are already complete; the command starts the actual
+broader paired training study. It has not been launched by the agent.

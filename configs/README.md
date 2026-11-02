@@ -143,3 +143,11 @@ the verified data and real-model CPU proof to the next manual GPU integration
 check. It covers eight throwaway updates per arm and all seven development
 images; it has no full-training action. See the
 [integration report and command](../docs/node_budget_data_integration.md).
+
+[node_budget_fit.json](node_budget_fit.json) freezes two independent fresh
+20-epoch/9200-update arms, their passed integrated timing, shared data/profile
+identities, exact model/loss/optimizer settings, epoch checkpoints and runtime
+versions. It records 6/12-hour worker stop limits and a provisional 10–14-hour
+combined planning allowance. The [fit-readiness report](../docs/node_budget_fit_ready.md)
+explains launch, scope and strict stateful recovery. No fit is launched by the
+configuration or CPU preparation.

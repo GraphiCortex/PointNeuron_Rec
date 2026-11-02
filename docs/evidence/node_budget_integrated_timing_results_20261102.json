@@ -1,0 +1,226 @@
+{
+  "status": "passed_saved_integrated_timing_review",
+  "date": "2026-11-02",
+  "raw_report": "tmp\\node_budget_integration_timing_20261102_123748\\report.json",
+  "raw_report_sha256": "44666206d93540cf08cb96b7419db5a97c7883cbd1db9c6bda9ea90ee5d94f7f",
+  "report": {
+    "status": "completed",
+    "control_fingerprint": "3b69cc4bb4baa7c6e5ccdfddb3a4646e3c2a47a2529ee838419d968eeff84ca1",
+    "model_identity": {
+      "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+      "code_identity": {
+        "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+        "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+        "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+        "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+        "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+        "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+        "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+        "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+        "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+        "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+        "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+        "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+        "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+        "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+      },
+      "upstream_identity": {
+        "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+        "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+      }
+    },
+    "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+    "driver_sha256": "df77a5a987a6089bff43458fb43e6381969d466efe0e901425649100d53985fe",
+    "arms": [
+      {
+        "status": "completed",
+        "control_fingerprint": "3b69cc4bb4baa7c6e5ccdfddb3a4646e3c2a47a2529ee838419d968eeff84ca1",
+        "model_identity": {
+          "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+          "code_identity": {
+            "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+            "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+            "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+            "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+            "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+            "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+            "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+            "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+            "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+            "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+            "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+            "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+            "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+            "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+          },
+          "upstream_identity": {
+            "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+            "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+          }
+        },
+        "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+        "driver_sha256": "df77a5a987a6089bff43458fb43e6381969d466efe0e901425649100d53985fe",
+        "budget": 2048,
+        "updates": 8,
+        "initial_state_sha256": "35d1503b7374d87bbe18f8459cc40e9cc7a2b5a9c439ee69f422602a1ec89e89",
+        "update_seconds_including_loader_and_transfer": [
+          2.934389400004875,
+          0.806299299991224,
+          0.7178692000161391,
+          0.6240607000072487,
+          0.6434727000014391,
+          0.683275399991544,
+          0.6510681000072509,
+          0.6393798000062816
+        ],
+        "mean_last_four_update_seconds": 0.6542990000016289,
+        "prefix_identity": {
+          "model_state_sha256": "b6b0f6d55aebb5e4d112077f038b127aaf6489c16d0480130f264f9612ff2ba8",
+          "optimizer_state_sha256": "5d43b448d2a5d5a3bad5e19ca9915c489e922ade71dc552cd5642096129bb945",
+          "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+        },
+        "next_schedule_row": [
+          0,
+          25,
+          32
+        ],
+        "evaluation": {
+          "boxes": 415,
+          "neurons": 7,
+          "inference_seconds": 215.34531879992574,
+          "total_evaluation_seconds": 219.90726409998024,
+          "summary_sha256": "7274ea652be025f8b48979b9f7fea056f9f94114215f248304348af95f9ca4a1",
+          "predictions_sha256": "8f377af67f3d77f52d6e04b5f8407d84a67368a2974c607a5dee35d0f6c33946"
+        },
+        "evaluation_preserved_model_adam_rng": true,
+        "reload_model_adam_rng_cursor_exact": true,
+        "peak_allocated_bytes": 250567168,
+        "peak_reserved_bytes": 285212672,
+        "elapsed_seconds": 228.16861459999927,
+        "trained_checkpoint_retained": false,
+        "quality_gate": null,
+        "profile_metrics_included": false,
+        "projection_update_hours": 1.6720974444486072,
+        "projection_four_development_evaluations_hours": 0.2443414045555336,
+        "limitation": "Eight training boxes and one all-grid development pass; terminal training scoring, profile metrics, checkpoint IO and sustained performance remain unmeasured"
+      },
+      {
+        "status": "completed",
+        "control_fingerprint": "3b69cc4bb4baa7c6e5ccdfddb3a4646e3c2a47a2529ee838419d968eeff84ca1",
+        "model_identity": {
+          "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+          "code_identity": {
+            "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+            "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+            "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+            "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+            "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+            "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+            "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+            "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+            "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+            "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+            "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+            "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+            "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+            "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+          },
+          "upstream_identity": {
+            "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+            "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+          }
+        },
+        "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+        "driver_sha256": "df77a5a987a6089bff43458fb43e6381969d466efe0e901425649100d53985fe",
+        "budget": 8192,
+        "updates": 8,
+        "initial_state_sha256": "35d1503b7374d87bbe18f8459cc40e9cc7a2b5a9c439ee69f422602a1ec89e89",
+        "update_seconds_including_loader_and_transfer": [
+          3.078957599995192,
+          1.656737899989821,
+          1.547095599991735,
+          1.5449318999890238,
+          1.5975172000180464,
+          1.5700515999924392,
+          1.5966579000232741,
+          1.5961813999747392
+        ],
+        "mean_last_four_update_seconds": 1.5901020250021247,
+        "prefix_identity": {
+          "model_state_sha256": "4d1e110c6a0720cf15980b94c6c4e0735daf6e287962b25691315ebc088e42b8",
+          "optimizer_state_sha256": "d35d49289017b3ec536341e617fda4a99b8adbdd64832f54c61af096aa9cd6a7",
+          "rng_sha256": "a60a90d1d8adb106eeaa6763417edb0672d92adffb2f0061ae22865f5d8b67a8"
+        },
+        "next_schedule_row": [
+          0,
+          25,
+          32
+        ],
+        "evaluation": {
+          "boxes": 415,
+          "neurons": 7,
+          "inference_seconds": 566.9726857003407,
+          "total_evaluation_seconds": 572.870969599986,
+          "summary_sha256": "b14a787ae8c95910fc9e2504ee70d545040a7d639b0ac995f088f1ec48f2b4c5",
+          "predictions_sha256": "0f89077fa13a7c12bebe496c8bfaf0fb10b324683b929b87758968271990996f"
+        },
+        "evaluation_preserved_model_adam_rng": true,
+        "reload_model_adam_rng_cursor_exact": true,
+        "peak_allocated_bytes": 659598336,
+        "peak_reserved_bytes": 748683264,
+        "elapsed_seconds": 587.6165725000028,
+        "trained_checkpoint_retained": false,
+        "quality_gate": null,
+        "profile_metrics_included": false,
+        "projection_update_hours": 4.063594063894318,
+        "projection_four_development_evaluations_hours": 0.63652329955554,
+        "limitation": "Eight training boxes and one all-grid development pass; terminal training scoring, profile metrics, checkpoint IO and sustained performance remain unmeasured"
+      }
+    ],
+    "automatic_retry": false,
+    "training_action_exists": false,
+    "learned_quality_comparison": false
+  },
+  "recomputed_resource_rows": [
+    {
+      "budget": 2048,
+      "mean_update_seconds_with_loading_transfer": 0.6542990000016289,
+      "full_development_seconds": 219.90726409998024,
+      "forward_seconds": 215.34531879992574,
+      "update_projection_hours": 1.6720974444486072,
+      "four_development_projection_hours": 0.2443414045555336,
+      "terminal_training_evaluation_extrapolated_hours": 0.2890882641849807,
+      "combined_projection_hours": 2.2055271131891216,
+      "peak_allocated_MiB": 238.95947265625,
+      "peak_reserved_MiB": 272.0,
+      "unknown_boxes": 264,
+      "scored_neurons": 7
+    },
+    {
+      "budget": 8192,
+      "mean_update_seconds_with_loading_transfer": 1.5901020250021247,
+      "full_development_seconds": 572.870969599986,
+      "forward_seconds": 566.9726857003407,
+      "update_projection_hours": 4.063594063894318,
+      "four_development_projection_hours": 0.63652329955554,
+      "terminal_training_evaluation_extrapolated_hours": 0.7530914218837834,
+      "combined_projection_hours": 5.453208785333642,
+      "peak_allocated_MiB": 629.0419921875,
+      "peak_reserved_MiB": 714.0,
+      "unknown_boxes": 264,
+      "scored_neurons": 7
+    }
+  ],
+  "checks": {
+    "current_control_code_data_and_CPU_proof": true,
+    "all_415_boxes_per_arm": true,
+    "update_journals_match_shared_schedule": true,
+    "saved_metric_aggregation_independently_recomputed": true,
+    "exact_initialization_between_arms": true,
+    "reload_and_evaluation_state_preservation_reported_passed": true
+  },
+  "gpu_replay_executed": false,
+  "learned_quality_verdict": null,
+  "user_observed_wall_seconds": 836,
+  "projection_limitation": "Eight updates and one full development pass per arm; terminal training pass is extrapolated; profile scoring, checkpoint IO and sustained performance remain unmeasured"
+}

@@ -1,0 +1,153 @@
+{
+  "status": "ready_for_manual_bounded_fit_not_launched",
+  "date": "2026-11-02",
+  "fit_config": {
+    "path": "configs/node_budget_fit.json",
+    "sha256": "73d8c2c9d5d0a4d3e5d63f2bc1e31f5765aa7d901b5590eeed66867ce805e981"
+  },
+  "fit_control_fingerprint": "17f8209bcc7d45334a430ef3693f62c73160dbd796cbf23d626a19d306643c20",
+  "integrated_timing": {
+    "path": "tmp/node_budget_integration_timing_20261102_123748/report.json",
+    "sha256": "44666206d93540cf08cb96b7419db5a97c7883cbd1db9c6bda9ea90ee5d94f7f"
+  },
+  "profile_manifest": {
+    "path": "tmp/node_budget_profiles_20261102/manifest.json",
+    "sha256": "a4be7c35a9ac03b7604916551b05336785d617aacb51fb69f029e22c1a620c13"
+  },
+  "profile_preparation": {
+    "windows": 45948,
+    "nodes": 27573,
+    "cutoffs": {
+      "width_q25": 3.000205761316873,
+      "contrast_q25": 0.08366013071895424
+    },
+    "seconds": 582.4513483000046,
+    "parameters": {
+      "arc_step_voxel": 4.0,
+      "curve_quadrature_step_voxel": 0.5,
+      "profile_radii_voxel": [
+        1.0,
+        2.0,
+        4.0,
+        8.0
+      ],
+      "half_length_voxel": 2.0,
+      "background_shell_voxel": [
+        8.0,
+        12.0
+      ],
+      "bin_width_voxel": 0.5,
+      "weighted_quantile": 0.25,
+      "node_tangent": "reference chain; unique incident chain for structural endpoints; ambiguous/zero stays unresolved",
+      "contrast_normalization": "whole-source intensity range",
+      "radius_supervision": "none"
+    },
+    "cutoff_partition": "training_only"
+  },
+  "profile_review": {
+    "file": {
+      "path": "tmp/node_budget_profile_review_20261102/report.json",
+      "sha256": "81c04e374eb80d808feb084d554509ce08f04baadf61770eadd5cadfbbc85260"
+    },
+    "result": {
+      "status": "passed",
+      "profile_manifest_sha256": "a4be7c35a9ac03b7604916551b05336785d617aacb51fb69f029e22c1a620c13",
+      "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+      "training_cutoffs_independently_recomputed": {
+        "width_q25": 3.000205761316873,
+        "contrast_q25": 0.08366013071895424
+      },
+      "node_strata_counts": {
+        "training": {
+          "unresolved": 2895,
+          "apparent_thin_dim": 1150,
+          "apparent_thin_bright": 3664,
+          "apparent_thick_dim": 3149,
+          "apparent_thick_bright": 9785
+        },
+        "development": {
+          "unresolved": 489,
+          "apparent_thin_dim": 684,
+          "apparent_thin_bright": 2713,
+          "apparent_thick_dim": 764,
+          "apparent_thick_bright": 2280
+        }
+      },
+      "profile_packets_checked": 2379,
+      "saved_prediction_replay": [
+        {
+          "budget": 2048,
+          "saved_prediction_boxes": 415,
+          "seconds": 3.6181130000040866,
+          "core_node_and_curve_totals_preserved": true
+        },
+        {
+          "budget": 8192,
+          "saved_prediction_boxes": 415,
+          "seconds": 3.7217072999919765,
+          "core_node_and_curve_totals_preserved": true
+        }
+      ],
+      "seconds": 16.357068999990588,
+      "gpu_executed": false,
+      "optimizer_updates": 0,
+      "scope": "Profile cache validation and CPU metric parity on saved eight-update predictions; no learned-quality verdict"
+    }
+  },
+  "test_verification": {
+    "passed": 30,
+    "seconds": 14.73,
+    "runtime": "retained Torch CPU; unrelated pytest plugin autoload disabled for invocation",
+    "powershell_launcher_parse": "passed",
+    "actual_torch_runtime_launch_gates": "passed_no_cuda_context"
+  },
+  "planned_training": {
+    "training_neurons": 33,
+    "development_neurons": 7,
+    "training_supervised_boxes": 460,
+    "training_unknown_boxes": 1504,
+    "development_all_boxes": 415,
+    "epochs_per_arm": 20,
+    "updates_per_arm": 9200,
+    "budgets": [
+      2048,
+      8192
+    ],
+    "queries": 512,
+    "checkpoint_every_updates": 460,
+    "development_steps": [
+      0,
+      2300,
+      4600,
+      9200
+    ],
+    "runtime_versions": {
+      "torch": "2.12.1+cu130",
+      "numpy": "2.4.4",
+      "scipy": "1.15.2",
+      "psutil": "5.9.5"
+    },
+    "worker_timeout_seconds": {
+      "2048": 21600,
+      "8192": 43200
+    },
+    "planning_combined_hours": [
+      10,
+      14
+    ],
+    "phase1_guide_reruns": 0
+  },
+  "source_sha256": {
+    "scripts/node_budget_fit.py": "afc783207b85bfbb612159a898fe06a2e7765aae4433ea364c71e9695f205ecf",
+    "scripts/run_node_budget_fit.ps1": "42f219487ee051b3c00dc7b0076fa02668f4a4ce055d3b5dda6e8a572bc21124",
+    "scripts/prepare_node_profiles.py": "2c8afc0b2a8694254298576cbc50348170a0fc9eea5bba98ddb462aefab5f1fc",
+    "src/pn2/evaluation/node_profiles.py": "865dca2db9064452288c39c9bfb8186f146873b8cfdbb2592164b3a1d63524e5",
+    "src/pn2/evaluation/node_profile_metrics.py": "9c3cff3d8478b7861107def2c570c571727930bbc00b029c6d86534978927e1e",
+    "src/pn2/training/node_fit_eval.py": "dca912ef75486d731d009425d2c687e422b53e80c751c2c0b3680e609273dc5e",
+    "src/pn2/training/process_control.py": "d3bc32847e532ba846be31a36f0dfd20e0a230e30cecd989c63902c8c818bd27"
+  },
+  "free_disk_bytes_at_preflight": 54275674112,
+  "gpu_training_launched": false,
+  "fitted_quality_verdict": null,
+  "final_graph_or_swc_ready": false
+}

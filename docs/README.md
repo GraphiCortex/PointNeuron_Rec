@@ -32,6 +32,7 @@
 - [Matched 2048/8192 proposal-study specification, provisional compute allowance and CPU-verified full-model timing command](node_budget_comparison.md)
 - [Passed two-budget GPU timing: 8.068 projected model hours, measured memory, revised allowance and interpretation limits](node_budget_timing_results.md)
 - [Completed paired clouds/shared targets/loader/core metrics: full data verification, real 419/7650 CPU checks, exact state restore and integrated GPU timing command](node_budget_data_integration.md)
+- [Passed integrated timing, fixed thin/dim diagnostics and ready bounded paired fit/resume commands](node_budget_fit_ready.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)
