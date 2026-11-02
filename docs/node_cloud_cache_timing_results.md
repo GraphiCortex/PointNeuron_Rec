@@ -1,5 +1,10 @@
 # CPU cache timing and exact-output block comparison
 
+Later status, 2 November: the user-launched bulk command and
+[independent completion review](node_cloud_cache_completion.md) passed at
+40/40 images and 2379 boxes. The timing/launch record below is historical;
+do not repeat the preparation command.
+
 31 October 2026. The fresh Image5 preparation completed. An approved
 block64-to-block128 execution comparison then produced a byte-identical Sato
 guide and identical arrays/dtypes for all 25 point packets. Block128 is ready

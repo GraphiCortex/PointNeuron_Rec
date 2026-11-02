@@ -1,8 +1,8 @@
 # Image-only node cache: implemented and parity-verified
 
-Latest status: the later [fresh-image timing and exact-output block comparison](node_cloud_cache_timing_results.md)
-completed, bringing the cache to 3/40 images. A manual bulk launcher is prepared;
-bulk preparation and broader training have not been launched. The initial
+Latest status, 2 November: the [full 40-image cache and independent review](node_cloud_cache_completion.md)
+are complete. The larger point-budget comparison, targets/loader and broader
+training remain subsequent work. The initial
 implementation result below is retained as its original evidence snapshot.
 
 31 October 2026. The raw-image point-cache builder is implemented. **Synthetic

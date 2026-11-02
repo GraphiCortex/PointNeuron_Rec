@@ -488,7 +488,7 @@ less observed filter time on Image5. The cache now contains 3/40 images.
 The completed read-only bulk plan schedules 33 fresh filters and four verified
 guide copies, roughly 30.4 filter hours plus overhead. No bulk run is launched.
 
-Next manual CPU command:
+Preparation command used (now complete at 40/40; do not repeat):
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -502,3 +502,8 @@ verified completed cases are skipped and partial cases/failures stop without
 automatic retry or deletion. There is a 72-hour outer wall cap and volume-scaled
 per-case allowances. Outputs remain in the shared cache and the named run folder.
 No references, targets, GPU, training or automatic downstream handoff is involved.
+
+Completion update, 2 November: [all 40 images and 2379 boxes passed independent
+review](../docs/node_cloud_cache_completion.md). The shared cache and full guides
+are retained; no further preparation command is needed. Larger-budget input
+views, target/loader/metric checks and full-model timing are subsequent work.
