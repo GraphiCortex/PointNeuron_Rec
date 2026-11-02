@@ -1,0 +1,229 @@
+{
+  "status": "paired_data_and_core_integration_passed",
+  "date": "2026-11-02",
+  "data_build": {
+    "path": "tmp/node_budget_data_build_20261102/report.json",
+    "sha256": "ac8ba4043adf1bfc3b7a234526a0b156fe205a16d75d62194e7cfb325f6db0c9",
+    "report": {
+      "status": "completed",
+      "control_fingerprint": "9da1c45f5d38ce82863283fad0966697a58894abdbc0639406e74f02c8ebd03e",
+      "driver_sha256": "0ca9764514076bddda14bd5da2681cfe821b1da7bc7f7ad63cd2cfa99ad62fee",
+      "source_sha256": {
+        "src/pn2/inputs/budget_views.py": "13cf26256c69605ac0c3803a0defb82a7a4558863dac4dbe631b277b91a0f000",
+        "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+        "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+        "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+        "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+        "scripts/plan_node_generalization.py": "ee77f2146b0dfb74fde51559e48b58f629b78a75feb6feb083c39ee6e0313b14"
+      },
+      "data_root": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\node_budget_data_20261102",
+      "manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+      "cases": 40,
+      "counts": {
+        "points_2048": 4872192,
+        "points_8192": 19488226,
+        "training_boxes": 1964,
+        "training_unknown": 1504,
+        "training_reference_present": 460,
+        "development_boxes": 415,
+        "development_unknown": 264,
+        "development_reference_present": 151
+      },
+      "updates_per_arm": 9200,
+      "reference_target_packets": 2379,
+      "filter_reruns": 0,
+      "models_executed": 0,
+      "gpu_executed": false,
+      "reserved_files_opened": 0,
+      "shared_schedule_exactly_matches_prior_plan": true,
+      "training_runner_ready": false,
+      "seconds": 875.2822047999944
+    }
+  },
+  "data_verification": {
+    "path": "tmp/node_budget_data_verify_20261102/report.json",
+    "sha256": "1f55eea507e9b3fea8e04229ef1e5b1ac2cff1935010d437cb6066673d164a72",
+    "report": {
+      "status": "passed",
+      "control_fingerprint": "9da1c45f5d38ce82863283fad0966697a58894abdbc0639406e74f02c8ebd03e",
+      "driver_sha256": "0ca9764514076bddda14bd5da2681cfe821b1da7bc7f7ad63cd2cfa99ad62fee",
+      "source_sha256": {
+        "src/pn2/inputs/budget_views.py": "13cf26256c69605ac0c3803a0defb82a7a4558863dac4dbe631b277b91a0f000",
+        "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+        "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+        "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+        "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+        "scripts/plan_node_generalization.py": "ee77f2146b0dfb74fde51559e48b58f629b78a75feb6feb083c39ee6e0313b14"
+      },
+      "manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+      "counts": {
+        "boxes": 2379,
+        "training_boxes": 1964,
+        "points_2048": 4872192,
+        "points_8192": 19488226,
+        "development_boxes": 415
+      },
+      "schedule_rows": 9200,
+      "models_executed": 0,
+      "gpu_executed": false
+    }
+  },
+  "cpu_model_integration": {
+    "path": "tmp/node_budget_data_integration_cpu_20261102/report.json",
+    "sha256": "3d1b62ea4ab6e95ca17ce457db31cdf4e11f261edd98b10d80b228d7b7a41d63",
+    "report": {
+      "status": "passed",
+      "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+      "data_schedule_sha256": "1b32dbbcff31384fa958d78d0e73be71b41591de39ae508f6ac66145dd711699",
+      "schedule_rows": 9200,
+      "budgets": [
+        {
+          "budget": 2048,
+          "actual_stress_targets": 419,
+          "real_stress_gradients_finite": true,
+          "mode_consistency": {
+            "passed": true,
+            "fields": {
+              "center_proposals": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "local_centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "objectness_logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "radius": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "decoder_features": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          "original_four_clouds_and_targets_exact": true,
+          "core_metric_executes": true
+        },
+        {
+          "budget": 8192,
+          "actual_stress_targets": 419,
+          "real_stress_gradients_finite": true,
+          "mode_consistency": {
+            "passed": true,
+            "fields": {
+              "center_proposals": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "local_centers": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "objectness_logits": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "radius": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              },
+              "decoder_features": {
+                "exact": true,
+                "maximum_absolute_difference": 0.0
+              }
+            }
+          },
+          "original_four_clouds_and_targets_exact": true,
+          "core_metric_executes": true
+        }
+      ],
+      "actual_short_development_input_points": 7650,
+      "short_development_gradient_updates": 0,
+      "empty_reference_loss_abstains": true,
+      "unknown_loader_training_rejected": true,
+      "real_data_optimizer_updates": 0,
+      "synthetic_unique_updates": 2,
+      "synthetic_replayed_updates": 1,
+      "next_synthetic_update_model_adam_rng_exact": true,
+      "gpu_executed": false,
+      "quality_gate": null,
+      "model_identity": {
+        "recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+        "code_identity": {
+          "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+          "scripts/sampler_node_experiment.py": "eb39f900eda76d1b96e827d13abb83b0a685c6b24274f8c8417ff019a55b5de6",
+          "src/pn2/models/node_objective.py": "032755c098a6ff7ab63d6374727ed67649599608f62a4c0f2c3ab954a5ee632d",
+          "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+          "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+          "scripts/pointnext_compact_interpolation.py": "c877e7f6c8ece930ac6651b38e4016b7e56b831701aaf9f6a1a5608919f5bd7e",
+          "scripts/probe_pointnext_capacity.py": "247ce079dfd9729c085cc920334fd2c9a5bc0029054ea5fcc8a27fb597b42e67",
+          "scripts/prepare_sampler_comparison.py": "4497969f68b4f58bf280c2c644e32d3fb567bbd226568d522e1c55c2985f448c",
+          "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+          "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+          "scripts/groupnorm_node_experiment.py": "0c71849f304f9b7345aa3b998d5eedbe97d992695cf899d5d0dbb79d0bebaf0d",
+          "src/pn2/models/groupnorm_encoder.py": "38fc344fa05d5920db83d131e776b96762f1cc37cd485b3389fa3bbf58d46688",
+          "scripts/geometric_query_experiment.py": "dc43c2704eeb0446437f244d38e7186efb18f9f0869af3b0cf58d19af634c022",
+          "src/pn2/models/geometric_queries.py": "b616acc84b12d73943c6a681fb592f648338a6200cbb91dadd3223e4ab883331"
+        },
+        "upstream_identity": {
+          "encoder_config": "766190ce3d0ed0eeb7f9d1d10acc1bfc781ca870e8b2d8e277dbcafec8bc0339",
+          "head": "a868d22b518bc4db5327694643e2cf0175ba5d026b15f8dcdfd78dcae28bd47e"
+        }
+      },
+      "source_sha256": {
+        "scripts/check_node_budget_integration.py": "c2d86a469cb37b21c7bf5fd009ebb7899199dfddf119cfd37596414800e56200",
+        "src/pn2/training/node_runtime.py": "581024fd2acc658269929489f4b8bd55f0fbe0e37a5e43c635e3da1469b98702",
+        "src/pn2/training/node_fit_state.py": "955061a66e2efa7281f357103de45d64c738e0f0ed4f23d61a100a577cfd65cb",
+        "src/pn2/evaluation/node_cohort.py": "e094df57e3889e4bc358fe5c1970d1cd41646d7d579d75dfa5de6ba73b76288f"
+      }
+    }
+  },
+  "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+  "schedule_sha256": "1b32dbbcff31384fa958d78d0e73be71b41591de39ae508f6ac66145dd711699",
+  "counts": {
+    "points_2048": 4872192,
+    "points_8192": 19488226,
+    "training_boxes": 1964,
+    "training_unknown": 1504,
+    "training_reference_present": 460,
+    "development_boxes": 415,
+    "development_unknown": 264,
+    "development_reference_present": 151
+  },
+  "updates_per_arm": 9200,
+  "tests": {
+    "passed": 22,
+    "seconds": 12.16,
+    "runtime": "retained Torch runtime; CPU only; external pytest plugin autoload disabled for this invocation",
+    "powershell_launcher_parse": "passed"
+  },
+  "source_sha256": {
+    "scripts/prepare_node_budget_data.py": "0ca9764514076bddda14bd5da2681cfe821b1da7bc7f7ad63cd2cfa99ad62fee",
+    "scripts/check_node_budget_integration.py": "c2d86a469cb37b21c7bf5fd009ebb7899199dfddf119cfd37596414800e56200",
+    "scripts/node_budget_integration_timing.py": "df77a5a987a6089bff43458fb43e6381969d466efe0e901425649100d53985fe",
+    "src/pn2/inputs/budget_views.py": "13cf26256c69605ac0c3803a0defb82a7a4558863dac4dbe631b277b91a0f000",
+    "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+    "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+    "src/pn2/evaluation/node_cohort.py": "e094df57e3889e4bc358fe5c1970d1cd41646d7d579d75dfa5de6ba73b76288f",
+    "src/pn2/training/node_runtime.py": "581024fd2acc658269929489f4b8bd55f0fbe0e37a5e43c635e3da1469b98702",
+    "src/pn2/training/node_fit_state.py": "955061a66e2efa7281f357103de45d64c738e0f0ed4f23d61a100a577cfd65cb"
+  },
+  "actual_clipped_box": {
+    "case_id": "p_checked6_human_allen_confocal/in_house1",
+    "tile_id": 134,
+    "points": 7650
+  },
+  "all_source_guide_filters_reused": true,
+  "new_model_parameters": 0,
+  "old_model_loss_or_sampler_source_modified": false,
+  "integrated_gpu_timing_launched": false,
+  "broad_training_launched": false,
+  "profile_covariate_cache_implemented": false,
+  "full_fit_launcher_implemented": false,
+  "quality_verdict": null
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "budgets": [
+    2048,
+    8192
+  ],
+  "updates": 8,
+  "driver_sha256": "df77a5a987a6089bff43458fb43e6381969d466efe0e901425649100d53985fe",
+  "source_sha256": {
+    "scripts/check_node_budget_integration.py": "c2d86a469cb37b21c7bf5fd009ebb7899199dfddf119cfd37596414800e56200",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "src/pn2/evaluation/node_cohort.py": "e094df57e3889e4bc358fe5c1970d1cd41646d7d579d75dfa5de6ba73b76288f",
+    "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+    "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+    "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+    "src/pn2/training/node_fit_state.py": "955061a66e2efa7281f357103de45d64c738e0f0ed4f23d61a100a577cfd65cb",
+    "src/pn2/training/node_runtime.py": "581024fd2acc658269929489f4b8bd55f0fbe0e37a5e43c635e3da1469b98702"
+  },
+  "model_config": "configs/geometric_query_fit.json",
+  "model_recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+  "data_root": "tmp/node_budget_data_20261102",
+  "data_manifest_sha256": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+  "cpu_integration": {
+    "path": "tmp/node_budget_data_integration_cpu_20261102/report.json",
+    "sha256": "3d1b62ea4ab6e95ca17ce457db31cdf4e11f261edd98b10d80b228d7b7a41d63"
+  },
+  "data_verification": {
+    "path": "tmp/node_budget_data_verify_20261102/report.json",
+    "sha256": "1f55eea507e9b3fea8e04229ef1e5b1ac2cff1935010d437cb6066673d164a72"
+  },
+  "resource_timing": {
+    "path": "tmp/node_budget_timing_20261102_092848/report.json",
+    "sha256": "b1554327a71113464c05a041745c39955214f4f90659736f1d7216712c0d37cf"
+  },
+  "worker_timeout_seconds": {
+    "2048": 900,
+    "8192": 1800
+  },
+  "purpose": "Manual integrated resource timing only; actual shared training order and all seven development images; no fit or learned-quality verdict"
+}

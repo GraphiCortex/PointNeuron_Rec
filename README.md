@@ -228,8 +228,8 @@ The [full CPU preparation and independent review](docs/node_cloud_cache_completi
 now pass: **40/40 images, 2379 boxes and 4,872,192 stored point observations**.
 All guides and packets pass hash verification; coordinates/features and fallback
 behavior were reviewed. Full guides are retained for the requested point-budget
-comparison. The 2048-point budget remains provisional; target/cache-loader/metric
-and broader model-run implementation remain subsequent work.
+comparison. The 2048-point budget remains provisional; current paired-study
+data and integration progress is described below.
 
 The requested [2048/8192 point-budget comparison](docs/node_budget_comparison.md)
 now has a visible paired-study specification and a CPU-verified manual GPU
@@ -238,8 +238,16 @@ exactly and retain those locations in the 8192 clouds. Complete-model CPU mode,
 gradient, short-count and reload checks pass. The user subsequently completed
 the [GPU timing at both budgets](docs/node_budget_timing_results.md): both pass,
 with an 8.068-hour paired update/forward projection before broader loading,
-checkpointing and CPU metric costs. No paired fit has been launched; the broader
-training/metric implementation remains subsequent.
+checkpointing and CPU metric costs. No paired fit has been launched; current
+data and core-metric integration progress is described below.
+
+The [broader paired data and core integration](docs/node_budget_data_integration.md)
+are now built and verified: all 2379 boxes at both budgets, one shared target
+cache and exact 9200-row schedule, actual 419-target/7650-point CPU model checks,
+and 22 passing data/metric/state tests. A manual integrated GPU timing command
+now measures loading/core scoring across all seven development images. Thin/dim
+profile diagnostics and the final fit/resume launcher remain subsequent; no
+broad training or integrated GPU timing has been launched.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

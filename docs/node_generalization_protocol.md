@@ -9,8 +9,10 @@ explicit before substantial cache/runner implementation.
 
 Current implementation status, 2 November: the [40-image cache and independent
 review](node_cloud_cache_completion.md) are complete, covering all 2379 boxes.
-The broader loader, metrics, reference-target cache and training runner are not
-yet implemented. The user requested a matched larger-point-budget comparison;
+The subsequent [paired-data and core integration](node_budget_data_integration.md)
+now includes the broader loader, shared reference-target cache, core metrics
+and tested state handling. Thin/dim profile diagnostics and the final training
+runner are not yet implemented. The user requested a matched larger-point-budget comparison;
 2048 is a provisional baseline. The original single-budget protocol below is
 retained as a proposal, not an approved launch recipe or selected final budget.
 

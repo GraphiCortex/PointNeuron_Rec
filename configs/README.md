@@ -135,3 +135,11 @@ resource diagnostic at 2048 and 8192 points in the unchanged complete geometric
 model, using four exposed training boxes. It binds the input/CPU proof paths,
 model identity and 600-second per-arm GPU stop limit. It is not a training recipe;
 see the [paired-study and timing specification](../docs/node_budget_comparison.md).
+
+[node_budget_data.json](node_budget_data.json) pins the completed larger-cloud
+and shared-target preparation, cohort identities and exact exposure plan.
+[node_budget_integration_timing.json](node_budget_integration_timing.json) binds
+the verified data and real-model CPU proof to the next manual GPU integration
+check. It covers eight throwaway updates per arm and all seven development
+images; it has no full-training action. See the
+[integration report and command](../docs/node_budget_data_integration.md).

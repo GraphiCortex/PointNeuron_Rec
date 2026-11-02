@@ -526,3 +526,26 @@ Eight throwaway updates per budget, same fresh model/optimizer settings and
 retained trained checkpoint. The command measures updates, inference, memory,
 mode consistency and exact reload; it cannot launch training. Outputs use
 `tmp/node_budget_timing_<timestamp>` and the retained Torch runtime.
+
+## Broad paired data and integrated resource timing
+
+The [full paired-data build and CPU integration](../docs/node_budget_data_integration.md)
+are complete; no preparation repeat is needed. The next manual GPU command is:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_node_budget_integration_timing.ps1
+```
+
+Two fresh budgets, eight throwaway training updates each, then all 415
+development boxes inferred/scored with no gradients. Uses the real loader,
+shared targets/schedule, core metrics and budget/data/cursor-bound state reload.
+Rough forward-only estimate: 15 minutes for both development passes; actual
+integration overhead is being measured. Per-worker stop limits: 15/30 minutes.
+Outputs: `tmp/node_budget_integration_timing_<timestamp>`. No fit or retry action.
+
+The CPU data build is retained at `tmp/node_budget_data_build_20261102`, its
+verification at `tmp/node_budget_data_verify_20261102`, and real-model CPU proof
+at `tmp/node_budget_data_integration_cpu_20261102`. Neither changes the original
+2048 cache or reruns Sato. Reference-empty boxes stay unknown. Thin/dim profile
+diagnostics and the full fit/resume launcher are subsequent work.

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "budgets": [
+    2048,
+    8192
+  ],
+  "epochs": 20,
+  "seed": 0,
+  "target_step_voxel": 8.0,
+  "query_capacity": 512,
+  "driver_sha256": "0ca9764514076bddda14bd5da2681cfe821b1da7bc7f7ad63cd2cfa99ad62fee",
+  "source_sha256": {
+    "src/pn2/inputs/budget_views.py": "13cf26256c69605ac0c3803a0defb82a7a4558863dac4dbe631b277b91a0f000",
+    "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+    "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "scripts/plan_node_generalization.py": "ee77f2146b0dfb74fde51559e48b58f629b78a75feb6feb083c39ee6e0313b14"
+  },
+  "cache_root": "tmp/node_cloud_cache_20261031",
+  "cache_config": {
+    "path": "configs/node_cloud_cache.json",
+    "sha256": "65732a509108e224c09fae08261637372e500f52bc41757412249704f795a120"
+  },
+  "completion_review": {
+    "path": "docs/evidence/node_cloud_cache_completion_20261102.json",
+    "sha256": "b9e21b6c91b93bd0a42e9cbbad0fb5001fdf820ccc2b6a94368e0300cc050457"
+  },
+  "cohort_preflight": {
+    "path": "tmp/node_cohort_preflight_20261031/report.json",
+    "sha256": "23fe208e7b0829caef1f07a44554b3e0f24367fe31ad60ea7a93d90d39aa33ee"
+  },
+  "references": {
+    "path": "configs/node_generalization_references.json",
+    "sha256": "b7cce67eb31b058f49172a883bf2d294403e2babd133834360c0b3bc1808d6aa"
+  },
+  "exposure_plan": {
+    "path": "tmp/node_generalization_plan_cache_stage_20261031/report.json",
+    "sha256": "faa0c2e8a6b17564a9c48b386059a65f0448c5125dff6370ac4b045dad3d354c"
+  },
+  "worker_timeout_seconds": 3600,
+  "purpose": "Image-only cloud supersets, separate shared targets, exact paired schedule; no filter/model/GPU/training"
+}
