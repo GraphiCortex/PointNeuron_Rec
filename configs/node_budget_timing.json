@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "budgets": [
+    2048,
+    8192
+  ],
+  "box_order": [
+    [
+      "fruitfly32",
+      27
+    ],
+    [
+      "fruitfly32",
+      20
+    ],
+    [
+      "frog22",
+      2
+    ],
+    [
+      "frog22",
+      5
+    ]
+  ],
+  "updates_per_arm": 8,
+  "script_sha256": "30ac2b7508ff5364b6348c93c28eae9167a16c30a2086dd8bfb8ae7e30911a7b",
+  "short_box_policy": "min_budget_source_voxels_without_padding",
+  "cache_root": "tmp/node_cloud_cache_20261031",
+  "cache_config": "configs/node_cloud_cache.json",
+  "completion_evidence": "docs/evidence/node_cloud_cache_completion_20261102.json",
+  "completion_evidence_sha256": "b9e21b6c91b93bd0a42e9cbbad0fb5001fdf820ccc2b6a94368e0300cc050457",
+  "geometric_config": "configs/geometric_query_fit.json",
+  "geometric_config_sha256": "c04d3dc8a876dbcf7a88c02fd9c75ff3fa63c3614bbf7203e9caaeb317b7eeba",
+  "model_recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+  "packet_manifest": "tmp/node_budget_timing_inputs_20261102/manifest.json",
+  "cpu_preflight": "tmp/node_budget_timing_cpu_20261102/report.json",
+  "gpu_worker_timeout_seconds": 600,
+  "purpose": "Complete-model two-budget resource timing only; no broad fit, learned comparison or trained checkpoint"
+}

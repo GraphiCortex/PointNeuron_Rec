@@ -129,3 +129,9 @@ single-image block64/block128 execution comparison and exact-output CPU gate.
 block128 result, unchanged image-cache policy and sequential CPU wall budgets.
 Neither changes sampling/model settings or starts a run. See the
 [timing result and manual launch](../docs/node_cloud_cache_timing_results.md).
+
+[node_budget_timing.json](node_budget_timing.json) declares the eight-update
+resource diagnostic at 2048 and 8192 points in the unchanged complete geometric
+model, using four exposed training boxes. It binds the input/CPU proof paths,
+model identity and 600-second per-arm GPU stop limit. It is not a training recipe;
+see the [paired-study and timing specification](../docs/node_budget_comparison.md).

@@ -1,0 +1,176 @@
+{
+  "status": "prepared_and_cpu_verified",
+  "date": "2026-11-02",
+  "config": {
+    "schema_version": 1,
+    "budgets": [
+      2048,
+      8192
+    ],
+    "box_order": [
+      [
+        "fruitfly32",
+        27
+      ],
+      [
+        "fruitfly32",
+        20
+      ],
+      [
+        "frog22",
+        2
+      ],
+      [
+        "frog22",
+        5
+      ]
+    ],
+    "updates_per_arm": 8,
+    "script_sha256": "30ac2b7508ff5364b6348c93c28eae9167a16c30a2086dd8bfb8ae7e30911a7b",
+    "short_box_policy": "min_budget_source_voxels_without_padding",
+    "cache_root": "tmp/node_cloud_cache_20261031",
+    "cache_config": "configs/node_cloud_cache.json",
+    "completion_evidence": "docs/evidence/node_cloud_cache_completion_20261102.json",
+    "completion_evidence_sha256": "b9e21b6c91b93bd0a42e9cbbad0fb5001fdf820ccc2b6a94368e0300cc050457",
+    "geometric_config": "configs/geometric_query_fit.json",
+    "geometric_config_sha256": "c04d3dc8a876dbcf7a88c02fd9c75ff3fa63c3614bbf7203e9caaeb317b7eeba",
+    "model_recipe_fingerprint": "8014d80e283c0872cf8d8ef7168631f2402bbdff979a2c200b5f63d88072ed55",
+    "packet_manifest": "tmp/node_budget_timing_inputs_20261102/manifest.json",
+    "cpu_preflight": "tmp/node_budget_timing_cpu_20261102/report.json",
+    "gpu_worker_timeout_seconds": 600,
+    "purpose": "Complete-model two-budget resource timing only; no broad fit, learned comparison or trained checkpoint"
+  },
+  "input_manifest": "tmp/node_budget_timing_inputs_20261102/manifest.json",
+  "input_manifest_sha256": "37951945f3f97821d99de45a16fcda9fe6d31eaef9487e43b719aa7e08fc05ac",
+  "cpu_report": "tmp\\node_budget_timing_cpu_20261102\\report.json",
+  "cpu_report_sha256": "86ca377391b3fa3fd64b88758a7a145c9a6f4bbd7cf55e3fe1298e9f98b3a962",
+  "cpu_checks": {
+    "budget_checks": [
+      {
+        "points": 2048,
+        "queries": 512,
+        "consistency": {
+          "passed": true,
+          "fields": {
+            "center_proposals": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "local_centers": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "objectness_logits": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "radius": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "decoder_features": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            }
+          }
+        },
+        "gradients_finite": true
+      },
+      {
+        "points": 8192,
+        "queries": 512,
+        "consistency": {
+          "passed": true,
+          "fields": {
+            "center_proposals": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "local_centers": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "objectness_logits": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "radius": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            },
+            "decoder_features": {
+              "exact": true,
+              "maximum_absolute_difference": 0.0
+            }
+          }
+        },
+        "gradients_finite": true
+      }
+    ],
+    "short_synthetic_points": 7650,
+    "synthetic_target_stress": 419,
+    "synthetic_optimizer_updates": 1,
+    "real_optimizer_updates": 0,
+    "reload_passed": true,
+    "gpu_executed": false
+  },
+  "input_pair_checks": [
+    {
+      "alias": "fruitfly32",
+      "tile_id": 27,
+      "training": true,
+      "baseline_points": 2048,
+      "larger_points": 8192,
+      "targets": 18,
+      "target_xyz_exact_between_budgets": true,
+      "baseline_source_ids_subset_of_larger": true
+    },
+    {
+      "alias": "fruitfly32",
+      "tile_id": 20,
+      "training": true,
+      "baseline_points": 2048,
+      "larger_points": 8192,
+      "targets": 85,
+      "target_xyz_exact_between_budgets": true,
+      "baseline_source_ids_subset_of_larger": true
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 2,
+      "training": true,
+      "baseline_points": 2048,
+      "larger_points": 8192,
+      "targets": 7,
+      "target_xyz_exact_between_budgets": true,
+      "baseline_source_ids_subset_of_larger": true
+    },
+    {
+      "alias": "frog22",
+      "tile_id": 5,
+      "training": true,
+      "baseline_points": 2048,
+      "larger_points": 8192,
+      "targets": 68,
+      "target_xyz_exact_between_budgets": true,
+      "baseline_source_ids_subset_of_larger": true
+    }
+  ],
+  "controller_tests": {
+    "passed": 5,
+    "seconds": 1.15,
+    "powershell_parse": "passed"
+  },
+  "gpu_timing_launched": false,
+  "training_action_exists": false,
+  "broader_training_runner_implemented": false,
+  "planning_only": {
+    "updates_per_broader_arm": 9200,
+    "paired_updates": 18400,
+    "paired_gpu_hours_provisional": [
+      12,
+      24
+    ],
+    "limitation": "8192 complete-model GPU cost and broader metric/loading/IO cost are unmeasured"
+  }
+}

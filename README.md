@@ -231,6 +231,13 @@ behavior were reviewed. Full guides are retained for the requested point-budget
 comparison. The 2048-point budget remains provisional; target/cache-loader/metric
 and broader model-run implementation remain subsequent work.
 
+The requested [2048/8192 point-budget comparison](docs/node_budget_comparison.md)
+now has a visible paired-study specification and a CPU-verified manual GPU
+resource-timing launcher. Four exposed training-box views replay the 2048 cache
+exactly and retain those locations in the 8192 clouds. Complete-model CPU mode,
+gradient, short-count and reload checks pass. No GPU timing or paired fit has
+been launched; the broader training/metric implementation remains subsequent.
+
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps
 across components. Their graph-label interpretation needs verification; the

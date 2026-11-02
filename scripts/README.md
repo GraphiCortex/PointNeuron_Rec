@@ -507,3 +507,21 @@ Completion update, 2 November: [all 40 images and 2379 boxes passed independent
 review](../docs/node_cloud_cache_completion.md). The shared cache and full guides
 are retained; no further preparation command is needed. Larger-budget input
 views, target/loader/metric checks and full-model timing are subsequent work.
+
+## Two-budget complete-model resource timing
+
+The [paired-study specification](../docs/node_budget_comparison.md) records
+the proposed 2048/8192 comparison and provisional compute allowance. Four-box
+input preparation and complete-model CPU checks have already passed; no repeat
+is needed. Next manual GPU command:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_node_budget_timing.ps1 -Action timing
+```
+
+Eight throwaway updates per budget, same fresh model/optimizer settings and
+18/85/7/68 targets. Each fresh GPU worker allows 600 seconds, with no retry or
+retained trained checkpoint. The command measures updates, inference, memory,
+mode consistency and exact reload; it cannot launch training. Outputs use
+`tmp/node_budget_timing_<timestamp>` and the retained Torch runtime.
