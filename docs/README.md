@@ -36,6 +36,7 @@
 - [Completed point-budget study: both screening gates fail; duration remains unresolved](node_budget_fit_results.md)
 - [Implemented consistent node objective: mathematical/CPU checks, limitations and manual GPU timing](consistent_node_objective.md)
 - [Passed objective GPU timing and ready five-epoch paired continuation: exact state, full-grid scoring and manual launch](consistent_node_fit_ready.md)
+- [Completed paired continuation: candidate improves precision/F1 but loses recall and curve support; screening fails](consistent_node_fit_results.md)
 - [Evidence audit and PN1 comparison limitations](research_reset_evidence.md)
 - [Common benchmark and manifest contract](benchmark_contract.md)
 - [Image-only input interface and verification](image_input_interface.md)

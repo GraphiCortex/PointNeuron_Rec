@@ -596,8 +596,10 @@ execution, not learnability or reconstruction improvement.
 
 ## Five-epoch objective comparison: ready manual fit
 
-The user passed objective GPU timing and agreed to prepare the
-[bounded paired continuation](../docs/consistent_node_fit_ready.md). Next command:
+The user passed objective GPU timing and completed the
+[bounded paired continuation](../docs/consistent_node_fit_ready.md). Its
+[accuracy screening failed](../docs/consistent_node_fit_results.md). The command
+below is retained for reproducibility, not a request to rerun it:
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"

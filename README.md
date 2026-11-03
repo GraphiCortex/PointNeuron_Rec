@@ -262,7 +262,11 @@ CPU tests and a zero-update full-model gradient audit pass; no learned gain is
 claimed. The user has now passed objective GPU timing. The
 [five-epoch paired continuation](docs/consistent_node_fit_ready.md) is prepared
 with a manual launch command, fixed caps and full-grid evaluation. No further
-fit has launched; it tests accuracy against an equally extended baseline.
+fit had launched at preparation time. The user has now
+[completed that comparison](docs/consistent_node_fit_results.md): the candidate
+improves precision/F1 but loses recall and continuous-curve support, so it fails
+the agreed screening and is not adopted. The unchanged-objective continuation
+modestly improves training accuracy; no convergence or graph/SWC gain is established.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

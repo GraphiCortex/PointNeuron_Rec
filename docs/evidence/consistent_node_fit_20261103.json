@@ -1,0 +1,163 @@
+{
+  "source_report": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\consistent_node_fit_train_20261103_155059\\report.json",
+  "source_report_sha256": "3acb77f63997cfc754e7fb5c54d2cdd7de478a5e84cd5ee592fede5b3a3babfb",
+  "config_fingerprint": "83fca433dfd81f6d0aed5c893eaef0c0441f9ab157fecbf7254c555634ecb6d7",
+  "status": "completed",
+  "comparison": {
+    "origin_epoch20": {
+      "training": {
+        "precision": 0.07648714976481119,
+        "recall": 0.2988717254009485,
+        "f1": 0.1186561516333311,
+        "curve_support": 0.32633824206752043
+      },
+      "development": {
+        "precision": 0.03193432807586044,
+        "recall": 0.25683867652100595,
+        "f1": 0.053960311511581975,
+        "curve_support": 0.2964876572299704
+      }
+    },
+    "terminal": {
+      "training": {
+        "baseline": {
+          "precision": 0.09908949439471786,
+          "recall": 0.32510389759914265,
+          "f1": 0.14823482957837583,
+          "curve_support": 0.3402589781998554
+        },
+        "consistent": {
+          "precision": 0.19706956954804036,
+          "recall": 0.1816916495894242,
+          "f1": 0.18471971093104755,
+          "curve_support": 0.2086416902843063
+        }
+      },
+      "development": {
+        "baseline": {
+          "precision": 0.04656438253639985,
+          "recall": 0.24485943114170214,
+          "f1": 0.07388874886905537,
+          "curve_support": 0.27195664562631033
+        },
+        "consistent": {
+          "precision": 0.1587649330300228,
+          "recall": 0.15337801236721324,
+          "f1": 0.1479943685481824,
+          "curve_support": 0.179393538894364
+        }
+      }
+    },
+    "consistent_minus_baseline": {
+      "training": {
+        "precision": 0.09798007515332251,
+        "recall": -0.14341224800971847,
+        "f1": 0.03648488135267172,
+        "curve_support": -0.1316172879155491
+      },
+      "development": {
+        "precision": 0.11220055049362293,
+        "recall": -0.0914814187744889,
+        "f1": 0.07410561967912703,
+        "curve_support": -0.09256310673194634
+      }
+    },
+    "terminal_minus_origin": {
+      "training": {
+        "baseline": {
+          "precision": 0.022602344629906665,
+          "recall": 0.02623217219819418,
+          "f1": 0.029578677945044735,
+          "curve_support": 0.013920736132334965
+        },
+        "consistent": {
+          "precision": 0.12058241978322917,
+          "recall": -0.11718007581152429,
+          "f1": 0.06606355929771646,
+          "curve_support": -0.11769655178321414
+        }
+      },
+      "development": {
+        "baseline": {
+          "precision": 0.014630054460539409,
+          "recall": -0.01197924537930381,
+          "f1": 0.0199284373574734,
+          "curve_support": -0.024531011603660058
+        },
+        "consistent": {
+          "precision": 0.12683060495416235,
+          "recall": -0.10346066415379271,
+          "f1": 0.09403405703660042,
+          "curve_support": -0.1170941183356064
+        }
+      }
+    },
+    "prospective_candidate_screening": {
+      "training_precision_and_recall_improve": false,
+      "development_f1_improves_without_recall_loss": false,
+      "development_curve_support_does_not_decline": false,
+      "meaning": "Warm-start pilot screening only; no biological, convergence or SWC certification"
+    },
+    "candidate_screening_passed": false
+  },
+  "checks": [
+    {
+      "method": "baseline",
+      "terminal_checkpoint_sha256": "8655e085d7c60abb24f1fb761c34f7ab76d3764e5450eb6c8fdbaac47c9aa211",
+      "full_state_validated": true,
+      "metrics_and_predictions_hashes_validated": true,
+      "absolute_screening": {
+        "training_reference_present_macro_precision_2": 0.09908949439471786,
+        "training_reference_present_macro_recall_2": 0.32510389759914265,
+        "development_full_grid": {
+          "macro_precision": 0.04656438253639985,
+          "macro_recall": 0.24485943114170214,
+          "macro_f1": 0.07388874886905537,
+          "minimum_neuron_f1": 0.015217391304347827,
+          "pooled_reference_agreement": {
+            "matched": 1606,
+            "predicted": 39542,
+            "reference": 6930,
+            "precision": 0.04061504223357443,
+            "recall": 0.23174603174603176,
+            "f1": 0.06911688758822516
+          }
+        },
+        "broader_training_gate": false,
+        "development_pilot_gate": false,
+        "meaning": "Prospective engineering screening only; not biological certification, independent test or final SWC quality"
+      }
+    },
+    {
+      "method": "consistent",
+      "terminal_checkpoint_sha256": "e126e25c7e5101a948e818e6a8710612fa0f6bd88856d65fa7487f6e0a488db4",
+      "full_state_validated": true,
+      "metrics_and_predictions_hashes_validated": true,
+      "absolute_screening": {
+        "training_reference_present_macro_precision_2": 0.19706956954804036,
+        "training_reference_present_macro_recall_2": 0.1816916495894242,
+        "development_full_grid": {
+          "macro_precision": 0.1587649330300228,
+          "macro_recall": 0.15337801236721324,
+          "macro_f1": 0.1479943685481824,
+          "minimum_neuron_f1": 0.04994054696789536,
+          "pooled_reference_agreement": {
+            "matched": 1086,
+            "predicted": 6209,
+            "reference": 6930,
+            "precision": 0.17490739249476567,
+            "recall": 0.15670995670995672,
+            "f1": 0.16530938427582006
+          }
+        },
+        "broader_training_gate": false,
+        "development_pilot_gate": false,
+        "meaning": "Prospective engineering screening only; not biological certification, independent test or final SWC quality"
+      }
+    }
+  ],
+  "observed_user_wall_time": "3h15m43s",
+  "improved_reconstruction_established": false,
+  "candidate_adopted": false,
+  "further_training_started": false
+}
