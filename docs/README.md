@@ -1,5 +1,7 @@
 # Active PN2 documents
 
+- [Current full research context, accepted/frozen status and remaining work — 3 November](research_handoff_20261103.md)
+
 - [Revised research proposal and development path](revised_proposal.md)
 - [PN2 Phase 1 design draft and original raw-image inspection](pn2_phase1_design.md)
 - [First CPU sampling comparison: fixed protocol and stopping rules](phase1_sampling_protocol.md)
