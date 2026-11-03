@@ -1,0 +1,1739 @@
+{
+  "status": "completed",
+  "audit_seconds": 421.59191049999936,
+  "baseline_seconds": 180.35453140000027,
+  "scope": {
+    "training_neurons": 33,
+    "development_neurons": 7,
+    "reference_present_boxes": 611,
+    "reference_phase_controls": 40,
+    "classical_training_contexts": 5,
+    "classical_development_neurons": 7,
+    "classical_image_boxes": 608
+  },
+  "validation": {
+    "status": "passed",
+    "config_fingerprint": "fc0c29a105815b00b7d11bdbd8e49496024a6b6ae0cf29ceb02bb84e6b3eb488",
+    "audit_report_sha256": "8da9e60708ca7f6b1ae5690f3bc87b919d06cd33ce6844b989e5ba45147350a8",
+    "audit_rows_sha256": "7164f0433ec7d174f015cf8d47106f6e4bc7778fe772defd3c106d9393af2079",
+    "classical_report_sha256": "735afd2848523bc998405f72d65260d518f96005f84ca490bb0a69224e279168",
+    "reference_present_boxes_verified": 611,
+    "reference_phase_controls_passed": 40,
+    "classical_cases_verified": 12,
+    "full_classical_development_cases": 7,
+    "real_box_scorer_comparison": [
+      {
+        "alias": 32,
+        "tile": 20,
+        "maximum_scorer_difference": 0.0
+      },
+      {
+        "alias": 94,
+        "tile": 14,
+        "maximum_scorer_difference": 0.0
+      }
+    ],
+    "model_training_or_filter_executed": false,
+    "curve_geometry_is_topology_certification": false
+  },
+  "input_and_prediction_summary": {
+    "training": {
+      "neurons": 33,
+      "input": {
+        "2048": {
+          "2.0": 0.7110012440585911,
+          "6.0": 0.9919175426957652,
+          "8.0": 0.9978447102736733
+        },
+        "8192": {
+          "2.0": 0.9282150070781601,
+          "6.0": 0.9996277947839857,
+          "8.0": 0.9999664213393089
+        }
+      },
+      "input_profile_strata": {
+        "2048": {
+          "unresolved": {
+            "2.0": 0.5547596153357923,
+            "6.0": 0.9707836058555032,
+            "8.0": 0.9938775261507473
+          },
+          "apparent_thin_dim": {
+            "2.0": 0.3986782692168121,
+            "6.0": 0.9523038770720047,
+            "8.0": 0.9850655599554604
+          },
+          "apparent_thin_bright": {
+            "2.0": 0.7093248608502886,
+            "6.0": 0.9875844298616265,
+            "8.0": 0.9968388663145411
+          },
+          "apparent_thick_dim": {
+            "2.0": 0.48424817401256787,
+            "6.0": 0.9835235319122366,
+            "8.0": 0.9964489450449451
+          },
+          "apparent_thick_bright": {
+            "2.0": 0.7779238311390096,
+            "6.0": 0.9982899570853494,
+            "8.0": 0.9997766637475476
+          }
+        },
+        "8192": {
+          "unresolved": {
+            "2.0": 0.7970190018246174,
+            "6.0": 0.9978337957756704,
+            "8.0": 0.9998079346527488
+          },
+          "apparent_thin_dim": {
+            "2.0": 0.7017042599007705,
+            "6.0": 0.998803606600628,
+            "8.0": 0.9999857080490221
+          },
+          "apparent_thin_bright": {
+            "2.0": 0.9370400959194277,
+            "6.0": 0.999867133542012,
+            "8.0": 1.0
+          },
+          "apparent_thick_dim": {
+            "2.0": 0.7952961384632605,
+            "6.0": 0.9998633459170954,
+            "8.0": 1.0
+          },
+          "apparent_thick_bright": {
+            "2.0": 0.9635753570968584,
+            "6.0": 1.0,
+            "8.0": 1.0
+          }
+        }
+      },
+      "predictions": {
+        "epoch20_2048": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.0712940836800048,
+            "near_reference_grid_fraction_2": 0.03092871279218397,
+            "one_to_one_node_precision_2": 0.024125317438221203,
+            "one_to_one_node_recall_2": 0.312823501844797,
+            "outside_box_fraction": 0.06730330921696356,
+            "on_curve_beyond_grid_fraction_2": 0.04036537088782083,
+            "curve_to_nodes_support_2": 0.33858614832299105,
+            "curve_to_nodes_support_6": 0.9331605411846042
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.2215889772388375,
+            "near_reference_grid_fraction_2": 0.09684896044279401,
+            "one_to_one_node_precision_2": 0.07648714976481119,
+            "one_to_one_node_recall_2": 0.2988717254009485,
+            "outside_box_fraction": 0.03159898141207477,
+            "on_curve_beyond_grid_fraction_2": 0.12474001679604348,
+            "curve_to_nodes_support_2": 0.3263382420675204,
+            "curve_to_nodes_support_6": 0.894315939610789
+          }
+        },
+        "epoch20_8192": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.04707951091824397,
+            "near_reference_grid_fraction_2": 0.020547210470160154,
+            "one_to_one_node_precision_2": 0.018032377875134273,
+            "one_to_one_node_recall_2": 0.23553458044398404,
+            "outside_box_fraction": 0.12341674537895025,
+            "on_curve_beyond_grid_fraction_2": 0.026532300448083822,
+            "curve_to_nodes_support_2": 0.24657461298364847,
+            "curve_to_nodes_support_6": 0.9285214648264593
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.18830291472754598,
+            "near_reference_grid_fraction_2": 0.083618905391805,
+            "one_to_one_node_precision_2": 0.07438739738569682,
+            "one_to_one_node_recall_2": 0.21966802755068246,
+            "outside_box_fraction": 0.03632394325836003,
+            "on_curve_beyond_grid_fraction_2": 0.10468400933574099,
+            "curve_to_nodes_support_2": 0.22970928257027662,
+            "curve_to_nodes_support_6": 0.8995382078430638
+          }
+        },
+        "epoch25_consistent": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.0739185429551488,
+            "near_reference_grid_fraction_2": 0.032892113612040544,
+            "one_to_one_node_precision_2": 0.02468219036453902,
+            "one_to_one_node_recall_2": 0.32210939752750156,
+            "outside_box_fraction": 0.06727460185991462,
+            "on_curve_beyond_grid_fraction_2": 0.04102642934310826,
+            "curve_to_nodes_support_2": 0.3448390819258749,
+            "curve_to_nodes_support_6": 0.9284964461387626
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.47668066439401535,
+            "near_reference_grid_fraction_2": 0.21411077275994855,
+            "one_to_one_node_precision_2": 0.19706956954804036,
+            "one_to_one_node_recall_2": 0.1816916495894242,
+            "outside_box_fraction": 0.022159723721763988,
+            "on_curve_beyond_grid_fraction_2": 0.2625698916340668,
+            "curve_to_nodes_support_2": 0.2086416902843063,
+            "curve_to_nodes_support_6": 0.7686176662551316
+          }
+        },
+        "epoch25_original": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.08287109263682758,
+            "near_reference_grid_fraction_2": 0.03742594711565008,
+            "one_to_one_node_precision_2": 0.02679455060867858,
+            "one_to_one_node_recall_2": 0.3499914582438517,
+            "outside_box_fraction": 0.09577332958317118,
+            "on_curve_beyond_grid_fraction_2": 0.045445145521177496,
+            "curve_to_nodes_support_2": 0.36176811622160215,
+            "curve_to_nodes_support_6": 0.9334245740730259
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.2840327209340298,
+            "near_reference_grid_fraction_2": 0.12978194745574864,
+            "one_to_one_node_precision_2": 0.09908949439471786,
+            "one_to_one_node_recall_2": 0.32510389759914265,
+            "outside_box_fraction": 0.05289768462504435,
+            "on_curve_beyond_grid_fraction_2": 0.15425077347828117,
+            "curve_to_nodes_support_2": 0.3402589781998554,
+            "curve_to_nodes_support_6": 0.8828912133641981
+          }
+        }
+      },
+      "reference_target_graph_oracle_f1_2": 0.998179957711572,
+      "reference_target_grid_point_support_2": 0.5647162668624228
+    },
+    "development": {
+      "neurons": 7,
+      "input": {
+        "2048": {
+          "2.0": 0.702393099738379,
+          "6.0": 0.9844554723543416,
+          "8.0": 0.9957137948842506
+        },
+        "8192": {
+          "2.0": 0.9198241334769204,
+          "6.0": 0.9993415074274221,
+          "8.0": 0.9999964587384236
+        }
+      },
+      "input_profile_strata": {
+        "2048": {
+          "unresolved": {
+            "2.0": 0.5005303097173784,
+            "6.0": 0.9699792642474802,
+            "8.0": 0.9946532216711034
+          },
+          "apparent_thin_dim": {
+            "2.0": 0.4055915376345718,
+            "6.0": 0.9748017135001887,
+            "8.0": 0.9932457059701116
+          },
+          "apparent_thin_bright": {
+            "2.0": 0.7516249379379435,
+            "6.0": 0.9915413695899377,
+            "8.0": 0.998293857915732
+          },
+          "apparent_thick_dim": {
+            "2.0": 0.4529068533297507,
+            "6.0": 0.9730554034110762,
+            "8.0": 0.9936498342658947
+          },
+          "apparent_thick_bright": {
+            "2.0": 0.7750592784435222,
+            "6.0": 0.9948992367358175,
+            "8.0": 0.9989094240415907
+          }
+        },
+        "8192": {
+          "unresolved": {
+            "2.0": 0.7278294833892046,
+            "6.0": 0.9968481413894654,
+            "8.0": 1.0
+          },
+          "apparent_thin_dim": {
+            "2.0": 0.8323291711753102,
+            "6.0": 0.9985453975600258,
+            "8.0": 0.9999657014062755
+          },
+          "apparent_thin_bright": {
+            "2.0": 0.9519085268300184,
+            "6.0": 1.0,
+            "8.0": 1.0
+          },
+          "apparent_thick_dim": {
+            "2.0": 0.8597624347056056,
+            "6.0": 0.9992895276861742,
+            "8.0": 1.0
+          },
+          "apparent_thick_bright": {
+            "2.0": 0.9694283897620719,
+            "6.0": 1.0,
+            "8.0": 1.0
+          }
+        }
+      },
+      "predictions": {
+        "epoch20_2048": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.07604342639467387,
+            "near_reference_grid_fraction_2": 0.03273424114527945,
+            "one_to_one_node_precision_2": 0.026490576166105402,
+            "one_to_one_node_recall_2": 0.2765191262930777,
+            "outside_box_fraction": 0.07122777396214895,
+            "on_curve_beyond_grid_fraction_2": 0.04330918524939442,
+            "curve_to_nodes_support_2": 0.3150625220753301,
+            "curve_to_nodes_support_6": 0.9038851956217622
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.20450846221767413,
+            "near_reference_grid_fraction_2": 0.0881774225994894,
+            "one_to_one_node_precision_2": 0.07063676134574383,
+            "one_to_one_node_recall_2": 0.25683867652100595,
+            "outside_box_fraction": 0.03647503329153529,
+            "on_curve_beyond_grid_fraction_2": 0.11633103961818472,
+            "curve_to_nodes_support_2": 0.2964876572299704,
+            "curve_to_nodes_support_6": 0.8405156856583013
+          }
+        },
+        "epoch20_8192": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.054629465516562295,
+            "near_reference_grid_fraction_2": 0.023028966161526644,
+            "one_to_one_node_precision_2": 0.019956777233742957,
+            "one_to_one_node_recall_2": 0.19806106755584044,
+            "outside_box_fraction": 0.12472930959889125,
+            "on_curve_beyond_grid_fraction_2": 0.031600499355035644,
+            "curve_to_nodes_support_2": 0.22938495467793435,
+            "curve_to_nodes_support_6": 0.9041717403004333
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.16626413711099056,
+            "near_reference_grid_fraction_2": 0.06917302161315003,
+            "one_to_one_node_precision_2": 0.06152406202007449,
+            "one_to_one_node_recall_2": 0.18415148184475566,
+            "outside_box_fraction": 0.03517966964005313,
+            "on_curve_beyond_grid_fraction_2": 0.09709111549784051,
+            "curve_to_nodes_support_2": 0.21356462501296392,
+            "curve_to_nodes_support_6": 0.8507115427243239
+          }
+        },
+        "epoch25_consistent": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.07674078064073024,
+            "near_reference_grid_fraction_2": 0.03343192425853716,
+            "one_to_one_node_precision_2": 0.026259661387559575,
+            "one_to_one_node_recall_2": 0.26762096956293674,
+            "outside_box_fraction": 0.07202459418941273,
+            "on_curve_beyond_grid_fraction_2": 0.04330885638219307,
+            "curve_to_nodes_support_2": 0.3008642218738914,
+            "curve_to_nodes_support_6": 0.890158829342449
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.4818267926227654,
+            "near_reference_grid_fraction_2": 0.21826151735043794,
+            "one_to_one_node_precision_2": 0.20310552303355814,
+            "one_to_one_node_recall_2": 0.15337801236721324,
+            "outside_box_fraction": 0.02724014624792118,
+            "on_curve_beyond_grid_fraction_2": 0.2635652752723275,
+            "curve_to_nodes_support_2": 0.179393538894364,
+            "curve_to_nodes_support_6": 0.6354458844938611
+          }
+        },
+        "epoch25_original": {
+          "all": {
+            "on_reference_geometry_fraction_2": 0.08221456557835086,
+            "near_reference_grid_fraction_2": 0.03584374399961598,
+            "one_to_one_node_precision_2": 0.027260213884457835,
+            "one_to_one_node_recall_2": 0.2770496570566378,
+            "outside_box_fraction": 0.0993157235139972,
+            "on_curve_beyond_grid_fraction_2": 0.04637082157873489,
+            "curve_to_nodes_support_2": 0.30668785969661977,
+            "curve_to_nodes_support_6": 0.8976419375457969
+          },
+          "accepted": {
+            "on_reference_geometry_fraction_2": 0.25846753578774373,
+            "near_reference_grid_fraction_2": 0.11284231145315012,
+            "one_to_one_node_precision_2": 0.090130479614132,
+            "one_to_one_node_recall_2": 0.24485943114170214,
+            "outside_box_fraction": 0.059080893659813,
+            "on_curve_beyond_grid_fraction_2": 0.14562522433459363,
+            "curve_to_nodes_support_2": 0.2719566456263103,
+            "curve_to_nodes_support_6": 0.8249640205027425
+          }
+        }
+      },
+      "reference_target_graph_oracle_f1_2": 0.9975176193472043,
+      "reference_target_grid_point_support_2": 0.5510725909140126
+    }
+  },
+  "context_summary": {
+    "development/e_checked7_utokyo_fly": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.6815915716412781,
+          "6.0": 0.9953431982865084,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9647162389651777,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.06312625250501001,
+          "curve_to_nodes_support_2": 0.2016513905774009,
+          "on_curve_beyond_grid_fraction_2": 0.03507014028056112
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.06321493076459964,
+          "curve_to_nodes_support_2": 0.1617667923219371,
+          "on_curve_beyond_grid_fraction_2": 0.03853100541842264
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.26066350710900477,
+          "curve_to_nodes_support_2": 0.18932044887457475,
+          "on_curve_beyond_grid_fraction_2": 0.15165876777251186
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.0986013986013986,
+          "curve_to_nodes_support_2": 0.21293319853895876,
+          "on_curve_beyond_grid_fraction_2": 0.05314685314685315
+        }
+      }
+    },
+    "development/p_checked6_frog_scrippts": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.7446900131809225,
+          "6.0": 0.992189796084465,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9417557608985915,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.34572490706319703,
+          "curve_to_nodes_support_2": 0.44387597439063453,
+          "on_curve_beyond_grid_fraction_2": 0.19649495485926713
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.28,
+          "curve_to_nodes_support_2": 0.33360094492457154,
+          "on_curve_beyond_grid_fraction_2": 0.159375
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.610337972166998,
+          "curve_to_nodes_support_2": 0.24953308869444746,
+          "on_curve_beyond_grid_fraction_2": 0.31411530815109345
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.461034231609614,
+          "curve_to_nodes_support_2": 0.4032153630239226,
+          "on_curve_beyond_grid_fraction_2": 0.25054624908958484
+        }
+      }
+    },
+    "development/p_checked6_human_allen_confocal": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.638161616261057,
+          "6.0": 0.9800708798777742,
+          "8.0": 0.9955243846270212
+        },
+        "8192": {
+          "2.0": 0.8935240966583741,
+          "6.0": 0.9985832550999227,
+          "8.0": 0.9999752111689649
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.09297415977030907,
+          "curve_to_nodes_support_2": 0.16466305107443338,
+          "on_curve_beyond_grid_fraction_2": 0.0559027191352812
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.10940919037199125,
+          "curve_to_nodes_support_2": 0.16170663981615283,
+          "on_curve_beyond_grid_fraction_2": 0.06412329940062791
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.4696969696969697,
+          "curve_to_nodes_support_2": 0.12050739115929264,
+          "on_curve_beyond_grid_fraction_2": 0.27515151515151515
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.1088334742180896,
+          "curve_to_nodes_support_2": 0.1475525439064203,
+          "on_curve_beyond_grid_fraction_2": 0.06456043956043957
+        }
+      }
+    },
+    "development/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.7746851463928366,
+          "6.0": 0.9993781502542687,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9568436336313634,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.13333333333333333,
+          "curve_to_nodes_support_2": 0.2643818432387502,
+          "on_curve_beyond_grid_fraction_2": 0.07909604519774012
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.13160987074030553,
+          "curve_to_nodes_support_2": 0.2660755563505681,
+          "on_curve_beyond_grid_fraction_2": 0.06227967097532315
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.6190476190476191,
+          "curve_to_nodes_support_2": 0.16710623725661067,
+          "on_curve_beyond_grid_fraction_2": 0.34285714285714286
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.22762645914396887,
+          "curve_to_nodes_support_2": 0.2651543077492737,
+          "on_curve_beyond_grid_fraction_2": 0.1245136186770428
+        }
+      }
+    },
+    "development/p_checked6_mouse_RGC_uw": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.7580164808168868,
+          "6.0": 0.9962342863957243,
+          "8.0": 0.999319923195993
+        },
+        "8192": {
+          "2.0": 0.9576689832537099,
+          "6.0": 0.9995541141440908,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.34036892515076267,
+          "curve_to_nodes_support_2": 0.40471067304798225,
+          "on_curve_beyond_grid_fraction_2": 0.19528201489890032
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.32704886494805696,
+          "curve_to_nodes_support_2": 0.3395418446696937,
+          "on_curve_beyond_grid_fraction_2": 0.18949595998460947
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.6078132927447996,
+          "curve_to_nodes_support_2": 0.2789296526494043,
+          "on_curve_beyond_grid_fraction_2": 0.3378995433789954
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.47248205351316075,
+          "curve_to_nodes_support_2": 0.42163161283462597,
+          "on_curve_beyond_grid_fraction_2": 0.2734391994779204
+        }
+      }
+    },
+    "development/p_checked6_zebrafish_adult_RGC_UW": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.38617556744483084,
+          "6.0": 0.9279719955816507,
+          "8.0": 0.9751522563667401
+        },
+        "8192": {
+          "2.0": 0.7258039326647758,
+          "6.0": 0.9972531827479423,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.06343906510851419,
+          "curve_to_nodes_support_2": 0.06608367873624256,
+          "on_curve_beyond_grid_fraction_2": 0.038397328881469114
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.076993583868011,
+          "curve_to_nodes_support_2": 0.06800997567400782,
+          "on_curve_beyond_grid_fraction_2": 0.051329055912007336
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.21518987341772153,
+          "curve_to_nodes_support_2": 0.033464104343557545,
+          "on_curve_beyond_grid_fraction_2": 0.08227848101265822
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.08154020385050963,
+          "curve_to_nodes_support_2": 0.06311557791401483,
+          "on_curve_beyond_grid_fraction_2": 0.04190260475651189
+        }
+      }
+    },
+    "development/p_checked7_janelia_flylight_part1": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.9334313024308413,
+          "6.0": 1.0,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9984562882664509,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.3925925925925926,
+          "curve_to_nodes_support_2": 0.5300469895443486,
+          "on_curve_beyond_grid_fraction_2": 0.21407407407407408
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.17557251908396945,
+          "curve_to_nodes_support_2": 0.16425062133381635,
+          "on_curve_beyond_grid_fraction_2": 0.11450381679389313
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.5900383141762452,
+          "curve_to_nodes_support_2": 0.21689384928266076,
+          "on_curve_beyond_grid_fraction_2": 0.34099616858237547
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.3591549295774648,
+          "curve_to_nodes_support_2": 0.39009391541695565,
+          "on_curve_beyond_grid_fraction_2": 0.2112676056338028
+        }
+      }
+    },
+    "training/e_checked6_chick_uw": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.43972810372906174,
+          "6.0": 0.9680649943740969,
+          "8.0": 0.9908073669432881
+        },
+        "8192": {
+          "2.0": 0.794122336482555,
+          "6.0": 0.9972791779794764,
+          "8.0": 0.9997070860493382
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.11836388623595,
+          "curve_to_nodes_support_2": 0.11915398602584278,
+          "on_curve_beyond_grid_fraction_2": 0.06831880055398948
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.13803205672141958,
+          "curve_to_nodes_support_2": 0.12177205966564757,
+          "on_curve_beyond_grid_fraction_2": 0.07778521932783065
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.23167412206794835,
+          "curve_to_nodes_support_2": 0.09857123090658226,
+          "on_curve_beyond_grid_fraction_2": 0.13537891310623817
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.1563393780763025,
+          "curve_to_nodes_support_2": 0.12727476897550996,
+          "on_curve_beyond_grid_fraction_2": 0.08738584819387551
+        }
+      }
+    },
+    "training/e_checked6_zebrafish_larve_RGC_UW": {
+      "neurons": 4,
+      "input": {
+        "2048": {
+          "2.0": 0.4712610023986218,
+          "6.0": 0.9936542329397547,
+          "8.0": 0.9997034906407732
+        },
+        "8192": {
+          "2.0": 0.8592035335556893,
+          "6.0": 0.9999539153831959,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.0631077905136509,
+          "curve_to_nodes_support_2": 0.09272697816888724,
+          "on_curve_beyond_grid_fraction_2": 0.0402802183061237
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.10161120533026133,
+          "curve_to_nodes_support_2": 0.1248342947342092,
+          "on_curve_beyond_grid_fraction_2": 0.057940656393342956
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.2324083473496568,
+          "curve_to_nodes_support_2": 0.08906605537969492,
+          "on_curve_beyond_grid_fraction_2": 0.1357557023191496
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.09910281913963459,
+          "curve_to_nodes_support_2": 0.10328665213381097,
+          "on_curve_beyond_grid_fraction_2": 0.05778701648865249
+        }
+      }
+    },
+    "training/e_checked7_utokyo_fly": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.6548943183720405,
+          "6.0": 0.9937737717968167,
+          "8.0": 0.9986305898008401
+        },
+        "8192": {
+          "2.0": 0.9286168274309733,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.12975134448701922,
+          "curve_to_nodes_support_2": 0.17546238792044666,
+          "on_curve_beyond_grid_fraction_2": 0.07321433000630631
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.12220817065667039,
+          "curve_to_nodes_support_2": 0.17077178414044206,
+          "on_curve_beyond_grid_fraction_2": 0.06466055133377278
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.3814379021145939,
+          "curve_to_nodes_support_2": 0.15576974324602252,
+          "on_curve_beyond_grid_fraction_2": 0.20411056501282066
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.1637640816936309,
+          "curve_to_nodes_support_2": 0.20443628046877296,
+          "on_curve_beyond_grid_fraction_2": 0.08590380674473293
+        }
+      }
+    },
+    "training/p_checked6_frog_scrippts": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.5909454124312642,
+          "6.0": 0.9722015417386294,
+          "8.0": 0.9903184026202434
+        },
+        "8192": {
+          "2.0": 0.8781715638452434,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.1502659574468085,
+          "curve_to_nodes_support_2": 0.30797607060149995,
+          "on_curve_beyond_grid_fraction_2": 0.07579787234042554
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.138353765323993,
+          "curve_to_nodes_support_2": 0.196393022903313,
+          "on_curve_beyond_grid_fraction_2": 0.09106830122591944
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.3008849557522124,
+          "curve_to_nodes_support_2": 0.20568083503944684,
+          "on_curve_beyond_grid_fraction_2": 0.15486725663716813
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.18926974664679583,
+          "curve_to_nodes_support_2": 0.3317753602645133,
+          "on_curve_beyond_grid_fraction_2": 0.09538002980625931
+        }
+      }
+    },
+    "training/p_checked6_fruitfly_larvae_gmu": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.8924003967597679,
+          "6.0": 0.9998088931089298,
+          "8.0": 0.9999725114017197
+        },
+        "8192": {
+          "2.0": 0.9938614345088698,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.25425121690699476,
+          "curve_to_nodes_support_2": 0.43415263538883847,
+          "on_curve_beyond_grid_fraction_2": 0.14769050359143618
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.2982147349068615,
+          "curve_to_nodes_support_2": 0.47248037628568024,
+          "on_curve_beyond_grid_fraction_2": 0.16841330879424102
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.5582881933607481,
+          "curve_to_nodes_support_2": 0.3249335990341073,
+          "on_curve_beyond_grid_fraction_2": 0.3232867663097485
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.39381667290581984,
+          "curve_to_nodes_support_2": 0.49528744699016913,
+          "on_curve_beyond_grid_fraction_2": 0.22502986603173603
+        }
+      }
+    },
+    "training/p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.7602566154157696,
+          "6.0": 0.9973024399686695,
+          "8.0": 0.9998093540495514
+        },
+        "8192": {
+          "2.0": 0.9692735132140989,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.07239629931666143,
+          "curve_to_nodes_support_2": 0.2686184644047746,
+          "on_curve_beyond_grid_fraction_2": 0.040152290095003484
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.10360031210387895,
+          "curve_to_nodes_support_2": 0.33175113104466886,
+          "on_curve_beyond_grid_fraction_2": 0.0554436785405194
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.5389367624724716,
+          "curve_to_nodes_support_2": 0.20884456514380587,
+          "on_curve_beyond_grid_fraction_2": 0.29383657977380884
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.1427154142949417,
+          "curve_to_nodes_support_2": 0.30668932740706367,
+          "on_curve_beyond_grid_fraction_2": 0.07276188842686622
+        }
+      }
+    },
+    "training/p_checked6_janelia_flylight_part2": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.9794807868064643,
+          "6.0": 1.0,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9964766350371321,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.45585874799357945,
+          "curve_to_nodes_support_2": 0.49854152212122016,
+          "on_curve_beyond_grid_fraction_2": 0.23434991974317818
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.14814814814814814,
+          "curve_to_nodes_support_2": 0.1904608586846407,
+          "on_curve_beyond_grid_fraction_2": 0.08373590982286634
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.754863813229572,
+          "curve_to_nodes_support_2": 0.4123417952704488,
+          "on_curve_beyond_grid_fraction_2": 0.377431906614786
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.45306859205776173,
+          "curve_to_nodes_support_2": 0.43540729100114356,
+          "on_curve_beyond_grid_fraction_2": 0.22563176895306858
+        }
+      }
+    },
+    "training/p_checked6_mouse_RGC_uw": {
+      "neurons": 2,
+      "input": {
+        "2048": {
+          "2.0": 0.7962109505701138,
+          "6.0": 0.9961130739256222,
+          "8.0": 0.9987561318446754
+        },
+        "8192": {
+          "2.0": 0.9752099494494941,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.33879925584327075,
+          "curve_to_nodes_support_2": 0.4736406144775397,
+          "on_curve_beyond_grid_fraction_2": 0.19122029833493276
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.34317130715479527,
+          "curve_to_nodes_support_2": 0.4172476265521836,
+          "on_curve_beyond_grid_fraction_2": 0.1959811392215933
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.642727027661157,
+          "curve_to_nodes_support_2": 0.33102924550393903,
+          "on_curve_beyond_grid_fraction_2": 0.3552644059166222
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.47241414543931176,
+          "curve_to_nodes_support_2": 0.4947617742790563,
+          "on_curve_beyond_grid_fraction_2": 0.2582156917763698
+        }
+      }
+    },
+    "training/p_checked6_silkmoth_utokyo": {
+      "neurons": 2,
+      "input": {
+        "2048": {
+          "2.0": 0.7395595369773453,
+          "6.0": 0.9976425150253152,
+          "8.0": 0.9994324100902077
+        },
+        "8192": {
+          "2.0": 0.9479965796483533,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.4186171910675256,
+          "curve_to_nodes_support_2": 0.3604585085588534,
+          "on_curve_beyond_grid_fraction_2": 0.2308315119325764
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.27146527751079674,
+          "curve_to_nodes_support_2": 0.12076212982481663,
+          "on_curve_beyond_grid_fraction_2": 0.1381002268271116
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.5568377911993098,
+          "curve_to_nodes_support_2": 0.211108332185043,
+          "on_curve_beyond_grid_fraction_2": 0.29233175150992236
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.42810330105935623,
+          "curve_to_nodes_support_2": 0.36255238156666136,
+          "on_curve_beyond_grid_fraction_2": 0.2279139485961152
+        }
+      }
+    },
+    "training/p_checked6_zebrafish_adult_RGC_UW": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.4808405101770548,
+          "6.0": 0.9745513728156473,
+          "8.0": 0.9919021744639704
+        },
+        "8192": {
+          "2.0": 0.8322125385828066,
+          "6.0": 0.9986880108001058,
+          "8.0": 0.9999235486830598
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.09557779976833582,
+          "curve_to_nodes_support_2": 0.1133724993595351,
+          "on_curve_beyond_grid_fraction_2": 0.05441676607072846
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.11241476005181539,
+          "curve_to_nodes_support_2": 0.12402501891683715,
+          "on_curve_beyond_grid_fraction_2": 0.06223462229449563
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.27856371184380063,
+          "curve_to_nodes_support_2": 0.08213437789037893,
+          "on_curve_beyond_grid_fraction_2": 0.1600062802823673
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.11361451946901797,
+          "curve_to_nodes_support_2": 0.10970808794649889,
+          "on_curve_beyond_grid_fraction_2": 0.05920382906914862
+        }
+      }
+    },
+    "training/p_checked6_zebrafish_horizontal_cells_UW": {
+      "neurons": 1,
+      "input": {
+        "2048": {
+          "2.0": 0.6509983588757439,
+          "6.0": 0.998444841368249,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9393061326798846,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.0935412026726058,
+          "curve_to_nodes_support_2": 0.15575052936303257,
+          "on_curve_beyond_grid_fraction_2": 0.05270972531551596
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.13625971650663007,
+          "curve_to_nodes_support_2": 0.18086590381913,
+          "on_curve_beyond_grid_fraction_2": 0.0722450845907636
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.42857142857142855,
+          "curve_to_nodes_support_2": 0.12664600018829789,
+          "on_curve_beyond_grid_fraction_2": 0.2532467532467532
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.17402768622280818,
+          "curve_to_nodes_support_2": 0.1492275704905252,
+          "on_curve_beyond_grid_fraction_2": 0.09887936717205009
+        }
+      }
+    },
+    "training/p_checked7_janelia_flylight_part1": {
+      "neurons": 3,
+      "input": {
+        "2048": {
+          "2.0": 0.9729675597253161,
+          "6.0": 1.0,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 1.0,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.3394070766957122,
+          "curve_to_nodes_support_2": 0.5274119994118383,
+          "on_curve_beyond_grid_fraction_2": 0.1748214418988793
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.15578985099763945,
+          "curve_to_nodes_support_2": 0.215571408278913,
+          "on_curve_beyond_grid_fraction_2": 0.0720552634154205
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.6592181868161058,
+          "curve_to_nodes_support_2": 0.3322006449239651,
+          "on_curve_beyond_grid_fraction_2": 0.34746923185615824
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.38635953374413096,
+          "curve_to_nodes_support_2": 0.5128751978750734,
+          "on_curve_beyond_grid_fraction_2": 0.18821363855454917
+        }
+      }
+    },
+    "training/p_checked7_taiwan_flycirciut": {
+      "neurons": 4,
+      "input": {
+        "2048": {
+          "2.0": 0.9204422496483993,
+          "6.0": 1.0,
+          "8.0": 1.0
+        },
+        "8192": {
+          "2.0": 0.9949134397351648,
+          "6.0": 1.0,
+          "8.0": 1.0
+        }
+      },
+      "accepted_predictions": {
+        "epoch20_2048": {
+          "on_reference_geometry_fraction_2": 0.4540658536651069,
+          "curve_to_nodes_support_2": 0.7133179474650644,
+          "on_curve_beyond_grid_fraction_2": 0.26812403661544315
+        },
+        "epoch20_8192": {
+          "on_reference_geometry_fraction_2": 0.34118422726579023,
+          "curve_to_nodes_support_2": 0.28205362818116,
+          "on_curve_beyond_grid_fraction_2": 0.20145493091257036
+        },
+        "epoch25_consistent": {
+          "on_reference_geometry_fraction_2": 0.7432555160756821,
+          "curve_to_nodes_support_2": 0.273151322138146,
+          "on_curve_beyond_grid_fraction_2": 0.412195093568096
+        },
+        "epoch25_original": {
+          "on_reference_geometry_fraction_2": 0.572359698947053,
+          "curve_to_nodes_support_2": 0.7288869524057757,
+          "on_curve_beyond_grid_fraction_2": 0.3278700952723987
+        }
+      }
+    }
+  },
+  "classical_summary": {
+    "neurons": [
+      {
+        "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+        "alias": 19,
+        "partition": "development",
+        "source_group": "e_checked7_utokyo_fly",
+        "variants": {
+          "raw": {
+            "reference_length": 1748.202027837749,
+            "predicted_length": 7265.895989641518,
+            "unknown_box_prediction_length": 682.4337334084867,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.23237516830172578,
+                "recall": 0.8243291666149499,
+                "full_grid_f1": 0.3625491492722511,
+                "reference_present_precision": 0.25646289714158244
+              },
+              "6.0": {
+                "full_grid_precision": 0.34594871934687965,
+                "recall": 0.9951782108485951,
+                "full_grid_f1": 0.5134199005530522,
+                "reference_present_precision": 0.38180934509714587
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 1748.202027837749,
+            "predicted_length": 7218.4586544474105,
+            "unknown_box_prediction_length": 674.1412046686037,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.2333852465318553,
+                "recall": 0.8225217919366973,
+                "full_grid_f1": 0.3636010447802061,
+                "reference_present_precision": 0.2574266553504605
+              },
+              "6.0": {
+                "full_grid_precision": 0.34746521812709336,
+                "recall": 0.9948922027145018,
+                "full_grid_f1": 0.5150497637393878,
+                "reference_present_precision": 0.38325819768931724
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "alias": 22,
+        "partition": "training",
+        "source_group": "p_checked6_frog_scrippts",
+        "variants": {
+          "raw": {
+            "reference_length": 972.9005042238595,
+            "predicted_length": 575.7725084343258,
+            "unknown_box_prediction_length": 113.18947232398898,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.1881141743959444,
+                "recall": 0.16107392662079384,
+                "full_grid_f1": 0.17354708613929046,
+                "reference_present_precision": 0.2341438436107511
+              },
+              "6.0": {
+                "full_grid_precision": 0.22360523532491655,
+                "recall": 0.33056589129537883,
+                "full_grid_f1": 0.2667633168270046,
+                "reference_present_precision": 0.27831921448015673
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 972.9005042238595,
+            "predicted_length": 571.626244064384,
+            "unknown_box_prediction_length": 111.45742151642014,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.1894786518090757,
+                "recall": 0.16107392662079384,
+                "full_grid_f1": 0.17412549406654987,
+                "reference_present_precision": 0.23537224765529563
+              },
+              "6.0": {
+                "full_grid_precision": 0.2252271454974938,
+                "recall": 0.33056589129537883,
+                "full_grid_f1": 0.26791415928817836,
+                "reference_present_precision": 0.27977937864022856
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+        "alias": 21,
+        "partition": "development",
+        "source_group": "p_checked6_frog_scrippts",
+        "variants": {
+          "raw": {
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 1094.0583817209547,
+            "unknown_box_prediction_length": 5.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.8676027974255003,
+                "recall": 0.3531527485627146,
+                "full_grid_f1": 0.5019781619316492,
+                "reference_present_precision": 0.87158606779919
+              },
+              "6.0": {
+                "full_grid_precision": 0.9618154062891653,
+                "recall": 0.5849855045172024,
+                "full_grid_f1": 0.7274990165439836,
+                "reference_present_precision": 0.9662312182531175
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 1092.6441681585816,
+            "unknown_box_prediction_length": 5.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.8674314352154071,
+                "recall": 0.3527734362888698,
+                "full_grid_f1": 0.5015662128420747,
+                "reference_present_precision": 0.8714190970841045
+              },
+              "6.0": {
+                "full_grid_precision": 0.9617659838222056,
+                "recall": 0.5848336559712527,
+                "full_grid_f1": 0.7273674479617039,
+                "reference_present_precision": 0.966187310263235
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "alias": 32,
+        "partition": "training",
+        "source_group": "p_checked6_fruitfly_larvae_gmu",
+        "variants": {
+          "raw": {
+            "reference_length": 2636.6202941205092,
+            "predicted_length": 3122.9205682578076,
+            "unknown_box_prediction_length": 38.50986092169069,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7625152194032254,
+                "recall": 0.8373817252203941,
+                "full_grid_f1": 0.7981967989580642,
+                "reference_present_precision": 0.7720354674622952
+              },
+              "6.0": {
+                "full_grid_precision": 0.9433215727497837,
+                "recall": 0.997802842969378,
+                "full_grid_f1": 0.9697976487255285,
+                "reference_present_precision": 0.9550992463535687
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 2636.6202941205092,
+            "predicted_length": 3120.9205682578076,
+            "unknown_box_prediction_length": 38.50986092169069,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7630038670331323,
+                "recall": 0.8373817252203941,
+                "full_grid_f1": 0.7984644420928037,
+                "reference_present_precision": 0.772536397118181
+              },
+              "6.0": {
+                "full_grid_precision": 0.9432852511414564,
+                "recall": 0.997802842969378,
+                "full_grid_f1": 0.9697784538224946,
+                "reference_present_precision": 0.9550701128227647
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_human_allen_confocal/in_house1",
+        "alias": 35,
+        "partition": "development",
+        "source_group": "p_checked6_human_allen_confocal",
+        "variants": {
+          "raw": {
+            "reference_length": 19168.626256251522,
+            "predicted_length": 14945.897305856588,
+            "unknown_box_prediction_length": 10.560477932314825,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7203598641857871,
+                "recall": 0.5396746445504372,
+                "full_grid_f1": 0.6170623914781194,
+                "reference_present_precision": 0.7208692162370135
+              },
+              "6.0": {
+                "full_grid_precision": 0.8187716721814102,
+                "recall": 0.6613518426311611,
+                "full_grid_f1": 0.7316904956542665,
+                "reference_present_precision": 0.8193506092536235
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 19168.626256251522,
+            "predicted_length": 14923.876855055349,
+            "unknown_box_prediction_length": 10.560477932314825,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7210469499180788,
+                "recall": 0.5395713616397083,
+                "full_grid_f1": 0.6172467605879639,
+                "reference_present_precision": 0.721557540601614
+              },
+              "6.0": {
+                "full_grid_precision": 0.8190450822594331,
+                "recall": 0.6613121703863697,
+                "full_grid_f1": 0.7317753603398123,
+                "reference_present_precision": 0.8196250677769428
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+        "alias": 44,
+        "partition": "development",
+        "source_group": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP",
+        "variants": {
+          "raw": {
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 876.0179701203572,
+            "unknown_box_prediction_length": 3.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.9046576512248696,
+                "recall": 0.6349624691101906,
+                "full_grid_f1": 0.7461888141552212,
+                "reference_present_precision": 0.9077663764133105
+              },
+              "6.0": {
+                "full_grid_precision": 0.9594402833130119,
+                "recall": 0.7654903751610236,
+                "full_grid_f1": 0.8515615382100086,
+                "reference_present_precision": 0.962737261094056
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 871.4574921880421,
+            "unknown_box_prediction_length": 3.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.9074043376308035,
+                "recall": 0.6349624691101906,
+                "full_grid_f1": 0.7471214968905986,
+                "reference_present_precision": 0.9105388756333878
+              },
+              "6.0": {
+                "full_grid_precision": 0.9624736560885642,
+                "recall": 0.7654903751610236,
+                "full_grid_f1": 0.8527542318679415,
+                "reference_present_precision": 0.9657984255726652
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+        "alias": 75,
+        "partition": "training",
+        "source_group": "p_checked6_mouse_RGC_uw",
+        "variants": {
+          "raw": {
+            "reference_length": 5953.821904378237,
+            "predicted_length": 5389.8236503521775,
+            "unknown_box_prediction_length": 1115.0549879775745,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.5485919439308864,
+                "recall": 0.5288875278155022,
+                "full_grid_f1": 0.5385595635243797,
+                "reference_present_precision": 0.6916897889274032
+              },
+              "6.0": {
+                "full_grid_precision": 0.6537379482746356,
+                "recall": 0.7908395042021079,
+                "full_grid_f1": 0.7157827280291701,
+                "reference_present_precision": 0.8242626754885124
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 5953.821904378237,
+            "predicted_length": 5388.8236503521775,
+            "unknown_box_prediction_length": 1115.0549879775745,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.5486937457302262,
+                "recall": 0.5288875278155022,
+                "full_grid_f1": 0.5386086151111501,
+                "reference_present_precision": 0.6918516343251238
+              },
+              "6.0": {
+                "full_grid_precision": 0.6536736926830276,
+                "recall": 0.7908395042021079,
+                "full_grid_f1": 0.7157442107779003,
+                "reference_present_precision": 0.8242215554985469
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+        "alias": 79,
+        "partition": "development",
+        "source_group": "p_checked6_mouse_RGC_uw",
+        "variants": {
+          "raw": {
+            "reference_length": 12365.044127344041,
+            "predicted_length": 8148.156781326827,
+            "unknown_box_prediction_length": 44.16671517118266,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7336674974733548,
+                "recall": 0.5338425928149566,
+                "full_grid_f1": 0.618003694197255,
+                "reference_present_precision": 0.7376659825562261
+              },
+              "6.0": {
+                "full_grid_precision": 0.8662104017751099,
+                "recall": 0.7991710796473389,
+                "full_grid_f1": 0.8313414190208234,
+                "reference_present_precision": 0.8709312451844929
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 12365.044127344041,
+            "predicted_length": 8145.742567764453,
+            "unknown_box_prediction_length": 44.16671517118266,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.7335885625531371,
+                "recall": 0.5337386714458197,
+                "full_grid_f1": 0.6179060534025931,
+                "reference_present_precision": 0.7375878088336926
+              },
+              "6.0": {
+                "full_grid_precision": 0.8661707495690829,
+                "recall": 0.7991710796473389,
+                "full_grid_f1": 0.8313231565411073,
+                "reference_present_precision": 0.8708927835883759
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+        "alias": 85,
+        "partition": "training",
+        "source_group": "p_checked6_silkmoth_utokyo",
+        "variants": {
+          "raw": {
+            "reference_length": 1663.4161633710141,
+            "predicted_length": 2122.4013103617685,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.6699545790898485,
+                "recall": 0.6281677686075391,
+                "full_grid_f1": 0.6483886110762471,
+                "reference_present_precision": 0.6699545790898485
+              },
+              "6.0": {
+                "full_grid_precision": 0.9783186927727431,
+                "recall": 0.9842772950012759,
+                "full_grid_f1": 0.9812889484847109,
+                "reference_present_precision": 0.9783186927727431
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 1663.4161633710141,
+            "predicted_length": 2118.255045991826,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.6693085494383332,
+                "recall": 0.6278671823736127,
+                "full_grid_f1": 0.6479258943387921,
+                "reference_present_precision": 0.6693085494383332
+              },
+              "6.0": {
+                "full_grid_precision": 0.9782762538644446,
+                "recall": 0.9842772950012759,
+                "full_grid_f1": 0.9812675995253152,
+                "reference_present_precision": 0.9782762538644446
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+        "alias": 94,
+        "partition": "development",
+        "source_group": "p_checked6_zebrafish_adult_RGC_UW",
+        "variants": {
+          "raw": {
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 6652.864362736214,
+            "unknown_box_prediction_length": 22.14213562373152,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.06759935299971714,
+                "recall": 0.05307188262004793,
+                "full_grid_f1": 0.05946114513813011,
+                "reference_present_precision": 0.06782508920022876
+              },
+              "6.0": {
+                "full_grid_precision": 0.36911846664838494,
+                "recall": 0.11128123764810684,
+                "full_grid_f1": 0.17100743168672966,
+                "reference_present_precision": 0.37035107312318694
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 6652.864362736214,
+            "unknown_box_prediction_length": 22.14213562373152,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.06759935299971714,
+                "recall": 0.05307188262004793,
+                "full_grid_f1": 0.05946114513813011,
+                "reference_present_precision": 0.06782508920022876
+              },
+              "6.0": {
+                "full_grid_precision": 0.36911846664838494,
+                "recall": 0.11128123764810684,
+                "full_grid_f1": 0.17100743168672966,
+                "reference_present_precision": 0.37035107312318694
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+        "alias": 126,
+        "partition": "training",
+        "source_group": "p_checked7_janelia_flylight_part1",
+        "variants": {
+          "raw": {
+            "reference_length": 1697.9844624294808,
+            "predicted_length": 1602.0623054474122,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.9680649908278623,
+                "recall": 0.8950666717946798,
+                "full_grid_f1": 0.9301357781677992,
+                "reference_present_precision": 0.9680649908278623
+              },
+              "6.0": {
+                "full_grid_precision": 1.0,
+                "recall": 0.9833495386352438,
+                "full_grid_f1": 0.9916048779902843,
+                "reference_present_precision": 1.0
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 1697.9844624294808,
+            "predicted_length": 1599.3302546398431,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.9683230688146974,
+                "recall": 0.8941063017452726,
+                "full_grid_f1": 0.9297359369845313,
+                "reference_present_precision": 0.9683230688146974
+              },
+              "6.0": {
+                "full_grid_precision": 1.0,
+                "recall": 0.9833495386352438,
+                "full_grid_f1": 0.9916048779902843,
+                "reference_present_precision": 1.0
+              }
+            }
+          }
+        }
+      },
+      {
+        "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+        "alias": 135,
+        "partition": "development",
+        "source_group": "p_checked7_janelia_flylight_part1",
+        "variants": {
+          "raw": {
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 1386.9208527553806,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.991136820305598,
+                "recall": 0.7661257954649359,
+                "full_grid_f1": 0.8642253901682828,
+                "reference_present_precision": 0.991136820305598
+              },
+              "6.0": {
+                "full_grid_precision": 1.0,
+                "recall": 0.9359331614973015,
+                "full_grid_f1": 0.9669064822190723,
+                "reference_present_precision": 1.0
+              }
+            }
+          },
+          "pruned": {
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 1383.4567511402427,
+            "unknown_box_prediction_length": 0.0,
+            "tolerances": {
+              "2.0": {
+                "full_grid_precision": 0.9914276206840459,
+                "recall": 0.7661257954649359,
+                "full_grid_f1": 0.8643359201073503,
+                "reference_present_precision": 0.9914276206840459
+              },
+              "6.0": {
+                "full_grid_precision": 1.0,
+                "recall": 0.9359331614973015,
+                "full_grid_f1": 0.9669064822190723,
+                "reference_present_precision": 1.0
+              }
+            }
+          }
+        }
+      }
+    ],
+    "partitions": {
+      "development": {
+        "raw": {
+          "2.0": {
+            "full_grid_precision": 0.6453427359880789,
+            "recall": 0.5293084713911761,
+            "full_grid_f1": 0.5384955351915585,
+            "reference_present_precision": 0.6504732070933069
+          },
+          "6.0": {
+            "full_grid_precision": 0.7601864213648517,
+            "recall": 0.6933416302786757,
+            "full_grid_f1": 0.6847751834125624,
+            "reference_present_precision": 0.7673443931436604
+          }
+        },
+        "pruned": {
+          "2.0": {
+            "full_grid_precision": 0.6459833579332921,
+            "recall": 0.528966486929467,
+            "full_grid_f1": 0.5387483762498453,
+            "reference_present_precision": 0.6511118124839335
+          },
+          "6.0": {
+            "full_grid_precision": 0.7608627366449662,
+            "recall": 0.6932734118608421,
+            "full_grid_f1": 0.685169124907965,
+            "reference_present_precision": 0.7680161225733889
+          }
+        }
+      },
+      "training": {
+        "raw": {
+          "2.0": {
+            "full_grid_precision": 0.6274481815295534,
+            "recall": 0.6101155240117818,
+            "full_grid_f1": 0.6177655675731561,
+            "reference_present_precision": 0.6671777339836321
+          },
+          "6.0": {
+            "full_grid_precision": 0.7597966898244157,
+            "recall": 0.8173670144206768,
+            "full_grid_f1": 0.7850475040113396,
+            "reference_present_precision": 0.8071999658189961
+          }
+        },
+        "pruned": {
+          "2.0": {
+            "full_grid_precision": 0.6277615765650929,
+            "recall": 0.6098633327551151,
+            "full_grid_f1": 0.6177720765187654,
+            "reference_present_precision": 0.6674783794703262
+          },
+          "6.0": {
+            "full_grid_precision": 0.7600924686372845,
+            "recall": 0.8173670144206768,
+            "full_grid_f1": 0.7852618602808346,
+            "reference_present_precision": 0.807469460165197
+          }
+        }
+      }
+    }
+  },
+  "figures": {
+    "curve_formulation_summary_20261103.png": "b89a0e258d12ae82c2140e89c431d64e3a1b66d98dd68ceedd0025b6901b2c8d",
+    "curve_formulation_fruitfly32_box20_20261103.png": "548d94a6db1aad54cb9436761566a520582f61f366a6848ef16d2dedb27abb18",
+    "curve_formulation_frog22_box5_20261103.png": "f953f97590fb0fa0013d11224ee3e02eceb1d2ebe745b6396bf0eb8e5fcd5c01",
+    "curve_formulation_dev94_box14_20261103.png": "6c5013fea686716759cd717688504d732fbeab706932babbd0e15b57245c3fca"
+  },
+  "model_executed": false,
+  "training_executed": false,
+  "guide_filter_executed": false,
+  "architecture_changed": false,
+  "candidate_dense_head_implemented": false,
+  "old_experimental_gates_changed": false
+}

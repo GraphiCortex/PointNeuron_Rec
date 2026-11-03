@@ -1,5 +1,10 @@
 # PN2 research context and handoff — 3 November 2026
 
+**Later update:** the CPU curve audit is now complete. Begin with the
+[next-chat handoff](next_chat_handoff_20261103.md) and
+[audit results](curve_formulation_audit_results.md). This document retains the
+earlier history; its proposed immediate audit has already been performed.
+
 ## Current position
 
 PN2 has verified image/data preparation, reproducible model execution, a

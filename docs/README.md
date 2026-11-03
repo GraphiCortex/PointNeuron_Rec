@@ -1,7 +1,10 @@
 # Active PN2 documents
 
+- [START HERE for the next chat: complete state, new audit findings, next decision and mistakes to avoid](next_chat_handoff_20261103.md)
+- [Completed CPU curve audit: input proximity, target-phase distinction, saved prediction errors and classical baseline](curve_formulation_audit_results.md)
 - [Current full research context, accepted/frozen status and remaining work — 3 November](research_handoff_20261103.md)
 - [Curve/voting reformulation review: existing geometry evidence, metric correction, architecture impact and conditions](formulation_review_20261103.md)
+- [Authorized CPU formulation-audit protocol: point support, saved geometry, oracle controls and fixed automatic baseline](curve_formulation_audit_protocol.md)
 
 - [Revised research proposal and development path](revised_proposal.md)
 - [PN2 Phase 1 design draft and original raw-image inspection](pn2_phase1_design.md)

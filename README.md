@@ -7,6 +7,14 @@ The original PN1 checkout remains on `main`.
 Start with the [revised proposal](docs/revised_proposal.md) and
 [evidence audit](docs/research_reset_evidence.md).
 
+Latest: the [completed CPU curve-formulation audit](docs/curve_formulation_audit_results.md)
+finds both a target-node/curve metric mismatch and substantial real prediction
+errors. It supports discussing local curve supervision while retaining existing
+image preparation and encoder infrastructure. No dense replacement head or new
+training run has been introduced by this audit.
+The [next-chat handoff](docs/next_chat_handoff_20261103.md) consolidates decisions,
+completed evidence, remaining work and research lessons.
+
 ## Layout
 
 | Folder | Purpose |

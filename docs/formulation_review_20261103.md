@@ -166,3 +166,7 @@ Repeatedly inspected development remains development.
 No additional long fit, phase-one rebuild, target rewrite or dense-head adoption
 is implemented by this review. The architecture and completed evidence remain
 unchanged; only the interpretation of spacing-dependent diagnostics is clarified.
+
+The subsequently authorized CPU audit is now [complete](curve_formulation_audit_results.md).
+It observes both target-grid mismatch and off-curve prediction errors; no dense
+head or new training was introduced.
