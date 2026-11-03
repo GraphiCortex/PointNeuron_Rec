@@ -250,7 +250,19 @@ profile diagnostics and the final fit/resume launcher were completed next.
 The [integrated timing and fit-readiness report](docs/node_budget_fit_ready.md)
 now records both passed full-development timing arms, fixed training-only
 profile diagnostics, 30 passing tests and manual bounded fit/resume commands.
-The provisional paired-run allowance is 10–14 hours. No broad fit has launched.
+The user subsequently completed both arms in 20h22m50s. The
+[completed results](docs/node_budget_fit_results.md) fail both accuracy gates:
+more input points did not fix fine node prediction at 20 epochs. Neither
+convergence nor final reconstruction quality is established.
+
+The next implemented [objective candidate](docs/consistent_node_objective.md)
+uses per-query classification, normalized geometry and consistent assignment.
+It preserves the architecture, clouds, targets and historical results. Fifty
+CPU tests and a zero-update full-model gradient audit pass; no learned gain is
+claimed. The user has now passed objective GPU timing. The
+[five-epoch paired continuation](docs/consistent_node_fit_ready.md) is prepared
+with a manual launch command, fixed caps and full-grid evaluation. No further
+fit has launched; it tests accuracy against an equally extended baseline.
 
 A separate read-only [training-reference audit](docs/training_reference_contract_audit.md)
 finds three of 33 SWCs with disconnected paths and exact coordinate overlaps

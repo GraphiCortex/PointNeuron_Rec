@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "budget": 2048,
+  "methods": [
+    "baseline",
+    "consistent"
+  ],
+  "origin_updates": 9200,
+  "new_epochs": 5,
+  "updates_per_epoch": 460,
+  "new_updates": 2300,
+  "worker_timeout_seconds": 14400,
+  "automatic_extension": false,
+  "objective_config": "configs/consistent_node_objective.json",
+  "timing_report": "tmp/consistent_objective_timing_20261103_143451/report.json",
+  "cpu_report": "tmp/consistent_node_fit_cpu_20261103_ready/report.json",
+  "source_sha256": {
+    "scripts/fit_consistent_node_objective.py": "329e2d94f13d22604b75a49a1c4cc028768fb1ace09a963f5018af8be3e21902",
+    "scripts/run_consistent_node_fit.ps1": "89f606a05748d92084a00d3fcaf22b218cf496eaf4b8ab5cc55a0c2964634a85",
+    "tests/test_consistent_node_fit.py": "b7902e2a18d6166c984c6831803a071abd9ff249e2412c235a0f21aa11d3756a"
+  },
+  "objective_config_sha256": "f729dd56916b0e4fb7568eccb834a862da21c32bd3bf441a598fe586dedc1d3f",
+  "timing_report_sha256": "aa0a01f8fd74b76245cb5278fa0aefa284dddf8c8b2cda948f40e891a9eb657d"
+}

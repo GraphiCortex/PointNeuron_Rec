@@ -554,7 +554,8 @@ diagnostics and the full fit/resume launcher are subsequent work.
 ## Ready bounded paired node fits
 
 The [integrated timing, profile cache and fit launcher](../docs/node_budget_fit_ready.md)
-are verified. Next manual command:
+are verified. The user has now completed this command; retain it for historical
+reproducibility rather than rerunning it. [Both accuracy gates failed](../docs/node_budget_fit_results.md).
 
 ```powershell
 Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
@@ -572,4 +573,45 @@ No source filtering or GAT/radius/full-SWC training is involved.
 
 See the report for recovery examples and interpretation limits. The image and
 profile preparation are already complete; the command starts the actual
-broader paired training study. It has not been launched by the agent.
+broader paired training study. It was launched by the user and is complete.
+
+## Consistent node objective: GPU timing only
+
+The [candidate objective and CPU evidence](../docs/consistent_node_objective.md)
+are separate from the completed study. Next manual execution check:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_consistent_node_objective.ps1 -Action timing
+```
+
+Two independently forked copies of the terminal 2048 model/Adam/RNG state,
+baseline versus candidate objective. Four deterministic training-only count
+strata, eight throwaway updates each plus an exact next-update reload probe.
+Same clouds, target packets, model, optimizer recipe and cutoff. Current passed
+CPU evidence is required before GPU initialization. Separate worker processes,
+600-second cap each, no retained trained checkpoint and no full-fit action.
+Outputs belong to `tmp/consistent_objective_timing_<timestamp>`. This checks
+execution, not learnability or reconstruction improvement.
+
+## Five-epoch objective comparison: ready manual fit
+
+The user passed objective GPU timing and agreed to prepare the
+[bounded paired continuation](../docs/consistent_node_fit_ready.md). Next command:
+
+```powershell
+Set-Location "C:\Users\Seywe\Documents\GitHub\PointNeuron\PN2"
+& .\scripts\run_consistent_node_fit.ps1 -Action train
+```
+
+Both arms fork the same terminal 2048 model **and saved Adam/RNG** at historical
+update 9200. Each receives five additional epochs / 2300 updates over the same
+460 supervised training boxes. Only the objective differs. Terminal scoring
+covers all 415 development and 1964 training boxes. Same clouds, targets, model,
+LR, clipping and cutoff; no reserved data, radius/GAT training or source filters.
+
+Planning allowance is 3–4 hours for both arms, provisionally; a separate
+four-hour worker limit includes evaluation. Immutable complete-state checkpoints
+every epoch, no automatic retry/extension or best-dev selection. Outputs:
+`tmp/consistent_node_fit_train_<timestamp>`. The report documents explicit
+method-bound recovery into a fresh directory and interpretation limits.

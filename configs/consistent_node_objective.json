@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "budget": 2048,
+  "methods": [
+    "baseline",
+    "consistent"
+  ],
+  "timing_updates": 8,
+  "worker_timeout_seconds": 600,
+  "full_training_authorized": false,
+  "baseline_config": "configs/node_budget_fit.json",
+  "completed_fit": "tmp/node_budget_fit_train_20261102_141941/report.json",
+  "checkpoint": "tmp/node_budget_fit_train_20261102_141941/points2048/checkpoint_step009200.pt",
+  "cpu_report": "tmp/consistent_objective_cpu_20261103_verified/report.json",
+  "training_panel": [
+    [
+      "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      51
+    ],
+    [
+      "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      7
+    ],
+    [
+      "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      8
+    ],
+    [
+      "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      36
+    ]
+  ],
+  "source_sha256": {
+    "src/pn2/models/consistent_node_objective.py": "e1ef94bc389f5c3a012e5e9ddb47681d1f2f606557dc9b82c3a82abda279cbc1",
+    "scripts/check_consistent_node_objective.py": "94a86cbbd7ffaab1a869fc1b3f6bef4d820547d2bb4cae800b92fd8db0928150",
+    "scripts/run_consistent_node_objective.ps1": "8ffbbee3c905eddd848aff13f0ff232d9ba09b65d4b01865e429f18b357981b8",
+    "tests/test_consistent_node_objective.py": "5cd312e0c97c80fccdc1c21b2fce2117c268da7ee0ce2d7e4957a95e5ab71e21"
+  },
+  "baseline_config_sha256": "73d8c2c9d5d0a4d3e5d63f2bc1e31f5765aa7d901b5590eeed66867ce805e981",
+  "completed_fit_sha256": "cee5decc75d231c7e7794e653fec8a0978c13db7fc0eda68ed567f401cd6109b",
+  "checkpoint_sha256": "b8cdca1d17bc302c2cb15f3ce339f3946fa72548623c199a71fb5ddfc03939c9"
+}

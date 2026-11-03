@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "config_fingerprint": "83fca433dfd81f6d0aed5c893eaef0c0441f9ab157fecbf7254c555634ecb6d7",
+  "source_sha256": {
+    "scripts/fit_consistent_node_objective.py": "329e2d94f13d22604b75a49a1c4cc028768fb1ace09a963f5018af8be3e21902",
+    "scripts/run_consistent_node_fit.ps1": "89f606a05748d92084a00d3fcaf22b218cf496eaf4b8ab5cc55a0c2964634a85",
+    "tests/test_consistent_node_fit.py": "b7902e2a18d6166c984c6831803a071abd9ff249e2412c235a0f21aa11d3756a"
+  },
+  "new_updates": 2300,
+  "supervised_boxes_per_epoch": 460,
+  "training_neurons": 33,
+  "next_update_reload_exact_both_methods": true,
+  "cuda_initialized": false,
+  "trained_checkpoint_retained": false,
+  "methods": [
+    {
+      "method": "baseline",
+      "first_update": {
+        "loss": 2.824337959289551,
+        "gradient_norm_before_clip": 63.15625,
+        "matched_targets": 51
+      },
+      "next_update_exact": true,
+      "real_training_box_throwaway_optimizer_calls": 3
+    },
+    {
+      "method": "consistent",
+      "first_update": {
+        "loss": 0.9000089764595032,
+        "gradient_norm_before_clip": 11.923237800598145,
+        "matched_targets": 51
+      },
+      "next_update_exact": true,
+      "real_training_box_throwaway_optimizer_calls": 3
+    }
+  ],
+  "quality_improvement_established": false
+}

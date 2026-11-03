@@ -1,0 +1,189 @@
+{
+  "count_strata": [
+    {
+      "target_count_range": [
+        1,
+        16
+      ],
+      "boxes": 152,
+      "mean_targets": 8.651315789473685,
+      "mean_accepted": 124.38815789473684,
+      "pooled_recall_2": 0.37110266159695815
+    },
+    {
+      "target_count_range": [
+        17,
+        64
+      ],
+      "boxes": 208,
+      "mean_targets": 34.52403846153846,
+      "mean_accepted": 147.08653846153845,
+      "pooled_recall_2": 0.35078679849603117
+    },
+    {
+      "target_count_range": [
+        65,
+        128
+      ],
+      "boxes": 65,
+      "mean_targets": 89.1076923076923,
+      "mean_accepted": 179.13846153846154,
+      "pooled_recall_2": 0.22945441988950277
+    },
+    {
+      "target_count_range": [
+        129,
+        512
+      ],
+      "boxes": 35,
+      "mean_targets": 181.57142857142858,
+      "mean_accepted": 216.54285714285714,
+      "pooled_recall_2": 0.15515342250196695
+    }
+  ],
+  "positive_training_boxes_replayed": 460,
+  "mean_fraction_assignments_changed": 0.3355376957542884,
+  "baseline_per_negative_to_per_positive_weight_range": [
+    0.00392156862745098,
+    4.505376344086022
+  ],
+  "candidate_per_negative_to_per_positive_weight": 1.0,
+  "all_candidate_losses_finite": true,
+  "prediction_geometry_or_scores_changed": false,
+  "warning": "Matching/objective replay only; no evidence of learned improvement",
+  "target_phase_counterexample": {
+    "same_local_curve": true,
+    "same_target_nodes": false,
+    "target_x_first": [
+      -0.5,
+      0.0,
+      8.0,
+      16.0,
+      16.5
+    ],
+    "target_x_second": [
+      -0.5,
+      6.0,
+      14.0,
+      16.5
+    ],
+    "dataset_failure_attribution": "Untested; constructed counterexample only",
+    "active_targets_changed": false
+  },
+  "status": "passed",
+  "config_fingerprint": "446f1adb9f1c3f8675a35463e582ca108b451cab50e8438edd8862e38d543f98",
+  "source_sha256": {
+    "src/pn2/models/consistent_node_objective.py": "e1ef94bc389f5c3a012e5e9ddb47681d1f2f606557dc9b82c3a82abda279cbc1",
+    "scripts/check_consistent_node_objective.py": "94a86cbbd7ffaab1a869fc1b3f6bef4d820547d2bb4cae800b92fd8db0928150",
+    "scripts/run_consistent_node_objective.ps1": "8ffbbee3c905eddd848aff13f0ff232d9ba09b65d4b01865e429f18b357981b8",
+    "tests/test_consistent_node_objective.py": "5cd312e0c97c80fccdc1c21b2fce2117c268da7ee0ce2d7e4957a95e5ab71e21"
+  },
+  "checkpoint_sha256": "b8cdca1d17bc302c2cb15f3ce339f3946fa72548623c199a71fb5ddfc03939c9",
+  "full_model_gradient_panel": [
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "tile_id": 51,
+      "targets": 8,
+      "methods": {
+        "baseline": {
+          "loss": 8.733555793762207,
+          "gradient_norms_before_clip": {
+            "encoder": 146.4678101550636,
+            "head": 494.3451443968245,
+            "all": 515.5869870354924
+          },
+          "matched_targets": 8
+        },
+        "consistent": {
+          "loss": 1.101974368095398,
+          "gradient_norms_before_clip": {
+            "encoder": 10.262441634804494,
+            "head": 10.09690879124801,
+            "all": 14.396710577300292
+          },
+          "matched_targets": 8
+        }
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "tile_id": 7,
+      "targets": 32,
+      "methods": {
+        "baseline": {
+          "loss": 10.041886329650879,
+          "gradient_norms_before_clip": {
+            "encoder": 120.82413640285661,
+            "head": 214.33661821784045,
+            "all": 246.046048223816
+          },
+          "matched_targets": 32
+        },
+        "consistent": {
+          "loss": 0.9362996220588684,
+          "gradient_norms_before_clip": {
+            "encoder": 10.850597311289986,
+            "head": 7.6884737122396585,
+            "all": 13.298424344093316
+          },
+          "matched_targets": 32
+        }
+      }
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "tile_id": 8,
+      "targets": 96,
+      "methods": {
+        "baseline": {
+          "loss": 14.315956115722656,
+          "gradient_norms_before_clip": {
+            "encoder": 66.56674937773911,
+            "head": 90.62792491427547,
+            "all": 112.44800085811345
+          },
+          "matched_targets": 96
+        },
+        "consistent": {
+          "loss": 1.2062907218933105,
+          "gradient_norms_before_clip": {
+            "encoder": 9.481912610011712,
+            "head": 7.066013105158756,
+            "all": 11.82519378049148
+          },
+          "matched_targets": 96
+        }
+      }
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "tile_id": 36,
+      "targets": 180,
+      "methods": {
+        "baseline": {
+          "loss": 17.774221420288086,
+          "gradient_norms_before_clip": {
+            "encoder": 34.21308804078203,
+            "head": 58.19484759226867,
+            "all": 67.50685653749315
+          },
+          "matched_targets": 180
+        },
+        "consistent": {
+          "loss": 2.2974014282226562,
+          "gradient_norms_before_clip": {
+            "encoder": 2.815714721149768,
+            "head": 6.105439894157746,
+            "all": 6.7234400192217425
+          },
+          "matched_targets": 180
+        }
+      }
+    }
+  ],
+  "model_state_unchanged": true,
+  "optimizer_updates": 0,
+  "cuda_initialized": false,
+  "seconds": 12.38125710003078,
+  "learnability_or_reconstruction_improvement_established": false
+}
