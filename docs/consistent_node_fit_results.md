@@ -54,8 +54,16 @@ This is an operating-behavior observation, not a separate calibration proof.
 
 Lowering the candidate threshold could recover some proposals, but its all-query
 recall remains poor. No threshold is retuned and no failed gate is relabeled.
-The full curve metrics also decline, so exact eight-voxel target-grid matching
-alone cannot explain the lost coverage.
+Reference-curve proximity to accepted node centers also declines. This is a
+separate spatial-support measurement, subject to the spacing limitation below.
+
+Interpretation clarification from the subsequent [formulation review](formulation_review_20261103.md):
+this is reference-curve proximity to **isolated accepted node centers**, not to
+predicted graph edges. It is itself node-spacing dependent. A decline proves
+less spatial support by accepted anchors, not necessarily loss of a whole
+biological branch in a connected reconstruction. No predicted connectivity is
+available here to settle that question. The reported numbers and prospective
+failed gates remain unchanged.
 
 The sparse/dense training strata show recall losses in every count group:
 

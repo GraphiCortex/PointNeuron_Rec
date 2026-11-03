@@ -314,8 +314,9 @@ The cause has **not** been established. Leading hypotheses and their limits:
   does not prove that hundreds of epochs will succeed or explain every error.
 - **Target identifiability:** a constructed example proves identical local curves
   can inherit different target nodes/counts from full-chain sampling outside
-  the crop. Its prevalence/contribution in this cohort is unmeasured. Continuous
-  curve metrics are also weak, so exact-grid ambiguity is not a complete excuse.
+  the crop. Its prevalence/contribution in this cohort is unmeasured. Current
+  curve-to-node support also depends on spacing, so its low value alone does not
+  distinguish target ambiguity from genuinely missing branch geometry.
 - **Loss/assignment/cardinality behavior:** class weighting changes with target
   count in the baseline; dense-box recall is worse, and sparse boxes have excess
   outputs. The candidate improves rejection but loses coverage. Neither loss is
@@ -342,6 +343,13 @@ extension, architecture bypass or Phase 1 restart follows from the current data.
 The goal is useful geometry on broader inputs, not just lower loss, fewer
 clipped gradients or a tiny-set gate. A relative gain between weak models is
 not completion of the proposal stage.
+
+Subsequent [formulation-review clarification](formulation_review_20261103.md):
+the current curve-to-node support metric is spacing dependent; it does not
+evaluate predicted edges. The reference target grid itself scores 55.11% mean
+development support at two voxels. This limits interpretation of low support
+as evidence of missing branches and strengthens the need to distinguish exact
+node matching, on-curve positions, spatial distribution and final polyline quality.
 
 ### Remaining system responsibilities
 
