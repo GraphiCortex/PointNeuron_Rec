@@ -1,5 +1,14 @@
 # PN2 next-chat handoff — after the completed curve audit
 
+**Latest terminal update, 4 November:** The user-launched recovery completed
+the original 2000-update four-box curve-head fit with exact prediction replay
+and all 700 available optimizer-prefix updates matched. The accuracy gate
+**failed**: two-voxel agreement 74.96% <90%; coverage 83.32% passed all coverage
+conditions. Stop this recipe; no sixteen-box run, cutoff change or extension.
+Read [the completed terminal results](local_curve_terminal_results_20261104.md)
+first. The interruption/recovery notes below preserve earlier history. No
+further timed job is running or automatically authorized after this failure.
+
 **4 November update:** The user subsequently approved the bounded local
 curve-head control. CPU checks/controls and GPU timing passed, but the four-box
 fit was interrupted after a large wall-clock gap. Its latest complete checkpoint
