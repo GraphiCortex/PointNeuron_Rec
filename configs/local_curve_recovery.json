@@ -1,0 +1,24 @@
+{
+  "schema": "pn2-local-curve-recovery-v1",
+  "scientific_config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+  "start_update": 1000,
+  "maximum_update": 2000,
+  "wall_seconds": 1800,
+  "checkpoint_every": 250,
+  "automatic_next_rung": false,
+  "checkpoint": "tmp/local_curve_head_20261104/train4_dense/checkpoint_step001000.pt",
+  "checkpoint_sha256": "1621c95310bda082ea8ccdfea9917b41baef556376a2971edda6e1182f0d71ed",
+  "predictions": "tmp/local_curve_head_20261104/train4_dense/eval_step001000_training/predictions.npz",
+  "predictions_sha256": "a873ada60cbc48cbde9c2af232a04f78999e7edc0f24864e13d9d9067f2b7f93",
+  "metrics": "tmp/local_curve_head_20261104/train4_dense/eval_step001000_training/metrics.json",
+  "metrics_sha256": "b1114535bd42f92124d5ef6f05d20867a4b805f2970cca143600f9e658831eba",
+  "updates": "tmp/local_curve_head_20261104/train4_dense/updates.jsonl",
+  "updates_sha256": "cc608b6bb4e3510bdc3ab156b3fcb1dfc2b271709efd38940a27c130c2b4b1bf",
+  "source_sha256": {
+    "scripts/resume_local_curve_four.py": "fb67796abc2ea089b51d8d5e8cf63ccfe6ef5f5c76265161b9ae165520864727",
+    "src/pn2/training/local_curve_recovery.py": "a95a7f6b548e65c03d3a4408ccfb20a4e1e0132ca2c73dfa00e64dae8f7228f8",
+    "src/pn2/training/local_curve_control.py": "0c4cc97e9e0fad4dd91f8118685440b2a5d11295aa093587d0418e54f487b61e",
+    "tests/test_local_curve_recovery.py": "d5d0f3b26cfa940037d4d32278e1173891de3490c1ac5740f6e7b6ab072de6ea",
+    "docs/local_curve_recovery_ready.md": "7b98de62ae86950ca7fd1fcbcb6c79bfcdee8e49ac4324f192eb2da6c133b10f"
+  }
+}

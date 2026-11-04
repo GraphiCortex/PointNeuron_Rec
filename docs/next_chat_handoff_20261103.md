@@ -9,6 +9,15 @@ Read [the current results and recovery decision](local_curve_head_results_202611
 and [the frozen experiment protocol](local_curve_head_protocol.md) before using
 the historical immediate-next-step text below. Original evidence is retained.
 
+**Local execution preference and recovery command:** The user requires visible
+commands for timed experiments and launches them locally. Do not launch timed
+CPU/GPU jobs from the agent unless explicitly requested. The
+[checkpoint-resume command](local_curve_recovery_ready.md) is now prepared and
+CPU-checked: restore update 1000, finish at 2000 under a fresh 30-minute wall
+cap, preserve Adam/RNG, verify original predictions and replayed updates. The
+assistant has not launched this recovery. It cannot automatically start sixteen
+boxes. Do not use the older fresh-training command as a resume command.
+
 **Read this first.** This supersedes the immediate-next-step sections of the
 [earlier full handoff](research_handoff_20261103.md), which preserves detailed
 history. The CPU formulation audit and classical baseline have now completed.
