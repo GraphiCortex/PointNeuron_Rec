@@ -1,4 +1,43 @@
-# PN2 next-chat handoff — after the completed curve audit
+# PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
+
+**Latest completed result, 4 November:** The user-local A/B/C CPU measurement
+completed in 13.20 seconds (guard 14.52 seconds, exit 0), using saved update-2000
+artifacts only. Read [the measured results](saved_vote_scaffold_results_20261104.md)
+and [portable evidence](evidence/saved_vote_scaffold_20261104.json) first.
+Output: `tmp/saved_vote_scaffold_20261104T182353_539123Z`.
+
+- A: 212/369 off-reference retained points (57.45%) have fewer than three
+  accepted-raw supporters; precision 47.26% versus 86.65% for supported points.
+  Only 52/369 errors (14.09%) come from source distance >6. Same-scorer Sato
+  and classical-node controls are recorded, including raw classical nodes.
+- B: the predeclared trigger was met; exactly one radius-2/minimum-3-support
+  variant ran. It **failed all four original checks**, P2=81.89%, C2=61.35%.
+  Frog 5 C2 fell 64.91% ->25.27%, incident probes 16/22 ->6/22. This is
+  post-failure evidence, not a rescue or a new adopted consolidation policy.
+- C: fixed image-only k=6 Sato-cost minimum-spanning-forest SWCs completed for
+  original and variant nodes, with no reference edges/roots in inference.
+  Original segment P2/R2/F1=76.16/87.64/81.49%; variant=86.90/70.95/76.43%;
+  preserved classical graph on the same boxes=56.19/53.14/52.46%.
+  Original candidate-union R2 for k=4/6/10=90.86/92.60/94.53%; selects nothing.
+  These are four TRAINING boxes/two neurons, per-box fit geometry, not development
+  or topology results. Whole-image merging, qualified GATv2 and decoding remain
+  absent. The scaffold is not a product stage or a GATv2 replacement.
+- All 12 frozen source/input hashes and eight graph/SWC pairs were verified.
+  No sixteen-box manifest was produced. No model/GPU/training/filtering ran.
+
+**Stop this recipe.** No extension, second variant, threshold/gate change or GPU
+run. The failed original gate is unchanged. The one formulation hypothesis to
+discuss is curve-supervised Transformer selection/refinement of representative
+anchors, because dense source-affinity/offset fitting does not directly learn
+a compact coverage-preserving representation. It is not implemented or approved.
+Discuss supervision, comparison and a bounded budget before substantive changes.
+Candidate-edge union coverage, not isolated-node coverage, is the geometric
+recall ceiling for selecting fixed edges. Strong spurious connected structure
+remains a separate risk. No development inference was run in this follow-up.
+
+D/E are complete in [the metric/proposal/code audit](proposal_implementation_audit_20261104.md).
+Its prospective node-stage numbers are discussion only, not adopted gates.
+Earlier notes below are historical and superseded by this completed result.
 
 **CPU launch fix:** The user's first saved-vote measurement stopped after about
 three seconds in A because a JSON-list box key reached a tuple-keyed guide
@@ -8,8 +47,8 @@ evaluation boundaries now normalize identities to tuples. Ten CPU tests pass,
 including the actual A-worker path with a JSON-list identity. Only execution
 source/test bindings changed; criteria, variant constants, graph recipe and
 all input artifact bindings are unchanged. The same user-local CPU command
-can be retried; it creates a fresh timestamped output directory. No rerun has
-been launched by the assistant. See `docs/evidence/saved_vote_launch_fix_20261104.json`.
+was subsequently retried successfully by the user as recorded above. No rerun
+was launched by the assistant. See `docs/evidence/saved_vote_launch_fix_20261104.json`.
 
 **New CPU-only follow-up prepared, 4 November:** The user requested A: saved-vote
 support/error-band/control diagnostics; B: exactly one conditional radius-2,
@@ -20,14 +59,14 @@ written before the new support-count results. See
 [metric/architecture audit plus proposed criterion](proposal_implementation_audit_20261104.md).
 The timed CPU measurement must be launched by the user with
 `tmp/phase1_cpu_env/Scripts/python.exe -B scripts/measure_saved_vote_scaffold.py`.
-Its real A/B/C results are pending; only nine unit/integration fixtures and
-read-only source/artifact checks have run. Do not claim the variant passed or
-failed before reading its actual report. C runs regardless of B. A sixteen-box
+At preparation time A/B/C results were pending; ten unit/integration fixtures
+eventually passed after the JSON-key fix. Actual completed results are now
+linked above; C ran regardless of B. A sixteen-box
 manifest/PowerShell command is produced only on the post-hoc variant's numerical
 pass, never launched automatically. This scaffold does not replace GATv2; no
 GPU work or frozen-gate change is authorized by this follow-up. After the user
 runs it, inspect report.json/report.md, preserve portable results and update
-this handoff before any next formulation discussion.
+this handoff before any next formulation discussion. Those steps are now complete.
 
 **Latest terminal update, 4 November:** The user-launched recovery completed
 the original 2000-update four-box curve-head fit with exact prediction replay

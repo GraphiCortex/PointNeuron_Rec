@@ -1,0 +1,5735 @@
+{
+  "schema": "pn2-completed-saved-vote-scaffold-evidence-v1",
+  "execution": "user-local CPU launch; assistant performed saved-artifact verification only",
+  "source_commit": "e7ce543",
+  "run_root": "tmp/saved_vote_scaffold_20261104T182353_539123Z",
+  "measurement": {
+    "status": "completed",
+    "config_fingerprint": "a665103c70a9b2b5a38fd40488f3d22c05f63793b590bf0508f45234c16b84dd",
+    "A": {
+      "scope": "four-box fit-level saved update-2000",
+      "rows": [
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "accepted_support": {
+            "bins": {
+              "1": {
+                "retained": 6,
+                "within_2": 1,
+                "beyond_2": 5,
+                "precision": 0.16666666666666666
+              },
+              "2": {
+                "retained": 10,
+                "within_2": 8,
+                "beyond_2": 2,
+                "precision": 0.8
+              },
+              "3-4": {
+                "retained": 10,
+                "within_2": 6,
+                "beyond_2": 4,
+                "precision": 0.6
+              },
+              "5-9": {
+                "retained": 45,
+                "within_2": 42,
+                "beyond_2": 3,
+                "precision": 0.9333333333333333
+              },
+              "10+": {
+                "retained": 131,
+                "within_2": 130,
+                "beyond_2": 1,
+                "precision": 0.9923664122137404
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 6,
+                "within_2": 1,
+                "beyond_2": 5,
+                "precision": 0.16666666666666666
+              },
+              "2": {
+                "retained": 10,
+                "within_2": 8,
+                "beyond_2": 2,
+                "precision": 0.8
+              },
+              "3": {
+                "retained": 8,
+                "within_2": 5,
+                "beyond_2": 3,
+                "precision": 0.625
+              },
+              "4": {
+                "retained": 2,
+                "within_2": 1,
+                "beyond_2": 1,
+                "precision": 0.5
+              },
+              "5": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "6": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "7": {
+                "retained": 8,
+                "within_2": 7,
+                "beyond_2": 1,
+                "precision": 0.875
+              },
+              "8": {
+                "retained": 14,
+                "within_2": 13,
+                "beyond_2": 1,
+                "precision": 0.9285714285714286
+              },
+              "9": {
+                "retained": 13,
+                "within_2": 12,
+                "beyond_2": 1,
+                "precision": 0.9230769230769231
+              },
+              "10": {
+                "retained": 11,
+                "within_2": 11,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "11": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "12": {
+                "retained": 8,
+                "within_2": 8,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "13": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 12,
+                "within_2": 12,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 10,
+                "within_2": 10,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 8,
+                "within_2": 7,
+                "beyond_2": 1,
+                "precision": 0.875
+              },
+              "18": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "19": {
+                "retained": 10,
+                "within_2": 10,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "20": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "21": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "23": {
+                "retained": 4,
+                "within_2": 4,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "24": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "26": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "27": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "28": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "29": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "31": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "32": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "34": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "36": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "37": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 16,
+              "within_2": 9,
+              "beyond_2": 7,
+              "precision": 0.5625
+            },
+            "supported": {
+              "retained": 186,
+              "within_2": 178,
+              "beyond_2": 8,
+              "precision": 0.956989247311828
+            }
+          },
+          "all_support": {
+            "bins": {
+              "1": {
+                "retained": 5,
+                "within_2": 1,
+                "beyond_2": 4,
+                "precision": 0.2
+              },
+              "2": {
+                "retained": 7,
+                "within_2": 5,
+                "beyond_2": 2,
+                "precision": 0.7142857142857143
+              },
+              "3-4": {
+                "retained": 9,
+                "within_2": 4,
+                "beyond_2": 5,
+                "precision": 0.4444444444444444
+              },
+              "5-9": {
+                "retained": 39,
+                "within_2": 37,
+                "beyond_2": 2,
+                "precision": 0.9487179487179487
+              },
+              "10+": {
+                "retained": 142,
+                "within_2": 140,
+                "beyond_2": 2,
+                "precision": 0.9859154929577465
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 5,
+                "within_2": 1,
+                "beyond_2": 4,
+                "precision": 0.2
+              },
+              "2": {
+                "retained": 7,
+                "within_2": 5,
+                "beyond_2": 2,
+                "precision": 0.7142857142857143
+              },
+              "3": {
+                "retained": 5,
+                "within_2": 3,
+                "beyond_2": 2,
+                "precision": 0.6
+              },
+              "4": {
+                "retained": 4,
+                "within_2": 1,
+                "beyond_2": 3,
+                "precision": 0.25
+              },
+              "5": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "6": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "7": {
+                "retained": 9,
+                "within_2": 8,
+                "beyond_2": 1,
+                "precision": 0.8888888888888888
+              },
+              "8": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "9": {
+                "retained": 12,
+                "within_2": 11,
+                "beyond_2": 1,
+                "precision": 0.9166666666666666
+              },
+              "10": {
+                "retained": 14,
+                "within_2": 13,
+                "beyond_2": 1,
+                "precision": 0.9285714285714286
+              },
+              "11": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "12": {
+                "retained": 10,
+                "within_2": 10,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "13": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 11,
+                "within_2": 11,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 12,
+                "within_2": 12,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 10,
+                "within_2": 9,
+                "beyond_2": 1,
+                "precision": 0.9
+              },
+              "18": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "19": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "20": {
+                "retained": 4,
+                "within_2": 4,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "21": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "23": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "24": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "27": {
+                "retained": 4,
+                "within_2": 4,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "28": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "29": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "30": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "31": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "33": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "37": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "38": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "40": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "43": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "45": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 12,
+              "within_2": 6,
+              "beyond_2": 6,
+              "precision": 0.5
+            },
+            "supported": {
+              "retained": 190,
+              "within_2": 181,
+              "beyond_2": 9,
+              "precision": 0.9526315789473684
+            }
+          },
+          "source_bands": {
+            "<2": {
+              "accepted": 68,
+              "beyond_2": 0
+            },
+            "2-4": {
+              "accepted": 72,
+              "beyond_2": 3
+            },
+            "4-6": {
+              "accepted": 48,
+              "beyond_2": 4
+            },
+            ">6": {
+              "accepted": 14,
+              "beyond_2": 8
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "accepted_support": {
+            "bins": {
+              "1": {
+                "retained": 83,
+                "within_2": 23,
+                "beyond_2": 60,
+                "precision": 0.27710843373493976
+              },
+              "2": {
+                "retained": 115,
+                "within_2": 57,
+                "beyond_2": 58,
+                "precision": 0.4956521739130435
+              },
+              "3-4": {
+                "retained": 273,
+                "within_2": 194,
+                "beyond_2": 79,
+                "precision": 0.7106227106227107
+              },
+              "5-9": {
+                "retained": 417,
+                "within_2": 375,
+                "beyond_2": 42,
+                "precision": 0.8992805755395683
+              },
+              "10+": {
+                "retained": 96,
+                "within_2": 92,
+                "beyond_2": 4,
+                "precision": 0.9583333333333334
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 83,
+                "within_2": 23,
+                "beyond_2": 60,
+                "precision": 0.27710843373493976
+              },
+              "2": {
+                "retained": 115,
+                "within_2": 57,
+                "beyond_2": 58,
+                "precision": 0.4956521739130435
+              },
+              "3": {
+                "retained": 138,
+                "within_2": 85,
+                "beyond_2": 53,
+                "precision": 0.6159420289855072
+              },
+              "4": {
+                "retained": 135,
+                "within_2": 109,
+                "beyond_2": 26,
+                "precision": 0.8074074074074075
+              },
+              "5": {
+                "retained": 118,
+                "within_2": 101,
+                "beyond_2": 17,
+                "precision": 0.8559322033898306
+              },
+              "6": {
+                "retained": 94,
+                "within_2": 83,
+                "beyond_2": 11,
+                "precision": 0.8829787234042553
+              },
+              "7": {
+                "retained": 92,
+                "within_2": 84,
+                "beyond_2": 8,
+                "precision": 0.9130434782608695
+              },
+              "8": {
+                "retained": 70,
+                "within_2": 68,
+                "beyond_2": 2,
+                "precision": 0.9714285714285714
+              },
+              "9": {
+                "retained": 43,
+                "within_2": 39,
+                "beyond_2": 4,
+                "precision": 0.9069767441860465
+              },
+              "10": {
+                "retained": 33,
+                "within_2": 32,
+                "beyond_2": 1,
+                "precision": 0.9696969696969697
+              },
+              "11": {
+                "retained": 21,
+                "within_2": 19,
+                "beyond_2": 2,
+                "precision": 0.9047619047619048
+              },
+              "12": {
+                "retained": 15,
+                "within_2": 14,
+                "beyond_2": 1,
+                "precision": 0.9333333333333333
+              },
+              "13": {
+                "retained": 9,
+                "within_2": 9,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "18": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 198,
+              "within_2": 80,
+              "beyond_2": 118,
+              "precision": 0.40404040404040403
+            },
+            "supported": {
+              "retained": 786,
+              "within_2": 661,
+              "beyond_2": 125,
+              "precision": 0.8409669211195929
+            }
+          },
+          "all_support": {
+            "bins": {
+              "1": {
+                "retained": 75,
+                "within_2": 23,
+                "beyond_2": 52,
+                "precision": 0.30666666666666664
+              },
+              "2": {
+                "retained": 113,
+                "within_2": 51,
+                "beyond_2": 62,
+                "precision": 0.45132743362831856
+              },
+              "3-4": {
+                "retained": 258,
+                "within_2": 180,
+                "beyond_2": 78,
+                "precision": 0.6976744186046512
+              },
+              "5-9": {
+                "retained": 427,
+                "within_2": 382,
+                "beyond_2": 45,
+                "precision": 0.8946135831381733
+              },
+              "10+": {
+                "retained": 111,
+                "within_2": 105,
+                "beyond_2": 6,
+                "precision": 0.9459459459459459
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 75,
+                "within_2": 23,
+                "beyond_2": 52,
+                "precision": 0.30666666666666664
+              },
+              "2": {
+                "retained": 113,
+                "within_2": 51,
+                "beyond_2": 62,
+                "precision": 0.45132743362831856
+              },
+              "3": {
+                "retained": 129,
+                "within_2": 78,
+                "beyond_2": 51,
+                "precision": 0.6046511627906976
+              },
+              "4": {
+                "retained": 129,
+                "within_2": 102,
+                "beyond_2": 27,
+                "precision": 0.7906976744186046
+              },
+              "5": {
+                "retained": 114,
+                "within_2": 97,
+                "beyond_2": 17,
+                "precision": 0.8508771929824561
+              },
+              "6": {
+                "retained": 100,
+                "within_2": 89,
+                "beyond_2": 11,
+                "precision": 0.89
+              },
+              "7": {
+                "retained": 97,
+                "within_2": 86,
+                "beyond_2": 11,
+                "precision": 0.8865979381443299
+              },
+              "8": {
+                "retained": 60,
+                "within_2": 57,
+                "beyond_2": 3,
+                "precision": 0.95
+              },
+              "9": {
+                "retained": 56,
+                "within_2": 53,
+                "beyond_2": 3,
+                "precision": 0.9464285714285714
+              },
+              "10": {
+                "retained": 34,
+                "within_2": 32,
+                "beyond_2": 2,
+                "precision": 0.9411764705882353
+              },
+              "11": {
+                "retained": 25,
+                "within_2": 23,
+                "beyond_2": 2,
+                "precision": 0.92
+              },
+              "12": {
+                "retained": 13,
+                "within_2": 11,
+                "beyond_2": 2,
+                "precision": 0.8461538461538461
+              },
+              "13": {
+                "retained": 12,
+                "within_2": 12,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 10,
+                "within_2": 10,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 7,
+                "within_2": 7,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 4,
+                "within_2": 4,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 188,
+              "within_2": 74,
+              "beyond_2": 114,
+              "precision": 0.39361702127659576
+            },
+            "supported": {
+              "retained": 796,
+              "within_2": 667,
+              "beyond_2": 129,
+              "precision": 0.8379396984924623
+            }
+          },
+          "source_bands": {
+            "<2": {
+              "accepted": 334,
+              "beyond_2": 18
+            },
+            "2-4": {
+              "accepted": 450,
+              "beyond_2": 123
+            },
+            "4-6": {
+              "accepted": 182,
+              "beyond_2": 85
+            },
+            ">6": {
+              "accepted": 18,
+              "beyond_2": 17
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "accepted_support": {
+            "bins": {
+              "1": {
+                "retained": 8,
+                "within_2": 1,
+                "beyond_2": 7,
+                "precision": 0.125
+              },
+              "2": {
+                "retained": 6,
+                "within_2": 4,
+                "beyond_2": 2,
+                "precision": 0.6666666666666666
+              },
+              "3-4": {
+                "retained": 14,
+                "within_2": 7,
+                "beyond_2": 7,
+                "precision": 0.5
+              },
+              "5-9": {
+                "retained": 27,
+                "within_2": 27,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "10+": {
+                "retained": 21,
+                "within_2": 20,
+                "beyond_2": 1,
+                "precision": 0.9523809523809523
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 8,
+                "within_2": 1,
+                "beyond_2": 7,
+                "precision": 0.125
+              },
+              "2": {
+                "retained": 6,
+                "within_2": 4,
+                "beyond_2": 2,
+                "precision": 0.6666666666666666
+              },
+              "3": {
+                "retained": 11,
+                "within_2": 5,
+                "beyond_2": 6,
+                "precision": 0.45454545454545453
+              },
+              "4": {
+                "retained": 3,
+                "within_2": 2,
+                "beyond_2": 1,
+                "precision": 0.6666666666666666
+              },
+              "5": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "6": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "7": {
+                "retained": 10,
+                "within_2": 10,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "8": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "9": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "10": {
+                "retained": 4,
+                "within_2": 3,
+                "beyond_2": 1,
+                "precision": 0.75
+              },
+              "11": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "12": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "13": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "19": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "20": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "21": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 14,
+              "within_2": 5,
+              "beyond_2": 9,
+              "precision": 0.35714285714285715
+            },
+            "supported": {
+              "retained": 62,
+              "within_2": 54,
+              "beyond_2": 8,
+              "precision": 0.8709677419354839
+            }
+          },
+          "all_support": {
+            "bins": {
+              "1": {
+                "retained": 4,
+                "within_2": 1,
+                "beyond_2": 3,
+                "precision": 0.25
+              },
+              "2": {
+                "retained": 5,
+                "within_2": 2,
+                "beyond_2": 3,
+                "precision": 0.4
+              },
+              "3-4": {
+                "retained": 12,
+                "within_2": 7,
+                "beyond_2": 5,
+                "precision": 0.5833333333333334
+              },
+              "5-9": {
+                "retained": 32,
+                "within_2": 27,
+                "beyond_2": 5,
+                "precision": 0.84375
+              },
+              "10+": {
+                "retained": 23,
+                "within_2": 22,
+                "beyond_2": 1,
+                "precision": 0.9565217391304348
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 4,
+                "within_2": 1,
+                "beyond_2": 3,
+                "precision": 0.25
+              },
+              "2": {
+                "retained": 5,
+                "within_2": 2,
+                "beyond_2": 3,
+                "precision": 0.4
+              },
+              "3": {
+                "retained": 8,
+                "within_2": 6,
+                "beyond_2": 2,
+                "precision": 0.75
+              },
+              "4": {
+                "retained": 4,
+                "within_2": 1,
+                "beyond_2": 3,
+                "precision": 0.25
+              },
+              "5": {
+                "retained": 4,
+                "within_2": 3,
+                "beyond_2": 1,
+                "precision": 0.75
+              },
+              "6": {
+                "retained": 11,
+                "within_2": 8,
+                "beyond_2": 3,
+                "precision": 0.7272727272727273
+              },
+              "7": {
+                "retained": 10,
+                "within_2": 9,
+                "beyond_2": 1,
+                "precision": 0.9
+              },
+              "8": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "9": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "10": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "11": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "12": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "13": {
+                "retained": 3,
+                "within_2": 2,
+                "beyond_2": 1,
+                "precision": 0.6666666666666666
+              },
+              "15": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "18": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "20": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "23": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "24": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "27": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "28": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 9,
+              "within_2": 3,
+              "beyond_2": 6,
+              "precision": 0.3333333333333333
+            },
+            "supported": {
+              "retained": 67,
+              "within_2": 56,
+              "beyond_2": 11,
+              "precision": 0.835820895522388
+            }
+          },
+          "source_bands": {
+            "<2": {
+              "accepted": 16,
+              "beyond_2": 0
+            },
+            "2-4": {
+              "accepted": 29,
+              "beyond_2": 5
+            },
+            "4-6": {
+              "accepted": 22,
+              "beyond_2": 4
+            },
+            ">6": {
+              "accepted": 9,
+              "beyond_2": 8
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "accepted_support": {
+            "bins": {
+              "1": {
+                "retained": 100,
+                "within_2": 46,
+                "beyond_2": 54,
+                "precision": 0.46
+              },
+              "2": {
+                "retained": 74,
+                "within_2": 50,
+                "beyond_2": 24,
+                "precision": 0.6756756756756757
+              },
+              "3-4": {
+                "retained": 51,
+                "within_2": 42,
+                "beyond_2": 9,
+                "precision": 0.8235294117647058
+              },
+              "5-9": {
+                "retained": 37,
+                "within_2": 32,
+                "beyond_2": 5,
+                "precision": 0.8648648648648649
+              },
+              "10+": {
+                "retained": 54,
+                "within_2": 52,
+                "beyond_2": 2,
+                "precision": 0.9629629629629629
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 100,
+                "within_2": 46,
+                "beyond_2": 54,
+                "precision": 0.46
+              },
+              "2": {
+                "retained": 74,
+                "within_2": 50,
+                "beyond_2": 24,
+                "precision": 0.6756756756756757
+              },
+              "3": {
+                "retained": 32,
+                "within_2": 25,
+                "beyond_2": 7,
+                "precision": 0.78125
+              },
+              "4": {
+                "retained": 19,
+                "within_2": 17,
+                "beyond_2": 2,
+                "precision": 0.8947368421052632
+              },
+              "5": {
+                "retained": 10,
+                "within_2": 9,
+                "beyond_2": 1,
+                "precision": 0.9
+              },
+              "6": {
+                "retained": 12,
+                "within_2": 10,
+                "beyond_2": 2,
+                "precision": 0.8333333333333334
+              },
+              "7": {
+                "retained": 7,
+                "within_2": 6,
+                "beyond_2": 1,
+                "precision": 0.8571428571428571
+              },
+              "8": {
+                "retained": 3,
+                "within_2": 2,
+                "beyond_2": 1,
+                "precision": 0.6666666666666666
+              },
+              "9": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "10": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "11": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "13": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "14": {
+                "retained": 4,
+                "within_2": 2,
+                "beyond_2": 2,
+                "precision": 0.5
+              },
+              "16": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "18": {
+                "retained": 4,
+                "within_2": 4,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "20": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "21": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "23": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "24": {
+                "retained": 5,
+                "within_2": 5,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "26": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "27": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "28": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "29": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "30": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "31": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "33": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "35": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "36": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "37": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "38": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "40": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "41": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "44": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "48": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 174,
+              "within_2": 96,
+              "beyond_2": 78,
+              "precision": 0.5517241379310345
+            },
+            "supported": {
+              "retained": 142,
+              "within_2": 126,
+              "beyond_2": 16,
+              "precision": 0.8873239436619719
+            }
+          },
+          "all_support": {
+            "bins": {
+              "1": {
+                "retained": 90,
+                "within_2": 45,
+                "beyond_2": 45,
+                "precision": 0.5
+              },
+              "2": {
+                "retained": 78,
+                "within_2": 48,
+                "beyond_2": 30,
+                "precision": 0.6153846153846154
+              },
+              "3-4": {
+                "retained": 52,
+                "within_2": 43,
+                "beyond_2": 9,
+                "precision": 0.8269230769230769
+              },
+              "5-9": {
+                "retained": 37,
+                "within_2": 31,
+                "beyond_2": 6,
+                "precision": 0.8378378378378378
+              },
+              "10+": {
+                "retained": 59,
+                "within_2": 55,
+                "beyond_2": 4,
+                "precision": 0.9322033898305084
+              }
+            },
+            "exact": {
+              "1": {
+                "retained": 90,
+                "within_2": 45,
+                "beyond_2": 45,
+                "precision": 0.5
+              },
+              "2": {
+                "retained": 78,
+                "within_2": 48,
+                "beyond_2": 30,
+                "precision": 0.6153846153846154
+              },
+              "3": {
+                "retained": 31,
+                "within_2": 25,
+                "beyond_2": 6,
+                "precision": 0.8064516129032258
+              },
+              "4": {
+                "retained": 21,
+                "within_2": 18,
+                "beyond_2": 3,
+                "precision": 0.8571428571428571
+              },
+              "5": {
+                "retained": 14,
+                "within_2": 11,
+                "beyond_2": 3,
+                "precision": 0.7857142857142857
+              },
+              "6": {
+                "retained": 12,
+                "within_2": 10,
+                "beyond_2": 2,
+                "precision": 0.8333333333333334
+              },
+              "7": {
+                "retained": 6,
+                "within_2": 6,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "9": {
+                "retained": 5,
+                "within_2": 4,
+                "beyond_2": 1,
+                "precision": 0.8
+              },
+              "10": {
+                "retained": 6,
+                "within_2": 5,
+                "beyond_2": 1,
+                "precision": 0.8333333333333334
+              },
+              "11": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "15": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "16": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "17": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "18": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "19": {
+                "retained": 2,
+                "within_2": 1,
+                "beyond_2": 1,
+                "precision": 0.5
+              },
+              "20": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "21": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "22": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "23": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "24": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "25": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "26": {
+                "retained": 1,
+                "within_2": 0,
+                "beyond_2": 1,
+                "precision": 0.0
+              },
+              "27": {
+                "retained": 2,
+                "within_2": 1,
+                "beyond_2": 1,
+                "precision": 0.5
+              },
+              "28": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "29": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "30": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "31": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "33": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "35": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "36": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "37": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "39": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "40": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "41": {
+                "retained": 2,
+                "within_2": 2,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "42": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "43": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "44": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "48": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "50": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "51": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "52": {
+                "retained": 3,
+                "within_2": 3,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "53": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "56": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              },
+              "65": {
+                "retained": 1,
+                "within_2": 1,
+                "beyond_2": 0,
+                "precision": 1.0
+              }
+            },
+            "isolated": {
+              "retained": 168,
+              "within_2": 93,
+              "beyond_2": 75,
+              "precision": 0.5535714285714286
+            },
+            "supported": {
+              "retained": 148,
+              "within_2": 129,
+              "beyond_2": 19,
+              "precision": 0.8716216216216216
+            }
+          },
+          "source_bands": {
+            "<2": {
+              "accepted": 73,
+              "beyond_2": 1
+            },
+            "2-4": {
+              "accepted": 139,
+              "beyond_2": 37
+            },
+            "4-6": {
+              "accepted": 84,
+              "beyond_2": 37
+            },
+            ">6": {
+              "accepted": 20,
+              "beyond_2": 19
+            }
+          }
+        }
+      ],
+      "accepted_raw_support": {
+        "bins": {
+          "1": {
+            "retained": 197,
+            "within_2": 71,
+            "beyond_2": 126,
+            "pooled_precision": 0.3604060913705584,
+            "neuron_macro_precision": 0.35242405326674986,
+            "neurons_with_bin": 2
+          },
+          "2": {
+            "retained": 205,
+            "within_2": 119,
+            "beyond_2": 86,
+            "pooled_precision": 0.5804878048780487,
+            "neuron_macro_precision": 0.5975,
+            "neurons_with_bin": 2
+          },
+          "3-4": {
+            "retained": 348,
+            "within_2": 249,
+            "beyond_2": 99,
+            "pooled_precision": 0.7155172413793104,
+            "neuron_macro_precision": 0.7302799673824409,
+            "neurons_with_bin": 2
+          },
+          "5-9": {
+            "retained": 526,
+            "within_2": 476,
+            "beyond_2": 50,
+            "pooled_precision": 0.9049429657794676,
+            "neuron_macro_precision": 0.9122362012987013,
+            "neurons_with_bin": 2
+          },
+          "10+": {
+            "retained": 302,
+            "within_2": 294,
+            "beyond_2": 8,
+            "pooled_precision": 0.9735099337748344,
+            "neuron_macro_precision": 0.9689867841409692,
+            "neurons_with_bin": 2
+          }
+        },
+        "exact": {
+          "1": {
+            "retained": 197,
+            "within_2": 71,
+            "beyond_2": 126,
+            "pooled_precision": 0.3604060913705584,
+            "neuron_macro_precision": 0.35242405326674986,
+            "neurons_with_bin": 2
+          },
+          "2": {
+            "retained": 205,
+            "within_2": 119,
+            "beyond_2": 86,
+            "pooled_precision": 0.5804878048780487,
+            "neuron_macro_precision": 0.5975,
+            "neurons_with_bin": 2
+          },
+          "3": {
+            "retained": 189,
+            "within_2": 120,
+            "beyond_2": 69,
+            "pooled_precision": 0.6349206349206349,
+            "neuron_macro_precision": 0.6570563873845174,
+            "neurons_with_bin": 2
+          },
+          "4": {
+            "retained": 159,
+            "within_2": 129,
+            "beyond_2": 30,
+            "pooled_precision": 0.8113207547169812,
+            "neuron_macro_precision": 0.8332780358327804,
+            "neurons_with_bin": 2
+          },
+          "5": {
+            "retained": 141,
+            "within_2": 123,
+            "beyond_2": 18,
+            "pooled_precision": 0.8723404255319149,
+            "neuron_macro_precision": 0.9007499999999999,
+            "neurons_with_bin": 2
+          },
+          "6": {
+            "retained": 115,
+            "within_2": 102,
+            "beyond_2": 13,
+            "pooled_precision": 0.8869565217391304,
+            "neuron_macro_precision": 0.8877434135166093,
+            "neurons_with_bin": 2
+          },
+          "7": {
+            "retained": 117,
+            "within_2": 107,
+            "beyond_2": 10,
+            "pooled_precision": 0.9145299145299145,
+            "neuron_macro_precision": 0.9255882352941176,
+            "neurons_with_bin": 2
+          },
+          "8": {
+            "retained": 90,
+            "within_2": 86,
+            "beyond_2": 4,
+            "pooled_precision": 0.9555555555555556,
+            "neuron_macro_precision": 0.8988095238095238,
+            "neurons_with_bin": 2
+          },
+          "9": {
+            "retained": 63,
+            "within_2": 58,
+            "beyond_2": 5,
+            "pooled_precision": 0.9206349206349206,
+            "neuron_macro_precision": 0.9553571428571428,
+            "neurons_with_bin": 2
+          },
+          "10": {
+            "retained": 51,
+            "within_2": 49,
+            "beyond_2": 2,
+            "pooled_precision": 0.9607843137254902,
+            "neuron_macro_precision": 0.9172077922077921,
+            "neurons_with_bin": 2
+          },
+          "11": {
+            "retained": 33,
+            "within_2": 31,
+            "beyond_2": 2,
+            "pooled_precision": 0.9393939393939394,
+            "neuron_macro_precision": 0.9666666666666667,
+            "neurons_with_bin": 2
+          },
+          "12": {
+            "retained": 26,
+            "within_2": 25,
+            "beyond_2": 1,
+            "pooled_precision": 0.9615384615384616,
+            "neuron_macro_precision": 0.9782608695652174,
+            "neurons_with_bin": 2
+          },
+          "13": {
+            "retained": 18,
+            "within_2": 18,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "14": {
+            "retained": 24,
+            "within_2": 22,
+            "beyond_2": 2,
+            "pooled_precision": 0.9166666666666666,
+            "neuron_macro_precision": 0.8,
+            "neurons_with_bin": 2
+          },
+          "15": {
+            "retained": 17,
+            "within_2": 17,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "16": {
+            "retained": 14,
+            "within_2": 14,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "17": {
+            "retained": 13,
+            "within_2": 12,
+            "beyond_2": 1,
+            "pooled_precision": 0.9230769230769231,
+            "neuron_macro_precision": 0.9444444444444444,
+            "neurons_with_bin": 2
+          },
+          "18": {
+            "retained": 14,
+            "within_2": 14,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "19": {
+            "retained": 11,
+            "within_2": 11,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "20": {
+            "retained": 5,
+            "within_2": 5,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "21": {
+            "retained": 10,
+            "within_2": 10,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "22": {
+            "retained": 8,
+            "within_2": 8,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "23": {
+            "retained": 7,
+            "within_2": 7,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "24": {
+            "retained": 8,
+            "within_2": 8,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "25": {
+            "retained": 5,
+            "within_2": 5,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "26": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "27": {
+            "retained": 4,
+            "within_2": 4,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "28": {
+            "retained": 4,
+            "within_2": 4,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "29": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "30": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "31": {
+            "retained": 5,
+            "within_2": 5,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "32": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "33": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "34": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "35": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "36": {
+            "retained": 5,
+            "within_2": 5,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "37": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "38": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "40": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "41": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "44": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "48": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          }
+        }
+      },
+      "unthresholded_raw_support_diagnostic_only": {
+        "bins": {
+          "1": {
+            "retained": 174,
+            "within_2": 70,
+            "beyond_2": 104,
+            "pooled_precision": 0.40229885057471265,
+            "neuron_macro_precision": 0.3946808510638298,
+            "neurons_with_bin": 2
+          },
+          "2": {
+            "retained": 203,
+            "within_2": 106,
+            "beyond_2": 97,
+            "pooled_precision": 0.5221674876847291,
+            "neuron_macro_precision": 0.5345381526104418,
+            "neurons_with_bin": 2
+          },
+          "3-4": {
+            "retained": 331,
+            "within_2": 234,
+            "beyond_2": 97,
+            "pooled_precision": 0.7069486404833837,
+            "neuron_macro_precision": 0.7351942883895131,
+            "neurons_with_bin": 2
+          },
+          "5-9": {
+            "retained": 535,
+            "within_2": 477,
+            "beyond_2": 58,
+            "pooled_precision": 0.891588785046729,
+            "neuron_macro_precision": 0.8698606705231076,
+            "neurons_with_bin": 2
+          },
+          "10+": {
+            "retained": 335,
+            "within_2": 322,
+            "beyond_2": 13,
+            "pooled_precision": 0.9611940298507463,
+            "neuron_macro_precision": 0.9537019184421093,
+            "neurons_with_bin": 2
+          }
+        },
+        "exact": {
+          "1": {
+            "retained": 174,
+            "within_2": 70,
+            "beyond_2": 104,
+            "pooled_precision": 0.40229885057471265,
+            "neuron_macro_precision": 0.3946808510638298,
+            "neurons_with_bin": 2
+          },
+          "2": {
+            "retained": 203,
+            "within_2": 106,
+            "beyond_2": 97,
+            "pooled_precision": 0.5221674876847291,
+            "neuron_macro_precision": 0.5345381526104418,
+            "neurons_with_bin": 2
+          },
+          "3": {
+            "retained": 173,
+            "within_2": 112,
+            "beyond_2": 61,
+            "pooled_precision": 0.6473988439306358,
+            "neuron_macro_precision": 0.6996747034060466,
+            "neurons_with_bin": 2
+          },
+          "4": {
+            "retained": 158,
+            "within_2": 122,
+            "beyond_2": 36,
+            "pooled_precision": 0.7721518987341772,
+            "neuron_macro_precision": 0.7672180451127819,
+            "neurons_with_bin": 2
+          },
+          "5": {
+            "retained": 139,
+            "within_2": 118,
+            "beyond_2": 21,
+            "pooled_precision": 0.8489208633093526,
+            "neuron_macro_precision": 0.8186409550045914,
+            "neurons_with_bin": 2
+          },
+          "6": {
+            "retained": 125,
+            "within_2": 109,
+            "beyond_2": 16,
+            "pooled_precision": 0.872,
+            "neuron_macro_precision": 0.837382779198636,
+            "neurons_with_bin": 2
+          },
+          "7": {
+            "retained": 122,
+            "within_2": 109,
+            "beyond_2": 13,
+            "pooled_precision": 0.8934426229508197,
+            "neuron_macro_precision": 0.9121462264150944,
+            "neurons_with_bin": 2
+          },
+          "8": {
+            "retained": 74,
+            "within_2": 71,
+            "beyond_2": 3,
+            "pooled_precision": 0.9594594594594594,
+            "neuron_macro_precision": 0.9782608695652174,
+            "neurons_with_bin": 2
+          },
+          "9": {
+            "retained": 75,
+            "within_2": 70,
+            "beyond_2": 5,
+            "pooled_precision": 0.9333333333333333,
+            "neuron_macro_precision": 0.8991596638655461,
+            "neurons_with_bin": 2
+          },
+          "10": {
+            "retained": 56,
+            "within_2": 52,
+            "beyond_2": 4,
+            "pooled_precision": 0.9285714285714286,
+            "neuron_macro_precision": 0.90625,
+            "neurons_with_bin": 2
+          },
+          "11": {
+            "retained": 38,
+            "within_2": 36,
+            "beyond_2": 2,
+            "pooled_precision": 0.9473684210526315,
+            "neuron_macro_precision": 0.9705882352941176,
+            "neurons_with_bin": 2
+          },
+          "12": {
+            "retained": 25,
+            "within_2": 23,
+            "beyond_2": 2,
+            "pooled_precision": 0.92,
+            "neuron_macro_precision": 0.9565217391304348,
+            "neurons_with_bin": 2
+          },
+          "13": {
+            "retained": 21,
+            "within_2": 20,
+            "beyond_2": 1,
+            "pooled_precision": 0.9523809523809523,
+            "neuron_macro_precision": 0.8333333333333333,
+            "neurons_with_bin": 2
+          },
+          "14": {
+            "retained": 21,
+            "within_2": 21,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "15": {
+            "retained": 19,
+            "within_2": 19,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "16": {
+            "retained": 18,
+            "within_2": 18,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "17": {
+            "retained": 18,
+            "within_2": 17,
+            "beyond_2": 1,
+            "pooled_precision": 0.9444444444444444,
+            "neuron_macro_precision": 0.9642857142857143,
+            "neurons_with_bin": 2
+          },
+          "18": {
+            "retained": 12,
+            "within_2": 12,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "19": {
+            "retained": 8,
+            "within_2": 7,
+            "beyond_2": 1,
+            "pooled_precision": 0.875,
+            "neuron_macro_precision": 0.75,
+            "neurons_with_bin": 2
+          },
+          "20": {
+            "retained": 7,
+            "within_2": 7,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "21": {
+            "retained": 6,
+            "within_2": 6,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "22": {
+            "retained": 8,
+            "within_2": 8,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "23": {
+            "retained": 7,
+            "within_2": 7,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "24": {
+            "retained": 11,
+            "within_2": 11,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "25": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "26": {
+            "retained": 1,
+            "within_2": 0,
+            "beyond_2": 1,
+            "pooled_precision": 0.0,
+            "neuron_macro_precision": 0.0,
+            "neurons_with_bin": 1
+          },
+          "27": {
+            "retained": 7,
+            "within_2": 6,
+            "beyond_2": 1,
+            "pooled_precision": 0.8571428571428571,
+            "neuron_macro_precision": 0.8333333333333333,
+            "neurons_with_bin": 2
+          },
+          "28": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "29": {
+            "retained": 5,
+            "within_2": 5,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "30": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "31": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "33": {
+            "retained": 6,
+            "within_2": 6,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "35": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "36": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "37": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "38": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "39": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "40": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "41": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "42": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "43": {
+            "retained": 2,
+            "within_2": 2,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 2
+          },
+          "44": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "45": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "48": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "50": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "51": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "52": {
+            "retained": 3,
+            "within_2": 3,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "53": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "56": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          },
+          "65": {
+            "retained": 1,
+            "within_2": 1,
+            "beyond_2": 0,
+            "pooled_precision": 1.0,
+            "neuron_macro_precision": 1.0,
+            "neurons_with_bin": 1
+          }
+        }
+      },
+      "source_band_pooled": {
+        "<2": {
+          "accepted": 491,
+          "beyond_2": 19
+        },
+        "2-4": {
+          "accepted": 690,
+          "beyond_2": 168
+        },
+        "4-6": {
+          "accepted": 336,
+          "beyond_2": 130
+        },
+        ">6": {
+          "accepted": 61,
+          "beyond_2": 52
+        }
+      },
+      "cached_point_controls": {
+        "sato": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 3585,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.02594142259414226,
+              "coverage_2": 0.39422435334157513,
+              "precision_6": 0.14393305439330545,
+              "coverage_6": 0.9446147382498581,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 3
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 3584,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.12472098214285714,
+              "coverage_2": 0.8664235205364553,
+              "precision_6": 0.45145089285714285,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 3
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 7
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 7
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.0753312023684997,
+            "coverage_2": 0.6303239369390152,
+            "precision_6": 0.29769197362522415,
+            "coverage_6": 0.9723073691249291
+          },
+          "unknown_points": 0
+        },
+        "sato512": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 1024,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.015625,
+              "coverage_2": 0.05006996119349485,
+              "precision_6": 0.12109375,
+              "coverage_6": 0.08475989917965819,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 1
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 1024,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.349609375,
+              "coverage_2": 0.7619275032900521,
+              "precision_6": 0.646484375,
+              "coverage_6": 0.9943322358361866,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 7
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 5
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.1826171875,
+            "coverage_2": 0.40599873224177346,
+            "precision_6": 0.3837890625,
+            "coverage_6": 0.5395460675079223
+          },
+          "unknown_points": 0
+        },
+        "classical": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 101,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.4158415841584158,
+              "coverage_2": 0.19058406251554427,
+              "precision_6": 0.5346534653465347,
+              "coverage_6": 0.40956892621522367,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 458,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.6986899563318777,
+              "coverage_2": 0.8135989594449665,
+              "precision_6": 0.8624454148471615,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 6
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 8
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.5572657702451468,
+            "coverage_2": 0.5020915109802554,
+            "precision_6": 0.6985494400968482,
+            "coverage_6": 0.7047844631076119
+          },
+          "unknown_points": 0
+        },
+        "classical512": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 101,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.4158415841584158,
+              "coverage_2": 0.19058406251554427,
+              "precision_6": 0.5346534653465347,
+              "coverage_6": 0.40956892621522367,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 458,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.6986899563318777,
+              "coverage_2": 0.8135989594449665,
+              "precision_6": 0.8624454148471615,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 6
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 8
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.5572657702451468,
+            "coverage_2": 0.5020915109802554,
+            "precision_6": 0.6985494400968482,
+            "coverage_6": 0.7047844631076119
+          },
+          "unknown_points": 0
+        }
+      },
+      "raw_classical_points": {
+        "rows": [
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 27,
+            "metrics": {
+              "points": 183,
+              "known": true,
+              "curve_length": 97.02399720025204,
+              "near_2": 79,
+              "near_6": 90,
+              "covered_2": 91.12055269543788,
+              "covered_6": 97.02399720025204,
+              "precision_2": 0.43169398907103823,
+              "coverage_2": 0.9391548000993014,
+              "maximum_sample_gap_distance": 3.454020366825382,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 2,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 4,
+                  "covered": 3
+                }
+              },
+              "outside_box_points": 0
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 20,
+            "metrics": {
+              "points": 512,
+              "known": true,
+              "curve_length": 576.0288701000025,
+              "near_2": 424,
+              "near_6": 512,
+              "covered_2": 490.6503295599561,
+              "covered_6": 576.0288701000025,
+              "precision_2": 0.828125,
+              "coverage_2": 0.8517807961166529,
+              "maximum_sample_gap_distance": 5.927746922314623,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 3,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 6
+                },
+                "crop_boundary": {
+                  "count": 9,
+                  "covered": 6
+                }
+              },
+              "outside_box_points": 0
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 2,
+            "metrics": {
+              "points": 65,
+              "known": true,
+              "curve_length": 39.134500487362786,
+              "near_2": 0,
+              "near_6": 0,
+              "covered_2": 0.0,
+              "covered_6": 0.0,
+              "precision_2": 0.0,
+              "coverage_2": 0.0,
+              "maximum_sample_gap_distance": 54.01977790754884,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 1,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 1,
+                  "covered": 0
+                }
+              },
+              "outside_box_points": 0
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 5,
+            "metrics": {
+              "points": 70,
+              "known": true,
+              "curve_length": 449.1747212175269,
+              "near_2": 57,
+              "near_6": 69,
+              "covered_2": 98.456599849853,
+              "covered_6": 202.67610386115774,
+              "precision_2": 0.8142857142857143,
+              "coverage_2": 0.21919443637206004,
+              "maximum_sample_gap_distance": 25.606962010176545,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 3,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 6,
+                  "covered": 0
+                }
+              },
+              "outside_box_points": 0
+            }
+          }
+        ],
+        "summary": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 135,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.4222222222222222,
+              "coverage_2": 0.20162756604534365,
+              "precision_6": 0.5111111111111111,
+              "coverage_6": 0.4150568837375865,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 695,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.7237410071942446,
+              "coverage_2": 0.8643762035945106,
+              "precision_6": 0.8661870503597122,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 6
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 9
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.5729816147082334,
+            "coverage_2": 0.5330018848199272,
+            "precision_6": 0.6886490807354116,
+            "coverage_6": 0.7075284418687933
+          },
+          "unknown_points": 0
+        }
+      }
+    },
+    "B": {
+      "decision": {
+        "eligible": true,
+        "off_reference_retained": 369,
+        "isolated_off_reference": 212,
+        "isolated_bad_share": 0.5745257452574526,
+        "isolated_precision": 0.472636815920398,
+        "supported_precision": 0.8664965986394558,
+        "far_source_off_reference": 52,
+        "far_source_bad_share": 0.14092140921409213,
+        "far_sources_dominate": false
+      },
+      "status": "variant_failed",
+      "variant": {
+        "rows": [
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 27,
+            "metrics": {
+              "points": 59,
+              "known": true,
+              "curve_length": 97.02399720025204,
+              "near_2": 54,
+              "near_6": 59,
+              "covered_2": 96.02950978957256,
+              "covered_6": 97.02399720025204,
+              "precision_2": 0.9152542372881356,
+              "coverage_2": 0.9897500882320184,
+              "maximum_sample_gap_distance": 2.1882091450734658,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 2,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 4,
+                  "covered": 3
+                }
+              },
+              "outside_box_points": 4
+            },
+            "thin_dim": {
+              "length": 0.0,
+              "covered": 0.0
+            },
+            "incident": {
+              "count": 1,
+              "covered": 1,
+              "ambiguous_coincident": 0,
+              "probe_outside_crop": 1,
+              "meaning": "spatial incident-chain support only; connectivity unmeasured"
+            },
+            "longest_uncovered_length_2": 0.994487410679494,
+            "branch_change": {
+              "curve_length": 97.02399720025205,
+              "lost_covered_length": 0.994487410679494,
+              "gained_covered_length": 0.0,
+              "per_clipped_run": [
+                {
+                  "clipped_reference_run": 0,
+                  "length": 65.66056262554903,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 65.66056262554903,
+                  "variant_covered": 65.66056262554903
+                },
+                {
+                  "clipped_reference_run": 1,
+                  "length": 27.548729653066815,
+                  "lost_covered_length": 0.994487410679494,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 27.548729653066815,
+                  "variant_covered": 26.554242242387318
+                },
+                {
+                  "clipped_reference_run": 2,
+                  "length": 3.814704921636201,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 3.814704921636201,
+                  "variant_covered": 3.814704921636201
+                }
+              ],
+              "meaning": "spatial support loss, not certified missing biological branches"
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 20,
+            "metrics": {
+              "points": 318,
+              "known": true,
+              "curve_length": 576.0288701000025,
+              "near_2": 258,
+              "near_6": 318,
+              "covered_2": 521.400241258369,
+              "covered_6": 573.8241540778226,
+              "precision_2": 0.8113207547169812,
+              "coverage_2": 0.9051633838558307,
+              "maximum_sample_gap_distance": 7.903496905294017,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 3,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 9,
+                  "covered": 6
+                }
+              },
+              "outside_box_points": 2
+            },
+            "thin_dim": {
+              "length": 0.0,
+              "covered": 0.0
+            },
+            "incident": {
+              "count": 27,
+              "covered": 26,
+              "ambiguous_coincident": 0,
+              "probe_outside_crop": 0,
+              "meaning": "spatial incident-chain support only; connectivity unmeasured"
+            },
+            "longest_uncovered_length_2": 6.580810353456947,
+            "branch_change": {
+              "curve_length": 576.0288701000023,
+              "lost_covered_length": 49.777031297648875,
+              "gained_covered_length": 2.4637185563696304,
+              "per_clipped_run": [
+                {
+                  "clipped_reference_run": 0,
+                  "length": 12.190715413604538,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 12.190715413604538,
+                  "variant_covered": 12.190715413604538
+                },
+                {
+                  "clipped_reference_run": 1,
+                  "length": 23.008305898759346,
+                  "lost_covered_length": 7.138212269708222,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 22.567362694323396,
+                  "variant_covered": 15.42915042461516
+                },
+                {
+                  "clipped_reference_run": 2,
+                  "length": 9.995391888265305,
+                  "lost_covered_length": 0.4997695944132651,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 9.995391888265305,
+                  "variant_covered": 9.495622293852039
+                },
+                {
+                  "clipped_reference_run": 3,
+                  "length": 17.516631912543243,
+                  "lost_covered_length": 0.925970710329612,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 17.069418317043286,
+                  "variant_covered": 16.14344760671368
+                },
+                {
+                  "clipped_reference_run": 4,
+                  "length": 32.79325775869078,
+                  "lost_covered_length": 1.4850535049358005,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 32.79325775869078,
+                  "variant_covered": 31.30820425375498
+                },
+                {
+                  "clipped_reference_run": 5,
+                  "length": 13.194242065201186,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 13.194242065201186,
+                  "variant_covered": 13.194242065201186
+                },
+                {
+                  "clipped_reference_run": 6,
+                  "length": 15.288055536632886,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 15.288055536632886,
+                  "variant_covered": 15.288055536632886
+                },
+                {
+                  "clipped_reference_run": 7,
+                  "length": 123.08315577843743,
+                  "lost_covered_length": 7.455473338075348,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 122.58974118096387,
+                  "variant_covered": 115.1342678428885
+                },
+                {
+                  "clipped_reference_run": 8,
+                  "length": 49.83583141759177,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 49.83583141759177,
+                  "variant_covered": 49.83583141759177
+                },
+                {
+                  "clipped_reference_run": 9,
+                  "length": 7.734566239320834,
+                  "lost_covered_length": 0.9167243337733786,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 7.734566239320834,
+                  "variant_covered": 6.817841905547456
+                },
+                {
+                  "clipped_reference_run": 10,
+                  "length": 93.58644162317675,
+                  "lost_covered_length": 10.875372966147406,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 92.60915918787568,
+                  "variant_covered": 81.73378622172828
+                },
+                {
+                  "clipped_reference_run": 11,
+                  "length": 24.734041181485214,
+                  "lost_covered_length": 4.45810738737476,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 24.734041181485214,
+                  "variant_covered": 20.275933794110454
+                },
+                {
+                  "clipped_reference_run": 12,
+                  "length": 6.461504742884717,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 6.461504742884717,
+                  "variant_covered": 6.461504742884717
+                },
+                {
+                  "clipped_reference_run": 13,
+                  "length": 17.68569063083923,
+                  "lost_covered_length": 7.690815657615753,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 17.68569063083923,
+                  "variant_covered": 9.994874973223476
+                },
+                {
+                  "clipped_reference_run": 14,
+                  "length": 9.994195015107493,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 9.994195015107493,
+                  "variant_covered": 9.994195015107493
+                },
+                {
+                  "clipped_reference_run": 15,
+                  "length": 12.7458134139122,
+                  "lost_covered_length": 1.3935630018050733,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 10.745813413912199,
+                  "variant_covered": 9.352250412107127
+                },
+                {
+                  "clipped_reference_run": 16,
+                  "length": 70.19165435139624,
+                  "lost_covered_length": 5.93796853347027,
+                  "gained_covered_length": 2.4637185563696304,
+                  "original_covered": 67.23519208375268,
+                  "variant_covered": 63.76094210665204
+                },
+                {
+                  "clipped_reference_run": 17,
+                  "length": 35.989375232153215,
+                  "lost_covered_length": 1.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 35.989375232153215,
+                  "variant_covered": 34.989375232153215
+                }
+              ],
+              "meaning": "spatial support loss, not certified missing biological branches"
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 2,
+            "metrics": {
+              "points": 25,
+              "known": true,
+              "curve_length": 39.134500487362786,
+              "near_2": 19,
+              "near_6": 25,
+              "covered_2": 37.68804026548683,
+              "covered_6": 39.134500487362786,
+              "precision_2": 0.76,
+              "coverage_2": 0.9630387457649283,
+              "maximum_sample_gap_distance": 2.6201926961316837,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 1,
+                  "covered": 1
+                }
+              },
+              "outside_box_points": 0
+            },
+            "thin_dim": {
+              "length": 3.679188777045389,
+              "covered": 3.679188777045389
+            },
+            "incident": {
+              "count": 1,
+              "covered": 1,
+              "ambiguous_coincident": 0,
+              "probe_outside_crop": 0,
+              "meaning": "spatial incident-chain support only; connectivity unmeasured"
+            },
+            "longest_uncovered_length_2": 1.4464602218759375,
+            "branch_change": {
+              "curve_length": 39.134500487362786,
+              "lost_covered_length": 1.4464602218759375,
+              "gained_covered_length": 0.0,
+              "per_clipped_run": [
+                {
+                  "clipped_reference_run": 0,
+                  "length": 39.134500487362786,
+                  "lost_covered_length": 1.4464602218759375,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 39.134500487362786,
+                  "variant_covered": 37.68804026548683
+                }
+              ],
+              "meaning": "spatial support loss, not certified missing biological branches"
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 5,
+            "metrics": {
+              "points": 54,
+              "known": true,
+              "curve_length": 449.1747212175269,
+              "near_2": 45,
+              "near_6": 54,
+              "covered_2": 113.52460059845177,
+              "covered_6": 210.10062017335463,
+              "precision_2": 0.8333333333333334,
+              "coverage_2": 0.2527404042033655,
+              "maximum_sample_gap_distance": 25.343487988225785,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 3,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 6,
+                  "covered": 0
+                }
+              },
+              "outside_box_points": 0
+            },
+            "thin_dim": {
+              "length": 29.86476689902463,
+              "covered": 0.0
+            },
+            "incident": {
+              "count": 22,
+              "covered": 6,
+              "ambiguous_coincident": 0,
+              "probe_outside_crop": 0,
+              "meaning": "spatial incident-chain support only; connectivity unmeasured"
+            },
+            "longest_uncovered_length_2": 47.81369363329429,
+            "branch_change": {
+              "curve_length": 449.1747212175269,
+              "lost_covered_length": 178.03759514573892,
+              "gained_covered_length": 0.0,
+              "per_clipped_run": [
+                {
+                  "clipped_reference_run": 0,
+                  "length": 8.417092494436481,
+                  "lost_covered_length": 0.0,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 8.417092494436481,
+                  "variant_covered": 8.417092494436481
+                },
+                {
+                  "clipped_reference_run": 1,
+                  "length": 76.25155223824038,
+                  "lost_covered_length": 29.82802651984515,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 63.29736470546267,
+                  "variant_covered": 33.46933818561751
+                },
+                {
+                  "clipped_reference_run": 2,
+                  "length": 19.98690710428358,
+                  "lost_covered_length": 5.576484801839531,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 19.98690710428358,
+                  "variant_covered": 14.410422302444054
+                },
+                {
+                  "clipped_reference_run": 3,
+                  "length": 13.982340609426576,
+                  "lost_covered_length": 3.1849978826268575,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 3.1849978826268575,
+                  "variant_covered": 0.0
+                },
+                {
+                  "clipped_reference_run": 4,
+                  "length": 22.294400491578237,
+                  "lost_covered_length": 14.819119477581781,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 21.36437844882871,
+                  "variant_covered": 6.545258971246929
+                },
+                {
+                  "clipped_reference_run": 5,
+                  "length": 8.927373247958982,
+                  "lost_covered_length": 7.541487903675395,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 7.541487903675395,
+                  "variant_covered": 0.0
+                },
+                {
+                  "clipped_reference_run": 6,
+                  "length": 21.799512762604223,
+                  "lost_covered_length": 2.312196780311149,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 2.312196780311149,
+                  "variant_covered": 0.0
+                },
+                {
+                  "clipped_reference_run": 7,
+                  "length": 25.46658768240137,
+                  "lost_covered_length": 15.27800397181171,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 24.06004824521392,
+                  "variant_covered": 8.782044273402212
+                },
+                {
+                  "clipped_reference_run": 8,
+                  "length": 48.76948775072119,
+                  "lost_covered_length": 13.948997467908121,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 15.376799696538416,
+                  "variant_covered": 1.4278022286302954
+                },
+                {
+                  "clipped_reference_run": 9,
+                  "length": 20.583374299405865,
+                  "lost_covered_length": 13.214148717120201,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 13.214148717120201,
+                  "variant_covered": 0.0
+                },
+                {
+                  "clipped_reference_run": 10,
+                  "length": 33.73251411082254,
+                  "lost_covered_length": 8.659432468679,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 8.659432468679,
+                  "variant_covered": 0.0
+                },
+                {
+                  "clipped_reference_run": 11,
+                  "length": 52.69602860934488,
+                  "lost_covered_length": 25.941941243248824,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 30.35542601370301,
+                  "variant_covered": 4.41348477045419
+                },
+                {
+                  "clipped_reference_run": 12,
+                  "length": 72.02168249210419,
+                  "lost_covered_length": 20.165361626301703,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 56.22451899852179,
+                  "variant_covered": 36.059157372220085
+                },
+                {
+                  "clipped_reference_run": 13,
+                  "length": 24.245867324198436,
+                  "lost_covered_length": 17.567396284789492,
+                  "gained_covered_length": 0.0,
+                  "original_covered": 17.567396284789492,
+                  "variant_covered": 0.0
+                }
+              ],
+              "meaning": "spatial support loss, not certified missing biological branches"
+            }
+          }
+        ],
+        "summary": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 79,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.810126582278481,
+              "coverage_2": 0.30966574896126814,
+              "precision_6": 1.0,
+              "coverage_6": 0.5104042880667591,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 377,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.8275862068965517,
+              "coverage_2": 0.9173569879058266,
+              "precision_6": 1.0,
+              "coverage_6": 0.996724304836523,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 3
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 9
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.8188563945875164,
+            "coverage_2": 0.6135113684335474,
+            "precision_6": 1.0,
+            "coverage_6": 0.753564296451641
+          },
+          "unknown_points": 0
+        },
+        "gate": {
+          "passed": false,
+          "checks": {
+            "precision": false,
+            "absolute_coverage": false,
+            "macro_oracle_ratio": false,
+            "minimum_box_oracle_ratio": false
+          },
+          "oracle_coverage": 0.8914137329093859,
+          "box_oracle_ratios": [
+            0.9897500882320184,
+            0.9072567423710776,
+            0.9630387457649283,
+            0.32992547303067365
+          ],
+          "terminal_macro": {
+            "precision_2": 0.8188563945875164,
+            "coverage_2": 0.6135113684335474,
+            "precision_6": 1.0,
+            "coverage_6": 0.753564296451641
+          }
+        }
+      },
+      "post_failure_variant": true,
+      "original_frozen_gate_unchanged": true
+    },
+    "C": {
+      "rows": [
+        {
+          "policy": "original",
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "segments": {
+            "reference_length": 97.02399720025204,
+            "predicted_length": 258.0541146563845,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9538308121850869,
+                "recall": 1.0,
+                "f1": 0.9763699151804862,
+                "supported_reference_length": 97.02399720025204,
+                "supported_prediction_length": 246.1399657704028
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "supported_reference_length": 97.02399720025204,
+                "supported_prediction_length": 258.0541146563845
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 804.2112463137782,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9556227585253856,
+                  "recall": 1.0,
+                  "f1": 0.9773078722462422,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 768.5225696395111
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 804.2112463137782
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 1336.814003632437,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.952432952144626,
+                  "recall": 1.0,
+                  "f1": 0.9756370390065766,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 1273.2257079479189
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 1336.814003632437
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 2700.1913738295075,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9570786894144718,
+                  "recall": 1.0,
+                  "f1": 0.9780686843009008,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 2584.2956212330073
+                },
+                "6.0": {
+                  "precision": 0.9996359909246105,
+                  "recall": 1.0,
+                  "f1": 0.9998179623306235,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 2699.208479664145
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              85,
+              144
+            ],
+            "nodes": 202,
+            "edges": 200,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "original",
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 27,
+            "decoding_k": 6,
+            "candidate_components": 2,
+            "guide_normalization_max": 0.3130084276199341,
+            "graph_sha256": "d80a142f082f07ec2876c8079d7492a580fbd5ab70d697a13adc7f6bcf975b90",
+            "swc_sha256": "cc8336b465dbf2f58d8397a668e984faeb86486ae07db99a6bb66375e1689f61",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "original",
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "segments": {
+            "reference_length": 576.0288701000025,
+            "predicted_length": 1628.2254029294597,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8255644869776707,
+                "recall": 0.9906190884803997,
+                "f1": 0.9005917139905218,
+                "supported_reference_length": 570.625194236859,
+                "supported_prediction_length": 1344.2050694534705
+              },
+              "6.0": {
+                "precision": 0.9897614135172492,
+                "recall": 1.0,
+                "f1": 0.99485436474283,
+                "supported_reference_length": 576.0288701000025,
+                "supported_prediction_length": 1611.5546763281548
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 5293.732807587152,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7912411668300454,
+                  "recall": 0.9949213574506884,
+                  "f1": 0.8814682035616221,
+                  "supported_reference_length": 573.1034253706807,
+                  "supported_prediction_length": 4188.61932356175
+                },
+                "6.0": {
+                  "precision": 0.9760748348946868,
+                  "recall": 1.0,
+                  "f1": 0.9878925814534811,
+                  "supported_reference_length": 576.0288701000025,
+                  "supported_prediction_length": 5167.0793761422165
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 8708.097023175349,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7985211624214466,
+                  "recall": 0.996657381549318,
+                  "f1": 0.8866549943164176,
+                  "supported_reference_length": 574.1034253706807,
+                  "supported_prediction_length": 6953.5997574247185
+                },
+                "6.0": {
+                  "precision": 0.9760412075510347,
+                  "recall": 1.0,
+                  "f1": 0.9878753578835241,
+                  "supported_reference_length": 576.0288701000025,
+                  "supported_prediction_length": 8499.461533971638
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 17185.357698029242,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8098728656374552,
+                  "recall": 0.9992236264209772,
+                  "f1": 0.8946389596073229,
+                  "supported_reference_length": 575.5816565045025,
+                  "supported_prediction_length": 13917.954885907642
+                },
+                "6.0": {
+                  "precision": 0.9776482055539616,
+                  "recall": 1.0,
+                  "f1": 0.9886977904445965,
+                  "supported_reference_length": 576.0288701000025,
+                  "supported_prediction_length": 16801.234115281248
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              955
+            ],
+            "nodes": 984,
+            "edges": 983,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "original",
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 20,
+            "decoding_k": 6,
+            "candidate_components": 1,
+            "guide_normalization_max": 0.3130084276199341,
+            "graph_sha256": "275a4a3822b32e54bd8946600fd03dcc2cc8c14b7708fc54b53b420132a0c95c",
+            "swc_sha256": "bbbe8b0d36448748f56b6268d0c15e7d420ff5decabe2439f11e0af72bb34d5f",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "original",
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "segments": {
+            "reference_length": 39.134500487362786,
+            "predicted_length": 122.18293359877507,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8137616222168482,
+                "recall": 1.0,
+                "f1": 0.8973192642837353,
+                "supported_reference_length": 39.134500487362786,
+                "supported_prediction_length": 99.42778225255265
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "supported_reference_length": 39.134500487362786,
+                "supported_prediction_length": 122.18293359877507
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 408.7408694005409,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7663435635882305,
+                  "recall": 1.0,
+                  "f1": 0.8677174468045677,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 313.235934440562
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 408.7408694005409
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 679.5736295879511,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7814824818675619,
+                  "recall": 1.0,
+                  "f1": 0.8773395077658231,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 531.0748866621392
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 679.5736295879511
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 1327.0514916377913,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8070778098700102,
+                  "recall": 1.0,
+                  "f1": 0.8932407951244405,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 1071.0338114557587
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 1327.0514916377913
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              62
+            ],
+            "nodes": 76,
+            "edges": 75,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "original",
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 2,
+            "decoding_k": 6,
+            "candidate_components": 1,
+            "guide_normalization_max": 0.2100776731967926,
+            "graph_sha256": "8e2ce8f0faf51a5a274fbd31ff259a4ac511b9705acd57f5bd276b44c9480e3c",
+            "swc_sha256": "5e93e59b7f4f97540fbc4bfab932e941febf40b27d57a43f093970753ebcb06e",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "original",
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "segments": {
+            "reference_length": 449.1747212175269,
+            "predicted_length": 780.7732907440799,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.6591749142001603,
+                "recall": 0.7400106295841978,
+                "f1": 0.6972576945642731,
+                "supported_reference_length": 332.39406824148864,
+                "supported_prediction_length": 514.6661669360057
+              },
+              "6.0": {
+                "precision": 0.9340877866162756,
+                "recall": 0.9465568930008991,
+                "f1": 0.9402810032882662,
+                "supported_reference_length": 425.16942853020726,
+                "supported_prediction_length": 729.3107950002434
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 2697.525820874309,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.6253576342307624,
+                  "recall": 0.8059481099464699,
+                  "f1": 0.7042601560138362,
+                  "supported_reference_length": 362.01151760099833,
+                  "supported_prediction_length": 1686.9183656183532
+                },
+                "6.0": {
+                  "precision": 0.9218940895272157,
+                  "recall": 0.9529007093851387,
+                  "f1": 0.9371409952684838,
+                  "supported_reference_length": 428.0189104860533,
+                  "supported_prediction_length": 2486.8331106110763
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 4612.907775073403,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.6270843827728315,
+                  "recall": 0.8421205105712825,
+                  "f1": 0.7188658613707033,
+                  "supported_reference_length": 378.2592455674172,
+                  "supported_prediction_length": 2892.6824249199008
+                },
+                "6.0": {
+                  "precision": 0.9280516351453413,
+                  "recall": 0.9596570517517615,
+                  "f1": 0.9435897628048856,
+                  "supported_reference_length": 431.05368868503126,
+                  "supported_prediction_length": 4281.01660343153
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 9314.0654768122,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5976589365723856,
+                  "recall": 0.8818519074786877,
+                  "f1": 0.7124607100478249,
+                  "supported_reference_length": 396.10558469688385,
+                  "supported_prediction_length": 5566.6344680371485
+                },
+                "6.0": {
+                  "precision": 0.9205637081177508,
+                  "recall": 0.9661153834993432,
+                  "f1": 0.9427896496605245,
+                  "supported_reference_length": 433.95460804728157,
+                  "supported_prediction_length": 8574.190652985766
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              15
+            ],
+            "nodes": 316,
+            "edges": 315,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "original",
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 5,
+            "decoding_k": 6,
+            "candidate_components": 1,
+            "guide_normalization_max": 0.2100776731967926,
+            "graph_sha256": "092bf0e0058cb37ba3737c8a8e8c8eb8f2b1150ac2594318a685234a40e485cf",
+            "swc_sha256": "9db7014a4b4646d4d083d44926841854dc69cf1921c54783cefbe18f457bf223",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "supported_r2_min3",
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "segments": {
+            "reference_length": 97.02399720025204,
+            "predicted_length": 137.05825507658926,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9649785974745806,
+                "recall": 1.0,
+                "f1": 0.9821772091714234,
+                "supported_reference_length": 97.02399720025204,
+                "supported_prediction_length": 132.25828275612042
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "supported_reference_length": 97.02399720025204,
+                "supported_prediction_length": 137.05825507658926
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 452.2289896632183,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9593535441795285,
+                  "recall": 1.0,
+                  "f1": 0.9792551701854848,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 433.8474840141358
+                },
+                "6.0": {
+                  "precision": 0.9989596115317736,
+                  "recall": 1.0,
+                  "f1": 0.9994795350230067,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 451.758495837375
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 902.4547084261986,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9329257745305628,
+                  "recall": 1.0,
+                  "f1": 0.9652991199386707,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 841.9232578372646
+                },
+                "6.0": {
+                  "precision": 0.987752343533433,
+                  "recall": 1.0,
+                  "f1": 0.9938384394281253,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 891.4017531807586
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 97.02399720025204,
+              "predicted_length": 2494.6387801423566,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8543444402987613,
+                  "recall": 1.0,
+                  "f1": 0.9214517235655684,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 2131.2807723683063
+                },
+                "6.0": {
+                  "precision": 0.9551722970107249,
+                  "recall": 1.0,
+                  "f1": 0.9770722493062056,
+                  "supported_reference_length": 97.02399720025204,
+                  "supported_prediction_length": 2382.8098538406075
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              36,
+              51
+            ],
+            "nodes": 59,
+            "edges": 57,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "supported_r2_min3",
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 27,
+            "decoding_k": 6,
+            "candidate_components": 2,
+            "guide_normalization_max": 0.3130084276199341,
+            "graph_sha256": "cfcbf1650f693e3d7eade31592a6e45e5764fcb35ac99addca6d2e4383aeebf8",
+            "swc_sha256": "ba1cfdc2f53f92e4566bc3f5a6ca383761a96e3644821ea6a536f5a649c16ad2",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "supported_r2_min3",
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "segments": {
+            "reference_length": 576.0288701000025,
+            "predicted_length": 854.1583274091055,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9273719713015043,
+                "recall": 0.9606970972319463,
+                "f1": 0.9437404337921218,
+                "supported_reference_length": 553.3892634268702,
+                "supported_prediction_length": 792.1224918929779
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.996172559854861,
+                "f1": 0.998082610580812,
+                "supported_reference_length": 573.8241540778226,
+                "supported_prediction_length": 854.1583274091055
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 2626.5512383431155,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.898562914189024,
+                  "recall": 0.9675617689686254,
+                  "f1": 0.931786745686475,
+                  "supported_reference_length": 557.3435125309569,
+                  "supported_prediction_length": 2360.1215349923796
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 0.996172559854861,
+                  "f1": 0.998082610580812,
+                  "supported_reference_length": 573.8241540778226,
+                  "supported_prediction_length": 2626.5512383431155
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 4790.067453337598,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8894285213718236,
+                  "recall": 0.9718664868661917,
+                  "f1": 0.9288218885866036,
+                  "supported_reference_length": 559.8231543175913,
+                  "supported_prediction_length": 4260.422612293356
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 0.996172559854861,
+                  "f1": 0.998082610580812,
+                  "supported_reference_length": 573.8241540778226,
+                  "supported_prediction_length": 4790.067453337598
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 576.0288701000025,
+              "predicted_length": 10859.68018282493,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8809065759326826,
+                  "recall": 0.9727256740571586,
+                  "f1": 0.924542009732727,
+                  "supported_reference_length": 560.3180709444083,
+                  "supported_prediction_length": 9566.363685576318
+                },
+                "6.0": {
+                  "precision": 0.9999104832382618,
+                  "recall": 0.996172559854861,
+                  "f1": 0.998038021674332,
+                  "supported_reference_length": 573.8241540778226,
+                  "supported_prediction_length": 10858.708059421451
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              48,
+              315
+            ],
+            "nodes": 318,
+            "edges": 316,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "supported_r2_min3",
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "tile_id": 20,
+            "decoding_k": 6,
+            "candidate_components": 2,
+            "guide_normalization_max": 0.3130084276199341,
+            "graph_sha256": "0c30974831776f545df6d56c8a930b9f457469eaa46991d7a37fa9e6e4e754e4",
+            "swc_sha256": "87d0813aa8225569bff201a8354a8917a7f4b817280938e2230c877457b74cd4",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "supported_r2_min3",
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "segments": {
+            "reference_length": 39.134500487362786,
+            "predicted_length": 62.035203650510525,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8998228011749367,
+                "recall": 1.0,
+                "f1": 0.9472702408018742,
+                "supported_reference_length": 39.134500487362786,
+                "supported_prediction_length": 55.82069072026004
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "supported_reference_length": 39.134500487362786,
+                "supported_prediction_length": 62.035203650510525
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 193.9615217226054,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8893246999520545,
+                  "recall": 1.0,
+                  "f1": 0.941420709711383,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 172.49477210819995
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 193.9615217226054
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 406.75415071768435,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9153494442931455,
+                  "recall": 1.0,
+                  "f1": 0.9558041192122545,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 372.3221858233627
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 406.75415071768435
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 39.134500487362786,
+              "predicted_length": 1031.691721868383,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.9145791505810171,
+                  "recall": 1.0,
+                  "f1": 0.955384007293164,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 943.5637386478527
+                },
+                "6.0": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "supported_reference_length": 39.134500487362786,
+                  "supported_prediction_length": 1031.691721868383
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              23
+            ],
+            "nodes": 25,
+            "edges": 24,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "supported_r2_min3",
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 2,
+            "decoding_k": 6,
+            "candidate_components": 1,
+            "guide_normalization_max": 0.2100776731967926,
+            "graph_sha256": "8f686f0be622e49184960eb18bcd33bd68a389c8c17cc86ee0a7dccfddd76e97",
+            "swc_sha256": "a76414d4bec91b692bbd5696fb900b5c9453980b8896f20a57075099032fe80a",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        },
+        {
+          "policy": "supported_r2_min3",
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "segments": {
+            "reference_length": 449.1747212175269,
+            "predicted_length": 247.1576369669076,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.781728909034751,
+                "recall": 0.40490303454749876,
+                "f1": 0.5334837127443921,
+                "supported_reference_length": 181.87220766300342,
+                "supported_prediction_length": 193.21026990574774
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.537021494828531,
+                "f1": 0.6987820230691578,
+                "supported_reference_length": 241.216480227425,
+                "supported_prediction_length": 247.1576369669076
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          },
+          "candidate_unions": {
+            "4": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 983.4823808501577,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7373725428459064,
+                  "recall": 0.42716174304310245,
+                  "f1": 0.5409498792622107,
+                  "supported_reference_length": 191.8702568461784,
+                  "supported_prediction_length": 725.1929040116269
+                },
+                "6.0": {
+                  "precision": 0.9863930107125352,
+                  "recall": 0.5669771669091183,
+                  "f1": 0.7200631539470244,
+                  "supported_reference_length": 254.6718108831064,
+                  "supported_prediction_length": 970.1001466295191
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "6": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 1980.0352552730824,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.6231188381753531,
+                  "recall": 0.4282524053742966,
+                  "f1": 0.5076268595319067,
+                  "supported_reference_length": 192.360154794735,
+                  "supported_prediction_length": 1233.7972678120018
+                },
+                "6.0": {
+                  "precision": 0.9597809877303151,
+                  "recall": 0.5669771669091183,
+                  "f1": 0.7128488603423689,
+                  "supported_reference_length": 254.6718108831064,
+                  "supported_prediction_length": 1900.4001930468455
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            },
+            "10": {
+              "reference_length": 449.1747212175269,
+              "predicted_length": 4759.049472941714,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.49393861140367906,
+                  "recall": 0.5108115717060417,
+                  "f1": 0.50223341614432,
+                  "supported_reference_length": 229.44364531574803,
+                  "supported_prediction_length": 2350.678288266241
+                },
+                "6.0": {
+                  "precision": 0.914866848513854,
+                  "recall": 0.6938843336814239,
+                  "f1": 0.7891982061787891,
+                  "supported_reference_length": 311.675302138563,
+                  "supported_prediction_length": 4353.896593231704
+                }
+              },
+              "reference_has_curve": true,
+              "predicted_has_curve": true
+            }
+          },
+          "inference": {
+            "roots": [
+              20,
+              32
+            ],
+            "nodes": 54,
+            "edges": 52,
+            "isolated_nodes": 0,
+            "radius": "placeholder_1_unsupervised",
+            "rooting": "highest_image_guide_per_component_not_soma_detection",
+            "policy": "supported_r2_min3",
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "tile_id": 5,
+            "decoding_k": 6,
+            "candidate_components": 2,
+            "guide_normalization_max": 0.2100776731967926,
+            "graph_sha256": "7942d229b288de3ade0ed63218991648f138622f3e9202b8f63d658da139eeb7",
+            "swc_sha256": "9b0fa35a8cb79721e5c47d35256965881c112f1c6a8ec3cdc50acb414966f607",
+            "reference_edges_used": false,
+            "reference_roots_used": false,
+            "proposal_coordinates_moved": false,
+            "image_cost": "length*(1+4*(1-mean_normalized_Sato))"
+          }
+        }
+      ],
+      "summaries": {
+        "original": {
+          "decoded": {
+            "neurons": [
+              {
+                "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                "reference_length": 488.3092217048897,
+                "predicted_length": 902.956224342855,
+                "tolerances": {
+                  "2.0": {
+                    "precision": 0.6800927139468781,
+                    "recall": 0.7608469228405955,
+                    "f1": 0.7182069747299352
+                  },
+                  "6.0": {
+                    "precision": 0.9430066548560653,
+                    "recall": 0.9508399767599981,
+                    "f1": 0.9469071157285146
+                  }
+                }
+              },
+              {
+                "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                "reference_length": 673.0528673002545,
+                "predicted_length": 1886.2795175858441,
+                "tolerances": {
+                  "2.0": {
+                    "precision": 0.8431120734742841,
+                    "recall": 0.9919713946323138,
+                    "f1": 0.911504107460081
+                  },
+                  "6.0": {
+                    "precision": 0.9911621122713345,
+                    "recall": 1.0,
+                    "f1": 0.995561442398789
+                  }
+                }
+              }
+            ],
+            "macro": {
+              "2.0": {
+                "precision": 0.7616023937105811,
+                "recall": 0.8764091587364546,
+                "f1": 0.8148555410950081
+              },
+              "6.0": {
+                "precision": 0.9670843835637,
+                "recall": 0.975419988379999,
+                "f1": 0.9712342790636518
+              }
+            }
+          },
+          "candidate_unions": {
+            "4": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 3106.2666902748497,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.6439093933309175,
+                      "recall": 0.8214999845544474,
+                      "f1": 0.7219437307534309
+                    },
+                    "6.0": {
+                      "precision": 0.9321717253309664,
+                      "recall": 0.9566753815182726,
+                      "f1": 0.9442646127765467
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 6097.94405390093,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.8129201989037791,
+                      "recall": 0.9956534696285356,
+                      "f1": 0.8950554026660099
+                    },
+                    "6.0": {
+                      "precision": 0.9792301421060244,
+                      "recall": 1.0,
+                      "f1": 0.9895060925699751
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.7284147961173483,
+                  "recall": 0.9085767270914915,
+                  "f1": 0.8084995667097203
+                },
+                "6.0": {
+                  "precision": 0.9557009337184954,
+                  "recall": 0.9783376907591363,
+                  "f1": 0.9668853526732609
+                }
+              }
+            },
+            "6": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 5292.481404661355,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.6469096534881662,
+                      "recall": 0.854773425325628,
+                      "f1": 0.7364552323851031
+                    },
+                    "6.0": {
+                      "precision": 0.9372900637214219,
+                      "recall": 0.9628902512444315,
+                      "f1": 0.949917708164288
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 10044.911026807786,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.8190043140667892,
+                      "recall": 0.9971392370155928,
+                      "f1": 0.8993356679920206
+                    },
+                    "6.0": {
+                      "precision": 0.9792297324837517,
+                      "recall": 1.0,
+                      "f1": 0.9895058834377031
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.7329569837774776,
+                  "recall": 0.9259563311706104,
+                  "f1": 0.8178954501885618
+                },
+                "6.0": {
+                  "precision": 0.9582598981025867,
+                  "recall": 0.9814451256222158,
+                  "f1": 0.9697117958009955
+                }
+              }
+            },
+            "10": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 10641.116968449991,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.6237755208567889,
+                      "recall": 0.8913206342174806,
+                      "f1": 0.7339256864950042
+                    },
+                    "6.0": {
+                      "precision": 0.9304701916142731,
+                      "recall": 0.9688309937766368,
+                      "f1": 0.9492631999128202
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 19885.54907185875,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.8298614459931603,
+                      "recall": 0.9993355446247576,
+                      "f1": 0.9067476541326649
+                    },
+                    "6.0": {
+                      "precision": 0.9806338524764024,
+                      "recall": 1.0,
+                      "f1": 0.9902222475399055
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.7268184834249746,
+                  "recall": 0.9453280894211191,
+                  "f1": 0.8203366703138346
+                },
+                "6.0": {
+                  "precision": 0.9555520220453377,
+                  "recall": 0.9844154968883184,
+                  "f1": 0.9697427237263628
+                }
+              }
+            }
+          }
+        },
+        "supported_r2_min3": {
+          "decoded": {
+            "neurons": [
+              {
+                "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                "reference_length": 488.3092217048897,
+                "predicted_length": 309.19284061741814,
+                "tolerances": {
+                  "2.0": {
+                    "precision": 0.8054227909311391,
+                    "recall": 0.4525958108649684,
+                    "f1": 0.5795319411496046
+                  },
+                  "6.0": {
+                    "precision": 1.0,
+                    "recall": 0.5741259190968511,
+                    "f1": 0.7294536124864187
+                  }
+                }
+              },
+              {
+                "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                "reference_length": 673.0528673002545,
+                "predicted_length": 991.2165824856947,
+                "tolerances": {
+                  "2.0": {
+                    "precision": 0.93257194339002,
+                    "recall": 0.9663628107492594,
+                    "f1": 0.9491667288471558
+                  },
+                  "6.0": {
+                    "precision": 1.0,
+                    "recall": 0.996724304836523,
+                    "f1": 0.9983594654727532
+                  }
+                }
+              }
+            ],
+            "macro": {
+              "2.0": {
+                "precision": 0.8689973671605795,
+                "recall": 0.7094793108071139,
+                "f1": 0.7643493349983802
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.7854251119666871,
+                "f1": 0.8639065389795859
+              }
+            }
+          },
+          "candidate_unions": {
+            "4": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 1177.4439025727631,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.7624037749555138,
+                      "recall": 0.4730706426698393,
+                      "f1": 0.5838580526585808
+                    },
+                    "6.0": {
+                      "precision": 0.9886345037828148,
+                      "recall": 0.6016808577660477,
+                      "f1": 0.7480811298632211
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 3078.780228006334,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.9074921923919694,
+                      "recall": 0.9722379051084111,
+                      "f1": 0.9387499931045062
+                    },
+                    "6.0": {
+                      "precision": 0.9998471817437428,
+                      "recall": 0.996724304836523,
+                      "f1": 0.9982833010133992
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.8349479836737417,
+                  "recall": 0.7226542738891252,
+                  "f1": 0.7613040228815435
+                },
+                "6.0": {
+                  "precision": 0.9942408427632787,
+                  "recall": 0.7992025813012853,
+                  "f1": 0.8731822154383102
+                }
+              }
+            },
+            "6": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 2386.7894059907667,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.6729204719964212,
+                      "recall": 0.47407389619604984,
+                      "f1": 0.5562608480670347
+                    },
+                    "6.0": {
+                      "precision": 0.966635069677134,
+                      "recall": 0.6016808577660477,
+                      "f1": 0.7416947155771995
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 5692.522161763796,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.8963242873963072,
+                      "recall": 0.9759220760065765,
+                      "f1": 0.9344311479831523
+                    },
+                    "6.0": {
+                      "precision": 0.9980583377751813,
+                      "recall": 0.996724304836523,
+                      "f1": 0.9973908752312164
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.7846223796963643,
+                  "recall": 0.7249979861013132,
+                  "f1": 0.7453459980250935
+                },
+                "6.0": {
+                  "precision": 0.9823467037261576,
+                  "recall": 0.7992025813012853,
+                  "f1": 0.8695427954042079
+                }
+              }
+            },
+            "10": {
+              "neurons": [
+                {
+                  "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+                  "reference_length": 488.3092217048897,
+                  "predicted_length": 5790.741194810097,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.5688808938424895,
+                      "recall": 0.5500165343291968,
+                      "f1": 0.5592896896521075
+                    },
+                    "6.0": {
+                      "precision": 0.9300343658816724,
+                      "recall": 0.7184173204861942,
+                      "f1": 0.8106428627810978
+                    }
+                  }
+                },
+                {
+                  "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+                  "reference_length": 673.0528673002545,
+                  "predicted_length": 13354.318962967287,
+                  "tolerances": {
+                    "2.0": {
+                      "precision": 0.8759446655709836,
+                      "recall": 0.9766574069900136,
+                      "f1": 0.9235635201040984
+                    },
+                    "6.0": {
+                      "precision": 0.9915532158533852,
+                      "recall": 0.996724304836523,
+                      "f1": 0.994132035891
+                    }
+                  }
+                }
+              ],
+              "macro": {
+                "2.0": {
+                  "precision": 0.7224127797067366,
+                  "recall": 0.7633369706596052,
+                  "f1": 0.7414266048781029
+                },
+                "6.0": {
+                  "precision": 0.9607937908675288,
+                  "recall": 0.8575708126613586,
+                  "f1": 0.9023874493360489
+                }
+              }
+            }
+          }
+        }
+      },
+      "classical_rows": [
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "segments": {
+            "reference_length": 97.02399720025204,
+            "predicted_length": 228.01051642772353,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.4412444834552864,
+                "recall": 0.9434974067782914,
+                "f1": 0.6012861007982735,
+                "supported_reference_length": 91.54188975370201,
+                "supported_prediction_length": 100.60838254352396
+              },
+              "6.0": {
+                "precision": 0.5009003139766945,
+                "recall": 1.0,
+                "f1": 0.6674664657102235,
+                "supported_reference_length": 97.02399720025204,
+                "supported_prediction_length": 114.21053926863497
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "segments": {
+            "reference_length": 576.0288701000025,
+            "predicted_length": 628.8732141048804,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8291485025524721,
+                "recall": 0.8623272279958153,
+                "f1": 0.8454124607169976,
+                "supported_reference_length": 496.7253787988967,
+                "supported_prediction_length": 521.4292837704218
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "supported_reference_length": 576.0288701000025,
+                "supported_prediction_length": 628.8732141048804
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "segments": {
+            "reference_length": 39.134500487362786,
+            "predicted_length": 79.04357243297659,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "supported_reference_length": 0.0,
+                "supported_prediction_length": 0.0
+              },
+              "6.0": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "supported_reference_length": 0.0,
+                "supported_prediction_length": 0.0
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "segments": {
+            "reference_length": 449.1747212175269,
+            "predicted_length": 82.65733820640833,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.77836690463433,
+                "recall": 0.20520745680651123,
+                "f1": 0.32478824016596564,
+                "supported_reference_length": 92.17400220282238,
+                "supported_prediction_length": 64.337736485035
+              },
+              "6.0": {
+                "precision": 0.9842840559124617,
+                "recall": 0.37744582614329925,
+                "f1": 0.5456499318098147,
+                "supported_reference_length": 169.53912373263557,
+                "supported_prediction_length": 81.35830010073167
+              }
+            },
+            "reference_has_curve": true,
+            "predicted_has_curve": true
+          }
+        }
+      ],
+      "classical_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_length": 488.3092217048897,
+            "predicted_length": 161.70091063938492,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.39788110178622876,
+                "recall": 0.188761543107879,
+                "f1": 0.2560490663278951
+              },
+              "6.0": {
+                "precision": 0.5031406426780847,
+                "recall": 0.3471962359029475,
+                "f1": 0.4108690136058214
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_length": 673.0528673002545,
+            "predicted_length": 856.883730532604,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.725930069797582,
+                "recall": 0.8740283224886222,
+                "f1": 0.7931249265083778
+              },
+              "6.0": {
+                "precision": 0.8671932105790419,
+                "recall": 1.0,
+                "f1": 0.9288735688044983
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.5619055857919054,
+            "recall": 0.5313949327982506,
+            "f1": 0.5245869964181364
+          },
+          "6.0": {
+            "precision": 0.6851669266285633,
+            "recall": 0.6735981179514737,
+            "f1": 0.6698712912051599
+          }
+        }
+      },
+      "scope": "four-box fit-level, per-box reconstruction only",
+      "candidate_union_selects_k": false,
+      "product_GATv2_replaced": false,
+      "topology_certified": false,
+      "whole_image_merge": false
+    },
+    "seconds": 13.196598299997277,
+    "GPU_executed": false,
+    "model_executed": false,
+    "training_executed": false,
+    "reference_edges_used_in_inference": false,
+    "frozen_scientific_config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45"
+  },
+  "frozen_followup_config": {
+    "schema": "pn2-saved-vote-scaffold-v1",
+    "terminal_root": "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z",
+    "support_cutoff": 0.25,
+    "support_radius_voxel": 2.0,
+    "isolated_support_below": 3,
+    "isolated_bad_fraction_minimum": 0.5,
+    "far_source_distance_voxel": 6.0,
+    "far_bad_fraction_stop": 0.5,
+    "variant_radius_voxel": 2.0,
+    "variant_minimum_support": 3,
+    "candidate_k_diagnostics": [
+      4,
+      6,
+      10
+    ],
+    "decoding_k": 6,
+    "line_sample_step_voxel": 0.5,
+    "image_cost_penalty": 4.0,
+    "quadrature_step_voxel": 0.5,
+    "tolerances_voxel": [
+      2.0,
+      6.0
+    ],
+    "wall_seconds": 1800,
+    "source_sha256": {
+      "scripts/measure_saved_vote_scaffold.py": "d590b5bc7ccece062f3b15b75aab592546978b1653c8bc601509fd4e254c97a0",
+      "src/pn2/evaluation/vote_scaffold.py": "9e54490f02a2209446e313e90b9b756cace56956c527df1c58ae8ddac294e7c2",
+      "tests/test_vote_scaffold.py": "aace02fc52cacc09bd9f1978f4735f9008764695618afd76d34222d11cfa70d6",
+      "docs/saved_vote_scaffold_protocol_20261104.md": "ac882682fc65e952ee4628f743ebd971dc0d6770a1de49cbfe240bfae2c26cc1",
+      "scripts/run_supported_vote_sixteen.py": "4b9aa6cf9ebb976626f58697a32aee39b65f0f0c515c9c17b456e64bf48c9557"
+    },
+    "artifact_sha256": {
+      "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/report.json": "c3691ca34afa3eeb1437c221c417e8e6ec3abdee87f047c393970f0115577d63",
+      "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/metrics.json": "6f2bed657a435b285dae90ad4163bf72bec03f77553489d595ee95f8b1e39df0",
+      "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/predictions.npz": "1de85573a64cda952603c00cd9d428ed2e5cc7166a59e2eaf1f6c815e09c0776",
+      "tmp/local_curve_head_20261104/prepare/manifest.json": "2170e1acee6fa65cbd1690d0c31e463ba201497d1736f744e9dd3c6201c3b023",
+      "tmp/local_curve_head_20261104/prepare/report.json": "350b035c00623d2793aafffeb7f2bc4401f4e9948667160a43709603e6be5ee0",
+      "tmp/local_curve_head_20261104/prepare/selection.json": "a1eeb78252125b2c06223f98db5b710232bbcb6eba126b01ca0ee93ddae70178",
+      "configs/local_curve_head.json": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c"
+    }
+  },
+  "wall_guard": {
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 14.521214008331299,
+    "maximum_seconds": 1800,
+    "started_epoch": 1793816633.5483022,
+    "config_fingerprint": "a665103c70a9b2b5a38fd40488f3d22c05f63793b590bf0508f45234c16b84dd",
+    "output": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\saved_vote_scaffold_20261104T182353_539123Z"
+  },
+  "artifact_sha256": {
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/A_box0.npz": "950eb7cc68bddb287f5eb6c618b24e4ae059e9d57f76d6fa866c4b1186c86e7d",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/A_box1.npz": "3af42dca389e1015a72bb82c871f522d904dc6493940e9bebbbc68a16bf955b5",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/A_box2.npz": "2104eadaaa4e547f2591314a2c75f22e354f2b89729831c15fc62160b6a6da26",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/A_box3.npz": "fba12bd28daf476114be286824a361daa1f7f632b2e845beee05b871158e7401",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/A_diagnostics.json": "592d2f1564bc486ff6cd9c5a1803530f3501b263ce8f90f85c956ee821309a28",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/B_predeclared_decision.json": "5d26afc78c65eb00a60ede2034dc4f7b1116ef2d63008bca20834c9f898bbf7d",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/B_result.json": "02834e533efe0cc450ee97fae887b629ac10966421b8133f7948a2d487626ad5",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/inference_complete.json": "fb668952d880e3240af9089ed7aa5f31a6f969199fe420fb12d374aff291ebe8",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box0/graph.npz": "d80a142f082f07ec2876c8079d7492a580fbd5ab70d697a13adc7f6bcf975b90",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box0/inference.json": "987fef47e3b23940a83a14f08ef5f7be21235707d1d57c78e175c56ad0a10686",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box0/scaffold.swc": "cc8336b465dbf2f58d8397a668e984faeb86486ae07db99a6bb66375e1689f61",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box1/graph.npz": "275a4a3822b32e54bd8946600fd03dcc2cc8c14b7708fc54b53b420132a0c95c",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box1/inference.json": "8edc37eec4db06ef5fd7992965fa63cb40e12f073952e32f7c72450cb437c6ac",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box1/scaffold.swc": "bbbe8b0d36448748f56b6268d0c15e7d420ff5decabe2439f11e0af72bb34d5f",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box2/graph.npz": "8e2ce8f0faf51a5a274fbd31ff259a4ac511b9705acd57f5bd276b44c9480e3c",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box2/inference.json": "e514c669deb55c1cd465027b4e635a9754089298b94e36e2d6ed6309b0e97c57",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box2/scaffold.swc": "5e93e59b7f4f97540fbc4bfab932e941febf40b27d57a43f093970753ebcb06e",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box3/graph.npz": "092bf0e0058cb37ba3737c8a8e8c8eb8f2b1150ac2594318a685234a40e485cf",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box3/inference.json": "26ab0c6d407b275a56a1df827b9576f27b2337a5ace9bdb2f8f608e4d79970b6",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/original_box3/scaffold.swc": "9db7014a4b4646d4d083d44926841854dc69cf1921c54783cefbe18f457bf223",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box0/graph.npz": "cfcbf1650f693e3d7eade31592a6e45e5764fcb35ac99addca6d2e4383aeebf8",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box0/inference.json": "326f100323a23474072eff0a0bbfa580b4db4dd4832d028a7dc08e42f3c6e4cf",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box0/scaffold.swc": "ba1cfdc2f53f92e4566bc3f5a6ca383761a96e3644821ea6a536f5a649c16ad2",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box1/graph.npz": "0c30974831776f545df6d56c8a930b9f457469eaa46991d7a37fa9e6e4e754e4",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box1/inference.json": "83472b2fb361061223c3301e6d2fd23c6bf39e55886fc80ca7bc6518121efc35",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box1/scaffold.swc": "87d0813aa8225569bff201a8354a8917a7f4b817280938e2230c877457b74cd4",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box2/graph.npz": "8f686f0be622e49184960eb18bcd33bd68a389c8c17cc86ee0a7dccfddd76e97",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box2/inference.json": "5af729cd8162baec798dc06416b1f7a75f235953c2b94c540bb1b32aaae0a146",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box2/scaffold.swc": "a76414d4bec91b692bbd5696fb900b5c9453980b8896f20a57075099032fe80a",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box3/graph.npz": "7942d229b288de3ade0ed63218991648f138622f3e9202b8f63d658da139eeb7",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box3/inference.json": "193062605f2a3242296a5d99ed74167fb263ab5f8b73c1971f0341f53c219c02",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_graphs/supported_r2_min3_box3/scaffold.swc": "9b0fa35a8cb79721e5c47d35256965881c112f1c6a8ec3cdc50acb414966f607",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/C_measurement.json": "06b63b88e1234eabd2c7024d4c5715177f963f16e4be89d6c5046d318ed1143f",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.json": "c643d0e372dc41b5a62992a918e905e2031872d4d6bb2830546aa4d31c38da80",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.md": "b1f0e47f1732c70d82e943fcb5ca979b30335a75c5fcfc663f840ccfa227fe1a",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z_wall_guard/report.json": "310a511681e9f51bc7d5c42e7e54710bc8317e80a39f0ba65a0149c595056486"
+  },
+  "original_terminal_comparison": {
+    "source": "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/metrics.json",
+    "sha256": "6f2bed657a435b285dae90ad4163bf72bec03f77553489d595ee95f8b1e39df0",
+    "summary": {
+      "neurons": [
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "reference_points": 392,
+          "unknown_points": 0,
+          "known_boxes": 2,
+          "unknown_boxes": 0,
+          "curve_length": 488.3092217048897,
+          "precision_2": 0.7168367346938775,
+          "coverage_2": 0.6772280381618727,
+          "precision_6": 0.9744897959183674,
+          "coverage_6": 0.9499887560001633,
+          "roles": {
+            "root": {
+              "count": 1,
+              "covered": 1
+            },
+            "leaf": {
+              "count": 4,
+              "covered": 3
+            },
+            "junction": {
+              "count": 6,
+              "covered": 4
+            },
+            "crop_boundary": {
+              "count": 7,
+              "covered": 3
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "reference_points": 1186,
+          "unknown_points": 0,
+          "known_boxes": 2,
+          "unknown_boxes": 0,
+          "curve_length": 673.0528673002545,
+          "precision_2": 0.7824620573355818,
+          "coverage_2": 0.9891311419120797,
+          "precision_6": 1.0,
+          "coverage_6": 1.0,
+          "roles": {
+            "root": {
+              "count": 0,
+              "covered": 0
+            },
+            "leaf": {
+              "count": 5,
+              "covered": 3
+            },
+            "junction": {
+              "count": 8,
+              "covered": 8
+            },
+            "crop_boundary": {
+              "count": 13,
+              "covered": 12
+            }
+          }
+        }
+      ],
+      "macro": {
+        "precision_2": 0.7496493960147297,
+        "coverage_2": 0.8331795900369763,
+        "precision_6": 0.9872448979591837,
+        "coverage_6": 0.9749943780000816
+      },
+      "unknown_points": 0
+    },
+    "rows": [
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 27,
+        "metrics": {
+          "points": 202,
+          "known": true,
+          "curve_length": 97.02399720025204,
+          "near_2": 187,
+          "near_6": 202,
+          "covered_2": 97.02399720025204,
+          "covered_6": 97.02399720025204,
+          "precision_2": 0.9257425742574258,
+          "coverage_2": 1.0,
+          "maximum_sample_gap_distance": 1.2186181242609684,
+          "roles": {
+            "root": {
+              "count": 0,
+              "covered": 0
+            },
+            "leaf": {
+              "count": 2,
+              "covered": 2
+            },
+            "junction": {
+              "count": 0,
+              "covered": 0
+            },
+            "crop_boundary": {
+              "count": 4,
+              "covered": 4
+            }
+          },
+          "outside_box_points": 14
+        },
+        "thin_dim": {
+          "length": 0.0,
+          "covered": 0.0
+        },
+        "incident": {
+          "count": 1,
+          "covered": 1,
+          "ambiguous_coincident": 0,
+          "probe_outside_crop": 1,
+          "meaning": "spatial incident-chain support only; connectivity unmeasured"
+        },
+        "longest_uncovered_length_2": 0.0
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 20,
+        "metrics": {
+          "points": 984,
+          "known": true,
+          "curve_length": 576.0288701000025,
+          "near_2": 741,
+          "near_6": 984,
+          "covered_2": 568.7135539996483,
+          "covered_6": 576.0288701000025,
+          "precision_2": 0.7530487804878049,
+          "coverage_2": 0.9873004349606919,
+          "maximum_sample_gap_distance": 3.4463984794789058,
+          "roles": {
+            "root": {
+              "count": 0,
+              "covered": 0
+            },
+            "leaf": {
+              "count": 3,
+              "covered": 1
+            },
+            "junction": {
+              "count": 8,
+              "covered": 8
+            },
+            "crop_boundary": {
+              "count": 9,
+              "covered": 8
+            }
+          },
+          "outside_box_points": 8
+        },
+        "thin_dim": {
+          "length": 0.0,
+          "covered": 0.0
+        },
+        "incident": {
+          "count": 27,
+          "covered": 26,
+          "ambiguous_coincident": 0,
+          "probe_outside_crop": 0,
+          "meaning": "spatial incident-chain support only; connectivity unmeasured"
+        },
+        "longest_uncovered_length_2": 2.9564622676435564
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 2,
+        "metrics": {
+          "points": 76,
+          "known": true,
+          "curve_length": 39.134500487362786,
+          "near_2": 59,
+          "near_6": 76,
+          "covered_2": 39.134500487362786,
+          "covered_6": 39.134500487362786,
+          "precision_2": 0.7763157894736842,
+          "coverage_2": 1.0,
+          "maximum_sample_gap_distance": 1.5159246006923717,
+          "roles": {
+            "root": {
+              "count": 0,
+              "covered": 0
+            },
+            "leaf": {
+              "count": 1,
+              "covered": 1
+            },
+            "junction": {
+              "count": 0,
+              "covered": 0
+            },
+            "crop_boundary": {
+              "count": 1,
+              "covered": 1
+            }
+          },
+          "outside_box_points": 0
+        },
+        "thin_dim": {
+          "length": 3.679188777045389,
+          "covered": 3.679188777045389
+        },
+        "incident": {
+          "count": 1,
+          "covered": 1,
+          "ambiguous_coincident": 0,
+          "probe_outside_crop": 0,
+          "meaning": "spatial incident-chain support only; connectivity unmeasured"
+        },
+        "longest_uncovered_length_2": 0.0
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 5,
+        "metrics": {
+          "points": 316,
+          "known": true,
+          "curve_length": 449.1747212175269,
+          "near_2": 222,
+          "near_6": 306,
+          "covered_2": 291.5621957441906,
+          "covered_6": 424.7537695834733,
+          "precision_2": 0.7025316455696202,
+          "coverage_2": 0.6491064211135615,
+          "maximum_sample_gap_distance": 11.701809932654884,
+          "roles": {
+            "root": {
+              "count": 1,
+              "covered": 1
+            },
+            "leaf": {
+              "count": 3,
+              "covered": 2
+            },
+            "junction": {
+              "count": 6,
+              "covered": 4
+            },
+            "crop_boundary": {
+              "count": 6,
+              "covered": 2
+            }
+          },
+          "outside_box_points": 1
+        },
+        "thin_dim": {
+          "length": 29.86476689902463,
+          "covered": 8.840420970359112
+        },
+        "incident": {
+          "count": 22,
+          "covered": 16,
+          "ambiguous_coincident": 0,
+          "probe_outside_crop": 0,
+          "meaning": "spatial incident-chain support only; connectivity unmeasured"
+        },
+        "longest_uncovered_length_2": 19.487315982293072
+      }
+    ]
+  },
+  "verification": {
+    "all_12_config_source_and_input_hashes_match": true,
+    "all_eight_graph_and_swc_hash_pairs_match": true,
+    "candidate_recall_nested_in_k_every_box": true,
+    "decoded_recall_at_most_fixed_k6_union_every_box": true,
+    "forest_nodes_minus_edges_equals_components_every_box": true,
+    "sixteen_manifest_produced": false,
+    "original_gate_changed": false,
+    "followup_config_changed": false,
+    "second_variant_run": false,
+    "new_training_or_model_execution": false
+  },
+  "decision": "stop recipe; original failed gate unchanged; sole post-failure consolidation variant failed all original checks; formulation hypothesis requires discussion before implementation"
+}
