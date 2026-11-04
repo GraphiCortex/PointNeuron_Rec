@@ -1,0 +1,79 @@
+{
+  "schema": "pn2-local-curve-head-v1",
+  "seed": 0,
+  "budget": 2048,
+  "data_root": "tmp/node_budget_data_20261102",
+  "profile_root": "tmp/node_budget_profiles_20261102",
+  "reference_manifest": "configs/node_generalization_references.json",
+  "geometric_config": "configs/geometric_query_fit.json",
+  "support_radius": 8.0,
+  "offset_supervision_radius": 6.0,
+  "offset_bound": 8.0,
+  "ambiguity_distance": 0.25,
+  "ambiguity_projection_separation": 0.5,
+  "consolidation_radius": 1.0,
+  "cutoff": 0.25,
+  "diagnostic_cutoffs": [
+    0.1,
+    0.25,
+    0.5,
+    0.75
+  ],
+  "quadrature_step": 0.5,
+  "optimizer": {
+    "kind": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08
+  },
+  "gradient_clip": 10.0,
+  "rungs": {
+    "4": {
+      "exposures": 500,
+      "updates": 2000,
+      "wall_seconds_per_arm": 7200,
+      "train_precision": 0.9,
+      "train_coverage": 0.8,
+      "oracle_ratio": 0.9,
+      "minimum_box_oracle_ratio": 0.8
+    },
+    "16": {
+      "exposures": 250,
+      "updates": 4000,
+      "wall_seconds_per_arm": 14400,
+      "train_precision": 0.85,
+      "train_coverage": 0.8,
+      "development_precision": 0.6,
+      "development_coverage": 0.6,
+      "minimum_development_neuron_coverage": 0.25,
+      "transformer_coverage_gain": 0.1,
+      "maximum_precision_loss": 0.02,
+      "no_learning_coverage_gain": 0.05
+    },
+    "64": {
+      "authorized": false,
+      "proposed_exposures": 100,
+      "proposed_updates": 6400,
+      "proposed_train_precision": 0.85,
+      "proposed_train_coverage": 0.8,
+      "proposed_development_precision": 0.6,
+      "proposed_development_coverage": 0.6
+    }
+  },
+  "timing_updates": 8,
+  "timing_wall_seconds": 600,
+  "cpu_wall_seconds": 3600,
+  "cpu_threads": 1,
+  "source_sha256": {
+    "scripts/local_curve_experiment.py": "615774d720613bd01c9a1a32328b160c75dcc7df5c95671ce72f04a4c17a26fe",
+    "src/pn2/supervision/local_curve.py": "2fade4ce7c61c3ffbfd623c377c33460c5f38a1c239703a85c7976518afbdb64",
+    "src/pn2/models/local_curve_head.py": "7b931013e3e60c52e5d1ab34105d1c0bdeef35481ee16440de706a79cc408001",
+    "src/pn2/evaluation/local_curve.py": "14c3b10b4250264467e5aea14c5aea34b08df142c2d0e4741162b9c5a0a7eba0",
+    "tests/test_local_curve_head.py": "1aff759f59cdfd8b8545e6b4581f1fb67cf4123c08f892bc47bf97d410d96456",
+    "docs/local_curve_head_protocol.md": "80f166c28de27f024d0dd21527c6a90e7d5cac95bc0946b133573b4b2be60c56"
+  }
+}

@@ -1,0 +1,2099 @@
+{
+  "schema": "pn2-local-curve-head-results-v1",
+  "scope": "bounded local proposal experiment",
+  "config_sha256": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c",
+  "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+  "cpu": {
+    "status": "passed",
+    "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+    "checks": [
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 27,
+        "finite_gradient": true,
+        "exact_train_eval": true,
+        "image_only_forward": true
+      },
+      {
+        "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+        "tile_id": 20,
+        "finite_gradient": true,
+        "exact_train_eval": true,
+        "image_only_forward": true
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 2,
+        "finite_gradient": true,
+        "exact_train_eval": true,
+        "image_only_forward": true
+      },
+      {
+        "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+        "tile_id": 5,
+        "finite_gradient": true,
+        "exact_train_eval": true,
+        "image_only_forward": true
+      }
+    ],
+    "same_initial_encoder_sha256": "96562c2a98abba6e101d0fe1e21f046f9ceb8386ed678e203b3129641005cfe1",
+    "synthetic_checkpoint_next_update_exact": true,
+    "parameters": 797252,
+    "real_optimizer_updates": 0,
+    "reserved_files_opened": 0,
+    "device": "cpu"
+  },
+  "timing": {
+    "status": "passed",
+    "arm": "dense",
+    "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+    "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "peak_allocated_bytes": 105465856,
+    "update_seconds": [
+      2.204757100000279,
+      0.4868562999981805,
+      0.5129847000062,
+      0.36570190000202274,
+      0.5309202999997069,
+      0.4643632000006619,
+      0.43290500000148313,
+      0.5032208999982686
+    ],
+    "projected": {
+      "4": {
+        "seconds_with_50_percent_margin": 1520.2582120956763,
+        "within_wall_limit": true
+      },
+      "16": {
+        "seconds_with_50_percent_margin": 4087.425816391399,
+        "within_wall_limit": true
+      }
+    },
+    "throwaway_updates": 8,
+    "losses": [
+      {
+        "loss": 0.877632737159729,
+        "gradient_norm": 0.18364544212818146,
+        "support_loss": 0.6931657195091248,
+        "offset_loss": 0.18446701765060425
+      },
+      {
+        "loss": 0.8469956517219543,
+        "gradient_norm": 0.21628661453723907,
+        "support_loss": 0.6930965781211853,
+        "offset_loss": 0.15389907360076904
+      },
+      {
+        "loss": 0.9346579313278198,
+        "gradient_norm": 0.29015225172042847,
+        "support_loss": 0.693034827709198,
+        "offset_loss": 0.24162307381629944
+      },
+      {
+        "loss": 0.9004103541374207,
+        "gradient_norm": 0.1787407249212265,
+        "support_loss": 0.6929754614830017,
+        "offset_loss": 0.20743487775325775
+      },
+      {
+        "loss": 0.877270519733429,
+        "gradient_norm": 0.1934003084897995,
+        "support_loss": 0.6929126977920532,
+        "offset_loss": 0.18435783684253693
+      },
+      {
+        "loss": 0.8465404510498047,
+        "gradient_norm": 0.22047464549541473,
+        "support_loss": 0.6928493976593018,
+        "offset_loss": 0.15369106829166412
+      },
+      {
+        "loss": 0.9342091083526611,
+        "gradient_norm": 0.29822617769241333,
+        "support_loss": 0.6927906274795532,
+        "offset_loss": 0.24141846597194672
+      },
+      {
+        "loss": 0.9000188708305359,
+        "gradient_norm": 0.17221276462078094,
+        "support_loss": 0.6927305459976196,
+        "offset_loss": 0.20728830993175507
+      }
+    ],
+    "training_evaluation_seconds": 3.839701100005186,
+    "development_evaluation_seconds": 244.96712939999998
+  },
+  "fit": {
+    "status": "interrupted_wall_limit",
+    "updates": 1000,
+    "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+    "last_logged_update": 1700,
+    "last_complete_checkpoint_update": 1000,
+    "gate": {
+      "passed": null,
+      "terminal_gate_evaluated": false
+    },
+    "stop_receipt": {
+      "status": "owned_run_stopped",
+      "root_pid": 24588,
+      "stopped_processes": [
+        {
+          "pid": 24588,
+          "name": "python.exe",
+          "cmdline": [
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\sampling_env\\Scripts\\python.exe",
+            "-B",
+            "scripts\\local_curve_experiment.py",
+            "train",
+            "--arm",
+            "dense",
+            "--rung",
+            "4"
+          ]
+        },
+        {
+          "pid": 32444,
+          "name": "python.exe",
+          "cmdline": [
+            "C:\\Users\\Seywe\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+            "-B",
+            "scripts\\local_curve_experiment.py",
+            "train",
+            "--arm",
+            "dense",
+            "--rung",
+            "4"
+          ]
+        },
+        {
+          "pid": 3240,
+          "name": "python.exe",
+          "cmdline": [
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\sampling_env\\Scripts\\python.exe",
+            "-B",
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\scripts\\local_curve_experiment.py",
+            "train",
+            "--worker",
+            "--arm",
+            "dense",
+            "--rung",
+            "4",
+            "--output",
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\local_curve_head_20261104\\train4_dense"
+          ]
+        },
+        {
+          "pid": 38764,
+          "name": "conhost.exe",
+          "cmdline": [
+            "\\??\\C:\\WINDOWS\\system32\\conhost.exe",
+            "0x4"
+          ]
+        },
+        {
+          "pid": 42364,
+          "name": "python.exe",
+          "cmdline": [
+            "C:\\Users\\Seywe\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+            "-B",
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\scripts\\local_curve_experiment.py",
+            "train",
+            "--worker",
+            "--arm",
+            "dense",
+            "--rung",
+            "4",
+            "--output",
+            "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\local_curve_head_20261104\\train4_dense"
+          ]
+        }
+      ],
+      "reason": "wall time exceeded authorized 7200 seconds",
+      "last_complete_evaluation_update": 1000,
+      "terminal_gate_evaluated": false
+    },
+    "training": {
+      "neurons": [
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "reference_points": 458,
+          "unknown_points": 0,
+          "known_boxes": 2,
+          "unknown_boxes": 0,
+          "curve_length": 488.3092217048897,
+          "precision_2": 0.5065502183406113,
+          "coverage_2": 0.6010653186425106,
+          "precision_6": 0.9475982532751092,
+          "coverage_6": 0.9474803569775836,
+          "roles": {
+            "root": {
+              "count": 1,
+              "covered": 1
+            },
+            "leaf": {
+              "count": 4,
+              "covered": 4
+            },
+            "junction": {
+              "count": 6,
+              "covered": 4
+            },
+            "crop_boundary": {
+              "count": 7,
+              "covered": 2
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "reference_points": 1353,
+          "unknown_points": 0,
+          "known_boxes": 2,
+          "unknown_boxes": 0,
+          "curve_length": 673.0528673002545,
+          "precision_2": 0.6334072431633407,
+          "coverage_2": 0.9818143462359605,
+          "precision_6": 0.9970436067997044,
+          "coverage_6": 1.0,
+          "roles": {
+            "root": {
+              "count": 0,
+              "covered": 0
+            },
+            "leaf": {
+              "count": 5,
+              "covered": 4
+            },
+            "junction": {
+              "count": 8,
+              "covered": 8
+            },
+            "crop_boundary": {
+              "count": 13,
+              "covered": 11
+            }
+          }
+        }
+      ],
+      "macro": {
+        "precision_2": 0.569978730751976,
+        "coverage_2": 0.7914398324392355,
+        "precision_6": 0.9723209300374067,
+        "coverage_6": 0.9737401784887918
+      },
+      "unknown_points": 0
+    },
+    "development": null
+  },
+  "per_box": [
+    {
+      "alias": 32,
+      "tile_id": 27,
+      "points": 244,
+      "known": true,
+      "curve_length": 97.02399720025204,
+      "near_2": 196,
+      "near_6": 244,
+      "covered_2": 97.02399720025204,
+      "covered_6": 97.02399720025204,
+      "precision_2": 0.8032786885245902,
+      "coverage_2": 1.0,
+      "maximum_sample_gap_distance": 1.8966588891361464,
+      "roles": {
+        "root": {
+          "count": 0,
+          "covered": 0
+        },
+        "leaf": {
+          "count": 2,
+          "covered": 2
+        },
+        "junction": {
+          "count": 0,
+          "covered": 0
+        },
+        "crop_boundary": {
+          "count": 4,
+          "covered": 4
+        }
+      },
+      "outside_box_points": 16
+    },
+    {
+      "alias": 32,
+      "tile_id": 20,
+      "points": 1109,
+      "known": true,
+      "curve_length": 576.0288701000025,
+      "near_2": 661,
+      "near_6": 1105,
+      "covered_2": 563.7889636903861,
+      "covered_6": 576.0288701000025,
+      "precision_2": 0.5960324616771867,
+      "coverage_2": 0.9787512275079349,
+      "maximum_sample_gap_distance": 3.056216771621388,
+      "roles": {
+        "root": {
+          "count": 0,
+          "covered": 0
+        },
+        "leaf": {
+          "count": 3,
+          "covered": 2
+        },
+        "junction": {
+          "count": 8,
+          "covered": 8
+        },
+        "crop_boundary": {
+          "count": 9,
+          "covered": 7
+        }
+      },
+      "outside_box_points": 6
+    },
+    {
+      "alias": 22,
+      "tile_id": 2,
+      "points": 84,
+      "known": true,
+      "curve_length": 39.134500487362786,
+      "near_2": 55,
+      "near_6": 80,
+      "covered_2": 39.134500487362786,
+      "covered_6": 39.134500487362786,
+      "precision_2": 0.6547619047619048,
+      "coverage_2": 1.0,
+      "maximum_sample_gap_distance": 1.708792468988451,
+      "roles": {
+        "root": {
+          "count": 0,
+          "covered": 0
+        },
+        "leaf": {
+          "count": 1,
+          "covered": 1
+        },
+        "junction": {
+          "count": 0,
+          "covered": 0
+        },
+        "crop_boundary": {
+          "count": 1,
+          "covered": 1
+        }
+      },
+      "outside_box_points": 1
+    },
+    {
+      "alias": 22,
+      "tile_id": 5,
+      "points": 374,
+      "known": true,
+      "curve_length": 449.1747212175269,
+      "near_2": 177,
+      "near_6": 354,
+      "covered_2": 254.3712374527631,
+      "covered_6": 423.5288952090321,
+      "precision_2": 0.4732620320855615,
+      "coverage_2": 0.5663079987299104,
+      "maximum_sample_gap_distance": 12.183583988465976,
+      "roles": {
+        "root": {
+          "count": 1,
+          "covered": 1
+        },
+        "leaf": {
+          "count": 3,
+          "covered": 3
+        },
+        "junction": {
+          "count": 6,
+          "covered": 4
+        },
+        "crop_boundary": {
+          "count": 6,
+          "covered": 1
+        }
+      },
+      "outside_box_points": 1
+    }
+  ],
+  "prepare_seconds": 88.20580250000057,
+  "oracle": {
+    "four": {
+      "precision_2": 1.0,
+      "coverage_2": 0.8914137329093859,
+      "precision_6": 1.0,
+      "coverage_6": 0.97433215753705
+    },
+    "sixteen": {
+      "precision_2": 1.0,
+      "coverage_2": 0.9552495917342512,
+      "precision_6": 1.0,
+      "coverage_6": 0.995036221198758
+    },
+    "development": {
+      "precision_2": 1.0,
+      "coverage_2": 0.9174411055458151,
+      "precision_6": 1.0,
+      "coverage_6": 0.9885877973212083
+    }
+  },
+  "controls": {
+    "four": {
+      "sato": {
+        "precision_2": 0.0753312023684997,
+        "coverage_2": 0.6303239369390152,
+        "precision_6": 0.29769197362522415,
+        "coverage_6": 0.9723073691249291
+      },
+      "sato512": {
+        "precision_2": 0.1826171875,
+        "coverage_2": 0.40599873224177346,
+        "precision_6": 0.3837890625,
+        "coverage_6": 0.5395460675079223
+      },
+      "classical": {
+        "precision_2": 0.5572657702451468,
+        "coverage_2": 0.5020915109802554,
+        "precision_6": 0.6985494400968482,
+        "coverage_6": 0.7047844631076119
+      },
+      "classical512": {
+        "precision_2": 0.5572657702451468,
+        "coverage_2": 0.5020915109802554,
+        "precision_6": 0.6985494400968482,
+        "coverage_6": 0.7047844631076119
+      }
+    },
+    "sixteen": {
+      "sato": {
+        "precision_2": 0.0874918456915365,
+        "coverage_2": 0.7035285837713326,
+        "precision_6": 0.32955371969979835,
+        "coverage_6": 0.99359664343598
+      },
+      "sato512": {
+        "precision_2": 0.23214285714285715,
+        "coverage_2": 0.6040223989887874,
+        "precision_6": 0.6078404017857143,
+        "coverage_6": 0.8583278365267027
+      },
+      "classical": {
+        "precision_2": 0.7024053892142265,
+        "coverage_2": 0.68030689776109,
+        "precision_6": 0.8492747200484241,
+        "coverage_6": 0.840292473162285
+      },
+      "classical512": {
+        "precision_2": 0.7024053892142265,
+        "coverage_2": 0.68030689776109,
+        "precision_6": 0.8492747200484241,
+        "coverage_6": 0.840292473162285
+      }
+    },
+    "development": {
+      "sato": {
+        "precision_2": 0.09792940309572382,
+        "coverage_2": 0.6977673442101265,
+        "precision_6": 0.3308721295126587,
+        "coverage_6": 0.9844483892485487
+      },
+      "sato512": {
+        "precision_2": 0.28135055451241187,
+        "coverage_2": 0.5989831568179145,
+        "precision_6": 0.6718122248285429,
+        "coverage_6": 0.8478663445911548
+      },
+      "classical": {
+        "precision_2": 0.6408750734780133,
+        "coverage_2": 0.5346710828788027,
+        "precision_6": 0.7541555092383697,
+        "coverage_6": 0.7317462385707073
+      },
+      "classical512": {
+        "precision_2": 0.649607772278169,
+        "coverage_2": 0.49764339974011157,
+        "precision_6": 0.7660035924795501,
+        "coverage_6": 0.7306643515151469
+      }
+    }
+  },
+  "saved_position_domains": [
+    {
+      "method": "epoch25_original",
+      "reference_present_boxes": 151,
+      "accepted_in_reference_present": 19397,
+      "within_two_in_present": 4573,
+      "beyond_two_in_present": 14824,
+      "unknown_boxes": 264,
+      "accepted_in_unknown": 20145,
+      "unknown_biological_error": null
+    },
+    {
+      "method": "epoch25_consistent",
+      "reference_present_boxes": 151,
+      "accepted_in_reference_present": 5070,
+      "within_two_in_present": 2643,
+      "beyond_two_in_present": 2427,
+      "unknown_boxes": 264,
+      "accepted_in_unknown": 1139,
+      "unknown_biological_error": null
+    }
+  ],
+  "evaluations": [
+    {
+      "step": 0,
+      "summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 3768,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.024946921443736732,
+            "coverage_2": 0.3902236095031824,
+            "precision_6": 0.14278131634819533,
+            "coverage_6": 0.9446147382498581,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 2
+              },
+              "junction": {
+                "count": 6,
+                "covered": 3
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 1
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 3837,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.12874641647120147,
+            "coverage_2": 0.8708834146388461,
+            "precision_6": 0.4545217617930675,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 3
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 6
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.0768466689574691,
+          "coverage_2": 0.6305535120710143,
+          "precision_6": 0.2986515390706314,
+          "coverage_6": 0.9723073691249291
+        },
+        "unknown_points": 0
+      },
+      "raw_accepted_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.024169921875,
+            "coverage_2": 0.39519443302991947,
+            "precision_6": 0.138671875,
+            "coverage_6": 0.9446147382498581,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 2
+              },
+              "junction": {
+                "count": 6,
+                "covered": 3
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 1
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.131591796875,
+            "coverage_2": 0.8788548239652855,
+            "precision_6": 0.456298828125,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 3
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 7
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.077880859375,
+          "coverage_2": 0.6370246284976024,
+          "precision_6": 0.2974853515625,
+          "coverage_6": 0.9723073691249291
+        },
+        "unknown_points": 0
+      },
+      "raw_all_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.024169921875,
+            "coverage_2": 0.39519443302991947,
+            "precision_6": 0.138671875,
+            "coverage_6": 0.9446147382498581,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 2
+              },
+              "junction": {
+                "count": 6,
+                "covered": 3
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 1
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.131591796875,
+            "coverage_2": 0.8788548239652855,
+            "precision_6": 0.456298828125,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 3
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 7
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.077880859375,
+          "coverage_2": 0.6370246284976024,
+          "precision_6": 0.2974853515625,
+          "coverage_6": 0.9723073691249291
+        },
+        "unknown_points": 0
+      },
+      "accepted512_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.009765625,
+            "coverage_2": 0.027568127299830686,
+            "precision_6": 0.083984375,
+            "coverage_6": 0.17759883850533087,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 0
+              },
+              "junction": {
+                "count": 6,
+                "covered": 1
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 0
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.0732421875,
+            "coverage_2": 0.19532648517151113,
+            "precision_6": 0.2734375,
+            "coverage_6": 0.6757086347194345,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 0
+              },
+              "junction": {
+                "count": 8,
+                "covered": 1
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 1
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.04150390625,
+          "coverage_2": 0.11144730623567091,
+          "precision_6": 0.1787109375,
+          "coverage_6": 0.4266537366123827
+        },
+        "unknown_points": 0
+      },
+      "top512_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.009765625,
+            "coverage_2": 0.027568127299830686,
+            "precision_6": 0.083984375,
+            "coverage_6": 0.17759883850533087,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 0
+              },
+              "junction": {
+                "count": 6,
+                "covered": 1
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 0
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.0732421875,
+            "coverage_2": 0.19532648517151113,
+            "precision_6": 0.2734375,
+            "coverage_6": 0.6757086347194345,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 0
+              },
+              "junction": {
+                "count": 8,
+                "covered": 1
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 1
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.04150390625,
+          "coverage_2": 0.11144730623567091,
+          "precision_6": 0.1787109375,
+          "coverage_6": 0.4266537366123827
+        },
+        "unknown_points": 0
+      },
+      "diagnostic_cutoffs": {
+        "0.1": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 3768,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.024946921443736732,
+              "coverage_2": 0.3902236095031824,
+              "precision_6": 0.14278131634819533,
+              "coverage_6": 0.9446147382498581,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 3
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 3837,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.12874641647120147,
+              "coverage_2": 0.8708834146388461,
+              "precision_6": 0.4545217617930675,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 3
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 6
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.0768466689574691,
+            "coverage_2": 0.6305535120710143,
+            "precision_6": 0.2986515390706314,
+            "coverage_6": 0.9723073691249291
+          },
+          "unknown_points": 0
+        },
+        "0.25": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 3768,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.024946921443736732,
+              "coverage_2": 0.3902236095031824,
+              "precision_6": 0.14278131634819533,
+              "coverage_6": 0.9446147382498581,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 3
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 3837,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.12874641647120147,
+              "coverage_2": 0.8708834146388461,
+              "precision_6": 0.4545217617930675,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 3
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 6
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.0768466689574691,
+            "coverage_2": 0.6305535120710143,
+            "precision_6": 0.2986515390706314,
+            "coverage_6": 0.9723073691249291
+          },
+          "unknown_points": 0
+        },
+        "0.5": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 1740,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.014942528735632184,
+              "coverage_2": 0.08673513600032522,
+              "precision_6": 0.09885057471264368,
+              "coverage_6": 0.43989297885593215,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 2
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 1493,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.06296048225050234,
+              "coverage_2": 0.23692870192362267,
+              "precision_6": 0.25385130609511053,
+              "coverage_6": 0.7367780685253127,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 1
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 1
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.038951505493067265,
+            "coverage_2": 0.16183191896197394,
+            "precision_6": 0.1763509404038771,
+            "coverage_6": 0.5883355236906225
+          },
+          "unknown_points": 0
+        },
+        "0.75": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 0,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.0,
+              "coverage_2": 0.0,
+              "precision_6": 0.0,
+              "coverage_6": 0.0,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 0
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 0,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.0,
+              "coverage_2": 0.0,
+              "precision_6": 0.0,
+              "coverage_6": 0.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 0
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 0
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 0
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.0,
+            "coverage_2": 0.0,
+            "precision_6": 0.0,
+            "coverage_6": 0.0
+          },
+          "unknown_points": 0
+        }
+      },
+      "offset_diagnostics": [
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 110,
+              "vector_error_mean": 1.221450686454773,
+              "vector_error_p90": 1.804893136024475,
+              "vote_curve_distance_mean": 1.2213804473640855,
+              "votes_within_2": 110
+            },
+            {
+              "band": 1,
+              "eligible": 219,
+              "vector_error_mean": 2.9507393836975098,
+              "vector_error_p90": 3.8025431632995605,
+              "vote_curve_distance_mean": 2.950735129326816,
+              "votes_within_2": 3
+            },
+            {
+              "band": 2,
+              "eligible": 143,
+              "vector_error_mean": 4.832039833068848,
+              "vector_error_p90": 5.717835426330566,
+              "vote_curve_distance_mean": 4.832038444412001,
+              "votes_within_2": 0
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 413,
+              "vector_error_mean": 1.2723356485366821,
+              "vector_error_p90": 1.8294676542282104,
+              "vote_curve_distance_mean": 1.2722492580081104,
+              "votes_within_2": 412
+            },
+            {
+              "band": 1,
+              "eligible": 628,
+              "vector_error_mean": 2.870953321456909,
+              "vector_error_p90": 3.6773829460144043,
+              "vote_curve_distance_mean": 2.8709418775379625,
+              "votes_within_2": 4
+            },
+            {
+              "band": 2,
+              "eligible": 278,
+              "vector_error_mean": 4.830794811248779,
+              "vector_error_p90": 5.633316516876221,
+              "vote_curve_distance_mean": 4.830788506756568,
+              "votes_within_2": 0
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 18,
+              "vector_error_mean": 1.263346552848816,
+              "vector_error_p90": 1.78305184841156,
+              "vote_curve_distance_mean": 1.2633077916467355,
+              "votes_within_2": 18
+            },
+            {
+              "band": 1,
+              "eligible": 46,
+              "vector_error_mean": 3.0887703895568848,
+              "vector_error_p90": 3.934459686279297,
+              "vote_curve_distance_mean": 3.088763428356599,
+              "votes_within_2": 0
+            },
+            {
+              "band": 2,
+              "eligible": 57,
+              "vector_error_mean": 4.935861587524414,
+              "vector_error_p90": 5.668118476867676,
+              "vote_curve_distance_mean": 4.9358589745469175,
+              "votes_within_2": 0
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 77,
+              "vector_error_mean": 1.255854845046997,
+              "vector_error_p90": 1.904557466506958,
+              "vote_curve_distance_mean": 1.2558270032637893,
+              "votes_within_2": 76
+            },
+            {
+              "band": 1,
+              "eligible": 169,
+              "vector_error_mean": 2.9971864223480225,
+              "vector_error_p90": 3.8005218505859375,
+              "vote_curve_distance_mean": 2.9971812628018326,
+              "votes_within_2": 0
+            },
+            {
+              "band": 2,
+              "eligible": 150,
+              "vector_error_mean": 4.968077659606934,
+              "vector_error_p90": 5.843252658843994,
+              "vote_curve_distance_mean": 4.968075435489991,
+              "votes_within_2": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "step": 1000,
+      "summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 458,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.5065502183406113,
+            "coverage_2": 0.6010653186425106,
+            "precision_6": 0.9475982532751092,
+            "coverage_6": 0.9474803569775836,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 4
+              },
+              "junction": {
+                "count": 6,
+                "covered": 4
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 2
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 1353,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.6334072431633407,
+            "coverage_2": 0.9818143462359605,
+            "precision_6": 0.9970436067997044,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 4
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 11
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.569978730751976,
+          "coverage_2": 0.7914398324392355,
+          "precision_6": 0.9723209300374067,
+          "coverage_6": 0.9737401784887918
+        },
+        "unknown_points": 0
+      },
+      "raw_accepted_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 596,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.5855704697986577,
+            "coverage_2": 0.6033137724192384,
+            "precision_6": 0.959731543624161,
+            "coverage_6": 0.9474803569775836,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 4
+              },
+              "junction": {
+                "count": 6,
+                "covered": 4
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 2
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 1865,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.7008042895442359,
+            "coverage_2": 0.9825424376416083,
+            "precision_6": 0.9978552278820375,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 4
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 11
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.6431873796714468,
+          "coverage_2": 0.7929281050304233,
+          "precision_6": 0.9787933857530993,
+          "coverage_6": 0.9737401784887918
+        },
+        "unknown_points": 0
+      },
+      "raw_all_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.091552734375,
+            "coverage_2": 0.6126305590019286,
+            "precision_6": 0.2109375,
+            "coverage_6": 0.9597971142750279,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 4
+              },
+              "junction": {
+                "count": 6,
+                "covered": 4
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 2
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 4096,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.327880859375,
+            "coverage_2": 0.9825424376416083,
+            "precision_6": 0.5302734375,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 4
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 11
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.209716796875,
+          "coverage_2": 0.7975864983217684,
+          "precision_6": 0.37060546875,
+          "coverage_6": 0.979898557137514
+        },
+        "unknown_points": 0
+      },
+      "accepted512_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 458,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.5065502183406113,
+            "coverage_2": 0.6010653186425106,
+            "precision_6": 0.9475982532751092,
+            "coverage_6": 0.9474803569775836,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 4
+              },
+              "junction": {
+                "count": 6,
+                "covered": 4
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 2
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 756,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.7724867724867724,
+            "coverage_2": 0.8809623601496335,
+            "precision_6": 1.0,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 3
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 8
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.6395184954136919,
+          "coverage_2": 0.741013839396072,
+          "precision_6": 0.9737991266375545,
+          "coverage_6": 0.9737401784887918
+        },
+        "unknown_points": 0
+      },
+      "top512_summary": {
+        "neurons": [
+          {
+            "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 488.3092217048897,
+            "precision_2": 0.2392578125,
+            "coverage_2": 0.6103821052252009,
+            "precision_6": 0.5712890625,
+            "coverage_6": 0.9597971142750279,
+            "roles": {
+              "root": {
+                "count": 1,
+                "covered": 1
+              },
+              "leaf": {
+                "count": 4,
+                "covered": 4
+              },
+              "junction": {
+                "count": 6,
+                "covered": 4
+              },
+              "crop_boundary": {
+                "count": 7,
+                "covered": 2
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+            "reference_points": 1024,
+            "unknown_points": 0,
+            "known_boxes": 2,
+            "unknown_boxes": 0,
+            "curve_length": 673.0528673002545,
+            "precision_2": 0.58203125,
+            "coverage_2": 0.8809623601496335,
+            "precision_6": 0.8349609375,
+            "coverage_6": 1.0,
+            "roles": {
+              "root": {
+                "count": 0,
+                "covered": 0
+              },
+              "leaf": {
+                "count": 5,
+                "covered": 3
+              },
+              "junction": {
+                "count": 8,
+                "covered": 8
+              },
+              "crop_boundary": {
+                "count": 13,
+                "covered": 8
+              }
+            }
+          }
+        ],
+        "macro": {
+          "precision_2": 0.41064453125,
+          "coverage_2": 0.7456722326874172,
+          "precision_6": 0.703125,
+          "coverage_6": 0.979898557137514
+        },
+        "unknown_points": 0
+      },
+      "diagnostic_cutoffs": {
+        "0.1": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 647,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.3755795981452859,
+              "coverage_2": 0.6103821052252009,
+              "precision_6": 0.8562596599690881,
+              "coverage_6": 0.9597971142750279,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 4
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 4
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 2
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 1552,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.5670103092783505,
+              "coverage_2": 0.9818143462359605,
+              "precision_6": 0.9780927835051546,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 4
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 11
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.4712949537118182,
+            "coverage_2": 0.7960982257305806,
+            "precision_6": 0.9171762217371213,
+            "coverage_6": 0.979898557137514
+          },
+          "unknown_points": 0
+        },
+        "0.25": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 458,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.5065502183406113,
+              "coverage_2": 0.6010653186425106,
+              "precision_6": 0.9475982532751092,
+              "coverage_6": 0.9474803569775836,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 4
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 4
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 2
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 1353,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.6334072431633407,
+              "coverage_2": 0.9818143462359605,
+              "precision_6": 0.9970436067997044,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 4
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 11
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.569978730751976,
+            "coverage_2": 0.7914398324392355,
+            "precision_6": 0.9723209300374067,
+            "coverage_6": 0.9737401784887918
+          },
+          "unknown_points": 0
+        },
+        "0.5": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 300,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.63,
+              "coverage_2": 0.5644958385922878,
+              "precision_6": 0.99,
+              "coverage_6": 0.9102343128647866,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 1
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 2
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 4
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 1053,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.7008547008547008,
+              "coverage_2": 0.9716110728027024,
+              "precision_6": 1.0,
+              "coverage_6": 1.0,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 4
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 8
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 10
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.6654273504273505,
+            "coverage_2": 0.7680534556974952,
+            "precision_6": 0.995,
+            "coverage_6": 0.9551171564323933
+          },
+          "unknown_points": 0
+        },
+        "0.75": {
+          "neurons": [
+            {
+              "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+              "reference_points": 99,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 488.3092217048897,
+              "precision_2": 0.7878787878787878,
+              "coverage_2": 0.36195725074080876,
+              "precision_6": 1.0,
+              "coverage_6": 0.7484297669290126,
+              "roles": {
+                "root": {
+                  "count": 1,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 4,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 6,
+                  "covered": 3
+                },
+                "crop_boundary": {
+                  "count": 7,
+                  "covered": 1
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+              "reference_points": 282,
+              "unknown_points": 0,
+              "known_boxes": 2,
+              "unknown_boxes": 0,
+              "curve_length": 673.0528673002545,
+              "precision_2": 0.9290780141843972,
+              "coverage_2": 0.5836010586834668,
+              "precision_6": 1.0,
+              "coverage_6": 0.9100475121137485,
+              "roles": {
+                "root": {
+                  "count": 0,
+                  "covered": 0
+                },
+                "leaf": {
+                  "count": 5,
+                  "covered": 1
+                },
+                "junction": {
+                  "count": 8,
+                  "covered": 7
+                },
+                "crop_boundary": {
+                  "count": 13,
+                  "covered": 5
+                }
+              }
+            }
+          ],
+          "macro": {
+            "precision_2": 0.8584784010315925,
+            "coverage_2": 0.4727791547121378,
+            "precision_6": 1.0,
+            "coverage_6": 0.8292386395213805
+          },
+          "unknown_points": 0
+        }
+      },
+      "offset_diagnostics": [
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 27,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 110,
+              "vector_error_mean": 0.7924854159355164,
+              "vector_error_p90": 1.2458422183990479,
+              "vote_curve_distance_mean": 0.7145635754313007,
+              "votes_within_2": 109
+            },
+            {
+              "band": 1,
+              "eligible": 219,
+              "vector_error_mean": 1.0066691637039185,
+              "vector_error_p90": 1.6228610277175903,
+              "vote_curve_distance_mean": 0.8483699889331732,
+              "votes_within_2": 213
+            },
+            {
+              "band": 2,
+              "eligible": 143,
+              "vector_error_mean": 1.6090614795684814,
+              "vector_error_p90": 3.077686071395874,
+              "vote_curve_distance_mean": 1.4587912448710578,
+              "votes_within_2": 112
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "tile_id": 20,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 413,
+              "vector_error_mean": 1.1384867429733276,
+              "vector_error_p90": 1.7821985483169556,
+              "vote_curve_distance_mean": 1.07612187356984,
+              "votes_within_2": 388
+            },
+            {
+              "band": 1,
+              "eligible": 628,
+              "vector_error_mean": 1.8971418142318726,
+              "vector_error_p90": 2.9177799224853516,
+              "vote_curve_distance_mean": 1.8243973116169812,
+              "votes_within_2": 368
+            },
+            {
+              "band": 2,
+              "eligible": 278,
+              "vector_error_mean": 2.549318313598633,
+              "vector_error_p90": 3.911684513092041,
+              "vote_curve_distance_mean": 2.444150138039195,
+              "votes_within_2": 99
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 2,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 18,
+              "vector_error_mean": 0.8121403455734253,
+              "vector_error_p90": 1.3339858055114746,
+              "vote_curve_distance_mean": 0.7159635417263499,
+              "votes_within_2": 18
+            },
+            {
+              "band": 1,
+              "eligible": 46,
+              "vector_error_mean": 1.421382188796997,
+              "vector_error_p90": 2.700427532196045,
+              "vote_curve_distance_mean": 1.2470720508369455,
+              "votes_within_2": 40
+            },
+            {
+              "band": 2,
+              "eligible": 57,
+              "vector_error_mean": 1.7861260175704956,
+              "vector_error_p90": 3.5516083240509033,
+              "vote_curve_distance_mean": 1.5496244677454796,
+              "votes_within_2": 44
+            }
+          ]
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "tile_id": 5,
+          "offset_bands": [
+            {
+              "band": 0,
+              "eligible": 77,
+              "vector_error_mean": 1.1059080362319946,
+              "vector_error_p90": 1.7433772087097168,
+              "vote_curve_distance_mean": 1.0050939362890197,
+              "votes_within_2": 74
+            },
+            {
+              "band": 1,
+              "eligible": 169,
+              "vector_error_mean": 2.041428327560425,
+              "vector_error_p90": 3.284959554672241,
+              "vote_curve_distance_mean": 1.8383658615310898,
+              "votes_within_2": 100
+            },
+            {
+              "band": 2,
+              "eligible": 150,
+              "vector_error_mean": 2.8826286792755127,
+              "vector_error_p90": 4.671687602996826,
+              "vote_curve_distance_mean": 2.646194094615847,
+              "votes_within_2": 55
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "artifact_sha256": {
+    "tmp/local_curve_head_20261104/stop_receipt.json": "9a1adf8071ee1d73ad4b60bd3f2144e36e5b93f3b015c1cc4ba1dc3c3ee1807e",
+    "tmp/local_curve_head_20261104/train4_dense/eval_step001000_training/metrics.json": "b1114535bd42f92124d5ef6f05d20867a4b805f2970cca143600f9e658831eba",
+    "tmp/local_curve_head_20261104/train4_dense/eval_step001000_training/predictions.npz": "a873ada60cbc48cbde9c2af232a04f78999e7edc0f24864e13d9d9067f2b7f93",
+    "tmp/local_curve_head_20261104/prepare/manifest.json": "2170e1acee6fa65cbd1690d0c31e463ba201497d1736f744e9dd3c6201c3b023",
+    "tmp/local_curve_head_20261104/prepare/report.json": "350b035c00623d2793aafffeb7f2bc4401f4e9948667160a43709603e6be5ee0",
+    "tmp/local_curve_head_20261104/figures/four_box_learning.png": "2f679b81225dc0d4688e0e25c49b71fa121bf3b937d802a1a2e3dab678c1378c",
+    "tmp/local_curve_head_20261104/figures/four_box_votes.png": "9c39e3d020fe1a0fb027acfdd10adc8e86b2351abe20a5221abbb741aaacbe46"
+  },
+  "test_sources": {
+    "tests/test_local_curve_head.py": "1aff759f59cdfd8b8545e6b4581f1fb67cf4123c08f892bc47bf97d410d96456",
+    "tests/test_local_curve_stop_rules.py": "3c8a6400f58c4333abd17b157cca9b2539e07e858f9cf0cdf4454a4bb2a63cae",
+    "tests/test_local_curve_wall_guard.py": "1850846dcb3e238537cf14a6f3e6821dbf5ad6ed289702ed29058b3df3b31f15"
+  },
+  "full_cohort_training": false,
+  "gat_training": false,
+  "phase1_restart": false,
+  "reserved_access": false,
+  "development_accuracy_claim": false,
+  "final_reconstruction_quality_claim": false
+}

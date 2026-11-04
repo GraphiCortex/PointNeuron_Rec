@@ -1,5 +1,14 @@
 # PN2 next-chat handoff — after the completed curve audit
 
+**4 November update:** The user subsequently approved the bounded local
+curve-head control. CPU checks/controls and GPU timing passed, but the four-box
+fit was interrupted after a large wall-clock gap. Its latest complete checkpoint
+and geometry evaluation are at update 1000; the last logged update is 1700.
+There is no terminal accuracy verdict, sixteen-box run or pending continuation.
+Read [the current results and recovery decision](local_curve_head_results_20261104.md)
+and [the frozen experiment protocol](local_curve_head_protocol.md) before using
+the historical immediate-next-step text below. Original evidence is retained.
+
 **Read this first.** This supersedes the immediate-next-step sections of the
 [earlier full handoff](research_handoff_20261103.md), which preserves detailed
 history. The CPU formulation audit and classical baseline have now completed.

@@ -1,0 +1,110 @@
+{
+  "status": "interrupted_not_terminal_accuracy_failure",
+  "frozen_scientific_config_unchanged": true,
+  "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+  "recovery": {
+    "status": "verified",
+    "cursor": 1000,
+    "model_parameter_tensors": 64,
+    "Adam_states": 64,
+    "all_Adam_clocks": 1000,
+    "full_rng_keys": [
+      "python",
+      "numpy",
+      "torch_cpu",
+      "torch_cuda"
+    ],
+    "checkpoint_sha256": "1621c95310bda082ea8ccdfea9917b41baef556376a2971edda6e1182f0d71ed",
+    "config_fingerprint": "8c3d98daaeac38a281defad1206bd152af50ea407515d3b77e0229c8fbf79d45",
+    "cuda_context_created": false
+  },
+  "stop": {
+    "status": "owned_run_stopped",
+    "root_pid": 24588,
+    "stopped_processes": [
+      {
+        "pid": 24588,
+        "name": "python.exe",
+        "cmdline": [
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\sampling_env\\Scripts\\python.exe",
+          "-B",
+          "scripts\\local_curve_experiment.py",
+          "train",
+          "--arm",
+          "dense",
+          "--rung",
+          "4"
+        ]
+      },
+      {
+        "pid": 32444,
+        "name": "python.exe",
+        "cmdline": [
+          "C:\\Users\\Seywe\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "-B",
+          "scripts\\local_curve_experiment.py",
+          "train",
+          "--arm",
+          "dense",
+          "--rung",
+          "4"
+        ]
+      },
+      {
+        "pid": 3240,
+        "name": "python.exe",
+        "cmdline": [
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\pointneuron2\\tmp\\pointneuron2\\sampling_env\\Scripts\\python.exe",
+          "-B",
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\scripts\\local_curve_experiment.py",
+          "train",
+          "--worker",
+          "--arm",
+          "dense",
+          "--rung",
+          "4",
+          "--output",
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\local_curve_head_20261104\\train4_dense"
+        ]
+      },
+      {
+        "pid": 38764,
+        "name": "conhost.exe",
+        "cmdline": [
+          "\\??\\C:\\WINDOWS\\system32\\conhost.exe",
+          "0x4"
+        ]
+      },
+      {
+        "pid": 42364,
+        "name": "python.exe",
+        "cmdline": [
+          "C:\\Users\\Seywe\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "-B",
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\scripts\\local_curve_experiment.py",
+          "train",
+          "--worker",
+          "--arm",
+          "dense",
+          "--rung",
+          "4",
+          "--output",
+          "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\local_curve_head_20261104\\train4_dense"
+        ]
+      }
+    ],
+    "reason": "wall time exceeded authorized 7200 seconds",
+    "last_complete_evaluation_update": 1000,
+    "terminal_gate_evaluated": false
+  },
+  "guard_test_count": 4,
+  "total_new_test_count": 22,
+  "new_source_sha256": {
+    "scripts/run_local_curve_guarded.py": "0ebdca3d4c9d20646a34964245576ce05c10ebefbfd591f848c03eee0dc38864",
+    "src/pn2/training/local_curve_control.py": "0c4cc97e9e0fad4dd91f8118685440b2a5d11295aa093587d0418e54f487b61e",
+    "tests/test_local_curve_wall_guard.py": "1850846dcb3e238537cf14a6f3e6821dbf5ad6ed289702ed29058b3df3b31f15",
+    "tests/test_local_curve_stop_rules.py": "3c8a6400f58c4333abd17b157cca9b2539e07e858f9cf0cdf4454a4bb2a63cae",
+    "docs/local_curve_head_results_20261104.md": "843c360e58b57b07475944fdd95f88c06d8c8634651360b4f4d6f6a016c409ff"
+  },
+  "no_further_training_started": true
+}
