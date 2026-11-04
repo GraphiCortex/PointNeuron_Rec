@@ -1,0 +1,64 @@
+{
+  "scope": "read-only PDF/diagram/code audit; no criteria adopted",
+  "pdf_sources": {
+    "original_proposal_desktop": {
+      "path": "C:\\Users\\Seywe\\Desktop\\Research\\R-Arij\\Proposal.pdf",
+      "sha256": "60e12b8907b23bb1903d5a3668c76d430173ecad5baa373cc3c266f69958b5b8"
+    },
+    "original_proposal_repo": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\docs\\Proposal.pdf",
+      "sha256": "60e12b8907b23bb1903d5a3668c76d430173ecad5baa373cc3c266f69958b5b8"
+    },
+    "pn1_paper_desktop": {
+      "path": "C:\\Users\\Seywe\\Desktop\\Research\\R-Arij\\Literature\\PointNeuron.pdf",
+      "sha256": "95300479fd604c7e589b7fdffa92dc359a9ad54b853e41ff1679276db662cd79"
+    },
+    "pn1_paper_repo": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\docs\\PointNeuron.pdf",
+      "sha256": "95300479fd604c7e589b7fdffa92dc359a9ad54b853e41ff1679276db662cd79"
+    }
+  },
+  "diagram": {
+    "user_attachment": "C:\\Users\\Seywe\\AppData\\Local\\Temp\\codex-clipboard-26ab99cb-9342-4d3a-be83-8a441265fdb8.png",
+    "retained_copy": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\saved_vote_scaffold_sources_20261104\\user_proposal_diagram.png",
+    "sha256": "44f4cb3185abcc3e79ef30ce8b202f39ac378ad95de45e93dfe86fef98579797"
+  },
+  "source_sha256": {
+    "../scripts/evaluate_paper_style_swc.py": "12fa0a7fabd88081484f36d4e59d693c9c6936aed482ab4b898129497feaee9f",
+    "../scripts/evaluate_proposals.py": "d6412ef820259a9cf9880848662e3fc1ac86991e4f2822c2a44c13a209efdbaf",
+    "../scripts/evaluate_connectivity.py": "810bdce87247d3bc0652b0e4c1f294ccde083a6e42bc7b923e432eda51872f0b",
+    "../src/pointneuron/models/proposal_loss.py": "f1ee6ac5947223a8eef69217170b4672024a5694540e6331ee9202ee811f0fcb",
+    "../pointneuron2/src/pointneuron/models/adaptive_sampling.py": "1abc03c98456ebe924684efae15d22cd7b254b1e2f5e8b7617d8212afb47b7cc",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/evaluation/formulation.py": "1a83b93d54e17ab925c59847caa3fbeaa77b3abf4cd09e64104ea60ed07ccace",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "docs/revised_proposal.md": "e6cbbe62cac061461043fa63738b279bfbca003c8b69108c2d724d8c497a06cf",
+    "../pointneuron2/scripts/evaluate_paper_style_swc.py": "c584a1f6dd97d9bf952b542665f75f29603a98739601e0972cf921784a10bd9e",
+    "../pointneuron2/scripts/evaluate_proposals.py": "495f3ab5e85a38816970533520fb1557a7bb8ceb57fc428be6b4d6d37e62f37e"
+  },
+  "report_sha256": "0d8c7337a85c9c4e1fb0b99d5c3f4fbf09039f83027f5a8bc016670339fd7d6d",
+  "proposal_pages_inspected": [
+    4,
+    5,
+    9
+  ],
+  "pn1_metric_page_inspected": 8,
+  "original_PDF_numeric_localization_tolerance_found": false,
+  "PN1_PDF_numeric_localization_tolerance_found": false,
+  "local_approximation_default_distance": 6.0,
+  "new_node_stage_criterion_adopted": false,
+  "normalized_copy_checks": [
+    {
+      "main": "../scripts/evaluate_paper_style_swc.py",
+      "historical": "../pointneuron2/scripts/evaluate_paper_style_swc.py",
+      "normalized_text_identical": true,
+      "raw_bytes_identical": false
+    },
+    {
+      "main": "../scripts/evaluate_proposals.py",
+      "historical": "../pointneuron2/scripts/evaluate_proposals.py",
+      "normalized_text_identical": true,
+      "raw_bytes_identical": false
+    }
+  ]
+}

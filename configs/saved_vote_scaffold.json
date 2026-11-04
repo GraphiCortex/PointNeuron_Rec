@@ -1,0 +1,42 @@
+{
+  "schema": "pn2-saved-vote-scaffold-v1",
+  "terminal_root": "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z",
+  "support_cutoff": 0.25,
+  "support_radius_voxel": 2.0,
+  "isolated_support_below": 3,
+  "isolated_bad_fraction_minimum": 0.5,
+  "far_source_distance_voxel": 6.0,
+  "far_bad_fraction_stop": 0.5,
+  "variant_radius_voxel": 2.0,
+  "variant_minimum_support": 3,
+  "candidate_k_diagnostics": [
+    4,
+    6,
+    10
+  ],
+  "decoding_k": 6,
+  "line_sample_step_voxel": 0.5,
+  "image_cost_penalty": 4.0,
+  "quadrature_step_voxel": 0.5,
+  "tolerances_voxel": [
+    2.0,
+    6.0
+  ],
+  "wall_seconds": 1800,
+  "source_sha256": {
+    "scripts/measure_saved_vote_scaffold.py": "ca7c7395454b4eb3b921f89250dec9dc49087d9399b5027f6c938aca7e96df9e",
+    "src/pn2/evaluation/vote_scaffold.py": "9e54490f02a2209446e313e90b9b756cace56956c527df1c58ae8ddac294e7c2",
+    "tests/test_vote_scaffold.py": "c73b0cfadbc3c9b42c1ff756171cb9644d8b48bcf5c59940e845abb3468b29bf",
+    "docs/saved_vote_scaffold_protocol_20261104.md": "ac882682fc65e952ee4628f743ebd971dc0d6770a1de49cbfe240bfae2c26cc1",
+    "scripts/run_supported_vote_sixteen.py": "51271fb1f0d1deaf6f5ad6e80d5418734cbccc14660a8927fcb7f014603ac8a3"
+  },
+  "artifact_sha256": {
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/report.json": "c3691ca34afa3eeb1437c221c417e8e6ec3abdee87f047c393970f0115577d63",
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/metrics.json": "6f2bed657a435b285dae90ad4163bf72bec03f77553489d595ee95f8b1e39df0",
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/predictions.npz": "1de85573a64cda952603c00cd9d428ed2e5cc7166a59e2eaf1f6c815e09c0776",
+    "tmp/local_curve_head_20261104/prepare/manifest.json": "2170e1acee6fa65cbd1690d0c31e463ba201497d1736f744e9dd3c6201c3b023",
+    "tmp/local_curve_head_20261104/prepare/report.json": "350b035c00623d2793aafffeb7f2bc4401f4e9948667160a43709603e6be5ee0",
+    "tmp/local_curve_head_20261104/prepare/selection.json": "a1eeb78252125b2c06223f98db5b710232bbcb6eba126b01ca0ee93ddae70178",
+    "configs/local_curve_head.json": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c"
+  }
+}

@@ -1,5 +1,23 @@
 # PN2 next-chat handoff — after the completed curve audit
 
+**New CPU-only follow-up prepared, 4 November:** The user requested A: saved-vote
+support/error-band/control diagnostics; B: exactly one conditional radius-2,
+minimum-3-support consolidation; C: image-only kNN/MSF/SWC measurement scaffold;
+D/E: metric/proposal/implementation audit. The criterion and all constants were
+written before the new support-count results. See
+[the frozen follow-up recipe](saved_vote_scaffold_protocol_20261104.md) and
+[metric/architecture audit plus proposed criterion](proposal_implementation_audit_20261104.md).
+The timed CPU measurement must be launched by the user with
+`tmp/phase1_cpu_env/Scripts/python.exe -B scripts/measure_saved_vote_scaffold.py`.
+Its real A/B/C results are pending; only nine unit/integration fixtures and
+read-only source/artifact checks have run. Do not claim the variant passed or
+failed before reading its actual report. C runs regardless of B. A sixteen-box
+manifest/PowerShell command is produced only on the post-hoc variant's numerical
+pass, never launched automatically. This scaffold does not replace GATv2; no
+GPU work or frozen-gate change is authorized by this follow-up. After the user
+runs it, inspect report.json/report.md, preserve portable results and update
+this handoff before any next formulation discussion.
+
 **Latest terminal update, 4 November:** The user-launched recovery completed
 the original 2000-update four-box curve-head fit with exact prediction replay
 and all 700 available optimizer-prefix updates matched. The accuracy gate
