@@ -1,0 +1,35 @@
+{
+  "schema": "pn2-curve-transfer-scoring-resume-v1",
+  "wall_seconds": 1800,
+  "model_execution": false,
+  "graph_construction": false,
+  "tolerances": [
+    2.0,
+    6.0
+  ],
+  "quadrature_step": 0.5,
+  "interrupted_root": "tmp/curve_transfer_development_20261104T195033_977395Z",
+  "fit_root": "tmp/curve_transfer_fit_20261104T193753_641182Z",
+  "runtime_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "psutil": "7.0.0"
+  },
+  "source_sha256": {
+    "scripts/score_saved_curve_transfer.py": "03638a80ab16f29abc411fd1cb9eab3b275f4ceaf218cf96a0d378456b645125",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09",
+    "tests/test_bounded_agreement.py": "dc329ba9417b81b9bd5846fe45678743530295b01e7f105d516d9bdc52587f69",
+    "tests/test_curve_scoring_resume.py": "186579f9dba683b82c3abb2f4d461c42c7888729acd1e61b9be6bf9db6e42913",
+    "docs/curve_transfer_scoring_resume_20261104.md": "1aa63379e53748a98a7ef9150d823b06e2a221b1a90cdd2b4bc22a729362d16b"
+  },
+  "artifact_sha256": {
+    "configs/curve_transfer_diagnostics.json": "982d462a37a23f4fedef1dc79f9a8660fc9444c04c1ad0cf499c3c37a9d0353b",
+    "tmp/curve_transfer_fit_20261104T193753_641182Z/report.json": "1c33536b64550a319e3c440558619cdc62bec92094b5162e111f395b711662a3",
+    "tmp/curve_transfer_fit_20261104T193753_641182Z/all_inference_complete.json": "c959e3d23434954a96f3b39e685e0f6b8885c2c9cf013e4f5a6da16d66664a85",
+    "tmp/curve_transfer_development_20261104T195033_977395Z/predictions/complete.json": "df623784b76312030d9b177d19b54e4a63854435c5f612f9ce2fecfa8e1ff8fb",
+    "tmp/curve_transfer_development_20261104T195033_977395Z/predictions/cpu_parity.json": "865cd4f398040ccb7490f0fee39254c3911b8808a7e600760b0f88f24404f301",
+    "tmp/curve_transfer_development_20261104T195033_977395Z/all_inference_complete.json": "8b1375288a496148aa2aea25855f0eb1d4a7a63a0dc14bc67fb52d35bd793277",
+    "src/pn2/evaluation/formulation.py": "1a83b93d54e17ab925c59847caa3fbeaa77b3abf4cd09e64104ea60ed07ccace",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842"
+  }
+}

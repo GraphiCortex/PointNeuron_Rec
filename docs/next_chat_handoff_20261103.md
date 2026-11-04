@@ -1,5 +1,35 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest user outputs, 4 November:** Matched fit forest controls completed,
+but development was user-interrupted after ~70min during unjournaled scoring.
+Read [fit results and scoring-only continuation](curve_transfer_scoring_resume_20261104.md).
+Fit segment P2/R2/F1: dense 76.16/87.64/81.49%; raw input 7.46/72.15/13.33%;
+Sato-top512 23.81/46.07/31.36%. This demonstrates a learned fitting contribution,
+not transfer. Shortcut flags are dense 6/1080, raw 3/355, Sato 2/283 scorable
+edges; off-reference endpoints exclude 423/6803/1729 edges, so do not compare
+these fractions as total biological wrong-join rates.
+
+Preserve `tmp/curve_transfer_fit_20261104T193753_641182Z` and interrupted
+`tmp/curve_transfer_development_20261104T195033_977395Z`. All 151 CPU predictions
+and 453 graph/SWC exports are complete and hash-verified. All graphs were saved
+by ~6min; the remaining ~hour was reference scoring with no durable per-graph
+results. CPU/GPU fit replay passed (max coordinate error .00006104 voxel,
+retained sets equal). There is NO development accuracy report yet.
+
+Do NOT rerun `measure_curve_transfer.py --stage development`. A separate
+`scripts/score_saved_curve_transfer.py` reuses every saved prediction/graph,
+does scoring only, uses the same .5-voxel quadrature/2&6 decisions in a batched
+bounded search, and first requires exact original fit metric parity on all
+12 graphs/48 metric dictionaries. Five CPU tests pass. Real parity, speedup and
+development scores remain pending; the assistant did not launch scoring.
+User-local command: `tmp/phase1_cpu_env/Scripts/python.exe -B
+scripts/score_saved_curve_transfer.py`. Fresh output under `tmp/curve_transfer_scoring_*`,
+30min cap, progress and atomic score+shortcut JSON per graph, cancellation
+receipt. No model, Torch import, inference, graph building, training or changed
+gate. Explicit future --resume can reuse completed records but is never launched
+automatically or used as an implicit cap extension. Transformer remains parked;
+no sixteen-box manifest or new training is authorized.
+
 **Latest user steering, 4 November:** Park the Transformer hypothesis. Before
 any new training decision, compare no-learning points through the SAME forest,
 measure frozen update-2000 development transfer with controls, surface the
