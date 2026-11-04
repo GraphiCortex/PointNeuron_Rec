@@ -1,5 +1,40 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest completed measurement, 4 November:** User-local scoring continuation
+finished all 453 development graphs in ~9.5min, after exact parity on 12 fit
+graphs/48 metric dictionaries. Read
+[development transfer results](curve_transfer_development_results_20261104.md)
+and [portable evidence](evidence/curve_transfer_development_20261104.json).
+Output: `tmp/curve_transfer_scoring_20261104T211240_017254Z` (report.json/md,
+records, fit parity, binding; sibling guard receipt completed exit0).
+
+Development segment P2/R2/F1: dense 18.59/33.28/23.20%; raw 6.64/77.94/12.00%;
+Sato512 29.02/70.25/38.49%. Six-voxel F1: dense56.99/raw31.80/Sato63.13%.
+Sato beats dense on all seven neurons at two voxels and six of seven at six.
+Dense k=6 candidate-union R2=38.07%, versus raw89.00/Sato76.80%; fixed edge
+selection cannot repair this upstream geometric opportunity loss. Input
+density alone does not explain the additional learned-stage collapse, though
+counts differ and causal mechanisms are unresolved. Tiny fitting succeeded;
+transfer is poor under this budget, not a proof of asymptotic head incapacity.
+
+Dense shortcut flags6/6956 scorable edges, with39860 off-reference-endpoint
+edges (83.50% of its forest) excluded. Fragment bridges134 remain unknown;
+do not interpret the tiny conditional flag fraction as topology certification.
+All 453 score hashes/bindings/category counts and original frozen sources were
+verified. No new model/graph/filter/GPU/training executed in the continuation.
+
+Transformer stays parked. The [sixteen-box downstream discussion draft](curve_head_sixteen_downstream_discussion_20261104.md)
+proposes a bounded fresh SAME-head diversity test, old training-only selection
+(16 boxes/14 neurons), with concrete post-hoc/prospective downstream floors and
+stopping rules. It is PENDING USER AGREEMENT, not an adopted protocol, trainer,
+manifest or run command. Original failed gates stay failed. No GPU run is
+authorized. Do not use `run_supported_vote_sixteen.py`: its r2/min3 variant
+failed and is not the proposed consolidation. No old training command should
+be repurposed without discussing and binding the new experiment.
+
+Do not repeat inference, graph creation, completed curve/input audits or this
+completed scoring job. Earlier pending/interruption notes below are history.
+
 **Latest user outputs, 4 November:** Matched fit forest controls completed,
 but development was user-interrupted after ~70min during unjournaled scoring.
 Read [fit results and scoring-only continuation](curve_transfer_scoring_resume_20261104.md).
