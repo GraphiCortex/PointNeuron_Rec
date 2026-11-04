@@ -1,0 +1,36 @@
+{
+  "schema": "pn2-broad-curve-head-v1",
+  "epochs": 20,
+  "updates": 9200,
+  "maximum_wall_seconds": 14400,
+  "training_accuracy_gated": false,
+  "cutoff": 0.25,
+  "consolidation_radius": 1.0,
+  "decoding_k": 6,
+  "device": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "diagnostics_root": "tmp/broad_curve_diagnostics_20261105",
+  "terminal_checkpoint_only": true,
+  "training_boxes": 460,
+  "training_neurons": 33,
+  "development_boxes": 151,
+  "development_neurons": 7,
+  "source_sha256": {
+    "scripts/run_broad_curve_head.py": "0b7b1bf8b4d23a3d0d6dffe64a80f6c2c72a315d41387aac7e95c9ddd2e85649",
+    "tests/test_broad_training.py": "8c4c7c41413d83fcd021e76f3b5643664be1a9abb338b2726699e6ef62de7195",
+    "src/pn2/evaluation/fixed_curve_graph.py": "b265ede182fbc6765b500192d10f39d84aca9ffe296a33469b3ee1e778e7a216",
+    "src/pn2/training/guarded_run.py": "bf09397e8de938478450f7a6ed02ebbd959c122fc2068bb3b388ccc299b50b66",
+    "docs/broad_curve_head_protocol_20261105.md": "63d98d428480cc49fab23f76574f909843b11c131dbd2fac8c410754e72a9d7a"
+  },
+  "artifact_sha256": {
+    "configs/local_curve_head.json": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c",
+    "configs/broad_curve_diagnostics_20261105.json": "a8d23a3369a50c75189ba14525e538e04360b7b154231dec21fe95b63c1f9a9b",
+    "tmp/node_budget_data_20261102/manifest.json": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+    "tmp/node_budget_data_20261102/schedule.npz": "1b32dbbcff31384fa958d78d0e73be71b41591de39ae508f6ac66145dd711699",
+    "tmp/local_curve_head_20261104/prepare/manifest.json": "2170e1acee6fa65cbd1690d0c31e463ba201497d1736f744e9dd3c6201c3b023",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09",
+    "src/pn2/evaluation/reference_shortcuts.py": "626a692c047e8ce18eb6787246797c6845bc71f2096e251e336448b7f4b473ae",
+    "tmp/broad_curve_diagnostics_20261105/report.json": "d08a11476e35b4774a30c4757ce5bd27e41055843eb6938bdca0a29d145d2f42",
+    "tmp/broad_curve_diagnostics_20261105/classical_matched.json": "55bf7c7ca57fc9f108abfed670948b68915ad0cb0d35bb39b47c1f15ac30d26c",
+    "tmp/broad_curve_diagnostics_20261105_guard/report.json": "c9b85b4dcd672cd841506587601db6f6e159360dfa40ff1566fa531fd61bec87"
+  }
+}

@@ -1,5 +1,9 @@
 # Sixteen-box downstream transfer screen — discussion only
 
+**Rejected by the user, 5 November 2026.** Do not adopt or implement this draft.
+It is superseded by [the authorized broad-cohort protocol](broad_curve_head_protocol_20261105.md).
+The text below preserves the earlier proposal, not current instructions.
+
 **Pending agreement; not an active protocol or run authorization.** This is a
 proposed new experiment after the original dense-head point gate and supported
 consolidation failed. Those verdicts remain failed. Its downstream criteria are

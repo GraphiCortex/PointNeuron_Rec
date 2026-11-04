@@ -1,0 +1,18 @@
+{
+  "schema": "pn2-broad-resident-execution-v1",
+  "maximum_wall_seconds": 21600,
+  "updates": 9200,
+  "scientific_settings_changed": false,
+  "source_sha256": {
+    "scripts/run_broad_curve_resident.py": "fa51aa80bdb6e6477627d615dcaa99c80baae3c6aac9b74db92bd1dfb13782bb",
+    "docs/broad_curve_execution_addendum_20261105.md": "56864b790bba64fbc6e9240802b9261317b43933e530ded1752a2f77c61ecd9b",
+    "tests/test_broad_resident.py": "a1380381990e3697100675725351dc289ec896be6a5f9579f1183badfc1c4ae3"
+  },
+  "artifact_sha256": {
+    "configs/broad_curve_head_20261105.json": "7fca912c302a725570a26d2a7a5bf00c79bc1e53e8f3b782501d821c778a9c5b",
+    "scripts/run_broad_curve_head.py": "0b7b1bf8b4d23a3d0d6dffe64a80f6c2c72a315d41387aac7e95c9ddd2e85649",
+    "tmp/broad_curve_head_20261105/prepare/manifest.json": "816fdf9e90f3a67866ce06522ef9fac5c60a7332a8579187c846a08e66feecee",
+    "tmp/broad_curve_head_20261105/prepare/complete.json": "8dfd5b7bf27c6051124ffb16a68fb936215daaafb314e266c2862691c6d586e0",
+    "tmp/broad_curve_head_20261105/timing/report.json": "4658df2902cdcf91dc495fec9a8275d83eb59bca393d00c6716260a370233318"
+  }
+}

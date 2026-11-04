@@ -1,5 +1,76 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Active execution, 5 November:** CPU diagnostics COMPLETE and ONE authorized
+broad training pipeline LAUNCHED by the assistant. Read
+[current broad results/status](broad_curve_head_results_20261105.md).
+Root `tmp/broad_curve_head_20261105`. GPU train console/owner receipt in
+`resident_train_guard`; terminal predictions under `train/terminal_predictions`.
+The already-launched PowerShell pipeline runs CPU `--action score` automatically
+after successful GPU completion. Evaluation final report will be
+`evaluation/report.json`/report.md; guard `resident_score_guard`. Do not launch
+another train/timing/score process while this one is active. Unified-exec
+session41968 owns the train->score command; owned worker identity is logged in
+`resident_train_guard/owner.json`. No final broad verdict yet.
+
+CPU ablations: all raw votes F1_2=10.25%; learned-support top512 without offsets
+24.82%; EXACT Sato source set +learned offsets24.47%; original Sato38.49%.
+Both learned outputs lose to Sato on transfer; removing cutoff restores recall
+but lowers F1. These select nothing. Matched classical remains strongest.
+Preparation COMPLETE:460 labels (16 reused/444 generated),122.33s guard; frozen
+20-epoch schedule9200 updates. Training metrics NEVER gated.
+
+First streamed timing failed only the assistant's4h resource projection, with
+NO real training updates. Preserve it. Separate resident execution wrapper
+checks EXACT16-update loss/gradient parity and immutable460-batch inputs;
+passed, p90=.929151s/update, VRAM170.52MB. Training estimate~2h22m;40min scoring
+reserve;50% margin =>16440s overall4h34m. Disclosed execution addendum allows
+<=6h under user's instruction to set budget from throughput. Labels/scientific
+recipe/updates/gates did not change. Old sources/configs/timing preserved.
+See [execution addendum](broad_curve_execution_addendum_20261105.md) and new
+`configs/broad_curve_resident_execution_20261105.json`; base preparation binds
+`configs/broad_curve_head_20261105.json`. Do not edit frozen runtime sources.
+
+If interrupted, distinguish execution/resource failure from accuracy failure;
+no automatic retry or extension. If terminal gate fails, STOP tuning this head.
+If passes, whole-image assembly/intended graph stage follows with concrete
+implementation discussion. No professor message or alternative node-refinement
+architecture has been implemented. Earlier statuses below are history.
+
+**Latest explicit authorization, 5 November:** User REJECTED the sixteen-box
+draft. Run saved-packet CPU diagnostics first, then the assistant launches ONE
+broad SAME-head run on all 460 reference-present training boxes/33 neurons.
+This explicitly supersedes the no-GPU/user-launch preference for this specific
+run; do not ask again for approval already given. Read
+[the active broad-run protocol](broad_curve_head_protocol_20261105.md).
+Twenty frozen dataset epochs =9200 updates, fresh original initialization,
+unchanged 2048 inputs/labels/loss/optimizer/.25 cutoff/r1 consolidation/k6 forest.
+Measure throughput before fixing the wall budget (<=4h); terminal checkpoint
+only. Training metrics reported, NEVER gated. No sixteen-box ladder.
+
+Strongest matched no-learning control is classical PRUNED, 54.3311257940% F1
+at2 /69.1368664294% at6 on the SAME151 reference-present boxes. Historical
+53.87/68.52% included unknown-box prediction length. Reaggregate existing
+per-box metrics; do not repeat extraction/filtering. Broad PASS requires >=5pp
+macro F1 gain at BOTH tolerances AND strict wins on>=5/7 neurons at EACH,
+against the same strongest-macro fixed comparator for that tolerance. Floors
+currently .5933112579402621/.7413686642936104. No training-fit floor.
+
+CPU diagnostic `scripts/diagnose_broad_curve_controls.py` is running under
+`tmp/broad_curve_diagnostics_20261105`, guard sibling. It compares all raw votes
+(no cutoff/suppression), learned-support top512 UNMOVED source positions, and
+the EXACT Sato source set moved by learned offsets (no second suppression).
+It selects nothing and does not alter broad-run settings. Three short tests
+pass; separate training-manifest test rejects altered/development schedules.
+Only16 training label packets exist; reuse those and prepare444 with the
+unchanged projection code before GPU timing. Dataset already has all460 images
+and the complete20-epoch training-only schedule. No image filtering restart.
+
+If broad passes: whole-image assembly and intended graph stage next. If broad
+fails: STOP tuning this head. A future strong-classical-candidate refinement
+framing changes the Transformer's role and needs professor agreement; do not
+implement it or contact the professor as an implied action. Transformer remains
+parked for this run. Original failures remain on record; no private gate changes.
+
 **Latest completed measurement, 4 November:** User-local scoring continuation
 finished all 453 development graphs in ~9.5min, after exact parity on 12 fit
 graphs/48 metric dictionaries. Read

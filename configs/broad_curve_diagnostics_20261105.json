@@ -1,0 +1,22 @@
+{
+  "schema": "pn2-broad-curve-diagnostics-v1",
+  "wall_seconds": 1800,
+  "classical_report": "tmp/curve_classical_baseline_20261103/report.json",
+  "transfer_report": "tmp/curve_transfer_scoring_20261104T211240_017254Z/report.json",
+  "prediction_root": "tmp/curve_transfer_development_20261104T195033_977395Z",
+  "source_sha256": {
+    "scripts/diagnose_broad_curve_controls.py": "4da05d1d62c569133310bb0661bcd6746edcc9bd2f31fcb5f8a450d942c1e53e",
+    "src/pn2/evaluation/fixed_curve_graph.py": "b265ede182fbc6765b500192d10f39d84aca9ffe296a33469b3ee1e778e7a216",
+    "src/pn2/training/guarded_run.py": "bf09397e8de938478450f7a6ed02ebbd959c122fc2068bb3b388ccc299b50b66",
+    "tests/test_broad_curve.py": "a29b13cbbb0b07b35f854dd120730157e50e7eda861c90045f93470251e728ea",
+    "docs/broad_curve_head_protocol_20261105.md": "63d98d428480cc49fab23f76574f909843b11c131dbd2fac8c410754e72a9d7a"
+  },
+  "artifact_sha256": {
+    "tmp/curve_classical_baseline_20261103/report.json": "735afd2848523bc998405f72d65260d518f96005f84ca490bb0a69224e279168",
+    "tmp/curve_transfer_scoring_20261104T211240_017254Z/report.json": "2f6e94373e0f00567e57560a5c8c11f5dddf914f30ec7b9fa9cd37240126aec4",
+    "tmp/curve_transfer_development_20261104T195033_977395Z/predictions/complete.json": "df623784b76312030d9b177d19b54e4a63854435c5f612f9ce2fecfa8e1ff8fb",
+    "tmp/curve_transfer_scoring_20261104T211240_017254Z/fit_metric_parity.json": "9aa21015fa0567b3b335eb662235fe67b1ac15d117e641b9d7c9b68051dd418a",
+    "configs/curve_formulation_audit.json": "8c6e7c6037ce415ee7396ba69c40df44259fe5f29888cf1fb83438498a11694b",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09"
+  }
+}
