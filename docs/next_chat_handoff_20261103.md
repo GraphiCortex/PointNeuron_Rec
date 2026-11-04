@@ -1,5 +1,29 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest user steering, 4 November:** Park the Transformer hypothesis. Before
+any new training decision, compare no-learning points through the SAME forest,
+measure frozen update-2000 development transfer with controls, surface the
+already-completed two-voxel input/stratum results, and add reference-only
+wrong-join diagnostics. See [ready commands and evidence](curve_transfer_diagnostics_ready_20261104.md)
+and [new diagnostic protocol](curve_transfer_diagnostics_protocol_20261104.md).
+Two user-local CPU stages are prepared, NOT run: `scripts/measure_curve_transfer.py
+--stage fit` and `--stage development`, using `tmp/phase1_cpu_env/Scripts/python.exe`.
+Fit cap 30min; development CPU-forward + scoring cap 2h, runtime unmeasured.
+Eight short CPU fixtures and source/artifact preflight pass. No GPU or training.
+
+The input audit already measured 2 voxels: development raw 2048/8192 support
+70.24/91.98%, thin/dim 40.56/83.23%; fitted frog 22 box5 all-curve 36.05/74.46%,
+thin/dim 16.68/69.53%. Reuse saved evidence; do not rerun this audit/filtering.
+The new no-learning graph scores and frozen-checkpoint transfer are PENDING.
+All 151 development reference-present boxes/7 neurons are included; 264 unknown
+boxes excluded and disclosed. Development is repeatedly inspected, not a new
+untouched test. CPU/GPU parity is checked before development inference; failures
+stop without GPU fallback. No sixteen-box manifest or revised training gate.
+Any future downstream criterion is post-hoc relative to the old failure and
+must be declared prospectively before a new experiment, assessed on untrained
+neurons. Conservative shortcut flags do not establish an exhaustive biological
+wrong-join rate. No later hypothesis text below authorizes a Transformer change.
+
 **Latest completed result, 4 November:** The user-local A/B/C CPU measurement
 completed in 13.20 seconds (guard 14.52 seconds, exit 0), using saved update-2000
 artifacts only. Read [the measured results](saved_vote_scaffold_results_20261104.md)

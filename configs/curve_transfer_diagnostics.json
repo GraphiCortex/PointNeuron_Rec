@@ -1,0 +1,37 @@
+{
+  "schema": "pn2-curve-transfer-diagnostics-v1",
+  "device": "cpu",
+  "policies": [
+    "dense",
+    "raw_input",
+    "sato512"
+  ],
+  "decoding_k": 6,
+  "shortcut_rule": "D > 2*L + 4",
+  "stage_wall_seconds": {
+    "fit": 1800,
+    "development": 7200
+  },
+  "checkpoint": "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/checkpoint_step002000.pt",
+  "fit_predictions": "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/predictions.npz",
+  "saved_scaffold_report": "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.json",
+  "input_audit_report": "tmp/curve_formulation_audit_20261103/report.json",
+  "input_audit_rows": "tmp/curve_formulation_audit_20261103/boxes.jsonl",
+  "torch_runtime": "../pointneuron2/tmp/pointneuron2/sampling_env/Scripts/python.exe",
+  "source_sha256": {
+    "scripts/measure_curve_transfer.py": "aceb5c97431139fda90d4e2e20c298a6773bcdf615830caf78d52191e38a8cb0",
+    "src/pn2/evaluation/reference_shortcuts.py": "626a692c047e8ce18eb6787246797c6845bc71f2096e251e336448b7f4b473ae",
+    "tests/test_reference_shortcuts.py": "1d252e029db10c85ad147c9d9b95cb2fad62d2b6a32f12e9aa195854b91485e8",
+    "docs/curve_transfer_diagnostics_protocol_20261104.md": "90bb570cee9d5db446145ad8030550922618a7e1aac432c82ae3553e76695360"
+  },
+  "artifact_sha256": {
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/checkpoint_step002000.pt": "633c7d36d48bb338674f900094c900c3dcf84dc58e7cec9bff294b02f3e83706",
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/checkpoint_step002000.complete.json": "13144333e837296e21467f0b5578be4e84969993ba95dbb8b1e548d4493a42f6",
+    "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/eval_step002000_training/predictions.npz": "1de85573a64cda952603c00cd9d428ed2e5cc7166a59e2eaf1f6c815e09c0776",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.json": "c643d0e372dc41b5a62992a918e905e2031872d4d6bb2830546aa4d31c38da80",
+    "tmp/curve_formulation_audit_20261103/report.json": "8da9e60708ca7f6b1ae5690f3bc87b919d06cd33ce6844b989e5ba45147350a8",
+    "tmp/curve_formulation_audit_20261103/boxes.jsonl": "7164f0433ec7d174f015cf8d47106f6e4bc7778fe772defd3c106d9393af2079",
+    "configs/local_curve_head.json": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c",
+    "configs/saved_vote_scaffold.json": "9f29235ec8bf1061804ac0313e7fbe1e72323957646c25e4aca9a0270834e675"
+  }
+}

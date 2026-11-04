@@ -1,0 +1,176 @@
+{
+  "schema": "pn2-existing-two-voxel-input-support-v1",
+  "new_audit_executed": false,
+  "source_sha256": {
+    "tmp/curve_formulation_audit_20261103/report.json": "8da9e60708ca7f6b1ae5690f3bc87b919d06cd33ce6844b989e5ba45147350a8",
+    "tmp/curve_formulation_audit_20261103/boxes.jsonl": "7164f0433ec7d174f015cf8d47106f6e4bc7778fe772defd3c106d9393af2079"
+  },
+  "evidence": {
+    "provenance": "read existing completed audit only; no recomputation",
+    "partitions": {
+      "training": {
+        "2048": {
+          "all_2": 0.7110012440585911,
+          "strata_2": {
+            "unresolved": 0.5547596153357923,
+            "apparent_thin_dim": 0.3986782692168121,
+            "apparent_thin_bright": 0.7093248608502886,
+            "apparent_thick_dim": 0.48424817401256787,
+            "apparent_thick_bright": 0.7779238311390096
+          }
+        },
+        "8192": {
+          "all_2": 0.9282150070781601,
+          "strata_2": {
+            "unresolved": 0.7970190018246174,
+            "apparent_thin_dim": 0.7017042599007705,
+            "apparent_thin_bright": 0.9370400959194277,
+            "apparent_thick_dim": 0.7952961384632605,
+            "apparent_thick_bright": 0.9635753570968584
+          }
+        }
+      },
+      "development": {
+        "2048": {
+          "all_2": 0.702393099738379,
+          "strata_2": {
+            "unresolved": 0.5005303097173784,
+            "apparent_thin_dim": 0.4055915376345718,
+            "apparent_thin_bright": 0.7516249379379435,
+            "apparent_thick_dim": 0.4529068533297507,
+            "apparent_thick_bright": 0.7750592784435222
+          }
+        },
+        "8192": {
+          "all_2": 0.9198241334769204,
+          "strata_2": {
+            "unresolved": 0.7278294833892046,
+            "apparent_thin_dim": 0.8323291711753102,
+            "apparent_thin_bright": 0.9519085268300184,
+            "apparent_thick_dim": 0.8597624347056056,
+            "apparent_thick_bright": 0.9694283897620719
+          }
+        }
+      }
+    },
+    "frog_fit_box5": {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "input": {
+        "2048": {
+          "curve_length": 449.1747212175269,
+          "supported_length": {
+            "2.0": 161.9191383117192,
+            "6.0": 422.1295871583935,
+            "8.0": 439.7554902450693
+          },
+          "fraction": {
+            "2.0": 0.3604814132746014,
+            "6.0": 0.9397892784664613,
+            "8.0": 0.9790299174741491
+          },
+          "actual_points": 2048,
+          "nearest_point_normalized_intensity_weighted_mean": 0.19774886984173595,
+          "strata": {
+            "unresolved": {
+              "length": 16.887362819465153,
+              "covered": {
+                "2.0": 14.534570456424794,
+                "6.0": 16.887362819465153,
+                "8.0": 16.887362819465153
+              }
+            },
+            "apparent_thin_dim": {
+              "length": 29.86476689902463,
+              "covered": {
+                "2.0": 4.98191689391359,
+                "6.0": 28.92516688454173,
+                "8.0": 29.86476689902463
+              }
+            },
+            "apparent_thin_bright": {
+              "length": 56.12447490780252,
+              "covered": {
+                "2.0": 16.9545306570407,
+                "6.0": 52.97993156439492,
+                "8.0": 56.12447490780252
+              }
+            },
+            "apparent_thick_dim": {
+              "length": 138.5492305374679,
+              "covered": {
+                "2.0": 24.547678924496086,
+                "6.0": 115.58823983622503,
+                "8.0": 129.12999956501028
+              }
+            },
+            "apparent_thick_bright": {
+              "length": 207.74888605376674,
+              "covered": {
+                "2.0": 100.90044137984401,
+                "6.0": 207.74888605376674,
+                "8.0": 207.74888605376674
+              }
+            }
+          }
+        },
+        "8192": {
+          "curve_length": 449.1747212175269,
+          "supported_length": {
+            "2.0": 334.4359326582286,
+            "6.0": 449.1747212175269,
+            "8.0": 449.1747212175269
+          },
+          "fraction": {
+            "2.0": 0.7445564428730786,
+            "6.0": 1.0,
+            "8.0": 1.0
+          },
+          "actual_points": 8192,
+          "nearest_point_normalized_intensity_weighted_mean": 0.21153085921055426,
+          "strata": {
+            "unresolved": {
+              "length": 16.887362819465153,
+              "covered": {
+                "2.0": 16.887362819465153,
+                "6.0": 16.887362819465153,
+                "8.0": 16.887362819465153
+              }
+            },
+            "apparent_thin_dim": {
+              "length": 29.86476689902463,
+              "covered": {
+                "2.0": 20.765002370939357,
+                "6.0": 29.86476689902463,
+                "8.0": 29.86476689902463
+              }
+            },
+            "apparent_thin_bright": {
+              "length": 56.12447490780252,
+              "covered": {
+                "2.0": 51.03659650075655,
+                "6.0": 56.12447490780252,
+                "8.0": 56.12447490780252
+              }
+            },
+            "apparent_thick_dim": {
+              "length": 138.5492305374679,
+              "covered": {
+                "2.0": 66.80920580323254,
+                "6.0": 138.5492305374679,
+                "8.0": 138.5492305374679
+              }
+            },
+            "apparent_thick_bright": {
+              "length": 207.74888605376674,
+              "covered": {
+                "2.0": 178.937765163835,
+                "6.0": 207.74888605376674,
+                "8.0": 207.74888605376674
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
