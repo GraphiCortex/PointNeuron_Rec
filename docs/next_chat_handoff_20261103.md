@@ -1,5 +1,16 @@
 # PN2 next-chat handoff — after the completed curve audit
 
+**CPU launch fix:** The user's first saved-vote measurement stopped after about
+three seconds in A because a JSON-list box key reached a tuple-keyed guide
+lookup. A did not finish; B/C did not run. The failed folder
+`tmp/saved_vote_scaffold_20261104T175407_894949Z` is preserved. Both new launcher
+evaluation boundaries now normalize identities to tuples. Ten CPU tests pass,
+including the actual A-worker path with a JSON-list identity. Only execution
+source/test bindings changed; criteria, variant constants, graph recipe and
+all input artifact bindings are unchanged. The same user-local CPU command
+can be retried; it creates a fresh timestamped output directory. No rerun has
+been launched by the assistant. See `docs/evidence/saved_vote_launch_fix_20261104.json`.
+
 **New CPU-only follow-up prepared, 4 November:** The user requested A: saved-vote
 support/error-band/control diagnostics; B: exactly one conditional radius-2,
 minimum-3-support consolidation; C: image-only kNN/MSF/SWC measurement scaffold;

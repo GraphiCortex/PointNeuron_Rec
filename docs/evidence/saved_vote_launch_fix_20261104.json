@@ -1,0 +1,30 @@
+{
+  "scope": "execution-only box identity normalization fix",
+  "failure": "JSON list passed to tuple-keyed cached-guide lookup",
+  "failed_output_preserved": "tmp\\saved_vote_scaffold_20261104T175407_894949Z",
+  "failed_artifacts": {
+    "tmp\\saved_vote_scaffold_20261104T175407_894949Z\\A_box0.npz": "950eb7cc68bddb287f5eb6c618b24e4ae059e9d57f76d6fa866c4b1186c86e7d"
+  },
+  "guard": {
+    "status": "failed",
+    "exit_code": 1,
+    "elapsed_seconds": 2.0026662349700928,
+    "maximum_seconds": 1800,
+    "started_epoch": 1793814847.9106936,
+    "config_fingerprint": "f557ae5bacde32b9a55b7850b98defceb1f2af727f84234ed7f300ab311c43fd",
+    "output": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\saved_vote_scaffold_20261104T175407_894949Z"
+  },
+  "A_completed": false,
+  "B_evaluated": false,
+  "C_started": false,
+  "changed_source_bindings": [
+    "scripts/measure_saved_vote_scaffold.py",
+    "tests/test_vote_scaffold.py",
+    "scripts/run_supported_vote_sixteen.py"
+  ],
+  "numerical_settings_and_artifact_bindings_unchanged": true,
+  "regression_test": "test_worker_normalizes_json_box_key_before_guide_lookup",
+  "CPU_tests_passed": 10,
+  "GPU_executed": false,
+  "measurement_rerun_by_assistant": false
+}

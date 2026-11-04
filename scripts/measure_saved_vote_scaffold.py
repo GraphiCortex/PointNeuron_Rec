@@ -271,6 +271,7 @@ def worker(c, folder):
     classical = baseline_graphs(data, selection['four']); guides = {}; raw_classical = []
     with np.load(source/'eval_step002000_training/predictions.npz', allow_pickle=False) as a:
         for i, key in enumerate(selection['four']):
+            key = tuple(key)  # JSON identities are lists; cache helpers use tuple dictionary keys.
             cid, tile = key; image = data.image(cid, tile, 2048); points = a[f'box{i}_points']; scores = a[f'box{i}_scores']
             original = a[f'box{i}_ranked_indices']; original = original[scores[original] >= .25]
             raw = np.flatnonzero(scores >= .25); ids = image['packet']['flat_indices']

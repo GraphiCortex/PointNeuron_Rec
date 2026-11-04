@@ -24,11 +24,11 @@
   ],
   "wall_seconds": 1800,
   "source_sha256": {
-    "scripts/measure_saved_vote_scaffold.py": "ca7c7395454b4eb3b921f89250dec9dc49087d9399b5027f6c938aca7e96df9e",
+    "scripts/measure_saved_vote_scaffold.py": "d590b5bc7ccece062f3b15b75aab592546978b1653c8bc601509fd4e254c97a0",
     "src/pn2/evaluation/vote_scaffold.py": "9e54490f02a2209446e313e90b9b756cace56956c527df1c58ae8ddac294e7c2",
-    "tests/test_vote_scaffold.py": "c73b0cfadbc3c9b42c1ff756171cb9644d8b48bcf5c59940e845abb3468b29bf",
+    "tests/test_vote_scaffold.py": "aace02fc52cacc09bd9f1978f4735f9008764695618afd76d34222d11cfa70d6",
     "docs/saved_vote_scaffold_protocol_20261104.md": "ac882682fc65e952ee4628f743ebd971dc0d6770a1de49cbfe240bfae2c26cc1",
-    "scripts/run_supported_vote_sixteen.py": "51271fb1f0d1deaf6f5ad6e80d5418734cbccc14660a8927fcb7f014603ac8a3"
+    "scripts/run_supported_vote_sixteen.py": "4b9aa6cf9ebb976626f58697a32aee39b65f0f0c515c9c17b456e64bf48c9557"
   },
   "artifact_sha256": {
     "tmp/local_curve_head_20261104/recovery4_dense_20261104T155743_952998Z/report.json": "c3691ca34afa3eeb1437c221c417e8e6ec3abdee87f047c393970f0115577d63",

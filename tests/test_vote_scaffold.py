@@ -110,3 +110,44 @@ def test_saved_graph_scaffold_round_trip_and_same_segment_scorer(tmp_path, monke
     assert scored['classical_summary']['macro']['2.0']['f1'] == 1
     assert all(scored['summaries']['original']['candidate_unions'][str(k)]['macro']['2.0']['recall'] == 1
                for k in (4, 6, 10))
+
+
+def test_worker_normalizes_json_box_key_before_guide_lookup(tmp_path, monkeypatch):
+    """Exercise the actual A worker path with a JSON-list identity, not just C."""
+    import importlib.util
+    import json
+    from pathlib import Path
+    from types import SimpleNamespace
+    scripts = Path(__file__).resolve().parents[1]/'scripts'
+    monkeypatch.syspath_prepend(str(scripts))
+    spec = importlib.util.spec_from_file_location('scaffold_key_fixture', scripts/'measure_saved_vote_scaffold.py')
+    driver = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(driver)
+    monkeypatch.setattr(driver, 'ROOT', tmp_path)
+    source = tmp_path/'terminal/eval_step002000_training'
+    source.mkdir(parents=True)
+    keys = [['image-case', 0]]
+    (source/'metrics.json').write_text(json.dumps({'step': 2000, 'keys': keys}))
+    points = np.array([[0., 0, 0], [3, 0, 0], [6, 0, 0]])
+    np.savez(source/'predictions.npz', box0_points=points, box0_scores=np.ones(3),
+             box0_ranked_indices=np.arange(3))
+    class Data:
+        boxes = {('image-case', 0): {}}
+        def image(self, cid, tile, budget):
+            return {'packet': {'flat_indices': np.arange(3)}}
+    data = Data()
+    monkeypatch.setattr(driver.e, 'control', lambda: {})
+    monkeypatch.setattr(driver.e, 'prepared', lambda _: (data, {}, {'four': keys}))
+    monkeypatch.setattr(driver.e, 'References', lambda *_: SimpleNamespace(
+        get=lambda _: {'distances': lambda p: np.zeros(len(p))}))
+    monkeypatch.setattr(driver.e, 'label_arrays', lambda *_: {'source_distance': np.zeros(3)})
+    monkeypatch.setattr(driver, 'baseline_graphs', lambda *_: {})
+    class ReachedGuide(Exception):
+        pass
+    def guide_lookup(dataset, key, packet, guides):
+        assert isinstance(key, tuple)
+        assert key in dataset.boxes
+        raise ReachedGuide()
+    monkeypatch.setattr(driver.e, 'sato_scores', guide_lookup)
+    with pytest.raises(ReachedGuide):
+        driver.worker({'terminal_root': 'terminal'}, tmp_path/'measurement')

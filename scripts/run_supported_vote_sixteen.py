@@ -58,6 +58,7 @@ def evaluate(c, model, data, prepared, keys, folder, step):
     old_state = common.state_digest(model.state_dict()); old_rng = common.nested_digest(common.rng_state())
     with torch.inference_mode():
         for i, key in enumerate(keys):
+            key = tuple(key)  # Normalize manifest identities before shared dictionary-based scoring.
             cid, tile = key
             image = data.image(cid, tile, 2048)
             output = model(image_batch(image, 'cuda:0'))
