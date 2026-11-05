@@ -1,5 +1,11 @@
 # Stage2 CPU launch commands
 
+**6 November status: these actions were run and the comparison STOPPED. Do not
+launch again or continue this recipe.** C0/C1 pooled CV length1.254998x/1.740456x
+both fail the unchanged1.25 gate. Read the
+[completed results](stage2_trees_results_20261106.md). Commands below are preserved
+for provenance, not a new launch instruction. No automatic extension is authorized.
+
 Implementation is ready for local launch, not a measured selector result.
 The [readiness receipt](evidence/stage2_trees_readiness_20261105.json) records
 48 passing synthetic tests and the successful metadata preflight.

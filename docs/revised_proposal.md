@@ -31,12 +31,17 @@ handcrafted node selection and source/Sato/probability-ordered NMS2, followed
 by C0 versus representative-conditional C1 using training-neuron decoded CV.
 Handcrafted versus PointNeXt-edge trees share node selection. PointNeXt must add
 >=2pp development segment F1 at2 while clearing all6-voxel and other final floors.
-Implementation and synthetic execution checks are ready; **no real Stage2
-preparation, feature extraction, selector fitting, CV or development scoring has
-run**. The earlier [draft](stage2_candidate_geometry_contract_DRAFT_20261105.md)
-is historical; B remains rejected and A held. Original saved labels are unchanged.
-Use the [separate local commands](stage2_trees_ready_20261105.md), with CPU caps,
-write-once evidence and no automatic extension. Native scoring remains voxels;
+The [completed Stage2 comparison](stage2_trees_results_20261106.md) STOPPED after
+all33 C0/C1 folds: pooled length1.254998x/1.740456x fails the fixed<=1.25 rule.
+C1 improves segment F1_2 to58.49% versusC0's51.32%, but resampled agreement
+remains40.85% and the representative policy has a severe held-out-neuron failure.
+No PointNeXt-edge CV,final edge fits,final development scoring or GATv2 followed.
+Policy development diagnostics did run and select nothing; development remains
+repeatedly inspected. No new run or recipe revision is adopted. The earlier
+[draft](stage2_candidate_geometry_contract_DRAFT_20261105.md) is historical;
+B remains rejected and A held. Original saved labels are unchanged. Preserve
+all caches,models and write-once evidence; discuss node selection/instance
+identity before a substantive revision. Native scoring remains voxels;
 conditional micron views use unverified reported spacing on12 training neurons.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
 out CV is disclosed: the frozen upstream encoder/candidates saw all33 training

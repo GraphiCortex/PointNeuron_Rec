@@ -2,11 +2,13 @@
 
 ## Current experimental-arm update — 5 November, user approved
 
-**Latest Stage2 status:** CPU gradient-boosted-tree implementation is approved
-and ready for local launch under the [fixed protocol](stage2_trees_protocol_20261105.md).
-Synthetic checks are execution evidence only. No real Stage2 feature preparation,
-fit, CV or development scoring has run. The older row statuses below are preserved
-history; this table states the current implementation:
+**Latest Stage2 status,6 November:** all33 C0/C1 CPU tree folds completed and
+STOPPED under the [fixed protocol](stage2_trees_protocol_20261105.md): pooled
+CV length1.254998x/1.740456x exceeds1.25. [Measured results](stage2_trees_results_20261106.md)
+show C1's segment gain but weak resampled agreement and a severe representative
+failure. Policy development diagnostics ran; no final edge-model development
+score,PointNeXt-edge CV or GATv2 followed. Gate unchanged,no extension.
+The older row statuses below are preserved history; this table states the current implementation:
 
 | Responsibility | Original PDF / current supplied diagram | Current code and limits |
 |---|---|---|
@@ -15,7 +17,7 @@ history; this table states the current implementation:
 | Selection / features | Diagram Phase4 GATv2 | CPU tree node/edge baseline implemented; PointNeXt features added to edges only, shared handcrafted node policy. Conditional33-neuron selector CV; upstream encoder and learned positions already saw all33. GATv2 not implemented/launched by this work. |
 | Radius / losses / queries | PDF position/radius detection and topology-aware intent, multi-scale queries | Radius1 unsupervised; no topology loss or multi-scale Transformer query implementation. Balanced tree loss is trace supervision, not learned topology. |
 | Orange stages | Crop merging,candidate graph,GATv2,decoding | Per-box candidate union and probability forest/SWC scaffold exist; whole-image assembly, qualified GATv2 and final topology remain unbuilt/unqualified. Fixed forest acyclicity and pruning do not establish biological joins. |
-| Evidence / final quality | Final reconstruction metrics | Segment,resampled one-to-one F1,length,conditional join/break diagnostics and training/CV/dev parity implemented for future runs. No Stage2 quality result exists; development repeatedly inspected and reserved neurons untouched. |
+| Evidence / final quality | Final reconstruction metrics | C0/C1 conditional CV segment F1_2=51.32/58.49%,resampled39.41/40.85%,length1.255/1.740x:both fail. Policy development edgeoracle74.74% versus compactunion88.52% exposes pre-edge representative loss. Final parity/join diagnostics not reached;development repeatedly inspected and reserved neurons untouched. |
 
 The older table below is the preserved 4-November snapshot, not a claim that
 the failed dense head was adopted. The current arm is governed by

@@ -1,5 +1,47 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST,6 November: Stage2 C0/C1 CV finished and STOPPED. No extension.**
+Read [results and interpretation](stage2_trees_results_20261106.md),
+[portable evidence](evidence/stage2_trees_stopped_20261106.json) and
+[paired33-neuron table](evidence/stage2_trees_paired_neurons_20261106.csv).
+Run implementation c53cd11,root `tmp/stage2_trees_20261105`;all33 folds completed
+in8,454.36s guard exit0. STOP reason is the predeclared training-CV pooled
+length<=1.25 rule: C0=1.254998,C1=1.740456. Gate unchanged;do not omit neurons,
+relax thresholds,rerun,extend or continue to PointNeXt/GATv2 automatically.
+
+C0 CV segmentF1_2/6=51.32/82.47%,resampled39.41/55.88%;C1=58.49/83.72%,
+resampled40.85/55.06%. C1 wins31/33 at2 overC0 but increases length38.68%.
+Same460-box classical training:segment55.97/77.13,resampled48.96/66.13%,
+length3.43198x. C1's2.51pp gain overclassical at2 is only16/33 wins and
+resampled8.10pp worse;this is not a qualifying reconstruction recipe.
+
+WED heldout fold07 dominates excess length:C0=20.19x,C1=36.59x. Node policy
+keeps53,394 nodes(830 trace-positive,52,493 trace-negative,71 unknown,nineboxes).
+Untraced real structure may contribute;trace-negative is not biologicalbackground.
+Excluding it from saved sums gives.91280/1.11063x ONLY as concentration diagnostic;
+it is NOT excluded from any gate.7/10 neurons individually exceed1.25x.
+
+Earlier policy development diagnostic selectingnothing:image-only scaffold
+segment58.22/79.62%,resampled43.83/55.73%,length1.56156x. Same selectednodes
+with reference-assisted EDGE oracle:74.74/88.27%,46.78/58.26%,1.05603x.
+Compare earlier compactunion88.52/95.10%,64.80/72.54%,1.18475x. Newimagepolicy
+has substantial loss before learned edges;oracle diagnostic is not realinference
+or a mathematical universalceiling. Development already repeatedlyinspected.
+
+No PointNeXt-edge CV,finaledgefits,finaledge development scoring,same-contractAP,
+finaltrainfitparity,GATv2,GPU orwholeimageassembly occurred. Policy diagnostics
+DID scoredevelopment;don't say development was untouched. CV remainsconditional
+on upstream encoder AND positions trainedall33,not strictfullpipelineCV.
+Hashverified99models,920foldSWCs,460originaltrainlabels;storedaggregates replay
+exact;source/runtime/input preflightpasses. Preparation526s,policy76.56s. No
+RUNNING lock;guardcomplete. All useful caches/models/evidence preserved.
+
+Discussion-only hypothesis:image-local trace-support selection plus greedy
+representatives does not reliablyidentify a compact annotated-neuron instance.
+Review saved image/reference context and node/decoder responsibility before
+proposing a revision. No new architecture,labels,thresholds,sourceorder orlaunch
+implemented. Professor discussionpending. Earlier readiness notesbelow arehistory.
+
 **LATEST continuation,5 November: Stage2 CPU tree implementation APPROVED and
 ready for user-local launches, NOT RUN.** Read
 [fixed protocol](stage2_trees_protocol_20261105.md),
