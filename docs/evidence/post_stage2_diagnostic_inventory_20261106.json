@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-06",
+  "status": "metadata_inventory_only_no_diagnostic_results",
+  "spacing_joins": 40,
+  "sidecars_crosschecked": 15,
+  "review_cases": [
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2"
+  ],
+  "benchmark_source": "https://github.com/BigNeuron/Data/releases/tag/gold166_bt_v1.0",
+  "benchmark_archive": {
+    "name": "optimization_yes__20161101_reconstruction_for_gold166_rhea_5571.tar.gz",
+    "size": 726174044,
+    "url": "https://github.com/BigNeuron/Data/releases/download/gold166_bt_v1.0/optimization_yes__20161101_reconstruction_for_gold166_rhea_5571.tar.gz"
+  },
+  "ambiguous_image_basename_cases": [
+    "p_checked6_human_allen_confocal/in_house1"
+  ],
+  "gold_release": "https://github.com/BigNeuron/Data/releases/tag/Gold166_v1",
+  "published_spacing_source": "https://github.com/lmanubens/BigNeuron/blob/main/scaling_gold.csv",
+  "source_bindings": 61,
+  "artifact_bindings": 13,
+  "diagnostic_jobs_executed": false
+}

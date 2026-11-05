@@ -1,0 +1,1357 @@
+{
+  "schema": "pn2-post-stage2-diagnostics-v1",
+  "stage2_root": "tmp/stage2_trees_20261105",
+  "stage1_root": "tmp/candidate_stage1_20261105",
+  "editing_gate_resampled_F1_2": 0.6,
+  "length_cap": 1.25,
+  "length_cap_scope": "per-box,implies pooled cap",
+  "wall_seconds": {
+    "ridge_review": 7200,
+    "benchmark_download": 1800,
+    "benchmark_score": 7200,
+    "decompose": 7200,
+    "editing": 14400
+  },
+  "runtime_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "scikit-image": "0.25.2",
+    "psutil": "7.0.0",
+    "joblib": "1.4.2",
+    "threadpoolctl": "3.6.0",
+    "pillow": "11.2.1"
+  },
+  "images": {
+    "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_09-2902-04R-01C-60x_merge_c1\\09-2902-04R-01C-60x_merge_c1.v3dpbd",
+      "source_sha256": "73a97fe77395616b0fd7d50fc84617e289cfc7d1b2b9b621567e16e2f957b03d",
+      "decoded_sha256": "7abe05abf43bfca3c46e66d0823879d3c956f4c8c3cec5b6d3c2a685f4f52ceb",
+      "partition": "training"
+    },
+    "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_10-2900-control-cell-05.oif-C0\\10-2900-control-cell-05.oif-C0.v3dpbd",
+      "source_sha256": "54f7cff81fe2ec3dcc06b7b0ac40d0d9a6f79c7f5477a8d24febc99848aa8522",
+      "decoded_sha256": "2e46d7d9d18edd7d9de148fc691ba8404de18a3c534eed0cea2ab92abecd6ae7",
+      "partition": "training"
+    },
+    "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2\\fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd",
+      "source_sha256": "1e6dd1ec01d9a535de52b02091bd3048541f1fa25f0cfc736b4b6cba15f4b846",
+      "decoded_sha256": "f434c1a0895450f3d5b9141aee5eb72179e67477bfd74d229f7c292c1f703815",
+      "partition": "training"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_zebrafish_larve_RGC_UW\\hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8\\1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8.v3dpbd",
+      "source_sha256": "b1547c593ab8b83cd7128929f29655c2cf9583063c8e2bc3622b860fdddf0296",
+      "decoded_sha256": "05488456ada8cce5775fa77da2f6397a272588f61b44db5c03cfe41adb1be1bf",
+      "partition": "training"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_zebrafish_larve_RGC_UW\\hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8\\1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8.v3dpbd",
+      "source_sha256": "d93b626c3184427656a7c9a891f1620438f95fe79a608d7bc9dd80eceed5809f",
+      "decoded_sha256": "a936eec5f4b36bdcc880283611cb131ce7f26f882f0ae14e40fd6ad930bfe893",
+      "partition": "training"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_zebrafish_larve_RGC_UW\\hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8\\1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8.v3dpbd",
+      "source_sha256": "0e9a1281e2744fb727f61193510c79a428ed9baecd9bc7f5579243f661a2c60c",
+      "decoded_sha256": "4df6ba198951b19f6f14b79c331bb7adea0ea7259261a3ea0408c9e34af804fc",
+      "partition": "training"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_zebrafish_larve_RGC_UW\\hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8\\14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8.v3dpbd",
+      "source_sha256": "6a8c5daccd75531ff5698c27aeef64ddd82bf66d1e729917fa18fb0f99ab1999",
+      "decoded_sha256": "3b142f77fe6c3922cc38807df7c93fcb096f94786246bd13b7ff57ab99787f5d",
+      "partition": "training"
+    },
+    "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked7_utokyo_fly\\err_AL_GNG_LH_neuron\\AL_GNG_LH_neuron.v3dpbd",
+      "source_sha256": "2fb9e7fc1cd49d1f82c334fe63d514fb39aaa65f9be4c9eeb84816ff33d12cce",
+      "decoded_sha256": "c0c7150ffde1f607a733efb3b4b3e542ce377bd75e8487f60f771a055842a02a",
+      "partition": "training"
+    },
+    "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked7_utokyo_fly\\mushroom_body_ab_cell_neuron\\mushroom_body_ab_cell_neuron.v3dpbd",
+      "source_sha256": "9276eb6d150fd1813160d4352aad4182e93237a1ed69dd5617215869cb975081",
+      "decoded_sha256": "c22407730f3263cbf1a5769fd0a2619ac88a2508b0b3f49e18b8c0fde18098db",
+      "partition": "training"
+    },
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked7_utokyo_fly\\WED_SLP_PN_neuron\\WED_SLP_PN_neuron.v3dpbd",
+      "source_sha256": "07dbb91a22eb9b4d97fbecd483049accc6db3bf96e2dd4db3ac869da295918d8",
+      "decoded_sha256": "1b7d0c7add18e15b3f24bf56871a98ab82b98e89c009545f2e828d21498efaec",
+      "partition": "training"
+    },
+    "p_checked6_frog_scrippts/done_Recon112012no3-2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_frog_scrippts\\done_Recon112012no3-2\\Recon112012no3-2.v3dpbd",
+      "source_sha256": "7cd9d9157a5dc9d695e803c4ec0eb7e1680e000b8229b439d1fbd6d8531d6835",
+      "decoded_sha256": "f3e6233d937d69d1c21be22d25071654ce8a591d6544360be511f98bf3b1aef1",
+      "partition": "training"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP\\1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd",
+      "source_sha256": "f1bd5fe4d5467a6cad96c6725079040d7c25e6243bcda00dfa95de5ffdf043a4",
+      "decoded_sha256": "04fcff365a79b7aaebbf5f8549be4e16224b1602567f7d299f1a6a8402442966",
+      "partition": "training"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1\\1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1.tif_uint8.v3dpbd",
+      "source_sha256": "3e228e612d6067588569244fec18ca85db636e5a0610c888a44566416e870921",
+      "decoded_sha256": "f2faf8dbf0c5225a2ec20ec776eb9dcddaa3659fdc27af355de1e221994618a0",
+      "partition": "training"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1\\3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd",
+      "source_sha256": "3b2cc2f0078d74c44875a4abbc69c74367b5ba9ff2d60538b898b22ff7510be7",
+      "decoded_sha256": "48d6f60f3555f3a57b12da202cc5f8c32dd359250bbdaf4916cadc8793b998bc",
+      "partition": "training"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Image31\\Image31.v3dpbd",
+      "source_sha256": "e5c9f7aaa95f21f98d2719bcf349e83d67bb83ce2969b2f3fae3c3eae7370a0b",
+      "decoded_sha256": "cdd42e434f6368d9217c8bc4d72c62ae23d633f85b6561c98e6962585c9b9b99",
+      "partition": "training"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Image5\\Image5.v3dpbd",
+      "source_sha256": "c70cd1ad626b634aefd9f92dda99d3e7f70a721f212872404fa9cd0a523a7025",
+      "decoded_sha256": "d16318e9524a94b96c8270e54715f9faed6654e0f5b379b1410e585173984440",
+      "partition": "training"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Series021\\Series021.v3dpbd",
+      "source_sha256": "de7ac6b7d4f3a6770888568cc7bc2f91fd99d646657bd6f15d2f1faa70353317",
+      "decoded_sha256": "e0229a0ef907679915ae8a814049cefea43a792f3ef0eb8645a62d9e7265f58f",
+      "partition": "training"
+    },
+    "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_janelia_flylight_part2\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5.v3dpbd",
+      "source_sha256": "8054e1d391512ee8186ccbae449e782c3dd697e11bcc56fa43ffa533a400a25c",
+      "decoded_sha256": "610505f57639a2a103b0c4d89ba6ea69538e608772f11ba5d026a384ce93b30f",
+      "partition": "training"
+    },
+    "p_checked6_mouse_RGC_uw/HO_140921c14": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\HO_140921c14\\140921c14.tif.v3dpbd",
+      "source_sha256": "359a527f8ff00abbd0ed82af77f1039df4837e236f527c6b7db84763ec105d63",
+      "decoded_sha256": "67489df6f4d390adb344c21a02ff62a70fcde6ab3e5e45ba6c3f60eef53549d7",
+      "partition": "training"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140918c8\\140918c8.tif.v3dpbd",
+      "source_sha256": "9cb2c060d9c200429c0dfc08ed7bba337d1ad0b1daf7fff2a1c471c12e85f26a",
+      "decoded_sha256": "96b5fdd159234c81cc7a89d1f0912da3b31622097b9ca66ec243209d5af2b52c",
+      "partition": "training"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0984_seg\\0984_seg.v3dpbd",
+      "source_sha256": "81b46abab11ef42be7084be251bda03cb379df7514e288df397fead5d9a18ea2",
+      "decoded_sha256": "c6935da3ae1c1926ef4e90479f047127c6508dc5042bc6246e2de0d368cb029a",
+      "partition": "training"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0986_seg\\0986_seg.v3dpbd",
+      "source_sha256": "33d76c87f66b72d8f83099fdc0804b9454fde570d27bf7ad69956786439dc78e",
+      "decoded_sha256": "fd187176f6ab1e689bf051b03fdb2a8543c5531c3e318badb58a38009818a388",
+      "partition": "training"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_6_Ch2\\1_6_Ch2.tif_uint8.v3dpbd",
+      "source_sha256": "65c74043d3eef22a35a559814d35c415dfaae6ad7099f5500e9bbb0eb79b88a5",
+      "decoded_sha256": "02e60fa70bf9b25189fcb4865e5c1c263181b3a15a068385c454f4477a7e2518",
+      "partition": "training"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_9_Ch2\\1_9_Ch2.tif_uint8.v3dpbd",
+      "source_sha256": "d668d4b2d78cd574ed4c788b5e3df19558dcaefe11234584e5fa7d10319c612f",
+      "decoded_sha256": "e4e60c73bde61b27bbfaf5dc3d994a9acf95b054469d0bcf72aa214b2d83c70c",
+      "partition": "training"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\hard_hard_1_10_Ch2\\1_10_Ch2.tif_uint8.v3dpbd",
+      "source_sha256": "1a001d6a55d92825f5b45735f1449f0f9215f260a24211acc1c3b790fb7672f2",
+      "decoded_sha256": "4ea9e8ec3a47dd96914e257f0f7498b38cadfc57bd11c822664d894e8608c7f0",
+      "partition": "training"
+    },
+    "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_horizontal_cells_UW\\1_a_Ch2\\1_a_Ch2.tif_uint8.v3dpbd",
+      "source_sha256": "6573b54b3ad3ec2ec1dccaa5cbf42337a190f074f8e19b9bd773323d7210d9b0",
+      "decoded_sha256": "662b5fbcc9fba6aa0bf5e4973c09012e46f64ded58c811dc719ae2ddf99b5e51",
+      "partition": "training"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_janelia_flylight_part1\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1.v3dpbd",
+      "source_sha256": "bad9ca9079e41b9841482022d2ffd9f64d34dff866fb9af94563fbc4e10a06d1",
+      "decoded_sha256": "665a05dbc702bb8bdc207929c64e2ca8723339744afc9ff592f477a23cb8c70c",
+      "partition": "training"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_janelia_flylight_part1\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9\\GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9.v3dpbd",
+      "source_sha256": "c9fc89f36709b197281fa8e505a0d524cdb21ab4fc110266b1391646eb189be2",
+      "decoded_sha256": "096284a5f5a8911e3bacb32479f817ff46a1fd61e90ef909ba60bd4c8f87faaa",
+      "partition": "training"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_janelia_flylight_part1\\GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0\\GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0.v3dpbd",
+      "source_sha256": "d8817946dbe7f3e44d905c841345dbb6248e52110e8c0a0ba5cd8a7672e6c666",
+      "decoded_sha256": "9f98018dab38f1975cc6a9e9f6f2a0cd3871298364127900872a345fcb4ba2b6",
+      "partition": "training"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_taiwan_flycirciut\\uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat\\uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif.v3dpbd",
+      "source_sha256": "c1ac15b69b40087e5e20ab2725dc232fb1eeb68a31564d2ef586e9b72537c54b",
+      "decoded_sha256": "8bef96b0324ecc496d11d1dc389186caae4f73296642e23645b78243d3fd85de",
+      "partition": "training"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_taiwan_flycirciut\\uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif\\uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif.v3dpbd",
+      "source_sha256": "a3d0c59b8ee4568f718c0831813f275d9f69dcbdd13b2d4bce5b3872f1a81b0a",
+      "decoded_sha256": "d3188a40041d5b667caa3c30151f2b0885bafc702783ac3ff77149996d89bc8b",
+      "partition": "training"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_taiwan_flycirciut\\uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif\\uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif.v3dpbd",
+      "source_sha256": "146cba9c2b47339289966e1c21f7381a6de64cb78f8385c3cada65aa0cd19697",
+      "decoded_sha256": "e8c42969b9997d6bb330eb46be1ee53a2e3228b4df82d29cc56a65378911db05",
+      "partition": "training"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_taiwan_flycirciut\\uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif\\uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif.v3dpbd",
+      "source_sha256": "073a436c5040df16c858482365acebbf3a793ff1426ac152fc509bcf923618d0",
+      "decoded_sha256": "2f0c5dfe38aab945c0c00aa8d9ab39bb4fe46e2b4f4c1f92e01853035f3b7498",
+      "partition": "training"
+    },
+    "e_checked7_utokyo_fly/SLP_PN_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked7_utokyo_fly\\SLP_PN_neuron\\SLP_PN_neuron.v3dpbd",
+      "source_sha256": "8b9e486a88a7109879ebfe9225e04b9ff5fdffd5bce2906646a78154eac13533",
+      "decoded_sha256": "2f176e6aa14951bb07a0c0425ec288cf03ef9295c9cdd6c873fa0dbc925b8bd6",
+      "partition": "development"
+    },
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_frog_scrippts\\done_err_Recon112012no2-2\\Recon112012no2-2.v3dpbd",
+      "source_sha256": "da8fc6ffdf2cf8ec88719935776de273d99db84e1dc5ea8f7e37f7bc2310d85d",
+      "decoded_sha256": "04f41d7368a400dd7e12a33209c966cf35c4eb6fa4fcd5e8dd4665f1b0371a25",
+      "partition": "development"
+    },
+    "p_checked6_human_allen_confocal/in_house1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_allen_confocal\\in_house1\\Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd",
+      "source_sha256": "448a702707caa4add6e3ba670f2b64c63cf4c04b6f216fb26827b436197a81a2",
+      "decoded_sha256": "cc4aeaeb0a982174eceecc6b1a71236103db97014efec57231268ae10ffe2634",
+      "partition": "development"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP\\Series017\\Series017.v3dpbd",
+      "source_sha256": "1816496b5da2f20218235af96bd27e712f5ef71c7983c58e1be1956bba27ed98",
+      "decoded_sha256": "b762610e564099d6cf68743a1dcb3bcc865699b135db1d5d4bb84d75fa2c97ae",
+      "partition": "development"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140921c4": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140921c4\\140921c4.tif.v3dpbd",
+      "source_sha256": "f8fbf5a825c60ace990e93d7062cf14c22f3dcd2fb0aa8a14911e1345e08d978",
+      "decoded_sha256": "b9909325d3dccb73cadd526c54ad764e0694ab6f3c14f5f6c69dd5384a912c19",
+      "partition": "development"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\hard_1_8_Ch2\\1_8_Ch2.tif_uint8.v3dpbd",
+      "source_sha256": "2591c076f73a84dfc5e19b5ad48fe11c5dc8d891c32cb8f6e59ba53efa5b83b5",
+      "decoded_sha256": "0cdf25c7328bc312223408a61dc215f89b87fafbc28eb8bdedd0798f37ca9985",
+      "partition": "development"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked7_janelia_flylight_part1\\GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4\\GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4.v3dpbd",
+      "source_sha256": "7c60e33630237e4629431d39dcbf51d6d9cd119c9b86338d9de69d02e42dccf5",
+      "decoded_sha256": "135c5af9a30dacd45073514cd608ef3e34d0381288d289d138c91ba74498bfe7",
+      "partition": "development"
+    }
+  },
+  "spacing": {
+    "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1": {
+      "spacing_xyz_um": [
+        0.103,
+        0.103,
+        0.3
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "269",
+          "swc_basename": "00_sorted_09-2902-04R-01C-60x_merge_c1.v3dpbd.ano_stamp_2015_06_15_15_16.swc_sorted.swc"
+        }
+      ]
+    },
+    "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0": {
+      "spacing_xyz_um": [
+        0.156,
+        0.156,
+        0.3
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "270",
+          "swc_basename": "00_sorted_10-2900-control-cell-05.oif-C0.v3dpbd.ano_stamp_2015_06_15_15_47.swc_sorted.swc"
+        }
+      ]
+    },
+    "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2": {
+      "spacing_xyz_um": [
+        0.156,
+        0.156,
+        0.3
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "267",
+          "swc_basename": "00_sorted_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd.ano_stamp_2015_06_16_16_25_sorted.swc"
+        }
+      ]
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "111",
+          "swc_basename": "00_sorted_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_32.swc"
+        }
+      ]
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.63
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "115",
+          "swc_basename": "00_sorted_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8.v3dpbd_stamp_2015_06_15_15_39.swc"
+        }
+      ]
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.63
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "112",
+          "swc_basename": "00_sorted_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_54.swc"
+        }
+      ]
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.42
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "114",
+          "swc_basename": "00_sorted_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8.v3dpbd.ano_stamp_2015_06_15_16_52.swc"
+        }
+      ]
+    },
+    "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron": {
+      "spacing_xyz_um": [
+        0.62,
+        0.62,
+        1.44
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "253",
+          "swc_basename": "00_sorted_AL_GNG_LH_neuron.v3dpbd.ano_stamp_2015_06_16_16_59.swc"
+        }
+      ]
+    },
+    "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron": {
+      "spacing_xyz_um": [
+        0.62,
+        0.62,
+        0.9
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "250",
+          "swc_basename": "00_sorted_mushroom_body_ab_cell_neuron.v3dpbd.ano_stamp_2015_06_16_17_52.swc"
+        }
+      ]
+    },
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron": {
+      "spacing_xyz_um": [
+        0.62,
+        0.62,
+        1.44
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "252",
+          "swc_basename": "00_sorted_WED_SLP_PN_neuron.v3dpbd.ano_stamp_2015_06_16_18_08.swc"
+        }
+      ]
+    },
+    "p_checked6_frog_scrippts/done_Recon112012no3-2": {
+      "spacing_xyz_um": [
+        0.5,
+        0.5,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "249",
+          "swc_basename": "00_sorted_Recon112012no3-2.v3dpbd.ano_stamp_2015_06_16_13_51.swc"
+        }
+      ]
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP": {
+      "spacing_xyz_um": [
+        0.3,
+        0.3,
+        0.5
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "291",
+          "swc_basename": "00_sorted_1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd.ano_stamp_2015_06_16_12_16.swc"
+        }
+      ]
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1": {
+      "spacing_xyz_um": [
+        0.3,
+        0.3,
+        0.5
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "288",
+          "swc_basename": "00_sorted_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1.tif_uint8.v3dpbd.ano_stamp_2015_06_15_14_48.swc"
+        }
+      ]
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1": {
+      "spacing_xyz_um": [
+        0.593,
+        0.593,
+        0.5
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "280",
+          "swc_basename": "00_sorted_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1.tif.v3dpbd.ano_stamp_2015_06_16_13_05.swc"
+        }
+      ]
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31": {
+      "spacing_xyz_um": [
+        0.397,
+        0.397,
+        0.54
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "109",
+          "swc_basename": "00_sorted_Image31.v3dpbd_stamp_2015_06_15_17_28.swc"
+        }
+      ]
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5": {
+      "spacing_xyz_um": [
+        0.4970001,
+        0.4970001,
+        0.54
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "106",
+          "swc_basename": "00_sorted_Image5.v3dpbd_stamp_2015_06_15_17_13.swc"
+        }
+      ]
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021": {
+      "spacing_xyz_um": [
+        0.4970001,
+        0.4970001,
+        0.54
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "101",
+          "swc_basename": "00_sorted_Series021.v3dpbd_stamp_2015_06_15_17_52.swc"
+        }
+      ]
+    },
+    "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5": {
+      "spacing_xyz_um": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "11",
+          "swc_basename": "00_sorted_GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5.v3dpbd.ano_stamp_2015_06_17_12_22.swc"
+        }
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/HO_140921c14": {
+      "spacing_xyz_um": [
+        0.35,
+        0.35,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "127",
+          "swc_basename": "00_sorted_140921c14.tif.v3dpbd.ano_stamp_2015_06_17_11_07.swc_sorted.swc"
+        }
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "spacing_xyz_um": [
+        0.35,
+        0.35,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "134",
+          "swc_basename": "00_sorted_140918c8.tif.v3dpbd.ano_stamp_2015_06_16_13_46.swc"
+        }
+      ]
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "spacing_xyz_um": [
+        2.0,
+        2.0,
+        2.01
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "263",
+          "swc_basename": "00_sorted_0984_seg.v3dpbd.swc"
+        }
+      ]
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg": {
+      "spacing_xyz_um": [
+        0.62,
+        0.62,
+        2.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "264",
+          "swc_basename": "00_sorted_0986_seg.v3dpbd.swc"
+        }
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "278",
+          "swc_basename": "00_sorted_1_6_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_18_12.swc"
+        }
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "277",
+          "swc_basename": "00_sorted_1_9_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_18_11.swc"
+        }
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "275",
+          "swc_basename": "00_sorted_1_10_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_15_15_03.swc"
+        }
+      ]
+    },
+    "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2": {
+      "spacing_xyz_um": [
+        0.07,
+        0.07,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "144",
+          "swc_basename": "00_sorted_1_a_Ch2.tif_uint8.v3dpbd_stamp_2015_06_15_15_08.swc"
+        }
+      ]
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1": {
+      "spacing_xyz_um": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "30",
+          "swc_basename": "00_sorted_GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1.v3dpbd.ano_stamp_2015_06_16_13_37.swc"
+        }
+      ]
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9": {
+      "spacing_xyz_um": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "100",
+          "swc_basename": "00_sorted_GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9.v3dpbd.ano_stamp_2015_06_17_12_57.swc"
+        }
+      ]
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0": {
+      "spacing_xyz_um": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "86",
+          "swc_basename": "00_sorted_GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0.v3dpbd.ano_stamp_2015_06_17_10_27.swc"
+        }
+      ]
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat": {
+      "spacing_xyz_um": [
+        0.32,
+        0.32,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "178",
+          "swc_basename": "00_sorted_uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_07_14_12_02.swc"
+        }
+      ]
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif": {
+      "spacing_xyz_um": [
+        0.32,
+        0.32,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "186",
+          "swc_basename": "00_sorted_uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif.v3dpbd_stamp_2015_06_15_15_41.swc"
+        }
+      ]
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif": {
+      "spacing_xyz_um": [
+        0.32,
+        0.32,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "150",
+          "swc_basename": "00_sorted_uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_06_15_17_13.swc"
+        }
+      ]
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif": {
+      "spacing_xyz_um": [
+        0.32,
+        0.32,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "163",
+          "swc_basename": "00_sorted_uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif.v3dpbd.ano_stamp_2015_06_15_17_40.swc"
+        }
+      ]
+    },
+    "e_checked7_utokyo_fly/SLP_PN_neuron": {
+      "spacing_xyz_um": [
+        0.31,
+        0.31,
+        0.7
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "251",
+          "swc_basename": "00_sorted_SLP_PN_neuron.v3dpbd.ano_stamp_2015_06_16_17_57.swc"
+        }
+      ]
+    },
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": {
+      "spacing_xyz_um": [
+        0.5,
+        0.5,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "245",
+          "swc_basename": "00_sorted_Recon112012no2-2.v3dpbd.ano_stamp_2015_06_17_12_15.swc"
+        }
+      ]
+    },
+    "p_checked6_human_allen_confocal/in_house1": {
+      "spacing_xyz_um": [
+        0.31,
+        0.31,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "256",
+          "swc_basename": "00_sorted_Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd_stamp_2015_06_17_13_47.swc_sorted.swc_sorted.swc"
+        }
+      ]
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": {
+      "spacing_xyz_um": [
+        0.4970001,
+        0.4970001,
+        0.54
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "103",
+          "swc_basename": "00_sorted_Series017.v3dpbd_stamp_2015_06_15_17_40.swc"
+        }
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/sv_140921c4": {
+      "spacing_xyz_um": [
+        0.35,
+        0.35,
+        1.0
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "122",
+          "swc_basename": "00_sorted_140921c4.tif.v3dpbd.ano_stamp_2015_06_16_18_14.swc_sorted.swc"
+        }
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": {
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "276",
+          "swc_basename": "00_sorted_1_8_Ch2.tif_uint8.v3dpbd.ano_stamp_2015_06_15_14_41.swc"
+        }
+      ]
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": {
+      "spacing_xyz_um": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "source": "authors scaling_gold.csv",
+      "calibration": "published reported metadata;not independently acquisition-verified",
+      "matched_rows": [
+        {
+          "id": "52",
+          "swc_basename": "00_sorted_GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4.v3dpbd.ano_stamp_2015_06_17_11_48.swc"
+        }
+      ]
+    }
+  },
+  "sidecar_crosschecks": {
+    "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_09-2902-04R-01C-60x_merge_c1\\09-2902-04R-01C-60x_merge_c1.v3dpbd.pixelsize.txt",
+      "sha256": "29bd382122e8c617a3306d6309dc810e0f992860a10d38577c8e5ea7768af670",
+      "spacing": [
+        0.103,
+        0.103,
+        0.3
+      ]
+    },
+    "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_10-2900-control-cell-05.oif-C0\\10-2900-control-cell-05.oif-C0.v3dpbd.pixelsize.txt",
+      "sha256": "867c674d2b7a533b3a012c580928bf9f9274fcbfefde56e6a237bb791871723d",
+      "spacing": [
+        0.156,
+        0.156,
+        0.3
+      ]
+    },
+    "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2\\fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd.pixelsize.txt",
+      "sha256": "867c674d2b7a533b3a012c580928bf9f9274fcbfefde56e6a237bb791871723d",
+      "spacing": [
+        0.156,
+        0.156,
+        0.3
+      ]
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP\\1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd.pixelsize.txt",
+      "sha256": "bfa1cfdd8e708a65aa122f7931892425fb8a6487c217db271db70d519129fb65",
+      "spacing": [
+        0.3,
+        0.3,
+        0.5
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/HO_140921c14": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\HO_140921c14\\140921c14.tif.v3dpbd.pixelsize.txt",
+      "sha256": "50e62123d5d4f8aeaf54952449bdbb170ecca038e492d443ad3af21645fdf3fd",
+      "spacing": [
+        0.35,
+        0.35,
+        1.0
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140918c8\\140918c8.tif.v3dpbd.pixelsize.txt",
+      "sha256": "50e62123d5d4f8aeaf54952449bdbb170ecca038e492d443ad3af21645fdf3fd",
+      "spacing": [
+        0.35,
+        0.35,
+        1.0
+      ]
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0984_seg\\0984_seg.v3dpbd.pixelsize.txt",
+      "sha256": "369a2b4950e8fa27029e4951fc4dea0ba3e133bce36040c1e3f451fe0a66842a",
+      "spacing": [
+        2.0,
+        2.0,
+        2.01
+      ]
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0986_seg\\0986_seg.v3dpbd.pixelsize.txt",
+      "sha256": "9de3da603db8fd600702d7489719c410396c277a8612eb5181891bdbf18cf423",
+      "spacing": [
+        0.62,
+        0.62,
+        2.0
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_6_Ch2\\1_6_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "spacing": [
+        0.21,
+        0.21,
+        0.25
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_9_Ch2\\1_9_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "spacing": [
+        0.21,
+        0.21,
+        0.25
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\hard_hard_1_10_Ch2\\1_10_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "spacing": [
+        0.21,
+        0.21,
+        0.25
+      ]
+    },
+    "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_horizontal_cells_UW\\1_a_Ch2\\1_a_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "e812175841c829c4df83bfc54b10d93ff51c6e35dda4a4c43120575dc95ef0ba",
+      "spacing": [
+        0.07,
+        0.07,
+        0.25
+      ]
+    },
+    "p_checked6_human_allen_confocal/in_house1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_human_allen_confocal\\in_house1\\Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd.pixelsize.txt",
+      "sha256": "8ed376e046d85fc05a200d250839a5a3c9ccd067f61c895ed7e2f46e005136a0",
+      "spacing": [
+        0.31,
+        0.31,
+        1.0
+      ]
+    },
+    "p_checked6_mouse_RGC_uw/sv_140921c4": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140921c4\\140921c4.tif.v3dpbd.pixelsize.txt",
+      "sha256": "50e62123d5d4f8aeaf54952449bdbb170ecca038e492d443ad3af21645fdf3fd",
+      "spacing": [
+        0.35,
+        0.35,
+        1.0
+      ]
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\hard_1_8_Ch2\\1_8_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "spacing": [
+        0.21,
+        0.21,
+        0.25
+      ]
+    }
+  },
+  "development_cases": [
+    "e_checked7_utokyo_fly/SLP_PN_neuron",
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+    "p_checked6_human_allen_confocal/in_house1",
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+    "p_checked6_mouse_RGC_uw/sv_140921c4",
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4"
+  ],
+  "review_cases": [
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2"
+  ],
+  "benchmark_archive": {
+    "name": "optimization_yes__20161101_reconstruction_for_gold166_rhea_5571.tar.gz",
+    "size": 726174044,
+    "url": "https://github.com/BigNeuron/Data/releases/download/gold166_bt_v1.0/optimization_yes__20161101_reconstruction_for_gold166_rhea_5571.tar.gz"
+  },
+  "benchmark_tokens": {
+    "e_checked7_utokyo_fly/SLP_PN_neuron": [
+      "SLP_PN_neuron.v3dpbd",
+      "SLP_PN_neuron"
+    ],
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": [
+      "Recon112012no2-2.v3dpbd",
+      "Recon112012no2-2"
+    ],
+    "p_checked6_human_allen_confocal/in_house1": [
+      "Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files.v3dpbd",
+      "Cell1_40x_1.0umstep_H15.06.005.07.02_cell1.oif.files"
+    ],
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": [
+      "Series017.v3dpbd",
+      "Series017"
+    ],
+    "p_checked6_mouse_RGC_uw/sv_140921c4": [
+      "140921c4.tif.v3dpbd",
+      "140921c4.tif"
+    ],
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": [
+      "1_8_Ch2.tif_uint8.v3dpbd",
+      "1_8_Ch2.tif_uint8"
+    ],
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": [
+      "GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4.v3dpbd",
+      "GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4"
+    ]
+  },
+  "benchmark_published_ids": {
+    "e_checked7_utokyo_fly/SLP_PN_neuron": [
+      "251"
+    ],
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": [
+      "245"
+    ],
+    "p_checked6_human_allen_confocal/in_house1": [],
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": [
+      "103"
+    ],
+    "p_checked6_mouse_RGC_uw/sv_140921c4": [
+      "122"
+    ],
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": [
+      "276"
+    ],
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": [
+      "52"
+    ]
+  },
+  "benchmark_ambiguous_basename_cases": [
+    "p_checked6_human_allen_confocal/in_house1"
+  ],
+  "classical": {
+    "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias000_96a4b7b2\\graphs.npz",
+      "sha256": "21eb1167686429b4c65fb2bce4662575381e11f5432630accdf0329bacd20c51"
+    },
+    "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias001_4139696e\\graphs.npz",
+      "sha256": "44631e80c9b4b4ba82f161634c20ac36aa71f58ca7d99ad63e0ad38c8a09733b"
+    },
+    "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias007_b0c38772\\graphs.npz",
+      "sha256": "49b35d45b6d377dc6aa2655eabc2d5f0da6d56fcbeba850c6fb598c2a22ff1a6"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias009_afc8b52e\\graphs.npz",
+      "sha256": "3c71889afcf6153724a3bd0c649ee9707f2b5657ad1ba7801d26520b43a08af0"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias010_03b39356\\graphs.npz",
+      "sha256": "cf7a54e5bf4656e1c8f4b1273d49fd8e9d75ee4d7c994c97d585365c60028ce2"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias011_03944fa9\\graphs.npz",
+      "sha256": "cbb0611c018bdc6f76b36faa5644a2956b74933fbf597f9e6adc20ae8069fd79"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias014_eda231ab\\graphs.npz",
+      "sha256": "d0109f2488b644121f8e0c0f65ccf5b716e6f0d8825f75ce0414b2539370cfd1"
+    },
+    "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias015_e4e1c25f\\graphs.npz",
+      "sha256": "d7b41970dfa4d79ee15a74a0e150e832b01437322aceffc0e937617d965d42ca"
+    },
+    "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias018_abcf5c52\\graphs.npz",
+      "sha256": "f6743ff5350191f0b0871be67429b6612ea28a30795706a006d9a8f2b0f54c37"
+    },
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias020_5a873842\\graphs.npz",
+      "sha256": "ef3475dbbd4593b3027f43251d67bdd19ae2e97979b3cfa0e767b00fe0442d4d"
+    },
+    "p_checked6_frog_scrippts/done_Recon112012no3-2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case01\\graphs.npz",
+      "sha256": "9c24531c242c4ba27a56f7d7f177c3dba084bdcc3d8792cbd8d0307a2bcf4872"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias023_c02f9f8b\\graphs.npz",
+      "sha256": "726f6041f9747d81eaea525d5805908c27a43503636d9d28b10621c36d71e5f9"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias025_085e0938\\graphs.npz",
+      "sha256": "d665e15bc1196c3bd5aa9045c1fe9ab01ef02e20f318cad5cbe14238d4f2d7d2"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case03\\graphs.npz",
+      "sha256": "33a9a6179a147406ff55a18e510f611f085f674a474ae161f3bf51023ed829f0"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias039_7bf3d139\\graphs.npz",
+      "sha256": "a06d76869069e79eed297cf27e8e0c1647521126895eee281ce8a4aaf66f881b"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_timing_20261103\\case00\\graphs.npz",
+      "sha256": "6d5387d01f2256138d3b566df850fa403897eaa9cfc63790985e4d9f432f45d4"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias046_aa3cce3c\\graphs.npz",
+      "sha256": "c5c9791b1a1fc1274b1114e468489ec78404f88f7496d441ac4f871dd1b42559"
+    },
+    "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias053_0558d922\\graphs.npz",
+      "sha256": "7ab0b0e93fe09528b5ed5a1c08bd1e57548ee2656b45ca505ae60857deee7d34"
+    },
+    "p_checked6_mouse_RGC_uw/HO_140921c14": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias066_cfe78379\\graphs.npz",
+      "sha256": "6f7d78b696bacef172dd56516b52d9a6648469a6faf02499bef146b5587979b9"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case06\\graphs.npz",
+      "sha256": "0574f1e27820a6b46c979af768d71a8b61e5cff01b859d13eca011c570e90583"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case08\\graphs.npz",
+      "sha256": "17a07fe76dd06407c6881556db04f981996ed0b929ef3141dc9762be5cba1253"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias086_749ba61d\\graphs.npz",
+      "sha256": "3396007b15fcfbdb683295ba50ed2084cb550b381b35ef4234b8ab2dc505479f"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias092_6a7e57d9\\graphs.npz",
+      "sha256": "9798476ae4cb825e46f9100179910c5832178455e2881127bc030185719d22b1"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias093_15b44d89\\graphs.npz",
+      "sha256": "24195517c3b84d23afa1a13b3070a828d9a142100a2c252101455f2ab93e2193"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias095_84a78c1c\\graphs.npz",
+      "sha256": "a9e73db2b53aa0643f5c4e062c85ec62dec6093138f4540eb28106bd90e6f1c8"
+    },
+    "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias096_27e0a03d\\graphs.npz",
+      "sha256": "e8d38b2713d29102f964ecf1dc9fe36538dfd0d85ba51302398eeb65fab68e50"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias102_e2e13de2\\graphs.npz",
+      "sha256": "e5cd1c33736d4b224915d2529d69de8eedfffde4907832afbe5c6b054180c357"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias108_32118f92\\graphs.npz",
+      "sha256": "0d4421a0cb8d232652882c820173eb773812dc39e2a56cc881f4eafc797e584f"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case10\\graphs.npz",
+      "sha256": "782185ea91a7a7f7990b85801d507e96fd4c1009d583e0c7479cdc7b6129081c"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias143_ab561691\\graphs.npz",
+      "sha256": "a057ce74da3680081a1fc2667717e453046a214f01ee5163fe39d35fac4d40d2"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias149_f42ff4ba\\graphs.npz",
+      "sha256": "1d5b659eed943255dd83a2e75c171c1711dfc0b8b3c0ea85d960dfc5dee410d1"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias158_5c712a46\\graphs.npz",
+      "sha256": "f9b7256dc291a667bc04e13e0f9827e7e986ff8d07b38239b7364b94a8d2b514"
+    },
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_stage1_20261105\\classical\\alias162_25a4a0ab\\graphs.npz",
+      "sha256": "9772baf96effe57a0cd5771a4956a92645910f458b02f7f87f3a05d91ffdc046"
+    },
+    "e_checked7_utokyo_fly/SLP_PN_neuron": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case00\\graphs.npz",
+      "sha256": "becaff2aa1e51bbb5bf8745f22f19aac6587db346bee2dbe5a99ef85552e5808"
+    },
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case02\\graphs.npz",
+      "sha256": "9fa737d321b7e95b5e9d48372b3da935df64dca9b069de7cada39c115116e808"
+    },
+    "p_checked6_human_allen_confocal/in_house1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case04\\graphs.npz",
+      "sha256": "4d2479a36ca44d7772e71e32bb3c1b9bcc8a7254d4dd85085549ad6034530aee"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case05\\graphs.npz",
+      "sha256": "3d666868dec2266dfe4833babfa2d76fd3da2125ec99754b76bbc9d72c5c3462"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140921c4": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case07\\graphs.npz",
+      "sha256": "d8ded5134b6b532b67d7362984114bdcf16d0b94a0adc10cb58a6a904f6e50c6"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case09\\graphs.npz",
+      "sha256": "0ad0cba718efbe4321b04991adf63f37758d57b9f9b68e38568c0a046df741e2"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\curve_classical_baseline_20261103\\case11\\graphs.npz",
+      "sha256": "801389aedc58e9c65b8f90929e90ee0e7a2312ddc01525f620a93149abecf8ad"
+    }
+  },
+  "ridge_definition": {
+    "sigma_voxel": 1.0,
+    "gaussian_truncate": 4.0,
+    "Hessian_diagonal_DC_corrected": true,
+    "second_eigenvalue_max": -1e-06,
+    "intensity_min": 0.05,
+    "transverse_NMS_radius": 1.0,
+    "native_search_radius": 12.0,
+    "physical_search_radius": "12*min(spacing_xyz_um)",
+    "query_block_xyz": [
+      64,
+      64,
+      32
+    ],
+    "halo": 18,
+    "quadrature_step_voxel": 0.5
+  },
+  "decomposition": {
+    "spur_length_lt": 6.0,
+    "duplicate_fraction_min": 0.8,
+    "duplicate_distance_max": 2.0,
+    "tangent_cosine_abs_min": 0.9,
+    "endpoint_exclusion_distance": 2.0
+  },
+  "editing_search": {
+    "edge_overlap_min": 0.5,
+    "iterations": 128,
+    "evaluated_terminal_paths_per_iteration": 16,
+    "globally_optimal": false,
+    "reference_assisted_only": true,
+    "gate_only_permits_draft_not_training": true
+  },
+  "new_development_training_labels": false,
+  "GPU": false,
+  "training": false,
+  "automatic_extension": false,
+  "source_sha256": {
+    "docs/stage2_trees_protocol_20261105.md": "d2f312e44e82c264e56dba4c6a0876c7ddee09cc6d875fd6b30f85ece1ca5c57",
+    "requirements-stage2-cpu.txt": "6538e9c704103bf205ea5814d821f3828ac64435baced9c5a56ee27081d83cfe",
+    "scripts/audit_resampled_compact.py": "55e291a60ab39809226846f9e2f82790e2652105597a65a87c325787be218726",
+    "scripts/local_curve_experiment.py": "615774d720613bd01c9a1a32328b160c75dcc7df5c95671ce72f04a4c17a26fe",
+    "scripts/run_stage2_trees.py": "cb762df2554b5602e2a9d48fb0985cddd07ed7d53c66e0cae4a634e801d9ecb7",
+    "scripts/setup_stage2_cpu.ps1": "ee3cf34a3517f2392ebfb934370a7d40014842e1a29a48b4232834fce6d6ae4c",
+    "src/pn2/evaluation/__init__.py": "c8b0afbd9a265c346206854896f0ff1d892aa93b5e171f38b0586a663ea2dd5f",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09",
+    "src/pn2/evaluation/branch_evidence.py": "cbd379271757131d507e5e3e2cff279e38217cdcd0fec93251e54700694483a5",
+    "src/pn2/evaluation/candidate_pool.py": "152d1cc8d24b9b9f3586ccb73a188398d2cb39fcde5b07b7384acc389a99d667",
+    "src/pn2/evaluation/classical_skeleton.py": "dd9d7d6661f0883ef6b4fb87e94c32a05a6be2539ca1d26d672d8297d4077812",
+    "src/pn2/evaluation/cloud_support.py": "42a0d6503eeec14e4b5ceeaad0cc6c3574f2a53ca0291fd0efdac6edc48429c8",
+    "src/pn2/evaluation/edge_label_geometry.py": "f2acdad6705b44d389580b2b4eae0aa9e21e2f16ed80ae3946315fc194120874",
+    "src/pn2/evaluation/fixed_curve_graph.py": "b265ede182fbc6765b500192d10f39d84aca9ffe296a33469b3ee1e778e7a216",
+    "src/pn2/evaluation/formulation.py": "1a83b93d54e17ab925c59847caa3fbeaa77b3abf4cd09e64104ea60ed07ccace",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "src/pn2/evaluation/label_audit.py": "dbdd3efa8cacd408b320ebdb5919ae067a899018c9e87fd4217e97b98f601ba9",
+    "src/pn2/evaluation/local_curve.py": "14c3b10b4250264467e5aea14c5aea34b08df142c2d0e4741162b9c5a0a7eba0",
+    "src/pn2/evaluation/manifest.py": "90a5bfba78e229664cba749f8f7438bd6be501f0b1d93f2d94e16e4b8cdbd4fb",
+    "src/pn2/evaluation/node_cohort.py": "e094df57e3889e4bc358fe5c1970d1cd41646d7d579d75dfa5de6ba73b76288f",
+    "src/pn2/evaluation/node_profile_metrics.py": "9c3cff3d8478b7861107def2c570c571727930bbc00b029c6d86534978927e1e",
+    "src/pn2/evaluation/node_profiles.py": "865dca2db9064452288c39c9bfb8186f146873b8cfdbb2592164b3a1d63524e5",
+    "src/pn2/evaluation/node_proposals.py": "cf27ea6bd3a96a57543b1a391da378a86eabd7480bbe283a802f13da5b851df6",
+    "src/pn2/evaluation/probability_forest.py": "66f9de18f2b1d1d3004e08bc507fa1931cdbbfebec974296ce312c6ce47b6eb5",
+    "src/pn2/evaluation/reference_shortcuts.py": "626a692c047e8ce18eb6787246797c6845bc71f2096e251e336448b7f4b473ae",
+    "src/pn2/evaluation/resampled_skeleton.py": "a0d755ae554d963c5c17fa1eff5f3eb504bf69e17b646e1a8f86ed1735dcb3d0",
+    "src/pn2/evaluation/runner.py": "529d056ee247aed9407530448313893afc201271c8efd21c2fac16410cd2b211",
+    "src/pn2/evaluation/selection_oracle.py": "18e2dec44d1763c570948fbae170d5d0d0a71e037fd3184007a2f77750b08788",
+    "src/pn2/evaluation/swc.py": "a0c9ef1387c0b0d74368a28298a0b7c54106d34ac1bfc286cd5d5c45bf7d19ed",
+    "src/pn2/evaluation/vote_scaffold.py": "9e54490f02a2209446e313e90b9b756cace56956c527df1c58ae8ddac294e7c2",
+    "src/pn2/inputs/__init__.py": "ac0442967b2d74897a7b790dde46fbe70c4801a52e5d0406ab80b947c3dc28ca",
+    "src/pn2/inputs/audit.py": "a31ac3efc7f4ccad3c7329fd4e0e02fa7bbc884daaa291589a9c58b9413f932e",
+    "src/pn2/inputs/budget_views.py": "13cf26256c69605ac0c3803a0defb82a7a4558863dac4dbe631b277b91a0f000",
+    "src/pn2/inputs/candidate_features.py": "bd731c184b9e993314e02b669c7eeaa383e5878b77585b7d3880d0396f00e1e0",
+    "src/pn2/inputs/cases.py": "24a3df8e417f16b649509f424ea5ccbccedbb32e7ba6a09d0447138014af44bf",
+    "src/pn2/inputs/disk_guide.py": "4a5e327296c092fc4cbe8dab6ea710d6a471ba2fca18ec4477f127db4790829d",
+    "src/pn2/inputs/image.py": "ec3d2f9ef4f5ac50b0dfd7debbf4ffc3f5afaed81093c7562418200b1eab12b8",
+    "src/pn2/inputs/node_cache.py": "faa9860bb3a607f0b60c4556d6f9a54682ce5fece1be1b6d5ffc942307aebbf6",
+    "src/pn2/inputs/node_dataset.py": "f6d9cd0e69f91920eeb97f4962ebe08482f841232feb8f7b9fbcab15c55ecc47",
+    "src/pn2/inputs/sampling.py": "2b4c6689416751635a0b8a0565f8f5521ddef2e5c052e9067cea8a69ad61bc89",
+    "src/pn2/inputs/tiling.py": "33f6d35ee4a43d1780b2dc802d5695df9757e882fd6ed530aa5fb891720e37e4",
+    "src/pn2/inputs/vaa3d.py": "7f88089066470b349c7acaf2603f19b9c37ced4a43c3eada311d7ee799134ea9",
+    "src/pn2/selection/__init__.py": "ae9330b8a88d761bb12e2c6f7a74a4704367c95dbc7f58f4e5dcc18fad35c2e6",
+    "src/pn2/selection/data.py": "ed4e78a09ddabec59a94c376d1ef0c81839164aac0270f6d3412d3e53546e3d4",
+    "src/pn2/selection/diagnostics.py": "04e1fd02e8f78d6f54835e7206bc167f5c551401d8b43582e51b4892dac9701d",
+    "src/pn2/selection/features.py": "708dd0eeedee6831321a233b51b8db05d1ece6344538e02b9df72d59c89a1853",
+    "src/pn2/selection/trees.py": "bf565f1e3980fe29c79bb55a8e5bc02d3118a6c8104fc0033228e437a349b7ea",
+    "src/pn2/supervision/__init__.py": "46b7e7319e9b0ca65e87727faec3f4e7a65603ff1a1097cdf206df01b4c110b3",
+    "src/pn2/supervision/candidate_labels.py": "d2339c95f7858fa2755ab9b8987cef3a865c3fafd71370da8341db1817747ce2",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae",
+    "src/pn2/supervision/local_curve.py": "2fade4ce7c61c3ffbfd623c377c33460c5f38a1c239703a85c7976518afbdb64",
+    "src/pn2/supervision/node_targets.py": "ddd2e3c807cba1bdeae026993fde7db15643183fde0bc286cc28029cb3b25812",
+    "src/pn2/training/guarded_run.py": "bf09397e8de938478450f7a6ed02ebbd959c122fc2068bb3b388ccc299b50b66",
+    "src/pn2/training/local_curve_control.py": "0c4cc97e9e0fad4dd91f8118685440b2a5d11295aa093587d0418e54f487b61e",
+    "src/pn2/training/process_control.py": "d3bc32847e532ba846be31a36f0dfd20e0a230e30cecd989c63902c8c818bd27",
+    "tests/test_stage2_trees.py": "569643cc83f7c512c52500589fc14b8933cfca1aeca00ecd57ce5ed2edc53f58",
+    "scripts/post_stage2_diagnostics.py": "e863dac2fcc8f3a28b39955a871ef22c30194ae8d6d6ed24ab124f0cb4225553",
+    "src/pn2/evaluation/post_stage2.py": "27a8e0a43a7894ae9da336b3935b1308f44d8614ccddf90cf39a08ffb1a339e6",
+    "src/pn2/evaluation/editing_headroom.py": "e2d572d47639ae7075dc52eff2d0cdca54721d20bfdc02cf163a8cbfdac1ff1a",
+    "tests/test_post_stage2.py": "e9e2df5e3bc65945a117bc993eb37efe870d2b69cbc91c9778f25fb4b84e4cfd",
+    "docs/post_stage2_diagnostics_protocol_20261106.md": "8238bdf89b1adb6145e99a7b96295f1b6c5e1b5a4758f49477dd7b294a93d5eb"
+  },
+  "artifact_sha256": {
+    "configs/stage2_trees_20261105.json": "074c4c59f80d9a8ba6600ee568d872f0627518c1f6557b1aefa8dd8d13c703e4",
+    "configs/node_generalization_references.json": "b7cce67eb31b058f49172a883bf2d294403e2babd133834360c0b3bc1808d6aa",
+    "tmp/stage2_trees_20261105/STOP.json": "0edf832a39d52bd5cd48296dbb5d613b1af51c0bdd5ea762f1af797425de6eae",
+    "tmp/stage2_trees_20261105/binding.json": "6737eac7377289bb3f2b51d91937bc769c66ef82b5d97e09f014f50ff3e04622",
+    "tmp/stage2_trees_20261105/prepare/manifest.json": "2d341ef9480cc17fa1a12f427c9c2dcb078ef6c2a6f6e9fd1f4b9a962bda28fb",
+    "tmp/stage2_trees_20261105/policy/report.json": "04f68db587fdf560c20bbc0206df5282086a615221661e1d1c4c38da0ca18954",
+    "tmp/stage2_trees_20261105/comparison/C0_C1_training_CV.json": "9376f04af33d0e31cc7a2bfd693af331fc0fdf147da39d12c25c1346c2ad2d77",
+    "tmp/candidate_stage1_20261105/candidate_manifest.json": "4ae0de16ce7cabbf744d5a031f0676a1d1981151b581ca4254adf05987453803",
+    "tmp/resampled_compact_audit_20261105/report.json": "6f9501a9953fc1e1fbeca6cbb6b00279396663ab4a2c5a1e24453f27dedbba08",
+    "tmp/post_stage2_metadata_20261106/scaling_gold.csv": "22cf7a75130a40d651a32877e6e131ca50527024d01f9294a5461070e7896fb4",
+    "tmp/post_stage2_metadata_20261106/release.json": "431859b42b2f8fc6e48dbf173ed28cd25aa36476c357077b65b7ce3025bd9b09",
+    "tmp/node_budget_data_20261102/manifest.json": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+    "tmp/node_budget_data_20261102/complete.json": "daaa853bd4e04d9acbe49a3806e82d096822f74f7b34a79bb1de06a27f25b8c0"
+  }
+}

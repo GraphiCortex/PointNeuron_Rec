@@ -3,6 +3,16 @@
 Active document for the [fresh PN2 workspace](../README.md).
 New source, scripts, configs, tests and reports belong under `PN2/`.
 
+**6 November diagnostic continuation:** Stage2 remains stopped. The user approved
+five CPU-only,nonselecting diagnostics;the [fixed diagnostic protocol](post_stage2_diagnostics_protocol_20261106.md)
+and [local launch commands](post_stage2_diagnostics_ready_20261106.md) are ready,
+with51 passing synthetic/regression checks. No real diagnostic action has run.
+Gold/ridge offsets,visual annotation-completeness review,external BigNeuron
+outputs,F1 decomposition and classical-anchored editing headroom do not replace
+any stage or change labels. Only editing oracle(b)>=60% development resampled
+F1_2 within1.25x length permits drafting an editing contract;no training or
+architecture adoption follows automatically. The original failed gate stays intact.
+
 **Experimental-arm update, 5 November 2026 (user approved; professor discussion
 pending):** In the candidate-selection arm the Transformer no longer proposes
 nodes. Fixed image-derived classical/Sato candidates plus saved broad-head

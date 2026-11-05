@@ -2,6 +2,16 @@
 
 ## Current experimental-arm update — 5 November, user approved
 
+**6 November post-stop diagnostics:** the [five CPU diagnostics](post_stage2_diagnostics_protocol_20261106.md)
+are implemented for local launch,not executed. Intensity-ridge measurement and
+visual review change no gold labels. External benchmark SWCs require a separate
+official download/native-frame check. Isolate/spur/duplicate ablations are metric
+diagnostics,not adopted consolidation. Classical-anchored prune/add is explicitly
+REFERENCE-ASSISTED headroom,not an inference editing stage;only>=60% development
+resampled F1_2 under1.25x permits a later contract draft. No stage,Transformer role,
+radius supervision,topology loss,multi-scale query or whole-image implementation
+is added/promoted by this diagnostic work. Stage2 remains stopped unchanged.
+
 **Latest Stage2 status,6 November:** all33 C0/C1 CPU tree folds completed and
 STOPPED under the [fixed protocol](stage2_trees_protocol_20261105.md): pooled
 CV length1.254998x/1.740456x exceeds1.25. [Measured results](stage2_trees_results_20261106.md)

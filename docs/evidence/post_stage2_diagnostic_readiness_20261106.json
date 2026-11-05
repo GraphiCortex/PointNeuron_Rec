@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-06",
+  "status": "ready_for_user_local_CPU_launches_not_diagnostic_results",
+  "config": "configs/post_stage2_diagnostics_20261106.json",
+  "config_sha256": "8c198e3f0915e600429144f6ffcbfeb1fec48350670f1fac1a285c847b8405f6",
+  "config_fingerprint": "c90e3bd1b615e0fec929e2eed54c07668975ed6cd9f5d6670b7d1ab66228aeb1",
+  "source_bindings": 61,
+  "artifact_bindings": 13,
+  "metadata_preflight": "new diagnostic and original Stage2 bindings both passed",
+  "tests": {
+    "tests": "51",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "11.621"
+  },
+  "test_report": "tmp/post_stage2_synthetic_checks_result.xml",
+  "test_report_sha256": "982776bf8538cb1dda791958608550df68ea41a44726d57d61c8a429523342ea",
+  "scope": "synthetic ridges,constant-image DC control,censoring,isolates/spurs/parallel paths,editing geometry/anchors/budget,zero-length references,archive identity/extraction,STOP preservation,existing tree/resampling/headroom regressions",
+  "review_render_QA": "synthetic XY sheet visually inspected;no real neuron review yet",
+  "actual_diagnostic_actions_run": [],
+  "benchmark_archive_downloaded": false,
+  "new_development_training_labels": false,
+  "GPU": false,
+  "training_on_neuron_data": false,
+  "Stage2_STOP_sha256": "0edf832a39d52bd5cd48296dbb5d613b1af51c0bdd5ea762f1af797425de6eae",
+  "Stage2_gate_changed": false,
+  "next_step": "user launches five independent CPU actions per docs/post_stage2_diagnostics_ready_20261106.md;benchmark_score depends on benchmark_download"
+}

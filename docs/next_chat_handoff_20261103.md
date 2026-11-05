@@ -1,5 +1,57 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST,6 November: five post-Stage2 CPU diagnostics prepared for user-local
+launch;NONE RUN. Stage2 remains STOPPED unchanged.** User explicitly requests
+gold-to-ridge offsets40 neurons,a five-case visual review,BigNeuron algorithm
+outputs on7 development neurons,resampled-F1 decomposition,and classical-anchored
+editing oracle headroom. Read [fixed definitions](post_stage2_diagnostics_protocol_20261106.md),
+[five commands](post_stage2_diagnostics_ready_20261106.md),
+[metadata inventory](evidence/post_stage2_diagnostic_inventory_20261106.json) and
+[51 passing checks/readiness](evidence/post_stage2_diagnostic_readiness_20261106.json).
+Runner `scripts/post_stage2_diagnostics.py`,config
+`configs/post_stage2_diagnostics_20261106.json`;new output root ONLY
+`tmp/post_stage2_diagnostics_20261106`. No output action folder exists yet.
+
+Caps:ridge_review2h,benchmark_download30min,benchmark_score2h,decompose2h,
+editing4h. User launches each separately;no automatic next action/retry/extension.
+No real diagnostic metrics,review of real images,archive download,training,GPU,
+GATv2 or new development training labels occurred during implementation.
+OriginalStage2 source/runtime/input preflight still passes;STOP unchanged.
+
+Fixed ridge proxy:sigma1,Hessian two transverse negative directions,corrected
+derivative-kernel DC,normalized smoothed intensity>=.05,NMS+/-1,search12 native
+voxels,full polyline .5-voxel weighted quadrature including outside-image queries.
+Report>1/>2/>3 shares,censoring. Authors' scaling_gold.csv joins40/40 identities
+and agrees with15 local sidecars. Microns are CONDITIONAL published metadata,
+not verified acquisition calibration;physical search12*minspacing/physical weights.
+
+Panel fixed from saved C1 ratios:WED_SLP,two high larval zebrafish1_1 and1_5dpf,
+two low adult zebrafishhard_hard1_10 and1_9. Original max projections andref/
+retained/C0/C1 overlays;flags are possible untraced image structures ONLY.
+After user launch inspect generatedPNGsinsharedworkspace before marking anything
+visually obvious. No relabeling or training follows visual review.
+
+User did not know where benchmark outputs were because the provided gold166
+download contains manual traces. Official automatic outputs are a SEPARATE
+gold166_bt_v1.0 release. Local command fetches fixed optimized5571 archive,
+726,174,044bytes;extracts/parses only7 approved development identities. Source
+filenames need boundary matching(SLP !=WED_SLP);Cell1 basename duplicatesrequire
+exactsourcegroup or publishedID. If archive identities are incomplete,reportthe
+mapping gap,no fake seven-case score. No gold references substituted as algorithms.
+Coordinate checks use nativeXYZ identity,>=99% withinbounds,no fittedalignment;
+origin/subvoxel alignment remains disclosed/provisional until image review.
+
+Decomposition:original saved scores replay first;isolates,spurs<6 voxels,
+duplicate-path proxy>=80% within2 with abs tangentcos>=.9. Independentandordered
+ablations;F1 deltas are nonadditive. KeepC0/C1 trainingCV separatefromdevpolicy.
+Editing(a)exactclassicaledgeprune forest;(b)add only existing connectedSato/
+learned candidate geometry,no classical-classical shortcuts. Bothoracleonly,
+length<=1.25 PER BOX,bounded128-step/16-path search,not globaloptimalceiling.
+Keep(a)feasible fallbackperbox/perneuron. User's NEW gate:b developmentmacro
+resampledF1_2>=60% allows draftingeditingcontract;statewhetheraalonepasses.
+No draft has been adopted or trained;after measuredresultsdraftonlyifgatepasses.
+This does not reopen Stage2,alter its failed gate or promote an inference stage.
+
 **LATEST,6 November: Stage2 C0/C1 CV finished and STOPPED. No extension.**
 Read [results and interpretation](stage2_trees_results_20261106.md),
 [portable evidence](evidence/stage2_trees_stopped_20261106.json) and
