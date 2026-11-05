@@ -3,6 +3,21 @@
 Active document for the [fresh PN2 workspace](../README.md).
 New source, scripts, configs, tests and reports belong under `PN2/`.
 
+**Experimental-arm update, 5 November 2026 (user approved; professor discussion
+pending):** In the candidate-selection arm the Transformer no longer proposes
+nodes. Fixed image-derived classical/Sato candidates plus saved broad-head
+nodes form a source-flagged pool; PointNeXt features and learned graph selectors
+select/connect candidates (gradient-boosted trees first, then GATv2 if justified).
+This departs from PDF Phase3 and the main architecture diagram below, for this
+arm only. It does not rewrite prior results or promote a new product pipeline.
+Read the [staged/gated protocol](candidate_selection_protocol_20261105.md).
+Stage0 geometric-oracle headroom must be measured before later stages proceed.
+No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
+out CV is disclosed: the frozen upstream encoder/candidates saw all33 training
+neurons, so this is not strict full-pipeline CV. References supply labels and
+explicit evaluation/oracle diagnostics only; real inference candidates/edges/
+roots remain image-derived. The older main design text is retained below.
+
 21 October 2026; scope corrected 22 October 2026. **Discussion draft.**
 The user clarified that PN1 serves conceptual comparison, not a required
 reimplementation or fresh training arm. Work starts with original raw images

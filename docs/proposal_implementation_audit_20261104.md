@@ -1,5 +1,23 @@
 # Proposal, metric definitions and implementation audit - 4 November 2026
 
+## Current experimental-arm update — 5 November, user approved
+
+The older table below is the preserved 4-November snapshot, not a claim that
+the failed dense head was adopted. The current arm is governed by
+[the candidate-selection protocol](candidate_selection_protocol_20261105.md).
+Professor discussion remains pending; approval is for this experimental arm.
+
+| Responsibility | PDF / supplied diagram | Current arm and implementation status |
+|---|---|---|
+| Phase3 | PDF fixed-query Transformer detection; diagram Transformer proposals | User approved NO Transformer node proposals in this arm. Selection/connectivity learning moves to a stronger image-derived candidate stage plus diagram Phase4. A concrete departure, not module renaming. |
+| Candidate positions | Detector predicts positions; diagram orange candidate graph | Union of preserved pruned-classical vertices/edges, Sato-top512 and saved broad-run nodes. Greedy1-voxel real representatives, source flags, inherited edges plus k6/k10. Stage0 implementation prepared; no measured headroom result yet. |
+| PointNeXt | Learned image-point features | Frozen broad-run encoder is a permitted feature provider; terminal latent features were not exported with the saved votes. Inference-only export command follows candidate construction if needed. No GPU work launched by the assistant. |
+| Supervision | Diagram derives nodes/connections from reference SWC | Training33 neurons only for node/edge labels with trace-agreement semantics and ambiguity/component masks. Stage1 implementation waits for Stage0 gate. Oracle development scoring is an explicit diagnostic exception, never real inference. |
+| Selector / GATv2 | Diagram Phase4 learned candidate-edge scores | Gradient-boosted node/edge trees first, then GATv2. GAT requires>=2pp two-voxel F1 gain over trees and final reconstruction criteria. No selector training yet. |
+| Decoder / roots | Diagram decoding, cycles/gaps and SWC | Probability-only eligible-component forest with node-confidence cost, fixed one-pass<2 spur pruning. Roots use image guide, radius1/type0 placeholders. Stage0 oracle uses this decoder with diagnostic reference-assisted probabilities; not an inference result. |
+| Validation | Prior tiny fitting / repeated development | Stage0 gate union oracle F1_2>=80;65–80 requires candidate-recall work;<65 stop. Selector LONO CV is conditional on upstream components trained on all33, as explicitly accepted by user. Final models frozen before one development scoring each; no reserved-neuron access. |
+| Missing / unqualified work | Orange assembly/graph/decoding stages | Whole-image merging, learned node/edge selection, qualified GATv2, supervised radii, topology guarantees and multi-scale queries remain unbuilt/unqualified. MSF acyclicity is not learned topology. Earlier failed head and consolidation stay failed. |
+
 Read-only source audit for tasks D/E. It adopts no criterion, changes no frozen
 gate and launches no model. The user's supplied diagram is evidence of the
 intended design, not instructions from an external document.

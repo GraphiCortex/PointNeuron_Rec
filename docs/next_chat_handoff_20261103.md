@@ -1,5 +1,45 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest direction, 5 November:** User approved a NEW experimental arm: no
+Transformer node proposals; learn to select/connect strong image-derived
+candidates using PointNeXt features and graph models. Explicit departure from
+PDF Phase3, professor discussion pending. Main/product architecture not silently
+replaced. Earlier dense-head failures remain on record and no further head
+tuning is allowed. Read [active selection protocol](candidate_selection_protocol_20261105.md).
+
+Stage0 prepared, NOT run: four development oracle arms classical-pruned,
+saved BROAD-run nodes, original Sato-top512, and union; same151 boxes. Greedy
+nontransitive radius1 real representatives keep source flags. Primary edges
+k10+inherited (k6 is a subset; diagnostics select nothing). Probability-only
+forest decoder, .5 node/edge thresholds, -log p plus endpoint-node costs,
+one-pass leaf-to-junction spurs<2, image-only roots, placeholder radii. Explicit
+geometric oracle uses reference geometry only after candidate packets are
+saved; it is not real inference or a topology/learnability ceiling.
+
+User's fixed Stage0 gate: union oracle macroF1_2>=.80 proceed;.65–.80 proceed
+ONLY alongside candidate-recall work;<.65 stop. No timed audit or GPU job has
+been launched by the assistant. User-local PowerShell command will use
+`tmp/phase1_cpu_env/Scripts/python.exe -B scripts/measure_candidate_headroom.py`.
+Source/input preflight and short fixtures only; actual headroom is pending.
+Later-stage candidate labels/models wait for this gate. Raw inputs are
+diagnostic only and not added to the pool.
+
+User explicitly answered BOTH CV clarifications: use SELECTOR-ONLY leave-neuron-
+out CV conditional on frozen upstream broad-trained encoder AND learned nodes.
+Both used all33 training-neuron labels, so disclose leakage/conditioning; do not
+call this strict full-pipeline CV. Final development models score once each,
+no tuning. No assistant GPU launch; give inference/training commands as needed.
+Trees first; strict stop-on-failed-criterion means a failed final tree gate stops
+before GAT unless user later steers otherwise. GAT must gain>=2pp F1_2 over trees
+AND clear matched classical+5pp at2/6,>=5/7 wins each; training metrics ungated.
+Fragments/coincident projections masked unknown, trace-agreement not biological
+foreground. Requested wrong joins must distinguish valid junction transitions,
+unknown fragment relations and identifiable errors rather than relabeling the
+old conservative shortcut fraction as exhaustive topology accuracy.
+
+Proposal-to-implementation table updated. Earlier “nothing authorized” statements
+below apply to the failed head; the new gated selector arm is now authorized.
+
 **FINAL broad verdict, 5 November: FAILED; STOP tuning this head.** Read
 [completed broad results](broad_curve_head_results_20261105.md) and
 [full terminal evidence](evidence/broad_curve_terminal_20261105.json).

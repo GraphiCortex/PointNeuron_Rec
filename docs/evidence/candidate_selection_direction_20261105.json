@@ -1,0 +1,26 @@
+{
+  "schema": "pn2-candidate-selection-direction-v1",
+  "experimental_only": true,
+  "professor_discussion_pending": true,
+  "Transformer_proposes_nodes": false,
+  "assistant_GPU_authorized": false,
+  "timed_launch_preference": "user-local PowerShell",
+  "stage0_oracle_run": false,
+  "cv": "User explicitly accepted selector-only leave-neuron-out CV conditional on encoder and learned candidates trained with labels from all33 training neurons; disclose upstream leakage; not strict pipeline CV",
+  "stage0_gate": {
+    "proceed_f1_2": 0.8,
+    "conditional_candidate_recall_f1_2": 0.65,
+    "below_conditional": "stop"
+  },
+  "raw_inputs": "diagnostic only, excluded from candidate pool",
+  "old_head_tuning": "stopped; preserved sources/checkpoints reused only as stated",
+  "stages1_to3": "conditional on actual Stage0 gate; no model training or GPU job launched",
+  "qualification": {
+    "CPU_tests_passed": 10,
+    "actual_saved_input_metadata_preflight": "passed",
+    "real_151_box_headroom_run": false,
+    "Stage1_labels_generated": false,
+    "Stage2_models_trained": false,
+    "GPU_launched": false
+  }
+}

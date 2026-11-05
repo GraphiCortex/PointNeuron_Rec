@@ -1,0 +1,42 @@
+{
+  "schema": "pn2-candidate-headroom-v1",
+  "sato_top_n": 512,
+  "merge_radius": 1.0,
+  "candidate_k": [
+    6,
+    10
+  ],
+  "primary_k": 10,
+  "node_tolerance": 2.0,
+  "node_threshold": 0.5,
+  "edge_threshold": 0.5,
+  "spur_below": 2.0,
+  "wall_seconds": 3600,
+  "broad_root": "tmp/broad_curve_head_20261105",
+  "sato_root": "tmp/curve_transfer_development_20261104T195033_977395Z",
+  "classical_root": "tmp/curve_classical_baseline_20261103",
+  "source_sha256": {
+    "scripts/measure_candidate_headroom.py": "345ffa68368f80ffcdfb6aac7f13d988cc5f9bd6d3f710a7654b5abf8db9dcc3",
+    "src/pn2/evaluation/candidate_pool.py": "152d1cc8d24b9b9f3586ccb73a188398d2cb39fcde5b07b7384acc389a99d667",
+    "src/pn2/evaluation/selection_oracle.py": "18e2dec44d1763c570948fbae170d5d0d0a71e037fd3184007a2f77750b08788",
+    "src/pn2/evaluation/probability_forest.py": "66f9de18f2b1d1d3004e08bc507fa1931cdbbfebec974296ce312c6ce47b6eb5",
+    "tests/test_candidate_headroom.py": "2f97f99f55f40f720f2a460f76393a5d807de490146e271702c49733ecc125e4",
+    "docs/candidate_selection_protocol_20261105.md": "2ba96ed8142ac358643e96baf7dca4d3b8776fb86bedcb72ec1207848a173302"
+  },
+  "artifact_sha256": {
+    "configs/local_curve_head.json": "c741c31a13d38b2b74f5504de973c6a75003fa613ee0e9b5a7d7d17d95028b8c",
+    "configs/node_generalization_references.json": "b7cce67eb31b058f49172a883bf2d294403e2babd133834360c0b3bc1808d6aa",
+    "tmp/node_budget_data_20261102/manifest.json": "8815ba722c9dafebf842a7e8a4bae82c8cdb04bfdeecd7975cf14e01b4585afa",
+    "tmp/broad_curve_head_20261105/evaluation/report.json": "a08b9f8eccf1312a726b6788a37d24536620b98a7a601faa5b4e54ceb4db6083",
+    "tmp/broad_curve_head_20261105/evaluation/inference_complete.json": "249d9c12eecad338f30cdd34da58ab436e56f1ee46b6ebaeb1741f2ab8efffe1",
+    "tmp/curve_transfer_development_20261104T195033_977395Z/all_inference_complete.json": "8b1375288a496148aa2aea25855f0eb1d4a7a63a0dc14bc67fb52d35bd793277",
+    "tmp/curve_classical_baseline_20261103/report.json": "735afd2848523bc998405f72d65260d518f96005f84ca490bb0a69224e279168",
+    "tmp/local_curve_head_20261104/prepare/report.json": "350b035c00623d2793aafffeb7f2bc4401f4e9948667160a43709603e6be5ee0",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09",
+    "src/pn2/evaluation/formulation.py": "1a83b93d54e17ab925c59847caa3fbeaa77b3abf4cd09e64104ea60ed07ccace",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "src/pn2/evaluation/vote_scaffold.py": "9e54490f02a2209446e313e90b9b756cace56956c527df1c58ae8ddac294e7c2",
+    "scripts/score_saved_curve_transfer.py": "03638a80ab16f29abc411fd1cb9eab3b275f4ceaf218cf96a0d378456b645125",
+    "src/pn2/training/guarded_run.py": "bf09397e8de938478450f7a6ed02ebbd959c122fc2068bb3b388ccc299b50b66"
+  }
+}
