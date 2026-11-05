@@ -1,0 +1,17 @@
+{
+  "schema": "pn2-candidate-pointnext-export-v1",
+  "wall_seconds": 3600,
+  "stage1_config": "configs/candidate_stage1_20261105.json",
+  "checkpoint": "tmp/broad_curve_head_20261105/train/checkpoint_step009200.pt",
+  "source_sha256": {
+    "scripts/export_candidate_pointnext.py": "bd620f04cc7a112f83234b30accaa2f7bb4a2ce122f98e00b6bf15b910aa8290",
+    "src/pn2/inputs/candidate_features.py": "bd731c184b9e993314e02b669c7eeaa383e5878b77585b7d3880d0396f00e1e0",
+    "src/pn2/training/node_runtime.py": "581024fd2acc658269929489f4b8bd55f0fbe0e37a5e43c635e3da1469b98702",
+    "scripts/sampler_node_common.py": "0c72d636a6fe0ad1e8ca7677deb10976a58b02835d0fcec559a05ed0ade5a727",
+    "tests/test_candidate_feature_export.py": "829a9efe81d745967a1bdc232492dae168d54c72d2e7e1af98d5245745cb2dbb"
+  },
+  "artifact_sha256": {
+    "configs/candidate_stage1_20261105.json": "b9c522a45add59da159eab7f15a98096555d77f75f681bdcd82b45ccee87a590",
+    "tmp/broad_curve_head_20261105/train/checkpoint_step009200.pt": "bc13efbaef2ab012b344e81b87dd4a445d9f85b4fddfb421ccf4f6b76c30cab9"
+  }
+}

@@ -1,5 +1,11 @@
 # Stage0 headroom — ready for user-local CPU launch
 
+**Completed update,5 November:** Stage0 was launched locally and passed its
+original union gate:90.42% F1_2 /95.67% F1_6,575.09 seconds,151 boxes.
+Do not rerun the command below. Continue with [Stage1 ready/commands](candidate_stage1_ready_20261105.md)
+and [portable evidence](evidence/candidate_headroom_completed_20261105.json).
+The launch instructions below are preserved history; no selector is trained.
+
 The user approved this candidate-selection arm only: Transformer no longer
 proposes nodes, professor discussion pending. The failed broad head stays
 failed; its saved nodes are a candidate source and its encoder a frozen feature
@@ -78,8 +84,8 @@ under the stated stop rule. No development tuning or automatic extension.
 
 Terminal broad-run packets contain positions/scores/graph geometry, not latent
 PointNeXt point-feature tensors. The checkpoint preserves encoder weights.
-An inference-only export command will be prepared after candidate positions
-exist if no compatible saved feature cache is available. The assistant will
+An inference-only export command is now prepared in the Stage1 ready note,
+and requires completed Stage1 candidates. The assistant will
 not launch it on GPU. CPU sklearn/boosted-tree/GAT dependencies are not yet
 present in this runtime; no packages are installed before the Stage0 gate.
 

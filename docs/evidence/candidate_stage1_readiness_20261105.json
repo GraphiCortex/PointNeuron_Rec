@@ -1,0 +1,14 @@
+{
+  "status": "ready_not_run",
+  "cpu_preparation_and_oracle_fixtures_passed": 19,
+  "synthetic_cpu_feature_export_fixture_passed": 1,
+  "real_stage1_preparation_executed": false,
+  "real_encoder_export_executed": false,
+  "GPU_executed": false,
+  "selector_training_executed": false,
+  "reserved_neurons_accessed": false,
+  "test_runtime_note": "Retained Torch pytest required PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 to avoid unrelated napari/skimage ABI plugin; no packages changed.",
+  "stage1_config_sha256": "b9c522a45add59da159eab7f15a98096555d77f75f681bdcd82b45ccee87a590",
+  "feature_export_config_sha256": "aac153351e648bb167b7b0d51b1276bf1cd9ed23f8b1ba1161bdf49c31cdcac0",
+  "CV": "User chose conditional selector-only CV; frozen upstream encoder and candidate positions saw all33 training-neuron labels."
+}

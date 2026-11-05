@@ -1,0 +1,65 @@
+{
+  "schema": "pn2-candidate-stage1-v1",
+  "headroom_root": "tmp\\candidate_headroom_20261105T084249_809302Z",
+  "path_bound": 32.0,
+  "wall_seconds": 3600,
+  "preserved_classical": {
+    "p_checked6_frog_scrippts/done_Recon112012no3-2": {
+      "path": "tmp\\curve_classical_baseline_20261103\\case01\\graphs.npz",
+      "sha256": "9c24531c242c4ba27a56f7d7f177c3dba084bdcc3d8792cbd8d0307a2bcf4872"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1": {
+      "path": "tmp\\curve_classical_baseline_20261103\\case03\\graphs.npz",
+      "sha256": "33a9a6179a147406ff55a18e510f611f085f674a474ae161f3bf51023ed829f0"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "path": "tmp\\curve_classical_baseline_20261103\\case06\\graphs.npz",
+      "sha256": "0574f1e27820a6b46c979af768d71a8b61e5cff01b859d13eca011c570e90583"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "path": "tmp\\curve_classical_baseline_20261103\\case08\\graphs.npz",
+      "sha256": "17a07fe76dd06407c6881556db04f981996ed0b929ef3141dc9762be5cba1253"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0": {
+      "path": "tmp\\curve_classical_baseline_20261103\\case10\\graphs.npz",
+      "sha256": "782185ea91a7a7f7990b85801d507e96fd4c1009d583e0c7479cdc7b6129081c"
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5": {
+      "path": "tmp\\curve_classical_timing_20261103\\case00\\graphs.npz",
+      "sha256": "6d5387d01f2256138d3b566df850fa403897eaa9cfc63790985e4d9f432f45d4"
+    }
+  },
+  "source_sha256": {
+    "scripts/prepare_candidate_selection.py": "634e9dc8b3bb7f7503a4e9a5a5e2bfc6f2a8ba7b7ad45b9e7372fcbfc1e1507e",
+    "src/pn2/supervision/candidate_labels.py": "d2339c95f7858fa2755ab9b8987cef3a865c3fafd71370da8341db1817747ce2",
+    "tests/test_candidate_labels.py": "4d9ca2b2d03a5124149855121ec2ec16588e28443f0ec4bff5578ff2c12c97e5",
+    "tests/test_candidate_preparation.py": "2b59be96d80ced557b2c1658577d778093fd4c2b43a326919966c6f7654caa11",
+    "docs/candidate_stage1_contract_20261105.md": "f844f74155247ac576ca070bb30a01c1bb40be99379b3d634e72b6610e56cb5f",
+    "src/pn2/evaluation/classical_skeleton.py": "dd9d7d6661f0883ef6b4fb87e94c32a05a6be2539ca1d26d672d8297d4077812",
+    "src/pn2/evaluation/fixed_curve_graph.py": "b265ede182fbc6765b500192d10f39d84aca9ffe296a33469b3ee1e778e7a216",
+    "src/pn2/evaluation/reference_shortcuts.py": "626a692c047e8ce18eb6787246797c6845bc71f2096e251e336448b7f4b473ae",
+    "src/pn2/supervision/curve_nodes.py": "9a9a3bdf13e705bb53047ab95d67569793196c2c0540ee5ff7eb637b7f57d7ae"
+  },
+  "artifact_sha256": {
+    "configs/candidate_headroom_20261105.json": "bf3e85f2b95e53ee2b3dcbb676b7daec2acce698aba9e125edcb25ecd10805ef",
+    "tmp\\candidate_headroom_20261105T084249_809302Z\\report.json": "ec516eb16ec4451fce2f7e395c2b595b117370bd0a277b207fa934cb8fa412e5",
+    "tmp\\candidate_headroom_20261105T084249_809302Z\\candidate_manifest.json": "4b32cc75dc9208f3a5cca5dc94abcd7f0c12dfa7c487ee26572b662e9178694a",
+    "tmp\\curve_classical_baseline_20261103\\case01\\report.json": "b4fa319c6c0ce305d95435dd6309997f8e5cb64b181d11f6c5ef7bcdbdab2fce",
+    "tmp\\curve_classical_baseline_20261103\\case01\\graphs.npz": "9c24531c242c4ba27a56f7d7f177c3dba084bdcc3d8792cbd8d0307a2bcf4872",
+    "tmp\\curve_classical_baseline_20261103\\case03\\report.json": "31f011557428e5e02b3130c19cd221ba2815063f606e06d1c5c31c91d865458d",
+    "tmp\\curve_classical_baseline_20261103\\case03\\graphs.npz": "33a9a6179a147406ff55a18e510f611f085f674a474ae161f3bf51023ed829f0",
+    "tmp\\curve_classical_baseline_20261103\\case06\\report.json": "60adc4ff533c429760086a8f15ed08bf633a154f5c9a5cfe00f1def78b7d9409",
+    "tmp\\curve_classical_baseline_20261103\\case06\\graphs.npz": "0574f1e27820a6b46c979af768d71a8b61e5cff01b859d13eca011c570e90583",
+    "tmp\\curve_classical_baseline_20261103\\case08\\report.json": "2c7dc7f5cfc6998890785a0a8daa7eafdb30b0061e5041fa24bba56df45f0a8c",
+    "tmp\\curve_classical_baseline_20261103\\case08\\graphs.npz": "17a07fe76dd06407c6881556db04f981996ed0b929ef3141dc9762be5cba1253",
+    "tmp\\curve_classical_baseline_20261103\\case10\\report.json": "7620e7f77b86009e1b0cc8b5624e9ad884e817411fcbcb98055c8f4efd5d03ca",
+    "tmp\\curve_classical_baseline_20261103\\case10\\graphs.npz": "782185ea91a7a7f7990b85801d507e96fd4c1009d583e0c7479cdc7b6129081c",
+    "tmp\\curve_classical_timing_20261103\\case00\\report.json": "aec2dea7741c6dcfda5ae882ae00692ae1eaef8dfd89ee8b831cc0274f8dd704",
+    "tmp\\curve_classical_timing_20261103\\case00\\graphs.npz": "6d5387d01f2256138d3b566df850fa403897eaa9cfc63790985e4d9f432f45d4"
+  },
+  "runtime_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-image": "0.25.2"
+  }
+}

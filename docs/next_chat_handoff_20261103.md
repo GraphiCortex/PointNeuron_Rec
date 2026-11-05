@@ -1,5 +1,38 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Current continuation,5 November: Stage0 COMPLETE, gate PASSED.** Read
+[Stage1 ready/commands](candidate_stage1_ready_20261105.md),
+[Stage1 contract](candidate_stage1_contract_20261105.md) and
+[portable Stage0 evidence](evidence/candidate_headroom_completed_20261105.json).
+User-local Stage0 output `tmp/candidate_headroom_20261105T084249_809302Z`:
+604 oracle records/SWCs over151 boxes/seven repeatedly inspected dev neurons,
+575.09 seconds,guard completed exit0. Union oracle F1_2=.9042320394860465,
+F1_6=.9567199197684702; original>=.80 gate passed. Classical/Sato/broad oracle
+F1_2=74.00/83.45/85.33%; union k6/k10 candidate R2=88.49/90.44%.
+Alias94 oracleF1_2=67.97%, disclosed not a new gate. These are reference-assisted
+geometric results, not learned selection accuracy, topology or final quality.
+
+Stage1 CPU preparation and frozen PointNeXt feature export are IMPLEMENTED,
+fixture-tested and source-bound, NOT LAUNCHED. Give user command
+`tmp/phase1_cpu_env/Scripts/python.exe -B scripts/prepare_candidate_selection.py`.
+Output `tmp/candidate_stage1_20261105`,3600s cap,no automatic retry/training.
+Reuse six training classical graphs; extract missing27 from cached guides only.
+460 training pools/labels plus151 reused Stage0 development pools. Save all
+geometry before training refs; never load oracle probability files for training.
+Label API rejects dev;2-voxel trace labels,32-voxel consecutive-path bound,
+.25 distance/.5 path ambiguity mask, distinct nearby positive junction anchors
+change LABEL memberships only, never inference geometry. Per-neuron counts.
+
+After successful preparation/count inspection, user-local inference-only
+`../pointneuron2/tmp/pointneuron2/sampling_env/Scripts/python.exe -B scripts/export_candidate_pointnext.py --device cpu`
+exports611 source32D features and3NN candidate queries/distances to
+`tmp/candidate_pointnext_20261105`,3600s cap. Optional user --device cuda:0 is
+inference only; assistant launches no GPU. Handcrafted edge intensity/geodesic
+features, GBT/GAT training and wrong-join/break final reporting remain later work.
+CV remains CONDITIONAL selector-only on upstream trained on all33, user accepted.
+No timed preparation/export/model job is running. Earlier pending Stage0 states
+below are historical, superseded by this current continuation.
+
 **Latest direction, 5 November:** User approved a NEW experimental arm: no
 Transformer node proposals; learn to select/connect strong image-derived
 candidates using PointNeXt features and graph models. Explicit departure from

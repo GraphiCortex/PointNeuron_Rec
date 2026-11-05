@@ -1,0 +1,2240 @@
+{
+  "status": "completed",
+  "source_root": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_headroom_20261105T084249_809302Z",
+  "report_sha256": "ec516eb16ec4451fce2f7e395c2b595b117370bd0a277b207fa934cb8fa412e5",
+  "candidate_manifest_sha256": "4b32cc75dc9208f3a5cca5dc94abcd7f0c12dfa7c487ee26572b662e9178694a",
+  "gate": {
+    "status": "proceed",
+    "union_oracle_f1_2": 0.9042320394860465,
+    "thresholds": {
+      "proceed": 0.8,
+      "conditional": 0.65
+    },
+    "selects_model_or_threshold": false,
+    "requires_candidate_recall_work": false
+  },
+  "summaries": {
+    "classical": {
+      "oracle": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 4879.908306841028,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9974306145581803,
+                "recall": 0.8421466986738962,
+                "f1": 0.9132346796891344
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.97001612142111,
+                "f1": 0.9847798816198212
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 4879.635205343823,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9796914420100662,
+                "recall": 0.582647339676746,
+                "f1": 0.7307180991499782
+              },
+              "6.0": {
+                "precision": 0.9991817649172074,
+                "recall": 0.7235544551334058,
+                "f1": 0.8393187640446366
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 53415.78024950406,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9979526274812373,
+                "recall": 0.6696155204005181,
+                "f1": 0.8014599809126327
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.715325014641794,
+                "f1": 0.8340402064167101
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 3397.600613253719,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.997687072887401,
+                "recall": 0.6813823556654715,
+                "f1": 0.8097418205355643
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.7781645306189059,
+                "f1": 0.8752446888006014
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 29569.07875548713,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9927048724218113,
+                "recall": 0.7344077688103244,
+                "f1": 0.8442416007358153
+              },
+              "6.0": {
+                "precision": 0.999983348620091,
+                "recall": 0.8510044106028678,
+                "f1": 0.9194985066377389
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 822.5133756774533,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9760070621534518,
+                "recall": 0.08188047353804541,
+                "f1": 0.15108585313534947
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.12340455953124574,
+                "f1": 0.21969745179374706
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 5984.34765223353,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9982243585421312,
+                "recall": 0.8693079007316139,
+                "f1": 0.9293165537294465
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9480722004236739,
+                "f1": 0.9733440066723232
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9913854357220399,
+            "recall": 0.6373411510709451,
+            "f1": 0.7399712268411315
+          },
+          "6.0": {
+            "precision": 0.9998807305053283,
+            "recall": 0.7299344703390005,
+            "f1": 0.8065605008550827
+          }
+        }
+      },
+      "candidate_coverage": {
+        "6": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 135793.40797181465,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.0864944242415462,
+                  "recall": 0.8725495515980631,
+                  "f1": 0.15738730024683562
+                },
+                "6.0": {
+                  "precision": 0.16750434534541175,
+                  "recall": 0.9948922027145018,
+                  "f1": 0.28673307294845424
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 20941.12239631935,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5421940431633201,
+                  "recall": 0.5944672414099593,
+                  "f1": 0.5671286627294851
+                },
+                "6.0": {
+                  "precision": 0.7967815584586337,
+                  "recall": 0.8114719848004321,
+                  "f1": 0.8040596775363757
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 168598.66860226123,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5457654555105831,
+                  "recall": 0.6710951613188614,
+                  "f1": 0.6019761858386642
+                },
+                "6.0": {
+                  "precision": 0.6642906245618961,
+                  "recall": 0.7400958423298424,
+                  "f1": 0.7001473467984551
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 7613.338790852383,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7783635673135623,
+                  "recall": 0.6966167104835888,
+                  "f1": 0.7352248378968698
+                },
+                "6.0": {
+                  "precision": 0.8885572556140423,
+                  "recall": 0.8006060319077241,
+                  "f1": 0.8422919249963972
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 92394.68181969819,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.6245956504866567,
+                  "recall": 0.7451963712890225,
+                  "f1": 0.67958698089393
+                },
+                "6.0": {
+                  "precision": 0.830104361599054,
+                  "recall": 0.909875010676287,
+                  "f1": 0.8681611137546882
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 6646.60249240278,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.2645458564335034,
+                  "recall": 0.09346190735668057,
+                  "f1": 0.13812527451260673
+                },
+                "6.0": {
+                  "precision": 0.5698452818237213,
+                  "recall": 0.16094068972630585,
+                  "f1": 0.25099357750250023
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 12014.51231494967,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8886630106101174,
+                  "recall": 0.8583705482121875,
+                  "f1": 0.8732541532945858
+                },
+                "6.0": {
+                  "precision": 0.9880722731464691,
+                  "recall": 0.9631683473243545,
+                  "f1": 0.9754613842898245
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.5329460011084699,
+              "recall": 0.6473939273811948,
+              "f1": 0.5360976279161396
+            },
+            "6.0": {
+              "precision": 0.7007365286498898,
+              "recall": 0.7687214442113497,
+              "f1": 0.6754068711180994
+            }
+          }
+        },
+        "10": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 275384.6933939809,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.09117364035188513,
+                  "recall": 0.918043012339669,
+                  "f1": 0.16587384524698243
+                },
+                "6.0": {
+                  "precision": 0.1849121168897421,
+                  "recall": 0.9968111834765015,
+                  "f1": 0.31195537232596354
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 46491.295513568475,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5013046210585423,
+                  "recall": 0.6520863704030926,
+                  "f1": 0.5668397156424921
+                },
+                "6.0": {
+                  "precision": 0.7763575770847928,
+                  "recall": 0.8411415180540759,
+                  "f1": 0.8074521870268149
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 394616.3922592202,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5444859995000535,
+                  "recall": 0.6857441965275629,
+                  "f1": 0.6070052831629399
+                },
+                "6.0": {
+                  "precision": 0.6676363174079656,
+                  "recall": 0.7448485365753925,
+                  "f1": 0.7041320585965964
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 17711.352707169826,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.7819390831686525,
+                  "recall": 0.7020737974753567,
+                  "f1": 0.7398573808555854
+                },
+                "6.0": {
+                  "precision": 0.9091037357601929,
+                  "recall": 0.8039533247579799,
+                  "f1": 0.8533013730356749
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 227482.84423896385,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5723402643518345,
+                  "recall": 0.7947859994370203,
+                  "f1": 0.665466008619049
+                },
+                "6.0": {
+                  "precision": 0.798202608198132,
+                  "recall": 0.9212752126100676,
+                  "f1": 0.8553344145235955
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 12719.152759987091,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.25719931890586445,
+                  "recall": 0.09716613776323171,
+                  "f1": 0.14104684293059108
+                },
+                "6.0": {
+                  "precision": 0.5822686146388002,
+                  "recall": 0.1619245788098618,
+                  "f1": 0.2533847420524509
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 28204.032575037476,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.8705768887430655,
+                  "recall": 0.8915464640273272,
+                  "f1": 0.8809369055832796
+                },
+                "6.0": {
+                  "precision": 0.9885915712824437,
+                  "recall": 0.9654563597415392,
+                  "f1": 0.9768870092980356
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.5170028308685568,
+              "recall": 0.6773494254247515,
+              "f1": 0.5381465688629885
+            },
+            "6.0": {
+              "precision": 0.7010103630374385,
+              "recall": 0.7764872448607741,
+              "f1": 0.6803495938370189
+            }
+          }
+        }
+      },
+      "node_eligible_candidate_coverage": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 14648.818723640044,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9768058103313596,
+                "recall": 0.8462058473084186,
+                "f1": 0.9068277593544212
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.97001612142111,
+                "f1": 0.9847798816198212
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 34437.959520790064,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.5929590710557654,
+                "recall": 0.6304217918514804,
+                "f1": 0.6111168343458169
+              },
+              "6.0": {
+                "precision": 0.828653834364198,
+                "recall": 0.8146974063388244,
+                "f1": 0.8216163567326319
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 224799.39288346563,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8487506520633343,
+                "recall": 0.6762494308665967,
+                "f1": 0.7527437563186737
+              },
+              "6.0": {
+                "precision": 0.9143384201634374,
+                "recall": 0.7286794773154303,
+                "f1": 0.8110193359627468
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 14719.576418863697,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8740391230858793,
+                "recall": 0.6876360460155241,
+                "f1": 0.7697129576664535
+              },
+              "6.0": {
+                "precision": 0.9473346191529726,
+                "recall": 0.7890210768086038,
+                "f1": 0.8609606695685784
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 148271.76832837923,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.7477709718171494,
+                "recall": 0.756964237371417,
+                "f1": 0.7523395212042504
+              },
+              "6.0": {
+                "precision": 0.9265359425028239,
+                "recall": 0.8852952508553352,
+                "f1": 0.9054462387571612
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 3769.152675816985,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.684003381135669,
+                "recall": 0.09059224350432862,
+                "f1": 0.15999419281622143
+              },
+              "6.0": {
+                "precision": 0.8754841955768548,
+                "recall": 0.15126316855832606,
+                "f1": 0.2579573477789944
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 27353.883327680218,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8827614332456486,
+                "recall": 0.8822014304460899,
+                "f1": 0.8824813430045848
+              },
+              "6.0": {
+                "precision": 0.9882550945093074,
+                "recall": 0.961407075131726,
+                "f1": 0.9746462281423386
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.8010129203906865,
+            "recall": 0.6528958610519794,
+            "f1": 0.6907451949586317
+          },
+          "6.0": {
+            "precision": 0.9258003008956563,
+            "recall": 0.7571970823470507,
+            "f1": 0.8023465797946104
+          }
+        }
+      },
+      "sizes": {
+        "input_nodes": 31236,
+        "nodes": 21901,
+        "edges": 129375,
+        "halo_nodes": 440
+      },
+      "decoded_nodes": 12364,
+      "decoded_edges": 11963
+    },
+    "sato": {
+      "oracle": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 2988.576573985567,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9993649574780683,
+                "recall": 0.8054997661231825,
+                "f1": 0.8920205808157117
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9458451314441737,
+                "f1": 0.9721689729153146
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 7045.150800685972,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9934010790642126,
+                "recall": 0.6782073892896765,
+                "f1": 0.806088225926664
+              },
+              "6.0": {
+                "precision": 0.9990890659897094,
+                "recall": 0.7742528660013026,
+                "f1": 0.8724178442728187
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 39857.91595715495,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9973433998560692,
+                "recall": 0.7569126902114937,
+                "f1": 0.8606518513732629
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.8339237619218288,
+                "f1": 0.9094421253890432
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 2831.662877942211,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9974252087891795,
+                "recall": 0.7937716645665944,
+                "f1": 0.8840210476450672
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.8835025396004106,
+                "f1": 0.9381484983692644
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 25596.181228728146,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9938233588811497,
+                "recall": 0.7014550573816483,
+                "f1": 0.8224282389768042
+              },
+              "6.0": {
+                "precision": 0.9999807048938857,
+                "recall": 0.7909360118920221,
+                "f1": 0.8832579910440274
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 2309.4702239829703,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.990688231793427,
+                "recall": 0.4600191588607781,
+                "f1": 0.6282942652926958
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.5995153887118375,
+                "f1": 0.7496212827244563
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 6786.721554079725,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9974958783672894,
+                "recall": 0.9036964710563385,
+                "f1": 0.948282277116299
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9731434507975151,
+                "f1": 0.9863889525155254
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9956488734613421,
+            "recall": 0.728508885355673,
+            "f1": 0.834540926735215
+          },
+          "6.0": {
+            "precision": 0.9998671101262279,
+            "recall": 0.8287313071955843,
+            "f1": 0.9016350953186356
+          }
+        }
+      },
+      "candidate_coverage": {
+        "6": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 98387.10117828187,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.12319689977597138,
+                  "recall": 0.8881715210565369,
+                  "f1": 0.21638005618843653
+                },
+                "6.0": {
+                  "precision": 0.38115948357998863,
+                  "recall": 0.9865331981077633,
+                  "f1": 0.5498698492138566
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 43382.33664360189,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.4613137448760948,
+                  "recall": 0.7041390370347173,
+                  "f1": 0.5574297322545507
+                },
+                "6.0": {
+                  "precision": 0.8113948198061817,
+                  "recall": 0.8346793989921454,
+                  "f1": 0.8228724231348155
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 963860.6174532778,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.1373488949042698,
+                  "recall": 0.8050079663866286,
+                  "f1": 0.23466047548245275
+                },
+                "6.0": {
+                  "precision": 0.2921268082927534,
+                  "recall": 0.8918586004306805,
+                  "f1": 0.4400996912169127
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 59431.27560243583,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.1613877135213342,
+                  "recall": 0.8214137486800008,
+                  "f1": 0.2697718549533373
+                },
+                "6.0": {
+                  "precision": 0.3853722072021479,
+                  "recall": 0.9303520710973774,
+                  "f1": 0.5449953869928756
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 195709.5801493473,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3881285771249822,
+                  "recall": 0.7007128361738973,
+                  "f1": 0.49955241003077566
+                },
+                "6.0": {
+                  "precision": 0.7024823654403273,
+                  "recall": 0.8167158980490712,
+                  "f1": 0.755304333532417
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 154474.81552878636,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.07004221070847724,
+                  "recall": 0.5429915671664736,
+                  "f1": 0.1240790675262217
+                },
+                "6.0": {
+                  "precision": 0.22367635871682578,
+                  "recall": 0.6686324645236217,
+                  "f1": 0.3352141570031303
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 41035.782195770335,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5061308649226911,
+                  "recall": 0.9129320757591243,
+                  "f1": 0.6512228427269428
+                },
+                "6.0": {
+                  "precision": 0.9136457415695807,
+                  "recall": 0.9838459239730797,
+                  "f1": 0.9474472590545188
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.26393555797626006,
+              "recall": 0.7679098217510542,
+              "f1": 0.3647280627375311
+            },
+            "6.0": {
+              "precision": 0.5299796835154008,
+              "recall": 0.8732310793105343,
+              "f1": 0.6279718714497895
+            }
+          }
+        },
+        "10": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 195632.74430587597,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.12416769054375502,
+                  "recall": 0.9446550027456095,
+                  "f1": 0.2194856654671931
+                },
+                "6.0": {
+                  "precision": 0.3820676232047117,
+                  "recall": 0.9888315122899257,
+                  "f1": 0.5511718489985297
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 89475.55332879424,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.4602668983472658,
+                  "recall": 0.7224188134050527,
+                  "f1": 0.5622888029331161
+                },
+                "6.0": {
+                  "precision": 0.8073333752918558,
+                  "recall": 0.8526366855268579,
+                  "f1": 0.829366829525289
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 1941947.6143696276,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.1392196619297563,
+                  "recall": 0.8340041096981261,
+                  "f1": 0.23860857818133058
+                },
+                "6.0": {
+                  "precision": 0.29326481369034635,
+                  "recall": 0.8971909268354279,
+                  "f1": 0.4420400037499156
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 117725.29153215322,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.16102045710289634,
+                  "recall": 0.846750168334649,
+                  "f1": 0.27058557913017733
+                },
+                "6.0": {
+                  "precision": 0.3846350622944503,
+                  "recall": 0.935810008335653,
+                  "f1": 0.5451879049844786
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 401198.0361325375,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.38743492377025013,
+                  "recall": 0.7394063259834368,
+                  "f1": 0.5084510947842079
+                },
+                "6.0": {
+                  "precision": 0.6999024558820249,
+                  "recall": 0.8274586482995806,
+                  "f1": 0.7583541816013621
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 304561.7089610335,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.0716166552857798,
+                  "recall": 0.5964776180002027,
+                  "f1": 0.12787935374419215
+                },
+                "6.0": {
+                  "precision": 0.23250573039166084,
+                  "recall": 0.6703211050203561,
+                  "f1": 0.34525668047644437
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 76665.78467750266,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.5181383773690779,
+                  "recall": 0.9198684808282434,
+                  "f1": 0.6628885798872924
+                },
+                "6.0": {
+                  "precision": 0.9077082930409677,
+                  "recall": 0.9843462613985732,
+                  "f1": 0.9444751607175798
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.26598066633554024,
+              "recall": 0.800511502713617,
+              "f1": 0.3700268077325014
+            },
+            "6.0": {
+              "precision": 0.5296310505422882,
+              "recall": 0.879513592529482,
+              "f1": 0.6308360871505141
+            }
+          }
+        }
+      },
+      "node_eligible_candidate_coverage": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 7525.0535044994995,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9696859373143827,
+                "recall": 0.8148847585546467,
+                "f1": 0.8855712948009304
+              },
+              "6.0": {
+                "precision": 0.9969851959637266,
+                "recall": 0.9509412811385987,
+                "f1": 0.9734190593643851
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 30168.866009392194,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8475027272258061,
+                "recall": 0.7000207483148673,
+                "f1": 0.7667340789182189
+              },
+              "6.0": {
+                "precision": 0.9558760408468251,
+                "recall": 0.8327982244203274,
+                "f1": 0.8901026699394835
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 124371.8017064521,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.911605375397956,
+                "recall": 0.7632825763256198,
+                "f1": 0.8308764760173912
+              },
+              "6.0": {
+                "precision": 0.9742672078306658,
+                "recall": 0.8434287842371022,
+                "f1": 0.9041390971962475
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 10114.535147969433,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.900639369424963,
+                "recall": 0.8107366383469342,
+                "f1": 0.8533265996654316
+              },
+              "6.0": {
+                "precision": 0.9938085051217918,
+                "recall": 0.9108956772992584,
+                "f1": 0.9505474705557861
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 97839.35202986514,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8668990311281055,
+                "recall": 0.7124211631999894,
+                "f1": 0.7821051340332906
+              },
+              "6.0": {
+                "precision": 0.9675370397864468,
+                "recall": 0.8099175467744496,
+                "f1": 0.8817386746217211
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 5196.143531609254,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.902028834317475,
+                "recall": 0.4637257241367401,
+                "f1": 0.6125463346203627
+              },
+              "6.0": {
+                "precision": 0.9999078998678815,
+                "recall": 0.6035474521686459,
+                "f1": 0.7527392198380508
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 29607.128471576274,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9519849724803656,
+                "recall": 0.9072949071035731,
+                "f1": 0.9291028496084762
+              },
+              "6.0": {
+                "precision": 0.9920976783120539,
+                "recall": 0.9738559215570498,
+                "f1": 0.982892168819776
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9071923210412935,
+            "recall": 0.7389095022831959,
+            "f1": 0.8086089668091574
+          },
+          "6.0": {
+            "precision": 0.9829256525327702,
+            "recall": 0.8464835553707759,
+            "f1": 0.9050826229050644
+          }
+        }
+      },
+      "sizes": {
+        "input_nodes": 77312,
+        "nodes": 77312,
+        "edges": 480560,
+        "halo_nodes": 0
+      },
+      "decoded_nodes": 19605,
+      "decoded_edges": 18890
+    },
+    "learned": {
+      "oracle": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 3267.594780587113,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9978633347467538,
+                "recall": 0.8068041059118214,
+                "f1": 0.8922200483860298
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9445747308964033,
+                "f1": 0.9714974856851879
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 8034.904858312881,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9980141450329009,
+                "recall": 0.8271962457067206,
+                "f1": 0.9046119374752003
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.932058469329562,
+                "f1": 0.9648346404889009
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 37079.698018268566,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9981570000114572,
+                "recall": 0.7145788774711793,
+                "f1": 0.83289188716772
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.8143719727355996,
+                "f1": 0.8976902035228632
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 2763.470066924095,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9920426139780498,
+                "recall": 0.779624338889045,
+                "f1": 0.8730992761599667
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9064384858892217,
+                "f1": 0.9509234025627958
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 31201.549725873047,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9976006391863167,
+                "recall": 0.8115314134794988,
+                "f1": 0.8949974167048492
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9106775420025511,
+                "f1": 0.9532508986818198
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 2465.4801910954425,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9872306324196494,
+                "recall": 0.46503429075442626,
+                "f1": 0.6322484136777375
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.6598742132105166,
+                "f1": 0.7950894205822895
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 6218.053718835606,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9994961524533506,
+                "recall": 0.8932151197691335,
+                "f1": 0.9433716474611508
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9808841713866465,
+                "f1": 0.9903498503903072
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.995772073975497,
+            "recall": 0.7568549131402608,
+            "f1": 0.8533486610046648
+          },
+          "6.0": {
+            "precision": 1.0,
+            "recall": 0.8784113693500716,
+            "f1": 0.9319479859877379
+          }
+        }
+      },
+      "candidate_coverage": {
+        "6": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 186015.90050438722,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.07082026046058203,
+                  "recall": 0.8898103959004017,
+                  "f1": 0.131198403009366
+                },
+                "6.0": {
+                  "precision": 0.23494216150844002,
+                  "recall": 0.9989425484394459,
+                  "f1": 0.38041434448608324
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 82231.2865262431,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.34202749536047716,
+                  "recall": 0.8650667708725859,
+                  "f1": 0.4902295193306786
+                },
+                "6.0": {
+                  "precision": 0.7637496443795418,
+                  "recall": 0.9724890942178434,
+                  "f1": 0.8555715102542629
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 763387.11777995,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.17355324554952173,
+                  "recall": 0.7719572145769418,
+                  "f1": 0.2833933323112625
+                },
+                "6.0": {
+                  "precision": 0.43133371024596845,
+                  "recall": 0.879697953301121,
+                  "f1": 0.5788470143681291
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 55650.04578364792,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.18708307105288396,
+                  "recall": 0.8390718426349746,
+                  "f1": 0.30595017391672913
+                },
+                "6.0": {
+                  "precision": 0.47604283545311893,
+                  "recall": 0.9484453680670782,
+                  "f1": 0.633912757116949
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 290169.2660744692,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3718167844040205,
+                  "recall": 0.8431115866865434,
+                  "f1": 0.5160518867036883
+                },
+                "6.0": {
+                  "precision": 0.8119792835268591,
+                  "recall": 0.9504481155173061,
+                  "f1": 0.8757741513616315
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 115335.83344874879,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.10307159344969764,
+                  "recall": 0.5970316209765616,
+                  "f1": 0.1757940807751904
+                },
+                "6.0": {
+                  "precision": 0.3668199774310035,
+                  "recall": 0.7956627353654243,
+                  "f1": 0.5021407775214742
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 71147.71111218665,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3210543032078465,
+                  "recall": 0.9121950941425204,
+                  "f1": 0.47494717770592176
+                },
+                "6.0": {
+                  "precision": 0.7582447018713223,
+                  "recall": 0.9865539586413575,
+                  "f1": 0.8574620432482303
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.22420382192643282,
+              "recall": 0.8168920751129328,
+              "f1": 0.339652081964691
+            },
+            "6.0": {
+              "precision": 0.5490160449166078,
+              "recall": 0.9331771105070823,
+              "f1": 0.6691603711938229
+            }
+          }
+        },
+        "10": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 365350.83846781484,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.07187667705468405,
+                  "recall": 0.9432331906074296,
+                  "f1": 0.13357463972779737
+                },
+                "6.0": {
+                  "precision": 0.23666531835379642,
+                  "recall": 1.0,
+                  "f1": 0.38274756288764794
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 162282.6622618624,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.34706460688497814,
+                  "recall": 0.888046011258597,
+                  "f1": 0.4990797346661789
+                },
+                "6.0": {
+                  "precision": 0.7641296992582673,
+                  "recall": 0.974367308455865,
+                  "f1": 0.8565364163110434
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 1547885.977052469,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.17265839807956088,
+                  "recall": 0.8085277335103058,
+                  "f1": 0.2845517252564258
+                },
+                "6.0": {
+                  "precision": 0.4241353051809841,
+                  "recall": 0.8859747475856667,
+                  "f1": 0.5736513038066469
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 110748.5614767398,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.18628655575660638,
+                  "recall": 0.8690145158885524,
+                  "f1": 0.3068048074944183
+                },
+                "6.0": {
+                  "precision": 0.46954094099686017,
+                  "recall": 0.9589017680834292,
+                  "f1": 0.6303978950606121
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 568684.7065357257,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.37940840403321807,
+                  "recall": 0.8631574639843124,
+                  "f1": 0.5271176430463927
+                },
+                "6.0": {
+                  "precision": 0.8131679044844429,
+                  "recall": 0.9526073652050118,
+                  "f1": 0.8773820182637843
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 231974.34894843714,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.10055422700204455,
+                  "recall": 0.6583690144676233,
+                  "f1": 0.17446240598374313
+                },
+                "6.0": {
+                  "precision": 0.36449816966361887,
+                  "recall": 0.8080274513470114,
+                  "f1": 0.5023762752409388
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 138478.42421379837,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3227601460777754,
+                  "recall": 0.9257354848534955,
+                  "f1": 0.4786408745344544
+                },
+                "6.0": {
+                  "precision": 0.7466184525539563,
+                  "recall": 0.9870425098503315,
+                  "f1": 0.8501594801874222
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.22580128784126677,
+              "recall": 0.8508690592243308,
+              "f1": 0.3434616901013444
+            },
+            "6.0": {
+              "precision": 0.5455365414988466,
+              "recall": 0.9381315929324737,
+              "f1": 0.6676072788225851
+            }
+          }
+        }
+      },
+      "node_eligible_candidate_coverage": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 9183.184878128419,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9900289339808634,
+                "recall": 0.8175937374310873,
+                "f1": 0.8955867494913273
+              },
+              "6.0": {
+                "precision": 0.9995229098434296,
+                "recall": 0.9517235560189359,
+                "f1": 0.9750377665982485
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 28320.286729503317,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9765374751500598,
+                "recall": 0.8316566816292139,
+                "f1": 0.8982928221783962
+              },
+              "6.0": {
+                "precision": 0.9995782414826871,
+                "recall": 0.9388276631878806,
+                "f1": 0.9682509760865888
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 107242.3887571449,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9746771060368565,
+                "recall": 0.7207978819034223,
+                "f1": 0.828729646344827
+              },
+              "6.0": {
+                "precision": 0.9947849037456918,
+                "recall": 0.8230821439426685,
+                "f1": 0.9008246146251412
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 8958.738211202206,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9751592013293954,
+                "recall": 0.7878548658163892,
+                "f1": 0.8715573358490489
+              },
+              "6.0": {
+                "precision": 0.999786670150268,
+                "recall": 0.9233885746997235,
+                "f1": 0.960070166071473
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 104654.63898092524,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9808596928435017,
+                "recall": 0.816119993171311,
+                "f1": 0.89093851428085
+              },
+              "6.0": {
+                "precision": 0.9986628968757428,
+                "recall": 0.9157776266312698,
+                "f1": 0.9554260122223392
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 6018.017425179635,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.8957279649658932,
+                "recall": 0.47080484795043354,
+                "f1": 0.6172015254441464
+              },
+              "6.0": {
+                "precision": 0.9811064109250945,
+                "recall": 0.6659070789639658,
+                "f1": 0.7933459054982687
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 25477.22743950859,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.990368641275276,
+                "recall": 0.8958706746059757,
+                "f1": 0.9407525495812977
+              },
+              "6.0": {
+                "precision": 0.999324134347545,
+                "recall": 0.9808841713866465,
+                "f1": 0.9900182951739898
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9690512879402636,
+            "recall": 0.7629569546439762,
+            "f1": 0.8490084490242705
+          },
+          "6.0": {
+            "precision": 0.9961094524814941,
+            "recall": 0.8856558306901559,
+            "f1": 0.9347105337537214
+          }
+        }
+      },
+      "sizes": {
+        "input_nodes": 108092,
+        "nodes": 108092,
+        "edges": 675107,
+        "halo_nodes": 339
+      },
+      "decoded_nodes": 28236,
+      "decoded_edges": 27315
+    },
+    "union": {
+      "oracle": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 4869.515534345044,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9987882533096684,
+                "recall": 0.9459497927740644,
+                "f1": 0.9716512135360065
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9971143278105629,
+                "f1": 0.9985550791212835
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 8235.05050831147,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9972909260751963,
+                "recall": 0.8823936330319144,
+                "f1": 0.9363306829176431
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9539215889929277,
+                "f1": 0.9764174717825695
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 45611.99869788782,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9982762212240582,
+                "recall": 0.8201798986951233,
+                "f1": 0.9005068431672548
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.8890347262709254,
+                "f1": 0.9412582139513512
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 3302.974924005098,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9969679494693573,
+                "recall": 0.8809247710858079,
+                "f1": 0.935360953320636
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9577575832773189,
+                "f1": 0.978423060605917
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 32207.579607472017,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9970845912936573,
+                "recall": 0.8797177704089486,
+                "f1": 0.9347313829744273
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9526765666059007,
+                "f1": 0.9757648377599185
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 2779.929830643849,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9953169757936808,
+                "recall": 0.5160736808779681,
+                "f1": 0.6797142658924943
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.7136494186550384,
+                "f1": 0.8329001380167336
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 6297.208772394368,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9974613270717028,
+                "recall": 0.9465308643643403,
+                "f1": 0.9713289345938634
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9875196429734097,
+                "f1": 0.9937206371415181
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9973123206053316,
+            "recall": 0.8388243444625952,
+            "f1": 0.9042320394860465
+          },
+          "6.0": {
+            "precision": 1.0,
+            "recall": 0.9216676935122975,
+            "f1": 0.9567199197684702
+          }
+        }
+      },
+      "candidate_coverage": {
+        "6": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 284525.05047424644,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.07313143993641119,
+                  "recall": 0.9793941907674671,
+                  "f1": 0.1361002627333304
+                },
+                "6.0": {
+                  "precision": 0.22114558932763967,
+                  "recall": 1.0,
+                  "f1": 0.3621936503892251
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 99129.07101672358,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.35440405067495495,
+                  "recall": 0.9089865959103801,
+                  "f1": 0.5099745394990429
+                },
+                "6.0": {
+                  "precision": 0.7718797822908171,
+                  "recall": 0.9842756868757057,
+                  "f1": 0.8652337634552829
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 1375743.2463601914,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.1396197887097706,
+                  "recall": 0.869568097366103,
+                  "f1": 0.24060715689939358
+                },
+                "6.0": {
+                  "precision": 0.32544585607183807,
+                  "recall": 0.9426192036473102,
+                  "f1": 0.4838419154119695
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 90717.80272628873,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.16041705467525597,
+                  "recall": 0.9289791853218152,
+                  "f1": 0.2735902682468319
+                },
+                "6.0": {
+                  "precision": 0.4085716375673699,
+                  "recall": 0.9887988709776867,
+                  "f1": 0.5782219840330823
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 382825.36357940384,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.35576867319433536,
+                  "recall": 0.9002107156999165,
+                  "f1": 0.5099873051290135
+                },
+                "6.0": {
+                  "precision": 0.7598364065293979,
+                  "recall": 0.9773263239396973,
+                  "f1": 0.8549666752157359
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 218338.04857764853,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.06453100038061581,
+                  "recall": 0.6522481709857205,
+                  "f1": 0.11744266198445028
+                },
+                "6.0": {
+                  "precision": 0.2325529827145219,
+                  "recall": 0.8267873483860956,
+                  "f1": 0.3630030091237126
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 86083.7663409392,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3424539693910003,
+                  "recall": 0.9551603500375693,
+                  "f1": 0.5041535815037972
+                },
+                "6.0": {
+                  "precision": 0.7828284261051919,
+                  "recall": 0.9921143937301284,
+                  "f1": 0.8751328106807648
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.21290371099462058,
+              "recall": 0.8849353294412817,
+              "f1": 0.3274079679994085
+            },
+            "6.0": {
+              "precision": 0.5003229543723966,
+              "recall": 0.958845975365232,
+              "f1": 0.626084829758539
+            }
+          }
+        },
+        "10": {
+          "neurons": [
+            {
+              "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+              "reference_length": 1748.202027837749,
+              "predicted_length": 541704.1456123316,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.07223164182139977,
+                  "recall": 0.98615548751567,
+                  "f1": 0.13460411220052593
+                },
+                "6.0": {
+                  "precision": 0.22293769210270678,
+                  "recall": 1.0,
+                  "f1": 0.36459370504704935
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+              "reference_length": 3289.6023485363144,
+              "predicted_length": 189309.81820498925,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3545261086006242,
+                  "recall": 0.9220499113531982,
+                  "f1": 0.5121367813558404
+                },
+                "6.0": {
+                  "precision": 0.7717106352358334,
+                  "recall": 0.9846488849119568,
+                  "f1": 0.8652716118118252
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_allen_confocal/in_house1",
+              "reference_length": 19168.626256251522,
+              "predicted_length": 2695500.2764621004,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.13752694985920128,
+                  "recall": 0.8905450080546486,
+                  "f1": 0.23825946759333105
+                },
+                "6.0": {
+                  "precision": 0.3213117581214861,
+                  "recall": 0.9454455716840356,
+                  "f1": 0.4796226896790234
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+              "reference_length": 1247.1625132947547,
+              "predicted_length": 177192.43420183045,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.15585901266486513,
+                  "recall": 0.9408801300331217,
+                  "f1": 0.26741937511632036
+                },
+                "6.0": {
+                  "precision": 0.40003413662540926,
+                  "recall": 0.9887988709776867,
+                  "f1": 0.5696196741902041
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+              "reference_length": 12365.044127344041,
+              "predicted_length": 730603.6323381811,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3569714140879386,
+                  "recall": 0.9180168816839596,
+                  "f1": 0.5140530081696547
+                },
+                "6.0": {
+                  "precision": 0.7581434094283885,
+                  "recall": 0.9794526007051879,
+                  "f1": 0.854704464952183
+                }
+              }
+            },
+            {
+              "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+              "reference_length": 3399.2078765753395,
+              "predicted_length": 422225.84922534897,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.06619738349566966,
+                  "recall": 0.7137766876923127,
+                  "f1": 0.12115825607758968
+                },
+                "6.0": {
+                  "precision": 0.23977773131532332,
+                  "recall": 0.836070400247859,
+                  "f1": 0.3726753951787715
+                }
+              }
+            },
+            {
+              "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+              "reference_length": 1864.1720819909801,
+              "predicted_length": 158255.89392266955,
+              "tolerances": {
+                "2.0": {
+                  "precision": 0.3358974497275323,
+                  "recall": 0.9591113664086849,
+                  "f1": 0.49754574326771056
+                },
+                "6.0": {
+                  "precision": 0.7650568545040983,
+                  "recall": 0.9923449268051405,
+                  "f1": 0.8640030940665683
+                }
+              }
+            }
+          ],
+          "macro": {
+            "2.0": {
+              "precision": 0.21131570860817586,
+              "recall": 0.9043622103916567,
+              "f1": 0.32645382054013894
+            },
+            "6.0": {
+              "precision": 0.4969960310476065,
+              "recall": 0.9609658936188381,
+              "f1": 0.624355804989375
+            }
+          }
+        }
+      },
+      "node_eligible_candidate_coverage": {
+        "neurons": [
+          {
+            "case_id": "e_checked7_utokyo_fly/SLP_PN_neuron",
+            "reference_length": 1748.202027837749,
+            "predicted_length": 16408.18743664033,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9936447835887823,
+                "recall": 0.9495521172740594,
+                "f1": 0.9710982017891248
+              },
+              "6.0": {
+                "precision": 1.0,
+                "recall": 0.9971143278105629,
+                "f1": 0.9985550791212835
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_frog_scrippts/done_err_Recon112012no2-2",
+            "reference_length": 3289.6023485363144,
+            "predicted_length": 35579.7577034133,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9657689742744556,
+                "recall": 0.8876414994257266,
+                "f1": 0.9250585691494245
+              },
+              "6.0": {
+                "precision": 0.9937135464640923,
+                "recall": 0.9628662892555314,
+                "f1": 0.9780467503539633
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_allen_confocal/in_house1",
+            "reference_length": 19168.626256251522,
+            "predicted_length": 166044.68281866514,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9799234638472665,
+                "recall": 0.8254403279995824,
+                "f1": 0.8960724138431063
+              },
+              "6.0": {
+                "precision": 0.995839417452179,
+                "recall": 0.8974253080497968,
+                "f1": 0.9440745226351807
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+            "reference_length": 1247.1625132947547,
+            "predicted_length": 13056.002140805289,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9704522502636916,
+                "recall": 0.8886768705471898,
+                "f1": 0.9277660805008117
+              },
+              "6.0": {
+                "precision": 0.998869247559958,
+                "recall": 0.9665785042909997,
+                "f1": 0.9824586203113624
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+            "reference_length": 12365.044127344041,
+            "predicted_length": 133832.805217632,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9747031897267774,
+                "recall": 0.8864628350693904,
+                "f1": 0.9284912161568233
+              },
+              "6.0": {
+                "precision": 0.9956838766014957,
+                "recall": 0.9595127382112998,
+                "f1": 0.977263724366889
+              }
+            }
+          },
+          {
+            "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2",
+            "reference_length": 3399.2078765753395,
+            "predicted_length": 7912.838730045026,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9067832742010861,
+                "recall": 0.5279327070807341,
+                "f1": 0.6673384208863513
+              },
+              "6.0": {
+                "precision": 0.9824057068365513,
+                "recall": 0.7308695814057429,
+                "f1": 0.8381728875140362
+              }
+            }
+          },
+          {
+            "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4",
+            "reference_length": 1864.1720819909801,
+            "predicted_length": 31315.01420397702,
+            "tolerances": {
+              "2.0": {
+                "precision": 0.9894241579015213,
+                "recall": 0.9497871747190498,
+                "f1": 0.9692005814158805
+              },
+              "6.0": {
+                "precision": 0.9991826629205084,
+                "recall": 0.9877731144965278,
+                "f1": 0.9934451306077293
+              }
+            }
+          }
+        ],
+        "macro": {
+          "2.0": {
+            "precision": 0.9686714419719399,
+            "recall": 0.8450705045879617,
+            "f1": 0.8978607833916461
+          },
+          "6.0": {
+            "precision": 0.995099208262112,
+            "recall": 0.9288771233600659,
+            "f1": 0.9588595307014921
+          }
+        }
+      },
+      "sizes": {
+        "input_nodes": 216640,
+        "nodes": 160634,
+        "edges": 1015242,
+        "halo_nodes": 682
+      },
+      "decoded_nodes": 34066,
+      "decoded_edges": 33284
+    }
+  },
+  "guard": {
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 575.090179681778,
+    "maximum_seconds": 3600,
+    "started_epoch": 1793868169.8125787,
+    "config_fingerprint": "75b035e0a35efe74571a3acc617f3498bf5bb1c9b6e679073d000c507b552ccc",
+    "output": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\candidate_headroom_20261105T084249_809302Z",
+    "stage": 0
+  },
+  "reference_assisted": true,
+  "topology_certified": false,
+  "development_repeatedly_inspected": true,
+  "selector_trained": false
+}
