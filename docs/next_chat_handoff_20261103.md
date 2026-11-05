@@ -1,5 +1,27 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest continuation,5 November: Stage1 COMPLETE and verified.** Read
+[Stage1 results/next command](candidate_stage1_results_20261105.md) and
+[portable completion evidence](evidence/candidate_stage1_completed_20261105.json).
+`tmp/candidate_stage1_20261105/report.json` completed,worker442.43s exit0
+(console7m34s); all611 candidate/460 label/33 classical packet hashes verified,
+no development labels/model/GPU/training. Six classical extractions reused,
+27 missing training extractions from retained guides only. Training totals:
+673,235 nodes (118,681+/549,054-/5,500unknown),4,172,031 edges
+(163,536+/3,899,191-/109,304unknown). Known positive fractions17.77%/4.03%;
+mask0.82%/2.62%. All33 neurons have positives;3 boxes no positive nodes,
+7 no positive edge labels; details in results. Alias20 dominates~24%nodes/
+23%edges. No recipe or gate changed; do not remove hard cases or rerun Stage1.
+
+NEXT user-local CPU inference-only command:
+`../pointneuron2/tmp/pointneuron2/sampling_env/Scripts/python.exe -B scripts/export_candidate_pointnext.py --device cpu`.
+Metadata/checkpoint preflight passed. No real feature export has run. Default
+output `tmp/candidate_pointnext_20261105`,611 source32D/interpolated feature
+packets,3600s cap, no automatic retry/training. Inspect completeness/distances
+before later handcrafted feature/GBT preparation. Conditional selector CV,
+final floors/wins, GAT>=2pp and stopping rules unchanged. No job is running.
+Earlier readiness/pending statuses below are preserved history.
+
 **Current continuation,5 November: Stage0 COMPLETE, gate PASSED.** Read
 [Stage1 ready/commands](candidate_stage1_ready_20261105.md),
 [Stage1 contract](candidate_stage1_contract_20261105.md) and

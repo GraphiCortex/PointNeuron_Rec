@@ -1,5 +1,11 @@
 # Stage0 completed; Stage1 ready for local CPU launch
 
+**Completed update,5 November:** Stage1 succeeded locally in7m34s console time,
+460 training labels and611 candidate pools. Packet bindings verified; no
+development labels/model/training/GPU. Do not rerun preparation below.
+Read [Stage1 results and next feature-export command](candidate_stage1_results_20261105.md).
+Preparation instructions below are preserved launch history.
+
 Stage0 completed on151 development boxes/seven repeatedly inspected neurons in
 575.09 seconds. The original union gate passed, with no source/threshold selected.
 

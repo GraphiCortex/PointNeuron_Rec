@@ -13,8 +13,9 @@ arm only. It does not rewrite prior results or promote a new product pipeline.
 Read the [staged/gated protocol](candidate_selection_protocol_20261105.md).
 Stage0 passed its fixed union gate: geometric-oracle F1_2=90.42%, F1_6=95.67%
 on151 development boxes. This is reference-assisted headroom, not selector
-accuracy or topology certification. [Stage1 preparation and feature export](candidate_stage1_ready_20261105.md)
-are ready for user-local launch; no labels/features/selectors have run yet.
+accuracy or topology certification. [Stage1 preparation completed](candidate_stage1_results_20261105.md):460
+training-only label packets and611 candidate pools verified. Frozen feature
+export is ready for user-local CPU launch; no features/selectors have run yet.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
 out CV is disclosed: the frozen upstream encoder/candidates saw all33 training
 neurons, so this is not strict full-pipeline CV. References supply labels and
