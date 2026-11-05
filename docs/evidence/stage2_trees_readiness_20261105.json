@@ -1,0 +1,45 @@
+{
+  "status": "implementation_ready_not_experiment_complete",
+  "date": "2026-11-05",
+  "source_commit_before_implementation": "32a8c33",
+  "branch": "pointneuron2",
+  "config": "configs/stage2_trees_20261105.json",
+  "config_sha256": "074c4c59f80d9a8ba6600ee568d872f0627518c1f6557b1aefa8dd8d13c703e4",
+  "config_fingerprint": "324c75f91da84ea9fdd273789858e79326d31d71652de7e24cdbfe977feaa20d",
+  "source_bindings": 56,
+  "artifact_bindings": 163,
+  "metadata_preflight": "passed: source/runtime/input bindings verified; no data run/model fit",
+  "synthetic_tests": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 8.282,
+    "report": "tmp/stage2_synthetic_checks_result.xml",
+    "report_sha256": "9a563cdd10c596f54f12f6c18364d2c2d9b3b9ddeeba73448d555219fc158bdf",
+    "scope": "toy geometry, real CPU HistGBM fit, serialized model hash guard, training-only C1 labels, frozen feature arms, metric/gate checks and mocked33-fold orchestration/stop order"
+  },
+  "runtime_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "scikit-image": "0.25.2",
+    "psutil": "7.0.0",
+    "joblib": "1.4.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "real_runs": {
+    "preparation": false,
+    "policy": false,
+    "C0_C1_CV": false,
+    "feature_CV": false,
+    "development_scoring": false,
+    "GPU": false,
+    "GATv2": false,
+    "new_development_labels": false
+  },
+  "quality_conclusion": "No Stage2 learnability, transfer accuracy or reconstruction improvement has been measured. Synthetic execution checks only.",
+  "local_commands": "docs/stage2_trees_ready_20261105.md",
+  "protocol": "docs/stage2_trees_protocol_20261105.md",
+  "automatic_next_stage": false
+}

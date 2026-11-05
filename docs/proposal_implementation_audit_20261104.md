@@ -2,6 +2,21 @@
 
 ## Current experimental-arm update — 5 November, user approved
 
+**Latest Stage2 status:** CPU gradient-boosted-tree implementation is approved
+and ready for local launch under the [fixed protocol](stage2_trees_protocol_20261105.md).
+Synthetic checks are execution evidence only. No real Stage2 feature preparation,
+fit, CV or development scoring has run. The older row statuses below are preserved
+history; this table states the current implementation:
+
+| Responsibility | Original PDF / current supplied diagram | Current code and limits |
+|---|---|---|
+| Proposal stage / duplicate handling | PDF Transformer detection removes NMS; diagram has separate consolidation | Approved experimental bypass of Transformer proposals; image-derived source-flagged pool, handcrafted node tree and source>Sato>selector NMS2. No full-pipeline promotion; professor discussion pending. |
+| Node targets | Diagram says derive target nodes and known branch connections | Node labels are continuous-polyline trace support within2, not exact sampled target nodes or unique-representative labels. C0 preserves dense-pool adjacency; C1 recomputes retained-graph adjacency in training only, preserving unknowns. |
+| Selection / features | Diagram Phase4 GATv2 | CPU tree node/edge baseline implemented; PointNeXt features added to edges only, shared handcrafted node policy. Conditional33-neuron selector CV; upstream encoder and learned positions already saw all33. GATv2 not implemented/launched by this work. |
+| Radius / losses / queries | PDF position/radius detection and topology-aware intent, multi-scale queries | Radius1 unsupervised; no topology loss or multi-scale Transformer query implementation. Balanced tree loss is trace supervision, not learned topology. |
+| Orange stages | Crop merging,candidate graph,GATv2,decoding | Per-box candidate union and probability forest/SWC scaffold exist; whole-image assembly, qualified GATv2 and final topology remain unbuilt/unqualified. Fixed forest acyclicity and pruning do not establish biological joins. |
+| Evidence / final quality | Final reconstruction metrics | Segment,resampled one-to-one F1,length,conditional join/break diagnostics and training/CV/dev parity implemented for future runs. No Stage2 quality result exists; development repeatedly inspected and reserved neurons untouched. |
+
 The older table below is the preserved 4-November snapshot, not a claim that
 the failed dense head was adopted. The current arm is governed by
 [the candidate-selection protocol](candidate_selection_protocol_20261105.md).

@@ -25,10 +25,18 @@ now have user disposition:B REJECTED,A HELD. The [fixed compact/resampled audit]
 backfills5,972 graph entries. Compact union F1_2=88.52%,resampled F1_2=64.80%,
 length ratio1.1847x,so the original>=80% headroom branch still proceeds. Original
 Stage0 passed at2.40x length. Compact frozen-label training F1_2=72.28%,ratio
-.5132x exposes lost coverage. A [new Stage2 contract](stage2_candidate_geometry_contract_DRAFT_20261105.md)
-with candidate-geometry context is DRAFT ONLY,not implemented or fitted.
-Stage2 is held for supervision/decoding discussion; no selector
-has trained and no saved label contract changed. Native scoring remains voxels;
+.5132x exposes lost coverage. The user subsequently approved implementing the
+[Stage2 CPU tree protocol](stage2_trees_protocol_20261105.md): image-only
+handcrafted node selection and source/Sato/probability-ordered NMS2, followed
+by C0 versus representative-conditional C1 using training-neuron decoded CV.
+Handcrafted versus PointNeXt-edge trees share node selection. PointNeXt must add
+>=2pp development segment F1 at2 while clearing all6-voxel and other final floors.
+Implementation and synthetic execution checks are ready; **no real Stage2
+preparation, feature extraction, selector fitting, CV or development scoring has
+run**. The earlier [draft](stage2_candidate_geometry_contract_DRAFT_20261105.md)
+is historical; B remains rejected and A held. Original saved labels are unchanged.
+Use the [separate local commands](stage2_trees_ready_20261105.md), with CPU caps,
+write-once evidence and no automatic extension. Native scoring remains voxels;
 conditional micron views use unverified reported spacing on12 training neurons.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
 out CV is disclosed: the frozen upstream encoder/candidates saw all33 training

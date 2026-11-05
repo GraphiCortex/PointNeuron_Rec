@@ -1,5 +1,48 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST continuation,5 November: Stage2 CPU tree implementation APPROVED and
+ready for user-local launches, NOT RUN.** Read
+[fixed protocol](stage2_trees_protocol_20261105.md),
+[commands](stage2_trees_ready_20261105.md), and
+`configs/stage2_trees_20261105.json`. User explicitly answered: keep handcrafted
+node selection/representatives fixed; add PointNeXt to EDGES ONLY. Require its
+>=2pp development segment-F1 gain at2 voxels and every6-voxel floor. No GPU,
+GATv2,automatic extension or new development training labels.
+
+New runner `scripts/run_stage2_trees.py` has separate prepare/policy/compare
+actions (caps2h/1h/6h), isolated `tmp/stage2_cpu_env`/requirements lock, source/input
+bindings, write-once outputs under `tmp/stage2_trees_20261105`, STOP guard and
+first-fold resource projection. Older environments/packets/protocols untouched.
+Only synthetic CPU tests and metadata checks have run during implementation;
+no real preparation/model/CV/development action. No Stage2 quality number exists.
+Readiness evidence: [48 passing synthetic checks and verified56 source/163
+artifact bindings](evidence/stage2_trees_readiness_20261105.json). Tests include
+real HistGBM on toy rows and mocked33-fold orchestration; no retained neuron
+packet entered a fit. No Stage2 run directory exists yet and nothing is running.
+
+Policy: handcrafted p>=.5, NMS inclusive radius2, source classical>Sato>learned,
+then Sato descending,selector p descending,XYZ/index. Fixed611 union pools and
+induced existing edges; no new kNN/rewiring. Policy diagnostic on151 dev selects
+nothing: actual image-cost forest plus reference-assisted EDGE oracle conditional
+on frozen image-selected nodes, compared with88.52/64.80% compact oracle,length
+1.18475. Earlier oracle ordering was probability-first; not the new inference rule.
+
+C0/C1 conditional selector LONO33: each node/edge model fits32 training neurons,
+same representatives per feature arm; C1 retained-set adjacency preserves original
+unknowns and changes no old labels. Choose contract on training-fold decoded
+geometry with pooled length<=1.25,then F1_2/F1_6/resampled F1_2. No AP comparison
+across contracts. Compare HC and +PN edges under chosen contract; same-contract
+AP only. Upstream encoder AND learned positions saw all33: user accepted this
+conditional CV limitation. Global33 node model never used for CV.
+
+Both final edge models frozen before any final dev score; training fit ungated.
+HC must pass dev segment59.33/74.14,strictwins>=5/7 both,resampled52.43/59.72
+and actualclassical+5pp,length<=1.25. On HC failure STOP before PN dev scoring.
+PN also needs>=2pp gain at2; failure stops,no tuning. Repeatedly inspected dev,
+per-box measurement only. Reference-only join/shortcut/fragment and break
+diagnostics are explicitly conditional,not biological topology certification.
+DraftB stays rejected,DraftA held; older status notes below are preserved history.
+
 **LATEST continuation,5 November: compact/resampled audit COMPLETE. DraftB
 REJECTED,DraftA HELD by user.** Read [full new metrics](resampled_compact_results_20261105.md),
 [new Stage2 draft](stage2_candidate_geometry_contract_DRAFT_20261105.md),

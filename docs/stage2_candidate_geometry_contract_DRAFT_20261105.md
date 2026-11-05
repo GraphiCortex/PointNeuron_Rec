@@ -1,5 +1,12 @@
 # Stage2 candidate-geometry supervision — DRAFT ONLY
 
+**Subsequent disposition:** the user approved the CPU tree implementation.
+The active [fixed protocol](stage2_trees_protocol_20261105.md) supersedes the
+implementation-status and proposed-ordering statements below. Its actual NMS
+order is source priority, Sato, then selector probability. Handcrafted node
+selection is fixed between feature arms; PointNeXt is edge-only. Real runs have
+not been launched. This earlier draft is retained as discussion evidence.
+
 User disposition: earlier DraftB REJECTED; earlier DraftA HELD. Neither is
 implemented/promoted. This document proposes a different comparison, with
 candidate-geometry context and explicit representative responsibility. No
