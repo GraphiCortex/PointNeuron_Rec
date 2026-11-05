@@ -1,5 +1,59 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST continuation,5 November: compact/resampled audit COMPLETE. DraftB
+REJECTED,DraftA HELD by user.** Read [full new metrics](resampled_compact_results_20261105.md),
+[new Stage2 draft](stage2_candidate_geometry_contract_DRAFT_20261105.md),
+[portable evidence](evidence/resampled_compact_completed_20261105.json) and
+[fixed protocol](resampled_compact_audit_protocol_20261105.md).
+User explicitly authorized CPU audits;no Stage2 features/model/contract code
+or training. Root `tmp/resampled_compact_audit_20261105`,372.34s guard exit0.
+5,361 historical+611 compact=5,972 graph entries,26 methods;5,450 distinct
+metric cache files. All source/graph hashes and aggregates verified;all611
+old-oracle replays exact before NMS;old460 label packets unchanged. Awake
+helper released;finished.json verified. Sessions68122/57087 done;nothing running.
+
+Original Stage0 gate PASSED at90.42% segment F1_2 with2.39785x pooled length.
+New COMPACT UNIONdev:segment F1_2/F1_6=88.52/95.10%,resampled F1=64.80/72.54%,
+pooled length1.18475x,macro1.16129x. ORIGINAL headroom gate PROCEED>=80%,
+65–80/<65 branches not triggered;NMS not adopted. Weakdev alias94=64.20%F1_2,
+length.5736x,disclosed not a new per-neuron gate. Matched classicaldevsame151:
+segment54.33/69.14%,resampled47.43/54.72%,pooled length.91754x/macro1.27092x.
+
+Original LABEL oracletrain:segment90.82/96.68%,resampled54.40/61.17%,length
+1.56241x. COMPACT LABELtrain:segment72.28/93.38%,resampled68.96/81.88%,length
+.51322x;18,336isolates/54,143 retained nodes,23,860edges. Smaller ratio is
+missing structure,not automatic success. No relabeling or repair performed.
+
+NMS FIXED:eligible oracle p>=.5,greedy inclusive radius2,probability descending
+then classical>Sato>learned source priority,XYZ/index ties. Keep real coordinates,
+remove suppressed nodes' incident edges,NO rewiring/new kNN/relabeling. Original
+spanning/pruning unchanged. Both node oracles binary,so eligible ties use sources.
+Newmetric:clipfirst,maximal degree-two chains every2vox,structural endpoints/
+junctions once by identity,short remainder endpoint included,isolates once,
+cycles deterministic;do NOT weld disconnected coincidences. Bipartite max
+cardinality at2/6vox,pool counts withinneuron thenmacro. New reference samples
+ephemeral scoring only,no development label packets. Native units(1,1,1).
+
+Fullperbox `per_box_metrics.csv`,perneuron `per_neuron_metrics.csv`,and paired
+33-neuron `paired_training_neuron_oracles_NOT_CV.csv` under outputroot. Scope:
+actual saved curve-stage decodes/oracles,raw/pruned classicalknown-box baselines,
+cached reference-edge representationoracle;candidate unions are opportunity
+diagnostics,unknown regions not relabeled. Historical rejectedB gets metrics
+only,never promoted. Whole-image assembly/topology/radius remain unqualified.
+
+New Stage2 contract DRAFT ONLY: C0 original full-pool labels mapped to common
+image-only representatives versus C1 adjacency conditional on retained set.
+Candidate features proposed:ALL-candidate intervening count<=1,local spacing,
+not reference-positive witnesses. Proposed guide-ordered real-inferenceNMS is
+UNTESTED/unadopted;oracle ordering unavailable at inference. No C1 label packet,
+feature/model implementation or trained CV comparison. Draft specifies paired
+33-neuron conditional-selector LONO F1/length comparisons;existing oracle
+tables are explicitly NOT CV. Any trained comparison requires later authorized
+implementation;do not fabricate it. Keep professor discussion/upstream leakage,
+handcrafted-only controls,original final floors/wins and GAT>=2pp disclosed.
+No automatic training or pipeline promotion follows the headroom pass.
+Earlier draft statuses and “next work” notes below are preserved history.
+
 **LATEST continuation,5 November: edge-label geometry audit COMPLETE; Stage2
 HELD for contract/decoding discussion.** Read [full audit](edge_label_geometry_results_20261105.md),
 [unadopted PRE-TRAINING revision](edge_supervision_revision_DRAFT_20261105.md)

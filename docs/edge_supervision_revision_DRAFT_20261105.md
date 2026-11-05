@@ -1,5 +1,10 @@
 # PRE-TRAINING supervision revision — DRAFT, NOT ADOPTED
 
+**Latest user disposition:** OptionB REJECTED; OptionA HELD. The alternatives
+below are preserved history,not active contracts. Continue with the
+[compact/resampled audit](resampled_compact_results_20261105.md) and
+[new Stage2 candidate-geometry draft](stage2_candidate_geometry_contract_DRAFT_20261105.md).
+
 This is a discussion contract, not the active label generator or a training
 manifest. The user's training-only audit trigger was fixed at30% before its
 run; observed179,171/180,269 nonconsecutive negatives (99.39%) have in-box

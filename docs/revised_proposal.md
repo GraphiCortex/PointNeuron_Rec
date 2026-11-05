@@ -21,7 +21,13 @@ and per-neuron fixed-feature AP checks are reported. A [follow-up edge-label
 geometry audit](edge_label_geometry_results_20261105.md) finds99.39% of
 nonconsecutive negatives lie on the trace by the declared overlap test;
 high F1 coexists with excess length. [Pre-training contract revisions](edge_supervision_revision_DRAFT_20261105.md)
-are DRAFT ONLY. Stage2 is held for supervision/decoding discussion; no selector
+now have user disposition:B REJECTED,A HELD. The [fixed compact/resampled audit](resampled_compact_results_20261105.md)
+backfills5,972 graph entries. Compact union F1_2=88.52%,resampled F1_2=64.80%,
+length ratio1.1847x,so the original>=80% headroom branch still proceeds. Original
+Stage0 passed at2.40x length. Compact frozen-label training F1_2=72.28%,ratio
+.5132x exposes lost coverage. A [new Stage2 contract](stage2_candidate_geometry_contract_DRAFT_20261105.md)
+with candidate-geometry context is DRAFT ONLY,not implemented or fitted.
+Stage2 is held for supervision/decoding discussion; no selector
 has trained and no saved label contract changed. Native scoring remains voxels;
 conditional micron views use unverified reported spacing on12 training neurons.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
@@ -252,6 +258,17 @@ approved identities rather than scanning all dataset annotations.
   comparison metric for historical context. It does not establish continuity
   or parentage. Recompute both arms; do not compare the new weighted
   values directly with the old point-sampling headline.
+- **Multiplicity and sampling density (required,5 November):** every decoded
+  skeleton,baseline and reference-assisted oracle must also report predicted
+  arclength/reference arclength and one-to-one matched sample F1 at2/6 native
+  voxels after uniform2-voxel arclength resampling. Use the frozen endpoint,
+  junction,cycle,isolate and clipping conventions in the
+  [resampled evaluator protocol](resampled_compact_audit_protocol_20261105.md).
+  These supplement segment overlap and earlier exact-target-node metrics;
+  they are not interchangeable. Report per-neuron and macro results,with
+  pooled versus neuron-macro length ratios distinguished. Historical frozen
+  outputs stay intact; the new backfill ledger supplies these added metrics.
+  No new numeric acceptance threshold is silently introduced.
 - **Structure:** reference endpoint/junction support, branch continuity,
   disconnected portions, wrong merges and long shortcuts. Implement and test
   correspondence/ambiguity handling before claiming a topology score. A graph

@@ -1,5 +1,10 @@
 # Training edge-label geometry, length and units audit — completed
 
+**Follow-up:** user REJECTED DraftB and HELD DraftA. The
+[fixed compact/resampled audit](resampled_compact_results_20261105.md) is complete;
+new Stage2 supervision remains a [draft only](stage2_candidate_geometry_contract_DRAFT_20261105.md).
+The alternatives below remain historical diagnostic evidence,not adopted targets.
+
 CPU audit completed in167.63 seconds (2m48s),guard exit0,under3600-second cap. All460 training packets,33 neurons; no Stage2 features/model work, GPU, training or development labels. Four new fixtures passed.460 overlap-array packets and920 draft diagnostic SWCs verified; aggregate replay exact,original label hashes unchanged. Temporary sleep-prevention request released.
 
 ## Main result: pre-training revision trigger fires
