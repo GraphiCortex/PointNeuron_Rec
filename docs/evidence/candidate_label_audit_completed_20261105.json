@@ -1,0 +1,4164 @@
+{
+  "status": "completed",
+  "config_fingerprint": "89965a8e6a750d9044b93459409e7dbd7fde377a9c4b1000c18ac2624585ede0",
+  "summaries": {
+    "label_oracle": {
+      "neurons": [
+        {
+          "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          "reference_length": 12048.196611033683,
+          "predicted_length": 14763.145088359734,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9967737715515128,
+              "recall": 0.7570978269425036,
+              "f1": 0.8605592986886019
+            },
+            "6.0": {
+              "precision": 0.9998374430048116,
+              "recall": 0.8977566786689891,
+              "f1": 0.9460513518550991
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+          "reference_length": 9074.521411004273,
+          "predicted_length": 7923.409070446358,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9965835397953151,
+              "recall": 0.553216039435997,
+              "f1": 0.7114803826777703
+            },
+            "6.0": {
+              "precision": 0.9990700449387697,
+              "recall": 0.752219252416495,
+              "f1": 0.858247376319234
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+          "reference_length": 8440.581810803738,
+          "predicted_length": 6135.739571096211,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9916151155519078,
+              "recall": 0.5607701201150718,
+              "f1": 0.7164048132898538
+            },
+            "6.0": {
+              "precision": 0.9995110613862863,
+              "recall": 0.7995035808203914,
+              "f1": 0.8883892925604335
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+          "reference_length": 4602.538543916698,
+          "predicted_length": 5403.887895672165,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9964369266855632,
+              "recall": 0.7860469223236097,
+              "f1": 0.8788255556381791
+            },
+            "6.0": {
+              "precision": 0.9991704145528635,
+              "recall": 0.955961442273064,
+              "f1": 0.9770884631005967
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+          "reference_length": 2177.234211546426,
+          "predicted_length": 2476.286352527033,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9945887293129264,
+              "recall": 0.7198920512436602,
+              "f1": 0.8352342337211479
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8673051340922068,
+              "f1": 0.9289377705415548
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+          "reference_length": 2515.5805430334385,
+          "predicted_length": 3196.8118421169593,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9774383174465491,
+              "recall": 0.8748499128008721,
+              "f1": 0.9233032017615553
+            },
+            "6.0": {
+              "precision": 0.9903284363021506,
+              "recall": 0.9701690069642985,
+              "f1": 0.980145073808377
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+          "reference_length": 1949.3095343526707,
+          "predicted_length": 2500.390803178584,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.999088046971194,
+              "recall": 0.744313890517194,
+              "f1": 0.8530851035781959
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8812136017452862,
+              "f1": 0.936856506807887
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+          "reference_length": 2295.123957869353,
+          "predicted_length": 3683.2771480076767,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9975872206610724,
+              "recall": 0.9064382161234427,
+              "f1": 0.9498309878156348
+            },
+            "6.0": {
+              "precision": 0.9991205238698745,
+              "recall": 0.9971046906975751,
+              "f1": 0.9981115894668602
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+          "reference_length": 4136.787654563068,
+          "predicted_length": 5885.549694992593,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9959858465841445,
+              "recall": 0.8333212426538118,
+              "f1": 0.9074213599498545
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9449960651076532,
+              "f1": 0.9717202847455105
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+          "reference_length": 1140.3987334569067,
+          "predicted_length": 2061.789511154042,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9993212064888459,
+              "recall": 0.8909565896972246,
+              "f1": 0.9420327699366107
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9719487494588969,
+              "f1": 0.9857748582214418
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "reference_length": 972.9005042238595,
+          "predicted_length": 1253.9584882988854,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.7052877056139103,
+              "f1": 0.8271773769224519
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8653801925526106,
+              "f1": 0.9278325094343508
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+          "reference_length": 16440.265791365353,
+          "predicted_length": 37821.96402990678,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9975980804604567,
+              "recall": 0.9497136309536706,
+              "f1": 0.9730671157300154
+            },
+            "6.0": {
+              "precision": 0.9990266196259114,
+              "recall": 0.9875843648180644,
+              "f1": 0.9932725403264953
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+          "reference_length": 6009.279927574493,
+          "predicted_length": 12837.54397671094,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.999049553759979,
+              "recall": 0.9282460569828392,
+              "f1": 0.962347243296778
+            },
+            "6.0": {
+              "precision": 0.9999384173938196,
+              "recall": 0.9915656991819037,
+              "f1": 0.9957344579199607
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "reference_length": 2636.6202941205092,
+          "predicted_length": 7088.559592170658,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9974425609256309,
+              "recall": 0.9859332208994298,
+              "f1": 0.9916544971126633
+            },
+            "6.0": {
+              "precision": 0.9997339913619055,
+              "recall": 0.9994579684446149,
+              "f1": 0.999595960848399
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+          "reference_length": 950.084515663056,
+          "predicted_length": 1211.70117926074,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9997082173421593,
+              "recall": 0.7809374196752212,
+              "f1": 0.8768836869608783
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.930389463948971,
+              "f1": 0.9639396415329434
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+          "reference_length": 1109.3126348355283,
+          "predicted_length": 2297.309982396782,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9994303532430991,
+              "recall": 0.9364163195414591,
+              "f1": 0.9668977467887286
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9788378413892255,
+              "f1": 0.9893057641368341
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+          "reference_length": 789.7097737780333,
+          "predicted_length": 1368.7612410195786,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.925994540976642,
+              "f1": 0.9615754575369508
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9657789799354436,
+              "f1": 0.9825916237716203
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+          "reference_length": 1326.3513187592896,
+          "predicted_length": 3621.0486029304384,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9976810530081092,
+              "recall": 0.9855455522209177,
+              "f1": 0.9915761736301181
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+          "reference_length": 9879.694490055275,
+          "predicted_length": 18122.310938411458,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9972301152284611,
+              "recall": 0.8831778669316293,
+              "f1": 0.9367451897281652
+            },
+            "6.0": {
+              "precision": 0.9992841833589103,
+              "recall": 0.9637898176830261,
+              "f1": 0.9812161134851088
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+          "reference_length": 5953.821904378237,
+          "predicted_length": 11902.72474322837,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9994733988489453,
+              "recall": 0.893482320694126,
+              "f1": 0.9435105139080168
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9473090795638168,
+              "f1": 0.9729416757775373
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+          "reference_length": 1663.4161633710141,
+          "predicted_length": 2428.804771839919,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9963081617437567,
+              "recall": 0.9441488990200663,
+              "f1": 0.9695275128889482
+            },
+            "6.0": {
+              "precision": 0.9976709308565763,
+              "recall": 1.0,
+              "f1": 0.9988341077064053
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+          "reference_length": 7754.989618804675,
+          "predicted_length": 11180.762313277375,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9969272304912937,
+              "recall": 0.8794168418204672,
+              "f1": 0.934492356173585
+            },
+            "6.0": {
+              "precision": 0.9992610081176355,
+              "recall": 0.9907748354851538,
+              "f1": 0.9949998278745492
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+          "reference_length": 4399.0615423425625,
+          "predicted_length": 4862.193548067166,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9941662332701542,
+              "recall": 0.7367098666231594,
+              "f1": 0.8462905844720462
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9319612550978568,
+              "f1": 0.9647825520710575
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+          "reference_length": 1899.5618932798222,
+          "predicted_length": 1586.2316329125247,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9903941494236148,
+              "recall": 0.5541556459869975,
+              "f1": 0.7106698810052688
+            },
+            "6.0": {
+              "precision": 0.9988215040157944,
+              "recall": 0.7592587505168268,
+              "f1": 0.8627182577964597
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+          "reference_length": 7582.288335948651,
+          "predicted_length": 5113.592982797708,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9744151623050163,
+              "recall": 0.5120750011595979,
+              "f1": 0.6713446985808448
+            },
+            "6.0": {
+              "precision": 0.9991254415496025,
+              "recall": 0.7210497813477477,
+              "f1": 0.8376113916521667
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+          "reference_length": 4571.492130635548,
+          "predicted_length": 6944.56890573767,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9943977120120269,
+              "recall": 0.863866765470651,
+              "f1": 0.9245477653761512
+            },
+            "6.0": {
+              "precision": 0.9982764144768081,
+              "recall": 0.966384110971949,
+              "f1": 0.9820714090930078
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+          "reference_length": 589.2931207703286,
+          "predicted_length": 1510.4144860905872,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9996878972459997,
+              "recall": 0.9772872799390393,
+              "f1": 0.9883606806622826
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+          "reference_length": 527.1263694478955,
+          "predicted_length": 1483.9009975729698,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9554123334581787,
+              "recall": 0.9962457471658318,
+              "f1": 0.9754018733580254
+            },
+            "6.0": {
+              "precision": 0.9842150975584768,
+              "recall": 1.0,
+              "f1": 0.9920447624549646
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+          "reference_length": 1697.9844624294808,
+          "predicted_length": 4672.690840211651,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9950427240514881,
+              "recall": 0.9877954461641121,
+              "f1": 0.9914058406994651
+            },
+            "6.0": {
+              "precision": 0.9986990781587302,
+              "recall": 0.9997055332300953,
+              "f1": 0.9992020522542923
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+          "reference_length": 987.8153672641491,
+          "predicted_length": 2407.206405045001,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9971291273925593,
+              "recall": 0.9895731206591132,
+              "f1": 0.9933367551797215
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+          "reference_length": 694.1310287329096,
+          "predicted_length": 1682.8221485517424,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.9641956682544603,
+              "f1": 0.981771504578585
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9972010917807138,
+              "f1": 0.9985985846739196
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+          "reference_length": 1282.6484428980839,
+          "predicted_length": 3718.8962936946073,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9973597411330306,
+              "recall": 0.9845950275718164,
+              "f1": 0.9909362789965213
+            },
+            "6.0": {
+              "precision": 0.9994620041259752,
+              "recall": 1.0,
+              "f1": 0.9997309296836275
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+          "reference_length": 1209.2189808013636,
+          "predicted_length": 2882.6444788225335,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9909452084267495,
+              "recall": 0.97617306926752,
+              "f1": 0.9835036729156211
+            },
+            "6.0": {
+              "precision": 0.9936598475370341,
+              "recall": 0.9979325498196008,
+              "f1": 0.9957916154149901
+            }
+          }
+        }
+      ],
+      "macro": {
+        "2.0": {
+          "precision": 0.99440053741878,
+          "recall": 0.8475113886498808,
+          "f1": 0.9082182458654313
+        },
+        "6.0": {
+          "precision": 0.998612498854301,
+          "recall": 0.9403799853943174,
+          "f1": 0.9667920710707784
+        }
+      }
+    },
+    "geometric_oracle": {
+      "neurons": [
+        {
+          "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          "reference_length": 12048.196611033683,
+          "predicted_length": 22498.955562469506,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9970764308412594,
+              "recall": 0.7805025222063463,
+              "f1": 0.8755961784649493
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9046143537120345,
+              "f1": 0.949918656182517
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+          "reference_length": 9074.521411004273,
+          "predicted_length": 10829.349594526591,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9977332443122646,
+              "recall": 0.5775587747846587,
+              "f1": 0.7316098642806099
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.7733738203643336,
+              "f1": 0.8722061998247459
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+          "reference_length": 8440.581810803738,
+          "predicted_length": 10011.48117040191,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9945763104793901,
+              "recall": 0.6149140171854192,
+              "f1": 0.7599659394805649
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8271748817073385,
+              "f1": 0.9054140246656789
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+          "reference_length": 4602.538543916698,
+          "predicted_length": 8855.302067627013,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9988947375028044,
+              "recall": 0.811444475511036,
+              "f1": 0.8954649057336641
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9652174769300412,
+              "f1": 0.9823009292975075
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+          "reference_length": 2177.234211546426,
+          "predicted_length": 3842.599478897645,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9940459520587285,
+              "recall": 0.7594836026942434,
+              "f1": 0.8610765628293586
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8840673496436953,
+              "f1": 0.9384668226545992
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+          "reference_length": 2515.5805430334385,
+          "predicted_length": 5824.41518237839,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9958906613743601,
+              "recall": 0.8905576655868045,
+              "f1": 0.9402834415315604
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9774123125350831,
+              "f1": 0.9885771483662105
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+          "reference_length": 1949.3095343526707,
+          "predicted_length": 3745.300719197141,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9997497827323785,
+              "recall": 0.7600630697180226,
+              "f1": 0.8635837472779387
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8817502382639651,
+              "f1": 0.9371596934962378
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+          "reference_length": 2295.123957869353,
+          "predicted_length": 5485.201851345084,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.999318516843223,
+              "recall": 0.9419745390462176,
+              "f1": 0.9697995842595288
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.998417564915449,
+              "f1": 0.9992081559368109
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+          "reference_length": 4136.787654563068,
+          "predicted_length": 9430.879257926985,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9977838607319646,
+              "recall": 0.8628304543751599,
+              "f1": 0.925412961658306
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9502725801502201,
+              "f1": 0.9745023232362988
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+          "reference_length": 1140.3987334569067,
+          "predicted_length": 2985.3457125891814,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9982877945237429,
+              "recall": 0.9373139437622308,
+              "f1": 0.9668404932549234
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9812965044632495,
+              "f1": 0.9905599714658471
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "reference_length": 972.9005042238595,
+          "predicted_length": 1637.9521661521392,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9994057973776004,
+              "recall": 0.7386780167928154,
+              "f1": 0.8494861828403693
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8843141460233317,
+              "f1": 0.93860585602416
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+          "reference_length": 16440.265791365353,
+          "predicted_length": 50690.21539494127,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9993007717927117,
+              "recall": 0.9559692103155635,
+              "f1": 0.9771548465632927
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9887853065223564,
+              "f1": 0.9943610336214451
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+          "reference_length": 6009.279927574493,
+          "predicted_length": 15985.240583468087,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9991837926415036,
+              "recall": 0.9386917726530589,
+              "f1": 0.9679936341818647
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9931302080373837,
+              "f1": 0.9965532648419488
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "reference_length": 2636.6202941205092,
+          "predicted_length": 8345.192057779439,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.998961967161692,
+              "recall": 0.9860856417343369,
+              "f1": 0.9924820422868028
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9994579684446149,
+              "f1": 0.9997289107528443
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+          "reference_length": 950.084515663056,
+          "predicted_length": 1630.1684051180707,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9979999690236611,
+              "recall": 0.8074720824422624,
+              "f1": 0.892683010640399
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9401498647226864,
+              "f1": 0.9691517978247169
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+          "reference_length": 1109.3126348355283,
+          "predicted_length": 3221.9268910035853,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9992750978192059,
+              "recall": 0.9482104279567544,
+              "f1": 0.9730732840975993
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9788378413892255,
+              "f1": 0.9893057641368341
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+          "reference_length": 789.7097737780333,
+          "predicted_length": 2252.6012768187707,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9997885400071033,
+              "recall": 0.9339640243170036,
+              "f1": 0.9657559560805854
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9781418984093071,
+              "f1": 0.9889501852176177
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+          "reference_length": 1326.3513187592896,
+          "predicted_length": 4529.858012933924,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9985599600974427,
+              "recall": 0.991197122151058,
+              "f1": 0.9948649185109404
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+          "reference_length": 9879.694490055275,
+          "predicted_length": 26571.90310931289,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9966771031094231,
+              "recall": 0.9097152018573025,
+              "f1": 0.9512127274953157
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9731520567567936,
+              "f1": 0.9863933734091758
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+          "reference_length": 5953.821904378237,
+          "predicted_length": 16990.34998190354,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9988190030440324,
+              "recall": 0.9308823786390399,
+              "f1": 0.9636548102303298
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9769994891183458,
+              "f1": 0.9883659500125054
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+          "reference_length": 1663.4161633710141,
+          "predicted_length": 3890.3702851008384,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9985518240341108,
+              "recall": 0.9824018955164872,
+              "f1": 0.9904110278003896
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+          "reference_length": 7754.989618804675,
+          "predicted_length": 18536.007181724726,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.996434657737265,
+              "recall": 0.9068816653114671,
+              "f1": 0.9495513812810356
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9941045920780099,
+              "f1": 0.9970435813921643
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+          "reference_length": 4399.0615423425625,
+          "predicted_length": 6914.619719694508,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9945926244211724,
+              "recall": 0.7903403885259871,
+              "f1": 0.8807800802700275
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9506267350282531,
+              "f1": 0.9746885121150399
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+          "reference_length": 1899.5618932798222,
+          "predicted_length": 2109.586247610451,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9965933540183517,
+              "recall": 0.5971001972093457,
+              "f1": 0.7467760508455012
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.7880752640524782,
+              "f1": 0.8814788503548685
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+          "reference_length": 7582.288335948651,
+          "predicted_length": 7159.975400728209,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9898377071528673,
+              "recall": 0.5543851231026266,
+              "f1": 0.7107151744943082
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.7454399606147813,
+              "f1": 0.8541570921204548
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+          "reference_length": 4571.492130635548,
+          "predicted_length": 11058.129897808893,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9979595424669382,
+              "recall": 0.8781557537045906,
+              "f1": 0.9342324706483482
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9704510350925272,
+              "f1": 0.9850039587986588
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+          "reference_length": 589.2931207703286,
+          "predicted_length": 1861.5463812653902,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.979869646804217,
+              "f1": 0.9898324855738476
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+          "reference_length": 527.1263694478955,
+          "predicted_length": 1927.1334963317706,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9940474109698281,
+              "recall": 0.9969986387285005,
+              "f1": 0.9955208376206758
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+          "reference_length": 1697.9844624294808,
+          "predicted_length": 5990.998444245206,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9984343277141858,
+              "recall": 0.9907314378707816,
+              "f1": 0.9945679683713314
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9997055332300953,
+              "f1": 0.9998527449341859
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+          "reference_length": 987.8153672641491,
+          "predicted_length": 3362.2664177953047,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9995578276703766,
+              "recall": 0.994012835031355,
+              "f1": 0.9967776198250238
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+          "reference_length": 694.1310287329096,
+          "predicted_length": 2292.826489229829,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9995944714537189,
+              "recall": 0.9817203939116637,
+              "f1": 0.990576808786519
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+          "reference_length": 1282.6484428980839,
+          "predicted_length": 4643.029031607718,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9993884262944327,
+              "recall": 0.992743629560022,
+              "f1": 0.9960549460003261
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+          "reference_length": 1209.2189808013636,
+          "predicted_length": 3937.724371039642,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.9822571803514194,
+              "f1": 0.9910491838170893
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9979325498196008,
+              "f1": 0.9989652052164695
+            }
+          }
+        }
+      ],
+      "macro": {
+        "2.0": {
+          "precision": 0.9977673171941739,
+          "recall": 0.8698517493744786,
+          "f1": 0.9237830644555554
+        },
+        "6.0": {
+          "precision": 1.0,
+          "recall": 0.9485727736977334,
+          "f1": 0.972149091087865
+        }
+      }
+    },
+    "positive_edge_union": {
+      "neurons": [
+        {
+          "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          "reference_length": 12048.196611033683,
+          "predicted_length": 20428.642172397645,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9974358947319355,
+              "recall": 0.7605465988718052,
+              "f1": 0.8630307526850963
+            },
+            "6.0": {
+              "precision": 0.9998825251093617,
+              "recall": 0.898102358870464,
+              "f1": 0.9462634417942168
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+          "reference_length": 9074.521411004273,
+          "predicted_length": 10723.993864205751,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9973117606537798,
+              "recall": 0.5564876478131224,
+              "f1": 0.7143672121360672
+            },
+            "6.0": {
+              "precision": 0.9993129038993714,
+              "recall": 0.7529224393140227,
+              "f1": 0.8587945816251732
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+          "reference_length": 8440.581810803738,
+          "predicted_length": 7676.787957019408,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9932983081472001,
+              "recall": 0.5635907015941276,
+              "f1": 0.719143994052539
+            },
+            "6.0": {
+              "precision": 0.9996092115586889,
+              "recall": 0.8001274097996752,
+              "f1": 0.8888130849420438
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+          "reference_length": 4602.538543916698,
+          "predicted_length": 6999.311870564567,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9969397688428748,
+              "recall": 0.7899402416044559,
+              "f1": 0.8814501670626234
+            },
+            "6.0": {
+              "precision": 0.9992357802797034,
+              "recall": 0.9568072065125216,
+              "f1": 0.9775613338075778
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+          "reference_length": 2177.234211546426,
+          "predicted_length": 3433.337095010389,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9960971336686677,
+              "recall": 0.7237554910272457,
+              "f1": 0.83836342688568
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8681772113873202,
+              "f1": 0.9294377493691899
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+          "reference_length": 2515.5805430334385,
+          "predicted_length": 3900.2991355112113,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9788857432338925,
+              "recall": 0.8782292373454138,
+              "f1": 0.9258296752960665
+            },
+            "6.0": {
+              "precision": 0.989932063436886,
+              "recall": 0.9701690069642985,
+              "f1": 0.9799509029910504
+            }
+          }
+        },
+        {
+          "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+          "reference_length": 1949.3095343526707,
+          "predicted_length": 3438.666784024597,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9993368828358854,
+              "recall": 0.7464372484880254,
+              "f1": 0.8545690530663689
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.881970065238358,
+              "f1": 0.937283840512791
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+          "reference_length": 2295.123957869353,
+          "predicted_length": 5087.662658555611,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9971964028685427,
+              "recall": 0.9145158019073474,
+              "f1": 0.9540681549766594
+            },
+            "6.0": {
+              "precision": 0.9986743739468423,
+              "recall": 0.9974058896080712,
+              "f1": 0.9980397287243964
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+          "reference_length": 4136.787654563068,
+          "predicted_length": 8597.782230916573,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9969793508814058,
+              "recall": 0.8350708640271314,
+              "f1": 0.9088707298334703
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9451117406917606,
+              "f1": 0.9717814364285731
+            }
+          }
+        },
+        {
+          "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+          "reference_length": 1140.3987334569067,
+          "predicted_length": 3411.8088352999393,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9995897984297781,
+              "recall": 0.8948389765452351,
+              "f1": 0.9443183338510662
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9719487494588969,
+              "f1": 0.9857748582214418
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+          "reference_length": 972.9005042238595,
+          "predicted_length": 1866.0423614435872,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.7152075111525811,
+              "f1": 0.8339603301666719
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.8653801925526106,
+              "f1": 0.9278325094343508
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+          "reference_length": 16440.265791365353,
+          "predicted_length": 68696.0823179376,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9980032932418823,
+              "recall": 0.9521741184868153,
+              "f1": 0.9745502129954183
+            },
+            "6.0": {
+              "precision": 0.9993703122217114,
+              "recall": 0.9877653351720163,
+              "f1": 0.9935339368576587
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+          "reference_length": 6009.279927574493,
+          "predicted_length": 21917.628009132233,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9990567650018265,
+              "recall": 0.9340350755868995,
+              "f1": 0.9654523819519003
+            },
+            "6.0": {
+              "precision": 0.9999639299738678,
+              "recall": 0.991703170903436,
+              "f1": 0.9958164190263817
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+          "reference_length": 2636.6202941205092,
+          "predicted_length": 13571.066292942725,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9979191431701285,
+              "recall": 0.9881360308545485,
+              "f1": 0.9930034916881424
+            },
+            "6.0": {
+              "precision": 0.9998610560111887,
+              "recall": 0.9994579684446149,
+              "f1": 0.99965947159417
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+          "reference_length": 950.084515663056,
+          "predicted_length": 1665.038977056494,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9986403641358412,
+              "recall": 0.7828348648357024,
+              "f1": 0.8776664213614451
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.930389463948971,
+              "f1": 0.9639396415329434
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+          "reference_length": 1109.3126348355283,
+          "predicted_length": 4001.347898466032,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9991966472306509,
+              "recall": 0.9386326806772486,
+              "f1": 0.9679682457137424
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9788378413892255,
+              "f1": 0.9893057641368341
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+          "reference_length": 789.7097737780333,
+          "predicted_length": 2189.181035212749,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.925994540976642,
+              "f1": 0.9615754575369508
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9657789799354436,
+              "f1": 0.9825916237716203
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+          "reference_length": 1326.3513187592896,
+          "predicted_length": 7277.2175711375085,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9984158573947267,
+              "recall": 0.9863619860688233,
+              "f1": 0.9923523191935061
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+          "reference_length": 9879.694490055275,
+          "predicted_length": 31838.954324342245,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9978804198897642,
+              "recall": 0.8865881850122769,
+              "f1": 0.9389479750715656
+            },
+            "6.0": {
+              "precision": 0.9995158399954941,
+              "recall": 0.9648531244595644,
+              "f1": 0.9818786578457391
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+          "reference_length": 5953.821904378237,
+          "predicted_length": 21203.95222746563,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9995126150335178,
+              "recall": 0.897084148324197,
+              "f1": 0.9455324825180236
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9503554341409013,
+              "f1": 0.9745458878981378
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+          "reference_length": 1663.4161633710141,
+          "predicted_length": 4099.2449866787665,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9971825419798317,
+              "recall": 0.9510951826564151,
+              "f1": 0.973593754025156
+            },
+            "6.0": {
+              "precision": 0.9986200253295728,
+              "recall": 1.0,
+              "f1": 0.9993095362535459
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+          "reference_length": 7754.989618804675,
+          "predicted_length": 16382.235460614562,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9977576318165041,
+              "recall": 0.884168960242197,
+              "f1": 0.9375353232368779
+            },
+            "6.0": {
+              "precision": 0.9994486387200768,
+              "recall": 0.9927304098163539,
+              "f1": 0.9960781963206506
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+          "reference_length": 4399.0615423425625,
+          "predicted_length": 6607.0558812975705,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9957068770925526,
+              "recall": 0.7418548567900604,
+              "f1": 0.8502373968144458
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9333531248216571,
+              "f1": 0.9655278312468185
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+          "reference_length": 1899.5618932798222,
+          "predicted_length": 2015.0183501644328,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9924382306275027,
+              "recall": 0.5548769814718651,
+              "f1": 0.7117892015818984
+            },
+            "6.0": {
+              "precision": 0.9990722825877715,
+              "recall": 0.7592587505168268,
+              "f1": 0.8628117898985647
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+          "reference_length": 7582.288335948651,
+          "predicted_length": 6445.690103221393,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9791511674437724,
+              "recall": 0.5144216716206045,
+              "f1": 0.6744854581598093
+            },
+            "6.0": {
+              "precision": 0.999306181978441,
+              "recall": 0.7214686168380557,
+              "f1": 0.8379574705598513
+            }
+          }
+        },
+        {
+          "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+          "reference_length": 4571.492130635548,
+          "predicted_length": 10043.99926155529,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9944421985152992,
+              "recall": 0.8656937507878995,
+              "f1": 0.9256123425784639
+            },
+            "6.0": {
+              "precision": 0.9987613536572877,
+              "recall": 0.9665988671830676,
+              "f1": 0.98241694605844
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+          "reference_length": 589.2931207703286,
+          "predicted_length": 2644.918255738864,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9998217697201914,
+              "recall": 0.9780136564632719,
+              "f1": 0.988797482207622
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+          "reference_length": 527.1263694478955,
+          "predicted_length": 2848.4859052443835,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9653829196031452,
+              "recall": 0.9969986387285005,
+              "f1": 0.9809361004333487
+            },
+            "6.0": {
+              "precision": 0.9887002534165861,
+              "recall": 1.0,
+              "f1": 0.9943180242653457
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+          "reference_length": 1697.9844624294808,
+          "predicted_length": 9335.542802447182,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9965432073777145,
+              "recall": 0.9890658856154533,
+              "f1": 0.9927904676074074
+            },
+            "6.0": {
+              "precision": 0.9993488535481901,
+              "recall": 0.9997055332300953,
+              "f1": 0.999527161568999
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+          "reference_length": 987.8153672641491,
+          "predicted_length": 4313.394097511646,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9977025400083264,
+              "recall": 0.9900792881237729,
+              "f1": 0.993876296272368
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+          "reference_length": 694.1310287329096,
+          "predicted_length": 3140.0650732960326,
+          "tolerances": {
+            "2.0": {
+              "precision": 1.0,
+              "recall": 0.967714901569878,
+              "f1": 0.9835925934166762
+            },
+            "6.0": {
+              "precision": 1.0,
+              "recall": 0.9972010917807138,
+              "f1": 0.9985985846739196
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+          "reference_length": 1282.6484428980839,
+          "predicted_length": 7386.537471164438,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.9983708835701336,
+              "recall": 0.9875448446991233,
+              "f1": 0.9929283555517696
+            },
+            "6.0": {
+              "precision": 0.9994939732218865,
+              "recall": 1.0,
+              "f1": 0.9997469225789674
+            }
+          }
+        },
+        {
+          "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+          "reference_length": 1209.2189808013636,
+          "predicted_length": 5531.792695402078,
+          "tolerances": {
+            "2.0": {
+              "precision": 0.991925604394498,
+              "recall": 0.9802370259539394,
+              "f1": 0.9860466773446961
+            },
+            "6.0": {
+              "precision": 0.9939638070655665,
+              "recall": 0.9979325498196008,
+              "f1": 0.9959442246929336
+            }
+          }
+        }
+      ],
+      "macro": {
+        "2.0": {
+          "precision": 0.9953976279255082,
+          "recall": 0.8506735635128069,
+          "f1": 0.9105224929476831
+        },
+        "6.0": {
+          "precision": 0.9988507080593484,
+          "recall": 0.9407731070545013,
+          "f1": 0.9671224714737068
+        }
+      }
+    }
+  },
+  "neurons": [
+    {
+      "case_id": "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+      "alias": 0,
+      "boxes": 26,
+      "counts": {
+        "node": {
+          "total": 37667,
+          "positive": 7609,
+          "negative": 29815,
+          "unknown": 243,
+          "masked_fraction": 0.0064512703427403294,
+          "reasons": {
+            "trace_unique": 7609,
+            "farther_than_2": 29815,
+            "projection_ambiguous": 243,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.20331872595126121
+        },
+        "edge": {
+          "total": 233873,
+          "positive": 9256,
+          "negative": 219588,
+          "unknown": 5029,
+          "masked_fraction": 0.021503123490099328,
+          "reasons": {
+            "consecutive": 9256,
+            "touches_negative": 208832,
+            "unknown_node": 1628,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 2309,
+            "over_32": 1,
+            "nonconsecutive": 10755,
+            "junction_transition_unknown": 1092,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.04044676723007813
+        }
+      },
+      "junction_instances": 2574,
+      "anchored_instances": 76,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 228844,
+          "positive_edges": 9256,
+          "prevalence": 0.04044676723007813,
+          "average_precision": 0.11913499688214464,
+          "trapezoidal_auprc": 0.11907926990648458
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 228844,
+          "positive_edges": 9256,
+          "prevalence": 0.04044676723007813,
+          "average_precision": 0.03792945553576854,
+          "trapezoidal_auprc": 0.10095317675180768
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 23413,
+        "both_positive_unknown": 3401,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.14526117968649896
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+      "alias": 1,
+      "boxes": 26,
+      "counts": {
+        "node": {
+          "total": 34888,
+          "positive": 4239,
+          "negative": 30559,
+          "unknown": 90,
+          "masked_fraction": 0.002579683558816785,
+          "reasons": {
+            "trace_unique": 4239,
+            "farther_than_2": 30559,
+            "projection_ambiguous": 90,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.12181734582447266
+        },
+        "edge": {
+          "total": 219434,
+          "positive": 4791,
+          "negative": 212730,
+          "unknown": 1913,
+          "masked_fraction": 0.0087178832815334,
+          "reasons": {
+            "consecutive": 4791,
+            "touches_negative": 208090,
+            "unknown_node": 478,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1175,
+            "over_32": 0,
+            "nonconsecutive": 4640,
+            "junction_transition_unknown": 260,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.0220254596107962
+        }
+      },
+      "junction_instances": 1560,
+      "anchored_instances": 31,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 217521,
+          "positive_edges": 4791,
+          "prevalence": 0.0220254596107962,
+          "average_precision": 0.09156646758174301,
+          "trapezoidal_auprc": 0.09144502240968917
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 217521,
+          "positive_edges": 4791,
+          "prevalence": 0.0220254596107962,
+          "average_precision": 0.021191103789925978,
+          "trapezoidal_auprc": 0.09229633311956006
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 10866,
+        "both_positive_unknown": 1435,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.13206331676789987
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+      "alias": 7,
+      "boxes": 17,
+      "counts": {
+        "node": {
+          "total": 21832,
+          "positive": 3031,
+          "negative": 18587,
+          "unknown": 214,
+          "masked_fraction": 0.009802125320630267,
+          "reasons": {
+            "trace_unique": 3031,
+            "farther_than_2": 18587,
+            "projection_ambiguous": 214,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.14020723471181423
+        },
+        "edge": {
+          "total": 136822,
+          "positive": 3152,
+          "negative": 131192,
+          "unknown": 2478,
+          "masked_fraction": 0.018111122480302874,
+          "reasons": {
+            "consecutive": 3152,
+            "touches_negative": 127615,
+            "unknown_node": 1210,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 663,
+            "over_32": 0,
+            "nonconsecutive": 3577,
+            "junction_transition_unknown": 605,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.023462156851068897
+        }
+      },
+      "junction_instances": 1581,
+      "anchored_instances": 52,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 134344,
+          "positive_edges": 3152,
+          "prevalence": 0.023462156851068897,
+          "average_precision": 0.08238581516521123,
+          "trapezoidal_auprc": 0.08231273747892445
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 134344,
+          "positive_edges": 3152,
+          "prevalence": 0.023462156851068897,
+          "average_precision": 0.02017532712731282,
+          "trapezoidal_auprc": 0.09941924246556157
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 7997,
+        "both_positive_unknown": 1268,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.15855945979742403
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8",
+      "alias": 9,
+      "boxes": 17,
+      "counts": {
+        "node": {
+          "total": 24256,
+          "positive": 2874,
+          "negative": 21235,
+          "unknown": 147,
+          "masked_fraction": 0.006060356200527704,
+          "reasons": {
+            "trace_unique": 2874,
+            "farther_than_2": 21235,
+            "projection_ambiguous": 147,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.11920859430088349
+        },
+        "edge": {
+          "total": 154869,
+          "positive": 3220,
+          "negative": 149746,
+          "unknown": 1903,
+          "masked_fraction": 0.012287804531571845,
+          "reasons": {
+            "consecutive": 3220,
+            "touches_negative": 145838,
+            "unknown_node": 924,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 636,
+            "over_32": 0,
+            "nonconsecutive": 3908,
+            "junction_transition_unknown": 343,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.02105042950721075
+        }
+      },
+      "junction_instances": 833,
+      "anchored_instances": 41,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 152966,
+          "positive_edges": 3220,
+          "prevalence": 0.02105042950721075,
+          "average_precision": 0.13088633023907031,
+          "trapezoidal_auprc": 0.13056487397865837
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 152966,
+          "positive_edges": 3220,
+          "prevalence": 0.02105042950721075,
+          "average_precision": 0.018694923101981908,
+          "trapezoidal_auprc": 0.04952957433998652
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 8107,
+        "both_positive_unknown": 979,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.12075983717774763
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8",
+      "alias": 10,
+      "boxes": 8,
+      "counts": {
+        "node": {
+          "total": 9000,
+          "positive": 1295,
+          "negative": 7642,
+          "unknown": 63,
+          "masked_fraction": 0.007,
+          "reasons": {
+            "trace_unique": 1295,
+            "farther_than_2": 7642,
+            "projection_ambiguous": 63,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.14490321136846818
+        },
+        "edge": {
+          "total": 56769,
+          "positive": 1550,
+          "negative": 54187,
+          "unknown": 1032,
+          "masked_fraction": 0.018178935686730433,
+          "reasons": {
+            "consecutive": 1550,
+            "touches_negative": 52467,
+            "unknown_node": 430,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 386,
+            "over_32": 0,
+            "nonconsecutive": 1720,
+            "junction_transition_unknown": 216,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.02780917523368678
+        }
+      },
+      "junction_instances": 192,
+      "anchored_instances": 20,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 55737,
+          "positive_edges": 1550,
+          "prevalence": 0.02780917523368678,
+          "average_precision": 0.07100567409476045,
+          "trapezoidal_auprc": 0.07089765928958565
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 55737,
+          "positive_edges": 1550,
+          "prevalence": 0.02780917523368678,
+          "average_precision": 0.02196881377050594,
+          "trapezoidal_auprc": 0.0751056223762792
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 3872,
+        "both_positive_unknown": 602,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.15547520661157024
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8",
+      "alias": 11,
+      "boxes": 10,
+      "counts": {
+        "node": {
+          "total": 10478,
+          "positive": 1663,
+          "negative": 8730,
+          "unknown": 85,
+          "masked_fraction": 0.00811223515938156,
+          "reasons": {
+            "trace_unique": 1663,
+            "farther_than_2": 8730,
+            "projection_ambiguous": 85,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.16001154623304148
+        },
+        "edge": {
+          "total": 67195,
+          "positive": 1830,
+          "negative": 64311,
+          "unknown": 1054,
+          "masked_fraction": 0.01568569089962051,
+          "reasons": {
+            "consecutive": 1830,
+            "touches_negative": 61716,
+            "unknown_node": 554,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 275,
+            "over_32": 0,
+            "nonconsecutive": 2595,
+            "junction_transition_unknown": 225,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.027668163468952692
+        }
+      },
+      "junction_instances": 270,
+      "anchored_instances": 27,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 66141,
+          "positive_edges": 1830,
+          "prevalence": 0.027668163468952692,
+          "average_precision": 0.14396116607608322,
+          "trapezoidal_auprc": 0.14375177839103875
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 66141,
+          "positive_edges": 1830,
+          "prevalence": 0.027668163468952692,
+          "average_precision": 0.01998979442429578,
+          "trapezoidal_auprc": 0.04424839696456012
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 4925,
+        "both_positive_unknown": 500,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.10152284263959391
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8",
+      "alias": 14,
+      "boxes": 9,
+      "counts": {
+        "node": {
+          "total": 11131,
+          "positive": 1327,
+          "negative": 9751,
+          "unknown": 53,
+          "masked_fraction": 0.0047614769562483155,
+          "reasons": {
+            "trace_unique": 1327,
+            "farther_than_2": 9751,
+            "projection_ambiguous": 53,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.11978696515616537
+        },
+        "edge": {
+          "total": 70707,
+          "positive": 1610,
+          "negative": 68217,
+          "unknown": 880,
+          "masked_fraction": 0.012445726731441018,
+          "reasons": {
+            "consecutive": 1610,
+            "touches_negative": 66406,
+            "unknown_node": 347,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 396,
+            "over_32": 0,
+            "nonconsecutive": 1811,
+            "junction_transition_unknown": 137,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.023056983688258124
+        }
+      },
+      "junction_instances": 198,
+      "anchored_instances": 18,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 69827,
+          "positive_edges": 1610,
+          "prevalence": 0.023056983688258124,
+          "average_precision": 0.07579239119642558,
+          "trapezoidal_auprc": 0.07544188985826106
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 69827,
+          "positive_edges": 1610,
+          "prevalence": 0.023056983688258124,
+          "average_precision": 0.02066359879097079,
+          "trapezoidal_auprc": 0.0824065252190346
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 3954,
+        "both_positive_unknown": 533,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.1348002023267577
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/WED_SLP_PN_neuron",
+      "alias": 20,
+      "boxes": 9,
+      "counts": {
+        "node": {
+          "total": 161482,
+          "positive": 2007,
+          "negative": 159272,
+          "unknown": 203,
+          "masked_fraction": 0.001257106055164043,
+          "reasons": {
+            "trace_unique": 2007,
+            "farther_than_2": 159272,
+            "projection_ambiguous": 203,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.012444273588005879
+        },
+        "edge": {
+          "total": 958527,
+          "positive": 2378,
+          "negative": 953968,
+          "unknown": 2181,
+          "masked_fraction": 0.0022753662651130327,
+          "reasons": {
+            "consecutive": 2378,
+            "touches_negative": 951549,
+            "unknown_node": 1345,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 650,
+            "over_32": 0,
+            "nonconsecutive": 2419,
+            "junction_transition_unknown": 186,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.002486547755728575
+        }
+      },
+      "junction_instances": 261,
+      "anchored_instances": 27,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 956346,
+          "positive_edges": 2378,
+          "prevalence": 0.002486547755728575,
+          "average_precision": 0.06254404865939941,
+          "trapezoidal_auprc": 0.06217587591769114
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 956346,
+          "positive_edges": 2378,
+          "prevalence": 0.002486547755728575,
+          "average_precision": 0.015190980391634521,
+          "trapezoidal_auprc": 0.03017889861598144
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 5633,
+        "both_positive_unknown": 836,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.14841114858867388
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron",
+      "alias": 15,
+      "boxes": 14,
+      "counts": {
+        "node": {
+          "total": 16437,
+          "positive": 3216,
+          "negative": 13022,
+          "unknown": 199,
+          "masked_fraction": 0.01210683214698546,
+          "reasons": {
+            "trace_unique": 3216,
+            "farther_than_2": 13022,
+            "projection_ambiguous": 199,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.19805394753048405
+        },
+        "edge": {
+          "total": 104594,
+          "positive": 4091,
+          "negative": 97351,
+          "unknown": 3152,
+          "masked_fraction": 0.030135571830124098,
+          "reasons": {
+            "consecutive": 4091,
+            "touches_negative": 92422,
+            "unknown_node": 1418,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1069,
+            "over_32": 0,
+            "nonconsecutive": 4929,
+            "junction_transition_unknown": 665,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.04032846355552927
+        }
+      },
+      "junction_instances": 854,
+      "anchored_instances": 50,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 101442,
+          "positive_edges": 4091,
+          "prevalence": 0.04032846355552927,
+          "average_precision": 0.22445252284528486,
+          "trapezoidal_auprc": 0.22422040961004236
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 101442,
+          "positive_edges": 4091,
+          "prevalence": 0.04032846355552927,
+          "average_precision": 0.03840129855062567,
+          "trapezoidal_auprc": 0.10058352395046055
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 10754,
+        "both_positive_unknown": 1734,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.1612423284359308
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron",
+      "alias": 18,
+      "boxes": 4,
+      "counts": {
+        "node": {
+          "total": 4467,
+          "positive": 1228,
+          "negative": 3191,
+          "unknown": 48,
+          "masked_fraction": 0.010745466756212223,
+          "reasons": {
+            "trace_unique": 1228,
+            "farther_than_2": 3191,
+            "projection_ambiguous": 48,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.2778909255487667
+        },
+        "edge": {
+          "total": 27997,
+          "positive": 1697,
+          "negative": 25403,
+          "unknown": 897,
+          "masked_fraction": 0.0320391470514698,
+          "reasons": {
+            "consecutive": 1697,
+            "touches_negative": 23467,
+            "unknown_node": 309,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 478,
+            "over_32": 0,
+            "nonconsecutive": 1936,
+            "junction_transition_unknown": 110,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.06261992619926199
+        }
+      },
+      "junction_instances": 40,
+      "anchored_instances": 7,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 27100,
+          "positive_edges": 1697,
+          "prevalence": 0.06261992619926199,
+          "average_precision": 0.3048032898675807,
+          "trapezoidal_auprc": 0.304432484056443
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 27100,
+          "positive_edges": 1697,
+          "prevalence": 0.06261992619926199,
+          "average_precision": 0.06964953257781874,
+          "trapezoidal_auprc": 0.15602430340831203
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 4221,
+        "both_positive_unknown": 588,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.13930348258706468
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_frog_scrippts/done_Recon112012no3-2",
+      "alias": 22,
+      "boxes": 5,
+      "counts": {
+        "node": {
+          "total": 6160,
+          "positive": 694,
+          "negative": 5442,
+          "unknown": 24,
+          "masked_fraction": 0.003896103896103896,
+          "reasons": {
+            "trace_unique": 694,
+            "farther_than_2": 5442,
+            "projection_ambiguous": 24,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.11310299869621904
+        },
+        "edge": {
+          "total": 38486,
+          "positive": 878,
+          "negative": 37102,
+          "unknown": 506,
+          "masked_fraction": 0.013147638102167021,
+          "reasons": {
+            "consecutive": 878,
+            "touches_negative": 36208,
+            "unknown_node": 154,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 294,
+            "over_32": 0,
+            "nonconsecutive": 894,
+            "junction_transition_unknown": 58,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.023117430226434966
+        }
+      },
+      "junction_instances": 50,
+      "anchored_instances": 7,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 37980,
+          "positive_edges": 878,
+          "prevalence": 0.023117430226434966,
+          "average_precision": 0.03939635028346007,
+          "trapezoidal_auprc": 0.039246893208639895
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 37980,
+          "positive_edges": 878,
+          "prevalence": 0.023117430226434966,
+          "average_precision": 0.026454383015203104,
+          "trapezoidal_auprc": 0.14441591338136375
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 2124,
+        "both_positive_unknown": 352,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.1657250470809793
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1",
+      "alias": 25,
+      "boxes": 80,
+      "counts": {
+        "node": {
+          "total": 80227,
+          "positive": 24039,
+          "negative": 55136,
+          "unknown": 1052,
+          "masked_fraction": 0.013112792451419098,
+          "reasons": {
+            "trace_unique": 24039,
+            "farther_than_2": 55136,
+            "projection_ambiguous": 1052,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.3036185664666877
+        },
+        "edge": {
+          "total": 502704,
+          "positive": 36058,
+          "negative": 441473,
+          "unknown": 25173,
+          "masked_fraction": 0.05007519335433973,
+          "reasons": {
+            "consecutive": 36058,
+            "touches_negative": 403459,
+            "unknown_node": 8713,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 12006,
+            "over_32": 0,
+            "nonconsecutive": 38014,
+            "junction_transition_unknown": 4454,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07550923395549189
+        }
+      },
+      "junction_instances": 22560,
+      "anchored_instances": 292,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 477531,
+          "positive_edges": 36058,
+          "prevalence": 0.07550923395549189,
+          "average_precision": 0.19995053819382175,
+          "trapezoidal_auprc": 0.19992742629253465
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 477531,
+          "positive_edges": 36058,
+          "prevalence": 0.07550923395549189,
+          "average_precision": 0.06889162674298023,
+          "trapezoidal_auprc": 0.13487766437449356
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 90532,
+        "both_positive_unknown": 16460,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.18181416515707152
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+      "alias": 23,
+      "boxes": 35,
+      "counts": {
+        "node": {
+          "total": 35320,
+          "positive": 7660,
+          "negative": 27511,
+          "unknown": 149,
+          "masked_fraction": 0.004218573046432616,
+          "reasons": {
+            "trace_unique": 7660,
+            "farther_than_2": 27511,
+            "projection_ambiguous": 149,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.21779306815273947
+        },
+        "edge": {
+          "total": 223280,
+          "positive": 10986,
+          "negative": 207362,
+          "unknown": 4932,
+          "masked_fraction": 0.02208885704048728,
+          "reasons": {
+            "consecutive": 10986,
+            "touches_negative": 196380,
+            "unknown_node": 1044,
+            "fragment_relation_unknown": 314,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 3574,
+            "over_32": 0,
+            "nonconsecutive": 10982,
+            "junction_transition_unknown": 0,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.05031417736823786
+        }
+      },
+      "junction_instances": 0,
+      "anchored_instances": 0,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 218348,
+          "positive_edges": 10986,
+          "prevalence": 0.05031417736823786,
+          "average_precision": 0.16061578365020318,
+          "trapezoidal_auprc": 0.160507764976834
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 218348,
+          "positive_edges": 10986,
+          "prevalence": 0.05031417736823786,
+          "average_precision": 0.04897724198936382,
+          "trapezoidal_auprc": 0.13290029264577857
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 25856,
+        "both_positive_unknown": 3888,
+        "cross_component_positive_endpoint_edges": 314,
+        "cross_component_masked": 314,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 51,
+        "masked_fraction_both_positive": 0.15037128712871287
+      },
+      "known_fragmented_alias": true
+    },
+    {
+      "case_id": "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1",
+      "alias": 32,
+      "boxes": 15,
+      "counts": {
+        "node": {
+          "total": 15139,
+          "positive": 4540,
+          "negative": 10539,
+          "unknown": 60,
+          "masked_fraction": 0.0039632736640465025,
+          "reasons": {
+            "trace_unique": 4540,
+            "farther_than_2": 10539,
+            "projection_ambiguous": 60,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.30108097353935936
+        },
+        "edge": {
+          "total": 95253,
+          "positive": 7145,
+          "negative": 84937,
+          "unknown": 3171,
+          "masked_fraction": 0.03329029006960411,
+          "reasons": {
+            "consecutive": 7145,
+            "touches_negative": 77365,
+            "unknown_node": 511,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 2419,
+            "over_32": 0,
+            "nonconsecutive": 7572,
+            "junction_transition_unknown": 241,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07759388371234334
+        }
+      },
+      "junction_instances": 240,
+      "anchored_instances": 16,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 92082,
+          "positive_edges": 7145,
+          "prevalence": 0.07759388371234334,
+          "average_precision": 0.2074040069193165,
+          "trapezoidal_auprc": 0.20730673820747503
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 92082,
+          "positive_edges": 7145,
+          "prevalence": 0.07759388371234334,
+          "average_precision": 0.07274792587449846,
+          "trapezoidal_auprc": 0.14212099093381056
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 17377,
+        "both_positive_unknown": 2660,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.15307590493180642
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31",
+      "alias": 39,
+      "boxes": 7,
+      "counts": {
+        "node": {
+          "total": 8080,
+          "positive": 597,
+          "negative": 7462,
+          "unknown": 21,
+          "masked_fraction": 0.002599009900990099,
+          "reasons": {
+            "trace_unique": 597,
+            "farther_than_2": 7462,
+            "projection_ambiguous": 21,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07407866981015014
+        },
+        "edge": {
+          "total": 50710,
+          "positive": 720,
+          "negative": 49628,
+          "unknown": 362,
+          "masked_fraction": 0.0071386314336422795,
+          "reasons": {
+            "consecutive": 720,
+            "touches_negative": 48927,
+            "unknown_node": 126,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 195,
+            "over_32": 0,
+            "nonconsecutive": 701,
+            "junction_transition_unknown": 41,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.014300468737586398
+        }
+      },
+      "junction_instances": 28,
+      "anchored_instances": 4,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 50348,
+          "positive_edges": 720,
+          "prevalence": 0.014300468737586398,
+          "average_precision": 0.09797512526801876,
+          "trapezoidal_auprc": 0.09699291461823095
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 50348,
+          "positive_edges": 720,
+          "prevalence": 0.014300468737586398,
+          "average_precision": 0.017013949847852275,
+          "trapezoidal_auprc": 0.15566512197316412
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 1657,
+        "both_positive_unknown": 236,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.1424260712130356
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5",
+      "alias": 41,
+      "boxes": 7,
+      "counts": {
+        "node": {
+          "total": 6883,
+          "positive": 1348,
+          "negative": 5488,
+          "unknown": 47,
+          "masked_fraction": 0.006828417841057678,
+          "reasons": {
+            "trace_unique": 1348,
+            "farther_than_2": 5488,
+            "projection_ambiguous": 47,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.19719133996489174
+        },
+        "edge": {
+          "total": 43445,
+          "positive": 1981,
+          "negative": 40296,
+          "unknown": 1168,
+          "masked_fraction": 0.02688456669352054,
+          "reasons": {
+            "consecutive": 1981,
+            "touches_negative": 38067,
+            "unknown_node": 363,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 628,
+            "over_32": 0,
+            "nonconsecutive": 2229,
+            "junction_transition_unknown": 177,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.04685762944390567
+        }
+      },
+      "junction_instances": 105,
+      "anchored_instances": 13,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 42277,
+          "positive_edges": 1981,
+          "prevalence": 0.04685762944390567,
+          "average_precision": 0.17731006643675765,
+          "trapezoidal_auprc": 0.176825794984531
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 42277,
+          "positive_edges": 1981,
+          "prevalence": 0.04685762944390567,
+          "average_precision": 0.04127118367405622,
+          "trapezoidal_auprc": 0.10387232062336438
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 5015,
+        "both_positive_unknown": 805,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.16051844466600199
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021",
+      "alias": 46,
+      "boxes": 5,
+      "counts": {
+        "node": {
+          "total": 6295,
+          "positive": 793,
+          "negative": 5465,
+          "unknown": 37,
+          "masked_fraction": 0.005877680698967435,
+          "reasons": {
+            "trace_unique": 793,
+            "farther_than_2": 5465,
+            "projection_ambiguous": 37,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.1267178012144455
+        },
+        "edge": {
+          "total": 39513,
+          "positive": 1081,
+          "negative": 37734,
+          "unknown": 698,
+          "masked_fraction": 0.017665072254700983,
+          "reasons": {
+            "consecutive": 1081,
+            "touches_negative": 36203,
+            "unknown_node": 317,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 282,
+            "over_32": 3,
+            "nonconsecutive": 1528,
+            "junction_transition_unknown": 99,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.02785005796728069
+        }
+      },
+      "junction_instances": 45,
+      "anchored_instances": 9,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 38815,
+          "positive_edges": 1081,
+          "prevalence": 0.02785005796728069,
+          "average_precision": 0.21178419907760604,
+          "trapezoidal_auprc": 0.21125109219371263
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 38815,
+          "positive_edges": 1081,
+          "prevalence": 0.02785005796728069,
+          "average_precision": 0.02956648438347357,
+          "trapezoidal_auprc": 0.08510111130590993
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 2993,
+        "both_positive_unknown": 381,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.1272970263949215
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5",
+      "alias": 53,
+      "boxes": 6,
+      "counts": {
+        "node": {
+          "total": 6212,
+          "positive": 2554,
+          "negative": 3524,
+          "unknown": 134,
+          "masked_fraction": 0.021571152607855762,
+          "reasons": {
+            "trace_unique": 2554,
+            "farther_than_2": 3524,
+            "projection_ambiguous": 134,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.42020401447844685
+        },
+        "edge": {
+          "total": 38923,
+          "positive": 4069,
+          "negative": 31770,
+          "unknown": 3084,
+          "masked_fraction": 0.07923335816869204,
+          "reasons": {
+            "consecutive": 4069,
+            "touches_negative": 27303,
+            "unknown_node": 1144,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1592,
+            "over_32": 0,
+            "nonconsecutive": 4467,
+            "junction_transition_unknown": 348,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.11353553391556684
+        }
+      },
+      "junction_instances": 192,
+      "anchored_instances": 31,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 35839,
+          "positive_edges": 4069,
+          "prevalence": 0.11353553391556684,
+          "average_precision": 0.40261662071723997,
+          "trapezoidal_auprc": 0.40242144732185015
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 35839,
+          "positive_edges": 4069,
+          "prevalence": 0.11353553391556684,
+          "average_precision": 0.13994943756493738,
+          "trapezoidal_auprc": 0.2633407760922979
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 10476,
+        "both_positive_unknown": 1940,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.18518518518518517
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/HO_140921c14",
+      "alias": 66,
+      "boxes": 26,
+      "counts": {
+        "node": {
+          "total": 30360,
+          "positive": 11092,
+          "negative": 18800,
+          "unknown": 468,
+          "masked_fraction": 0.01541501976284585,
+          "reasons": {
+            "trace_unique": 11092,
+            "farther_than_2": 18800,
+            "projection_ambiguous": 468,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.3710691823899371
+        },
+        "edge": {
+          "total": 189894,
+          "positive": 16065,
+          "negative": 163340,
+          "unknown": 10489,
+          "masked_fraction": 0.05523607907569486,
+          "reasons": {
+            "consecutive": 16065,
+            "touches_negative": 144285,
+            "unknown_node": 3504,
+            "fragment_relation_unknown": 1883,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 5102,
+            "over_32": 1,
+            "nonconsecutive": 19054,
+            "junction_transition_unknown": 0,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.08954599927538251
+        }
+      },
+      "junction_instances": 0,
+      "anchored_instances": 0,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 179405,
+          "positive_edges": 16065,
+          "prevalence": 0.08954599927538251,
+          "average_precision": 0.27529871829245345,
+          "trapezoidal_auprc": 0.2752311766041162
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 179405,
+          "positive_edges": 16065,
+          "prevalence": 0.08954599927538251,
+          "average_precision": 0.09279085711467601,
+          "trapezoidal_auprc": 0.17421110032939918
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 42105,
+        "both_positive_unknown": 6985,
+        "cross_component_positive_endpoint_edges": 1883,
+        "cross_component_masked": 1883,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 200,
+        "masked_fraction_both_positive": 0.16589478684241776
+      },
+      "known_fragmented_alias": true
+    },
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140918c8",
+      "alias": 75,
+      "boxes": 19,
+      "counts": {
+        "node": {
+          "total": 23618,
+          "positive": 7163,
+          "negative": 16179,
+          "unknown": 276,
+          "masked_fraction": 0.01168600220171056,
+          "reasons": {
+            "trace_unique": 7163,
+            "farther_than_2": 16179,
+            "projection_ambiguous": 276,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.306871733356182
+        },
+        "edge": {
+          "total": 147434,
+          "positive": 10708,
+          "negative": 130615,
+          "unknown": 6111,
+          "masked_fraction": 0.04144905517044915,
+          "reasons": {
+            "consecutive": 10708,
+            "touches_negative": 118098,
+            "unknown_node": 1917,
+            "fragment_relation_unknown": 743,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 3451,
+            "over_32": 1,
+            "nonconsecutive": 12516,
+            "junction_transition_unknown": 0,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07576969070851879
+        }
+      },
+      "junction_instances": 0,
+      "anchored_instances": 0,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 141323,
+          "positive_edges": 10708,
+          "prevalence": 0.07576969070851879,
+          "average_precision": 0.17433598267776249,
+          "trapezoidal_auprc": 0.17427430785667702
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 141323,
+          "positive_edges": 10708,
+          "prevalence": 0.07576969070851879,
+          "average_precision": 0.07552590881262057,
+          "trapezoidal_auprc": 0.149282333561388
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 27419,
+        "both_positive_unknown": 4194,
+        "cross_component_positive_endpoint_edges": 743,
+        "cross_component_masked": 743,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 80,
+        "masked_fraction_both_positive": 0.1529596265363434
+      },
+      "known_fragmented_alias": true
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg",
+      "alias": 85,
+      "boxes": 5,
+      "counts": {
+        "node": {
+          "total": 5464,
+          "positive": 1782,
+          "negative": 3439,
+          "unknown": 243,
+          "masked_fraction": 0.04447291361639824,
+          "reasons": {
+            "trace_unique": 1782,
+            "farther_than_2": 3439,
+            "projection_ambiguous": 243,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.3413139245355296
+        },
+        "edge": {
+          "total": 33371,
+          "positive": 2243,
+          "negative": 27556,
+          "unknown": 3572,
+          "masked_fraction": 0.10703904587815768,
+          "reasons": {
+            "consecutive": 2243,
+            "touches_negative": 24565,
+            "unknown_node": 2110,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 920,
+            "over_32": 0,
+            "nonconsecutive": 2991,
+            "junction_transition_unknown": 542,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07527098224772644
+        }
+      },
+      "junction_instances": 470,
+      "anchored_instances": 79,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 29799,
+          "positive_edges": 2243,
+          "prevalence": 0.07527098224772644,
+          "average_precision": 0.2307259207080644,
+          "trapezoidal_auprc": 0.2302396913277833
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 29799,
+          "positive_edges": 2243,
+          "prevalence": 0.07527098224772644,
+          "average_precision": 0.08217241978851209,
+          "trapezoidal_auprc": 0.2092411189557854
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 6696,
+        "both_positive_unknown": 1462,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.21833930704898447
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg",
+      "alias": 86,
+      "boxes": 9,
+      "counts": {
+        "node": {
+          "total": 19900,
+          "positive": 6439,
+          "negative": 13217,
+          "unknown": 244,
+          "masked_fraction": 0.012261306532663316,
+          "reasons": {
+            "trace_unique": 6439,
+            "farther_than_2": 13217,
+            "projection_ambiguous": 244,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.32758445258445257
+        },
+        "edge": {
+          "total": 120942,
+          "positive": 8153,
+          "negative": 107870,
+          "unknown": 4919,
+          "masked_fraction": 0.0406723884175886,
+          "reasons": {
+            "consecutive": 8153,
+            "touches_negative": 97819,
+            "unknown_node": 1770,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 2068,
+            "over_32": 0,
+            "nonconsecutive": 10051,
+            "junction_transition_unknown": 1081,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07027054980478009
+        }
+      },
+      "junction_instances": 1548,
+      "anchored_instances": 131,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 116023,
+          "positive_edges": 8153,
+          "prevalence": 0.07027054980478009,
+          "average_precision": 0.24021206808237752,
+          "trapezoidal_auprc": 0.2401088905984009
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 116023,
+          "positive_edges": 8153,
+          "prevalence": 0.07027054980478009,
+          "average_precision": 0.08131019282665497,
+          "trapezoidal_auprc": 0.11201312228831968
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 21353,
+        "both_positive_unknown": 3149,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.14747342293822882
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2",
+      "alias": 92,
+      "boxes": 11,
+      "counts": {
+        "node": {
+          "total": 12098,
+          "positive": 2318,
+          "negative": 9661,
+          "unknown": 119,
+          "masked_fraction": 0.009836336584559431,
+          "reasons": {
+            "trace_unique": 2318,
+            "farther_than_2": 9661,
+            "projection_ambiguous": 119,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.19350530094331747
+        },
+        "edge": {
+          "total": 76956,
+          "positive": 2743,
+          "negative": 72261,
+          "unknown": 1952,
+          "masked_fraction": 0.025365143718488487,
+          "reasons": {
+            "consecutive": 2743,
+            "touches_negative": 69379,
+            "unknown_node": 775,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 720,
+            "over_32": 0,
+            "nonconsecutive": 2882,
+            "junction_transition_unknown": 457,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.03657138285958082
+        }
+      },
+      "junction_instances": 880,
+      "anchored_instances": 60,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 75004,
+          "positive_edges": 2743,
+          "prevalence": 0.03657138285958082,
+          "average_precision": 0.08356626348315886,
+          "trapezoidal_auprc": 0.08345763282667493
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 75004,
+          "positive_edges": 2743,
+          "prevalence": 0.03657138285958082,
+          "average_precision": 0.03465842628379301,
+          "trapezoidal_auprc": 0.1385335291938538
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 6802,
+        "both_positive_unknown": 1177,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.17303734195824758
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2",
+      "alias": 93,
+      "boxes": 10,
+      "counts": {
+        "node": {
+          "total": 8011,
+          "positive": 681,
+          "negative": 7302,
+          "unknown": 28,
+          "masked_fraction": 0.003495194108101361,
+          "reasons": {
+            "trace_unique": 681,
+            "farther_than_2": 7302,
+            "projection_ambiguous": 28,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.08530627583615183
+        },
+        "edge": {
+          "total": 50992,
+          "positive": 758,
+          "negative": 49785,
+          "unknown": 449,
+          "masked_fraction": 0.008805302792594916,
+          "reasons": {
+            "consecutive": 758,
+            "touches_negative": 49121,
+            "unknown_node": 170,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 191,
+            "over_32": 0,
+            "nonconsecutive": 664,
+            "junction_transition_unknown": 88,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.014997131155649645
+        }
+      },
+      "junction_instances": 190,
+      "anchored_instances": 12,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 50543,
+          "positive_edges": 758,
+          "prevalence": 0.014997131155649645,
+          "average_precision": 0.039931043085656856,
+          "trapezoidal_auprc": 0.039662480665587335
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 50543,
+          "positive_edges": 758,
+          "prevalence": 0.014997131155649645,
+          "average_precision": 0.01571641359684461,
+          "trapezoidal_auprc": 0.2668492829987383
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 1701,
+        "both_positive_unknown": 279,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.164021164021164
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+      "alias": 95,
+      "boxes": 22,
+      "counts": {
+        "node": {
+          "total": 19462,
+          "positive": 2040,
+          "negative": 17314,
+          "unknown": 108,
+          "masked_fraction": 0.0055492755112526975,
+          "reasons": {
+            "trace_unique": 2040,
+            "farther_than_2": 17314,
+            "projection_ambiguous": 108,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.1054045675312597
+        },
+        "edge": {
+          "total": 124826,
+          "positive": 2203,
+          "negative": 121229,
+          "unknown": 1394,
+          "masked_fraction": 0.011167545222950347,
+          "reasons": {
+            "consecutive": 2203,
+            "touches_negative": 119215,
+            "unknown_node": 621,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 513,
+            "over_32": 2,
+            "nonconsecutive": 2012,
+            "junction_transition_unknown": 260,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.0178478838550781
+        }
+      },
+      "junction_instances": 1716,
+      "anchored_instances": 37,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 123432,
+          "positive_edges": 2203,
+          "prevalence": 0.0178478838550781,
+          "average_precision": 0.056375961640646496,
+          "trapezoidal_auprc": 0.056269497862343185
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 123432,
+          "positive_edges": 2203,
+          "prevalence": 0.0178478838550781,
+          "average_precision": 0.01915247887886862,
+          "trapezoidal_auprc": 0.24555565116523223
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 4990,
+        "both_positive_unknown": 773,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.15490981963927855
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2",
+      "alias": 96,
+      "boxes": 18,
+      "counts": {
+        "node": {
+          "total": 19344,
+          "positive": 3786,
+          "negative": 15428,
+          "unknown": 130,
+          "masked_fraction": 0.006720430107526882,
+          "reasons": {
+            "trace_unique": 3786,
+            "farther_than_2": 15428,
+            "projection_ambiguous": 130,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.1970438222129697
+        },
+        "edge": {
+          "total": 123143,
+          "positive": 4783,
+          "negative": 115834,
+          "unknown": 2526,
+          "masked_fraction": 0.020512737224202757,
+          "reasons": {
+            "consecutive": 4783,
+            "touches_negative": 109726,
+            "unknown_node": 923,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1173,
+            "over_32": 0,
+            "nonconsecutive": 6108,
+            "junction_transition_unknown": 430,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.039654443403500335
+        }
+      },
+      "junction_instances": 684,
+      "anchored_instances": 33,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 120617,
+          "positive_edges": 4783,
+          "prevalence": 0.039654443403500335,
+          "average_precision": 0.16718800079149818,
+          "trapezoidal_auprc": 0.167050775710024
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 120617,
+          "positive_edges": 4783,
+          "prevalence": 0.039654443403500335,
+          "average_precision": 0.03193444780126138,
+          "trapezoidal_auprc": 0.08553854877809755
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 12494,
+        "both_positive_unknown": 1603,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.12830158476068512
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1",
+      "alias": 102,
+      "boxes": 3,
+      "counts": {
+        "node": {
+          "total": 3264,
+          "positive": 957,
+          "negative": 2248,
+          "unknown": 59,
+          "masked_fraction": 0.018075980392156864,
+          "reasons": {
+            "trace_unique": 957,
+            "farther_than_2": 2248,
+            "projection_ambiguous": 59,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.2985959438377535
+        },
+        "edge": {
+          "total": 20226,
+          "positive": 1399,
+          "negative": 17604,
+          "unknown": 1223,
+          "masked_fraction": 0.06046672599624246,
+          "reasons": {
+            "consecutive": 1399,
+            "touches_negative": 16310,
+            "unknown_node": 473,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 579,
+            "over_32": 0,
+            "nonconsecutive": 1294,
+            "junction_transition_unknown": 171,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07361995474398779
+        }
+      },
+      "junction_instances": 39,
+      "anchored_instances": 13,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 19003,
+          "positive_edges": 1399,
+          "prevalence": 0.07361995474398779,
+          "average_precision": 0.17178221661221846,
+          "trapezoidal_auprc": 0.1714533833137255
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 19003,
+          "positive_edges": 1399,
+          "prevalence": 0.07361995474398779,
+          "average_precision": 0.07688725859483664,
+          "trapezoidal_auprc": 0.17900587723421885
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 3443,
+        "both_positive_unknown": 750,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.21783328492593668
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9",
+      "alias": 108,
+      "boxes": 4,
+      "counts": {
+        "node": {
+          "total": 3824,
+          "positive": 1150,
+          "negative": 2546,
+          "unknown": 128,
+          "masked_fraction": 0.03347280334728033,
+          "reasons": {
+            "trace_unique": 1150,
+            "farther_than_2": 2546,
+            "projection_ambiguous": 128,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.31114718614718617
+        },
+        "edge": {
+          "total": 23554,
+          "positive": 1675,
+          "negative": 19681,
+          "unknown": 2198,
+          "masked_fraction": 0.09331748323002463,
+          "reasons": {
+            "consecutive": 1675,
+            "touches_negative": 18076,
+            "unknown_node": 1056,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 744,
+            "over_32": 0,
+            "nonconsecutive": 1605,
+            "junction_transition_unknown": 398,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07843229069114066
+        }
+      },
+      "junction_instances": 112,
+      "anchored_instances": 34,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 21356,
+          "positive_edges": 1675,
+          "prevalence": 0.07843229069114066,
+          "average_precision": 0.25976660649791705,
+          "trapezoidal_auprc": 0.2593036481344073
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 21356,
+          "positive_edges": 1675,
+          "prevalence": 0.07843229069114066,
+          "average_precision": 0.09083287658258732,
+          "trapezoidal_auprc": 0.2557008427845621
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 4422,
+        "both_positive_unknown": 1142,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.25825418362731795
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0",
+      "alias": 126,
+      "boxes": 11,
+      "counts": {
+        "node": {
+          "total": 10438,
+          "positive": 3380,
+          "negative": 6847,
+          "unknown": 211,
+          "masked_fraction": 0.02021460049817973,
+          "reasons": {
+            "trace_unique": 3380,
+            "farther_than_2": 6847,
+            "projection_ambiguous": 211,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.33049770216094654
+        },
+        "edge": {
+          "total": 65613,
+          "positive": 5256,
+          "negative": 55991,
+          "unknown": 4366,
+          "masked_fraction": 0.06654169143310015,
+          "reasons": {
+            "consecutive": 5256,
+            "touches_negative": 50446,
+            "unknown_node": 1763,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1973,
+            "over_32": 0,
+            "nonconsecutive": 5545,
+            "junction_transition_unknown": 630,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.08581644815256258
+        }
+      },
+      "junction_instances": 429,
+      "anchored_instances": 44,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 61247,
+          "positive_edges": 5256,
+          "prevalence": 0.08581644815256258,
+          "average_precision": 0.3164778071492137,
+          "trapezoidal_auprc": 0.316285174405917
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 61247,
+          "positive_edges": 5256,
+          "prevalence": 0.08581644815256258,
+          "average_precision": 0.09656311177221359,
+          "trapezoidal_auprc": 0.23482181336593286
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 13404,
+        "both_positive_unknown": 2603,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.19419576245896747
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat",
+      "alias": 143,
+      "boxes": 6,
+      "counts": {
+        "node": {
+          "total": 5301,
+          "positive": 1496,
+          "negative": 3673,
+          "unknown": 132,
+          "masked_fraction": 0.02490096208262592,
+          "reasons": {
+            "trace_unique": 1496,
+            "farther_than_2": 3673,
+            "projection_ambiguous": 132,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.2894176823370091
+        },
+        "edge": {
+          "total": 32358,
+          "positive": 2281,
+          "negative": 27946,
+          "unknown": 2131,
+          "masked_fraction": 0.06585697509116756,
+          "reasons": {
+            "consecutive": 2281,
+            "touches_negative": 25612,
+            "unknown_node": 1073,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 965,
+            "over_32": 0,
+            "nonconsecutive": 2334,
+            "junction_transition_unknown": 93,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.07546233499851127
+        }
+      },
+      "junction_instances": 42,
+      "anchored_instances": 8,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 30227,
+          "positive_edges": 2281,
+          "prevalence": 0.07546233499851127,
+          "average_precision": 0.16348945175848556,
+          "trapezoidal_auprc": 0.1631041245510638
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 30227,
+          "positive_edges": 2281,
+          "prevalence": 0.07546233499851127,
+          "average_precision": 0.06187368590442342,
+          "trapezoidal_auprc": 0.1802354061150907
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 5673,
+        "both_positive_unknown": 1058,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.18649744403313942
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif",
+      "alias": 149,
+      "boxes": 3,
+      "counts": {
+        "node": {
+          "total": 3219,
+          "positive": 1139,
+          "negative": 1956,
+          "unknown": 124,
+          "masked_fraction": 0.03852127990059025,
+          "reasons": {
+            "trace_unique": 1139,
+            "farther_than_2": 1956,
+            "projection_ambiguous": 124,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.3680129240710824
+        },
+        "edge": {
+          "total": 19759,
+          "positive": 1704,
+          "negative": 16137,
+          "unknown": 1918,
+          "masked_fraction": 0.09706968976162761,
+          "reasons": {
+            "consecutive": 1704,
+            "touches_negative": 14412,
+            "unknown_node": 1034,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 713,
+            "over_32": 0,
+            "nonconsecutive": 1725,
+            "junction_transition_unknown": 171,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.09551034134857911
+        }
+      },
+      "junction_instances": 45,
+      "anchored_instances": 15,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 17841,
+          "positive_edges": 1704,
+          "prevalence": 0.09551034134857911,
+          "average_precision": 0.18941797815130118,
+          "trapezoidal_auprc": 0.18900741008993707
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 17841,
+          "positive_edges": 1704,
+          "prevalence": 0.09551034134857911,
+          "average_precision": 0.1026210922865714,
+          "trapezoidal_auprc": 0.220373929149706
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 4313,
+        "both_positive_unknown": 884,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.20496174356596336
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif",
+      "alias": 158,
+      "boxes": 7,
+      "counts": {
+        "node": {
+          "total": 7045,
+          "positive": 2612,
+          "negative": 4214,
+          "unknown": 219,
+          "masked_fraction": 0.031085876508161817,
+          "reasons": {
+            "trace_unique": 2612,
+            "farther_than_2": 4214,
+            "projection_ambiguous": 219,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.382654556108995
+        },
+        "edge": {
+          "total": 43342,
+          "positive": 4059,
+          "negative": 35370,
+          "unknown": 3913,
+          "masked_fraction": 0.09028194361127774,
+          "reasons": {
+            "consecutive": 4059,
+            "touches_negative": 31520,
+            "unknown_node": 1830,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1843,
+            "over_32": 0,
+            "nonconsecutive": 3850,
+            "junction_transition_unknown": 240,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.10294453321159552
+        }
+      },
+      "junction_instances": 91,
+      "anchored_instances": 13,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 39429,
+          "positive_edges": 4059,
+          "prevalence": 0.10294453321159552,
+          "average_precision": 0.2173187730864009,
+          "trapezoidal_auprc": 0.21705172904975578
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 39429,
+          "positive_edges": 4059,
+          "prevalence": 0.10294453321159552,
+          "average_precision": 0.11778221088726475,
+          "trapezoidal_auprc": 0.25107691889891287
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 9992,
+        "both_positive_unknown": 2083,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.20846677341873499
+      },
+      "known_fragmented_alias": false
+    },
+    {
+      "case_id": "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif",
+      "alias": 162,
+      "boxes": 6,
+      "counts": {
+        "node": {
+          "total": 5933,
+          "positive": 1932,
+          "negative": 3859,
+          "unknown": 142,
+          "masked_fraction": 0.023933928872408562,
+          "reasons": {
+            "trace_unique": 1932,
+            "farther_than_2": 3859,
+            "projection_ambiguous": 142,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.3336211362458988
+        },
+        "edge": {
+          "total": 36520,
+          "positive": 3013,
+          "negative": 30977,
+          "unknown": 2530,
+          "masked_fraction": 0.06927710843373494,
+          "reasons": {
+            "consecutive": 3013,
+            "touches_negative": 28016,
+            "unknown_node": 1125,
+            "fragment_relation_unknown": 0,
+            "isolated_reference_unknown": 0,
+            "coincident_projections_unknown": 1262,
+            "over_32": 0,
+            "nonconsecutive": 2961,
+            "junction_transition_unknown": 143,
+            "reference_empty": 0
+          },
+          "positive_fraction_known": 0.08864371874080612
+        }
+      },
+      "junction_instances": 78,
+      "anchored_instances": 13,
+      "fixed_feature_heldout_edge_AP": {
+        "sato_straight_path_cost": {
+          "known_edges": 33990,
+          "positive_edges": 3013,
+          "prevalence": 0.08864371874080612,
+          "average_precision": 0.19335354159187593,
+          "trapezoidal_auprc": 0.1931007575626943
+        },
+        "max_endpoint_nearest_input_distance": {
+          "known_edges": 33990,
+          "positive_edges": 3013,
+          "prevalence": 0.08864371874080612,
+          "average_precision": 0.08504076612684325,
+          "trapezoidal_auprc": 0.1932094335427129
+        }
+      },
+      "fragment_audit": {
+        "both_positive_edges": 7379,
+        "both_positive_unknown": 1405,
+        "cross_component_positive_endpoint_edges": 0,
+        "cross_component_masked": 0,
+        "cross_component_negative": 0,
+        "cross_component_positive": 0,
+        "reference_components": 1,
+        "masked_fraction_both_positive": 0.19040520395717578
+      },
+      "known_fragmented_alias": false
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "label_oracle_f1_2": 0.9082182458654313,
+    "stage0_development_geometric_oracle_f1_2": 0.9042320394860465,
+    "maximum_drop": 0.03,
+    "required_f1_2": 0.8742320394860464,
+    "drop": -0.003986206379384849,
+    "cohort_warning": "460 training label oracle versus151 development geometric oracle; matched training geometric oracle reported separately",
+    "on_failure": "stop before selector training; no label repair or threshold tuning",
+    "cross_component_known_label_violations": 0
+  },
+  "fixed_feature_macro_AP": {
+    "sato_straight_path_cost": 0.16917653717464118,
+    "max_endpoint_nearest_input_distance": 0.05435118813367204
+  },
+  "AUPRC_convention": "primary stepwise average precision, ties grouped; trapezoidal PR area also reported",
+  "baseline_scope": "fixed lower-is-better image-only rankings, scored separately on each held-out training neuron; no fitted parameters/thresholds or selector training",
+  "Sato_cost": "preserved straight-segment scaffold cost; NOT geodesic path cost",
+  "CV_limit": "conditional on frozen upstream trained on all33 training neurons; not full-pipeline CV",
+  "zero_positive_boxes": {
+    "node": [
+      {
+        "alias": 0,
+        "key": [
+          "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          37
+        ]
+      },
+      {
+        "alias": 7,
+        "key": [
+          "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+          11
+        ]
+      },
+      {
+        "alias": 95,
+        "key": [
+          "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+          8
+        ]
+      }
+    ],
+    "edge": [
+      {
+        "alias": 0,
+        "key": [
+          "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          37
+        ]
+      },
+      {
+        "alias": 0,
+        "key": [
+          "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1",
+          46
+        ]
+      },
+      {
+        "alias": 1,
+        "key": [
+          "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0",
+          22
+        ]
+      },
+      {
+        "alias": 7,
+        "key": [
+          "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2",
+          11
+        ]
+      },
+      {
+        "alias": 23,
+        "key": [
+          "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+          71
+        ]
+      },
+      {
+        "alias": 23,
+        "key": [
+          "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP",
+          76
+        ]
+      },
+      {
+        "alias": 95,
+        "key": [
+          "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2",
+          8
+        ]
+      }
+    ]
+  },
+  "source_root": "tmp\\candidate_label_audit_20261105",
+  "report_sha256": "ffd04ced17459e81aabf032af086c8278fbd471a1f6a259555979149a72d2462",
+  "verified_records": 460,
+  "verified_diagnostic_SWCs": 920,
+  "verified_fixed_feature_packets": 460,
+  "aggregate_replay_exact": true,
+  "original_stage0_and_stage1_bindings_intact": true,
+  "fragment_totals": {
+    "both_positive_edges": 411958,
+    "both_positive_unknown": 68145,
+    "cross_component_positive_endpoint_edges": 2940,
+    "cross_component_masked": 2940,
+    "cross_component_negative": 0,
+    "cross_component_positive": 0,
+    "masked_fraction_both_positive": 0.16541734837046496
+  },
+  "macro_prevalence": 0.052739096170449064,
+  "GPU_executed": false,
+  "selector_training_executed": false,
+  "development_scored_again": false
+}

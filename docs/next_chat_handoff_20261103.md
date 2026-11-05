@@ -1,5 +1,38 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**Latest continuation,5 November: saved-label CPU audit COMPLETE,gate PASSED.**
+Read [label-oracle/fragment/AP results](candidate_label_audit_results_20261105.md)
+and [portable evidence](evidence/candidate_label_audit_completed_20261105.json).
+User explicitly requested agent CPU execution, overriding local-launch preference
+for these diagnostics only. Root `tmp/candidate_label_audit_20261105`,941.63s
+guard completed exit0. All460 records/920 SWCs/460 score packets hash-verified;
+aggregate replay exact,original Stage0/Stage1 recipe/source bindings intact.
+Label oracle F1_2/F1_6=90.82/96.68%; same-training geometric oracle92.38/97.21%.
+Label gate90.8218>=87.4232 (Stage0dev90.4232 minus3pp),PASSED. Matched training
+gap1.56pp at2. Label-positive edge union R2=85.07%,decodedR2=84.75%.
+No labels/geometry/thresholds changed; no selector trained or dev rescored.
+
+All2,940 cross-component edges with two unambiguous positive endpoints masked;
+zero silently positive/negative. Mask among both-positive endpoint edges16.54%
+versus all-edge2.62%. Fragment aliases23/66/75 have51/200/80 reference components;
+mask2.21/5.52/4.14%, so23 is not above overall. Three node-empty/seven edge-empty
+boxes named in results,span5neurons. Fixed-feature macroAP:Sato straight-path
+16.92%,nearest-input-distance5.44%,macroprevalence5.27%. Pooledprevalence4.03%
+has different weighting. Sato control is NOT geodesic; that feature remains
+unbuilt. Rankings fixed/no fitting,per-held-out-neuron scoring; no accuracy.
+Read [execution contract](candidate_label_audit_protocol_20261105.md).
+
+Existing user-started CPU feature export COMPLETED,guard390.42s exit0.
+All611 feature packet hashes/shapes/finiteness verified,32channels,model/RNG
+unchanged,updates0,CUDA not initialized. Do NOT run feature export again.
+[Feature results](candidate_pointnext_results_20261105.md) include query-distance
+summaries; no distance policy selected. AC connected; scoped awake helper was
+released and finished.json confirms it. Sessions29435/36212 completed; NOTHING
+is running. No automatic model training follows the diagnostic pass. Next work
+is handcrafted image features and GBT controls before GAT,including handcrafted-
+only versus +PointNeXt,conditional selector CV/upstream leakage disclosure,
+CV/dev gap and original final floors/wins/stop rules. Professor discussion pending.
+
 **Latest continuation,5 November: Stage1 COMPLETE and verified.** Read
 [Stage1 results/next command](candidate_stage1_results_20261105.md) and
 [portable completion evidence](evidence/candidate_stage1_completed_20261105.json).

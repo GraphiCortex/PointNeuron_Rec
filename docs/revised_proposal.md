@@ -14,8 +14,10 @@ Read the [staged/gated protocol](candidate_selection_protocol_20261105.md).
 Stage0 passed its fixed union gate: geometric-oracle F1_2=90.42%, F1_6=95.67%
 on151 development boxes. This is reference-assisted headroom, not selector
 accuracy or topology certification. [Stage1 preparation completed](candidate_stage1_results_20261105.md):460
-training-only label packets and611 candidate pools verified. Frozen feature
-export is ready for user-local CPU launch; no features/selectors have run yet.
+training-only label packets and611 candidate pools verified. Frozen CPU feature
+export completed611 packets,zero updates/no CUDA. [Label-oracle audit](candidate_label_audit_results_20261105.md)
+passed at90.82% F1_2 (matched training geometric oracle92.38%); fragmentation
+and per-neuron fixed-feature AP checks are reported. No selector has trained.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
 out CV is disclosed: the frozen upstream encoder/candidates saw all33 training
 neurons, so this is not strict full-pipeline CV. References supply labels and

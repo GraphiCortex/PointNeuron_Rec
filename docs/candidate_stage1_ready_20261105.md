@@ -6,6 +6,10 @@ development labels/model/training/GPU. Do not rerun preparation below.
 Read [Stage1 results and next feature-export command](candidate_stage1_results_20261105.md).
 Preparation instructions below are preserved launch history.
 
+**Later update:** [Frozen CPU feature export completed](candidate_pointnext_results_20261105.md)
+and [saved-label oracle audit passed](candidate_label_audit_results_20261105.md).
+Do not rerun either command here; no selector training has run.
+
 Stage0 completed on151 development boxes/seven repeatedly inspected neurons in
 575.09 seconds. The original union gate passed, with no source/threshold selected.
 

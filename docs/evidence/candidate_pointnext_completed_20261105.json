@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "source_root": "tmp\\candidate_pointnext_20261105",
+  "complete_sha256": "5eafc0d97e0241f0dec35e6457f5e74a3ee6a7d9546714fe4e8bfa125bd4ff13",
+  "verified_packets": 611,
+  "summary": {
+    "training": {
+      "candidate_instances": 673235,
+      "nearest_source_distance_quantiles": {
+        "0": 0.0,
+        "0.5": 1.0923595540617541,
+        "0.9": 4.47213595499958,
+        "0.95": 5.744562646538029,
+        "0.99": 7.874007874011811,
+        "1": 17.204650534085253
+      },
+      "farther_than_2": 188580,
+      "farther_than_6": 27809
+    },
+    "development": {
+      "candidate_instances": 160634,
+      "nearest_source_distance_quantiles": {
+        "0": 0.0,
+        "0.5": 0.5340944236191518,
+        "0.9": 1.93457501783868,
+        "0.95": 2.33667079074937,
+        "0.99": 3.7416573867739413,
+        "1": 11.832159566199232
+      },
+      "farther_than_2": 14111,
+      "farther_than_6": 237
+    }
+  },
+  "model_state_unchanged": true,
+  "RNG_unchanged": true,
+  "updates": 0,
+  "CUDA_initialized": false,
+  "reference_geometry_opened": false,
+  "CV_limit": "upstream encoder and candidates trained on all33; conditional selector CV only"
+}

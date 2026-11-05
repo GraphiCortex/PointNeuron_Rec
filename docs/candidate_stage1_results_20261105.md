@@ -1,5 +1,11 @@
 # Stage1 completed: candidates and training-only labels
 
+**Follow-up completed:** [Saved-label oracle and fragment/AP audit](candidate_label_audit_results_20261105.md)
+passed the user's new sanity gate (F1_2=90.82%,matched geometric92.38%).
+[Frozen PointNeXt export](candidate_pointnext_results_20261105.md) also completed
+611 packets on CPU with zero updates. Commands below are preserved history;
+do not rerun them. No selector has trained.
+
 User-local CPU run completed successfully. Worker time442.43 seconds (user
 console7m34s including wrapper/preflight);3600-second cap, exit0. No retry,
 model execution, GPU, training, development labels or reserved-neuron access.
