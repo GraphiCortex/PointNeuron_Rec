@@ -1,5 +1,11 @@
 # Saved-label oracle and held-out edge-ranking controls — completed
 
+**Follow-up:** [Edge-label geometry/length audit](edge_label_geometry_results_20261105.md)
+shows99.39% of nonconsecutive negatives have overlap>=.5 at2vox. The oracle
+pass below did not validate target alignment or unique tracing. [Pre-training
+revisions](edge_supervision_revision_DRAFT_20261105.md) are unadopted drafts;
+Stage2 is held for discussion. Original labels and historical gate stay unchanged.
+
 User-requested CPU diagnostic completed on all460 training packets/33 neurons in941.63 seconds (15m42s), guard exit0, under3600-second cap. No old labels, candidates, constants or decoder changed. No model/selector training, GPU work, new development labels or development rescoring. Four new diagnostic fixtures passed.
 
 All460 records,920 diagnostic-only SWCs and460 fixed-feature packets were hash-verified; aggregate replay was exact. Original Stage0/Stage1 source/input bindings remain intact. AC power was connected; the temporary system-awake request was released after completion.

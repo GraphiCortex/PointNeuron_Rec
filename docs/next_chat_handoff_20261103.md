@@ -1,5 +1,45 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST continuation,5 November: edge-label geometry audit COMPLETE; Stage2
+HELD for contract/decoding discussion.** Read [full audit](edge_label_geometry_results_20261105.md),
+[unadopted PRE-TRAINING revision](edge_supervision_revision_DRAFT_20261105.md)
+and [portable evidence](evidence/edge_label_geometry_completed_20261105.json).
+User explicitly requested CPU audits before ANY Stage2 feature/model work.
+Root `tmp/edge_label_geometry_audit_20261105`,167.63s guard exit0. All460 native
+overlap packets/920 draft SWCs verified,aggregate replay exact,old label hashes
+unchanged. No development labels,new model/feature/training/GPU work. Nothing
+running; awake helper released,finished.json verified. Sessions40488/56923 done.
+
+Of180,269 nonconsecutive negatives,179,171 (99.39%) have in-box overlap>=.5
+at2vox;weighted overlap98.70%. All33 neurons96.42–99.90% on-trace negatives.
+96,363 same-chain skips have an intervening positive within1 of the segment;
+80,197 same-chain other;3,709 cross-reference-chain pairs. Of163,536 positives,
+444 have overlap<.5;24 have no in-box length. Existing near-oracle F1 did NOT
+validate alignment of consecutiveness labels with geometric agreement. Earlier
+statement supporting the whole contract was too strong; earlier gate pass
+stays on record,not retroactively changed.
+
+User's>=30% training-only trigger fired. TWO predeclared draft diagnostics,
+NEITHER ADOPTED: A mask179,171 conflicting negatives,all460 fresh SWCs exact
+old replay,F1_2/F1_6=90.82/96.68%,pooled length ratio1.5624. B binary geometric
+labels on otherwise KNOWN two-positive-endpoint edges,preserve ALL unknowns
+and node labels,F1=91.05/96.78%,length ratio2.1363 (+36.73% length for+.23pp F1).
+No new training-label manifest; outputs only `draft_only/`. Contract discussion
+must address supported-node versus representative-node semantics and decoder
+multiplicity/topology. Do not proceed with Stage2 or silently apply a draft.
+
+Full length ledger:11,340 per-box/aggregate metric entries in
+`tmp/edge_label_geometry_audit_20261105/all_prior_length_ratios.csv`.
+Stage0dev union2.398x reference length; training label oracle1.562x/geometric
+2.235x; four-fit dense2.402x;broad train6.503x/dev6.236x;matched classicaldev
+.9175x. High tolerance-overlap F1 cannot certify unique correct tracing.
+Candidate scripts score native XYZ,effective spacing(1,1,1),NOT microns.
+Conditional micron view uses12 training sidecars/224 boxes,XYZ/calibration
+UNVERIFIED;missing21 not converted. Tolerances.5/1/2um,quadrature.1um.
+Label-oracle macroF1=.6482/.8074/.9189 onthat12-neuron subset(native2vox84.90%).
+No development physical scoring/labels. Source sidecar text/hashes retained.
+The earlier “next Stage2” statuses below are historical and superseded here.
+
 **Latest continuation,5 November: saved-label CPU audit COMPLETE,gate PASSED.**
 Read [label-oracle/fragment/AP results](candidate_label_audit_results_20261105.md)
 and [portable evidence](evidence/candidate_label_audit_completed_20261105.json).

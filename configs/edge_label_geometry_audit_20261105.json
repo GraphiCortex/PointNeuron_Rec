@@ -1,0 +1,212 @@
+{
+  "schema": "pn2-edge-label-geometry-audit-v1",
+  "wall_seconds": 3600,
+  "trigger_share": 0.3,
+  "on_trace_overlap": 0.5,
+  "spacing_metadata": {
+    "e_checked6_chick_uw/DONE_09-2902-04R-01C-60x_merge_c1": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_09-2902-04R-01C-60x_merge_c1\\09-2902-04R-01C-60x_merge_c1.v3dpbd.pixelsize.txt",
+      "sha256": "29bd382122e8c617a3306d6309dc810e0f992860a10d38577c8e5ea7768af670",
+      "text": "0.103x0.103x0.3um",
+      "spacing_xyz_um": [
+        0.103,
+        0.103,
+        0.3
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "e_checked6_chick_uw/DONE_10-2900-control-cell-05.oif-C0": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_10-2900-control-cell-05.oif-C0\\10-2900-control-cell-05.oif-C0.v3dpbd.pixelsize.txt",
+      "sha256": "867c674d2b7a533b3a012c580928bf9f9274fcbfefde56e6a237bb791871723d",
+      "text": "0.156x0.156x0.3um",
+      "spacing_xyz_um": [
+        0.156,
+        0.156,
+        0.3
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "e_checked6_chick_uw/DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\e_checked6_chick_uw\\DONE_fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2\\fix-P7-4.5h-cell2-60x-zoom1.5_merge_c2.v3dpbd.pixelsize.txt",
+      "sha256": "867c674d2b7a533b3a012c580928bf9f9274fcbfefde56e6a237bb791871723d",
+      "text": "0.156x0.156x0.3um",
+      "spacing_xyz_um": [
+        0.156,
+        0.156,
+        0.3
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_1_Live_2-2-2010_9-52-24_AM_med_Red.tif_uint8": null,
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_3dpf_Live_1-28-2010_2-32-58_PM_med_Green.tif_uint8": null,
+    "e_checked6_zebrafish_larve_RGC_UW/hard_1_5dpf_Live_1-30-2010_12-39-26_PM_med_Red.tif_uint8": null,
+    "e_checked6_zebrafish_larve_RGC_UW/hard_hard_14_3dpf_Live_1-28-2010_6-16-41_PM_med_Red.tif_uint8": null,
+    "e_checked7_utokyo_fly/err_AL_GNG_LH_neuron": null,
+    "e_checked7_utokyo_fly/mushroom_body_ab_cell_neuron": null,
+    "e_checked7_utokyo_fly/WED_SLP_PN_neuron": null,
+    "p_checked6_frog_scrippts/done_Recon112012no3-2": null,
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_fruitfly_larvae_gmu\\done_1_CL-I_X_OREGON_R_ddaD_membrane-GFP\\1_CL-I_X_OREGON_R_ddaD_membrane-GFP.tif.v3dpbd.pixelsize.txt",
+      "sha256": "bfa1cfdd8e708a65aa122f7931892425fb8a6487c217db271db70d519129fb65",
+      "text": "Voxel size: 0.30x0.30x0.50 micron",
+      "spacing_xyz_um": [
+        0.3,
+        0.3,
+        0.5
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_fruitfly_larvae_gmu/done_1_CL-III_X_LifeActRuby_vpda_membrane-GFP_actin-LifeActRuby.czi-C_1": null,
+    "p_checked6_fruitfly_larvae_gmu/done_err_3_CL-I_MT_X_MYR-GFP_ddaE_MT-mCherry_membrane-GFP.czi_C_1": null,
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image31": null,
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Image5": null,
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series021": null,
+    "p_checked6_janelia_flylight_part2/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110928_6_E1-left_optic_lobe.v3draw.extract_5": null,
+    "p_checked6_mouse_RGC_uw/HO_140921c14": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\HO_140921c14\\140921c14.tif.v3dpbd.pixelsize.txt",
+      "sha256": "50e62123d5d4f8aeaf54952449bdbb170ecca038e492d443ad3af21645fdf3fd",
+      "text": "Voxel size: 0.35x0.35x1 micron",
+      "spacing_xyz_um": [
+        0.35,
+        0.35,
+        1.0
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_mouse_RGC_uw/sv_140918c8": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_mouse_RGC_uw\\sv_140918c8\\140918c8.tif.v3dpbd.pixelsize.txt",
+      "sha256": "50e62123d5d4f8aeaf54952449bdbb170ecca038e492d443ad3af21645fdf3fd",
+      "text": "Voxel size: 0.35x0.35x1 micron",
+      "spacing_xyz_um": [
+        0.35,
+        0.35,
+        1.0
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0984_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0984_seg\\0984_seg.v3dpbd.pixelsize.txt",
+      "sha256": "369a2b4950e8fa27029e4951fc4dea0ba3e133bce36040c1e3f451fe0a66842a",
+      "text": "Voxel size: 2.00x2.00x2.01 \u00b5m",
+      "spacing_xyz_um": [
+        2.0,
+        2.0,
+        2.01
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_silkmoth_utokyo/Confirmed_hard_0986_seg": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_silkmoth_utokyo\\Confirmed_hard_0986_seg\\0986_seg.v3dpbd.pixelsize.txt",
+      "sha256": "9de3da603db8fd600702d7489719c410396c277a8612eb5181891bdbf18cf423",
+      "text": "Voxel size: 0.62x0.62x2 \u00b5m",
+      "spacing_xyz_um": [
+        0.62,
+        0.62,
+        2.0
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_6_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_6_Ch2\\1_6_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "text": "Voxel size: 0.21x0.21x0.25 micron",
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/1_9_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\1_9_Ch2\\1_9_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "text": "Voxel size: 0.21x0.21x0.25 micron",
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_hard_1_10_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_adult_RGC_UW\\hard_hard_1_10_Ch2\\1_10_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "872437f6e35ab1de7ce98b9e68d5ea6729de5f06a62fb5014f96e0b92ce9be13",
+      "text": "Voxel size: 0.21x0.21x0.25 micron",
+      "spacing_xyz_um": [
+        0.21,
+        0.21,
+        0.25
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked6_zebrafish_horizontal_cells_UW/1_a_Ch2": {
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\data\\gold166\\p_checked6_zebrafish_horizontal_cells_UW\\1_a_Ch2\\1_a_Ch2.tif_uint8.v3dpbd.pixelsize.txt",
+      "sha256": "e812175841c829c4df83bfc54b10d93ff51c6e35dda4a4c43120575dc95ef0ba",
+      "text": "Voxel size: 0.07x0.07x0.25 micron",
+      "spacing_xyz_um": [
+        0.07,
+        0.07,
+        0.25
+      ],
+      "calibration": "unverified_reported_sidecar",
+      "XYZ_order": "assumed from sidecar order; not independently calibrated"
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-f-A01-20110325_3_A3-left_optic_lobe.v3draw.extract_1": null,
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-1xLwt_attp40_4stop1-m-A02-20111101_1_D1-right_optic_lobe.v3draw.extract_9": null,
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-f-A-20111108_2_F3-right_optic_lobe.v3draw.extract_0": null,
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000087_seg001.lsm_c_3.tif_checked7indicatednoeditingneeded_retimestampedforconsistentdataformat": null,
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000127_seg001.lsm_c_3.tif": null,
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000142_seg001.lsm_c_3.tif": null,
+    "p_checked7_taiwan_flycirciut/uint8_ChaMARCM-F000157_seg001.lsm_c_3.tif": null
+  },
+  "length_sources": [
+    "tmp/curve_formulation_audit_20261103/report.json",
+    "tmp/curve_classical_baseline_20261103/report.json",
+    "tmp/curve_classical_timing_20261103/case00/report.json",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.json",
+    "tmp/curve_transfer_fit_20261104T193753_641182Z/report.json",
+    "tmp/curve_transfer_scoring_20261104T211240_017254Z/report.json",
+    "tmp/broad_curve_diagnostics_20261105/report.json",
+    "tmp/broad_curve_head_20261105/evaluation/report.json",
+    "tmp/candidate_headroom_20261105T084249_809302Z/report.json",
+    "tmp/candidate_label_audit_20261105/report.json"
+  ],
+  "source_sha256": {
+    "scripts/audit_edge_label_geometry.py": "741f1786f6c24e74fb9f7ad468dce2d6284dc238c8526e38c4d25e4b88734975",
+    "src/pn2/evaluation/edge_label_geometry.py": "f2acdad6705b44d389580b2b4eae0aa9e21e2f16ed80ae3946315fc194120874",
+    "tests/test_edge_label_geometry.py": "6ac39ddf42811ba0acc3389f29d8aca0922671e95a1ef6026daa5bcaf09817ac",
+    "docs/edge_label_geometry_audit_protocol_20261105.md": "86babc6f4e1006f29816f19eadcf4eb1c6911f15d864242b1a0e2dc8d64bfa1f",
+    "src/pn2/evaluation/selection_oracle.py": "18e2dec44d1763c570948fbae170d5d0d0a71e037fd3184007a2f77750b08788",
+    "src/pn2/evaluation/bounded_agreement.py": "9e87218e1c64d413a7a87db86b01ac5720e7fc90abd7b0b75c42c7d09f17bc09",
+    "src/pn2/evaluation/geometry.py": "efeabaa27451bfb44c011107c9d51ff2fafac77edd34f61c658770a22c48f842",
+    "src/pn2/evaluation/formulation.py": "1a83b93d54e17ab925c59847caa3fbeaa77b3abf4cd09e64104ea60ed07ccace",
+    "src/pn2/supervision/candidate_labels.py": "d2339c95f7858fa2755ab9b8987cef3a865c3fafd71370da8341db1817747ce2",
+    "src/pn2/evaluation/probability_forest.py": "66f9de18f2b1d1d3004e08bc507fa1931cdbbfebec974296ce312c6ce47b6eb5"
+  },
+  "artifact_sha256": {
+    "configs/candidate_label_audit_20261105.json": "d26d8784f77451cb5a4eacbd27df538661efd18614bea22cfccc94f695bae0be",
+    "tmp/candidate_stage1_20261105/candidate_manifest.json": "4ae0de16ce7cabbf744d5a031f0676a1d1981151b581ca4254adf05987453803",
+    "tmp/candidate_stage1_20261105/label_manifest.json": "7eb9bb43048b652b8bd7f6b168a7def014309876f67dfcbe750614a084edc980",
+    "tmp/curve_formulation_audit_20261103/report.json": "8da9e60708ca7f6b1ae5690f3bc87b919d06cd33ce6844b989e5ba45147350a8",
+    "tmp/curve_classical_baseline_20261103/report.json": "735afd2848523bc998405f72d65260d518f96005f84ca490bb0a69224e279168",
+    "tmp/curve_classical_timing_20261103/case00/report.json": "aec2dea7741c6dcfda5ae882ae00692ae1eaef8dfd89ee8b831cc0274f8dd704",
+    "tmp/saved_vote_scaffold_20261104T182353_539123Z/report.json": "c643d0e372dc41b5a62992a918e905e2031872d4d6bb2830546aa4d31c38da80",
+    "tmp/curve_transfer_fit_20261104T193753_641182Z/report.json": "1c33536b64550a319e3c440558619cdc62bec92094b5162e111f395b711662a3",
+    "tmp/curve_transfer_scoring_20261104T211240_017254Z/report.json": "2f6e94373e0f00567e57560a5c8c11f5dddf914f30ec7b9fa9cd37240126aec4",
+    "tmp/broad_curve_diagnostics_20261105/report.json": "d08a11476e35b4774a30c4757ce5bd27e41055843eb6938bdca0a29d145d2f42",
+    "tmp/broad_curve_head_20261105/evaluation/report.json": "a08b9f8eccf1312a726b6788a37d24536620b98a7a601faa5b4e54ceb4db6083",
+    "tmp/candidate_headroom_20261105T084249_809302Z/report.json": "ec516eb16ec4451fce2f7e395c2b595b117370bd0a277b207fa934cb8fa412e5",
+    "tmp/candidate_label_audit_20261105/report.json": "ffd04ced17459e81aabf032af086c8278fbd471a1f6a259555979149a72d2462"
+  }
+}

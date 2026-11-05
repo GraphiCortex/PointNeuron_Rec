@@ -17,7 +17,13 @@ accuracy or topology certification. [Stage1 preparation completed](candidate_sta
 training-only label packets and611 candidate pools verified. Frozen CPU feature
 export completed611 packets,zero updates/no CUDA. [Label-oracle audit](candidate_label_audit_results_20261105.md)
 passed at90.82% F1_2 (matched training geometric oracle92.38%); fragmentation
-and per-neuron fixed-feature AP checks are reported. No selector has trained.
+and per-neuron fixed-feature AP checks are reported. A [follow-up edge-label
+geometry audit](edge_label_geometry_results_20261105.md) finds99.39% of
+nonconsecutive negatives lie on the trace by the declared overlap test;
+high F1 coexists with excess length. [Pre-training contract revisions](edge_supervision_revision_DRAFT_20261105.md)
+are DRAFT ONLY. Stage2 is held for supervision/decoding discussion; no selector
+has trained and no saved label contract changed. Native scoring remains voxels;
+conditional micron views use unverified reported spacing on12 training neurons.
 No assistant GPU launch is authorized. Conditional selector-only leave-neuron-
 out CV is disclosed: the frozen upstream encoder/candidates saw all33 training
 neurons, so this is not strict full-pipeline CV. References supply labels and
