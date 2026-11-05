@@ -1,5 +1,40 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**FINAL broad verdict, 5 November: FAILED; STOP tuning this head.** Read
+[completed broad results](broad_curve_head_results_20261105.md) and
+[full terminal evidence](evidence/broad_curve_terminal_20261105.json).
+All9200 updates/20 epochs on460 boxes/33 neurons completed successfully,
+terminal checkpoint only. Training F1_2/F1_6=37.84/73.28% (reported NOT gated).
+Development F1_2/F1_6=36.04/67.54%, versus matched strongest classical
+54.33/69.14%. Both+5pp mean gates fail; strict neuron wins2/7 at2 and3/7 at6
+also fail the>=5 rule. No accuracy gate/threshold/cohort changed after training.
+
+Broader training recovers recall/candidate geometry: development R2=74.40%,
+k6 candidate R2=81.69% versus the four-box38.07% (Sato76.80/raw89.00%). P2
+remains24.80%, with too much extra geometry. This is not merely another tiny
+training/transfer gap: broad training F1_2 itself37.84%. Causal/asymptotic limits
+remain open, but the precommitted practical decision is to stop, not extend.
+
+Root `tmp/broad_curve_head_20261105`: train/checkpoint_step009200.pt and complete
+marker (SHA256bc13efbaef2ab012b344e81b87dd4a445d9f85b4fddfb421ccf4f6b76c30cab9),
+611 terminal predictions, evaluation/report.json/md,611 graph/SWC packets and
+per-edge diagnostic records. All hashes/schedules/aggregate/gate checks passed;
+64 Adam clocks9200, all460 boxes exactly20 exposures, input caches unchanged.
+Train optimization1h46m; GPU stage incl inference1h54m; terminalCPU16min.
+Both guards complete exit0. Unified session41968 and monitorcellg2:203 ended
+successfully. NOTHING is running or pending launch. Earlier active-job notes
+below are history; do not restart any command.
+
+The PASS condition for assembly/graph-stage work was NOT triggered. No further
+head tuning, Transformer hypothesis, radius/loss/cutoff change or GPU run is
+authorized by this failed experiment. Useful source/labels/checkpoints/scorers
+are retained as evidence, not adopted as a fresh model.
+
+Prepared [a professor-facing framing note](professor_candidate_refinement_discussion_20261105.md)
+for the user to share. Learned refinement/selection of strong image-derived
+candidates would change the Transformer's proposal role and needs professor
+agreement. It is NOT implemented or approved; no message was sent externally.
+
 **Active execution, 5 November:** CPU diagnostics COMPLETE and ONE authorized
 broad training pipeline LAUNCHED by the assistant. Read
 [current broad results/status](broad_curve_head_results_20261105.md).
