@@ -1,5 +1,14 @@
 # Post-Stage2 diagnostics — results and editing draft authorization
 
+**Completion addendum:** the user subsequently ran archive identity recovery and
+first scoring successfully (37m07s). All seven cases are resolved. Read the
+[completed provisional comparison](bigneuron_benchmark_results_20261106.md) and
+[portable evidence](evidence/bigneuron_benchmark_completed_20261106.json).
+The incomplete-mapping statements below describe the original attempt. No
+original output or frozen rule was changed. Editing(b) reached its search cap
+in 106/151 boxes; its score is achieved feasibility, not an upper bound.
+Stage 2 remains stopped and no further run is queued.
+
 Stage2 remains STOPPED. Its failed gate,STOP.json,33-neuron CV artifacts,
 labels and checkpoints are unchanged. The user ran the five CPU actions locally.
 Ridge/review,decomposition and editing completed. The archive downloaded,but

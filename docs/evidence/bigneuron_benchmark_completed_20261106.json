@@ -1,0 +1,1143 @@
+{
+  "status": "completed_provisional_native_comparison",
+  "source_commit": "e5eb89e",
+  "elapsed_seconds": 2227.0842768999864,
+  "guard": {
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 2227.0842768999864,
+    "maximum_seconds": 7200,
+    "started_epoch": 1793959983.5367682,
+    "diagnostic": "benchmark identity repair/first scoring",
+    "config": "f8ed49ef921b75082a8a082831b8d31f1744f1e7fbd8dd69541565ae609c6d49",
+    "Stage2_stopped": true
+  },
+  "outputs": 237,
+  "variants": 44,
+  "case_counts": {
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": 32,
+    "p_checked6_mouse_RGC_uw/sv_140921c4": 37,
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": 20,
+    "p_checked6_human_allen_confocal/in_house1": 30,
+    "e_checked7_utokyo_fly/SLP_PN_neuron": 36,
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": 40,
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": 42
+  },
+  "slot_statuses": {
+    "completed": 208,
+    "missing": 71,
+    "cycle": 21,
+    "native_bounds": 2,
+    "nonpositive_id": 2,
+    "missing_parent": 4
+  },
+  "best_median": {
+    "2.0": {
+      "segment": {
+        "best_fixed_variant": "neutube_updated",
+        "best": 0.6400335798598172,
+        "median_variant_macro": 0.3060929527432426
+      },
+      "resampled": {
+        "best_fixed_variant": "neutube_updated",
+        "best": 0.5872485911436514,
+        "median_variant_macro": 0.2729494216869748
+      }
+    },
+    "6.0": {
+      "segment": {
+        "best_fixed_variant": "neutube_updated",
+        "best": 0.7311746759030309,
+        "median_variant_macro": 0.3973368190968337
+      },
+      "resampled": {
+        "best_fixed_variant": "neutube_updated",
+        "best": 0.6814009376415928,
+        "median_variant_macro": 0.35510188425351585
+      }
+    }
+  },
+  "per_neuron_best_median": {
+    "e_checked7_utokyo_fly/SLP_PN_neuron": {
+      "2.0": {
+        "segment": {
+          "best_variant": "neutube_updated",
+          "best": 0.7723062865166628,
+          "median": 0.10899897787483359
+        },
+        "resampled": {
+          "best_variant": "neutube_updated",
+          "best": 0.7015349630471859,
+          "median": 0.08175185217561598
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "neutube_updated",
+          "best": 0.9124608662500804,
+          "median": 0.2239632572976373
+        },
+        "resampled": {
+          "best_variant": "neutube_updated",
+          "best": 0.8618533257532689,
+          "median": 0.12497696637188807
+        }
+      }
+    },
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": {
+      "2.0": {
+        "segment": {
+          "best_variant": "app2new2",
+          "best": 0.7675857926502017,
+          "median": 0.497378296676861
+        },
+        "resampled": {
+          "best_variant": "app2new2",
+          "best": 0.716024340770791,
+          "median": 0.3911049150892101
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "cwlab_ver1",
+          "best": 0.9166790846904815,
+          "median": 0.6764526789256122
+        },
+        "resampled": {
+          "best_variant": "smarttracing",
+          "best": 0.8344060854300761,
+          "median": 0.5314758463294028
+        }
+      }
+    },
+    "p_checked6_human_allen_confocal/in_house1": {
+      "2.0": {
+        "segment": {
+          "best_variant": "neurogpstree_updated",
+          "best": 0.7697675645799994,
+          "median": 0.1449619255070649
+        },
+        "resampled": {
+          "best_variant": "neurogpstree_updated",
+          "best": 0.7316515857782653,
+          "median": 0.12234415420196118
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "neurogpstree_updated",
+          "best": 0.8718989875732518,
+          "median": 0.19931710562175112
+        },
+        "resampled": {
+          "best_variant": "neurogpstree_updated",
+          "best": 0.8296316607257106,
+          "median": 0.15325878234670515
+        }
+      }
+    },
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": {
+      "2.0": {
+        "segment": {
+          "best_variant": "app2new3",
+          "best": 0.8228473927668611,
+          "median": 0.0
+        },
+        "resampled": {
+          "best_variant": "app2new3",
+          "best": 0.7924203273040482,
+          "median": 0.0
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "app2new3",
+          "best": 0.9043089445462922,
+          "median": 0.0
+        },
+        "resampled": {
+          "best_variant": "app2new3",
+          "best": 0.8440999138673557,
+          "median": 0.0
+        }
+      }
+    },
+    "p_checked6_mouse_RGC_uw/sv_140921c4": {
+      "2.0": {
+        "segment": {
+          "best_variant": "neutube_updated",
+          "best": 0.8210964052822095,
+          "median": 0.5415754718840541
+        },
+        "resampled": {
+          "best_variant": "neutube_updated",
+          "best": 0.768814524741901,
+          "median": 0.48061981196876663
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "advantra",
+          "best": 0.9574447642887066,
+          "median": 0.6581668859633465
+        },
+        "resampled": {
+          "best_variant": "advantra",
+          "best": 0.9165545087483177,
+          "median": 0.5924021482875284
+        }
+      }
+    },
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": {
+      "2.0": {
+        "segment": {
+          "best_variant": "neutube_updated",
+          "best": 0.6127402421844024,
+          "median": 0.09188548048060925
+        },
+        "resampled": {
+          "best_variant": "neutube_updated",
+          "best": 0.5527082119976704,
+          "median": 0.06624605678233439
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "neurogpstree",
+          "best": 0.7707903589499544,
+          "median": 0.15485949526789702
+        },
+        "resampled": {
+          "best_variant": "neutube_updated",
+          "best": 0.691322073383809,
+          "median": 0.10094637223974763
+        }
+      }
+    },
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": {
+      "2.0": {
+        "segment": {
+          "best_variant": "mst_tracing",
+          "best": 0.915943475509141,
+          "median": 0.5806908426113813
+        },
+        "resampled": {
+          "best_variant": "mst_tracing",
+          "best": 0.8412060301507538,
+          "median": 0.4837691391426143
+        }
+      },
+      "6.0": {
+        "segment": {
+          "best_variant": "nctutw",
+          "best": 0.9910583353650559,
+          "median": 0.8039538478136936
+        },
+        "resampled": {
+          "best_variant": "advantra",
+          "best": 0.9348582794629537,
+          "median": 0.6568668566332413
+        }
+      }
+    }
+  },
+  "variant_summaries": [
+    {
+      "variant": "advantra",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.5270726050749237,
+      "segment_f1_6": 0.6375102624759973,
+      "resampled_f1_2": 0.48349757273502064,
+      "resampled_f1_6": 0.5883929379201484,
+      "pooled_length_ratio": 1.7404351828334965,
+      "macro_length_ratio": 2.285587042494902,
+      "whole_segment_f1_2": 0.5240769282895361,
+      "whole_segment_f1_6": 0.6330845747922229,
+      "whole_resampled_f1_2": 0.48184709439752677,
+      "whole_resampled_f1_6": 0.5896779443328412,
+      "whole_pooled_length_ratio": 1.8235702430296876,
+      "whole_macro_length_ratio": 2.573163139226195
+    },
+    {
+      "variant": "advantra_updated",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.38102263505969836,
+      "segment_f1_6": 0.4581327836847965,
+      "resampled_f1_2": 0.352959385006059,
+      "resampled_f1_6": 0.41982557668292747,
+      "pooled_length_ratio": 0.6553132697409223,
+      "macro_length_ratio": 0.5237981985297082,
+      "whole_segment_f1_2": 0.3807787105094332,
+      "whole_segment_f1_6": 0.45782087276206657,
+      "whole_resampled_f1_2": 0.35465707198620217,
+      "whole_resampled_f1_6": 0.42336039404187265,
+      "whole_pooled_length_ratio": 0.656679980935784,
+      "whole_macro_length_ratio": 0.5282316756782311
+    },
+    {
+      "variant": "app1__seed_xyz_in_filename",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.41178131351956365,
+      "segment_f1_6": 0.5506307874067715,
+      "resampled_f1_2": 0.348219688211659,
+      "resampled_f1_6": 0.4555302945515273,
+      "pooled_length_ratio": 0.8198359794323958,
+      "macro_length_ratio": 1.321028872636919,
+      "whole_segment_f1_2": 0.3951327411408979,
+      "whole_segment_f1_6": 0.528971210353064,
+      "whole_resampled_f1_2": 0.3350319704934944,
+      "whole_resampled_f1_6": 0.44059791840190093,
+      "whole_pooled_length_ratio": 0.8864443566079958,
+      "whole_macro_length_ratio": 1.4438958958630064
+    },
+    {
+      "variant": "app2__seed_xyz_in_filename",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.47477759341770315,
+      "segment_f1_6": 0.5629522975990936,
+      "resampled_f1_2": 0.44288511391751506,
+      "resampled_f1_6": 0.510534007009719,
+      "pooled_length_ratio": 0.5163621693683025,
+      "macro_length_ratio": 0.6117722124265829,
+      "whole_segment_f1_2": 0.4720793702155123,
+      "whole_segment_f1_6": 0.5589950711830768,
+      "whole_resampled_f1_2": 0.44089969632502946,
+      "whole_resampled_f1_6": 0.5097080542170583,
+      "whole_pooled_length_ratio": 0.522876948266594,
+      "whole_macro_length_ratio": 0.6347075983086393
+    },
+    {
+      "variant": "app2new1",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.46121258168876933,
+      "segment_f1_6": 0.5921403778700538,
+      "resampled_f1_2": 0.42141744276711834,
+      "resampled_f1_6": 0.5328902733788532,
+      "pooled_length_ratio": 0.6023791132608477,
+      "macro_length_ratio": 0.7140575898993439,
+      "whole_segment_f1_2": 0.4324459213467097,
+      "whole_segment_f1_6": 0.555752058375844,
+      "whole_resampled_f1_2": 0.3949745426769683,
+      "whole_resampled_f1_6": 0.5022819447327105,
+      "whole_pooled_length_ratio": 0.7059999319761451,
+      "whole_macro_length_ratio": 0.9191197513074298
+    },
+    {
+      "variant": "app2new2",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.5338810866957714,
+      "segment_f1_6": 0.6449443381756821,
+      "resampled_f1_2": 0.4892672903037575,
+      "resampled_f1_6": 0.5839182539628239,
+      "pooled_length_ratio": 0.7487240312062582,
+      "macro_length_ratio": 0.892269752038184,
+      "whole_segment_f1_2": 0.4905523459932148,
+      "whole_segment_f1_6": 0.5916687131554867,
+      "whole_resampled_f1_2": 0.451374927508639,
+      "whole_resampled_f1_6": 0.5397521427303886,
+      "whole_pooled_length_ratio": 0.8729586938486776,
+      "whole_macro_length_ratio": 1.1991767646952405
+    },
+    {
+      "variant": "app2new3",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.5455638967206485,
+      "segment_f1_6": 0.6738350035797838,
+      "resampled_f1_2": 0.5013391223126176,
+      "resampled_f1_6": 0.6046281402789785,
+      "pooled_length_ratio": 0.5070740414987469,
+      "macro_length_ratio": 0.6123268571308033,
+      "whole_segment_f1_2": 0.5424627182523863,
+      "whole_segment_f1_6": 0.6684333539124712,
+      "whole_resampled_f1_2": 0.499505502418438,
+      "whole_resampled_f1_6": 0.6015791390159578,
+      "whole_pooled_length_ratio": 0.5143637751842882,
+      "whole_macro_length_ratio": 0.6379904840420961
+    },
+    {
+      "variant": "axis_analyzer",
+      "valid_cases": 2,
+      "missing_cases": 5,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.15366671557260497,
+      "segment_f1_6": 0.1958210502484165,
+      "resampled_f1_2": 0.12444384597725741,
+      "resampled_f1_6": 0.15601805726469137,
+      "pooled_length_ratio": 0.2858928212433475,
+      "macro_length_ratio": 0.27935262022676666,
+      "whole_segment_f1_2": 0.15386427661609328,
+      "whole_segment_f1_6": 0.19603808718407148,
+      "whole_resampled_f1_2": 0.12437900575178465,
+      "whole_resampled_f1_6": 0.15703758754636032,
+      "whole_pooled_length_ratio": 0.2858928212433474,
+      "whole_macro_length_ratio": 0.2793526202267666
+    },
+    {
+      "variant": "axis_analyzer_updated",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.36839311013190096,
+      "segment_f1_6": 0.4760965180374543,
+      "resampled_f1_2": 0.31998214333051295,
+      "resampled_f1_6": 0.3824385585870117,
+      "pooled_length_ratio": 1.2014933552567153,
+      "macro_length_ratio": 2.403956160440309,
+      "whole_segment_f1_2": 0.3631238424628118,
+      "whole_segment_f1_6": 0.46675107289203444,
+      "whole_resampled_f1_2": 0.31566246430213496,
+      "whole_resampled_f1_6": 0.3796086435277691,
+      "whole_pooled_length_ratio": 1.4305879236062595,
+      "whole_macro_length_ratio": 3.4008573443131773
+    },
+    {
+      "variant": "cwlab_ver1",
+      "valid_cases": 5,
+      "missing_cases": 2,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.19920915997014893,
+      "segment_f1_6": 0.2853827611726616,
+      "resampled_f1_2": 0.09414187827384117,
+      "resampled_f1_6": 0.12286619902925189,
+      "pooled_length_ratio": 1.14245112303541,
+      "macro_length_ratio": 2.8656143279673936,
+      "whole_segment_f1_2": 0.19920761328928288,
+      "whole_segment_f1_6": 0.281680771933922,
+      "whole_resampled_f1_2": 0.09332318027695334,
+      "whole_resampled_f1_6": 0.12006350691469365,
+      "whole_pooled_length_ratio": 2.900271456311891,
+      "whole_macro_length_ratio": 3.7590411275536035
+    },
+    {
+      "variant": "ensembleneurontracerbasic",
+      "valid_cases": 0,
+      "missing_cases": 2,
+      "invalid_cases": 5,
+      "segment_f1_2": 0.0,
+      "segment_f1_6": 0.0,
+      "resampled_f1_2": 0.0,
+      "resampled_f1_6": 0.0,
+      "pooled_length_ratio": 0.0,
+      "macro_length_ratio": 0.0,
+      "whole_segment_f1_2": 0.0,
+      "whole_segment_f1_6": 0.0,
+      "whole_resampled_f1_2": 0.0,
+      "whole_resampled_f1_6": 0.0,
+      "whole_pooled_length_ratio": 0.0,
+      "whole_macro_length_ratio": 0.0
+    },
+    {
+      "variant": "ensembleneurontracerv2n",
+      "valid_cases": 0,
+      "missing_cases": 1,
+      "invalid_cases": 6,
+      "segment_f1_2": 0.0,
+      "segment_f1_6": 0.0,
+      "resampled_f1_2": 0.0,
+      "resampled_f1_6": 0.0,
+      "pooled_length_ratio": 0.0,
+      "macro_length_ratio": 0.0,
+      "whole_segment_f1_2": 0.0,
+      "whole_segment_f1_6": 0.0,
+      "whole_resampled_f1_2": 0.0,
+      "whole_resampled_f1_6": 0.0,
+      "whole_pooled_length_ratio": 0.0,
+      "whole_macro_length_ratio": 0.0
+    },
+    {
+      "variant": "ensembleneurontracerv2s",
+      "valid_cases": 0,
+      "missing_cases": 1,
+      "invalid_cases": 6,
+      "segment_f1_2": 0.0,
+      "segment_f1_6": 0.0,
+      "resampled_f1_2": 0.0,
+      "resampled_f1_6": 0.0,
+      "pooled_length_ratio": 0.0,
+      "macro_length_ratio": 0.0,
+      "whole_segment_f1_2": 0.0,
+      "whole_segment_f1_6": 0.0,
+      "whole_resampled_f1_2": 0.0,
+      "whole_resampled_f1_6": 0.0,
+      "whole_pooled_length_ratio": 0.0,
+      "whole_macro_length_ratio": 0.0
+    },
+    {
+      "variant": "ent_updated",
+      "valid_cases": 1,
+      "missing_cases": 2,
+      "invalid_cases": 4,
+      "segment_f1_2": 0.10318378062341896,
+      "segment_f1_6": 0.13621057938214381,
+      "resampled_f1_2": 0.0879240585122938,
+      "resampled_f1_6": 0.12542794895736073,
+      "pooled_length_ratio": 0.035578028847923084,
+      "macro_length_ratio": 0.11746104854254456,
+      "whole_segment_f1_2": 0.10434179086072148,
+      "whole_segment_f1_6": 0.13736887962589603,
+      "whole_resampled_f1_2": 0.08915566226490597,
+      "whole_resampled_f1_6": 0.12757102841136456,
+      "whole_pooled_length_ratio": 0.03557802884792308,
+      "whole_macro_length_ratio": 0.11746104854254456
+    },
+    {
+      "variant": "fastmarching_spanningtree",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.19115583664202632,
+      "segment_f1_6": 0.2793940860182145,
+      "resampled_f1_2": 0.15690759889338726,
+      "resampled_f1_6": 0.2205906764609129,
+      "pooled_length_ratio": 16.562896228114337,
+      "macro_length_ratio": 80.20809508505012,
+      "whole_segment_f1_2": 0.18607022918527374,
+      "whole_segment_f1_6": 0.2672936799588347,
+      "whole_resampled_f1_2": 0.1532998927894831,
+      "whole_resampled_f1_6": 0.21457645692307217,
+      "whole_pooled_length_ratio": 42.46172576723716,
+      "whole_macro_length_ratio": 207.4058437613566
+    },
+    {
+      "variant": "fastmarching_spanningtree_updated",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.40554862815185716,
+      "segment_f1_6": 0.5216949141926953,
+      "resampled_f1_2": 0.3668263977170604,
+      "resampled_f1_6": 0.45011518020418173,
+      "pooled_length_ratio": 1.6968392973051398,
+      "macro_length_ratio": 3.8026709601001945,
+      "whole_segment_f1_2": 0.4006876165570752,
+      "whole_segment_f1_6": 0.514526393594345,
+      "whole_resampled_f1_2": 0.3636287471581482,
+      "whole_resampled_f1_6": 0.44825279589098266,
+      "whole_pooled_length_ratio": 1.8020499273620485,
+      "whole_macro_length_ratio": 4.060927686766007
+    },
+    {
+      "variant": "lcmboost",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.38996023346642705,
+      "segment_f1_6": 0.5105790834774768,
+      "resampled_f1_2": 0.3508175536475972,
+      "resampled_f1_6": 0.4503326579563537,
+      "pooled_length_ratio": 0.47321935655684905,
+      "macro_length_ratio": 0.6030273539507333,
+      "whole_segment_f1_2": 0.3878857174673322,
+      "whole_segment_f1_6": 0.5084929722927601,
+      "whole_resampled_f1_2": 0.3470804352254895,
+      "whole_resampled_f1_6": 0.4495656179081558,
+      "whole_pooled_length_ratio": 0.4806844997572597,
+      "whole_macro_length_ratio": 0.6236408253928145
+    },
+    {
+      "variant": "lcmboost_3",
+      "valid_cases": 5,
+      "missing_cases": 2,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.23516799709575054,
+      "segment_f1_6": 0.3390593601869602,
+      "resampled_f1_2": 0.2073238780966205,
+      "resampled_f1_6": 0.2998006266250953,
+      "pooled_length_ratio": 1.3977571681650096,
+      "macro_length_ratio": 5.8170904125051885,
+      "whole_segment_f1_2": 0.23153850886124175,
+      "whole_segment_f1_6": 0.3302818519118663,
+      "whole_resampled_f1_2": 0.2043103343408891,
+      "whole_resampled_f1_6": 0.29584172320355784,
+      "whole_pooled_length_ratio": 2.979184924794786,
+      "whole_macro_length_ratio": 13.608739843928443
+    },
+    {
+      "variant": "lcmboost_updated",
+      "valid_cases": 5,
+      "missing_cases": 2,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.30823246663652876,
+      "segment_f1_6": 0.3897331634240203,
+      "resampled_f1_2": 0.2821192975264064,
+      "resampled_f1_6": 0.34569992940254,
+      "pooled_length_ratio": 0.44682683665517897,
+      "macro_length_ratio": 0.5158923112933287,
+      "whole_segment_f1_2": 0.30527201969707635,
+      "whole_segment_f1_6": 0.3861732307723618,
+      "whole_resampled_f1_2": 0.2791483672934215,
+      "whole_resampled_f1_6": 0.3433082389235041,
+      "whole_pooled_length_ratio": 0.4542919798555896,
+      "whole_macro_length_ratio": 0.53650578273541
+    },
+    {
+      "variant": "meanshift",
+      "valid_cases": 2,
+      "missing_cases": 5,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.12839352433806625,
+      "segment_f1_6": 0.19344973213040936,
+      "resampled_f1_2": 0.11263656429197308,
+      "resampled_f1_6": 0.1564022607678815,
+      "pooled_length_ratio": 0.04814597487770607,
+      "macro_length_ratio": 0.11835071143877911,
+      "whole_segment_f1_2": 0.12869409724009587,
+      "whole_segment_f1_6": 0.19366253184041934,
+      "whole_resampled_f1_2": 0.1121243077205962,
+      "whole_resampled_f1_6": 0.15638858275636044,
+      "whole_pooled_length_ratio": 0.048304480254783816,
+      "whole_macro_length_ratio": 0.1186472618883077
+    },
+    {
+      "variant": "meanshift_updated",
+      "valid_cases": 2,
+      "missing_cases": 5,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.0984555621409462,
+      "segment_f1_6": 0.21970492540105438,
+      "resampled_f1_2": 0.08572966364176281,
+      "resampled_f1_6": 0.18838411482607773,
+      "pooled_length_ratio": 0.07524762189229614,
+      "macro_length_ratio": 0.17694549837109605,
+      "whole_segment_f1_2": 0.09894699771859619,
+      "whole_segment_f1_6": 0.21977836818164143,
+      "whole_resampled_f1_2": 0.08507052328050609,
+      "whole_resampled_f1_6": 0.18858439323155332,
+      "whole_pooled_length_ratio": 0.07660582463981769,
+      "whole_macro_length_ratio": 0.17948658336615542
+    },
+    {
+      "variant": "most",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.16243075937343385,
+      "segment_f1_6": 0.25194162319009866,
+      "resampled_f1_2": 0.1426024946503654,
+      "resampled_f1_6": 0.2029466948132393,
+      "pooled_length_ratio": 0.2137275928450144,
+      "macro_length_ratio": 0.2927563887912639,
+      "whole_segment_f1_2": 0.16044546986231695,
+      "whole_segment_f1_6": 0.24974570070240082,
+      "whole_resampled_f1_2": 0.14174515755905748,
+      "whole_resampled_f1_6": 0.20145918402070007,
+      "whole_pooled_length_ratio": 0.21732453291119347,
+      "whole_macro_length_ratio": 0.30541947524444824
+    },
+    {
+      "variant": "mst_tracing",
+      "valid_cases": 5,
+      "missing_cases": 2,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.45538385407450777,
+      "segment_f1_6": 0.5524200831101281,
+      "resampled_f1_2": 0.39559775154872784,
+      "resampled_f1_6": 0.46810528340710694,
+      "pooled_length_ratio": 1.4510909188470646,
+      "macro_length_ratio": 0.9031230801845993,
+      "whole_segment_f1_2": 0.45234114844277434,
+      "whole_segment_f1_6": 0.5482522016604982,
+      "whole_resampled_f1_2": 0.39286388374472747,
+      "whole_resampled_f1_6": 0.46635159609834237,
+      "whole_pooled_length_ratio": 1.4702413732690027,
+      "whole_macro_length_ratio": 0.9237294999091843
+    },
+    {
+      "variant": "nctutw",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.21742376296704727,
+      "segment_f1_6": 0.2902974563039012,
+      "resampled_f1_2": 0.17879522142411317,
+      "resampled_f1_6": 0.24199981984163138,
+      "pooled_length_ratio": 1.0236709326287907,
+      "macro_length_ratio": 3.9920613598610837,
+      "whole_segment_f1_2": 0.2150937134964575,
+      "whole_segment_f1_6": 0.2785686854326228,
+      "whole_resampled_f1_2": 0.17753566408942506,
+      "whole_resampled_f1_6": 0.23478433282205463,
+      "whole_pooled_length_ratio": 2.419326495742746,
+      "whole_macro_length_ratio": 10.541864102666679
+    },
+    {
+      "variant": "nctutw_gd",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.2629843490053285,
+      "segment_f1_6": 0.3093220700150196,
+      "resampled_f1_2": 0.22612575279808858,
+      "resampled_f1_6": 0.26930863814166145,
+      "pooled_length_ratio": 0.5795383480913842,
+      "macro_length_ratio": 2.1707235201843758,
+      "whole_segment_f1_2": 0.2578918685936294,
+      "whole_segment_f1_6": 0.29588692704570885,
+      "whole_resampled_f1_2": 0.2224089314733999,
+      "whole_resampled_f1_6": 0.26100530927719745,
+      "whole_pooled_length_ratio": 1.3203337411154337,
+      "whole_macro_length_ratio": 5.727329020924075
+    },
+    {
+      "variant": "neurogpstree",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.4524168611114375,
+      "segment_f1_6": 0.573693781538421,
+      "resampled_f1_2": 0.3944185805103953,
+      "resampled_f1_6": 0.4754478818361444,
+      "pooled_length_ratio": 5.667006200192423,
+      "macro_length_ratio": 16.32283544838955,
+      "whole_segment_f1_2": 0.42727370372325574,
+      "whole_segment_f1_6": 0.5385853492012609,
+      "whole_resampled_f1_2": 0.3721564229912812,
+      "whole_resampled_f1_6": 0.44844997843682943,
+      "whole_pooled_length_ratio": 10.107237604529487,
+      "whole_macro_length_ratio": 35.13052093127711
+    },
+    {
+      "variant": "neurogpstree_updated",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.42963769349657127,
+      "segment_f1_6": 0.5673437071085078,
+      "resampled_f1_2": 0.38762120497661395,
+      "resampled_f1_6": 0.5025833370179055,
+      "pooled_length_ratio": 2.181123307711276,
+      "macro_length_ratio": 6.27906236794201,
+      "whole_segment_f1_2": 0.4270435968392136,
+      "whole_segment_f1_6": 0.5588621463420385,
+      "whole_resampled_f1_2": 0.38612102048879926,
+      "whole_resampled_f1_6": 0.5007849930097177,
+      "whole_pooled_length_ratio": 3.8695847293333006,
+      "whole_macro_length_ratio": 14.517467653360097
+    },
+    {
+      "variant": "neuronchaser",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.26993128801948946,
+      "segment_f1_6": 0.33746462127096616,
+      "resampled_f1_2": 0.22194108415510638,
+      "resampled_f1_6": 0.2753436017679053,
+      "pooled_length_ratio": 3.1541737640153142,
+      "macro_length_ratio": 4.275346598461285,
+      "whole_segment_f1_2": 0.25976315779168735,
+      "whole_segment_f1_6": 0.3217779866749166,
+      "whole_resampled_f1_2": 0.21589185662912028,
+      "whole_resampled_f1_6": 0.2676312010019258,
+      "whole_pooled_length_ratio": 4.272467792171345,
+      "whole_macro_length_ratio": 5.268809420916121
+    },
+    {
+      "variant": "neuronchaser_updated",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.4224930079053722,
+      "segment_f1_6": 0.5098163056515602,
+      "resampled_f1_2": 0.3634649536649132,
+      "resampled_f1_6": 0.444409149902178,
+      "pooled_length_ratio": 1.2160467689312424,
+      "macro_length_ratio": 1.1428915595994291,
+      "whole_segment_f1_2": 0.41968791979567754,
+      "whole_segment_f1_6": 0.5069565803497476,
+      "whole_resampled_f1_2": 0.36148690949969897,
+      "whole_resampled_f1_6": 0.44495889331021216,
+      "whole_pooled_length_ratio": 1.225922672271082,
+      "whole_macro_length_ratio": 1.173589134163913
+    },
+    {
+      "variant": "neurostalker",
+      "valid_cases": 4,
+      "missing_cases": 2,
+      "invalid_cases": 1,
+      "segment_f1_2": 0.11888315771743953,
+      "segment_f1_6": 0.25044868366573514,
+      "resampled_f1_2": 0.09872268741542067,
+      "resampled_f1_6": 0.19464561813276085,
+      "pooled_length_ratio": 0.09480586548663786,
+      "macro_length_ratio": 0.2746052217132126,
+      "whole_segment_f1_2": 0.118559905859226,
+      "whole_segment_f1_6": 0.24999270254764458,
+      "whole_resampled_f1_2": 0.09953097656945455,
+      "whole_resampled_f1_6": 0.1956575294010956,
+      "whole_pooled_length_ratio": 0.09950107925609723,
+      "whole_macro_length_ratio": 0.28420541291583196
+    },
+    {
+      "variant": "neutu_autotrace",
+      "valid_cases": 3,
+      "missing_cases": 2,
+      "invalid_cases": 2,
+      "segment_f1_2": 0.07787887760107272,
+      "segment_f1_6": 0.1529496289903178,
+      "resampled_f1_2": 0.06834896954946,
+      "resampled_f1_6": 0.12411774086676146,
+      "pooled_length_ratio": 0.0808449399510172,
+      "macro_length_ratio": 0.1933363901250707,
+      "whole_segment_f1_2": 0.07388993795523077,
+      "whole_segment_f1_6": 0.1446982295765444,
+      "whole_resampled_f1_2": 0.06497207395049591,
+      "whole_resampled_f1_6": 0.1190528071835113,
+      "whole_pooled_length_ratio": 0.09955158272558666,
+      "whole_macro_length_ratio": 0.23785446139052477
+    },
+    {
+      "variant": "neutube",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.48583212399396586,
+      "segment_f1_6": 0.5585909001461443,
+      "resampled_f1_2": 0.4514330711199625,
+      "resampled_f1_6": 0.49976265172054674,
+      "pooled_length_ratio": 1.2478049194205143,
+      "macro_length_ratio": 0.6538918008202319,
+      "whole_segment_f1_2": 0.4650283786254664,
+      "whole_segment_f1_6": 0.5343679791015019,
+      "whole_resampled_f1_2": 0.43164405937892975,
+      "whole_resampled_f1_6": 0.4802282683974094,
+      "whole_pooled_length_ratio": 1.4745751690585598,
+      "whole_macro_length_ratio": 0.751443050043236
+    },
+    {
+      "variant": "neutube_updated",
+      "valid_cases": 6,
+      "missing_cases": 0,
+      "invalid_cases": 1,
+      "segment_f1_2": 0.6400335798598172,
+      "segment_f1_6": 0.7311746759030309,
+      "resampled_f1_2": 0.5872485911436514,
+      "resampled_f1_6": 0.6814009376415928,
+      "pooled_length_ratio": 1.2501705543714359,
+      "macro_length_ratio": 0.8981067536614571,
+      "whole_segment_f1_2": 0.63217930537928,
+      "whole_segment_f1_6": 0.7219561512264664,
+      "whole_resampled_f1_2": 0.5823900360217642,
+      "whole_resampled_f1_6": 0.6787659570285092,
+      "whole_pooled_length_ratio": 1.2882340257298612,
+      "whole_macro_length_ratio": 0.9278300424945519
+    },
+    {
+      "variant": "pyzh",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.30395343884995646,
+      "segment_f1_6": 0.4934042801360527,
+      "resampled_f1_2": 0.2637795458475432,
+      "resampled_f1_6": 0.44745650756248995,
+      "pooled_length_ratio": 0.4653343426163647,
+      "macro_length_ratio": 0.6698807089441533,
+      "whole_segment_f1_2": 0.3050025299902682,
+      "whole_segment_f1_6": 0.49423962952022116,
+      "whole_resampled_f1_2": 0.26517574981186226,
+      "whole_resampled_f1_6": 0.4535143631597362,
+      "whole_pooled_length_ratio": 0.46541728051979986,
+      "whole_macro_length_ratio": 0.6700308755339972
+    },
+    {
+      "variant": "pyzh_updated",
+      "valid_cases": 4,
+      "missing_cases": 3,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.18924548226691293,
+      "segment_f1_6": 0.2813183852046187,
+      "resampled_f1_2": 0.16814943428168067,
+      "resampled_f1_6": 0.24491972147811106,
+      "pooled_length_ratio": 0.13347502933588065,
+      "macro_length_ratio": 0.18963766930518564,
+      "whole_segment_f1_2": 0.18945590686059782,
+      "whole_segment_f1_6": 0.2819808678001044,
+      "whole_resampled_f1_2": 0.16811609875757924,
+      "whole_resampled_f1_6": 0.2460749666610434,
+      "whole_pooled_length_ratio": 0.13347502933588062,
+      "whole_macro_length_ratio": 0.1896376693051856
+    },
+    {
+      "variant": "rayshooting",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.10833567794621149,
+      "segment_f1_6": 0.16276123150339677,
+      "resampled_f1_2": 0.08823162342357557,
+      "resampled_f1_6": 0.12787495635882978,
+      "pooled_length_ratio": 11.495871262422002,
+      "macro_length_ratio": 3.819203289272853,
+      "whole_segment_f1_2": 0.10617334006773817,
+      "whole_segment_f1_6": 0.1592522200365121,
+      "whole_resampled_f1_2": 0.08711885187476064,
+      "whole_resampled_f1_6": 0.12756795675110572,
+      "whole_pooled_length_ratio": 15.636861742576315,
+      "whole_macro_length_ratio": 5.180563439206672
+    },
+    {
+      "variant": "rivulet",
+      "valid_cases": 0,
+      "missing_cases": 3,
+      "invalid_cases": 4,
+      "segment_f1_2": 0.0,
+      "segment_f1_6": 0.0,
+      "resampled_f1_2": 0.0,
+      "resampled_f1_6": 0.0,
+      "pooled_length_ratio": 0.0,
+      "macro_length_ratio": 0.0,
+      "whole_segment_f1_2": 0.0,
+      "whole_segment_f1_6": 0.0,
+      "whole_resampled_f1_2": 0.0,
+      "whole_resampled_f1_6": 0.0,
+      "whole_pooled_length_ratio": 0.0,
+      "whole_macro_length_ratio": 0.0
+    },
+    {
+      "variant": "rollerball",
+      "valid_cases": 5,
+      "missing_cases": 2,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.10661187826410504,
+      "segment_f1_6": 0.14770686215271073,
+      "resampled_f1_2": 0.08657739571723842,
+      "resampled_f1_6": 0.11962617336463362,
+      "pooled_length_ratio": 0.3079932791126068,
+      "macro_length_ratio": 0.22638439804724728,
+      "whole_segment_f1_2": 0.10675425341754778,
+      "whole_segment_f1_6": 0.1480579328488481,
+      "whole_resampled_f1_2": 0.08657757488579167,
+      "whole_resampled_f1_6": 0.12039991807533619,
+      "whole_pooled_length_ratio": 0.31229698183653953,
+      "whole_macro_length_ratio": 0.2435564949259676
+    },
+    {
+      "variant": "simple",
+      "valid_cases": 3,
+      "missing_cases": 4,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.19262284332556973,
+      "segment_f1_6": 0.24563144138373125,
+      "resampled_f1_2": 0.17111364162437287,
+      "resampled_f1_6": 0.22014765261990155,
+      "pooled_length_ratio": 0.31542346648178204,
+      "macro_length_ratio": 0.25303693132626237,
+      "whole_segment_f1_2": 0.19262951230628436,
+      "whole_segment_f1_6": 0.24533269577781874,
+      "whole_resampled_f1_2": 0.17143292831506723,
+      "whole_resampled_f1_6": 0.22182068584020395,
+      "whole_pooled_length_ratio": 0.3200994759443457,
+      "whole_macro_length_ratio": 0.2553643670759876
+    },
+    {
+      "variant": "smarttracing",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.380707645014135,
+      "segment_f1_6": 0.46900392090165294,
+      "resampled_f1_2": 0.3433185707921134,
+      "resampled_f1_6": 0.40433559811352593,
+      "pooled_length_ratio": 2.3065015151667083,
+      "macro_length_ratio": 5.500637098923959,
+      "whole_segment_f1_2": 0.3563804506607991,
+      "whole_segment_f1_6": 0.4358689930370466,
+      "whole_resampled_f1_2": 0.32349461875635666,
+      "whole_resampled_f1_6": 0.38378066792820853,
+      "whole_pooled_length_ratio": 4.5818022934873746,
+      "whole_macro_length_ratio": 10.591845158427699
+    },
+    {
+      "variant": "snake",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.4294616195989258,
+      "segment_f1_6": 0.5082127256711375,
+      "resampled_f1_2": 0.39648798833467586,
+      "resampled_f1_6": 0.4565061233586908,
+      "pooled_length_ratio": 1.289624308583011,
+      "macro_length_ratio": 3.6780637432986594,
+      "whole_segment_f1_2": 0.42400207710924054,
+      "whole_segment_f1_6": 0.49662509229957486,
+      "whole_resampled_f1_2": 0.3907656934284011,
+      "whole_resampled_f1_6": 0.44919189540477217,
+      "whole_pooled_length_ratio": 2.360548822789007,
+      "whole_macro_length_ratio": 8.863517840406361
+    },
+    {
+      "variant": "tubularity_model_s.v3draw_mst_tracing_ws_21_th_170_updated",
+      "valid_cases": 7,
+      "missing_cases": 0,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.3393796687097265,
+      "segment_f1_6": 0.40938271800579024,
+      "resampled_f1_2": 0.2997927786446239,
+      "resampled_f1_6": 0.3645038391044917,
+      "pooled_length_ratio": 0.7083054275275728,
+      "macro_length_ratio": 1.9076870370921792,
+      "whole_segment_f1_2": 0.3337699051199401,
+      "whole_segment_f1_6": 0.39856509222030884,
+      "whole_resampled_f1_2": 0.2969556559347705,
+      "whole_resampled_f1_6": 0.35901973143819316,
+      "whole_pooled_length_ratio": 1.1857012535603575,
+      "whole_macro_length_ratio": 4.224928710482234
+    },
+    {
+      "variant": "tubularity_model_s.v3draw_mst_tracing_ws_21_th_200",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.34030950515491043,
+      "segment_f1_6": 0.4049404747696472,
+      "resampled_f1_2": 0.3058687206088558,
+      "resampled_f1_6": 0.3689536453564086,
+      "pooled_length_ratio": 0.5821939132544908,
+      "macro_length_ratio": 1.146460340455357,
+      "whole_segment_f1_2": 0.3376362301414679,
+      "whole_segment_f1_6": 0.3993095938367438,
+      "whole_resampled_f1_2": 0.30396062843071536,
+      "whole_resampled_f1_6": 0.3667227777036971,
+      "whole_pooled_length_ratio": 0.890638285074242,
+      "whole_macro_length_ratio": 2.65332321890125
+    },
+    {
+      "variant": "xy_3d_tremap",
+      "valid_cases": 6,
+      "missing_cases": 1,
+      "invalid_cases": 0,
+      "segment_f1_2": 0.42440184774718326,
+      "segment_f1_6": 0.5206657463721649,
+      "resampled_f1_2": 0.3879784750306321,
+      "resampled_f1_6": 0.44972228900322164,
+      "pooled_length_ratio": 1.2494865059269822,
+      "macro_length_ratio": 2.037349466118833,
+      "whole_segment_f1_2": 0.4172845752807657,
+      "whole_segment_f1_6": 0.510071404273737,
+      "whole_resampled_f1_2": 0.38230475497382027,
+      "whole_resampled_f1_6": 0.4424692606941683,
+      "whole_pooled_length_ratio": 1.3709981708662713,
+      "whole_macro_length_ratio": 2.352651169461256
+    }
+  ],
+  "external_reference_independence": "parameter-optimized release;filename seed coordinates disclosed,their origin not established;not a certified reference-free independent baseline",
+  "coordinate_failures": [
+    {
+      "case_id": "p_checked6_mouse_RGC_uw/sv_140921c4",
+      "algorithm_variant": "neurostalker",
+      "seed_xyz_from_filename": null,
+      "dataset_id": "122",
+      "identity_evidence": "published dataset ID in algorithm filename",
+      "archive_member": "20161101_reconstruction_for_gold166_rhea_5571/checked3_mouse_RGC_uw/140921c4/35_122.v3dpbd_NeuroStalker.swc",
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\bigneuron_benchmark_recovery_20261106\\inventory\\822dc1555902537301cc8e37b891060d240123fdb74285b6d9411079156405dd.swc",
+      "sha256": "505ebbb80e52e57086f5dd46a3990656755c45e24c864434a753862f37141db8",
+      "fraction_in_native_bounds": 0.9460708782742681,
+      "fixed_transform": "identity XYZ;no shift,axis swap,scale or gold-fitted alignment",
+      "origin_verified": false,
+      "limitation": "Native bounds do not prove subvoxel origin;comparison remains provisional until overlay confirmation."
+    },
+    {
+      "case_id": "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017",
+      "algorithm_variant": "neutube_updated",
+      "seed_xyz_from_filename": null,
+      "dataset_id": "103",
+      "identity_evidence": "published dataset ID in algorithm filename",
+      "archive_member": "20161101_reconstruction_for_gold166_rhea_5571/checked3_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017/20_103.v3dpbd_neutube_updated.swc",
+      "path": "C:\\Users\\Seywe\\Documents\\GitHub\\PointNeuron\\PN2\\tmp\\bigneuron_benchmark_recovery_20261106\\inventory\\be097831f0cb593293eee1b59bb0eb8c39bde815e87172382820bebdd5071300.swc",
+      "sha256": "5e493e1841df97dde0c6fda249693c013a74698f32182c372fbd54dc92faca98",
+      "fraction_in_native_bounds": 0.9375,
+      "fixed_transform": "identity XYZ;no shift,axis swap,scale or gold-fitted alignment",
+      "origin_verified": false,
+      "limitation": "Native bounds do not prove subvoxel origin;comparison remains provisional until overlay confirmation."
+    }
+  ],
+  "Series017_small_overshoot": {
+    "variant": "neutube_updated",
+    "nodes": 16,
+    "outside_nodes": 1,
+    "shape_xyz": [
+      512,
+      512,
+      47
+    ],
+    "outside_xyz": [
+      23.8887,
+      450.716,
+      46.7044
+    ],
+    "maximum_overshoot_voxel": 0.2044,
+    "frozen_status_preserved": "whole-case protocol zero;not measured zero overlap"
+  },
+  "editing_search_limits": {
+    "prune_only": {
+      "boxes": 151,
+      "hit_local_search_limit": 0,
+      "boxes_with_component_drops": 0,
+      "total_component_drops": 0
+    },
+    "prune_add": {
+      "boxes": 151,
+      "hit_local_search_limit": 106,
+      "boxes_with_component_drops": 97,
+      "total_component_drops": 767
+    }
+  },
+  "editing_achieved": {
+    "prune_only": {
+      "segment_f1_2": 0.6477217278335876,
+      "segment_f1_6": 0.7701145738676549,
+      "resampled_f1_2": 0.5858459158915735,
+      "resampled_f1_6": 0.6473875834293263,
+      "pooled_length_ratio": 0.490745193729429,
+      "macro_length_ratio": 0.5122008915959061
+    },
+    "prune_add": {
+      "segment_f1_2": 0.6856168669338255,
+      "segment_f1_6": 0.8042671684664747,
+      "resampled_f1_2": 0.6174073433508195,
+      "resampled_f1_6": 0.6853512618353509,
+      "pooled_length_ratio": 0.5510486005400128,
+      "macro_length_ratio": 0.5632362460384722
+    }
+  },
+  "comparison_limits": [
+    "repeatedly inspected development set",
+    "native identity origin unverified",
+    "parameter-optimized archive and unknown seed provenance",
+    "oracle uses reference;bounded feasible result not ceiling",
+    "no learned model selected or scored here"
+  ],
+  "verification": {
+    "extracted_SWC_hashes_matched": 237,
+    "stored_primary_and_whole_aggregates_replayed_exact": true,
+    "Stage2_STOP_unchanged": true,
+    "original_STOP_sha256": "0edf832a39d52bd5cd48296dbb5d613b1af51c0bdd5ea762f1af797425de6eae"
+  },
+  "artifact_sha256": {
+    "tmp\\bigneuron_benchmark_recovery_20261106\\scoring\\report.json": "98baa25ace6c7ba206dcf8a770c64bec66b2680c9cb5b0c1726ee7ec59e5655f",
+    "tmp\\bigneuron_benchmark_recovery_20261106\\inventory\\manifest.json": "75c104d2a4d5c63b99037c5e548b25c8849f7fe2ef6a0b5d47a90cda80555932",
+    "tmp\\bigneuron_benchmark_recovery_20261106\\finished.json": "0c2c5cc8c99159f54fdf7d88f0cc94e01c646af35b9bab51a8d5a3235b3669b0",
+    "tmp\\bigneuron_benchmark_recovery_20261106_guard_20261106T101303_515710Z\\report.json": "ad7fefd152a45470bfc0f49f02760b0e5bc66b80b789efc055e7481f5a704a9e",
+    "configs\\bigneuron_benchmark_recovery_20261106.json": "6b7265d8990e751fe64242424451b30e087533da17dfccfd9fd1a2a25bdb6cca"
+  },
+  "GPU": false,
+  "training": false,
+  "new_development_training_labels": false,
+  "new_timed_job": false,
+  "gate_changed": false
+}

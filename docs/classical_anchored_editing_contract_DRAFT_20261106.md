@@ -6,6 +6,17 @@ development neuron-macro resampled F1_2 with the declared length constraint;
 thresholds,training run or acceptance floor. Stage2 remains stopped,unchanged.
 Professor discussion of the experimental Transformer departure is still pending.
 
+**Post-benchmark addendum: ** [completed provisional comparison](bigneuron_benchmark_results_20261106.md)
+finds fixed archive leader `neutube_updated` at 64.00/73.12% segment and 58.72/68.14%
+resampled F1. The editing oracle's advantage is 3.02pp resampled at 2 and .40pp at 6,
+and depends on a Series017 protocol zero from the coarse frozen bounds screen.
+Preserve those results; no coordinate rule or gate changes. Also, (b) hit its
+128-edit cap in 106/151 boxes and used budget component drops in 97. Its 61.74%
+is an achieved lower bound, not a true ceiling. Hold implementation/training for
+discussion; this neither revokes the passed drafting gate nor proves editing
+impossible. No new numerical acceptance rule is adopted. Coordinate/source-
+provenance interpretation and the actual image-only unit pool need discussion.
+
 ## What justifies this draft,and its practical limit
 
 The measured feasible oracle solution retains exact classical geometry and adds
@@ -89,9 +100,11 @@ access reference length,labels,edges or roots during real inference.
 
 Controls must share the same image-only candidate/edit units and decoder:
 preserved classical;fixed no-learning edits;handcrafted learned edits;optional
-PointNeXt and graph-model comparisons. The benchmark algorithm comparison is
-still pending identity recovery and should inform the discussion before freezing
-another learned-success bar. No lower acceptance floor is invented from this pass.
+PointNeXt and graph-model comparisons. The benchmark comparison is now complete
+under provisional native-convention/failure rules and must inform discussion
+before another learned-success bar is frozen. The coordinate screen's sampling
+dependence and source/seed provenance remain unresolved. No lower acceptance
+floor is invented from this pass.
 
 ## Validation work that the draft still needs
 

@@ -1,5 +1,43 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST, 6 November: BigNeuron recovery and first scoring COMPLETE. No further
+job is queued. Stage 2 remains STOPPED with its gate, STOP.json and artifacts
+unchanged.** Read [benchmark results](bigneuron_benchmark_results_20261106.md),
+[portable evidence](evidence/bigneuron_benchmark_completed_20261106.json), and the
+[editing contract DRAFT](classical_anchored_editing_contract_DRAFT_20261106.md).
+The user-local CPU job completed in 2,227.08 seconds, guard exit 0, reusing the
+archive. All seven identities resolved: 237 SWCs, 44 variants, 308 method/case
+slots (208 accepted, 71 missing, 29 rejected). All 237 SWC hashes match; stored
+primary and whole-image aggregates replay exactly. No new training labels,
+model fitting, GPU work, scoring-rule change or reserved-neuron inspection.
+
+Fixed archive leader `neutube_updated`: same 151-box neuron-macro segment F1
+64.00/73.12%, resampled F1 58.72/68.14% at 2/6 voxels, pooled length 1.25017x.
+Median across all 44 including missing/rejected zeros: segment 30.61/39.73%,
+resampled 27.29/35.51%. This is parameter-optimized external context with unknown
+seed provenance, not a certified independent reference-free baseline.
+
+IMPORTANT: leader Series017 scores a protocol zero because 1/16 nodes lies
+0.2044 voxel beyond the native cell bound. The frozen 99%-of-vertices check is
+coarse and sampling-density dependent; passing also does not establish origin.
+Do not silently relax, clip, shift, exclude or rescore. Native comparison remains
+provisional; discuss a separate coordinate audit before treating it as decisive.
+
+Editing(b) still passes ONLY the fixed drafting gate: resampled 61.74/68.54%,
+length .55105x; (a) 58.58/64.74%. Its apparent margin over the archive leader is
+3.02/.40 percentage points and depends on the Series017 protocol zero. Also,
+(b) hit its 128-edit cap in 106/151 boxes; 97 used budget component drops (767
+in total). It is a feasible lower bound, not a solved ceiling. Do not extend the
+search. No learned advantage is established. Hold substantive implementation
+and training for discussion of coordinate/source interpretation, an actual
+image-only editing-unit pool and a prospective comparison contract. No new
+floor is adopted from these repeatedly inspected development results.
+
+All five post-stop computational diagnostics are now complete under their
+declared rules; interpretation has the caveats above. Professor discussion is
+pending. Earlier readiness/pending statements below are chronological history,
+not launch instructions. Do not restart Phase 1 or rerun completed jobs.
+
 **LATEST,6 November: post-stop diagnostics completed;benchmark scoring still
 pending;editing DRAFT now authorized by the measured gate.** Read
 [full results](post_stage2_diagnostics_results_20261106.md),

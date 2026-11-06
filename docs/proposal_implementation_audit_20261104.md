@@ -3,7 +3,7 @@
 ## Current experimental-arm update — 5 November, user approved
 
 **6 November post-stop diagnostic results:** [readout](post_stage2_diagnostics_results_20261106.md)
-is complete except benchmark metric scoring,which needs archive identity repair.
+is complete, including the [provisional BigNeuron comparison](bigneuron_benchmark_results_20261106.md).
 Editing oracle prune/add61.74% resampled F1_2 under1.25x passes the DRAFT gate;
 prune-only58.58% does not. [Editing contract](classical_anchored_editing_contract_DRAFT_20261106.md)
 is discussion only. Intensity-ridge measurement and15-sheet visual review change
@@ -11,8 +11,12 @@ no gold labels. Fixed ablations are not adopted consolidation. No image-only
 editing candidate policy,learner,Transformer role,radius supervision,topology
 loss,multi-scale query or whole-image stage is added/promoted by this diagnostic
 pass. It shows reference-assisted feasibility,not learnability or final quality.
-Stage2 remains stopped unchanged. Benchmark repair uses the existing archive;
-no download or completed diagnostic is repeated.
+Stage 2 remains stopped unchanged. Benchmark scoring reused the archive: 237
+outputs and 44 variants. Fixed leader resampled F1 is 58.72/68.14%; editing(b)
+achieves 61.74/68.54%, with 106/151 searches reaching the edit cap. The latter is
+not a true ceiling. A coarse bounds-screen zero for a 0.2044-voxel endpoint
+overshoot affects the comparison; no rule is relaxed. The editing contract stays
+a draft pending discussion, with no new model, gate or timed job.
 
 **Latest Stage2 status,6 November:** all33 C0/C1 CPU tree folds completed and
 STOPPED under the [fixed protocol](stage2_trees_protocol_20261105.md): pooled

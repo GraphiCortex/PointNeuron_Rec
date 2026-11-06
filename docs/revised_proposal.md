@@ -11,10 +11,15 @@ passing the user's drafting gate;prune-only58.58% does not pass. The
 is now written for discussion,with no learner,architecture or training adopted.
 Only55.49% reference length is covered within2,so this is not complete reconstruction.
 Ridge40-neuron results,15-sheet visual review and F1 decomposition are complete;
-no labels changed. Benchmark archive downloaded but initial identity mapping
-covered3/7 cases and NO algorithms scored. A [separate identity repair/FIRST
-scoring command](bigneuron_benchmark_recovery_ready_20261106.md) is ready,
-reusing the archive and preserving completed evidence. No old gate is changed.
+no labels changed. [BigNeuron recovery and scoring](bigneuron_benchmark_results_20261106.md)
+are complete: 237 outputs, 44 variants, all seven development neurons. Fixed
+archive leader scores 64.00/73.12% segment and 58.72/68.14% resampled F1, with
+length 1.25017x. Coordinate-screen zeros and unknown seed provenance make this
+provisional context, not a certified independent baseline. Editing(b)'s apparent
+resampled margin is only 3.02/.40 points and depends on a small-overshoot Series017
+protocol zero. Its bounded search hit the edit cap in 106/151 boxes: achieved
+feasibility, not a solved ceiling. Hold implementation/training for discussion;
+no comparator, acceptance floor or old gate is changed. No further launch is queued.
 
 **Experimental-arm update, 5 November 2026 (user approved; professor discussion
 pending):** In the candidate-selection arm the Transformer no longer proposes
