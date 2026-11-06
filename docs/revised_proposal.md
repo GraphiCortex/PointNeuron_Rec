@@ -3,15 +3,18 @@
 Active document for the [fresh PN2 workspace](../README.md).
 New source, scripts, configs, tests and reports belong under `PN2/`.
 
-**6 November diagnostic continuation:** Stage2 remains stopped. The user approved
-five CPU-only,nonselecting diagnostics;the [fixed diagnostic protocol](post_stage2_diagnostics_protocol_20261106.md)
-and [local launch commands](post_stage2_diagnostics_ready_20261106.md) are ready,
-with51 passing synthetic/regression checks. No real diagnostic action has run.
-Gold/ridge offsets,visual annotation-completeness review,external BigNeuron
-outputs,F1 decomposition and classical-anchored editing headroom do not replace
-any stage or change labels. Only editing oracle(b)>=60% development resampled
-F1_2 within1.25x length permits drafting an editing contract;no training or
-architecture adoption follows automatically. The original failed gate stays intact.
+**6 November diagnostic continuation:** Stage2 remains stopped. The
+[completed CPU diagnostic readout](post_stage2_diagnostics_results_20261106.md)
+finds editing oracle(b) resampled F1_2=61.74%,length.55105x,maxbox1.24205x,
+passing the user's drafting gate;prune-only58.58% does not pass. The
+[editing contract DRAFT](classical_anchored_editing_contract_DRAFT_20261106.md)
+is now written for discussion,with no learner,architecture or training adopted.
+Only55.49% reference length is covered within2,so this is not complete reconstruction.
+Ridge40-neuron results,15-sheet visual review and F1 decomposition are complete;
+no labels changed. Benchmark archive downloaded but initial identity mapping
+covered3/7 cases and NO algorithms scored. A [separate identity repair/FIRST
+scoring command](bigneuron_benchmark_recovery_ready_20261106.md) is ready,
+reusing the archive and preserving completed evidence. No old gate is changed.
 
 **Experimental-arm update, 5 November 2026 (user approved; professor discussion
 pending):** In the candidate-selection arm the Transformer no longer proposes

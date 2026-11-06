@@ -1,5 +1,13 @@
 # CPU diagnostic launches — Stage2 stays stopped
 
+**Completed-run status,6 November:** these actions ran locally. Ridge/review,
+decomposition and editing are COMPLETE;do not repeat them. Editing(b) passed
+the drafting gate at61.74%,(a)58.58% did not. The archive downloaded,but original
+mapping covered only3/7 cases and benchmark scoring did not run. Read
+[results](post_stage2_diagnostics_results_20261106.md) and use ONLY the
+[separate repair/FIRST-scoring command](bigneuron_benchmark_recovery_ready_20261106.md)
+for that remaining work. Original launch instructions below are retained history.
+
 Use the existing Stage2 CPU environment. No installation,training,GPU,GATv2 or
 Stage2 restart. All thresholds and definitions are fixed in the
 [protocol](post_stage2_diagnostics_protocol_20261106.md) and

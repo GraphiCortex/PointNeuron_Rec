@@ -2,15 +2,17 @@
 
 ## Current experimental-arm update — 5 November, user approved
 
-**6 November post-stop diagnostics:** the [five CPU diagnostics](post_stage2_diagnostics_protocol_20261106.md)
-are implemented for local launch,not executed. Intensity-ridge measurement and
-visual review change no gold labels. External benchmark SWCs require a separate
-official download/native-frame check. Isolate/spur/duplicate ablations are metric
-diagnostics,not adopted consolidation. Classical-anchored prune/add is explicitly
-REFERENCE-ASSISTED headroom,not an inference editing stage;only>=60% development
-resampled F1_2 under1.25x permits a later contract draft. No stage,Transformer role,
-radius supervision,topology loss,multi-scale query or whole-image implementation
-is added/promoted by this diagnostic work. Stage2 remains stopped unchanged.
+**6 November post-stop diagnostic results:** [readout](post_stage2_diagnostics_results_20261106.md)
+is complete except benchmark metric scoring,which needs archive identity repair.
+Editing oracle prune/add61.74% resampled F1_2 under1.25x passes the DRAFT gate;
+prune-only58.58% does not. [Editing contract](classical_anchored_editing_contract_DRAFT_20261106.md)
+is discussion only. Intensity-ridge measurement and15-sheet visual review change
+no gold labels. Fixed ablations are not adopted consolidation. No image-only
+editing candidate policy,learner,Transformer role,radius supervision,topology
+loss,multi-scale query or whole-image stage is added/promoted by this diagnostic
+pass. It shows reference-assisted feasibility,not learnability or final quality.
+Stage2 remains stopped unchanged. Benchmark repair uses the existing archive;
+no download or completed diagnostic is repeated.
 
 **Latest Stage2 status,6 November:** all33 C0/C1 CPU tree folds completed and
 STOPPED under the [fixed protocol](stage2_trees_protocol_20261105.md): pooled

@@ -1,5 +1,63 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST,6 November: post-stop diagnostics completed;benchmark scoring still
+pending;editing DRAFT now authorized by the measured gate.** Read
+[full results](post_stage2_diagnostics_results_20261106.md),
+[portable evidence](evidence/post_stage2_diagnostics_completed_20261106.json),
+[editing contract DRAFT](classical_anchored_editing_contract_DRAFT_20261106.md),
+and [benchmark identity-repair command](bigneuron_benchmark_recovery_ready_20261106.md).
+User ran the frozen4212b95 CPU jobs locally,not the agent. All guards exit0.
+Ridge/review2342.56s,archive345.86s,decompose326.28s,editing6828.77s.
+Benchmark_score2s wrote incomplete-mapping status and computed NO metrics.
+Old Stage2 STOP/gate/artifacts remain unchanged;no exclusion,retuning,relabeling,
+neuron-model training,GPU,GATv2 or editing architecture adoption.
+
+Editing(a)resampledF1_2/6=58.58/64.74%,segment64.77/77.01%,length.49075x.
+(b)=61.74/68.54%,segment68.56/80.43%,length.55105x. Fixedb>=60 draft gate
+PASSES;aaloneFAILS. All151 boxes included,maxfinalboxLR1.24205<=1.25.
+Frog/mouse use declared neuron(a)fallback. Native2 segmentrecall55.49%,resampled
+recall51.53%;this is still incomplete geometry,NOT a learned or final result.
+Alias94remainsweak27.29%resampled2. Draft only proposes scaffold-chain keep/prune
+and anchored branches. Oracle-filtered/ordered forests are NOT image-only
+training candidates;validate an actual image-only unit pool before claiming
+transfer of this opportunity. Discuss before substantive implementation.
+
+Ridge40-neuron packets complete. Pooledref length>2vox offproxy:train16.60%,
+dev15.06%;WEDonly2.37%. Lowadultalias95=73.10%,median8.61vox;proxy threshold/
+weak/gapped structure can cause large offsets,not proof goldwrong.40-neuron
+native/conditional-physical CSV saved;all15XY/XZ/YZ sheets visuallyinspected.
+WEDoutputs flood diffuse texture;larval soma/thick-process oversampling and
+lowadultdim-branch omission are distinct failures. Automaticflags often soma
+volume/puncta,not validated extra targetneurites. No relabeling.
+
+DecompremovingisolatesworsensC0 andactualpolicyat2;not auniversalfix.
+C1minusallresampled43.87%,policyminusall47.29%(classicaldev47.43%). Spurs
+remove substantial length but also coverage;longduplicateproxynegligibleexcept
+conditionaloracle. Itsall3cleanup61.08% is reference-assisted,not adoption.
+
+Benchmark archive alreadydownloaded726,174,044bytes. Original extractor only
+matchedSLP36,Series01720,Janelia40,notall7. Actualnames encode ordinal+dataset
+IDs,so oldalgorithm_variant labels also incorrectly contained per-neuron IDs.
+Prepared `scripts/recover_bigneuron_benchmark.py`,config
+`configs/bigneuron_benchmark_recovery_20261106.json`,NEWoutputroot
+`tmp/bigneuron_benchmark_recovery_20261106`,cap2h,NOredownload. No repair scan/
+extraction/scoring launched yet. Maps six publishedIDs251/245/103/122/276/52;
+all96 priornamedfiles corroborate onmetadata. Humanin_house1sharedCell1name
+cannot be assignedID256 just frombasename(thepublishedSWCtimestampdiffers);
+requires exactnormalizedsourcegroup/caseleaf,otherwise reportincomplete7mapping.
+Method labels removeordinal/datasetIDs,retainparams andseed-encodedmode;all
+replicas contribute meanprimitivecounts,no bestreplica selection. FIRST metric
+scoring only,unchanged nativebounds99%,no registration,originprovisional.
+User launches the one repaircommand;no completed diagnostic needs rerunning.
+Benchmark best/median/per-algorithm numbers do NOT yet exist.
+
+Verification:302final-row graphhashchecks/length bounds pass,357output files
+inventoried(40offsetNPZ+15PNGs+302SWCs),stored-row aggregates replayexact.
+OriginalSTOPsha0edf832a39d52bd5cd48296dbb5d613b1af51c0bdd5ea762f1af797425de6eae.
+Originalgeneratedreports unchanged;newdocs recordvisualreview. Professor
+discussionpending;repeatedlyinspecteddev/reserveduntouchedlimitations persist.
+Earlier readiness notesbelow are history.
+
 **LATEST,6 November: five post-Stage2 CPU diagnostics prepared for user-local
 launch;NONE RUN. Stage2 remains STOPPED unchanged.** User explicitly requests
 gold-to-ridge offsets40 neurons,a five-case visual review,BigNeuron algorithm

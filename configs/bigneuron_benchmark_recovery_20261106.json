@@ -1,0 +1,44 @@
+{
+  "schema": "pn2-bigneuron-identity-recovery-v1",
+  "wall_seconds": 7200,
+  "archive": {
+    "path": "tmp/post_stage2_diagnostics_20261106/benchmark_download/benchtesting.tar.gz",
+    "sha256": "4b5a0f52e0195e72c0d70e9ef4fe575c84db47fb1f3e514467595599f04b1b3b",
+    "size": 726174044
+  },
+  "old_extraction_manifest": "tmp/post_stage2_diagnostics_20261106/benchmark_download/manifest.json",
+  "published_id_map": {
+    "e_checked7_utokyo_fly/SLP_PN_neuron": [
+      "251"
+    ],
+    "p_checked6_frog_scrippts/done_err_Recon112012no2-2": [
+      "245"
+    ],
+    "p_checked6_human_culturedcell_Cambridge_in_vitro_confocal_GFP/Series017": [
+      "103"
+    ],
+    "p_checked6_mouse_RGC_uw/sv_140921c4": [
+      "122"
+    ],
+    "p_checked6_zebrafish_adult_RGC_UW/hard_1_8_Ch2": [
+      "276"
+    ],
+    "p_checked7_janelia_flylight_part1/GMR_57C10_AD_01-Two_recombinase_flipouts_A-m-A-20111006_1_E1-right_optic_lobe.v3draw.extract_4": [
+      "52"
+    ]
+  },
+  "human_case": "p_checked6_human_allen_confocal/in_house1",
+  "aggregation": "mean replica primitive lengths and matching counts;no best-replica choice",
+  "coordinate_rules": "unchanged native identity,99% bounds,origin provisional",
+  "source_sha256": {
+    "scripts/recover_bigneuron_benchmark.py": "9f2aa386a7026b2c173ff4510c3aabfb7dc84d986e7713d6c68f800728ada163",
+    "tests/test_bigneuron_recovery.py": "6e6eb774beaee9ed36d8842b67576fb074816bbf0d641665abc093dc8b919186",
+    "docs/bigneuron_benchmark_recovery_ready_20261106.md": "299392450a487cd3a88d13422c48bf46b5bd2295309bf1296c9252f8df6516b2"
+  },
+  "artifact_sha256": {
+    "configs/post_stage2_diagnostics_20261106.json": "8c198e3f0915e600429144f6ffcbfeb1fec48350670f1fac1a285c847b8405f6",
+    "tmp/post_stage2_diagnostics_20261106/benchmark_download/manifest.json": "fafe4b9b94f74c1c9b74a034f7c7c0a638b859383cee8249e1124cd0111f9c79",
+    "tmp/post_stage2_diagnostics_20261106/benchmark_download/finished.json": "5433d9d1ae121e9ab3301e4e3a7b89d4057c591364ca4c31a7825032013bf201",
+    "tmp/post_stage2_diagnostics_20261106/benchmark_score/report.json": "6295a393be0ed393b1ff347b5aac182544e4136b5dfd7d48f03032fcecaedd46"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-06",
+  "status": "ready_first_benchmark_scoring_not_run",
+  "config_sha256": "6b7265d8990e751fe64242424451b30e087533da17dfccfd9fd1a2a25bdb6cca",
+  "config_fingerprint": "f8ed49ef921b75082a8a082831b8d31f1744f1e7fbd8dd69541565ae609c6d49",
+  "tests": {
+    "tests": "23",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.037"
+  },
+  "test_report": "tmp/bigneuron_recovery_tests.xml",
+  "test_report_sha256": "618934d1d0f5b59b232ae89c1a187ae1d782e79f1af18730af39a59f77853651",
+  "prior_named_output_metadata_corroborated": 96,
+  "source_and_original_diagnostic_bindings": "passed",
+  "archive_redownload_required": false,
+  "archive_recovery_scan_launched": false,
+  "benchmark_metrics_computed": false,
+  "new_development_training_labels": false,
+  "Stage2_gate_changed": false,
+  "GPU": false,
+  "training": false,
+  "launch": "docs/bigneuron_benchmark_recovery_ready_20261106.md",
+  "draft_editing_contract": "docs/classical_anchored_editing_contract_DRAFT_20261106.md"
+}
