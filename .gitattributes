@@ -2,3 +2,4 @@
 *.py text eol=lf
 *.ps1 text eol=lf
 *.toml text eol=lf
+/docs/reports/progress_20261107/*.pdf binary

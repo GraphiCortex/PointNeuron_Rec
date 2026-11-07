@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-07",
+  "pages": 11,
+  "all_pages_rendered_and_visually_inspected": true,
+  "layout_defects_remaining": false,
+  "figure_count": 6,
+  "original_review_sheets": 2,
+  "development_rows": 28,
+  "development_neurons": 7,
+  "source_files_verified": 17,
+  "pinned_source_paths_exist_at_commit": true,
+  "PDF_source_hyperlinks": 18,
+  "CSV_macro_F1_matches_saved_reports": true,
+  "original_review_PNG_copies_hash_exact": true,
+  "Stage2_STOP_unchanged": true,
+  "new_experiment_or_training": false,
+  "outputs_sha256": {
+    "PointNeuron2_Progress_Report_Dr_Arij_20261107.pdf": "5ed984e67b45e052ff703ca92b35454096b7f219548c4a2f600b291dcb238cd8",
+    "README.md": "b728ca71ce51ff644f9a5f5b0aca052e5f843178502d5e20bc95ead5002117f6",
+    "development_results.csv": "11185fb7c17d19c25e455e24a44ac0579f1a062365d9aac9ca94d319b50fb7ab",
+    "development_summary.csv": "46c8bdaeebaaa9a419955dbf3fd358e4dabfa1e7f77a0e91b05f20aacadf82f3",
+    "source_manifest.json": "8e4b77ccfd8f1cfb664be8ed6f4806d2b5fa558e34abe41c7a3ffa2f08e019c2"
+  },
+  "latest_PDF_pixel_identical_to_visually_reviewed_pages": 11,
+  "markdown_tables_verified": true
+}

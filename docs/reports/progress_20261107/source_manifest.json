@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-07",
+  "evidence_commit": "8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103",
+  "public_repository": "https://github.com/GraphiCortex/PointNeuron_Rec",
+  "aggregation": "F1 pooled within neuron then seven-neuron macro; aggregate length pooled",
+  "metrics_from_saved_reports_only": true,
+  "new_scoring_or_model_execution": false,
+  "Stage2_STOP_sha256": "0edf832a39d52bd5cd48296dbb5d613b1af51c0bdd5ea762f1af797425de6eae",
+  "reserved_source_data_opened": false,
+  "sources": {
+    "S1": {
+      "label": "Cohort and isolation",
+      "path": "docs/node_cohort_preflight_results.md",
+      "sha256": "de3e753e08df0fa18ba6a942a79f21e0685249aab9608fee50db56a24932a70d",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/node_cohort_preflight_results.md"
+    },
+    "S2": {
+      "label": "Input support audit",
+      "path": "docs/evidence/curve_transfer_input_support_20261104.json",
+      "sha256": "2117952d2ac1852e2a1ebcf045f7682d9c7c65c8094f456d11301e419da6d4b1",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/curve_transfer_input_support_20261104.json"
+    },
+    "S3": {
+      "label": "Transformer four box fit",
+      "path": "docs/geometric_query_fit_results.md",
+      "sha256": "00e47eea1fee3a193510e3a7d371694f774068038f78766ed5c028c73b24b774",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/geometric_query_fit_results.md"
+    },
+    "S4": {
+      "label": "Curve scoring controls",
+      "path": "docs/curve_formulation_audit_results.md",
+      "sha256": "d0f02dca09542c65ba57d0f3539059c21fbbff8f51fd67e06e6133f2c03e336d",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/curve_formulation_audit_results.md"
+    },
+    "S5": {
+      "label": "Four box transfer",
+      "path": "docs/curve_transfer_development_results_20261104.md",
+      "sha256": "1be9714444433cc0f2646064bb44e4922c0d1ca65729ab0b4688bfb313513e9e",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/curve_transfer_development_results_20261104.md"
+    },
+    "S6": {
+      "label": "Broad dense head result",
+      "path": "docs/broad_curve_head_results_20261105.md",
+      "sha256": "626883b9bdaaf020d4a34ff0a26ea87083122da83501edafbc5cdbe03c83c90b",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/broad_curve_head_results_20261105.md"
+    },
+    "S7": {
+      "label": "Resampled and compact metrics",
+      "path": "docs/evidence/resampled_compact_completed_20261105.json",
+      "sha256": "f37a22a183d19b284f8c85e10893a186f730138ad00c671a325b66250f7040f4",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/resampled_compact_completed_20261105.json"
+    },
+    "S8": {
+      "label": "Compact oracle interpretation",
+      "path": "docs/resampled_compact_results_20261105.md",
+      "sha256": "af3e426063e9728eb4fbd2b98bd7e4786407e8887594ce2ed1624ec1d4ee7edf",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/resampled_compact_results_20261105.md"
+    },
+    "S9": {
+      "label": "Stopped selector results",
+      "path": "docs/stage2_trees_results_20261106.md",
+      "sha256": "5ef2fbe0dc15f9047f80ba4f18207acebb73b1239d7c062906ad6d8d4f776ad3",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/stage2_trees_results_20261106.md"
+    },
+    "S10": {
+      "label": "Selector metrics and stop receipt",
+      "path": "docs/evidence/stage2_trees_stopped_20261106.json",
+      "sha256": "070bc67118db5b3fbcd48af8c9c361846da964d32dac1978e764275f729ada55",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/stage2_trees_stopped_20261106.json"
+    },
+    "S11": {
+      "label": "Post stop diagnostics",
+      "path": "docs/post_stage2_diagnostics_results_20261106.md",
+      "sha256": "de051a35d7cd26d676e912cf12b0dbe9a6f9ac9ea82e0a5b9deac99dab7264c3",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/post_stage2_diagnostics_results_20261106.md"
+    },
+    "S12": {
+      "label": "Post stop portable metrics",
+      "path": "docs/evidence/post_stage2_diagnostics_completed_20261106.json",
+      "sha256": "579c68a8105f595f42ffda70e63b46eb67526865c1ba05d04000d99a86af9434",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/post_stage2_diagnostics_completed_20261106.json"
+    },
+    "S13": {
+      "label": "Benchmark comparison",
+      "path": "docs/bigneuron_benchmark_results_20261106.md",
+      "sha256": "6ce042944867eef248f222fa41da919e4559f116cc174c44695bee02f815c61a",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/bigneuron_benchmark_results_20261106.md"
+    },
+    "S14": {
+      "label": "Benchmark portable metrics",
+      "path": "docs/evidence/bigneuron_benchmark_completed_20261106.json",
+      "sha256": "caef186f31cf4cfb736e581e8a82a1d75940199aead9b62d6eacc13d443164ca",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/bigneuron_benchmark_completed_20261106.json"
+    },
+    "S15": {
+      "label": "Benchmark per neuron measurements",
+      "path": "docs/evidence/bigneuron_per_neuron_20261106.csv",
+      "sha256": "8d87fb9a57d0729f552430d836f04187c614565de7e48e9d06c44f04a71e2925",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/evidence/bigneuron_per_neuron_20261106.csv"
+    },
+    "S16": {
+      "label": "Proposal implementation audit",
+      "path": "docs/proposal_implementation_audit_20261104.md",
+      "sha256": "842bf80e1cd7e8373432f34d5a26ef62fe0406861ac4fc10dfffb14061d8dfd7",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/proposal_implementation_audit_20261104.md"
+    },
+    "S17": {
+      "label": "Editing discussion draft",
+      "path": "docs/classical_anchored_editing_contract_DRAFT_20261106.md",
+      "sha256": "dc6433ff142a2f7c5351d669b82f70074605015860c1544136a439b324b2bebe",
+      "github_url": "https://github.com/GraphiCortex/PointNeuron_Rec/blob/8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103/docs/classical_anchored_editing_contract_DRAFT_20261106.md"
+    }
+  },
+  "review_source_images": {
+    "tmp\\post_stage2_diagnostics_20261106\\ridge_review\\alias020\\XY.png": {
+      "sha256": "b6228cf36cc908360906d55ef33922b8cd79d356d5eebe3ca5239f0ec652c66c",
+      "published_copy": "docs\\reports\\progress_20261107\\figures\\alias020_XY_original.png"
+    },
+    "tmp\\post_stage2_diagnostics_20261106\\ridge_review\\alias093\\XY.png": {
+      "sha256": "5e48211770cd7411dd0140a0e6273448a3c6cd44ffc517264217112cc6fe365f",
+      "published_copy": "docs\\reports\\progress_20261107\\figures\\alias093_XY_original.png"
+    }
+  },
+  "macro_values": {
+    "classical": {
+      "segment_2": 0.5433112579402621,
+      "segment_6": 0.6913686642936104,
+      "resampled_2": 0.4742678748756966,
+      "resampled_6": 0.5471518395132846,
+      "length_ratio": 0.9175403766583267
+    },
+    "broad_dense": {
+      "segment_2": 0.3603984457670145,
+      "segment_6": 0.6753913858809842,
+      "resampled_2": 0.16415632032195057,
+      "resampled_6": 0.21575873836919873,
+      "length_ratio": 6.236136871949297
+    },
+    "sato": {
+      "segment_2": 0.38486572611533415,
+      "segment_6": 0.6313090058064675,
+      "resampled_2": 0.2008056106006148,
+      "resampled_6": 0.24928809120314652,
+      "length_ratio": 6.203522392770232
+    },
+    "archive": {
+      "segment_2": 0.6400335798598172,
+      "segment_6": 0.7311746759030309,
+      "resampled_2": 0.5872485911436514,
+      "resampled_6": 0.6814009376415928,
+      "length_ratio": 1.2501705543714359
+    }
+  },
+  "oracle_values": {
+    "stage0": {
+      "segment_2": 0.9042320394860465,
+      "segment_6": 0.9567199197684702,
+      "resampled_2": 0.41491750302529706,
+      "resampled_6": 0.4618949329453731,
+      "length_ratio": 2.397850994747163
+    },
+    "compact": {
+      "segment_2": 0.8851708414517212,
+      "segment_6": 0.9510306098348813,
+      "resampled_2": 0.6479597076530379,
+      "resampled_6": 0.7254384616763686,
+      "length_ratio": 1.184745927495074
+    },
+    "prune_only": {
+      "segment_2": 0.6477217278335876,
+      "segment_6": 0.7701145738676549,
+      "resampled_2": 0.5858459158915735,
+      "resampled_6": 0.6473875834293263,
+      "length_ratio": 0.490745193729429
+    },
+    "prune_add": {
+      "segment_2": 0.6856168669338255,
+      "segment_6": 0.8042671684664747,
+      "resampled_2": 0.6174073433508195,
+      "resampled_6": 0.6853512618353509,
+      "length_ratio": 0.5510486005400128
+    }
+  },
+  "build_script": "scripts/build_progress_report_20261107.py",
+  "build_script_sha256": "61db293dc8d93beada9066efbbee6ef9338952b6fa29254d948a90eaa95ea631",
+  "validation": {
+    "development_rows": 28,
+    "stored_macro_F1_replay": "exact within 1e-14",
+    "all_seven_neurons_retained": true
+  },
+  "scope": "Report generation and saved evidence reformatting only; no protocol changed"
+}

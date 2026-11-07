@@ -1,5 +1,19 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST, 7 November: professor-facing progress report prepared from saved
+results.** See [report and figures](reports/progress_20261107/README.md) and
+[PDF](reports/progress_20261107/PointNeuron2_Progress_Report_Dr_Arij_20261107.pdf).
+The package includes all 28 method/neuron rows, four unrounded aggregate rows,
+six figures, two original saved image sheets and a pinned source-hash appendix.
+The report compares intended architecture, executed experiments and a proposed
+adaptive front end. Transformer bypass approval remains pending with Dr Arij;
+GATv2 remains intended and untrained. The five questions are discussion requests,
+not adopted architecture or permission for a run. Sparse guidance, lab adaptation,
+consensus, coordinate correction and a revised Transformer role remain proposals.
+No scoring, filtering, training, development label creation or reserved source
+access occurred. Stage 2 and all frozen gates/STOP/artifacts remain unchanged.
+This report was not sent to Dr Arij. Earlier status below is chronological history.
+
 **LATEST, 6 November: BigNeuron recovery and first scoring COMPLETE. No further
 job is queued. Stage 2 remains STOPPED with its gate, STOP.json and artifacts
 unchanged.** Read [benchmark results](bigneuron_benchmark_results_20261106.md),
