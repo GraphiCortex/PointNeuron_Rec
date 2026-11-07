@@ -1,5 +1,19 @@
 # PN2 next-chat handoff — after failed dense-head fit and CPU graph measurement
 
+**LATEST, 7 November: the professor report was rewritten in LaTeX after user
+feedback on tone, narrative and presentation.** The current
+[PDF](reports/progress_20261107/PointNeuron2_Progress_Report_Dr_Arij_20261107.pdf)
+follows the original proposal's motivation through the preparation/fitting,
+curve-head, reconstruction, graph-selector and editing experiments, then returns
+to the proposed semi-automatic front end and five questions for Dr Arij.
+[Editable LaTeX](reports/progress_20261107/report.tex) is now authoritative;
+the first ReportLab draft remains in Git history. Its builder now writes only
+to ignored tmp to avoid overwriting the new report. The author's supplied
+example report was inspected privately and is not copied into the repository.
+All 28 development rows and saved measurements are unchanged. The report has
+18 pages including its title, contents and appendices. No experiment, scorer,
+gate, architecture approval or reserved-data status changed. It has not been sent.
+
 **LATEST, 7 November: professor-facing progress report prepared from saved
 results.** See [report and figures](reports/progress_20261107/README.md) and
 [PDF](reports/progress_20261107/PointNeuron2_Progress_Report_Dr_Arij_20261107.pdf).

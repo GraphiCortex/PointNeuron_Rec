@@ -181,12 +181,29 @@
       "length_ratio": 0.5510486005400128
     }
   },
-  "build_script": "scripts/build_progress_report_20261107.py",
-  "build_script_sha256": "61db293dc8d93beada9066efbbee6ef9338952b6fa29254d948a90eaa95ea631",
+  "build_script": "scripts/prepare_progress_report_latex_20261107.py",
+  "build_script_sha256": "faaca821416af9d41fe4af55ece56cd10a0506bb965e49778233b987c6734fa1",
   "validation": {
     "development_rows": 28,
     "stored_macro_F1_replay": "exact within 1e-14",
-    "all_seven_neurons_retained": true
+    "all_seven_neurons_retained": true,
+    "all_28_rows_and_4_aggregate_rows_reproduced_in_PDF": true
   },
-  "scope": "Report generation and saved evidence reformatting only; no protocol changed"
+  "scope": "Saved-result report rewrite and LaTeX compilation only; no new experiment, scoring, training or protocol change",
+  "report_revision": "Narrative LaTeX rewrite following author feedback; numerical CSVs unchanged",
+  "initial_report_commit": "5c1f440add4f51e8420b5452c0c69f476be90958",
+  "authoring": "LaTeX article with Latin Modern, TikZ and booktabs",
+  "pdf_producer": "MiKTeX pdfTeX-1.40.25",
+  "report_source": "docs/reports/progress_20261107/report.tex",
+  "report_source_sha256": "c5c676f359de8dd8c402288a5ab71d0d9efe2d391d97ee7f87e3ff8c40f42e1b",
+  "table_fragments_sha256": {
+    "docs\\reports\\progress_20261107\\tables\\data_rows.tex": "ccfd06056b3f56e7e4c1c6ed9db39be6929089e9f619d98a6bd3cd595813757a",
+    "docs\\reports\\progress_20261107\\tables\\development_macro.tex": "a5b049d40f7e6aae74382307b3af4856c0c5ac54804d058829236c835b28e9b3",
+    "docs\\reports\\progress_20261107\\tables\\development_neurons.tex": "1208e53477521af8e732a0cf71b38eaa1001675ca186a395b3289eb5e9b07519",
+    "docs\\reports\\progress_20261107\\tables\\oracle_results.tex": "b95c2a6d835aedab3a2a1f07b0412e0cee4eff084823b1267241dbea98419f42"
+  },
+  "source_CSV_sha256": {
+    "development_results.csv": "11185fb7c17d19c25e455e24a44ac0579f1a062365d9aac9ca94d319b50fb7ab",
+    "development_summary.csv": "46c8bdaeebaaa9a419955dbf3fd358e4dabfa1e7f77a0e91b05f20aacadf82f3"
+  }
 }

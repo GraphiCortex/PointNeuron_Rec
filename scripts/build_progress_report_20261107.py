@@ -1,4 +1,8 @@
-"""Publish a professor-facing report from saved PN2 measurements only.
+"""Rebuild the historical ReportLab first draft from saved PN2 measurements.
+
+The current professor report is authored in LaTeX at
+docs/reports/progress_20261107/report.tex. This historical builder writes only
+to ignored tmp so it cannot overwrite that report.
 
 No model, scorer, reference SWC, reserved data, filtering or experiment is run.
 Use the Codex bundled Python with reportlab, Pillow and pypdfium2 installed.
@@ -25,7 +29,7 @@ from reportlab.platypus import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'docs/reports/progress_20261107'
+OUT = ROOT / 'tmp/progress_report_20261107/first_draft_rebuild'
 FIG = OUT / 'figures'
 TMP = ROOT / 'tmp/progress_report_20261107'
 SOURCE_COMMIT = '8c363d3cc3a9c7698d367aa93b9b5d0ce0f63103'
